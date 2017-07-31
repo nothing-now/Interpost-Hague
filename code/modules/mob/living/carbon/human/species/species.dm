@@ -58,7 +58,7 @@
 	var/anus = 0							  //Also for erp
 
 	var/min_age = 17
-	var/max_age = 70
+	var/max_age = 60 //people don't live for long in our universe
 
 	// Language/culture vars.
 	var/default_language = LANGUAGE_GALCOM    // Default language is used when 'say' is used without modifiers.

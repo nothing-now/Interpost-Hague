@@ -310,6 +310,8 @@
 	if(digitalcamo)
 		msg += "[T.He] [T.is] repulsively uncanny!\n"
 
+	if(is_nude() && gender == MALE && species.genitals)//Interactions
+		msg += "<B>Penis size: [potenzia]cm.</B>\n"
 
 	var/obj/item/organ/external/head/O = locate(/obj/item/organ/external/head) in organs
 	if(O && O.get_teeth() < O.max_teeth)
@@ -332,6 +334,7 @@
 	if(is_nude() && gender == MALE && species.genitals)//Interactions
 		msg += "<B>Penis size: [potenzia]cm.</B>\n"
 */
+
 
 	if(hasHUD(user,"security"))
 		var/perpname = "wot"

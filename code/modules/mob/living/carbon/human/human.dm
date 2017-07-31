@@ -596,7 +596,7 @@
 		var/datum/crafting_recipe/R = crafting_recipes[rname]
 		R.make(src, T)
 
-		///////Interactions!!///////
+	///////Interactions!!///////
 	if(href_list["interaction"])
 
 		if (usr.stat == DEAD || usr.stat == UNCONSCIOUS || usr.restrained())

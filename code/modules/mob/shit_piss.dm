@@ -106,6 +106,7 @@
 		if(piss != src)
 			qdel(piss)
 
+
 	spawn(800)
 		dried = 1
 		name = "dried urine stain"
@@ -280,6 +281,6 @@
 			reagents.trans_to(D, rand(1,8))
 		message = "<B>[src]</B> pisses on the [TT.name]."
 	GLOB.piss_left++
-	bladder -= 50
+	src.bladder -= 50
 	visible_message("[message]")
 
