@@ -24,6 +24,7 @@
 	var/ammo_type = null		//the type of ammo that the gun comes preloaded with
 	var/list/loaded = list()	//stored ammo
 	var/starts_loaded = 1		//whether the gun starts loaded or not, can be overridden for guns crafted in-game
+	var/load_sound = 'sound/weapons/guns/interaction/bullet_insert.ogg'
 
 	//For MAGAZINE guns
 	var/magazine_type = null	//the type of magazine that the gun comes preloaded with
@@ -31,6 +32,9 @@
 	var/allowed_magazines		//magazine types that may be loaded. Can be a list or single path
 	var/auto_eject = 0			//if the magazine should automatically eject itself when empty.
 	var/auto_eject_sound = null
+	var/mag_insert_sound = 'sound/weapons/guns/interaction/pistol_magin.ogg'
+	var/mag_remove_sound = 'sound/weapons/guns/interaction/pistol_magout.ogg'
+
 
 	//var/is_jammed = 0           //Whether this gun is jammed
 	//var/jam_chance = 0          //Chance it jams on fire
@@ -98,8 +102,9 @@
 
 	switch(handle_casings)
 		if(EJECT_CASINGS) //eject casing onto ground.
-			chambered.loc = get_turf(src)
-			playsound(get_turf(src), casingsound, 100, 1)
+			chambered.forceMove(get_turf(src))
+			if(LAZYLEN(chambered.fall_sounds))
+				playsound(loc, pick(chambered.fall_sounds), 50, 1)
 		if(CYCLE_CASINGS) //cycle the casing back to the end.
 			if(ammo_magazine)
 				ammo_magazine.stored_ammo += chambered
@@ -128,7 +133,7 @@
 
 					return
 				user.remove_from_mob(AM)
-				AM.loc = src
+				AM.forceMove(src)
 				ammo_magazine = AM
 				user.visible_message("[user] inserts [AM] into [src].", "<span class='notice'>You insert [AM] into [src].</span>")
 				if(reload_sound)
@@ -160,7 +165,7 @@
 			return
 
 		user.remove_from_mob(C)
-		C.loc = src
+		C.forceMove(src)
 		loaded.Insert(1, C) //add to the head of the list
 		user.visible_message("[user] inserts \a [C] into [src].", "<span class='notice'>You insert \a [C] into [src].</span>")
 		if(bulletinsert_sound)

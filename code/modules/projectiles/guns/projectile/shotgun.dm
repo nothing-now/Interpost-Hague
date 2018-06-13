@@ -49,6 +49,7 @@
 	if(chambered)//We have a shell in the chamber
 		chambered.loc = get_turf(src)//Eject casing
 		playsound(M, casingsound, 100, 1)
+
 		chambered = null
 
 	if(loaded.len)

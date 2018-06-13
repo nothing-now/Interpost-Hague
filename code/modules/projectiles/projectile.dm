@@ -61,7 +61,7 @@
 	var/fire_sound
 	var/list/impact_sounds
 	var/shrapnel_type = /obj/item/weapon/material/shard/shrapnel
-
+	var/miss_sounds
 
 	var/vacuum_traversal = 1 //Determines if the projectile can exist in vacuum, if false, the projectile will be deleted if it enters vacuum.
 
@@ -229,9 +229,10 @@
 
 	if(result == PROJECTILE_FORCE_MISS)
 		if(!silenced)
-			var/missound = "sound/weapons/guns/misc/miss[rand(1,4)].ogg"
+			var/miss_sounds = "sound/weapons/guns/misc/miss[rand(1,4)].ogg"
 			target_mob.visible_message("<span class='notice'>\The [src] misses [target_mob] narrowly!</span>")
-			playsound(target_mob, missound, 60, 1)
+			if(LAZYLEN(miss_sounds))
+				playsound(target_mob.loc, pick(miss_sounds), 60, 1)
 		return 0
 
 	//hit messages

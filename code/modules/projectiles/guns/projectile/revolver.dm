@@ -14,6 +14,10 @@
 	reload_sound 	= 'sound/weapons/guns/interact/rev_magin.ogg'
 	bulletinsert_sound 	= 'sound/weapons/guns/interact/rev_magin.ogg'
 
+/obj/item/weapon/gun/projectile/revolver/AltClick()
+	if(CanPhysicallyInteract(usr))
+		spin_cylinder()
+
 /obj/item/weapon/gun/projectile/revolver/verb/spin_cylinder()
 	set name = "Spin cylinder"
 	set desc = "Fun when you're bored out of your skull."

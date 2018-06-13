@@ -12,8 +12,8 @@
 	multi_aim = 1
 	burst_delay = 2
 	fire_sound = 'sound/weapons/guns/fire/smg_fire.ogg'
-	unload_sound = 'sound/weapons/guns/interact/smg_magout.ogg'
-	reload_sound = 'sound/weapons/guns/interact/smg_magin.ogg'
+	mag_insert_sound = 'sound/weapons/guns/interaction/smg_magin.ogg'
+	mag_remove_sound = 'sound/weapons/guns/interaction/smg_magout.ogg'
 
 	//machine pistol, easier to one-hand with
 	firemodes = list(
@@ -185,6 +185,7 @@
 	wielded_item_state = "z8carbine-wielded"
 	unload_sound 	= 'sound/weapons/guns/interact/batrifle_magout.ogg'
 	reload_sound 	= 'sound/weapons/guns/interact/batrifle_magin.ogg'
+
 	//would have one_hand_penalty=4,5 but the added weight of a grenade launcher makes one-handing even harder
 	firemodes = list(
 		list(mode_name="semiauto",       burst=1,    fire_delay=0,    move_delay=null, use_launcher=null, one_hand_penalty=5, burst_accuracy=null, dispersion=null),
@@ -255,8 +256,8 @@
 	allowed_magazines = list(/obj/item/ammo_magazine/box/a556, /obj/item/ammo_magazine/c556)
 	one_hand_penalty = 6
 	wielded_item_state = "gun_wielded"
-	unload_sound 	= 'sound/weapons/guns/interact/lmg_magout.ogg'
-	reload_sound 	= 'sound/weapons/guns/interact/lmg_magin.ogg'
+	mag_insert_sound = 'sound/weapons/guns/interaction/lmg_magin.ogg'
+	mag_remove_sound = 'sound/weapons/guns/interaction/lmg_magout.ogg'
 
 	//LMG, better sustained fire accuracy than assault rifles (comparable to SMG), higer move delay and one-handing penalty
 	//No single-shot or 3-round-burst modes since using this weapon should come at a cost to flexibility.
