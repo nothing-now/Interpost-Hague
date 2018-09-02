@@ -59,6 +59,8 @@
 			return global.SSobj;
 		if("SSopen_space")
 			return global.SSopen_space;
+		if("SSpersistence")
+			return global.SSpersistence;
 		if("SSprocessing")
 			return global.SSprocessing;
 		if("SSskybox")
@@ -1092,6 +1094,8 @@
 			global.SSobj=newval;
 		if("SSopen_space")
 			global.SSopen_space=newval;
+		if("SSpersistence")
+			global.SSpersistence=newval;
 		if("SSprocessing")
 			global.SSprocessing=newval;
 		if("SSskybox")
@@ -2096,6 +2100,7 @@
 	"SSmobs",
 	"SSobj",
 	"SSopen_space",
+	"SSpersistence",
 	"SSprocessing",
 	"SSskybox",
 	"SSsun",

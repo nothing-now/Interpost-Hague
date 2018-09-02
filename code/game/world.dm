@@ -474,6 +474,7 @@ var/world_topic_spam_protect_time = world.timeofday
 
 		*/
 
+	Master.Shutdown()
 	processScheduler.stop()
 
 	var/datum/chatOutput/co
