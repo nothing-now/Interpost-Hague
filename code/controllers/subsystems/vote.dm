@@ -189,4 +189,7 @@ SUBSYSTEM_DEF(vote)
 	set category = "OOC"
 	set name = "Vote"
 
+	if(GAME_STATE < RUNLEVEL_LOBBY)
+		to_chat(src, "It's too soon to do any voting!")
+		return
 	SSvote.show_panel(src)

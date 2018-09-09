@@ -106,7 +106,7 @@ datum/announcement/proc/NewsCast(message as text, message_title as text)
 /proc/AnnounceArrival(var/mob/living/carbon/human/character, var/datum/job/job, var/join_message)
 	if(!istype(job) || !job.announced)
 		return
-	if(GAME_STATE < RUNLEVEL_GAME)
+	if (GAME_STATE != RUNLEVEL_GAME)
 		return
 	var/rank = job.title
 	if(character.mind.role_alt_title)

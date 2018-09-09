@@ -769,7 +769,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	if(alert(src, "You sure?", "Confirm", "Yes", "No") != "Yes") return
 
-	if(!SSticker || !SSevac.evacuation_controller)
+	if(!SSevac.evacuation_controller)
 		return
 
 	SSevac.evacuation_controller.cancel_evacuation()
@@ -777,13 +777,11 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	SSstatistics.add_field_details("admin_verb","CCSHUT") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 	log_and_message_admins("admin-cancelled the evacuation.")
 
-	return
-
 /client/proc/admin_deny_shuttle()
 	set category = "Admin"
 	set name = "Toggle Deny Evac"
 
-	if (!SSticker || !SSevac.evacuation_controller)
+	if (!SSevac.evacuation_controller)
 		return
 
 	if(!check_rights(R_ADMIN))	return
@@ -810,7 +808,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 
 	if(!check_rights(R_FUN))	return
 
-	if (SSticker)
+	if (GAME_STATE >= RUNLEVEL_GAME)
 		to_chat(usr, "Nope you can't do this, the game's already started. This only works before rounds!")
 		return
 
@@ -834,6 +832,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	to_chat(usr, "<i>Remember: you can always disable the randomness by using the verb again, assuming the round hasn't started yet</i>.")
 	GLOB.random_players = 1
 	SSstatistics.add_field_details("admin_verb","MER") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
 
 
 /client/proc/toggle_random_events()

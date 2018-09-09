@@ -79,7 +79,7 @@
 
 	var/text = get_result_announcement()
 	log_vote(text)
-	to_world("<font color='purple'>[text]</font>")	
+	to_world("<font color='purple'>[text]</font>")
 
 	if(!(result[result[1]] > 0))
 		return 1
@@ -194,6 +194,10 @@
 	if(!is_valid_index(choice, choices))
 		return
 	if(!is_valid_index(priority, weights))
+		return
+	if(choice != sanitize_integer(choice, 1, length(choices), 1))
+		return
+	if(priority != sanitize_integer(priority, 1, length(weights), 1))
 		return // If the input was invalid, we don't continue recording the vote.
 
 	submit_vote(user, choice, priority)

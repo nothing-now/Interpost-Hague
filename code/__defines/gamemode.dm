@@ -1,7 +1,17 @@
-#define GAME_STATE_PREGAME		1
-#define GAME_STATE_SETTING_UP	2
-#define GAME_STATE_PLAYING		3
-#define GAME_STATE_FINISHED		4
+//Used with the ticker to help choose the gamemode.
+#define CHOOSE_GAMEMODE_SUCCESS 1 // A gamemode was successfully chosen.
+#define CHOOSE_GAMEMODE_RETRY   2 // The gamemode could not be chosen; we will use the next most popular option voted in, or the default.
+#define CHOOSE_GAMEMODE_REVOTE  3 // The gamemode could not be chosen; we need to have a revote.
+#define CHOOSE_GAMEMODE_RESTART 4 // The gamemode could not be chosen; we will restart the server.
+
+//End game state, to manage round end.
+#define END_GAME_NOT_OVER         1
+#define END_GAME_MODE_FINISH_DONE 2
+#define END_GAME_AWAITING_MAP     3
+#define END_GAME_READY_TO_END     4
+#define END_GAME_ENDING           5
+#define END_GAME_AWAITING_TICKETS 6
+#define END_GAME_DELAYED          7
 
 #define CHOOSE_GAMEMODE_SUCCESS     1 // A gamemode was successfully chosen.
 #define CHOOSE_GAMEMODE_RETRY       2 // The gamemode could not be chosen; we will use the next most popular option voted in, or the default.

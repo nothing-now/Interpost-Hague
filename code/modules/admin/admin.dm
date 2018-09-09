@@ -828,9 +828,9 @@ var/global/floorIsLava = 0
 	set category = "Server"
 	set desc="Start the round RIGHT NOW"
 	set name="Start Now"
-	if(!SSticker)
+	if(GAME_STATE < RUNLEVEL_LOBBY)
 		alert("Unable to start the game as it is not set up.")
-		return
+		return 0
 	if(SSticker.start_now())
 		log_admin("[usr.key] has started the game.")
 		message_admins("<font color='blue'>[usr.key] has started the game.</font>")
@@ -1253,7 +1253,7 @@ var/global/floorIsLava = 0
 	out += "<b>All antag ids:</b>"
 	if(SSticker.mode.antag_templates && SSticker.mode.antag_templates.len).
 		for(var/datum/antagonist/antag in SSticker.mode.antag_templates)
-			antag.update_current_antag_max()
+			antag.update_current_antag_max(SSticker.mode)
 			out += " <a href='?src=\ref[SSticker.mode];debug_antag=[antag.id]'>[antag.id]</a>"
 			out += " ([antag.get_antag_count()]/[antag.cur_max]) "
 			out += " <a href='?src=\ref[SSticker.mode];remove_antag_type=[antag.id]'>\[-\]</a><br/>"
@@ -1452,7 +1452,7 @@ var/global/floorIsLava = 0
 		to_chat(usr, "Error: you are not an admin!")
 		return
 
-	if(!SSticker.mode)
+	if(GAME_STATE < RUNLEVEL_GAME)
 		to_chat(usr, "Mode has not started.")
 		return
 
@@ -1477,7 +1477,7 @@ var/global/floorIsLava = 0
 		to_chat(usr, "Error: you are not an admin!")
 		return
 
-	if(!SSticker.mode)
+	if(GAME_STATE < RUNLEVEL_GAME)
 		to_chat(usr, "Mode has not started.")
 		return
 

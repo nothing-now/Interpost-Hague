@@ -83,6 +83,51 @@ var/global/datum/controller/occupations/job_master
 	proc/GetPlayerAltTitle(mob/new_player/player, rank)
 		return player.client.prefs.GetPlayerAltTitle(GetJob(rank))
 
+	proc/CheckGeneralJoinBlockers(var/mob/new_player/joining, var/datum/job/job)
+		if(!istype(joining) || !joining.client || !joining.client.prefs)
+			return FALSE
+		if(!istype(job))
+			log_debug("Job assignment error for [joining] - job does not exist or is of the incorrect type.")
+			return FALSE
+		if(!job.is_position_available())
+			to_chat(joining, "<span class='warning'>Unfortunately, that job is no longer available.</span>")
+			return FALSE
+		if(!config.enter_allowed)
+			to_chat(joining, "<span class='warning'>There is an administrative lock on entering the game!</span>")
+			return FALSE
+		if(SSticker.mode && SSticker.mode.explosion_in_progress)
+			to_chat(joining, "<span class='warning'>The [station_name()] is currently exploding. Joining would go poorly.</span>")
+			return FALSE
+		return TRUE
+
+	proc/CheckLatejoinBlockers(var/mob/new_player/joining, var/datum/job/job)
+		if(!CheckGeneralJoinBlockers(joining, job))
+			return FALSE
+		if(job.minimum_character_age && (joining.client.prefs.age < job.minimum_character_age))
+			to_chat(joining, "<span class='warning'>Your character's in-game age is too low for this job.</span>")
+			return FALSE
+		if(!job.player_old_enough(joining.client))
+			to_chat(joining, "<span class='warning'>Your player age (days since first seen on the server) is too low for this job.</span>")
+			return FALSE
+		if(GAME_STATE != RUNLEVEL_GAME)
+			to_chat(joining, "<span class='warning'>The round is either not ready, or has already finished...</span>")
+			return FALSE
+		return TRUE
+
+	proc/CheckUnsafeSpawn(var/mob/living/spawner, var/turf/spawn_turf)
+		var/radlevel = SSradiation.get_rads_at_turf(spawn_turf)
+		var/airstatus = IsTurfAtmosUnsafe(spawn_turf)
+		if(airstatus || radlevel > 0)
+			var/reply = alert(spawner, "Warning. Your selected spawn location seems to have unfavorable conditions. \
+			You may die shortly after spawning. \
+			Spawn anyway? More information: [airstatus] Radiation: [radlevel] Bq", "Atmosphere warning", "Abort", "Spawn anyway")
+			if(reply == "Abort")
+				return FALSE
+			else
+				// Let the staff know, in case the person complains about dying due to this later. They've been warned.
+				log_and_message_admins("User [spawner] spawned at spawn point with dangerous atmosphere.")
+		return TRUE
+
 	proc/AssignRole(var/mob/new_player/player, var/rank, var/latejoin = 0)
 		Debug("Running AR, Player: [player], Rank: [rank], LJ: [latejoin]")
 		if(player && player.mind && rank)
@@ -260,7 +305,6 @@ var/global/datum/controller/occupations/job_master
 		Debug("Running DO")
 		SetupOccupations()
 
-		//Holder for Triumvirate is stored in the ticker, this just processes it
 		if(GLOB.triai)
 			for(var/datum/job/A in occupations)
 				if(A.title == "AI")
@@ -306,7 +350,6 @@ var/global/datum/controller/occupations/job_master
 
 		// Loop through all levels from high to low
 		var/list/shuffledoccupations = shuffle(occupations)
-		// var/list/disabled_jobs = ticker.mode.disabled_jobs  // So we can use .Find down below without a colon.
 		for(var/level = 1 to 3)
 			//Check the head jobs first each level
 			CheckHeadPositions(level)
@@ -478,7 +521,7 @@ var/global/datum/controller/occupations/job_master
 				if("AI")
 					return H
 				if("Captain")
-					var/sound/announce_sound = (GAME_STATE < RUNLEVEL_GAME)? null : sound('sound/misc/boatswain.ogg', volume=20)
+					var/sound/announce_sound = (GAME_STATE <= RUNLEVEL_SETUP)? null : sound('sound/misc/boatswain.ogg', volume=20)
 					captain_announcement.Announce("All hands, Captain [H.real_name] on deck!", new_sound=announce_sound)
 
 		// put any loadout items that couldn't spawn into storage or on the ground

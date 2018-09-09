@@ -646,6 +646,7 @@ var/list/admin_verbs_mentor = list(
 			V.show_message("<b>[mob.control_object.name]</b> says: \"" + msg + "\"", 2)
 	SSstatistics.add_field_details("admin_verb","OT") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
+
 /client/proc/readmin_self()
 	set name = "Re-Admin self"
 	set category = "Admin"

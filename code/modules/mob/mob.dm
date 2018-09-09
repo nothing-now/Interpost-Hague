@@ -412,6 +412,10 @@
 
 	if(!check_rights(R_ADMIN))	return
 
+	if(GAME_STATE < RUNLEVEL_LOBBY)
+		to_chat(src, "<span class='warning'>Please wait for server initialization to complete...</span>")
+		return
+
 	var/is_admin = 0
 
 	if(client.holder && (client.holder.rights & R_ADMIN))

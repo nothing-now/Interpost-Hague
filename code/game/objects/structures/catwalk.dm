@@ -74,7 +74,85 @@
 			if(istype(src.loc, /turf/space) || istype(src.loc, /turf/simulated/open))
 				new /obj/structure/lattice/(src.loc)
 			qdel(src)
+/*
+		return
+	if(isCrowbar(C) && plated_tile)
+		hatch_open = !hatch_open
+		if(hatch_open)
+			playsound(src, 'sound/items/Crowbar.ogg', 100, 2)
+			to_chat(user, "<span class='notice'>You pry open \the [src]'s maintenance hatch.</span>")
+		else
+			playsound(src, 'sound/items/Deconstruct.ogg', 100, 2)
+			to_chat(user, "<span class='notice'>You shut \the [src]'s maintenance hatch.</span>")
+		update_icon()
+		return
+	if(istype(C, /obj/item/stack/tile/mono) && !plated_tile)
+		var/obj/item/stack/tile/floor/ST = C
+		if(!ST.in_use)
+			to_chat(user, "<span class='notice'>Placing tile...</span>")
+			ST.in_use = 1
+			if (!do_after(user, 10))
+				ST.in_use = 0
+				return
+			to_chat(user, "<span class='notice'>You plate \the [src]</span>")
+			name = "plated catwalk"
+			ST.in_use = 0
+			src.add_fingerprint(user)
+			if(ST.use(1))
+				for(var/flooring_type in flooring_types)
+					var/decl/flooring/F = flooring_types[flooring_type]
+					if(!F.build_type)
+						continue
+					if(ispath(C.type, F.build_type))
+						plated_tile = F
+						break
+				update_icon()
+*/
+/*
+/obj/effect/catwalk_plated
+	name = "plated catwalk spawner"
+	icon = 'icons/obj/catwalks.dmi'
+	icon_state = "catwalk_plated"
+	density = 1
+	anchored = 1.0
+	var/activated = FALSE
+	layer = ABOVE_TURF_PLANE
+	var/plating_type = /decl/flooring/tiling/mono
+
+/obj/effect/catwalk_plated/Initialize(mapload)
+	. = ..()
+	var/auto_activate = mapload || (GAME_STATE < RUNLEVEL_GAME)
+	if(auto_activate)
+		activate()
+		return INITIALIZE_HINT_QDEL
+
+/obj/effect/catwalk_plated/CanPass()
+	return 0
+
+/obj/effect/catwalk_plated/attack_hand()
+	attack_generic()
+
+/obj/effect/catwalk_plated/attack_ghost()
+	attack_generic()
+
+/obj/effect/catwalk_plated/attack_generic()
+	activate()
+
+/obj/effect/catwalk_plated/proc/activate()
+	if(activated) return
+
+	if(locate(/obj/structure/catwalk) in loc)
+		warning("Frame Spawner: A catwalk already exists at [loc.x]-[loc.y]-[loc.z]")
+	else
+		var/obj/structure/catwalk/C = new /obj/structure/catwalk(loc)
+		C.plated_tile += new plating_type
+		C.name = "plated catwalk"
+		C.update_icon()
+	activated = 1
+	for(var/turf/T in orange(src, 1))
+		for(var/obj/effect/wallframe_spawn/other in T)
+			if(!other.activated) other.activate()
 
 /obj/structure/catwalk/refresh_neighbors()
 	return
-
+*/

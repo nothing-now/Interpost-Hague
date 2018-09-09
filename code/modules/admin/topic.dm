@@ -190,10 +190,11 @@
 
 		if(!check_rights(R_ADMIN))	return
 
-		if (!SSticker || !SSevac.evacuation_controller)
+		if (!SSticker.mode || !SSevac.evacuation_controller)
 			return
 
-		if( SSticker.mode.name == "blob" )
+		if(SSticker.mode.name == "blob" )
+
 			alert("You can't call the shuttle during blob!")
 			return
 
@@ -968,6 +969,7 @@
 		if (SSticker.mode)
 			return alert(usr, "The game has already started.", null, null, null, null)
 		SSticker.master_mode = href_list["c_mode2"]
+		SSticker.bypass_gamemode_vote = 1
 		log_and_message_admins("set the mode as [SSticker.master_mode].")
 		to_world("<span class='notice'><b>The mode is now: [SSticker.master_mode]</b></span>")
 		Game() // updates the main game menu
@@ -1543,7 +1545,7 @@
 	else if(href_list["traitor"])
 		if(!check_rights(R_ADMIN|R_MOD))	return
 
-		if(!SSticker.mode)
+		if(GAME_STATE < RUNLEVEL_GAME)
 			alert("The game hasn't started yet!")
 			return
 

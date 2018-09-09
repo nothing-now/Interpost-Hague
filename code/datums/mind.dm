@@ -123,7 +123,7 @@
 	recipient << browse(output,"window=memory")
 
 /datum/mind/proc/edit_memory()
-	if(!SSticker.mode)
+	if(GAME_STATE <= RUNLEVEL_SETUP)
 		alert("Not before round-start!", "Alert")
 		return
 

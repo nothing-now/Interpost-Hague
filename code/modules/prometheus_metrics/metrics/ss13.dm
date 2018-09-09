@@ -7,7 +7,6 @@
 
 /datum/metric_family/ss13_controller_time_seconds/collect()
 	var/list/out = list()
-
 	if(Master)
 		for(var/name in Master.total_run_times)
 			out[++out.len] = list(list("type" = "subsystem", "name" = name), Master.total_run_times[name])

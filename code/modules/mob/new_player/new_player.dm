@@ -33,6 +33,7 @@
 	output += "<p><a href='byond://?src=\ref[src];show_preferences=1'>Setup Character</A></p>"
 
 	output += "<hr>Current character: <b>[client.prefs.real_name]</b>[client.prefs.job_high ? ", [client.prefs.job_high]" : null]<br>"
+
 	if(GAME_STATE <= RUNLEVEL_LOBBY)
 		if(ready)
 			output += "<p>\[ <span class='linkOn'><b>Ready</b></span> | <a href='byond://?src=\ref[src];ready=0'>Not Ready</a> \]</p>"
@@ -478,13 +479,6 @@
 		new_character = new(spawn_turf)
 
 	new_character.lastarea = get_area(spawn_turf)
-
-	for(var/lang in client.prefs.alternate_languages)
-		var/datum/language/chosen_language = all_languages[lang]
-		if(chosen_language)
-			var/is_species_lang = (chosen_language.name in new_character.species.secondary_langs)
-			if(is_species_lang || ((!(chosen_language.flags & RESTRICTED) || has_admin_rights()) && is_alien_whitelisted(src, chosen_language)))
-				new_character.add_language(lang)
 
 	if(GLOB.random_players)
 		new_character.gender = pick(MALE, FEMALE)

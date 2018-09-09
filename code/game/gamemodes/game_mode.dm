@@ -203,8 +203,8 @@ var/global/list/additional_antag_types = list()
 
 /datum/game_mode/proc/pre_setup()
 	for(var/datum/antagonist/antag in antag_templates)
-		antag.update_current_antag_max()
-		antag.build_candidate_list() //compile a list of all eligible candidates
+		antag.update_current_antag_max(src)
+		antag.build_candidate_list(src) //compile a list of all eligible candidates
 
 		//antag roles that replace jobs need to be assigned before the job controller hands out jobs.
 		if(antag.flags & ANTAG_OVERRIDE_JOB)
@@ -496,7 +496,6 @@ var/global/list/additional_antag_types = list()
 		sleep(50)
 	sound_to(world, sound('sound/effects/explosionfar.ogg'))
 
-
 //////////////////////////
 //Reports player logouts//
 //////////////////////////
@@ -571,6 +570,8 @@ proc/get_nt_opposed()
 /mob/verb/check_round_info()
 	set name = "Check Round Info"
 	set category = "OOC"
+
+	GLOB.using_map.map_info(src)
 
 	if(!SSticker.mode)
 		to_chat(usr, "Something is terribly wrong; there is no gametype.")
