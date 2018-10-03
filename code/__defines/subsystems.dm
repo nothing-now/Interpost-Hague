@@ -88,6 +88,17 @@
 #define SS_INIT_MAPPING          6
 #define SS_INIT_OPEN_SPACE       5
 #define SS_INIT_CIRCUIT          4
+#define SS_INIT_GARBAGE          14
+#define SS_INIT_CHEMISTRY        13
+#define SS_INIT_MATERIALS        12
+#define SS_INIT_PLANTS           11
+#define SS_INIT_ANTAGS           10
+#define SS_INIT_CULTURE          9
+#define SS_INIT_CHAR_SETUP       8
+#define SS_INIT_SKYBOX           7
+#define SS_INIT_MAPPING          6
+#define SS_INIT_CIRCUIT          5
+#define SS_INIT_OPEN_SPACE       4
 #define SS_INIT_ATOMS            3
 #define SS_INIT_ICON_UPDATE      2
 #define SS_INIT_MACHINES         1
@@ -96,7 +107,6 @@
 #define SS_INIT_ALARM           -2
 #define SS_INIT_LIGHTING        -3
 #define SS_INIT_XENOARCH       -50
-#define SS_INIT_OPEN_SPACE    -150
 #define SS_INIT_BAY_LEGACY    -200
 #define SS_INIT_UNIT_TESTS    -250
 #define SS_INIT_MISC_LATE     -200
