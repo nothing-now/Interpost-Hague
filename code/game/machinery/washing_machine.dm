@@ -21,6 +21,13 @@
 	//1 = hacked
 	var/gibs_ready = 0
 	var/obj/crayon
+	obj_flags = OBJ_FLAG_ANCHORABLE
+	clicksound = "button"
+	clickvol = 40
+
+	// Power
+	idle_power_usage = 10
+	active_power_usage = 150
 
 /obj/machinery/washing_machine/Destroy()
 	qdel(crayon)
@@ -43,6 +50,7 @@
 		state = 8
 	else
 		state = 5
+	update_use_power(POWER_USE_ACTIVE)
 	update_icon()
 	sleep(200)
 	for(var/atom/A in contents)
@@ -60,6 +68,7 @@
 		WL.amount = HH.amount
 		qdel(HH)
 
+	update_use_power(POWER_USE_IDLE)
 	if( locate(/mob,contents) )
 		state = 7
 		gibs_ready = 1

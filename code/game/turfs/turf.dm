@@ -35,16 +35,17 @@
 		spawn( 0 )
 			src.Entered(AM)
 			return
-	if(dynamic_lighting)
-		luminosity = 0
-	else
-		luminosity = 1
 
 	if (mapload && permit_ao)
 		queue_ao()
 
 	if (z_flags & ZM_MIMIC_BELOW)
 		setup_zmimic(mapload)
+
+	if(dynamic_lighting)
+		luminosity = 0
+	else
+		luminosity = 1
 
 /turf/update_icon()
 	//update_flood_overlay()

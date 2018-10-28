@@ -9,7 +9,7 @@
 	name = "air injector"
 	desc = "Injects air into its surroundings using a passive or injection mode. Passive mode will only inject when internal pressure is greater."
 
-	use_power = 0
+	use_power = POWER_USE_OFF
 	idle_power_usage = 150		//internal circuitry, friction losses and stuff
 	power_rating = 45000	//45000 W ~ 60 HP
 
@@ -59,7 +59,7 @@
 
 	if (power_draw >= 0)
 		last_power_draw = power_draw
-		use_power(power_draw)
+		use_power_oneoff(power_draw)
 
 		if(network)
 			network.update = 1
@@ -78,7 +78,7 @@
 
 	if(air_contents.temperature > 0)
 		var/power_used = pump_gas(src, air_contents, environment, air_contents.total_moles, power_rating)
-		use_power(power_used)
+		use_power_oneoff(power_used)
 
 		if(network)
 			network.update = 1
@@ -120,10 +120,10 @@
 		return 0
 
 	if(signal.data["power"])
-		use_power = text2num(signal.data["power"])
+		update_use_power(sanitize_integer(text2num(signal.data["power"]), POWER_USE_OFF, POWER_USE_ACTIVE, use_power))
 
 	if(signal.data["power_toggle"])
-		use_power = !use_power
+		update_use_power(!use_power)
 
 	if(signal.data["inject"])
 		spawn inject()
