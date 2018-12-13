@@ -175,7 +175,7 @@
 	health = maxhealth
 	if(stat & BROKEN)
 		stat &= ~BROKEN
-
+	update_icon()
 
 /obj/machinery/door/blast/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	if(air_group) return 1
