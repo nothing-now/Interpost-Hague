@@ -51,6 +51,8 @@
 			return global.SSgarbage;
 		if("SSlegacy")
 			return global.SSlegacy;
+		if("SSgoals")
+			return global.SSgoals;
 		if("SSmachines")
 			return global.SSmachines;
 		if("SSmapping")
@@ -65,6 +67,8 @@
 			return global.SSprocessing;
 		if("SSskybox")
 			return global.SSskybox;
+		if("SSstatistics")
+			return global.SSstatistics;
 		if("SSsun")
 			return global.SSsun;
 		if("SSvines")
@@ -1084,6 +1088,8 @@
 			global.SSgarbage=newval;
 		if("SSlegacy")
 			global.SSlegacy=newval;
+		if("SSgoals")
+			global.SSgoals=newval;
 		if("SSmachines")
 			global.SSmachines=newval;
 		if("SSmapping")
@@ -1098,6 +1104,8 @@
 			global.SSprocessing=newval;
 		if("SSskybox")
 			global.SSskybox=newval;
+		if("SSstatistics")
+			global.SSstatistics=newval;
 		if("SSsun")
 			global.SSsun=newval;
 		if("SSvines")
@@ -2094,6 +2102,7 @@
 	"SSfastprocess",
 	"SSgarbage",
 	"SSlegacy",
+	"SSgoals",
 	"SSmachines",
 	"SSmapping",
 	"SSmobs",
@@ -2101,6 +2110,7 @@
 	"SSpersistence",
 	"SSprocessing",
 	"SSskybox",
+	"SSstatistics",
 	"SSsun",
 	"SSvines",
 	"SSzcopy",

@@ -5,6 +5,7 @@
 
 	//do this again, just in case
 	if(flags & ANTAG_OVERRIDE_JOB)
+		player.assigned_job = null
 		player.assigned_role = role_text
 	player.special_role = role_text
 
@@ -41,7 +42,7 @@
 		to_chat(player.current, "<span class='notice'>Once you decide on a goal to pursue, you can optionally display it to \
 			everyone at the end of the shift with the <b>Set Ambition</b> verb, located in the IC tab.  You can change this at any time, \
 			and it otherwise has no bearing on your round.</span>")
-	player.current.verbs += /mob/living/proc/write_ambition
+	player.current.verbs += /mob/living/proc/set_ambition
 
 	// Handle only adding a mind and not bothering with gear etc.
 	if(nonstandard_role_type)
@@ -67,8 +68,10 @@
 		BITSET(player.current.hud_updateflag, SPECIALROLE_HUD)
 
 		if(!is_special_character(player))
-			player.current.verbs -= /mob/living/proc/write_ambition
-			player.current.client.verbs -= /client/proc/aooc
-			player.ambitions = ""
+			if(player.current)
+				player.current.verbs -= /mob/living/proc/set_ambition
+				if(player.current.client)
+					player.current.client.verbs -= /client/proc/aooc
+			qdel(SSgoals.ambitions[player])
 		return 1
 	return 0
