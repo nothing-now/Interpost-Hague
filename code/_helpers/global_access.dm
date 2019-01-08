@@ -225,8 +225,6 @@
 			return global.base_miss_chance;
 		if("basic_robolimb")
 			return global.basic_robolimb;
-		if("blackbox")
-			return global.blackbox;
 		if("blocked")
 			return global.blocked;
 		if("bomb_set")
@@ -1264,8 +1262,6 @@
 			global.base_miss_chance=newval;
 		if("basic_robolimb")
 			global.basic_robolimb=newval;
-		if("blackbox")
-			global.blackbox=newval;
 		if("blocked")
 			global.blocked=newval;
 		if("bomb_set")
@@ -2190,7 +2186,6 @@
 	"autolathe_recipes",
 	"base_miss_chance",
 	"basic_robolimb",
-	"blackbox",
 	"blocked",
 	"bomb_set",
 	"borers",

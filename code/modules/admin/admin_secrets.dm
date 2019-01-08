@@ -74,9 +74,13 @@ var/datum/admin_secrets/admin_secrets = new()
 	if(log)
 		log_and_message_admins("used secret '[name]'", user)
 	if(feedback)
-		feedback_inc("admin_secrets_used",1)
-		feedback_add_details("admin_secrets_used","[name]")
-	return 1
+		SSstatistics.add_field("admin_secrets_used",1)
+		SSstatistics.add_field_details("admin_secrets_used","[name]")
+	. = TRUE
+	do_execute(user)
+
+/datum/admin_secret_item/proc/do_execute(var/mob/user)
+	return
 
 /datum/admin_secret_item/Topic()
 	. = ..()
