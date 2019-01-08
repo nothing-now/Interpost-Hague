@@ -117,6 +117,14 @@ var/global/floorIsLava = 0
 			body += "</tr>"
 		body += "</table>"
 
+	if(M.mind)
+		body += "<br><br>"
+		body += "<b>Goals:</b>"
+		body += "<br>"
+		body += "[jointext(M.mind.summarize_goals(FALSE, TRUE, src), "<br>")]"
+		body += "<br>"
+		body += "<a href='?src=\ref[M.mind];add_goal=1'>Add Random Goal</a>"
+
 	if (M.client)
 		if(!istype(M, /mob/new_player))
 			body += "<br><br>"
