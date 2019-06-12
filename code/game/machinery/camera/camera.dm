@@ -276,7 +276,7 @@
 	wires.RandomCutAll()
 
 	triggerCameraAlarm()
-	queue_icon_update()
+	update_icon()
 	update_coverage()
 
 	//sparks

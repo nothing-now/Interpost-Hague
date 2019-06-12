@@ -52,7 +52,7 @@
 			START_PROCESSING(SSmachines, src)
 			user.visible_message("[user] inserts a cell into the charger.", "You insert a cell into the charger.")
 			chargelevel = -1
-		queue_icon_update()
+		update_icon()
 	else if(isWrench(W))
 		if(charging)
 			to_chat(user, "<span class='warning'>Remove the cell first!</span>")
@@ -109,7 +109,7 @@
 		update_use_power(POWER_USE_ACTIVE)
 	else
 		update_use_power(POWER_USE_IDLE)
-	queue_icon_update()
+	update_icon()
 
 /obj/machinery/cell_charger/Process()
 	if(!charging)

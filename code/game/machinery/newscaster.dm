@@ -736,7 +736,7 @@ var/list/obj/machinery/newscaster/allCasters = list() //Global list that will co
 					playsound(src.loc, 'sound/effects/Glasshit.ogg', 100, 1)
 		else
 			to_chat(user, "<span class='notice'>This does nothing.</span>")
-	queue_icon_update()
+	update_icon()
 
 /obj/machinery/newscaster/attack_ai(mob/user as mob)
 	return src.attack_hand(user) //or maybe it'll have some special functions? No idea.

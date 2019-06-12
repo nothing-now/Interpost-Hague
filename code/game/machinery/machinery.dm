@@ -163,7 +163,7 @@ Class Procs:
 		stat &= ~BROKEN
 		. = TRUE
 	if(.)
-		queue_icon_update()
+		update_icon()
 
 /proc/is_operable(var/obj/machinery/M, var/mob/user)
 	return istype(M) && M.operable()

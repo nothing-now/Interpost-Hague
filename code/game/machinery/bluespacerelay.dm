@@ -8,10 +8,10 @@
 	idle_power_usage = 15000
 
 /obj/machinery/bluespacerelay/update_icon()
-	if(on)
-		icon_state = initial(icon_state)
-	else
+	if(stat & (BROKEN|NOPOWER))
 		icon_state = "[initial(icon_state)]_off"
+	else
+		icon_state = initial(icon_state)
 
 /obj/machinery/bluespacerelay/New()
 	..()
