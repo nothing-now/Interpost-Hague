@@ -39,6 +39,8 @@
 			return global.SSair;
 		if("SSairflow")
 			return global.SSairflow;
+		if("SSao")
+			return global.SSao;
 		if("SSatoms")
 			return global.SSatoms;
 		if("SSfastprocess")
@@ -1070,6 +1072,8 @@
 			global.SSair=newval;
 		if("SSairflow")
 			global.SSairflow=newval;
+		if("SSao")
+			global.SSao=newval;
 		if("SSatoms")
 			global.SSatoms=newval;
 		if("SSfastprocess")
@@ -2082,6 +2086,7 @@
 	"SKILLS",
 	"SSair",
 	"SSairflow",
+	"SSao",
 	"SSatoms",
 	"SSfastprocess",
 	"SSgarbage",
