@@ -24,8 +24,6 @@
 	// Convert if/when you can easily get stacks of these.
 	var/carpeted = 0
 
-	var/list/connections = list("nw0", "ne0", "sw0", "se0")
-
 /obj/structure/table/New()
 	if(istext(material))
 		material = get_material_by_name(material)
@@ -386,19 +384,6 @@
 		if(carpeted)
 			overlays += "carpet_flip[type]"
 
-/obj/structure/table/proc/can_connect()
-	return TRUE
-
-// set propagate if you're updating a table that should update tables around it too, for example if it's a new table or something important has changed (like material).
-/obj/structure/table/proc/update_connections(propagate=0)
-	if(!material)
-		connections = list("0", "0", "0", "0")
-
-		if(propagate)
-			for(var/obj/structure/table/T in oview(src, 1))
-				T.update_connections()
-		return
-
 	var/list/blocked_dirs = list()
 	for(var/obj/structure/window/W in get_turf(src))
 		if(W.is_fulltile())
@@ -429,21 +414,6 @@
 		for(var/y in list(EAST, WEST))
 			if((x in blocked_dirs) || (y in blocked_dirs))
 				blocked_dirs |= x|y
-
-	var/list/connection_dirs = list()
-
-	for(var/obj/structure/table/T in orange(src, 1))
-		if(!T.can_connect()) continue
-		var/T_dir = get_dir(src, T)
-		if(T_dir in blocked_dirs) continue
-		if(material && T.material && material.name == T.material.name && flipped == T.flipped)
-			connection_dirs |= T_dir
-		if(propagate)
-			spawn(0)
-				T.update_connections()
-				T.update_icon()
-
-	connections = dirs_to_corner_states(connection_dirs)
 
 #define CORNER_NONE 0
 #define CORNER_COUNTERCLOCKWISE 1

@@ -39,6 +39,20 @@ var/list/flooring_types
 	var/flags
 	var/can_paint
 
+	//How we smooth with other flooring
+	var/decal_layer = DECAL_LAYER
+	var/floor_smooth = SMOOTH_ALL
+	var/list/flooring_whitelist = list() //Smooth with nothing except the contents of this list
+	var/list/flooring_blacklist = list() //Smooth with everything except the contents of this list
+
+	//How we smooth with walls
+	var/wall_smooth = SMOOTH_ALL
+	//There are no lists for walls at this time
+
+	//How we smooth with space and openspace tiles
+	var/space_smooth = SMOOTH_ALL
+	//There are no lists for spaces
+
 /decl/flooring/proc/on_remove()
 	return
 
@@ -49,8 +63,12 @@ var/list/flooring_types
 	icon_base = "grass"
 	has_base_range = 3
 	damage_temperature = T0C+80
-	flags = TURF_HAS_EDGES | TURF_REMOVE_SHOVEL
+	flags = TURF_HAS_EDGES | TURF_HAS_CORNERS | TURF_REMOVE_SHOVEL
 	build_type = /obj/item/stack/tile/grass
+	floor_smooth = SMOOTH_NONE
+	wall_smooth = SMOOTH_ALL
+	space_smooth = SMOOTH_NONE
+	decal_layer = ABOVE_WIRE_LAYER
 
 /decl/flooring/asteroid
 	name = "coarse sand"
@@ -67,7 +85,11 @@ var/list/flooring_types
 	icon_base = "brown"
 	build_type = /obj/item/stack/tile/carpet
 	damage_temperature = T0C+200
-	flags = TURF_HAS_EDGES | TURF_HAS_CORNERS | TURF_REMOVE_CROWBAR | TURF_CAN_BURN
+	flags = TURF_HAS_CORNERS | TURF_HAS_INNER_CORNERS | TURF_REMOVE_CROWBAR | TURF_CAN_BURN
+	//footstep_type = FOOTSTEP_CARPET
+	floor_smooth = SMOOTH_NONE
+	wall_smooth = SMOOTH_NONE
+	space_smooth = SMOOTH_NONE
 
 /decl/flooring/carpet/blue
 	name = "blue carpet"
