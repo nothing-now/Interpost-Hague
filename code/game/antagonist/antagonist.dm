@@ -80,9 +80,9 @@
 		rules aside from those without explicit exceptions apply to antagonists.</b>"
 
 /datum/antagonist/New()
-	all_antag_types_[id] = src
-	all_antag_spawnpoints_[landmark_id] = list()
-	antag_names_to_ids_[role_text] = id
+	GLOB.all_antag_types_[id] = src
+	GLOB.all_antag_spawnpoints_[landmark_id] = list()
+	GLOB.antag_names_to_ids_[role_text] = id
 	..()
 
 /datum/antagonist/proc/Initialize()
@@ -97,6 +97,8 @@
 			GLOB.hud_icon_reference = list()
 		if(role_text) GLOB.hud_icon_reference[role_text] = antaghud_indicator
 		if(faction_role_text) GLOB.hud_icon_reference[faction_role_text] = antaghud_indicator
+	if(!role_type)
+		role_type = id
 
 /datum/antagonist/proc/tick()
 	return 1

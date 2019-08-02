@@ -171,6 +171,10 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 		lobby_music_type = pick(lobby_music_tracks)
 	lobby_music = new lobby_music_type()
 	world.update_status()
+	var/list/antags = GLOB.all_antag_types_
+	for(var/id in antags)
+		var/datum/antagonist/A = antags[id]
+		A.get_starting_locations()
 
 /datum/map/proc/send_welcome()
 	return

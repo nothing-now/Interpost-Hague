@@ -1,4 +1,4 @@
-var/datum/antagonist/traitor/traitors
+GLOBAL_DATUM_INIT(traitors, /datum/antagonist/traitor, new)
 
 // Inherits most of its vars from the base datum.
 /datum/antagonist/traitor
@@ -10,10 +10,6 @@ var/datum/antagonist/traitor/traitors
 	initial_spawn_req = 2
 	initial_spawn_target = 5
 	show_objectives_on_creation = 0 //we are not antagonists, we do not need the antagonist shpiel/objectives
-
-/datum/antagonist/traitor/New()
-	..()
-	traitors = src
 
 /datum/antagonist/traitor/get_extra_panel_options(var/datum/mind/player)
 	return "<a href='?src=\ref[player];common=crystals'>\[set crystals\]</a><a href='?src=\ref[src];spawn_uplink=\ref[player.current]'>\[spawn uplink\]</a>"

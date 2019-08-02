@@ -102,7 +102,7 @@ var/global/list/additional_antag_types = list()
 		if(href_list["debug_antag"] == "self")
 			usr.client.debug_variables(src)
 			return
-		var/datum/antagonist/antag = all_antag_types_[href_list["debug_antag"]]
+		var/datum/antagonist/antag = GLOB.all_antag_types_[href_list["debug_antag"]]
 		if(antag)
 			usr.client.debug_variables(antag)
 			message_admins("Admin [key_name_admin(usr)] is debugging the [antag.role_text] template.")
@@ -110,16 +110,16 @@ var/global/list/additional_antag_types = list()
 		if(antag_tags && (href_list["remove_antag_type"] in antag_tags))
 			to_chat(usr, "Cannot remove core mode antag type.")
 			return
-		var/datum/antagonist/antag = all_antag_types_[href_list["remove_antag_type"]]
+		var/datum/antagonist/antag = GLOB.all_antag_types_[href_list["remove_antag_type"]]
 		if(antag_templates && antag_templates.len && antag && (antag in antag_templates) && (antag.id in additional_antag_types))
 			antag_templates -= antag
 			additional_antag_types -= antag.id
 			message_admins("Admin [key_name_admin(usr)] removed [antag.role_text] template from game mode.")
 	else if(href_list["add_antag_type"])
-		var/choice = input("Which type do you wish to add?") as null|anything in all_antag_types_
+		var/choice = input("Which type do you wish to add?") as null|anything in GLOB.all_antag_types_
 		if(!choice)
 			return
-		var/datum/antagonist/antag = all_antag_types_[choice]
+		var/datum/antagonist/antag = GLOB.all_antag_types_[choice]
 		if(antag)
 			if(!islist(SSticker.mode.antag_templates))
 				SSticker.mode.antag_templates = list()
@@ -163,8 +163,7 @@ var/global/list/additional_antag_types = list()
 		return FALSE
 
 	var/enemy_count = 0
-	var/list/all_antag_types = all_antag_types_
-
+	var/list/all_antag_types = GLOB.all_antag_types_
 	if(antag_tags && antag_tags.len)
 		for(var/antag_tag in antag_tags)
 			var/datum/antagonist/antag = all_antag_types[antag_tag]
@@ -308,7 +307,7 @@ var/global/list/additional_antag_types = list()
 	check_victory()
 	sleep(2)
 
-	var/list/all_antag_types = all_antag_types_
+	var/list/all_antag_types = GLOB.all_antag_types_
 	for(var/datum/antagonist/antag in antag_templates)
 		antag.check_victory()
 		antag.print_player_summary()
@@ -383,7 +382,7 @@ var/global/list/additional_antag_types = list()
 	var/list/players = list()
 	var/list/candidates = list()
 
-	var/list/all_antag_types = all_antag_types_
+	var/list/all_antag_types = GLOB.all_antag_types_
 	var/datum/antagonist/antag_template = all_antag_types[antag_id]
 	if(!antag_template)
 		return candidates
@@ -439,7 +438,7 @@ var/global/list/additional_antag_types = list()
 	if(!config.traitor_scaling)
 		antag_scaling_coeff = 0
 
-	var/list/all_antag_types = all_antag_types_
+	var/list/all_antag_types = GLOB.all_antag_types_
 	if(antag_tags && antag_tags.len)
 		antag_templates = list()
 		for(var/antag_tag in antag_tags)
