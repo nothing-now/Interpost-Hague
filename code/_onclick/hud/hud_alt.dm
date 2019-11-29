@@ -15,7 +15,7 @@
 		hud_used = new hud_type(src)
 	else
 		hud_used = new /datum/hud
-	add_filter_effects()
+	//add_filter_effects()
 
 /datum/hud
 	var/mob/mymob

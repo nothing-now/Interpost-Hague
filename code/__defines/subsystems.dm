@@ -33,7 +33,7 @@
 //type and all subtypes should always call Initialize in New()
 #define INITIALIZE_IMMEDIATE(X) ##X/New(loc, ...){\
 	..();\
-	if(!initialized) {\
+	if(!(atom_flags & ATOM_FLAG_INITIALIZED)) {\
 		args[1] = TRUE;\
 		SSatoms.InitAtom(src, args);\
 	}\
@@ -110,6 +110,17 @@
 #define SS_INIT_BAY_LEGACY    -200
 #define SS_INIT_UNIT_TESTS    -250
 #define SS_INIT_MISC_LATE     -200
+#define SS_INIT_MISC_LATE       -2
+#define SS_INIT_MISC_CODEX      -3
+#define SS_INIT_ALARM           -4
+#define SS_INIT_SHUTTLE         -5
+#define SS_INIT_GOALS           -5
+#define SS_INIT_LIGHTING        -6
+#define SS_INIT_ZCOPY           -7
+#define SS_INIT_XENOARCH        -10
+#define SS_INIT_BAY_LEGACY      -12
+#define SS_INIT_TICKER          -20
+#define SS_INIT_UNIT_TESTS      -100
 
 // SS runlevels
 

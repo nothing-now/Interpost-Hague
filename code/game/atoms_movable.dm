@@ -20,6 +20,7 @@
 	var/mob/pulledby = null
 	var/moving_diagonally = 0 //to know whether we're in the middle of a diagonal move
 	var/item_state = null // Used to specify the item state for the on-mob overlays.
+	var/movable_flags
 
 /atom/movable/Destroy()
 	. = ..()
@@ -31,6 +32,13 @@
 		if (pulledby.pulling == src)
 			pulledby.pulling = null
 		pulledby = null
+
+	if (bound_overlay)
+		QDEL_NULL(bound_overlay)
+
+	if(virtual_mob && !ispath(virtual_mob))
+		qdel(virtual_mob)
+		virtual_mob = null
 
 /atom/movable/Bump(var/atom/A, yes)
 	if(src.throwing)

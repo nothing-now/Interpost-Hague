@@ -135,15 +135,21 @@
 /mob/observer/ghost/may_climb_ladders(var/ladder)
 	return TRUE
 
-/obj/structure/ladder/proc/climbLadder(var/mob/M, var/target_ladder)
+/obj/structure/ladder/proc/climbLadder(mob/user, target_ladder, obj/item/I = null)
 	var/turf/T = get_turf(target_ladder)
 	for(var/atom/A in T)
-		if(!A.CanPass(M, M.loc, 1.5, 0))
-			to_chat(M, "<span class='notice'>\The [A] is blocking \the [src].</span>")
+		if(!A.CanPass(user, user.loc, 1.5, 0))
+			to_chat(user, "<span class='notice'>\The [A] is blocking \the [src].</span>")
+
+			//We cannot use the ladder, but we probably can remove the obstruction
+			var/atom/movable/M = A
+			if(istype(M) && M.movable_flags & MOVABLE_FLAG_Z_INTERACT)
+				if(isnull(I))
+					M.attack_hand(user)
+				else
+					M.attackby(I, user)
+
 			return FALSE
-	playsound(src, pick(climbsounds), 50)
-	playsound(target_ladder, pick(climbsounds), 50)
-	return M.Move(T)
 
 /obj/structure/ladder/CanPass(obj/mover, turf/source, height, airflow)
 	return airflow || !density

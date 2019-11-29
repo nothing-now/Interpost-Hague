@@ -59,8 +59,6 @@
 			return global.SSmobs;
 		if("SSobj")
 			return global.SSobj;
-		if("SSopen_space")
-			return global.SSopen_space;
 		if("SSpersistence")
 			return global.SSpersistence;
 		if("SSprocessing")
@@ -71,8 +69,8 @@
 			return global.SSsun;
 		if("SSvines")
 			return global.SSvines;
-		if("SSwireless")
-			return global.SSwireless;
+		if("SSzcopy")
+			return global.SSzcopy;
 		if("Tier1Runes")
 			return global.Tier1Runes;
 		if("Tier2Runes")
@@ -609,6 +607,8 @@
 			return global.meteors_threatening;
 		if("mil_branches")
 			return global.mil_branches;
+		if("mimic_defines")
+			return global.mimic_defines;
 		if("mining_floors")
 			return global.mining_floors;
 		if("mining_walls")
@@ -1033,7 +1033,7 @@
 			return global.z_levels;
 		if("zone_blocked")
 			return global.zone_blocked;
-
+		
 /proc/writeglobal(which, newval)
 	switch(which)
 		if("ALL_ANTIGENS")
@@ -1094,8 +1094,6 @@
 			global.SSmobs=newval;
 		if("SSobj")
 			global.SSobj=newval;
-		if("SSopen_space")
-			global.SSopen_space=newval;
 		if("SSpersistence")
 			global.SSpersistence=newval;
 		if("SSprocessing")
@@ -1108,6 +1106,8 @@
 			global.SSvines=newval;
 		if("SSwireless")
 			global.SSwireless=newval;
+		if("SSzcopy")
+			global.SSzcopy=newval;
 		if("Tier1Runes")
 			global.Tier1Runes=newval;
 		if("Tier2Runes")
@@ -1644,6 +1644,8 @@
 			global.meteors_threatening=newval;
 		if("mil_branches")
 			global.mil_branches=newval;
+		if("mimic_defines")
+			global.mimic_defines=newval;
 		if("mining_floors")
 			global.mining_floors=newval;
 		if("mining_walls")
@@ -2068,7 +2070,7 @@
 			global.z_levels=newval;
 		if("zone_blocked")
 			global.zone_blocked=newval;
-
+		
 /var/list/_all_globals=list(
 	"ALL_ANTIGENS",
 	"ANTAG_FREQS",
@@ -2100,13 +2102,12 @@
 	"SSmapping",
 	"SSmobs",
 	"SSobj",
-	"SSopen_space",
 	"SSpersistence",
 	"SSprocessing",
 	"SSskybox",
 	"SSsun",
 	"SSvines",
-	"SSwireless",
+	"SSzcopy",
 	"Tier1Runes",
 	"Tier2Runes",
 	"Tier3Runes",
@@ -2377,6 +2378,7 @@
 	"meteors_normal",
 	"meteors_threatening",
 	"mil_branches",
+	"mimic_defines",
 	"mining_floors",
 	"mining_walls",
 	"minor_air_alarms",

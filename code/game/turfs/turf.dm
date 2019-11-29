@@ -29,33 +29,43 @@
 
 	var/movement_delay
 
-/turf/New()
-	..()
+/turf/Initialize(mapload, ...)
+	. = ..()
 	for(var/atom/movable/AM as mob|obj in src)
 		spawn( 0 )
 			src.Entered(AM)
 			return
-
 	if(dynamic_lighting)
 		luminosity = 0
 	else
 		luminosity = 1
 
+	if (mapload && permit_ao)
+		queue_ao()
+
+	if (z_flags & ZM_MIMIC_BELOW)
+		setup_zmimic(mapload)
+
 /turf/update_icon()
 	//update_flood_overlay()
-	queue_ao(FALSE)
+	opaque_counter = opacity
 
-/*
-/turf/proc/update_flood_overlay()
-	if(is_flooded(absolute = TRUE))
-		if(!flood_object)
-			flood_object = new(src)
-	else if(flood_object)
-		QDEL_NULL(flood_object)
-*/
+///turf/on_update_icon()
+	//queue_ao(FALSE)
 
 /turf/Destroy()
 	remove_cleanables()
+
+	if (ao_queued)
+		SSao.queue -= src
+		ao_queued = 0
+
+	if (z_flags & ZM_MIMIC_BELOW)
+		cleanup_zmimic()
+
+	if (bound_overlay)
+		QDEL_NULL(bound_overlay)
+
 	..()
 	return QDEL_HINT_IWILLGC
 

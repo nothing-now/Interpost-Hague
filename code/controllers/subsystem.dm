@@ -210,6 +210,16 @@
 //should attempt to salvage what it can from the old instance of subsystem
 /datum/controller/subsystem/Recover()
 
+// Admin-disables this subsystem. Will show as OFFLINE in MC panel.
+/datum/controller/subsystem/proc/disable()
+	can_fire = FALSE
+
+// Admin-enables this subsystem.
+/datum/controller/subsystem/proc/enable()
+	if (!can_fire)
+		next_fire = world.time + wait
+		can_fire = TRUE
+
 /datum/controller/subsystem/VV_static()
 	return ..() + list("queued_priority")
 
