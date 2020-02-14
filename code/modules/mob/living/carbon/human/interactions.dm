@@ -66,8 +66,8 @@
 		hashands = (temp && temp.is_usable())
 	var/mouthfree = !(H.wear_mask)
 	var/mouthfree_p = !(P.wear_mask)
-	var/haspenis = H.haspenis()
-	var/haspenis_p = P.haspenis()
+	var/haspenis = H.haspenis
+	var/haspenis_p = P.haspenis
 	var/hasvagina = (H.gender == FEMALE && H.species.genitals)
 	var/hasvagina_p = (P.gender == FEMALE && P.species.genitals)
 	var/hasanus_p = P.species.anus
