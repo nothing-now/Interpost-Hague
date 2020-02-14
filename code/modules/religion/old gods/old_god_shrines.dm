@@ -33,11 +33,11 @@
 		for(var/obj/item/a in get_step(src, DIRECTION_TO_VAL(direction)).contents)
 			if(istype(a, selected_spell.requirments[direction]))
 				found = TRUE
+				spell_components += a
 		if (found == FALSE)
 			visible_message("<span class='notice'>\The [src] glows faintly, then falls dark</span>")
 			return
-	if(selected_spell.requirments)
-		selected_spell.spell_effect(user)
+	selected_spell.spell_effect(user,spell_components)
 
 /obj/old_god_shrine/attack_hand(var/mob/living/user)
 	activate(user)
