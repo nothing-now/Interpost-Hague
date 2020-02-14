@@ -5,8 +5,6 @@
 /datum/gear/head/bandana/New()
 	..()
 	var/bandanas = list()
-	bandanas["green bandana"] = /obj/item/clothing/head/greenbandana
-	bandanas["orange bandana"] = /obj/item/clothing/head/orangebandana
 	bandanas["pirate bandana"] = /obj/item/clothing/head/bandana
 	gear_tweaks += new/datum/gear_tweak/path(bandanas)
 

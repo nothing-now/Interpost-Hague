@@ -26,6 +26,7 @@
 		if(GLOB.all_spells[S].old_god == user.religion)
 			spells += GLOB.all_spells[S]
 	var/datum/old_god_spell/selected_spell = input(user, "What spell will we use?") as null|anything in spells
+	var/list/spell_components = list()
 	for(var/direction in selected_spell.requirments)
 		// First check if it's empty
 		var/found = FALSE

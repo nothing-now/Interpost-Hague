@@ -46,8 +46,10 @@
 	bladder = rand(0,100)
 	bowels = rand(0, 100)
 
+/*
 	potenzia = (prob(80) ? rand(9, 14) : pick(rand(5, 13), rand(15, 20)))//Interactions
 	resistenza = (prob(80) ? rand(150, 300) : pick(rand(10, 100), rand(350,600)))
+*/
 
 	if(dna)
 		dna.ready_dna(src)
@@ -317,6 +319,7 @@
 		else
 			return if_no_id
 
+/*
 	///////Interactions!!///////
 	if(href_list["interaction"])
 
@@ -552,6 +555,7 @@
 					H << message
 	..()
 	return
+*/
 
 
 //repurposed proc. Now it combines get_id_name() and get_face_name() to determine a mob's name variable. Made into a seperate proc as it'll be useful elsewhere

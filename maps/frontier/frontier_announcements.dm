@@ -8,7 +8,6 @@
 	emergency_shuttle_recall_message = "The emergency shuttle has been recalled."
 
 	command_report_sound = 'sound/AI/november/attention.ogg'
-	priority_announcement_sound = 'sound/machines/announce_alarm.ogg'
 	grid_check_sound = 'sound/AI/november/warning.ogg'
 	grid_restored_sound = 'sound/AI/november/warning.ogg'
 	meteor_detected_sound = 'sound/AI/november/threat.ogg'

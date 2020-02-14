@@ -312,8 +312,10 @@
 	if(decaylevel == 4)
 		msg += "[T.He] [T.is] mostly dessicated now, with only bones remaining of what used to be a person.\n"
 
+/*
 	if(is_nude() && gender == MALE && species.genitals)//Interactions
 		msg += "<B>Penis size: [potenzia]cm.</B>\n"
+*/
 
 	if(hasHUD(user,"security"))
 		var/perpname = "wot"

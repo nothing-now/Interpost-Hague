@@ -3,6 +3,8 @@
 **Contains a lot ammount of ERP and MEHANOYEBLYA**
 ***********************************/
 
+/*
+
 /mob/living/carbon/human/MouseDrop_T(mob/M as mob, mob/user as mob)
 	if(M == src || src == usr || M != usr)		return
 	if(usr.restrained())		return
@@ -622,3 +624,4 @@ mob/living/carbon/human/proc/fuck(mob/living/carbon/human/H as mob, mob/living/c
 	else
 		hole = "vagina"
 	user << "<span class='warning'>Hmmm. Maybe we should put it in [hole]?!</span>"
+*/

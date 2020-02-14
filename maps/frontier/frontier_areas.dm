@@ -67,13 +67,12 @@
 
 /area/shuttle/specops/centcom
 	name = "\improper Special Ops Shuttle"
-	area_flags = AREA_FLAG_RAD_SHIELDED
-
-/area/shuttle/administration
-	area_flags = AREA_FLAG_RAD_SHIELDED
 
 /area/shuttle/syndicate_elite
 	name = "\improper Merc Elite Shuttle"
+	area_flags = AREA_FLAG_RAD_SHIELDED
+
+/area/shuttle/administration
 	area_flags = AREA_FLAG_RAD_SHIELDED
 
 /area/shuttle/transport1/centcom
