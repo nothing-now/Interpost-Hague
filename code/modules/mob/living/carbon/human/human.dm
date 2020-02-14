@@ -105,9 +105,6 @@
 				stat("Chemical Storage", mind.changeling.chem_charges)
 				stat("Genetic Damage Time", mind.changeling.geneticdamage)
 
-		if (!religion_is_legal())
-			stat("God's favor:",GLOB.all_religions[religion].favor)
-
 
 /mob/living/carbon/human/ex_act(severity)
 	if(!blinded)

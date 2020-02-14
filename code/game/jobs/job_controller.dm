@@ -528,7 +528,7 @@ var/global/datum/controller/occupations/job_master
 				H.verbs += /mob/living/proc/make_shrine
 				H.verbs += /mob/living/proc/praise_god
 				var/obj/item/I = GLOB.all_religions[H.religion].holy_item.type
-				I = new I
+				I = new I()
 				H.equip_to_storage(I)
 				GLOB.all_religions[H.religion].add_spells(H)
 				GLOB.all_religions[H.religion].followers += H.name

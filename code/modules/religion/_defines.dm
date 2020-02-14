@@ -1,3 +1,3 @@
 #define LIGHTBRINGER "Zin the lightbringer"
-#define PLANTGOD "Fedhas Madash"
+#define GREED "Gozag Ym Sagoz"
 #define MESSIAH "Jes the messiah"
