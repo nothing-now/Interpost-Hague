@@ -18,22 +18,6 @@
 				x.empowered = TRUE
 				x.update_icon()
 
-/datum/old_god_spell/blinding
-	name = "Blind"
-	requirments =  list("SOUTHWEST" = /obj/item/weapon/flame/candle/,
-						"SOUTH" = /obj/item/weapon/flame/candle/,
-						"SOUTHEAST" = /obj/item/weapon/flame/candle/,
-						"WEST" = /obj/item/weapon/flame/candle/,
-						"EAST" = /obj/item/weapon/flame/candle/)
-	old_god = MESSIAH
-
-	spell_effect(var/mob/living/user)
-		for(var/obj/item/weapon/flame/candle/C in range(2, user))
-			C.light("")
-			for(var/obj/item/crucifix/x in user.contents)
-				x.empowered = TRUE
-				x.update_icon()
-
 /obj/item/crucifix
 	name = "Crucifix"
 	desc = "A small strangly carved symbol of the old church"
