@@ -21,7 +21,6 @@
 /area/maintenance/exterior
 	name = "\improper Exterior Reinforcements"
 	icon_state = "maint_security_starboard"
-	flags = AREA_EXTERNAL
 	has_gravity = FALSE
 	turf_initializer = /decl/turf_initializer/maintenance/space
 
@@ -60,7 +59,6 @@
 	sound_env = SMALL_ENCLOSED
 
 /area/solar
-	flags = AREA_EXTERNAL
 	requires_power = 1
 	always_unpowered = 0
 	has_gravity = FALSE
