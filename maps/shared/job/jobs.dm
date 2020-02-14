@@ -116,15 +116,15 @@
 
 
 /datum/job/assistant
-	title = "Lackey"
+	title = "Assistant"
 	supervisors = "Everyone"
 	minimal_player_age = 14
 	economic_modifier = 1
 	ideal_character_age = 21
 	alt_titles = null
 	social_class = SOCIAL_CLASS_MIN
-	total_positions = 0
-	spawn_positions = 0
+	total_positions = 10
+	spawn_positions = 1
 
 	equip(var/mob/living/carbon/human/H)
 		..()
@@ -132,7 +132,7 @@
 		H.generate_stats("dex")
 
 /datum/job/captain
-	title = "Magistrate"
+	title = "Count"
 	supervisors = "CMA and your good will."
 	minimal_player_age = 41
 	economic_modifier = 10
@@ -148,8 +148,8 @@
 
 
 /datum/job/hop
-	title = "Overseer"
-	supervisors = "the Magistrate"
+	title = "Viscount"
+	supervisors = "the Count"
 	minimal_player_age = 31
 	economic_modifier = 5
 	ideal_character_age = 45
@@ -164,8 +164,8 @@
 		H.generate_stats("int")
 
 /datum/job/rd
-	title = "Technomancer"
-	supervisors = "the Magistrate"
+	title = "Research Director"
+	supervisors = "the Count"
 	minimal_player_age = 21
 	economic_modifier = 9
 	ideal_character_age = 40
@@ -193,8 +193,8 @@
 		H.generate_skills("science")
 
 /datum/job/scientist
-	title = "Tenchotrainee"
-	supervisors = "Technomancer"
+	title = "Scientist"
+	supervisors = "the Research Director"
 	minimal_player_age = 19
 	economic_modifier = 2
 	ideal_character_age = 30
@@ -211,8 +211,8 @@
 
 /datum/job/doctor
 	selection_color = "#633d63"
-	title = "Practitioner"
-	supervisors = "the Overseer"
+	title = "Medical Doctor"
+	supervisors = "the Viscount"
 	minimal_player_age = 19
 	economic_modifier = 2
 	ideal_character_age = 30
@@ -245,8 +245,8 @@
 	
 	
 /datum/job/hos
-	title = "Head Peacekeeper"
-	supervisors = "the Magistrate"
+	title = "Head of Security"
+	supervisors = "the Count"
 	department_flag = SEC
 	total_positions = 1
 	spawn_positions = 1
@@ -272,7 +272,7 @@
 
 
 /datum/job/officer
-	title = "Peacekeeper"
+	title = "Security Officer"
 	department = "Security"
 	department_flag = SEC
 	total_positions = 4
@@ -293,7 +293,7 @@
 /datum/job/qm
 	selection_color = "#3d3315"
 	title = "Quartermaster"
-	supervisors = "the Overseer"
+	supervisors = "the Viscount"
 	minimal_player_age = 21
 	economic_modifier = 3
 	ideal_character_age = 30
@@ -306,8 +306,8 @@
 		H.generate_stats("dex")
 
 /datum/job/engineer
-	title = "Upkeeper"
-	supervisors = "the Overseer"
+	title = "Station Engineer"
+	supervisors = "the Viscount"
 	minimal_player_age = 16
 	economic_modifier = 3
 	ideal_character_age = 21
@@ -343,7 +343,7 @@
 
 /datum/job/cargo_tech
 	selection_color = "#7c6a2e"
-	title = "Crate Pusher"
+	title = "Cargo Technician"
 	supervisors = "the Quartermaster"
 	minimal_player_age = 16
 	economic_modifier = 2
@@ -371,7 +371,7 @@
 //kid roles
 /datum/job/ouvrier
 	selection_color = "#7c6a2e"
-	title = "Cargo Kid"
+	title = "Cargo Assistant"
 	supervisors = "the Quartermaster"
 	minimal_player_age = 16
 	economic_modifier = 2
@@ -417,8 +417,8 @@
 
 /datum/job/cadet
 	selection_color = "#633d63"
-	title = "Cadet"
-	supervisors = "the peacekeepers"
+	title = "Security Cadet"
+	supervisors = "the officers"
 	minimal_player_age = 16
 	economic_modifier = 2
 	ideal_character_age = 21
@@ -438,8 +438,8 @@
 
 /datum/job/jr_upkeep
 	selection_color = "#633d63"
-	title = "Junior Upkeeper"
-	supervisors = "the upkeepers"
+	title = "Junior Engineer"
+	supervisors = "the engineers"
 	minimal_player_age = 16
 	economic_modifier = 2
 	ideal_character_age = 21
@@ -460,7 +460,7 @@
 
 /datum/job/chef
 	title = "Cook"
-	supervisors = "the Overseer"
+	supervisors = "the Viscount"
 	minimal_player_age = 16
 	economic_modifier = 2
 	ideal_character_age = 21
@@ -490,7 +490,7 @@
 
 /datum/job/janitor
 	title = "Janitor"
-	supervisors = "the Overseer"
+	supervisors = "the Viscount"
 	minimal_player_age = 16
 	economic_modifier = 1
 	ideal_character_age = 21
