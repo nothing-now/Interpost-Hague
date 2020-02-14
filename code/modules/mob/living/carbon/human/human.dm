@@ -353,24 +353,24 @@
 		var/ya = "&#1103;"
 
 
-		if (href_list["interaction"] == "bow")
+		if (href["interaction"] == "bow")
 			H.visible_message("<B>[H]</B> bows before <B>[P]</B>.")
 			if (istype(P.loc, /obj/structure/closet) && P.loc == H.loc)
 				P.visible_message("<B>[H]</B> bows before <B>[P]</B>.")
 
 
-		else if (href_list["interaction"] == "pet")
+		else if (href["interaction"] == "pet")
 			if(((!istype(P.loc, /obj/structure/closet)) || (H.loc == P.loc)) && hashands)
 				H.visible_message("<B>[H]</B> [pick("pets", "pats")] <B>[P]</B>.")
 				if (istype(P.loc, /obj/structure/closet))
 					P.visible_message("<B>[H]</B> [pick("pets", "pats")] <B>[P]</B>.")
 
-		else if (href_list["interaction"] == "give")
+		else if (href["interaction"] == "give")
 			if(Adjacent(P))
 				if (((!istype(P.loc, /obj/structure/closet)) || (H.loc == P.loc)) && hashands)
 					H.give(P)
 
-		else if (href_list["interaction"] == "kiss")
+		else if (href["interaction"] == "kiss")
 			if( ((Adjacent(P) && !istype(P.loc, /obj/structure/closet)) || (H.loc == P.loc)) && mouthfree && mouthfree_p  && (H.species.flags & HAS_LIPS) && (P.species.flags & HAS_LIPS))
 				if (H.lust == 0)
 					H.visible_message("<B>[H]</B> kisses <B>[P]</B>.")
@@ -385,7 +385,7 @@
 			else if (mouthfree)
 				H.visible_message("<B>[H]</B> blows <B>[P]</B> a kiss.")
 
-		else if (href_list["interaction"] == "lick")
+		else if (href["interaction"] == "lick")
 			if( ((Adjacent(P) && !istype(P.loc, /obj/structure/closet)) || (H.loc == P.loc)) && mouthfree && mouthfree_p)
 				if (H.lust == 0)
 					H.visible_message("<B>[H]</B> [H.gender == FEMALE ? "ëèçíóëà" : "ëèçíóë"] <B>[P]</B> â ùåêó.")
@@ -398,27 +398,27 @@
 					if (istype(P.loc, /obj/structure/closet))
 						P.visible_message("<B>[H]</B> îñîáî òùàòåëüíî [H.gender == FEMALE ? "ëèçíóëà" : "ëèçíóë"] <B>[P]</B>.")
 
-		else if (href_list["interaction"] == "hug")
+		else if (href["interaction"] == "hug")
 			if(((Adjacent(P) && !istype(P.loc, /obj/structure/closet)) || (H.loc == P.loc)) && hashands)
 				H.visible_message("<B>[H]</B> hugs <B>[P]</B>.")
 				if (istype(P.loc, /obj/structure/closet))
 					P.visible_message("<B>[H]</B> hugs <B>[P]</B>.")
 				playsound(loc, 'honk/sound/interactions/hug.ogg', 50, 1, -1)
 
-		else if (href_list["interaction"] == "cheer")
+		else if (href["interaction"] == "cheer")
 			if(((Adjacent(P) && !istype(P.loc, /obj/structure/closet)) || (H.loc == P.loc)) && hashands)
 				H.visible_message("<B>[H]</B> cheers <B>[P]</B> on.")
 				if (istype(P.loc, /obj/structure/closet))
 					P.visible_message("<B>[H]</B> cheers <B>[P]</B> on.")
 
-		else if (href_list["interaction"] == "five")
+		else if (href["interaction"] == "five")
 			if(((Adjacent(P) && !istype(P.loc, /obj/structure/closet)) || (H.loc == P.loc)) && hashands)
 				H.visible_message("<B>[H]</B> high fives <B>[P]</B>.")
 				if (istype(P.loc, /obj/structure/closet))
 					P.visible_message("<B>[H]</B> high fives <B>[P]</B>.")
 				playsound(loc, 'honk/sound/interactions/slap.ogg', 50, 1, -1)
 
-		else if (href_list["interaction"] == "handshake")
+		else if (href["interaction"] == "handshake")
 			if(((Adjacent(P) && !istype(P.loc, /obj/structure/closet)) || (H.loc == P.loc)) && hashands && hashands_p)
 				H.visible_message("<B>[H]</B> shakes <B>[P]</B>'s hand.")
 				if (istype(P.loc, /obj/structure/closet))
@@ -428,14 +428,14 @@
 				if (istype(P.loc, /obj/structure/closet))
 					P.visible_message("<B>[H]</B> extends [H.gender == MALE ? "his" : "her"] hand to <B>[P]</B>.")
 
-		else if (href_list["interaction"] == "wave")
+		else if (href["interaction"] == "wave")
 			if (!(Adjacent(P)) && hashands)
 				H.visible_message("<B>[H]</B> waves at <B>[P]</B>.")
 			else
 				H.visible_message("<B>[H]</B> waves [H.gender == MALE ? "his" : "her"] stump at <B>[P]</B>.")
 
 
-		else if (href_list["interaction"] == "slap")
+		else if (href["interaction"] == "slap")
 			if(((Adjacent(P) && !istype(P.loc, /obj/structure/closet)) || (H.loc == P.loc)) && hashands)
 				H.visible_message("<span class='danger'>[H] slaps [P]!</span>")
 				if (istype(P.loc, /obj/structure/closet))
@@ -445,13 +445,13 @@
 					P.staminaloss += 5
 				H.do_attack_animation(P)
 
-		else if (href_list["interaction"] == "fuckyou")
+		else if (href["interaction"] == "fuckyou")
 			if(hashands)
 				H.visible_message("<span class='danger'>[H] gives [P] the finger!</span>")
 				if (istype(P.loc, /obj/structure/closet) && P.loc == H.loc)
 					P.visible_message("<span class='danger'>[H] gives [P] the finger!</span>")
 
-		else if (href_list["interaction"] == "knock")
+		else if (href["interaction"] == "knock")
 			if(((Adjacent(P) && !istype(P.loc, /obj/structure/closet)) || (H.loc == P.loc)) && hashands)
 				H.visible_message("<span class='danger'>[H] knocks [P] upside the head!</span>")//Knocks?("<span class='danger'>[H] äàåò [P] ïîäçàòûëüíèê!</span>")
 				if (istype(P.loc, /obj/structure/closet))
@@ -461,25 +461,25 @@
 					P.staminaloss += 5
 				H.do_attack_animation(P)
 
-		else if (href_list["interaction"] == "spit")
+		else if (href["interaction"] == "spit")
 			if(((Adjacent(P) && !istype(P.loc, /obj/structure/closet)) || (H.loc == P.loc)) && mouthfree)
 				H.visible_message("<span class='danger'>[H] spits at [P]!</span>")
 				if (istype(P.loc, /obj/structure/closet))
 					P.visible_message("<span class='danger'>[H] spits at [P]!</span>")
 
-		else if (href_list["interaction"] == "threaten")
+		else if (href["interaction"] == "threaten")
 			if(hashands)
 				H.visible_message("<span class='danger'>[H] threatens [P] with a fist!</span>")
 				if (istype(P.loc, /obj/structure/closet) && H.loc == P.loc)
 					P.visible_message("<span class='danger'>[H] threatens [P] with a fist!</span>")
 
-		else if (href_list["interaction"] == "tongue")
+		else if (href["interaction"] == "tongue")
 			if(mouthfree)
 				H.visible_message("<span class='danger'>[H] sticks their tongue out at [P]!</span>")
 				if (istype(P.loc, /obj/structure/closet) && H.loc == P.loc)
 					P.visible_message("<span class='danger'>[H] sticks their tongue out at [P]</span>")
 
-		else if (href_list["interaction"] == "assslap")
+		else if (href["interaction"] == "assslap")
 			if(((Adjacent(P) && !istype(P.loc, /obj/structure/closet)) || (H.loc == P.loc)) && isnude_p && hasanus_p && hashands)
 				H.visible_message("<span class='danger'>[H] slaps [P] right on the ass!</span>")
 				if (istype(P.loc, /obj/structure/closet))
@@ -488,7 +488,7 @@
 				if (P.staminaloss < 10)
 					P.staminaloss += 5
 
-		else if (href_list["interaction"] == "pull")
+		else if (href["interaction"] == "pull")
 			if(((Adjacent(P) && !istype(P.loc, /obj/structure/closet)) || (H.loc == P.loc)) && hashands && !H.restrained() && P.species.name == "Tajaran")
 				if (prob(30))
 					H.visible_message("<span class='danger'>[H] ä¸ðãàåò [P] çà õâîñò!</span>")
@@ -501,23 +501,23 @@
 					if (istype(P.loc, /obj/structure/closet))
 						P.visible_message("<B>[H]</B> ïûòàåòñ[ya] ïîéìàòü <B>[P]</B> çà õâîñò!")
 
-		else if (href_list["interaction"] == "vaglick")
+		else if (href["interaction"] == "vaglick")
 			if(((Adjacent(P) && !istype(P.loc, /obj/structure/closet)) || (H.loc == P.loc)) && isnude_p && mouthfree && hasvagina_p)
 				H.fuck(H, P, "vaglick")
 
-		else if (href_list["interaction"] == "asslick")
+		else if (href["interaction"] == "asslick")
 			if(((Adjacent(P) && !istype(P.loc, /obj/structure/closet)) || (H.loc == P.loc)) && isnude_p && mouthfree && hasanus_p)
 				usr.visible_message("<font color=purple>[H] licks [P]'s asshole.</font>")
 
-		else if (href_list["interaction"] == "fingering")
+		else if (href["interaction"] == "fingering")
 			if(((Adjacent(P) && !istype(P.loc, /obj/structure/closet)) || (H.loc == P.loc)) && isnude_p && hashands && hasvagina_p)
 				H.fuck(H, P, "fingering")
 
-		else if (href_list["interaction"] == "blowjob")
+		else if (href["interaction"] == "blowjob")
 			if(((Adjacent(P) && !istype(P.loc, /obj/structure/closet)) || (H.loc == P.loc)) && isnude_p && mouthfree && haspenis_p)
 				H.fuck(H, P, "blowjob")
 
-		else if (href_list["interaction"] == "anal")
+		else if (href["interaction"] == "anal")
 			if (H.loc == P.loc && isnude_p && isnude && haspenis && hasanus_p)
 				if (H.erpcooldown == 0)
 					if (H.potenzia > 0)
@@ -525,7 +525,7 @@
 				else
 					var/message = pick("it's not erect...")//, "Êàê-òî íåò æåëàíè[ya]...", "×òî-òî íå îõîòà...", "Íåò, íå ñåé÷àñ.")
 					H << message
-		else if (href_list["interaction"] == "vaginal")
+		else if (href["interaction"] == "vaginal")
 			if (H.loc == P.loc && isnude_p && isnude && haspenis && hasanus_p)
 				if (H.erpcooldown == 0)
 					if (H.potenzia > 0)
@@ -534,7 +534,7 @@
 					var/message = pick("it's not erect...")//"Íå õî÷åòñ[ya] ìíå...", "Êàê-òî íåò æåëàíè[ya]...", "×òî-òî íå îõîòà...", "Íåò, íå ñåé÷àñ.")
 					H << message
 
-		else if (href_list["interaction"] == "oral")
+		else if (href["interaction"] == "oral")
 			if (H.loc == P.loc && isnude && mouthfree_p && haspenis)
 				if (H.erpcooldown == 0)
 					if (H.potenzia > 0)
@@ -543,7 +543,7 @@
 					var/message = pick("it's not erect...")//"Íå õî÷åòñ[ya] ìíå...", "Êàê-òî íåò æåëàíè[ya]...", "×òî-òî íå îõîòà...", "Íåò, íå ñåé÷àñ.")
 					H << message
 
-		else if (href_list["interaction"] == "mount")
+		else if (href["interaction"] == "mount")
 			if (H.loc == P.loc && isnude && isnude_p && haspenis_p && hasvagina)
 				if (P.lust <= 0)
 					var/message = pick("It's not up...")//"Èíñòðóìåíò íå ïåðåâåäåí â ðàáî÷åå ñîñòî[ya]íèå...", "Ó íåãî åùå íå âñòàë...", "À îí ëåæèò...", "Íèêàê íå íàñàäèòüñ[ya]...")
