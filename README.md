@@ -1,7 +1,11 @@
-# Interbay
+# InterHippie - InterBay but twice as worse
 
-[Website](https://discord.gg/sRfRyXF/) - [Code](https://github.com/SosakiDevelopmentTeam/Interbay/)
+# Credits go to every person who worked on Interbay's code in the past, such as: mattroks101, kyrahabattoir, muncher2112, etc. Thanks.
+[Baystation's Website](http://baystation12.net/) - [InterHippie's Code](https://github.com/butmun/InterHippie2/) [InterHippie's Discord](https://discord.gg/z2AKZtS)
 ---
+[![forthebadge](http://forthebadge.com/images/badges/60-percent-of-the-time-works-every-time.svg)](http://forthebadge.com)
+
+[![forthebadge](http://forthebadge.com/images/badges/built-with-resentment.svg)](http://forthebadge.com)
 
 ### LICENSE
 The code for Baystation12 is licensed under the [GNU Affero General Public License v3](http://www.gnu.org/licenses/agpl.html), which can be found in full in LICENSE-AGPL3.txt.
