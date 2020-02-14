@@ -35,6 +35,7 @@
 	var/datum/announcement/priority/crew_announcement = new
 	var/current_viewing_message_id = 0
 	var/current_viewing_message = null
+	var/new_sound = 'sound/machines/announce_alarm.ogg'
 
 /datum/nano_module/program/comm/New()
 	..()
@@ -139,7 +140,7 @@
 				var/input = input(usr, "Please write a message to announce to the [station_name()].", "Priority Announcement") as null|text
 				if(!input || !can_still_topic())
 					return 1
-				crew_announcement.Announce(input)
+				crew_announcement.Announce(input, new_sound = 'sound/machines/announce_alarm.ogg')
 				announcment_cooldown = 1
 				spawn(600)//One minute cooldown
 					announcment_cooldown = 0
