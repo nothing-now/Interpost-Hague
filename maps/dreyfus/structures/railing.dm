@@ -30,22 +30,9 @@
 	var/broken = 0
 	var/health=70
 	var/maxhealth=70
-	//var/LeftSide = list(0,0,0)// Нужны для хранения данных
+	//var/LeftSide = list(0,0,0)// ГЌГіГ¦Г­Г» Г¤Г«Гї ГµГ°Г Г­ГҐГ­ГЁГї Г¤Г Г­Г­Г»Гµ
 	//var/RightSide = list(0,0,0)
 	var/check = 0
-	var/icon_modifier = ""	//adds string to icon path for color variations
-
-/obj/structure/railing/grey
-	name = "grey railing"
-	desc = "A standard steel railing. Prevents stupid people from falling to their doom."
-	icon_modifier = "grey_"
-	icon_state = "grey_railing0"
-
-/obj/structure/railing/Created(var/mob/user)
-	anchored = FALSE
-	// this way its much easier to build it, and there is no need to update_icon after that, flip will take care of that
-	spawn()
-		flip(user)
 
 /obj/structure/railing/New(loc, constructed=0)
 	..()
@@ -61,7 +48,7 @@
 	broken = 1
 	for(var/obj/structure/railing/R in oview(src, 1))
 		R.update_icon()
-	. = ..()
+	..()
 
 /obj/structure/railing/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	if(!mover)
@@ -77,7 +64,7 @@
 		return !density
 	else
 		return TRUE
-//32 и 4 - в той же клетке
+//32 ГЁ 4 - Гў ГІГ®Г© Г¦ГҐ ГЄГ«ГҐГІГЄГҐ
 
 /obj/structure/railing/examine(mob/user)
 	. = ..()
@@ -100,40 +87,41 @@
 
 /obj/structure/railing/proc/NeighborsCheck(var/UpdateNeighbors = 1)
 	check = 0
+	//if (!anchored) return
 	var/Rturn = turn(src.dir, -90)
 	var/Lturn = turn(src.dir, 90)
 //Thanks ruskies, comments that i don't understand
-	for(var/obj/structure/railing/R in src.loc)// Анализ клетки, где находится сам объект
-		if ((R.dir == Lturn) && R.anchored)//Проверка левой стороны
+	for(var/obj/structure/railing/R in src.loc)// ГЂГ­Г Г«ГЁГ§ ГЄГ«ГҐГІГЄГЁ, ГЈГ¤ГҐ Г­Г ГµГ®Г¤ГЁГІГ±Гї Г±Г Г¬ Г®ГЎГєГҐГЄГІ
+		if ((R.dir == Lturn) && R.anchored)//ГЏГ°Г®ГўГҐГ°ГЄГ  Г«ГҐГўГ®Г© Г±ГІГ®Г°Г®Г­Г»
 			//src.LeftSide[1] = 1
 			check |= 32
 			if (UpdateNeighbors)
 				R.update_icon(0)
-		if ((R.dir == Rturn) && R.anchored)//Проверка правой стороны
+		if ((R.dir == Rturn) && R.anchored)//ГЏГ°Г®ГўГҐГ°ГЄГ  ГЇГ°Г ГўГ®Г© Г±ГІГ®Г°Г®Г­Г»
 			//src.RightSide[1] = 1
 			check |= 2
 			if (UpdateNeighbors)
 				R.update_icon(0)
 
-	for (var/obj/structure/railing/R in get_step(src, Lturn))//Анализ левой клетки от направления объекта
+	for (var/obj/structure/railing/R in get_step(src, Lturn))//ГЂГ­Г Г«ГЁГ§ Г«ГҐГўГ®Г© ГЄГ«ГҐГІГЄГЁ Г®ГІ Г­Г ГЇГ°Г ГўГ«ГҐГ­ГЁГї Г®ГЎГєГҐГЄГІГ 
 		if ((R.dir == src.dir) && R.anchored)
 			//src.LeftSide[2] = 1
 			check |= 16
 			if (UpdateNeighbors)
 				R.update_icon(0)
-	for (var/obj/structure/railing/R in get_step(src, Rturn))//Анализ правой клетки от направления объекта
+	for (var/obj/structure/railing/R in get_step(src, Rturn))//ГЂГ­Г Г«ГЁГ§ ГЇГ°Г ГўГ®Г© ГЄГ«ГҐГІГЄГЁ Г®ГІ Г­Г ГЇГ°Г ГўГ«ГҐГ­ГЁГї Г®ГЎГєГҐГЄГІГ 
 		if ((R.dir == src.dir) && R.anchored)
 			//src.RightSide[2] = 1
 			check |= 1
 			if (UpdateNeighbors)
 				R.update_icon(0)
 
-	for (var/obj/structure/railing/R in get_step(src, (Lturn + src.dir)))//Анализ передней-левой диагонали относительно направления объекта.
+	for (var/obj/structure/railing/R in get_step(src, (Lturn + src.dir)))//ГЂГ­Г Г«ГЁГ§ ГЇГҐГ°ГҐГ¤Г­ГҐГ©-Г«ГҐГўГ®Г© Г¤ГЁГ ГЈГ®Г­Г Г«ГЁ Г®ГІГ­Г®Г±ГЁГІГҐГ«ГјГ­Г® Г­Г ГЇГ°Г ГўГ«ГҐГ­ГЁГї Г®ГЎГєГҐГЄГІГ .
 		if ((R.dir == Rturn) && R.anchored)
 			check |= 64
 			if (UpdateNeighbors)
 				R.update_icon(0)
-	for (var/obj/structure/railing/R in get_step(src, (Rturn + src.dir)))//Анализ передней-правой диагонали относительно направления объекта.
+	for (var/obj/structure/railing/R in get_step(src, (Rturn + src.dir)))//ГЂГ­Г Г«ГЁГ§ ГЇГҐГ°ГҐГ¤Г­ГҐГ©-ГЇГ°Г ГўГ®Г© Г¤ГЁГ ГЈГ®Г­Г Г«ГЁ Г®ГІГ­Г®Г±ГЁГІГҐГ«ГјГ­Г® Г­Г ГЇГ°Г ГўГ«ГҐГ­ГЁГї Г®ГЎГєГҐГЄГІГ .
 		if ((R.dir == Lturn) && R.anchored)
 			check |= 4
 			if (UpdateNeighbors)
@@ -141,9 +129,9 @@
 
 
 /*	for(var/obj/structure/railing/R in get_step(src, src.dir))
-		if ((R.dir == Lturn) && R.anchored)//Проверка левой стороны
+		if ((R.dir == Lturn) && R.anchored)//ГЏГ°Г®ГўГҐГ°ГЄГ  Г«ГҐГўГ®Г© Г±ГІГ®Г°Г®Г­Г»
 			src.LeftSide[3] = 1
-		if ((R.dir == Rturn) && R.anchored)//Проверка правой стороны
+		if ((R.dir == Rturn) && R.anchored)//ГЏГ°Г®ГўГҐГ°ГЄГ  ГЇГ°Г ГўГ®Г© Г±ГІГ®Г°Г®Г­Г»
 			src.RightSide[3] = 1*/
 	//check <<"check: [check]"
 	//world << "dir = [src.dir]"
@@ -154,29 +142,29 @@
 	//icon_state = "railing[LeftSide[1]][LeftSide[2]][LeftSide[3]]-[RightSide[1]][RightSide[2]][RightSide[3]]"
 	overlays.Cut()
 	if (!check || !anchored)//|| !anchored
-		icon_state = "[icon_modifier]railing0"
+		icon_state = "railing0"
 	else
-		icon_state = "[icon_modifier]railing1"
-		//левая сторона
+		icon_state = "railing1"
+		//Г«ГҐГўГ Гї Г±ГІГ®Г°Г®Г­Г 
 		if (check & 32)
-			overlays += image ('maps/dreyfus/icons/railing.dmi', src, "[icon_modifier]corneroverlay")
+			overlays += image ('maps/dreyfus/icons/railing.dmi', src, "corneroverlay")
 			//world << "32 check"
 		if ((check & 16) || !(check & 32) || (check & 64))
-			overlays += image ('maps/dreyfus/icons/railing.dmi', src, "[icon_modifier]frontoverlay_l")
+			overlays += image ('maps/dreyfus/icons/railing.dmi', src, "frontoverlay_l")
 			//world << "16 check"
 		if (!(check & 2) || (check & 1) || (check & 4))
-			overlays += image ('maps/dreyfus/icons/railing.dmi', src, "[icon_modifier]frontoverlay_r")
+			overlays += image ('maps/dreyfus/icons/railing.dmi', src, "frontoverlay_r")
 			//world << "no 4 or 2 check"
 			if(check & 4)
 				switch (src.dir)
 					if (NORTH)
-						overlays += image ('maps/dreyfus/icons/railing.dmi', src, "[icon_modifier]mcorneroverlay", pixel_x = 32)
+						overlays += image ('maps/dreyfus/icons/railing.dmi', src, "mcorneroverlay", pixel_x = 32)
 					if (SOUTH)
-						overlays += image ('maps/dreyfus/icons/railing.dmi', src, "[icon_modifier]mcorneroverlay", pixel_x = -32)
+						overlays += image ('maps/dreyfus/icons/railing.dmi', src, "mcorneroverlay", pixel_x = -32)
 					if (EAST)
-						overlays += image ('maps/dreyfus/icons/railing.dmi', src, "[icon_modifier]mcorneroverlay", pixel_y = -32)
+						overlays += image ('maps/dreyfus/icons/railing.dmi', src, "mcorneroverlay", pixel_y = -32)
 					if (WEST)
-						overlays += image ('maps/dreyfus/icons/railing.dmi', src, "[icon_modifier]mcorneroverlay", pixel_y = 32)
+						overlays += image ('maps/dreyfus/icons/railing.dmi', src, "mcorneroverlay", pixel_y = 32)
 
 
 //obj/structure/railing/proc/NeighborsCheck2()
@@ -267,21 +255,21 @@
 		user.visible_message(anchored ? "<span class='notice'>\The [user] begins unscrew \the [src].</span>" : "<span class='notice'>\The [user] begins fasten \the [src].</span>" )
 		playsound(loc, 'sound/items/Screwdriver.ogg', 75, 1)
 		if(do_after(user, 10, src))
-			user.visible_message((anchored ? "<span class='notice'>You have unfastened \the [src] from the floor.</span>" : "<span class='notice'>You have fastened \the [src] to the floor.</span>"))
+			user << (anchored ? "<span class='notice'>You have unfastened \the [src] from the floor.</span>" : "<span class='notice'>You have fastened \the [src] to the floor.</span>")
 			anchored = !anchored
 			update_icon()
 			return
 
-	// Handle harm intent grabbing/tabling.
-	if(istype(W, /obj/item/weapon/grab) && get_dist(src,user)<2)
-		var/obj/item/weapon/grab/G = W
+/* // Handle harm intent grabbing/tabling.
+	if(istype(W, /obj/item/grab) && get_dist(src,user)<2)
+		var/obj/item/grab/G = W
 		if (istype(G.affecting, /mob/living))
 			var/mob/living/M = G.affecting
 			var/obj/occupied = turf_is_crowded()
 			if(occupied)
 				user << "<span class='danger'>There's \a [occupied] in the way.</span>"
 				return
-			if (G.state < 2)
+			if (G.current_grab < 2)
 				if(user.a_intent == I_HURT)
 					if (prob(15))	M.Weaken(5)
 					M.apply_damage(8,def_zone = "head")
@@ -299,7 +287,7 @@
 				G.affecting.Weaken(5)
 				visible_message("<span class='danger'>[G.assailant] throws [G.affecting] over \the [src]!</span>")
 			qdel(W)
-			return
+			return*/
 
 	else
 		playsound(loc, 'sound/effects/grillehit.ogg', 50, 1)

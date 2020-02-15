@@ -25,11 +25,6 @@
 	result = list(/obj/structure/railing = 1)
 	parts = list(/obj/item/stack/material/wood/ = 5)
 
-/datum/crafting_recipe/structure/railing_grey
-	name = "Metal railing"
-	result = list(/obj/structure/railing/grey = 1)
-	parts = list(/obj/item/stack/rods = 5)
-
 /datum/crafting_recipe/wall_girders
 	name = "wall girders"
 	result = list(/obj/structure/girder = 1)
