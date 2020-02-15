@@ -28,7 +28,7 @@
 
 	for(var/T in reagent_ids)
 		reagent_volumes[T] = volume
-		var/datum/reagent/R = T
+		var/datum/reagent/R = chemical_reagents_list[T]
 		reagent_names += initial(R.name)
 
 /obj/item/weapon/reagent_containers/borghypo/Initialize()
@@ -103,7 +103,7 @@
 		if(index > 0 && index <= reagent_ids.len)
 			playsound(loc, 'sound/effects/pop.ogg', 50, 0)
 			mode = index
-			var/datum/reagent/R = reagent_ids[mode]
+			var/datum/reagent/R = chemical_reagents_list[reagent_ids[mode]]
 			to_chat(usr, "<span class='notice'>Synthesizer is now producing '[initial(R.name)]'.</span>")
 		return TOPIC_REFRESH
 

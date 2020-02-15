@@ -745,7 +745,7 @@
 "oC" = (/obj/machinery/atmospherics/pipe/simple/hidden/supply{dir = 9},/obj/item/weapon/stool/padded,/turf/simulated/floor/tiled,/area/security/main)
 "oD" = (/obj/effect/floor_decal/industrial/warning/corner{dir = 1},/obj/effect/floor_decal/newcorner/red/corner{tag = "icon-red-corner (EAST)"; icon_state = "red-corner"; dir = 4},/obj/item/weapon/stool/padded,/turf/simulated/floor/tiled,/area/security/main)
 "oE" = (/obj/structure/closet/secure_closet/brig{id = "Cell 2"; name = "Cell 2 Locker"},/obj/machinery/atmospherics/unary/vent_pump/on{dir = 1},/obj/machinery/camera/autoname{tag = "icon-camera (WEST)"; icon_state = "camera"; dir = 8},/obj/effect/floor_decal/newcorner/red{tag = "icon-red (NORTH)"; icon_state = "red"; dir = 1},/turf/simulated/floor/tiled,/area/security/main)
-"oF" = (/obj/structure/closet/secure_closet/arbiter,/obj/effect/floor_decal/industrial/outline/grey,/turf/simulated/floor/tiled/dark,/area/chapel/office{name = "\improper Inquisition"})
+"oF" = (/obj/structure/closet/secure_closet/security/arbiter,/obj/effect/floor_decal/industrial/outline/grey,/turf/simulated/floor/tiled/dark,/area/chapel/office{name = "\improper Inquisition"})
 "oG" = (/obj/machinery/door/airlock/centcom,/turf/simulated/floor/tiled/dark,/area/chapel/office{name = "\improper Inquisition"})
 "oH" = (/obj/structure/bed/chair/office/dark{icon_state = "officechair_dark"; dir = 2},/turf/simulated/floor/tiled/bunker,/area/chapel/office{name = "\improper Inquisition"})
 "oI" = (/turf/simulated/floor/tiled/bunker,/area/chapel/office{name = "\improper Inquisition"})

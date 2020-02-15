@@ -443,7 +443,7 @@
 		if(prob(30))	banned_chems |= typesof(/datum/reagent/toxin)
 
 		for(var/x=1;x<=additional_chems;x++)
-			var/new_chem = pick(subtypesof(/datum/reagent))
+			var/new_chem = pick(chemical_reagents_list)
 			if(new_chem in banned_chems)
 				x--
 				continue

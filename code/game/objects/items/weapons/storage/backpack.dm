@@ -313,6 +313,11 @@
 		slot_r_hand_str = "satchel-cap",
 		)
 
+/obj/item/weapon/storage/backpack/satchel_black
+	name = "black leather satchel"
+	desc = "It's a very fancy satchel made with fine black leather."
+	icon_state = "satchel_black"
+
 //ERT backpacks.
 /obj/item/weapon/storage/backpack/ert
 	name = "emergency response team backpack"

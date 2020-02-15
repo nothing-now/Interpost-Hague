@@ -1,3 +1,13 @@
+/proc/initialize_chemical_reagents()
+	var/paths = typesof(/datum/reagent) - /datum/reagent
+	chemical_reagents_list = list()
+	for(var/path in paths)
+		var/datum/reagent/D = new path()
+		if(!D.name)
+			continue
+		chemical_reagents_list[D.name] = D
+
+
 /datum/reagent
 	var/name = "Reagent"
 	var/description = "A non-descript chemical."

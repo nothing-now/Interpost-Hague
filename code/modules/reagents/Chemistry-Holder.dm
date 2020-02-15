@@ -5,6 +5,7 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 	var/total_volume = 0
 	var/maximum_volume = 120
 	var/atom/my_atom = null
+	var/temperature = 0
 
 /datum/reagents/New(var/maximum_volume = 120, var/atom/my_atom)
 	if(!istype(my_atom))
@@ -63,6 +64,20 @@ GLOBAL_DATUM_INIT(temp_reagents_holder, /obj, new)
 		else
 			total_volume += R.volume
 	return
+
+/datum/reagents/proc/handle_reactions()
+	if(chemistryProcess)
+		chemistryProcess.mark_for_update(src)
+
+/datum/reagents/proc/adjust_energy(var/energy, var/safety = 0)
+	if(!total_volume)
+		return
+	temperature += energy/total_volume
+
+	if(!safety)
+		handle_reactions()
+	if(my_atom)
+		my_atom.on_reagent_change()
 
 /datum/reagents/proc/process_reactions()
 	if(!my_atom) // No reactions in temporary holders

@@ -494,3 +494,8 @@
 		/obj/item/weapon/implantpad,
 		/obj/item/weapon/implantcase/imprinting = 3
 		)
+
+/obj/item/weapon/storage/box/ammo/rifle
+	name = "7.63mm rifle ammo"
+	desc = "A box that contains 7.63 caliber ammo."
+	startswith = list(/obj/item/ammo_casing/brifle = 15)
