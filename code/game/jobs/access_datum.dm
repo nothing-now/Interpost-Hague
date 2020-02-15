@@ -384,6 +384,12 @@
 	desc = "Medical Equipment"
 	region = ACCESS_REGION_MEDBAY
 
+/var/const/access_detoffice = 67
+/datum/access/detoffice
+	id = access_detoffice
+	desc = "Detective's Office"
+	region = ACCESS_REGION_SECURITY
+
 /******************
 * Central Command *
 ******************/
