@@ -17,7 +17,7 @@
 /obj/structure/railing
 	name = "railing"
 	desc = "A standard steel railing. Prevents human stupidity."
-	icon = 'icons/obj/railing.dmi'
+	icon = 'maps/dreyfus/icons/railing.dmi'
 	density = 1
 	throwpass = 1
 	//layer = 3.2//Just above doors 	//Layers mean nothing.
@@ -30,16 +30,9 @@
 	var/broken = 0
 	var/health=70
 	var/maxhealth=70
-	//var/LeftSide = list(0,0,0)// ����� ��� �������� ������
+	//var/LeftSide = list(0,0,0)// Íóæíû äëÿ õðàíåíèÿ äàííûõ
 	//var/RightSide = list(0,0,0)
 	var/check = 0
-	var/icon_modifier = ""	//adds string to icon path for color variations
-
-/obj/structure/railing/grey
-	name = "grey railing"
-	desc = "A standard steel railing. Prevents stupid people from falling to their doom."
-	icon_modifier = "grey_"
-	icon_state = "grey_railing0"
 
 /obj/structure/railing/New(loc, constructed=0)
 	..()
@@ -55,7 +48,7 @@
 	broken = 1
 	for(var/obj/structure/railing/R in oview(src, 1))
 		R.update_icon()
-	return ..()
+	..()
 
 /obj/structure/railing/CanPass(atom/movable/mover, turf/target, height=0, air_group=0)
 	if(!mover)
@@ -71,7 +64,7 @@
 		return !density
 	else
 		return TRUE
-//32 � 4 - � ��� �� ������
+//32 è 4 - â òîé æå êëåòêå
 
 /obj/structure/railing/examine(mob/user)
 	. = ..()
@@ -98,37 +91,37 @@
 	var/Rturn = turn(src.dir, -90)
 	var/Lturn = turn(src.dir, 90)
 //Thanks ruskies, comments that i don't understand
-	for(var/obj/structure/railing/R in src.loc)// ������ ������, ��� ��������� ��� ������
-		if ((R.dir == Lturn) && R.anchored)//�������� ����� �������
+	for(var/obj/structure/railing/R in src.loc)// Àíàëèç êëåòêè, ãäå íàõîäèòñÿ ñàì îáúåêò
+		if ((R.dir == Lturn) && R.anchored)//Ïðîâåðêà ëåâîé ñòîðîíû
 			//src.LeftSide[1] = 1
 			check |= 32
 			if (UpdateNeighbors)
 				R.update_icon(0)
-		if ((R.dir == Rturn) && R.anchored)//�������� ������ �������
+		if ((R.dir == Rturn) && R.anchored)//Ïðîâåðêà ïðàâîé ñòîðîíû
 			//src.RightSide[1] = 1
 			check |= 2
 			if (UpdateNeighbors)
 				R.update_icon(0)
 
-	for (var/obj/structure/railing/R in get_step(src, Lturn))//������ ����� ������ �� ����������� �������
+	for (var/obj/structure/railing/R in get_step(src, Lturn))//Àíàëèç ëåâîé êëåòêè îò íàïðàâëåíèÿ îáúåêòà
 		if ((R.dir == src.dir) && R.anchored)
 			//src.LeftSide[2] = 1
 			check |= 16
 			if (UpdateNeighbors)
 				R.update_icon(0)
-	for (var/obj/structure/railing/R in get_step(src, Rturn))//������ ������ ������ �� ����������� �������
+	for (var/obj/structure/railing/R in get_step(src, Rturn))//Àíàëèç ïðàâîé êëåòêè îò íàïðàâëåíèÿ îáúåêòà
 		if ((R.dir == src.dir) && R.anchored)
 			//src.RightSide[2] = 1
 			check |= 1
 			if (UpdateNeighbors)
 				R.update_icon(0)
 
-	for (var/obj/structure/railing/R in get_step(src, (Lturn + src.dir)))//������ ��������-����� ��������� ������������ ����������� �������.
+	for (var/obj/structure/railing/R in get_step(src, (Lturn + src.dir)))//Àíàëèç ïåðåäíåé-ëåâîé äèàãîíàëè îòíîñèòåëüíî íàïðàâëåíèÿ îáúåêòà.
 		if ((R.dir == Rturn) && R.anchored)
 			check |= 64
 			if (UpdateNeighbors)
 				R.update_icon(0)
-	for (var/obj/structure/railing/R in get_step(src, (Rturn + src.dir)))//������ ��������-������ ��������� ������������ ����������� �������.
+	for (var/obj/structure/railing/R in get_step(src, (Rturn + src.dir)))//Àíàëèç ïåðåäíåé-ïðàâîé äèàãîíàëè îòíîñèòåëüíî íàïðàâëåíèÿ îáúåêòà.
 		if ((R.dir == Lturn) && R.anchored)
 			check |= 4
 			if (UpdateNeighbors)
@@ -136,9 +129,9 @@
 
 
 /*	for(var/obj/structure/railing/R in get_step(src, src.dir))
-		if ((R.dir == Lturn) && R.anchored)//�������� ����� �������
+		if ((R.dir == Lturn) && R.anchored)//Ïðîâåðêà ëåâîé ñòîðîíû
 			src.LeftSide[3] = 1
-		if ((R.dir == Rturn) && R.anchored)//�������� ������ �������
+		if ((R.dir == Rturn) && R.anchored)//Ïðîâåðêà ïðàâîé ñòîðîíû
 			src.RightSide[3] = 1*/
 	//check <<"check: [check]"
 	//world << "dir = [src.dir]"
@@ -148,30 +141,30 @@
 	NeighborsCheck(UpdateNeighgors)
 	//icon_state = "railing[LeftSide[1]][LeftSide[2]][LeftSide[3]]-[RightSide[1]][RightSide[2]][RightSide[3]]"
 	overlays.Cut()
-	if (!check || !anchored)//|| !anchoredp
-		icon_state = icon_modifier + "railing0"
+	if (!check || !anchored)//|| !anchored
+		icon_state = "railing0"
 	else
-		icon_state = icon_modifier + "railing1"
-		//����� �������
+		icon_state = "railing1"
+		//ëåâàÿ ñòîðîíà
 		if (check & 32)
-			overlays += image ('icons/obj/railing.dmi', src, icon_modifier + "corneroverlay")
+			overlays += image ('maps/dreyfus/icons/railing.dmi', src, "corneroverlay")
 			//world << "32 check"
 		if ((check & 16) || !(check & 32) || (check & 64))
-			overlays += image ('icons/obj/railing.dmi', src, icon_modifier + "frontoverlay_l")
+			overlays += image ('maps/dreyfus/icons/railing.dmi', src, "frontoverlay_l")
 			//world << "16 check"
 		if (!(check & 2) || (check & 1) || (check & 4))
-			overlays += image ('icons/obj/railing.dmi', src, icon_modifier + "frontoverlay_r")
+			overlays += image ('maps/dreyfus/icons/railing.dmi', src, "frontoverlay_r")
 			//world << "no 4 or 2 check"
 			if(check & 4)
 				switch (src.dir)
 					if (NORTH)
-						overlays += image ('icons/obj/railing.dmi', src, icon_modifier + "mcorneroverlay", pixel_x = 32)
+						overlays += image ('maps/dreyfus/icons/railing.dmi', src, "mcorneroverlay", pixel_x = 32)
 					if (SOUTH)
-						overlays += image ('icons/obj/railing.dmi', src, icon_modifier + "mcorneroverlay", pixel_x = -32)
+						overlays += image ('maps/dreyfus/icons/railing.dmi', src, "mcorneroverlay", pixel_x = -32)
 					if (EAST)
-						overlays += image ('icons/obj/railing.dmi', src, icon_modifier + "mcorneroverlay", pixel_y = -32)
+						overlays += image ('maps/dreyfus/icons/railing.dmi', src, "mcorneroverlay", pixel_y = -32)
 					if (WEST)
-						overlays += image ('icons/obj/railing.dmi', src, icon_modifier + "mcorneroverlay", pixel_y = 32)
+						overlays += image ('maps/dreyfus/icons/railing.dmi', src, "mcorneroverlay", pixel_y = 32)
 
 
 //obj/structure/railing/proc/NeighborsCheck2()
@@ -267,7 +260,7 @@
 			update_icon()
 			return
 
-	// Handle harm intent grabbing/tabling.
+/* // Handle harm intent grabbing/tabling.
 	if(istype(W, /obj/item/grab) && get_dist(src,user)<2)
 		var/obj/item/grab/G = W
 		if (istype(G.affecting, /mob/living))
@@ -294,7 +287,7 @@
 				G.affecting.Weaken(5)
 				visible_message("<span class='danger'>[G.assailant] throws [G.affecting] over \the [src]!</span>")
 			qdel(W)
-			return
+			return*/
 
 	else
 		playsound(loc, 'sound/effects/grillehit.ogg', 50, 1)
