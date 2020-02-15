@@ -1,7 +1,7 @@
 /datum/religion/messiah
 	name = MESSIAH
 	holy_item = new /obj/item/crucifix()
-	shrine =/obj/old_god_shrine/messiah_shrine
+	shrine = /obj/old_god_shrine/messiah_shrine
 
 /datum/old_god_spell/imbue
 	name = "Imbue"
@@ -50,4 +50,8 @@
 	
 /obj/old_god_shrine/messiah_shrine
 	name = "Jes shrine"
+	shrine_religion = MESSIAH
 	icon_state = "woodcross"
+
+/obj/old_god_shrine/messiah_shrine/New()
+	shrine_religion = GLOB.all_religions[MESSIAH]

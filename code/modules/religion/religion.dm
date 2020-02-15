@@ -111,11 +111,13 @@ proc/generate_random_prayer()//This generates a new one.
 		T.reveal_heretics()
 
 /* ILLEGAL RELIGION PROCS */
-/datum/religion/proc/claim_territory(area/territory,var/religion)
-	GLOB.all_religions[religion].territories += territory.name
+/datum/religion/proc/claim_territory(area/territory,var/claiming_religion)
+	GLOB.all_religions[claiming_religion].territories += territory.name
+	return
 
-/datum/religion/proc/lose_territory(area/territory,var/religion)
-	GLOB.all_religions[religion].territories -= territory.name
+/datum/religion/proc/lose_territory(area/territory,var/claiming_religion)
+	GLOB.all_religions[claiming_religion].territories -= territory.name
+	return
 
 /datum/religion/proc/territory_claimed(area/territory, mob/user)
 	for (var/name in GLOB.all_religions)
@@ -185,13 +187,15 @@ proc/generate_random_prayer()//This generates a new one.
 		return
 	var/self = "You deftly use your [user_religion.holy_item] to create the shrine."
 	var/timer = 20
-	visible_message("<span class='warning'>\The [src] quickly draws on the floor and begins to whisper quietly to themselves.</span>", "<span class='notice'>[self]</span>", "You hear scratching.")
-	if(do_after(src, timer))
-		//These variables used to just be functions that returned a hard coded value.  So don't blame me, this is actually faster.
-		var/obj/old_god_shrine/S = new user_religion.shrine(T)
-		var/area/A = get_area(S)
-		log_and_message_admins("created \an [S.name] rune at \the [A.name] - [loc.x]-[loc.y]-[loc.z].")
-		S.add_fingerprint(src)
-		return 1
+	if(user_religion.can_claim_for_gods(src,T))
+		visible_message("<span class='warning'>\The [src] quickly draws on the floor and begins to whisper quietly to themselves.</span>", "<span class='notice'>[self]</span>", "You hear scratching.")
+		if(do_after(src, timer))
+			//These variables used to just be functions that returned a hard coded value.  So don't blame me, this is actually faster.
+			var/obj/old_god_shrine/S = new user_religion.shrine(T)
+			var/area/A = get_area(S)
+			user_religion.claim_territory(A,user_religion.name)
+			log_and_message_admins("created \an [S.name] rune at \the [A.name] - [loc.x]-[loc.y]-[loc.z].")
+			S.add_fingerprint(src)
+			return 1
 	return 0
 

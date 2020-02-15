@@ -1,7 +1,7 @@
 /datum/religion/greed
 	name = GREED
 	holy_item = new /obj/item/weapon/coin/gold()
-	shrine =/obj/old_god_shrine/greed_shrine
+	shrine = /obj/old_god_shrine/greed_shrine
 
 /datum/old_god_spell/debt
 	name = "Debt"
@@ -34,4 +34,8 @@
 	
 /obj/old_god_shrine/greed_shrine
 	name = "Gozag Ym Sagoz shrine"
+	shrine_religion = GREED
 	icon_state = "alter_03"
+
+/obj/old_god_shrine/greed_shrine/New()
+	shrine_religion = GLOB.all_religions[GREED]
