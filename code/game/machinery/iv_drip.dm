@@ -3,17 +3,21 @@
 	icon = 'icons/obj/iv_drip.dmi'
 	anchored = 0
 	density = 1
+	icon_state = "empty"
 
 
 /obj/machinery/iv_drip/var/mob/living/carbon/human/attached = null
 /obj/machinery/iv_drip/var/mode = 1 // 1 is injecting, 0 is taking blood.
 /obj/machinery/iv_drip/var/obj/item/weapon/reagent_containers/beaker = null
 
+
 /obj/machinery/iv_drip/update_icon()
 	if(src.attached)
 		icon_state = "hooked"
+	else if (beaker)
+		icon_state = "full"
 	else
-		icon_state = ""
+		icon_state = "empty"
 
 	overlays = null
 

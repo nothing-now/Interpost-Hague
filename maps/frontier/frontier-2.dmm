@@ -163,7 +163,7 @@
 "dg" = (/obj/machinery/conveyor{dir = 1; id = "mining_external"},/obj/structure/catwalk,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/structure/cable{d1 = 2; d2 = 4; icon_state = "2-4"},/obj/structure/railing{tag = "icon-railing0 (EAST)"; icon_state = "railing0"; dir = 4},/turf/simulated/floor/plating,/area/mine/explored)
 "dh" = (/obj/structure/cable{d1 = 32; d2 = 8; icon_state = "32-8"; tag = "icon-32-8"},/obj/machinery/light/small{dir = 4},/turf/simulated/open,/area/mine/explored)
 "di" = (/turf/simulated/floor/asteroid,/area/mine/explored)
-"dj" = (/obj/effect/floor_decal/newcorner/yellow/diagonal,/obj/effect/landmark/start{name = "Crate Pusher"},/turf/simulated/floor/tiled,/area/quartermaster/qm)
+"dj" = (/obj/effect/floor_decal/newcorner/yellow/diagonal,/obj/effect/landmark/start{name = "Cargo Technician"},/turf/simulated/floor/tiled,/area/quartermaster/qm)
 "dk" = (/obj/effect/floor_decal/newcorner/yellow/solid,/obj/structure/closet/secure_closet/cargotech,/obj/structure/window/reinforced{dir = 1; health = null},/obj/structure/window/reinforced{dir = 4},/turf/simulated/floor/tiled,/area/quartermaster/qm)
 "dl" = (/obj/machinery/disposal/deliveryChute,/obj/structure/disposalpipe/trunk{dir = 1},/obj/machinery/conveyor{dir = 1; id = "disposals"; movedir = 1},/turf/simulated/floor/plating,/area/quartermaster/qm)
 "dm" = (/obj/machinery/door/firedoor/border_only,/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 4},/obj/structure/grille,/obj/structure/window/reinforced{dir = 8},/turf/simulated/floor/plating,/area/quartermaster/qm)
