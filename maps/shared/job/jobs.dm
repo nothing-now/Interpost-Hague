@@ -8,10 +8,8 @@
 						/datum/job/medassist,
 						/datum/job/hos,
 						/datum/job/officer,
-						/datum/job/cadet,
 						/datum/job/qm,
 						/datum/job/engineer,
-						/datum/job/jr_upkeep,
 						/datum/job/cargo_tech,
 						/datum/job/cargo_tech/machinist,
 						/datum/job/mining,
@@ -21,6 +19,8 @@
 						/datum/job/janitor,
 						/datum/job/arbiter,
 						/datum/job/supreme_arbiter
+						///datum/job/cadet,
+						///datum/job/jr_upkeep,
 						///datum/job/rd,
 						///datum/job/scientist,
 						///datum/job/raider,
@@ -37,10 +37,8 @@
 						/datum/job/medassist,
 						/datum/job/hos,
 						/datum/job/officer,
-						/datum/job/cadet,
 						/datum/job/qm,
 						/datum/job/engineer,
-						/datum/job/jr_upkeep,
 						/datum/job/cargo_tech,
 						/datum/job/cargo_tech/machinist,
 						///datum/job/mining,
@@ -50,6 +48,8 @@
 						/datum/job/janitor,
 						/datum/job/arbiter,
 						/datum/job/supreme_arbiter
+						///datum/job/jr_upkeep,
+						///datum/job/cadet,
 						///datum/job/rd,
 						///datum/job/scientist,
 						///datum/job/raider,
@@ -67,10 +67,8 @@
 						/datum/job/medassist,
 						/datum/job/hos,
 						/datum/job/officer,
-						/datum/job/cadet,
 						/datum/job/qm,
 						/datum/job/engineer,
-						/datum/job/jr_upkeep,
 						/datum/job/cargo_tech,
 						/datum/job/cargo_tech/machinist,
 						/datum/job/mining,
@@ -82,6 +80,8 @@
 						/datum/job/supreme_arbiter,
 						/datum/job/rd,
 						/datum/job/scientist
+						///datum/job/jr_upkeep,
+						///datum/job/cadet,
 						///datum/job/raider,
 						///datum/job/raider/leader
 						)
@@ -96,7 +96,6 @@
 						///datum/job/medassist,
 						/datum/job/hos,
 						/datum/job/officer,
-						/datum/job/cadet,
 						/datum/job/qm,
 						/datum/job/engineer,
 						///datum/job/jr_upkeep,
@@ -112,6 +111,7 @@
 						/datum/job/supreme_arbiter,
 						///datum/job/rd,
 						/datum/job/scientist
+						///datum/job/cadet,
 						)
 
 
@@ -391,71 +391,7 @@
 		..()
 
 
-/datum/job/medassist
-	selection_color = "#633d63"
-	title = "Medical Assistant"
-	supervisors = "the doctors"
-	minimal_player_age = 16
-	economic_modifier = 2
-	ideal_character_age = 21
-	total_positions = 2
-	spawn_positions = 2
-	department_flag = MED
-	department = "Medical"
-	access = list(access_medical, access_medical_equip, access_morgue, access_genetics, access_heads, access_tox,
-			access_chemistry, access_virology, access_cmo, access_surgery)
-	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_genetics, access_heads, access_tox,
-			access_chemistry, access_virology, access_cmo, access_surgery)
-	outfit_type = /decl/hierarchy/outfit/job/medassist.
 
-	equip(var/mob/living/carbon/human/H)
-		H.set_species("Child")//Actually makes them a child. Called before ..() so they can get their clothes.
-		H.add_stats(rand(3,6), rand(12,16), rand(6,9))
-		H.generate_skills("medical")
-		..()
-
-
-/datum/job/cadet
-	selection_color = "#633d63"
-	title = "Security Cadet"
-	supervisors = "the officers"
-	minimal_player_age = 16
-	economic_modifier = 2
-	ideal_character_age = 21
-	total_positions = 2
-	spawn_positions = 2
-	department_flag = SEC
-	department = "Security"
-	access = list(access_security, access_eva, access_sec_doors, access_brig, access_maint_tunnels, access_morgue, access_external_airlocks)
-	minimal_access = list(access_security, access_eva, access_sec_doors, access_brig, access_maint_tunnels, access_external_airlocks)
-	outfit_type = /decl/hierarchy/outfit/job/cadet
-
-	equip(var/mob/living/carbon/human/H)
-		H.set_species("Child")
-		H.add_stats(rand(3,6), rand(12,16), rand(6,9))
-		H.generate_skills("melee")
-		..()
-
-/datum/job/jr_upkeep
-	selection_color = "#633d63"
-	title = "Junior Engineer"
-	supervisors = "the engineers"
-	minimal_player_age = 16
-	economic_modifier = 2
-	ideal_character_age = 21
-	total_positions = 2
-	spawn_positions = 2
-	department_flag = SEC
-	department = "Security"
-	access = list(access_eva, access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels, access_external_airlocks, access_construction, access_atmospherics, access_emergency_storage, access_tcomsat)
-	minimal_access = list(access_eva, access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels, access_external_airlocks, access_construction, access_atmospherics, access_emergency_storage, access_tcomsat)
-	outfit_type = /decl/hierarchy/outfit/job/jr_upkeep
-
-	equip(var/mob/living/carbon/human/H)
-		H.set_species("Child")
-		H.add_stats(rand(3,6), rand(12,16), rand(6,9))
-		H.generate_skills("cleaning")
-		..()
 
 
 /datum/job/chef
@@ -567,6 +503,73 @@
 		H.generate_skills("melee")
 
 
+/datum/job/medassist
+	selection_color = "#633d63"
+	title = "Medical Assistant"
+	supervisors = "the doctors"
+	minimal_player_age = 16
+	economic_modifier = 2
+	ideal_character_age = 21
+	total_positions = 2
+	spawn_positions = 2
+	department_flag = MED
+	department = "Medical"
+	access = list(access_medical, access_medical_equip, access_morgue, access_genetics, access_heads, access_tox,
+			access_chemistry, access_virology, access_cmo, access_surgery)
+	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_genetics, access_heads, access_tox,
+			access_chemistry, access_virology, access_cmo, access_surgery)
+	outfit_type = /decl/hierarchy/outfit/job/medassist.
+
+	equip(var/mob/living/carbon/human/H)
+		H.set_species("Child")//Actually makes them a child. Called before ..() so they can get their clothes.
+		H.add_stats(rand(3,6), rand(12,16), rand(6,9))
+		H.generate_skills("medical")
+		..()
+
+/* Children roles.  They were too buggy, need TODO later
+/datum/job/cadet
+	selection_color = "#633d63"
+	title = "Security Cadet"
+	supervisors = "the officers"
+	minimal_player_age = 16
+	economic_modifier = 2
+	ideal_character_age = 21
+	total_positions = 2
+	spawn_positions = 2
+	department_flag = SEC
+	department = "Security"
+	access = list(access_security, access_eva, access_sec_doors, access_brig, access_maint_tunnels, access_morgue, access_external_airlocks)
+	minimal_access = list(access_security, access_eva, access_sec_doors, access_brig, access_maint_tunnels, access_external_airlocks)
+	outfit_type = /decl/hierarchy/outfit/job/cadet
+
+	equip(var/mob/living/carbon/human/H)
+		H.set_species("Child")
+		H.add_stats(rand(3,6), rand(12,16), rand(6,9))
+		H.generate_skills("melee")
+		..()
+
+/datum/job/jr_upkeep
+	selection_color = "#633d63"
+	title = "Junior Engineer"
+	supervisors = "the engineers"
+	minimal_player_age = 16
+	economic_modifier = 2
+	ideal_character_age = 21
+	total_positions = 2
+	spawn_positions = 2
+	department_flag = SEC
+	department = "Security"
+	access = list(access_eva, access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels, access_external_airlocks, access_construction, access_atmospherics, access_emergency_storage, access_tcomsat)
+	minimal_access = list(access_eva, access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels, access_external_airlocks, access_construction, access_atmospherics, access_emergency_storage, access_tcomsat)
+	outfit_type = /decl/hierarchy/outfit/job/jr_upkeep
+
+	equip(var/mob/living/carbon/human/H)
+		H.set_species("Child")
+		H.add_stats(rand(3,6), rand(12,16), rand(6,9))
+		H.generate_skills("cleaning")
+		..()
+
+*/
 /*
 //OFF STATION JOBS
 
