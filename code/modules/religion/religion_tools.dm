@@ -1,7 +1,7 @@
 //TOOLS
 //The scanner
 /obj/item/device/arbiter_scanner
-	icon = 'icons/obj/device.dmi'
+	icon = 'icons/obj/religion.dmi'
 	icon_state = "arbiterscanner"
 	name = "heretic scanner"
 	desc = "Inject someone with revelator and then scan them for results."
