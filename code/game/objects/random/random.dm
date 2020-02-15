@@ -22,8 +22,6 @@
 		return
 
 	var/build_path = pickweight(spawn_choices())
-	if(build_path == null)
-		to_world("[src]'s build path is null.  Fix it!'")
 	var/atom/A = new build_path(src.loc)
 	if(pixel_x || pixel_y)
 		A.pixel_x = pixel_x
@@ -40,7 +38,7 @@
 	var/spawn_object = null
 
 /obj/random/single/spawn_choices()
-	return list(ispath(spawn_object) ? spawn_object : text2path(spawn_object))
+	return pick(typesof(/obj/random/)).spawn_choices()
 
 /obj/random/tool
 	name = "random tool"
