@@ -26,7 +26,7 @@ mob/living/carbon/slime/airflow_stun()
 	return
 
 mob/living/carbon/human/airflow_stun()
-	if(!slip_chance())
+	if(!Process_Spaceslipping())
 		to_chat(src, "<span class='notice'>Air suddenly rushes past you!</span>")
 		return 0
 	..()

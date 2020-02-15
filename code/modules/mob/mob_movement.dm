@@ -51,14 +51,22 @@
 			attack_self()
 			return
 		if(SOUTHWEST)
-			if(iscarbon(usr))
+			if(isliving(usr))
 				var/mob/living/carbon/C = usr
 				C.toggle_throw_mode()
 			else
 				to_chat(usr, "<span class='warning'>This mob type cannot throw items.</span>")
 			return
 		if(NORTHWEST)
-			mob.hotkey_drop()
+			if(isliving(usr))
+				var/mob/living/carbon/C = usr
+				if(!C.get_active_hand())
+					to_chat(usr, "<span class='warning'>You have nothing to drop in your hand.</span>")
+					return
+				drop_item()
+			else
+				to_chat(usr, "<span class='warning'>This mob type cannot drop items.</span>")
+			return
 
 /mob/proc/hotkey_drop()
 	to_chat(usr, "<span class='warning'>This mob type cannot drop items.</span>")
@@ -80,8 +88,9 @@
 
 /client/verb/swap_hand()
 	set hidden = 1
-	if(istype(mob, /mob/living/carbon))
-		mob:swap_hand()
+	if(istype(mob, /mob/living))
+		var/mob/living/L = mob
+		L.swap_hand()
 	if(istype(mob,/mob/living/silicon/robot))
 		var/mob/living/silicon/robot/R = mob
 		R.cycle_modules()
@@ -168,6 +177,17 @@
 		src.m_flag = 1
 		if ((A != src.loc && A && A.z == src.z))
 			src.last_move = get_dir(A, src.loc)
+		if(.)
+			Moved(A, direct)
+	return
+
+// Called on a successful Move().
+/atom/movable/proc/Moved(atom/oldloc)
+	if(ismob(src))
+		src:check_shadow()
+
+	if(istype(src, /obj/item))
+		src:check_shadow()
 	return
 
 /client/proc/Move_object(direct)
@@ -175,7 +195,7 @@
 		if(mob.control_object.density)
 			step(mob.control_object,direct)
 			if(!mob.control_object)	return
-			mob.control_object.set_dir(direct)
+			mob.control_object.dir = direct
 		else
 			mob.control_object.forceMove(get_step(mob.control_object,direct))
 	return
@@ -226,7 +246,6 @@
 					if(item.zoom)
 						item.zoom(mob)
 						break
-				/*
 				if(locate(/obj/item/weapon/gun/energy/sniperrifle, mob.contents))		// If mob moves while zoomed in with sniper rifle, unzoom them.
 					var/obj/item/weapon/gun/energy/sniperrifle/s = locate() in mob
 					if(s.zoom)
@@ -235,24 +254,20 @@
 					var/obj/item/device/binoculars/b = locate() in mob
 					if(b.zoom)
 						b.zoom()
-				*/
 
+	if(Process_Grab())	return
 
+	if(!mob.canmove)
+		return
 
 	//if(istype(mob.loc, /turf/space) || (mob.flags & NOGRAV))
-	//	if(!mob.Allow_Spacemove(0))	return 0
+	//	if(!mob.Process_Spacemove(0))	return 0
 
 	if(!mob.lastarea)
 		mob.lastarea = get_area(mob.loc)
 
-	if(!mob.check_solid_ground())
-		var/allowmove = mob.Allow_Spacemove(0)
-		if(!allowmove)
-			return 0
-		else if(allowmove == -1 && mob.handle_spaceslipping()) //Check to see if we slipped
-			return 0
-		else
-			mob.inertia_dir = 0 //If not then we can reset inertia and move
+	if((istype(mob.loc, /turf/space)) || (mob.lastarea.has_gravity == 0))
+		if(!mob.Process_Spacemove(0))	return 0
 
 	if(isobj(mob.loc) || ismob(mob.loc))//Inside an object, tell it we moved
 		var/atom/O = mob.loc
@@ -319,9 +334,6 @@
 				move_delay += 2
 				return mob.buckled.relaymove(mob,direct)
 
-		if(mob.check_slipmove())
-			return
-
 		//We are now going to move
 		moving = 1
 		//Something with pulling things
@@ -370,7 +382,6 @@
 							direct = turn(direct, pick(90, -90))
 							n = get_step(mob, direct)
 			. = mob.SelfMove(n, direct)
-
 		for (var/obj/item/grab/G in mob)
 			if (G.assailant_reverse_facing())
 				mob.set_dir(GLOB.reverse_dir[direct])
@@ -396,120 +407,195 @@
 ///Called by client/Move()
 ///Allows mobs to run though walls
 /client/proc/Process_Incorpmove(direct)
-	if(mob.confused)
-		switch(mob.m_intent)
-			if("run")
-				if(prob(75))
-					direct = turn(direct, pick(90, -90))
-			if("walk")
-				if(prob(25))
-					direct = turn(direct, pick(90, -90))
+	var/turf/mobloc = get_turf(mob)
 
-	var/turf/T = get_step(mob, direct)
-	if(mob.check_is_holy_turf(T))
-		to_chat(mob, "<span class='warning'>You cannot enter holy grounds while you are in this plane of existence!</span>")
-		return
+	switch(mob.incorporeal_move)
+		if(1)
+			var/turf/T = get_step(mob, direct)
+			if(mob.check_is_holy_turf(T))
+				to_chat(mob, "<span class='warning'>You cannot enter holy grounds while you are in this plane of existence!</span>")
+				return
+			else
+				mob.forceMove(get_step(mob, direct))
+				mob.dir = direct
+		if(2)
+			if(prob(50))
+				var/locx
+				var/locy
+				switch(direct)
+					if(NORTH)
+						locx = mobloc.x
+						locy = (mobloc.y+2)
+						if(locy>world.maxy)
+							return
+					if(SOUTH)
+						locx = mobloc.x
+						locy = (mobloc.y-2)
+						if(locy<1)
+							return
+					if(EAST)
+						locy = mobloc.y
+						locx = (mobloc.x+2)
+						if(locx>world.maxx)
+							return
+					if(WEST)
+						locy = mobloc.y
+						locx = (mobloc.x-2)
+						if(locx<1)
+							return
+					else
+						return
+				mob.forceMove(locate(locx,locy,mobloc.z))
+				spawn(0)
+					var/limit = 2//For only two trailing shadows.
+					for(var/turf/T in getline(mobloc, mob.loc))
+						spawn(0)
+							anim(T,mob,'icons/mob/mob.dmi',,"shadow",,mob.dir)
+						limit--
+						if(limit<=0)	break
+			else
+				spawn(0)
+					anim(mobloc,mob,'icons/mob/mob.dmi',,"shadow",,mob.dir)
+				mob.forceMove(get_step(mob, direct))
+			mob.dir = direct
+	// Crossed is always a bit iffy
+	for(var/obj/S in mob.loc)
+		if(istype(S,/obj/effect/step_trigger) || istype(S,/obj/effect/beam))
+			S.Crossed(mob)
 
-	if(T)
-		mob.forceMove(T)
-	mob.set_dir(direct)
-
+	var/area/A = get_area_master(mob)
+	if(A)
+		A.Entered(mob)
+	if(isturf(mob.loc))
+		var/turf/T = mob.loc
+		T.Entered(mob)
 	mob.Post_Incorpmove()
 	return 1
 
 /mob/proc/Post_Incorpmove()
 	return
 
-// Checks whether this mob is allowed to move in space
-// Return 1 for movement, 0 for none,
-// -1 to allow movement but with a chance of slipping
-/mob/proc/Allow_Spacemove(var/check_drift = 0)
+///Process_Spacemove
+///Called by /client/Move()
+///For moving in space
+///Return 1 for movement 0 for none
+/mob/proc/Process_Spacemove(var/check_drift = 0)
+
 	if(!Check_Dense_Object()) //Nothing to push off of so end here
+		update_floating(0)
 		return 0
+
+	update_floating(1)
 
 	if(restrained()) //Check to see if we can do things
 		return 0
 
-	return -1
-
-//Checks if a mob has solid ground to stand on
-//If there's no gravity then there's no up or down so naturally you can't stand on anything.
-//For the same reason lattices in space don't count - those are things you grip, presumably.
 /mob/proc/check_solid_ground()
 	if(istype(loc, /turf/space))
 		return 0
 
-	if(!lastarea)
-		lastarea = get_area(loc)
-	if(!lastarea.has_gravity)
+	//Check to see if we slipped
+	if(prob(Process_Spaceslipping(0)) && !buckled)
+		src << "<font color='blue'><B>You slipped!</B></font>"
+		src.inertia_dir = src.last_move
+		step(src, src.inertia_dir)
 		return 0
-
+	//If not then we can reset inertia and move
+	inertia_dir = 0
 	return 1
 
-/mob/proc/Check_Dense_Object() //checks for anything to push off or grip in the vicinity. also handles magboots on gravity-less floors tiles
+/mob/proc/Check_Dense_Object() //checks for anything to push off in the vicinity. also handles magboots on gravity-less floors tiles
 
-	var/shoegrip = Check_Shoegrip()
+	var/dense_object = 0
+	var/shoegrip
 
-	for(var/turf/simulated/T in trange(1,src)) //we only care for non-space turfs
-		if(T.density)	//walls work
-			return 1
-		else
-			var/area/A = T.loc
-			if(A.has_gravity || shoegrip)
-				return 1
+	for(var/turf/turf in oview(1,src))
+		if(istype(turf,/turf/space))
+			continue
 
-	for(var/obj/O in orange(1, src))
-		if(istype(O, /obj/structure/lattice))
-			return 1
-		if(O && O.density && O.anchored)
-			return 1
+		if(istype(turf,/turf/simulated/floor)) // Floors don't count if they don't have gravity
+			var/area/A = turf.loc
+			if(istype(A) && A.has_gravity == 0)
+				if(shoegrip == null)
+					shoegrip = Check_Shoegrip() //Shoegrip is only ever checked when a zero-gravity floor is encountered to reduce load
+				if(!shoegrip)
+					continue
 
-	return 0
+		dense_object++
+		break
+
+	if(!dense_object && (locate(/obj/structure/lattice) in oview(1, src)))
+		dense_object++
+
+	if(!dense_object && (locate(/obj/structure/catwalk) in oview(1, src)))
+		dense_object++
+
+
+	//Lastly attempt to locate any dense objects we could push off of
+	//TODO: If we implement objects drifing in space this needs to really push them
+	//Due to a few issues only anchored and dense objects will now work.
+	if(!dense_object)
+		for(var/obj/O in oview(1, src))
+			if((O) && (O.density) && (O.anchored))
+				dense_object++
+				break
+
+	return dense_object
 
 /mob/proc/Check_Shoegrip()
 	return 0
 
-//return 1 if slipped, 0 otherwise
-/mob/proc/handle_spaceslipping()
-	if(prob(slip_chance(5)) && !buckled)
-		to_chat(src, "<span class='warning'>You slipped!</span>")
-		src.inertia_dir = src.last_move
-		step(src, src.inertia_dir)
-		return 1
-	return 0
-
-/mob/proc/slip_chance(var/prob_slip = 5)
+/mob/proc/Process_Spaceslipping(var/prob_slip = 5)
+	//Setup slipage
+	//If knocked out we might just hit it and stop.  This makes it possible to get dead bodies and such.
 	if(stat)
 		return 0
 	if(Check_Shoegrip())
 		return 0
-	if (!statcheck(stats["dex"], 5, "I can't keep my grip!", "dex"))
-		prob_slip = max(prob_slip,75)
 	return prob_slip
 
-#define DO_MOVE(this_dir) var/final_dir = turn(this_dir, -dir2angle(dir)); Move(get_step(mob, final_dir), final_dir);
+	prob_slip = round(prob_slip)
+	return(prob_slip)
 
-/mob/proc/check_slipmove()
+/mob/proc/mob_has_gravity(turf/T)
+	return has_gravity(src, T)
+
+/mob/proc/update_gravity()
 	return
+/*
+// The real Move() proc is above, but touching that massive block just to put this in isn't worth it.
+/mob/Move(var/newloc, var/direct)
+	. = ..(newloc, direct)
+	if(.)
+		post_move(newloc, direct)
+*/
+// Called when a mob successfully moves.
+// Would've been an /atom/movable proc but it caused issues.
+/mob/Moved(atom/oldloc)
+	for(var/obj/O in contents)
+		O.on_loc_moved(oldloc)
+
+// Received from Moved(), useful for items that need to know that their loc just moved.
+/obj/proc/on_loc_moved(atom/oldloc)
+	return
+
+/obj/item/weapon/storage/on_loc_moved(atom/oldloc)
+	for(var/obj/O in contents)
+		O.on_loc_moved(oldloc)
 
 /client/verb/moveup()
 	set name = ".moveup"
 	set instant = 1
-	DO_MOVE(NORTH)
-
+	Move(get_step(mob, NORTH), NORTH)
 /client/verb/movedown()
 	set name = ".movedown"
 	set instant = 1
-	DO_MOVE(SOUTH)
-
+	Move(get_step(mob, SOUTH), SOUTH)
 /client/verb/moveright()
 	set name = ".moveright"
 	set instant = 1
-	DO_MOVE(EAST)
-
+	Move(get_step(mob, EAST), EAST)
 /client/verb/moveleft()
 	set name = ".moveleft"
 	set instant = 1
-	DO_MOVE(WEST)
-
-#undef DO_MOVE
+	Move(get_step(mob, WEST), WEST)

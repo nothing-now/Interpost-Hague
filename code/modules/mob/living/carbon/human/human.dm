@@ -1553,7 +1553,7 @@
 		return 0
 	return !!(..(slipped_on,stun_duration))
 
-/mob/living/carbon/human/check_slipmove()
+/mob/living/carbon/human/Process_Spaceslipping()
 	if(h_style)
 		var/datum/sprite_accessory/hair/S = GLOB.hair_styles_list[h_style]
 		if(S && S.flags & HAIR_TRIPPABLE && prob(0.4))
