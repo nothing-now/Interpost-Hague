@@ -419,7 +419,7 @@
 				mob.forceMove(get_step(mob, direct))
 				mob.dir = direct
 		if(2)
-			if(prob(50))
+			if(prob(25))
 				var/locx
 				var/locy
 				switch(direct)
