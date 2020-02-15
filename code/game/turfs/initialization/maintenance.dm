@@ -22,13 +22,13 @@
 		return
 
 	var/cardinal_turfs = T.CardinalTurfs()
-
-	T.dirt = get_dirt_amount()
-	// If a neighbor is dirty, then we get dirtier.
-	var/how_dirty = dirty_neighbors(cardinal_turfs)
-	for(var/i = 0; i < how_dirty; i++)
-		T.dirt += rand(0,10)
-	T.update_dirt()
+	if(istype(T, /turf/simulated/))
+		T.dirt = get_dirt_amount()
+		// If a neighbor is dirty, then we get dirtier.
+		var/how_dirty = dirty_neighbors(cardinal_turfs)
+		for(var/i = 0; i < how_dirty; i++)
+			T.dirt += rand(0,10)
+		T.update_dirt()
 
 	if(prob(oil_probability))
 		new /obj/effect/decal/cleanable/blood/oil(T)

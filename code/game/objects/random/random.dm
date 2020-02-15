@@ -22,7 +22,8 @@
 		return
 
 	var/build_path = pickweight(spawn_choices())
-
+	if(build_path == null)
+		to_world("[src]'s build path is null.  Fix it!'")
 	var/atom/A = new build_path(src.loc)
 	if(pixel_x || pixel_y)
 		A.pixel_x = pixel_x

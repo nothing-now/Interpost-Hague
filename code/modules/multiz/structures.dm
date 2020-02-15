@@ -185,7 +185,7 @@
 		var/turf/target = get_step(GetAbove(A), dir)
 		var/turf/source = A.loc
 		var/turf/above = GetAbove(A)
-		if(above.CanZPass(source, UP) && target.Enter(A, source))
+		if(above.CanZPass(source, UP) && target.Enter(A, src))
 			A.forceMove(target)
 			if(isliving(A))
 				var/mob/living/L = A

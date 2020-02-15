@@ -10,7 +10,7 @@
 	desc = "Contains drugs for checking heretics."
 	New()
 		..()
-		reagents.add_reagent("revelator",15)
+		reagents.add_reagent(/datum/reagent/toxin/revelator,15)
 
 /datum/reagent/toxin/unrevelator
 	name = "Unrevelator"
@@ -22,4 +22,4 @@
 	desc = "You're not sure what it has."
 	New()
 		..()
-		reagents.add_reagent("unrevelator",15)
+		reagents.add_reagent(/datum/reagent/toxin/unrevelator,15)
