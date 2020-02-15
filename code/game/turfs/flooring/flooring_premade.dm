@@ -109,6 +109,50 @@
 	icon_state = "steel"
 	initial_flooring = /decl/flooring/tiling
 
+/turf/simulated/floor/tiled/bar
+	name = "bar floor"
+	icon = 'icons/turf/flooring/tiles.dmi'
+	icon_state = "bar"
+	initial_flooring = /decl/flooring/tiling/bar
+
+/turf/simulated/floor/tiled/misc
+	icon = 'icons/turf/flooring/misc.dmi'
+	initial_flooring = /decl/flooring/tiling/misc
+	icon_state = "steel"
+
+/turf/simulated/floor/tiled/misc/sec
+	icon_state = "sec_chess"
+	initial_flooring = /decl/flooring/tiling/misc/sec
+
+/turf/simulated/floor/tiled/misc/med
+	icon_state = "tealwh_chess"
+	initial_flooring = /decl/flooring/tiling/misc/med
+
+/turf/simulated/floor/tiled/misc/cargo
+	icon_state = "cargo_chess"
+	initial_flooring = /decl/flooring/tiling/misc/cargo
+
+/turf/simulated/floor/tiled/misc/blue
+	icon_state = "blue_chess"
+	initial_flooring = /decl/flooring/tiling/misc/blue
+
+/turf/simulated/floor/tiled/misc/purple
+	icon_state = "prwh_chess"
+	initial_flooring = /decl/flooring/tiling/misc/purple
+
+/turf/simulated/floor/tiled/ramp
+	name = "foot ramp"
+	icon = 'icons/turf/flooring/tiles.dmi'
+	icon_state = "ramptop"
+	initial_flooring = /decl/flooring/reinforced/ramp
+
+/turf/simulated/floor/tiled/ramp/bottom
+	name = "foot ramp"
+	icon = 'icons/turf/flooring/tiles.dmi'
+	icon_state = "rampbot"
+	initial_flooring = /decl/flooring/reinforced/ramp/bottom
+
+
 /turf/simulated/floor/carpet
 	name = "brown carpet"
 	icon = 'icons/turf/flooring/carpet.dmi'

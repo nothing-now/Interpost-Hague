@@ -9,6 +9,11 @@
 #define PRESSURE_TANK_VOLUME 150	//L
 #define PUMP_MAX_FLOW_RATE 90		//L/s - 4 m/s using a 15 cm by 15 cm inlet
 
+#define DISPOSAL_DISCONNECTED -1
+#define DISPOSAL_OFF 0
+#define DISPOSAL_CHARGING 1
+#define DISPOSAL_CHARGED 2
+
 /obj/machinery/disposal
 	name = "disposal unit"
 	desc = "A pneumatic waste disposal unit."
@@ -17,7 +22,7 @@
 	anchored = 1
 	density = 1
 	var/datum/gas_mixture/air_contents	// internal reservoir
-	var/mode = 1	// item mode 0=off 1=charging 2=charged
+	var/mode = DISPOSAL_CHARGING	// item mode 0=off 1=charging 2=charged
 	var/flush = 0	// true if flush handle is pulled
 	var/obj/structure/disposalpipe/trunk/trunk = null // the attached pipe trunk
 	var/flushing = 0	// true if flushing in progress
