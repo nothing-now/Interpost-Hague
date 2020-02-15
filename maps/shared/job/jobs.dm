@@ -8,6 +8,7 @@
 						/datum/job/medassist,
 						/datum/job/hos,
 						/datum/job/officer,
+						/datum/job/detective,
 						/datum/job/qm,
 						/datum/job/engineer,
 						/datum/job/cargo_tech,
@@ -282,6 +283,25 @@
 	minimal_access = list(access_security, access_eva, access_sec_doors, access_brig, access_maint_tunnels, access_external_airlocks)
 	minimal_player_age = 0
 	outfit_type = /decl/hierarchy/outfit/job/security/peacekeeper
+
+	equip(var/mob/living/carbon/human/H)
+		..()
+		//H.add_stats(rand(11,16), rand(10,14), rand(7,10))
+		H.generate_stats("str")
+		H.generate_skills("melee")
+
+
+/datum/job/detective
+	title = "Detective"
+	department = "Security"
+	department_flag = SEC
+	total_positions = 1
+	spawn_positions = 1
+	economic_modifier = 3
+	access = list(access_security, access_eva, access_sec_doors, access_maint_tunnels, access_morgue, access_external_airlocks, access_detoffice)
+	minimal_access = list(access_security, access_eva, access_sec_doors, access_maint_tunnels, access_external_airlocks, access_detoffice)
+	minimal_player_age = 0
+	outfit_type = /decl/hierarchy/outfit/job/security/detective
 
 	equip(var/mob/living/carbon/human/H)
 		..()
