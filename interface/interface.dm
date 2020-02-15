@@ -1,6 +1,6 @@
 //Please use mob or src (not usr) in these procs. This way they can be called in the same fashion as procs.
 /client/verb/wiki()
-	set name = "Wiki"
+	set name = "wiki"
 	set desc = "Visit the wiki."
 	set hidden = 1
 	if( config.wikiurl )
@@ -12,7 +12,7 @@
 	return
 
 /client/verb/forum()
-	set name = "Forum"
+	set name = "forum"
 	set desc = "Visit the forum."
 	set hidden = 1
 	if( config.forumurl )
@@ -22,6 +22,19 @@
 	else
 		to_chat(src, "<span class='warning'>The forum URL is not set in the server configuration.</span>")
 	return
+
+/*/client/verb/discord()
+	set name = "discord"
+	set desc = "Join the discord."
+	set hidden = 1
+	if( config.discordurl )
+		if(alert("This will invite you to the discord and will open in your browser. Are you sure?",,"Yes","No")=="No")
+			return
+		src << link(config.discordurl)
+	else
+		to_chat(src, "<span class='warning'>The discord link is not set in the server configuration.</span>")
+	return*/
+//commented out for now
 
 #define RULES_FILE "config/rules.html"
 /client/verb/rules()
@@ -40,7 +53,7 @@
 #undef LORE_FILE
 
 /client/verb/hotkeys_help()
-	set name = "Hotkeys Help"
+	set name = "hotkeys-help"
 	set category = "OOC"
 
 	var/admin = {"<font color='purple'>
@@ -58,12 +71,14 @@ Hotkey-Mode: (hotkey-mode must be on)
 \ts = down
 \td = right
 \tw = up
-\t, = move-upwards
-\t. = move-down
 \tq = drop
 \te = equip
 \tr = throw
 \tt = say
+\to = ooc
+\tspace = toggle_combat_mode
+\tv = toggle_dodge_parry
+\ty = surrender
 \t5 = emote
 \tx = swap-hand
 \tz = activate held object (or y)
@@ -74,6 +89,10 @@ Hotkey-Mode: (hotkey-mode must be on)
 \t2 = disarm-intent
 \t3 = grab-intent
 \t4 = harm-intent
+\tCtrl = drag
+\tShift = examine
+\tPGUP = Move upwards
+\tPGDOWN = Move downwards
 </font>"}
 
 	var/other = {"<font color='purple'>
@@ -85,7 +104,7 @@ Any-Mode: (hotkey doesn't need to be on)
 \tCtrl+q = drop
 \tCtrl+e = equip
 \tCtrl+r = throw
-\tCtrl+x or Middle Mouse = swap-hand
+\tCtrl+x = swap-hand
 \tCtrl+z = activate held object (or Ctrl+y)
 \tCtrl+f = cycle-intents-left
 \tCtrl+g = cycle-intents-right
@@ -100,13 +119,9 @@ Any-Mode: (hotkey doesn't need to be on)
 \tDEL = pull
 \tINS = cycle-intents-right
 \tHOME = drop
-\tPGUP or Middle Mouse = swap-hand
+\tPGUP = swap-hand
 \tPGDN = activate held object
 \tEND = throw
-\tCtrl + Click = drag
-\tShift + Click = examine
-\tAlt + Click = show entities on turf
-\tCtrl + Alt + Click = interact with certain items
 </font>"}
 
 	var/robot_hotkey_mode = {"<font color='purple'>
@@ -118,6 +133,7 @@ Hotkey-Mode: (hotkey-mode must be on)
 \tw = up
 \tq = unequip active module
 \tt = say
+\to = ooc
 \tx = cycle active modules
 \tz = activate held object (or y)
 \tf = cycle-intents-left
@@ -127,6 +143,8 @@ Hotkey-Mode: (hotkey-mode must be on)
 \t3 = activate module 3
 \t4 = toggle intents
 \t5 = emote
+\tCtrl = drag
+\tShift = examine
 </font>"}
 
 	var/robot_other = {"<font color='purple'>
@@ -152,10 +170,6 @@ Any-Mode: (hotkey doesn't need to be on)
 \tINS = toggle intents
 \tPGUP = cycle active modules
 \tPGDN = activate held object
-\tCtrl + Click = drag or bolt doors
-\tShift + Click = examine or open doors
-\tAlt + Click = show entities on turf
-\tCtrl + Alt + Click = electrify doors
 </font>"}
 
 	if(isrobot(src.mob))

@@ -39,7 +39,7 @@
 		carried = new/datum/disease2/disease()
 		carried.makerandom(rand(2, 4))
 
-/mob/living/simple_animal/hostile/vagrant/Allow_Spacemove(var/check_drift = 0)
+/mob/living/simple_animal/hostile/vagrant/Process_Spacemove(var/check_drift = 0)
 	return 1
 
 /mob/living/simple_animal/hostile/vagrant/bullet_act(var/obj/item/projectile/Proj)

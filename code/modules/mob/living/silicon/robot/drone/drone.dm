@@ -306,7 +306,7 @@ var/list/mob_hat_cache = list()
 	gib()
 
 //DRONE MOVEMENT.
-/mob/living/silicon/robot/drone/slip_chance(var/prob_slip)
+/mob/living/silicon/robot/drone/Process_Spaceslipping(var/prob_slip)
 	return 0
 
 //CONSOLE PROCS

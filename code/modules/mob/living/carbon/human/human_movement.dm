@@ -84,7 +84,7 @@
 	tally -= (stat_to_modifier(stats["dex"]) * 0.005)
 	return (tally+config.human_delay)
 
-/mob/living/carbon/human/Allow_Spacemove(var/check_drift = 0)
+/mob/living/carbon/human/Process_Spacemove(var/check_drift = 0)
 	//Can we act?
 	if(restrained())	return 0
 
@@ -108,7 +108,7 @@
 	. = ..()
 
 
-/mob/living/carbon/human/slip_chance(var/prob_slip = 5)
+/mob/living/carbon/human/Process_Spaceslipping(var/prob_slip = 5)
 	if(!..())
 		return 0
 

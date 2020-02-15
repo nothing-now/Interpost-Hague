@@ -106,7 +106,7 @@
 	if(incapacitated())
 		return 0
 
-	if(Allow_Spacemove())
+	if(Process_Spacemove())
 		return 1
 
 	if(Check_Shoegrip())	//scaling hull with magboots
@@ -118,7 +118,7 @@
 	if(incapacitated() || is_dead())
 		return 0
 
-	if(Allow_Spacemove()) //Checks for active jetpack
+	if(Process_Spacemove()) //Checks for active jetpack
 		return 1
 
 	for(var/turf/simulated/T in trange(1,src)) //Robots get "magboots"

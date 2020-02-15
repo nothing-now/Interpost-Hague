@@ -1,4 +1,4 @@
-/mob/living/silicon/robot/slip_chance(var/prob_slip)
+/mob/living/silicon/robot/Process_Spaceslipping(var/prob_slip)
 	if(module && module.no_slip)
 		return 0
 	..(prob_slip)
@@ -8,7 +8,7 @@
 		return 1
 	return 0
 
-/mob/living/silicon/robot/Allow_Spacemove()
+/mob/living/silicon/robot/Process_Spacemove()
 	if(module)
 		for(var/obj/item/weapon/tank/jetpack/J in module.modules)
 			if(J && J.allow_thrust(0.01))

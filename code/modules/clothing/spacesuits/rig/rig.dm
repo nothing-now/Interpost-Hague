@@ -887,10 +887,10 @@
 		wearer.lastarea = get_area(wearer.loc)
 
 	if(!wearer.check_solid_ground())
-		var/allowmove = wearer.Allow_Spacemove(0)
+		var/allowmove = wearer.Process_Spacemove(0)
 		if(!allowmove)
 			return 0
-		else if(allowmove == -1 && wearer.handle_spaceslipping()) //Check to see if we slipped
+		else if(allowmove == -1 && wearer.Process_Spaceslipping()) //Check to see if we slipped
 			return 0
 		else
 			wearer.inertia_dir = 0 //If not then we can reset inertia and move
