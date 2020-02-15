@@ -365,3 +365,37 @@
 
 /datum/reagent/luminol/touch_mob(var/mob/living/L)
 	L.reveal_blood()
+
+/datum/reagent/urine
+	name = "urine"
+	description = "It's pee."
+	reagent_state = LIQUID
+	color = COLOR_YELLOW
+	taste_description = "urine"
+
+/datum/reagent/urine/touch_turf(var/turf/T)
+	src = null
+	if(!istype(T, /turf/space))
+		new /obj/effect/decal/cleanable/urine(T)
+
+/datum/reagent/poo
+	name = "poo"
+	description = "It's poo."
+	reagent_state = LIQUID
+	color = "#643200"
+	taste_description = "literal shit"
+
+
+/datum/reagent/poo/on_mob_life(var/mob/living/M)
+	if(!M)
+		M = holder.my_atom
+
+	M.adjustToxLoss(5)
+	holder.remove_reagent(src, 0.2)
+	..()
+	return
+
+/datum/reagent/poo/touch_turf(var/turf/T)
+	src = null
+	if(!istype(T, /turf/space))
+		new /obj/effect/decal/cleanable/poo(T)

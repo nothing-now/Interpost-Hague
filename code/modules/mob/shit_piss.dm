@@ -128,86 +128,6 @@
 		if(jizz != src)
 			qdel(jizz)
 
-
-//#####REAGENTS#####
-
-//SHIT
-/datum/reagent/poo
-	name = "poo"
-	description = "It's poo."
-	reagent_state = LIQUID
-	color = "#643200"
-	taste_description = "literal shit"
-
-
-/datum/reagent/poo/on_mob_life(var/mob/living/M)
-	if(!M)
-		M = holder.my_atom
-
-	M.adjustToxLoss(5)
-	holder.remove_reagent(src, 0.2)
-	..()
-	return
-
-//TO MAKE add_poo() PROC
-/*			reaction_mob(var/mob/M, var/method=TOUCH, var/volume)
-		src = null
-		if(istype(M, /mob/living/carbon/human) && method==TOUCH)
-			if(M:wear_suit) M:wear_suit.add_poo()
-			if(M:w_uniform) M:w_uniform.add_poo()
-			if(M:shoes) M:shoes.add_poo()
-			if(M:gloves) M:gloves.add_poo()
-			if(M:head) M:head.add_poo()
-		//if(method==INGEST)
-		//	if(prob(20))
-			//	M.contract_disease(new /datum/disease/gastric_ejections)
-			//	holder.add_reagent("gastricejections", 1)
-			//	M:toxloss += 0.1
-			//	holder.remove_reagent(src.id, 0.2)
-*/
-
-/datum/reagent/poo/touch_turf(var/turf/T)
-	src = null
-	if(!istype(T, /turf/space))
-		new /obj/effect/decal/cleanable/poo(T)
-
-//URINE
-/datum/reagent/urine
-	name = "urine"
-	description = "It's pee."
-	reagent_state = LIQUID
-	color = COLOR_YELLOW
-	taste_description = "urine"
-
-/datum/reagent/urine/touch_turf(var/turf/T)
-	src = null
-	if(!istype(T, /turf/space))
-		new /obj/effect/decal/cleanable/urine(T)
-
-
-/obj/item/weapon/reagent_containers/food/snacks/poo
-	name = "poo"
-	desc = "A chocolately surprise!"
-	icon = 'icons/obj/poop.dmi'
-	icon_state = "poop2"
-	item_state = "poop"
-
-/obj/item/weapon/reagent_containers/food/snacks/poo/New()
-	..()
-	icon_state = pick("poop1", "poop2", "poop3", "poop4", "poop5", "poop6", "poop7")
-	reagents.add_reagent(/datum/reagent/poo, 10)
-	bitesize = 3
-
-/obj/item/weapon/reagent_containers/food/snacks/poo/throw_impact(atom/hit_atom)
-	//if(prob(50)) //this is so we actually have a chance of recovering some from disposal.
-	//	return
-	playsound(src.loc, "sound/effects/squishy.ogg", 40, 1)
-	var/turf/T = src.loc
-	if(!istype(T, /turf/space))
-		new /obj/effect/decal/cleanable/poo(T)
-	qdel(src)// THIS IS BAD AND YOU SHOULD FEEL BAD.
-	..()
-
 //#####BOTTLES#####
 
 //PISS
@@ -294,7 +214,7 @@
 
 		else if(w_uniform)
 			message = "<B>[src]</B> shits \his pants."
-			reagents.add_reagent("poo", 10)
+			reagents.add_reagent(/datum/reagent/poo, 10)
 			adjust_hygiene(-25)
 			add_event("shitself", /datum/happiness_event/hygiene/shit)
 

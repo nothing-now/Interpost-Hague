@@ -36,6 +36,8 @@
 	return ..()
 
 /obj/item/organ/Process()
+	if(owner == null)
+		return
 	if(owner.bad_internal_organs && src.damage <= 0 && src in owner.bad_internal_organs)
 		owner.bad_internal_organs -= src
 	..()

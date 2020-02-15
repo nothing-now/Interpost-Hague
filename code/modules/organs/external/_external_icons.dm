@@ -63,6 +63,7 @@ var/list/limb_icon_cache = list()
 		icon_cache_key += "[M][markings[M]["color"]]"
 
 /obj/item/organ/external/var/icon_cache_key
+
 /obj/item/organ/external/update_icon(var/regenerate = 0)
 	var/gender = "_m"
 	if(!gendered_icon)
@@ -73,8 +74,9 @@ var/list/limb_icon_cache = list()
 		gender = "_f"
 
 	icon_state = "[icon_name][gender]"
-	if(species.base_skin_colours && !isnull(species.base_skin_colours[s_base]))
-		icon_state += species.base_skin_colours[s_base]
+	if (species)
+		if(species.base_skin_colours && !isnull(species.base_skin_colours[s_base]))
+			icon_state += species.base_skin_colours[s_base]
 
 	icon_cache_key = "[icon_state]_[species ? species.name : SPECIES_HUMAN]"
 
