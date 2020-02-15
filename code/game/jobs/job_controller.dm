@@ -530,7 +530,6 @@ var/global/datum/controller/occupations/job_master
 				var/obj/item/I = GLOB.all_religions[H.religion].holy_item.type
 				I = new I()
 				H.equip_to_storage(I)
-				GLOB.all_religions[H.religion].add_spells(H)
 				GLOB.all_religions[H.religion].followers += H.name
 				if(prob(5))
 					H.mind.prayer = accepted_prayer

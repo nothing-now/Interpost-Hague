@@ -434,7 +434,7 @@
 "iB" = (/obj/structure/disposalpipe/segment{dir = 4},/obj/machinery/camera/autoname,/turf/simulated/floor/tiled,/area/quartermaster/storage{name = "\improper Cargo Lobby"})
 "iC" = (/obj/machinery/disposal,/obj/structure/disposalpipe/trunk{tag = "icon-pipe-t (WEST)"; icon_state = "pipe-t"; dir = 8},/turf/simulated/floor/tiled,/area/quartermaster/storage{name = "\improper Cargo Lobby"})
 "iD" = (/obj/machinery/light/small{dir = 8},/turf/simulated/floor/plating,/area/maintenance/engineering)
-"iE" = (/obj/structure/bed/chair,/obj/item/weapon/handcuffs/cable/red,/obj/item/weapon/handcuffs/cable/tape,/obj/effect/decal/cleanable/blood,/obj/effect/decal/cleanable/cobweb,/obj/item/weapon/dildo,/turf/simulated/floor/plating,/area/maintenance/engineering)
+"iE" = (/obj/structure/bed/chair,/obj/item/weapon/handcuffs/cable/red,/obj/item/weapon/handcuffs/cable/tape,/obj/effect/decal/cleanable/blood,/obj/effect/decal/cleanable/cobweb,/turf/simulated/floor/plating,/area/maintenance/engineering)
 "iF" = (/obj/machinery/shower,/turf/simulated/floor/tiled/white,/area/crew_quarters/toilet{name = "\improper Toilets"})
 "iG" = (/obj/structure/sink{dir = 1; pixel_y = 16},/obj/structure/mirror{pixel_y = 32},/turf/simulated/floor/tiled/white,/area/crew_quarters/toilet{name = "\improper Toilets"})
 "iI" = (/obj/effect/floor_decal/newcorner/yellow,/obj/effect/floor_decal/newcorner/yellow{tag = "icon-yellow (NORTH)"; icon_state = "yellow"; dir = 1},/obj/effect/floor_decal/spline/plain{dir = 1},/obj/effect/floor_decal/spline/plain,/turf/simulated/floor/tiled,/area/quartermaster/storage{name = "\improper Cargo Lobby"})

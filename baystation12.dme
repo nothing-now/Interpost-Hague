@@ -2553,6 +2553,7 @@
 #include "maps\alpha\alpha_define.dm"
 #include "maps\away\away_sites.dm"
 #include "maps\away_sites_testing\away_sites_testing_define.dm"
+#include "maps\dreyfus\structures\gym.dm"
 #include "maps\example\example_define.dm"
 #include "maps\frontier\frontier.dm"
 #include "maps\frontier\frontier_define.dm"

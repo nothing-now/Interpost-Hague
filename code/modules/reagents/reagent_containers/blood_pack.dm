@@ -112,3 +112,4 @@
 
 /obj/item/weapon/reagent_containers/ivbag/blood/OMinus
 	blood_type = "O-"
+	

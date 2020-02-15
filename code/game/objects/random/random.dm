@@ -874,6 +874,7 @@ obj/random/obstruction/spawn_choices()
 				/obj/item/weapon/spacecash/bundle/c100 = 2,
 				/obj/item/weapon/spacecash/bundle/c1000 = 1)
 
+
 /obj/random/maintenance //Clutter and loot for maintenance and away missions
 	name = "random maintenance item"
 	desc = "This is a random maintenance item."

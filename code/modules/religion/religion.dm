@@ -46,10 +46,6 @@
 	agony_scream()
 	say(NewStutter(msg))
 
-/datum/religion/proc/add_spells(mob/target)
-	to_world("No spells to add!")
-	return
-
 /* LEGAL RELIIGON PROCS */
 //PRAYER
 var/accepted_prayer //The prayer that all those who are not heretics will have.
