@@ -166,7 +166,7 @@
 		/obj/item/device/radio/headset/headset_sec,
 		/obj/item/weapon/storage/belt/security,
 		/obj/item/device/flash,
-		/obj/item/weapon/melee/baton/loaded,
+		/obj/item/weapon/melee/classic_baton,
 		/obj/item/clothing/glasses/sunglasses/sechud,
 		/obj/item/taperoll/police,
 		/obj/item/device/hailer,

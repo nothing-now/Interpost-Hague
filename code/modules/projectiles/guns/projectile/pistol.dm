@@ -10,17 +10,18 @@
 
 /obj/item/weapon/gun/projectile/colt/officer
 	name = "military .45 pistol"
+	icon_state = "secgundark"
 	desc = "The WT45 - a mass produced kinetic sidearm well-known in films and entertainment programming for being the daily carry choice issued to officers of the Sol Central Government Defense Forces. Uses .45 rounds."
-	icon_state = "usp"
+	icon_state = "secgundark"
 	accuracy = 0.35
 	fire_delay = 6.5
 
 /obj/item/weapon/gun/projectile/colt/officer/update_icon()
 	..()
 	if(ammo_magazine && ammo_magazine.stored_ammo.len)
-		icon_state = "usp"
+		icon_state = "secgundark"
 	else
-		icon_state = "usp-e"
+		icon_state = "secgundark-e"
 
 /obj/item/weapon/gun/projectile/sec
 	name = ".45 pistol"

@@ -64,7 +64,6 @@ proc/generate_random_prayer()//This generates a new one.
 
 //Reveals a random heretic
 /mob/living/proc/reveal_heretics()
-	to_world("In reveal heretics")
 	var/msg = " is one of them!"
 	var/name = ""
 	if (religion_is_legal())  //Non-heretics will say nothing
