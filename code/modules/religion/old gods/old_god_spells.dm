@@ -17,6 +17,11 @@
 
 	proc/spell_effect(var/mob/living/user)
 		to_world("Something is fucked up, you should not be seeing this.  It's from old god spell code, go tell a coder.")
+	
+	proc/get_player_from_paper(var/obj/item/weapon/paper/target_paper)
+		for(var/mob/player in GLOB.player_list)
+			if(findtext(target_paper.info, player.name))
+				return player
 
 /datum/old_god_spell/smoke_example
 	name = "Simple puff of smoke to demonstrate"

@@ -166,8 +166,6 @@
 		/obj/item/device/radio/headset/headset_sec,
 		/obj/item/weapon/storage/belt/security,
 		/obj/item/device/flash,
-		/obj/item/weapon/reagent_containers/spray/pepper,
-		/obj/item/weapon/grenade/chem_grenade/teargas,
 		/obj/item/weapon/melee/baton/loaded,
 		/obj/item/clothing/glasses/sunglasses/sechud,
 		/obj/item/taperoll/police,

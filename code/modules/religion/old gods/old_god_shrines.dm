@@ -19,7 +19,7 @@
 
 
 /obj/old_god_shrine/New()
-	shrine_religion = GLOB.all_religions[TEST_GOD]
+	near_camera()
 	return
 
 //Used when someone breaks a shrine
@@ -65,7 +65,7 @@
 		for(var/obj/item/a in get_step(src, DIRECTION_TO_VAL(direction)).contents)
 			if(istype(a, selected_spell.requirments[direction]))
 				found = TRUE
-				spell_components += a
+				spell_components[direction] = a
 		if (found == FALSE)
 			visible_message("<span class='notice'>\The [src] glows faintly, then falls dark</span>")
 			return
