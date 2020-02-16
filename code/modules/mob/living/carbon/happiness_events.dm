@@ -137,10 +137,21 @@
 	happiness = -12
 	timeout = 1800
 
+/datum/happiness_event/badsex
+	description = "<span class='warning'>Ugh, that sex was horrible.\n"
+	happiness = -4
+	timeout = 1800
+
 //For when you get branded.
 /datum/happiness_event/humiliated
 	description = "<span class='danger'>I've been humiliated, and I am embarassed.</span>\n"
 	happiness = -10
+	timeout = 1800
+
+//Good sex here too because why not.
+/datum/happiness_event/came
+	description = "<span class='binfo'>I came!\n"
+	happiness = 10
 	timeout = 1800
 
 //And when you've seen someone branded
