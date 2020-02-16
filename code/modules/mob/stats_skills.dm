@@ -72,7 +72,7 @@ proc/stat_to_modifier(var/stat)
 	return round((stat - 10) * 0.5)
 
 proc/strToDamageModifier(var/strength)
-	return strength * 0.05  //This is better then division
+	return strength * 0.1  //This is better then division
 
 proc/strToSpeedModifier(var/strength, var/w_class)//Looks messy. Is messy. Is also only used once. But I don't give a fuuuuuuuuck.
 	switch(strength)

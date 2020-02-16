@@ -249,7 +249,7 @@ meteor_act
 		return 0
 
 	if(user.stats["str"])//If they have strength then add it.
-		effective_force += stat_to_modifier(user.stats["str"])
+		effective_force *= strToDamageModifier(user.stats["str"])
 
 	// Handle striking to cripple.
 	if(user.a_intent == I_DISARM)
