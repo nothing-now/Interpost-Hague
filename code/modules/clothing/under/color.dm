@@ -30,7 +30,6 @@
 	desc = "The latest in space fashion."
 	icon_state = "jumpsuit"
 	item_state = "jumpsuit"
-	worn_state = "jumpsuit"
 
 // legacy colours - these are used somewhere in the game, but aren't available in the loadout
 
@@ -48,7 +47,7 @@
 	name = "grey jumpsuit"
 	desc = "A tasteful grey jumpsuit that reminds you of the good old days."
 	icon_state = "grey"
-	item_state = "gy_suit"
+	item_state = "grey_s"
 
 /obj/item/clothing/under/color/blue
 	name = "blue jumpsuit"
