@@ -190,7 +190,7 @@
 	icon_broken = "chaplainsecurebroken"
 	icon_off = "chaplainsecureoff"
 
-/obj/structure/closet/secure_closet/security/WillContain()
+/obj/structure/closet/secure_closet/security/arbiter/WillContain()
 		return list(
 		/obj/item/weapon/storage/backpack/satchel_black,
 		/obj/item/clothing/suit/storage/vest/arbiter,
