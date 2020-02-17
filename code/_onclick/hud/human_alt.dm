@@ -286,6 +286,17 @@
 	hud_elements |= mymob.stamina_icon
 
 
+	mymob.film_grain = new()
+	mymob.film_grain.icon = 'icons/effects/static.dmi'
+	mymob.film_grain.icon_state = "7 light"
+	mymob.film_grain.screen_loc = ui_entire_screen
+	mymob.film_grain.alpha = 130
+	mymob.film_grain.layer = FULLSCREEN_LAYER
+	mymob.film_grain.mouse_opacity = 0
+	hud_elements |= mymob.film_grain
+
+
+
 	mymob.rest = new /obj/screen()
 	mymob.rest.name = "rest"
 	mymob.rest.icon = ui_style
