@@ -2,6 +2,7 @@
 	name = "bullet"
 	icon_state = "bullet"
 	fire_sound = 'sound/weapons/gunshot/gunshot_strong.ogg'
+	impact_sounds = list(BULLET_IMPACT_MEAT = SOUNDS_BULLET_MEAT, BULLET_IMPACT_METAL = SOUNDS_BULLET_METAL)
 	damage = 60
 	damage_type = BRUTE
 	nodamage = 0

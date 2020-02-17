@@ -172,6 +172,7 @@
 	if(!Proj || Proj.nodamage)
 		return
 
+	bullet_impact_visuals(Proj)
 	adjustBruteLoss(Proj.damage)
 	return 0
 
@@ -348,7 +349,22 @@
 
 /mob/living/simple_animal/update_fire()
 	return
+
 /mob/living/simple_animal/IgniteMob()
 	return
+
 /mob/living/simple_animal/ExtinguishMob()
 	return
+
+/mob/living/simple_animal/bullet_impact_visuals(var/obj/item/projectile/P, var/def_zone)
+	..()
+	switch(get_bullet_impact_effect_type(def_zone))
+		if(BULLET_IMPACT_MEAT)
+			if(P.damtype == BRUTE)
+				var/hit_dir = get_dir(P.starting, src)
+				var/obj/effect/decal/cleanable/blood/B = blood_splatter(get_step(src, hit_dir), src, 1, hit_dir)
+				B.icon_state = pick("dir_splatter_1","dir_splatter_2")
+				var/scale = min(1, round(mob_size / MOB_MEDIUM, 0.1))
+				var/matrix/M = new()
+				B.transform = M.Scale(scale)
+				B.update_icon()

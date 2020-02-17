@@ -78,6 +78,7 @@
 			//the armour causes the heat energy to spread out, which reduces the damage (and the blood loss)
 			//this is mostly so that armour doesn't cause people to lose MORE fluid from lasers than they would otherwise
 			damage *= FLUIDLOSS_CONC_BURN/FLUIDLOSS_WIDE_BURN
+		bullet_impact_visuals(P, def_zone)
 		flags &= ~(DAM_SHARP|DAM_EDGE|DAM_LASER)
 
 	if(!P.nodamage)
@@ -85,6 +86,15 @@
 	P.on_hit(src, absorb, def_zone)
 
 	return absorb
+
+// For visuals and blood splatters etc
+/mob/living/proc/bullet_impact_visuals(var/obj/item/projectile/P, var/def_zone, var/damage)
+	var/list/impact_sounds = LAZYACCESS(P.impact_sounds, get_bullet_impact_effect_type(def_zone))
+	if(length(impact_sounds))
+		playsound(src, pick(impact_sounds), 75)
+
+/mob/living/get_bullet_impact_effect_type(var/def_zone)
+	return BULLET_IMPACT_MEAT
 
 /mob/living/proc/aura_check(var/type)
 	if(!auras)
