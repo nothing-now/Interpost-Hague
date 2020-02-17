@@ -590,6 +590,8 @@ its easier to just keep the beam vertical.
 	user.throw_at(target, 5, 0.5, user)
 	user.setClickCooldown(DEFAULT_SLOW_COOLDOWN)
 
+/atom/proc/get_color()
+
 /obj/screen/text/atom
 
 /client/MouseEntered(var/atom/a)
