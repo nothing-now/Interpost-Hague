@@ -130,6 +130,7 @@
 #include "code\_onclick\hud\global_hud.dm"
 #include "code\_onclick\hud\gun_mode.dm"
 #include "code\_onclick\hud\hud_alt.dm"
+#include "code\_onclick\hud\human.dm"
 #include "code\_onclick\hud\human_alt.dm"
 #include "code\_onclick\hud\movable_screen_objects.dm"
 #include "code\_onclick\hud\other_mobs.dm"
