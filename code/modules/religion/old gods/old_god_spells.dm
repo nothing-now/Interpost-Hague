@@ -29,7 +29,6 @@
 	old_god = "None"
 
 	spell_effect(var/mob/living/user, var/list/spell_components)
-		to_world("The smoke fucking worked?  Maybe the rest will (it won't")
 		var/datum/effect/effect/system/smoke_spread/smoke = new /datum/effect/effect/system/smoke_spread()
 		smoke.set_up(5, 0, user.loc)
 		smoke.attach(user)

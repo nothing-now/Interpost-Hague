@@ -18,6 +18,33 @@
 				x.empowered = TRUE
 				x.update_icon()
 
+/datum/old_god_spell/blind
+	name = "blind"
+	requirments =  list("NORTH" = /obj/item/clothing/glasses/sunglasses/,
+						"EAST" = /obj/item/weapon/flame/candle/,
+						"WEST" = /obj/item/weapon/flame/candle/,
+						"SOUTH" = /obj/item/organ/internal/eyes)
+	old_god = MESSIAH
+	
+	spell_effect(var/mob/living/user)
+		var/possible_targets = list()
+		for(var/mob/living/carbon/human/player in GLOB.player_list)
+			if(player.religion != MESSIAH)
+				possible_targets += player
+		var/mob/living/carbon/human/target = pick(possible_targets)
+		if(!target)	return 0
+		to_chat(target, "<span class='danger'>Your eyes burn horrificly!</span>")
+		target.disabilities |= BLIND
+		spawn(500)
+			playsound(target.loc, 'sound/effects/messiah_choir.ogg', 50, 1, -1)
+			target.disabilities &= ~BLIND
+			to_chat(target, "<span class='danger'>You blink rapidly as scales fall from your eyes.  You realize you've been following a false god.  Jes is the true Messiah!</span>")
+			target.religion = GLOB.all_religions[MESSIAH]
+			target.verbs += /mob/living/proc/make_shrine
+			target.verbs += /mob/living/proc/praise_god
+			target.verbs.Remove(/mob/living/proc/recite_prayer)
+
+
 /obj/item/crucifix
 	name = "Crucifix"
 	desc = "A small strangly carved symbol of the old church"
