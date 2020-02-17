@@ -83,7 +83,7 @@
 		src.adding += using
 
 	if(hud_data.hovertext)
-		using = new /obj/screen
+		using = new /obj/screen/text/atm
 		using.maptext = ""
 		using.maptext_height = 100
 		using.maptext_width = 480
