@@ -590,3 +590,11 @@ its easier to just keep the beam vertical.
 	user.throw_at(target, 5, 0.5, user)
 	user.setClickCooldown(DEFAULT_SLOW_COOLDOWN)
 
+/obj/screen/text/atom
+
+/client/MouseEntered(var/atom/a)
+	if(mob && ishuman(mob) && !istype(a, /obj/screen))
+		var/mob/living/carbon/human/H = mob
+		H.hovertext.maptext = "<center><span style=\"color: orange; font-family: 'Arial Black', Gadget, sans-serif;\">[a.name]</span></center>"
+
+
