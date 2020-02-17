@@ -1,5 +1,5 @@
 //Amount of time in deciseconds to wait before deleting all drawn segments of a projectile.
-#define SEGMENT_DELETION_DELAY 5
+#define SEGMENT_DELETION_DELAY 3
 
 /obj/item/projectile
 	name = "projectile"
