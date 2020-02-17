@@ -10,3 +10,5 @@
 #define MATERIAL_PLASTIC_TYPE   /obj/item/stack/material/plastic/
 #define MATERIAL_PLASTEEL_TYPE /obj/item/stack/material/plasteel/
 #define MATERIAL_CARDBOARD_TYPE /obj/item/stack/material/cardboard/
+
+#define MATERIAL_NULLGLASS /obj/item/stack/material/nullglass

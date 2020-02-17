@@ -555,4 +555,3 @@ datum/controller/vote/proc/is_addantag_allowed(var/automatic)
 
 	if(vote)
 		src << browse(vote.interface(client),"window=vote;size=450x740")
-
