@@ -26,7 +26,7 @@
 	using = new /obj/screen() //Right hud bar
 	using.dir = SOUTH
 	using.icon = ui_style
-	using.icon_state = "bg"
+	using.icon_state = "bg" 
 	using.screen_loc = "EAST+1,SOUTH to EAST+1,NORTH"
 	using.layer = UNDER_HUD_LAYER
 	adding += using
