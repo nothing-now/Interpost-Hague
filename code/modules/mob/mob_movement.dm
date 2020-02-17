@@ -480,15 +480,16 @@
 ///For moving in space
 ///Return 1 for movement 0 for none
 /mob/proc/Process_Spacemove(var/check_drift = 0)
-
 	if(!Check_Dense_Object()) //Nothing to push off of so end here
-		update_floating(0)
+		update_floating()
 		return 0
-
-	update_floating(1)
 
 	if(restrained()) //Check to see if we can do things
 		return 0
+
+	update_floating()
+	return 1
+
 
 /mob/proc/check_solid_ground()
 	if(istype(loc, /turf/space))
