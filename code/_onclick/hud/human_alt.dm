@@ -26,7 +26,7 @@
 	using = new /obj/screen() //Right hud bar
 	using.dir = SOUTH
 	using.icon = ui_style
-	using.icon_state = "bg" 
+	using.icon_state = "bg"
 	using.screen_loc = "EAST+1,SOUTH to EAST+1,NORTH"
 	using.layer = UNDER_HUD_LAYER
 	adding += using
@@ -81,6 +81,14 @@
 		using.color = ui_color
 		using.alpha = ui_alpha
 		src.adding += using
+
+	if(hud_data.hovertext)
+		using = new /obj/screen
+		using.maptext = ""
+		using.maptext_height = 100
+		using.maptext_width = 480
+		using.screen_loc = "CENTER-7, CENTER+7"
+		hud_elements |= using
 
 	// Draw the attack intent dialogue.
 	if(hud_data.has_a_intent)
