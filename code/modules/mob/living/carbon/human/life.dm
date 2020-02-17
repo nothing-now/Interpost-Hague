@@ -737,7 +737,7 @@
 					grain.icon_state = "4 heavy"
 					grain.alpha = 255
 				else
-					grain.icon_state = "7 light"
+					grain.icon_state = "9 medium"
 					grain.alpha = 118
 		else
 			clear_fullscreen("brute")
