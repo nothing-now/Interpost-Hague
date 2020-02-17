@@ -36,6 +36,7 @@
 	var/obj/screen/gun/move/gun_move_icon = null
 	var/obj/screen/gun/run/gun_run_icon = null
 	var/obj/screen/gun/mode/gun_setting_icon = null
+	var/obj/screen/film_grain = null
 	var/obj/screen/stamina_icon = null
 	var/obj/screen/kick_icon = null
 	var/obj/screen/jump_icon = null

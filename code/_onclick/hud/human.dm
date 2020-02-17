@@ -266,6 +266,17 @@
 	mymob.fixeye.screen_loc = ui_fixeye
 	hud_elements |= mymob.fixeye
 
+	// draw the aesthetic overlay.
+
+	mymob.film_grain = new()
+	mymob.film_grain.icon = 'icons/effects/static.dmi'
+	mymob.film_grain.icon_state = "7 light"
+	mymob.film_grain.screen_loc = ui_entire_screen
+	mymob.film_grain.alpha = 118
+	mymob.film_grain.layer = FULLSCREEN_LAYER
+	mymob.film_grain.mouse_opacity = 0
+	hud_elements |= mymob.film_grain
+
 	mymob.pain = new /obj/screen( null )
 	mymob.pain.icon = ui_style
 	mymob.pain.icon_state = "blank"
