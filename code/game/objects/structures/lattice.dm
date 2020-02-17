@@ -10,11 +10,9 @@
 	layer = LATTICE_LAYER
 	//	obj_flags = OBJ_FLAG_CONDUCTIBLE
 
-/obj/structure/lattice/Initialize()
+/obj/structure/lattice/Initialize(mapload, var/new_material)
 	. = ..()
-///// Z-Level Stuff
 	if(!(istype(src.loc, /turf/space) || istype(src.loc, /turf/simulated/open)))
-///// Z-Level Stuff
 		return INITIALIZE_HINT_QDEL
 	for(var/obj/structure/lattice/LAT in loc)
 		if(LAT != src)
@@ -75,11 +73,6 @@
 			return
 	return
 
-/obj/structure/lattice/proc/updateOverlays()
-	//if(!(istype(src.loc, /turf/space)))
-	//	qdel(src)
-	spawn(1)
-		overlays = list()
 
 		var/dir_sum = 0
 
@@ -94,3 +87,19 @@
 
 		icon_state = "lattice[dir_sum]"
 		return
+
+/obj/structure/lattice/proc/updateOverlays()
+	overlays.Cut()
+
+	var/dir_sum = 0
+
+	var/turf/T
+	for (var/direction in GLOB.cardinal)
+		T = get_step(src, direction)
+		if(locate(/obj/structure/lattice, T) || locate(/obj/structure/catwalk, T))
+			dir_sum += direction
+		else
+			if(!(istype(get_step(src, direction), /turf/space)) && !(istype(get_step(src, direction), /turf/simulated/open)))
+				dir_sum += direction
+
+	icon_state = "lattice[dir_sum]"
