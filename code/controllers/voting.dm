@@ -549,11 +549,11 @@ datum/controller/vote/proc/is_addantag_allowed(var/automatic)
 	else
 		return (ticker.mode.addantag_allowed & ADDANTAG_PLAYER) && !antag_add_finished
 
-
-
+/*
 /mob/verb/vote()
 	set category = "OOC"
 	set name = "Vote"
 
 	if(vote)
 		src << browse(vote.interface(client),"window=vote;size=450x740")
+*/
