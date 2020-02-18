@@ -733,10 +733,6 @@
 				if(85 to INFINITY)	severity = 6
 			overlay_fullscreen("brute", /obj/screen/fullscreen/brute, severity)
 			if(grain)
-				if(severity >= 5) // disorienting blur
-					grain.icon_state = "4 heavy"
-					grain.alpha = 255
-				else
 					grain.icon_state = "9 medium"
 					grain.alpha = 130
 		else
