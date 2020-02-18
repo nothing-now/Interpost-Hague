@@ -10,9 +10,9 @@
 		hud_data = target.species.hud
 
 	if(hud_data.icon)
-		ui_style = 'icons/mob/screen/orange_luna.dmi'//hud_data.icon
+		ui_style = 'icons/mob/screen/dark.dmi'//hud_data.icon
 	else
-		ui_style = 'icons/mob/screen/orange_luna.dmi'
+		ui_style = 'icons/mob/screen/dark.dmi'
 
 	src.adding = list()
 	src.other = list()
