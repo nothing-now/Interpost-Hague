@@ -175,6 +175,7 @@
 					if(do_after(user,100))//Losing your tongue is a pretty big deal, it should take a while.
 						var/obj/item/tongue/T = O.tongue
 						T.removed = TRUE
+						H.tongueless = TRUE
 						H.visible_message("<span class='danger'>[user] cuts out [H]'s tongue with [src]!</span>",
 								"<span class='danger'>[user] cuts out your tongue with [src]!</span>")
 						new T.type(H.loc, 1)
