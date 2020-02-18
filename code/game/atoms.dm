@@ -595,7 +595,16 @@ its easier to just keep the beam vertical.
 
 /obj/screen/text/atm
 
+/*
 /client/MouseEntered(var/atom/a)
-	if(mob && ishuman(mob) && !istype(a, /obj/screen))
-		var/mob/living/carbon/human/H
-			H.using.maptext = "<center><span style=\"color: orange; font-family: 'Arial Black', Gadget, sans-serif;\">[a.name]</span></center>"
+	if(mob && ishuman(mob))
+		var/mob/living/carbon/human/H = mob
+		if(a.mouse_opacity)  // i spread this out to make it more "readable"
+			H.hovertext.maptext = "<center><span style=\"\
+			color: #226c09; \
+			font-family: 'Arial Black', Gadget, sans-serif; \
+			\">[uppertext(a.name)]\
+			</span></center>"
+		else
+			H.hovertext.maptext = ""  // ui is blank
+*/

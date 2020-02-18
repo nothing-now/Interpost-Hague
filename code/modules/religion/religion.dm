@@ -197,4 +197,3 @@ proc/generate_random_prayer()//This generates a new one.
 			S.add_fingerprint(src)
 			return 1
 	return 0
-
