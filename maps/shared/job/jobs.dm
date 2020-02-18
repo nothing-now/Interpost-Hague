@@ -20,10 +20,10 @@
 						/datum/job/janitor,
 						/datum/job/arbiter,
 						/datum/job/supreme_arbiter
-						///datum/job/cadet,
-						///datum/job/jr_upkeep,
 						/datum/job/rd,
 						/datum/job/scientist,
+						///datum/job/cadet,
+						///datum/job/jr_upkeep,
 						///datum/job/raider,
 						///datum/job/raider/leader
 						)
