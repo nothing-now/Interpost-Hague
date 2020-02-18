@@ -733,8 +733,8 @@
 				if(85 to INFINITY)	severity = 6
 			overlay_fullscreen("brute", /obj/screen/fullscreen/brute, severity)
 			if(grain)
-					grain.icon_state = "9 medium"
-					grain.alpha = 130
+				grain.icon_state = "9 medium"
+				grain.alpha = 130
 		else
 			clear_fullscreen("brute")
 
