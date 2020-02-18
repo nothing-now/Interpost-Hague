@@ -14,14 +14,14 @@
 
 	allowed_spawns = list("Arrivals Shuttle")
 
-	station_name  = "Space Station Frontier"
+	station_name  = "The Duchy of Algol, Frontier Outpost"
 	station_short = "Frontier"
 	dock_name     = "NTTM1-54 Relay"
-	boss_name     = "Colonial Magistrate Council"
-	boss_short    = "Council"
-	company_name  = "Colonial Magistrate Authority"
-	company_short = "CMA"
-	system_name = "somewhere in space"
+	boss_name     = "Kingdom Relay System"
+	boss_short    = "Kingdom"
+	company_name  = "Kingdom Relay System"
+	company_short = "KRS"
+	system_name = "Algol System"
 
 	id_hud_icons = 'maps/dreyfus/icons/assignment_hud.dmi'
 
