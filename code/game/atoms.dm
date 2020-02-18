@@ -595,7 +595,7 @@ its easier to just keep the beam vertical.
 
 /obj/screen/text/atm
 
-
+/*
 /client/MouseEntered(var/atom/a)
 	if(mob && ishuman(mob))
 		var/mob/living/carbon/human/H = mob
@@ -607,6 +607,6 @@ its easier to just keep the beam vertical.
 			</span></center>"
 		else
 			H.hovertext.maptext = ""  // ui is blank
-
+*/
 
 

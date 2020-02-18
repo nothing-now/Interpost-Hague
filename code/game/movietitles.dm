@@ -57,7 +57,7 @@ client
 	var/client/parent
 	var/matrix/target
 
-/obj/screen/credit/Initialize(mapload, credited, client/P)
+/obj/screen/credit/New(mapload, credited, client/P)
 	. = ..()
 	parent = P
 	maptext = credited
@@ -114,11 +114,14 @@ client
 		if(GetAssignment(H) != "Unassigned")
 			job = ", [uppertext(GetAssignment(H))]"
 		var/used_name = H.real_name
+		/*
 		var/datum/computer_file/crew_record/R = get_crewmember_record(H.real_name)
+		I don't think we need this anymore, but it could be cool later
 		if(R && R.get_rank())
 			var/datum/mil_rank/rank = mil_branches.get_rank(R.get_branch(), R.get_rank())
 			if(rank.name_short)
 				used_name = "[rank.name_short] [used_name]"
+		*/
 		if(prob(90))
 			var/actor_name = H.species.get_random_name(H.gender)
 			if(!(H.species.spawn_flags & SPECIES_CAN_JOIN) || prob(10)) //sometimes can't get actor of thos species
