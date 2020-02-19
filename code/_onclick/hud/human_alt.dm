@@ -87,7 +87,9 @@
 		using.maptext = ""
 		using.maptext_height = 100
 		using.maptext_width = 480
-		using.screen_loc = "CENTER-7, CENTER+7"
+		using.screen_loc = ui_hovertext
+		using.color = ui_color
+		using.alpha = ui_alpha
 		hud_elements |= using
 
 	// Draw the attack intent dialogue.
