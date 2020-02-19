@@ -187,12 +187,14 @@
 	flags = IGNORE_MOB_SIZE
 
 /datum/reagent/paracetamol/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
-	M.add_chemical_effect(CE_PAINKILLER, 25)
+	M.add_chemical_effect(CE_PAINKILLER, 15)
 
 /datum/reagent/paracetamol/overdose(var/mob/living/carbon/M, var/alien)
 	..()
 	M.druggy = max(M.druggy, 2)
 	M.add_chemical_effect(CE_PAINKILLER, 10)
+	M.add_chemical_effect(CE_BREATHLOSS, 0.3) //Have trouble breathing, need more air
+	M.add_chemical_effect(CE_TOXIN, 0.5)
 
 /datum/reagent/tramadol
 	name = "Tramadol"
@@ -240,6 +242,7 @@
 	M.druggy = max(M.druggy, 10)
 	M.add_chemical_effect(CE_PAINKILLER, pain_power*0.5) //extra painkilling for extra trouble
 	M.add_chemical_effect(CE_BREATHLOSS, 0.6) //Have trouble breathing, need more air
+	M.add_chemical_effect(CE_TOXIN, 1)
 	if(isboozed(M))
 		M.add_chemical_effect(CE_BREATHLOSS, 0.2) //Don't drink and OD on opiates folks
 
