@@ -183,7 +183,7 @@ client
 					 This motion picture is protected under the copyright laws of the Sol Central Government<br> and other nations throughout the galaxy.<br>\
 					 Colony of First Publication: [pick("Mars", "Luna", "Earth", "Venus", "Phobos", "Ceres", "Tiamat", "Ceti Epsilon", "Eos", "Pluto", "Ouere",\
 					 "Lordania", "Kingston", "Cinu", "Yuklid V", "Lorriman", "Tersten", "Gaia")].<br>"
-	disclaimer += pick("Use for parody prohibited. PROHIBITED.", 
+	disclaimer += pick("Use for parody prohibited.", 
 					   "All stunts were performed by underpaid interns. Do NOT try at home.",
 					   "[GLOB.using_map.company_name] does not endorse behaviour depicted. Attempt at your own risk.",
 					   "Any unauthorized exhibition, distribution, or copying of this film or any part thereof (including soundtrack)<br>\
