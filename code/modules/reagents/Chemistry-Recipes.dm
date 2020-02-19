@@ -160,7 +160,7 @@
 /datum/chemical_reaction/pacid
 	name = "Polytrinic acid"
 	result = /datum/reagent/acid/polyacid
-	required_reagents = list(/datum/reagent/acid = 1, /datum/reagent/acid/hydrochloric = 1, /datum/reagent/potassium = 1)
+	required_reagents = list(/datum/reagent/acid = 3, /datum/reagent/acid/hydrochloric = 6, /datum/reagent/potassium = 10, /datum/reagent/toxin/potassium_chlorophoride = 1, /datum/reagent/surfactant = 5)
 	result_amount = 3
 
 /datum/chemical_reaction/synaptizine
