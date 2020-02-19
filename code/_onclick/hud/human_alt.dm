@@ -82,15 +82,23 @@
 		using.alpha = ui_alpha
 		src.adding += using
 
-	if(hud_data.hovertext)
-		using = new /obj/screen/text/atm
-		using.maptext = ""
-		using.maptext_height = 100
-		using.maptext_width = 480
-		using.screen_loc = ui_hovertext
-		using.color = ui_color
-		using.alpha = ui_alpha
-		hud_elements |= using
+	if(ishuman(mymob))
+		var/mob/living/carbon/human/H = mymob
+		H.fov = new /obj/screen()
+		H.fov.icon = 'icons/mob/hide.dmi'
+		H.fov.icon_state = "combat"
+		H.fov.name = " "
+		H.fov.screen_loc = "1,1"
+		H.fov.mouse_opacity = 0
+		H.fov.layer = UNDER_HUD_LAYER
+		hud_elements |= H.fov
+
+		H.hovertext = new /obj/screen/text/atm
+		H.hovertext.maptext = ""
+		H.hovertext.maptext_height = 100
+		H.hovertext.maptext_width = 480
+		H.hovertext.screen_loc = "CENTER-7, CENTER+7"
+		hud_elements |= H.hovertext
 
 	// Draw the attack intent dialogue.
 	if(hud_data.has_a_intent)
@@ -295,7 +303,6 @@
 	mymob.stamina_icon.screen_loc = ui_stamina
 	hud_elements |= mymob.stamina_icon
 
-
 	mymob.film_grain = new()
 	mymob.film_grain.icon = 'icons/effects/static.dmi'
 	mymob.film_grain.icon_state = "7 light"
@@ -304,8 +311,6 @@
 	mymob.film_grain.layer = FULLSCREEN_LAYER
 	mymob.film_grain.mouse_opacity = 0
 	hud_elements |= mymob.film_grain
-
-
 
 	mymob.rest = new /obj/screen()
 	mymob.rest.name = "rest"
@@ -331,6 +336,15 @@
 	mymob.jump_icon.name = "jump"
 	mymob.jump_icon.screen_loc = ui_atk
 	hud_elements |= mymob.jump_icon
+
+/*
+	mymob.skills_family = new /obj/screen()
+	mymob.skills_family = ui_style
+	mymob.skills_family.icon_state = "family_skills"
+	mymob.skills_family.name = "skills_family"
+	mymob.fixeye.screen_loc = ui_skills_family
+	hud_elements |= mymob.skills_family
+*/
 
 	mymob.fixeye = new /obj/screen()
 	mymob.fixeye.icon = ui_style
