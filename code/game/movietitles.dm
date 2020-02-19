@@ -20,7 +20,7 @@ client
 		mob.overlay_fullscreen("fishbed",/obj/screen/fullscreen/fishbed)
 		mob.overlay_fullscreen("fadeout",/obj/screen/fullscreen/fadeout)
 
-		if(mob.get_preference_value(/datum/client_preference/play_lobby_music) == GLOB.pref_yes)
+		if(mob.get_preference_value(/datum/client_preference/play_lobby_music) == GLOB.PREF_YES)
 			sound_to(mob, sound(null, channel = 1))
 			sound_to(mob, sound('sound/music/THUNDERDOME.ogg', wait = 0, volume = 40, channel = 1))
 	sleep(50)
