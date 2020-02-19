@@ -157,7 +157,7 @@ client
 		titles += "<center>BASED ON REAL EVENTS<br>In memory of [english_list(corpses)].</center>"
 
 	var/list/staff = list("PRODUCTION STAFF:")
-	var/list/staffjobs = list("Coffe Fetcher", "Cameraman", "Angry Yeller", "Chair Operator", "Choreographer", "Historical Consultant", "Costume Designer", "Chief Editor", "Executive Assistant")
+	var/list/staffjobs = list("Coffee Fetcher", "Cameraman", "Angry Yeller", "Chair Operator", "Choreographer", "Historical Consultant", "Costume Designer", "Chief Editor", "Executive Assistant")
 	var/list/goodboys = list()
 	for(var/client/C)
 		if(!C.holder)
@@ -174,7 +174,7 @@ client
 		titles += "<center>STAFF'S GOOD BOYS:<br>[english_list(goodboys)]</center>"
 
 	var/disclaimer = "Sponsored by [GLOB.using_map.company_name].<br>All rights reserved.<br>"
-	disclaimer += pick("Use for parody prohibited. Prohibited.", "All stunts were performed by underpaid interns. Do NOT try at home.", "[GLOB.using_map.company_name] does not endorse behaviour depicted. Attempt at your own risk.")
+	disclaimer += pick("Use for parody prohibited.", "All stunts were performed by underpaid interns. Do NOT try at home.", "[GLOB.using_map.company_name] does not endorse behaviour depicted. Attempt at your own risk.")
 	titles += "<center>[disclaimer]</center>"
 
 	return titles
