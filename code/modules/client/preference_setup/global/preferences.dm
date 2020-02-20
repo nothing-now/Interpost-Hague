@@ -101,9 +101,7 @@ var/list/_client_preferences_by_type
 /datum/client_preference/show_item_names/changed(var/mob/preference_mob, var/new_value)
 	if(ishuman(preference_mob))
 		var/mob/living/carbon/human/H = preference_mob
-		if(new_value == GLOB.PREF_YES)
-			H.hovertext.maptext = ""
-		else
+		if(new_value == GLOB.PREF_NO)
 			H.hovertext.maptext = ""
 			
 
