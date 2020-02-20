@@ -586,8 +586,9 @@ its easier to just keep the beam vertical.
 	//Nice, we can jump, let's do that then.
 	playsound(user, user.gender == MALE ? 'sound/effects/jump_male.ogg' : 'sound/effects/jump_female.ogg', 25, 0, 1)
 	user.visible_message("[user] jumps.")
-	user.adjustStaminaLoss(rand(20,40))//Jumping is exhausting.
-	user.throw_at(target, 5, 0.5, user)
+	user.turf_collision
+	user.adjustStaminaLoss(rand(30,50))//Jumping is exhausting.
+	user.throw_at(target, 3, 0.5, user)
 	user.setClickCooldown(DEFAULT_SLOW_COOLDOWN)
 
 /atom/proc/get_color()
