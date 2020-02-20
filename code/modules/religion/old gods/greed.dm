@@ -2,6 +2,7 @@
 	name = GREED
 	holy_item = new /obj/item/weapon/coin/gold()
 	shrine = /obj/old_god_shrine/greed_shrine
+	var/bloodgold = FALSE
 
 /datum/old_god_spell/debt
 	name = "Debt"
@@ -30,9 +31,9 @@
 		to_chat(user, "<span class='danger'>You hear a sinister voice whisper unspeakable acts in your mind, promising untold profits</span>")
 		var/sound = "sound/effects/badmood[pick(1,4)].ogg"
 		playsound(get_turf(user), sound,50,1)
-		GLOB.all_religions[GREED] = TRUE
+		GLOB.all_religions[GREED].bloodgold = TRUE
 		spawn(300) //30 seconds
-			GLOB.all_religions[GREED] = FALSE
+			GLOB.all_religions[GREED].bloodgold = FALSE
 	
 /obj/old_god_shrine/greed_shrine
 	name = "Gozag Ym Sagoz shrine"

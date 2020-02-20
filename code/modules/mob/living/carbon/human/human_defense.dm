@@ -311,7 +311,7 @@ meteor_act
 		resolve_critical_hit()
 
 	//Blood to gold
-	if(GLOB.all_religions["Gozag Ym Sagoz"])
+	if(GLOB.all_religions["Gozag Ym Sagoz"].bloodgold)
 		var/datum/transaction/T = new("Gozag Ym Sagoz", "Blood money", -effective_force)
 		spawn_money(round(effective_force),src.loc,null)
 		mind.initial_account.do_transaction(T)

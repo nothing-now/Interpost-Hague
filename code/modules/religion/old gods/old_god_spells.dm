@@ -23,6 +23,7 @@
 		for(var/mob/player in GLOB.player_list)
 			if(findtext(target_paper.info, player.name))
 				return player
+
 	//Consumes the spell componenets before casting.  Some spells may want to leave some items behind, and it's more efficient if they specify as well
 	proc/spell_consume(var/list/spell_components)
 		for(var/direction in spell_components)
