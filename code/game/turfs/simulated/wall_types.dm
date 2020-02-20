@@ -77,8 +77,6 @@
 
 /turf/simulated/wall/other_rwall
 	icon = 'icons/turf/wwalls.dmi'
-	icon_state = 'r_wall_01'
 
 /turf/simulated/wall/other_gwall
 	icon = 'icons/turf/gwalls.dmi'
-	icon_state = 'r_wall_other'
