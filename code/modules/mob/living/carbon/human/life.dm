@@ -977,7 +977,7 @@
 		emote("moan")
 
 	if (shock_stage >= 60)
-		if(shock_stage == 60)
+		//if(shock_stage == 60)
 		visible_message("<b>[src]</b>'s body becomes limp.")
 		if (prob(2))
 			custom_pain("[pick("The pain is excruciating", "Please, just end the pain")]!", shock_stage, nohalloss = 0)
