@@ -17,7 +17,7 @@
 /obj/structure/railing
 	name = "railing"
 	desc = "A standard steel railing. Prevents human stupidity."
-	icon = 'maps/dreyfus/icons/railing.dmi'
+	icon = 'icons/obj/railing.dmi'
 	density = 1
 	throwpass = 1
 	//layer = 3.2//Just above doors 	//Layers mean nothing.
@@ -34,7 +34,13 @@
 	//var/RightSide = list(0,0,0)
 	var/check = 0
 
-/obj/structure/railing/New(loc, constructed=0)
+/obj/structure/railing/grey	
+	name = "grey railing"	
+	desc = "A standard steel railing. Prevents stupid people from falling to their doom."	
+	icon_modifier = "grey_"	
+	icon_state = "grey_railing0"
+
+/obj/structure/railing/Initialize(loc, constructed=0)
 	..()
 	if (constructed)	//player-constructed railings
 		anchored = 0
