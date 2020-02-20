@@ -111,7 +111,7 @@ proc/generate_random_prayer()//This generates a new one.
 
 /* ILLEGAL RELIGION PROCS */
 /datum/religion/proc/claim_territory(area/territory,var/claiming_religion)
-	GLOB.all_religions[claiming_religion].territories += territory.name
+	GLOB.all_religions[claiming_religion].territories |= territory.name
 	return
 
 /datum/religion/proc/lose_territory(area/territory,var/claiming_religion)

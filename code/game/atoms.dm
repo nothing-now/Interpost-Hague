@@ -596,7 +596,7 @@ its easier to just keep the beam vertical.
 /obj/screen/text/atm
 
 /client/MouseEntered(var/atom/a)
-	if(mob && ishuman(mob))
+	if(mob && ishuman(mob) && mob.get_preference_value(/datum/client_preference/show_item_names) == GLOB.PREF_YES)
 		var/mob/living/carbon/human/H = mob
 		if(a.mouse_opacity)  // i spread this out to make it more "readable"
 			H.hovertext.maptext = "<center><span style=\"\

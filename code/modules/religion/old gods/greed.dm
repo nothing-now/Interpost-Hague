@@ -23,19 +23,22 @@
 
 /datum/old_god_spell/blood_gold
 	name = "Blood gold"
-	requirments =  list("SOUTHEAST" = /obj/item/weapon/flame/candle/,
-						"EAST" = /obj/item/weapon/flame/candle/,
-						"WEST" = /obj/item/weapon/flame/candle/,
-						"SOUTH" = /obj/item/weapon/flame/candle/)
+	requirments =  list("SOUTHEAST" = /obj/item/weapon/flame/candle/)
 	old_god = GREED
 
 	spell_effect(var/mob/living/user)
-		to_world("for a short time, enemies bleed money.  Literally")
+		to_chat(user, "<span class='danger'>You hear a sinister voice whisper unspeakable acts in your mind, promising untold profits</span>")
+		var/sound = "sound/effects/badmood[pick(1,4)].ogg"
+		playsound(get_turf(user), sound,50,1)
+		GLOB.all_religions[GREED] = TRUE
+		spawn(300) //30 seconds
+			GLOB.all_religions[GREED] = FALSE
 	
 /obj/old_god_shrine/greed_shrine
 	name = "Gozag Ym Sagoz shrine"
 	shrine_religion = GREED
 	icon_state = "alter_03"
+	var/spell_to_blood = FALSE
 
 /obj/old_god_shrine/greed_shrine/New()
 	..()
@@ -66,7 +69,7 @@ Debt contract
 		return -1
 	target = nOwner.mind
 	update_text(target1,target2)
-	spawn(600)
+	spawn(3000)
 		for(var/datum/money_account/acounts in all_money_accounts)
 			if(acounts.owner_name == target2.name)
 				for(var/datum/transaction/T in acounts.transaction_log)

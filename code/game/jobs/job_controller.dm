@@ -524,6 +524,7 @@ var/global/datum/controller/occupations/job_master
 			else
 				//Pick an old god other then the template
 				//to_world("RELIGION TESTING FIX THIS")
+				//H.religion = "Your god here"
 				H.religion = pick(GLOB.all_religions - ILLEGAL_RELIGION - LEGAL_RELIGION)
 				to_chat(H, "You are a worshipper of the <b><font color='red'>[H.religion]</font>. It is not a legal religion of this land. Do not be caught by the <b>Inquisition</b>. Check your notes for who your brothers and sisters are.")
 				H.verbs += /mob/living/proc/make_shrine

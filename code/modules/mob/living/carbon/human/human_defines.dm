@@ -121,3 +121,4 @@
 	var/usefov = 1
 	var/decaylevel = 0 //For rotting bodies
 	var/branded = null	//For whether or not they've been branded, and what they've been branded with.
+	var/spell_flags = null
