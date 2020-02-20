@@ -21,7 +21,7 @@
 						/datum/job/arbiter,
 						/datum/job/supreme_arbiter,
 						/datum/job/rd,
-						/datum/job/scientist,
+						///datum/job/scientist,
 						///datum/job/cadet
 						///datum/job/jr_upkeep
 						///datum/job/raider
@@ -165,7 +165,7 @@
 		H.generate_stats("int")
 
 /datum/job/rd
-	title = "Research Director"
+	title = "Court Magus"
 	supervisors = "the Count"
 	minimal_player_age = 21
 	economic_modifier = 9
