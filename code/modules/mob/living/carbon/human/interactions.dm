@@ -90,7 +90,7 @@
 	if (hashands)
 		if(H.partner.age >= 16)
 			if(H.partner.species.name != "Human")
-					return 0
+				return 0
 				dat +=  {"<font size=3><B>Hands:</B></font><BR>"}
 				if (Adjacent(P))
 					dat +=  {"<A href='?src=\ref[usr];interaction=handshake'>Give handshake.</A><BR>"}
