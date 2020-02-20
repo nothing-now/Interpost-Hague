@@ -401,6 +401,14 @@
 		hit(damage_per_fire_tick, 0)
 	..()
 
+/obj/structure/window/hitby(atom/movable/AM as mob|obj, var/speed)
+	if(src.density)
+		spawn(2)
+			step(AM, turn(AM.last_move, 180))
+		if(isliving(AM))
+			var/mob/living/M = AM
+			M.turf_collision(src, speed)
+
 
 
 /obj/structure/window/basic
