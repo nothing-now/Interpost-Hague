@@ -660,7 +660,7 @@ default behaviour is:
 
 	if(gaspsound)
 		playsound(src, gaspsound, 25, 0, 1)
-	if(!statcheck(stats["con"],15,"I'm too tried to keep going...","con"))
+	if(!statcheck(stats["con"],15,"I'm too tired to keep going.","con"))
 		Weaken(5)
 	setStaminaLoss(185)  //Give them a bit of stamina back to avoid calling this multiple times
 

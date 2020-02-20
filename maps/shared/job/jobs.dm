@@ -140,6 +140,8 @@
 	ideal_character_age = 65
 	outfit_type = /decl/hierarchy/outfit/job/dreyfus/magistrate
 	social_class = SOCIAL_CLASS_MAX
+	sex_lock = MALE
+
 
 	equip(var/mob/living/carbon/human/H)
 		..()
@@ -158,6 +160,7 @@
 	spawn_positions = 1
 	outfit_type = /decl/hierarchy/outfit/job/dreyfus/adjoint
 	social_class = SOCIAL_CLASS_HIGH
+	sex_lock = MALE
 
 	equip(var/mob/living/carbon/human/H)
 		..()
@@ -165,7 +168,7 @@
 		H.generate_stats("int")
 
 /datum/job/rd
-	title = "Research Director"
+	title = "Court Magus"
 	supervisors = "the Count"
 	minimal_player_age = 21
 	economic_modifier = 9
@@ -174,6 +177,7 @@
 	spawn_positions = 1
 	outfit_type = /decl/hierarchy/outfit/job/science/superviseur
 	social_class = SOCIAL_CLASS_HIGH
+	sex_lock = MALE
 	access = list(access_medical, access_medical_equip, access_morgue, access_genetics, access_heads, access_tox,
 			access_chemistry, access_virology, access_cmo, access_surgery, access_RC_announce,
 			access_keycard_auth, access_sec_doors, access_psychiatrist, access_eva, access_maint_tunnels, access_external_airlocks,
@@ -188,6 +192,7 @@
 			access_RC_announce, access_keycard_auth, access_tcomsat, access_gateway, access_xenoarch, access_network, access_rd, access_research, access_medical, access_morgue, access_medical_equip)
 
 	equip(var/mob/living/carbon/human/H)
+		H.set_species("Machine")
 		..()
 		//H.add_stats(rand(5,7), rand(5,8), rand(12,15))
 		H.generate_stats("int")
@@ -199,12 +204,13 @@
 	minimal_player_age = 19
 	economic_modifier = 2
 	ideal_character_age = 30
-	total_positions = 3
+	total_positions = 1
 	spawn_positions = 3
 	access = list(access_robotics, access_tox, access_tox_storage, access_research, access_xenobiology, access_xenoarch, access_robotics)
 	minimal_access = list(access_tox, access_tox_storage, access_research, access_xenoarch, access_robotics)
 
 	equip(var/mob/living/carbon/human/H)
+		H.set_species("Machine")
 		..()
 		//H.add_stats(rand(5,7), rand(5,8), rand(10,14))
 		H.generate_stats("int")
@@ -253,6 +259,7 @@
 	spawn_positions = 1
 	selection_color = "#601c1c"
 	economic_modifier = 5
+	sex_lock = MALE
 	access = list(access_security, access_eva, access_sec_doors, access_brig, access_armory,
 			            access_forensics_lockers, access_morgue, access_maint_tunnels, access_all_personal_lockers,
 			            access_research, access_engine, access_mining, access_medical, access_construction, access_mailsorting,
@@ -279,6 +286,7 @@
 	total_positions = 4
 	spawn_positions = 4
 	economic_modifier = 3
+	sex_lock = MALE
 	access = list(access_security, access_eva, access_sec_doors, access_brig, access_maint_tunnels, access_morgue, access_external_airlocks)
 	minimal_access = list(access_security, access_eva, access_sec_doors, access_brig, access_maint_tunnels, access_external_airlocks)
 	minimal_player_age = 0
@@ -298,6 +306,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	economic_modifier = 3
+	sex_lock = MALE
 	access = list(access_security, access_eva, access_sec_doors, access_maint_tunnels, access_morgue, access_external_airlocks, access_detoffice)
 	minimal_access = list(access_security, access_eva, access_sec_doors, access_maint_tunnels, access_external_airlocks, access_detoffice)
 	minimal_player_age = 0
@@ -334,6 +343,7 @@
 	total_positions = 3
 	spawn_positions = 3
 	alt_titles = null
+	sex_lock = MALE
 	outfit_type = /decl/hierarchy/outfit/job/dreyfus/inge/inge
 	access = list(access_eva, access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels, access_external_airlocks, access_construction, access_atmospherics, access_emergency_storage, access_tcomsat)
 	minimal_access = list(access_eva, access_engine, access_engine_equip, access_tech_storage, access_maint_tunnels, access_external_airlocks, access_construction, access_atmospherics, access_emergency_storage, access_tcomsat)
@@ -353,6 +363,7 @@
 	ideal_character_age = 21
 	total_positions = 2
 	spawn_positions = 2
+	sex_lock = MALE
 	access = list(access_maint_tunnels, access_mailsorting, access_manufacturing, access_cargo, access_cargo_bot, access_mining, access_mining_station)
 	minimal_access = list(access_maint_tunnels, access_mailsorting, access_manufacturing, access_cargo, access_cargo_bot, access_mining, access_mining_station)
 
@@ -487,6 +498,7 @@
 	spawn_positions = 2
 	economic_modifier = 3
 	selection_color = "#6161aa"
+	sex_lock = MALE
 	access = list(access_maint_tunnels, access_chapel_office)
 	minimal_access = list(access_maint_tunnels, access_chapel_office)
 	outfit_type = /decl/hierarchy/outfit/job/arbiter
@@ -509,6 +521,7 @@
 	spawn_positions = 1
 	economic_modifier = 5
 	selection_color = "#6161aa"
+	sex_lock = MALE
 	access = list(access_maint_tunnels, access_chapel_office)
 	minimal_access = list(access_maint_tunnels, access_chapel_office)
 	outfit_type = /decl/hierarchy/outfit/job/supreme_arbiter

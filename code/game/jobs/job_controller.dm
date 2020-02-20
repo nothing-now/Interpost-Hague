@@ -91,6 +91,8 @@ var/global/datum/controller/occupations/job_master
 				return 0
 			if(job.minimum_character_age && (player.client.prefs.age < job.minimum_character_age))
 				return 0
+			if(job.sex_lock && player.client.prefs.gender != job.sex_lock)
+				return 0
 			if(jobban_isbanned(player, rank))
 				return 0
 			if(!job.player_old_enough(player.client))
@@ -128,6 +130,9 @@ var/global/datum/controller/occupations/job_master
 			if(!job.player_old_enough(player.client))
 				Debug("FOC player not old enough, Player: [player]")
 				continue
+			if(job.sex_lock && player.client.prefs.gender  != job.sex_lock)
+				Debug("FOC character wrong gender, Player: [player]")
+				continue
 			if(job.minimum_character_age && (player.client.prefs.age < job.minimum_character_age))
 				Debug("FOC character not old enough, Player: [player]")
 				continue
@@ -163,6 +168,9 @@ var/global/datum/controller/occupations/job_master
 
 			if(!job.player_old_enough(player.client))
 				Debug("GRJ player not old enough, Player: [player]")
+				continue
+
+			if(job.sex_lock && player.client.prefs.gender  != job.sex_lock)
 				continue
 
 			if((job.current_positions < job.spawn_positions) || job.spawn_positions == -1)
@@ -308,6 +316,10 @@ var/global/datum/controller/occupations/job_master
 
 					if(!job.player_old_enough(player.client))
 						Debug("DO player not old enough, Player: [player], Job:[job.title]")
+						continue
+
+					if(job.sex_lock && job.sex_lock != player.client.prefs.gender)
+						Debug("DO player wrong gender, Player: [player], Job:[job.title]")
 						continue
 
 					// If the player wants that job on this level, then try give it to him.

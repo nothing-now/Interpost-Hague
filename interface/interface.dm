@@ -23,18 +23,17 @@
 		to_chat(src, "<span class='warning'>The forum URL is not set in the server configuration.</span>")
 	return
 
-/*/client/verb/discord()
+/client/verb/discord()
 	set name = "discord"
 	set desc = "Join the discord."
 	set hidden = 1
 	if( config.discordurl )
 		if(alert("This will invite you to the discord and will open in your browser. Are you sure?",,"Yes","No")=="No")
 			return
-		src << link(config.discordurl)
+		src << link(https://discord.gg/abFdhjv)
 	else
 		to_chat(src, "<span class='warning'>The discord link is not set in the server configuration.</span>")
-	return*/
-//commented out for now
+	return
 
 #define RULES_FILE "config/rules.html"
 /client/verb/rules()

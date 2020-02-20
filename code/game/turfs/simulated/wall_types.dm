@@ -74,3 +74,9 @@
 	if(prob(explosion_resistance))
 		return
 	..()
+
+/turf/simulated/wall/other_rwall
+	icon = 'icons/turf/wwalls.dmi'
+
+/turf/simulated/wall/other_gwall
+	icon = 'icons/turf/gwalls.dmi'
