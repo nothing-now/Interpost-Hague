@@ -34,10 +34,11 @@
 	economic_modifier = 7
 	access = list(access_robotics, access_tox, access_tox_storage, access_research, access_xenobiology, access_xenoarch)
 	minimal_access = list(access_tox, access_tox_storage, access_research, access_xenoarch)
-	alt_titles = list("Xenoarcheologist", "Anomalist", "Phoron Researcher")
+	//alt_titles = list("Xenoarcheologist", "Anomalist", "Phoron Researcher")
 	minimal_player_age = 7
 	outfit_type = /decl/hierarchy/outfit/job/science/scientist
 
+/*
 /datum/job/xenobiologist
 	title = "Xenobiologist"
 	department = "Science"
@@ -69,3 +70,4 @@
 	alt_titles = list("Biomechanical Engineer","Mechatronic Engineer")
 	minimal_player_age = 3
 	outfit_type = /decl/hierarchy/outfit/job/science/roboticist
+*/
