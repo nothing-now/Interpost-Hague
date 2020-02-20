@@ -21,7 +21,7 @@
 						/datum/job/arbiter,
 						/datum/job/supreme_arbiter,
 						/datum/job/rd,
-						///datum/job/scientist,
+						/datum/job/scientist,
 						///datum/job/cadet
 						///datum/job/jr_upkeep
 						///datum/job/raider
