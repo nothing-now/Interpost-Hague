@@ -37,7 +37,6 @@
 /obj/structure/railing/grey	
 	name = "grey railing"	
 	desc = "A standard steel railing. Prevents stupid people from falling to their doom."	
-	icon_modifier = "grey_"	
 	icon_state = "grey_railing0"
 
 /obj/structure/railing/Initialize(loc, constructed=0)
