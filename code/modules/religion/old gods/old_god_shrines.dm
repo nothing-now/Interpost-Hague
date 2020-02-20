@@ -24,10 +24,15 @@
 
 //Used when someone breaks a shrine
 /obj/old_god_shrine/proc/destroy()
-	shrine_religion.lose_territory(src.loc, shrine_religion.name)
+	shrine_religion.lose_territory(get_area(src), shrine_religion.name)
 	qdel(src)
 
 /obj/old_god_shrine/attackby(obj/item/W as obj, var/mob/living/user)
+	//If you attack it with your holy_item, it just disapears
+	if(W.type == GLOB.all_religions[shrine_religion.name].holy_item.type) //LMAO THIS WORKS.
+		visible_message("<span class='warning'><b>[user] waves thier [W] and the shrine disolves into mist!</b></span>")
+		playsound(loc, pick(GLOB.rustle_sound), 50, 1, -1)
+		destroy()
 	playsound(src.loc, pick(sounds), 100, 1)
 	if(W.damtype == BRUTE || W.damtype == BURN) 
 		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
@@ -67,8 +72,9 @@
 				found = TRUE
 				spell_components[direction] = a
 		if (found == FALSE)
-			visible_message("<span class='notice'>\The [src] glows faintly, then falls dark</span>")
+			visible_message("<span class='notice'>\The [src] is uninpressed with your offering</span>")
 			return
+	selected_spell.spell_consume(spell_components)
 	selected_spell.spell_effect(user,spell_components)
 
 /obj/old_god_shrine/attack_hand(var/mob/living/user)

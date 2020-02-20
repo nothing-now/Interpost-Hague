@@ -18,6 +18,10 @@
 				x.empowered = TRUE
 				x.update_icon()
 
+	//We want to leave behind lit candles
+	spell_consume(var/list/spell_components)
+		return
+
 /datum/old_god_spell/blind
 	name = "blind"
 	requirments =  list("NORTH" = /obj/item/clothing/glasses/sunglasses/,
@@ -43,7 +47,6 @@
 			target.verbs += /mob/living/proc/make_shrine
 			target.verbs += /mob/living/proc/praise_god
 			target.verbs.Remove(/mob/living/proc/recite_prayer)
-
 
 /obj/item/crucifix
 	name = "Crucifix"

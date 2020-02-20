@@ -18,10 +18,15 @@
 	proc/spell_effect(var/mob/living/user)
 		to_world("Something is fucked up, you should not be seeing this.  It's from old god spell code, go tell a coder.")
 	
+	//Helper to make spells involving paper easier TODO: same thing for blood/limbs/organs
 	proc/get_player_from_paper(var/obj/item/weapon/paper/target_paper)
 		for(var/mob/player in GLOB.player_list)
 			if(findtext(target_paper.info, player.name))
 				return player
+	//Consumes the spell componenets before casting.  Some spells may want to leave some items behind, and it's more efficient if they specify as well
+	proc/spell_consume(var/list/spell_components)
+		for(var/direction in spell_components)
+			qdel(spell_components[direction])
 
 /datum/old_god_spell/smoke_example
 	name = "Simple puff of smoke to demonstrate"
