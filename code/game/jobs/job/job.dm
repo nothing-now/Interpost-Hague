@@ -39,6 +39,8 @@
 
 	var/social_class = SOCIAL_CLASS_MED	  //Job's social standing.
 
+	var/sex_lock
+
 /datum/job/New()
 	..()
 	if(prob(100-availablity_chance))	//Close positions, blah blah.
