@@ -149,7 +149,7 @@ var/list/flooring_types
 	flags = TURF_REMOVE_CROWBAR
 	build_type = /obj/item/stack/tile/floor_freezer
 
-/decl/flooring/tiling/bunker/
+/decl/flooring/tiling/bunker
 	name = "floor"
 	desc = "Don't slip."
 	icon = 'icons/turf/bunk.dmi'
@@ -228,6 +228,177 @@ var/list/flooring_types
 	has_damage_range = null
 	flags = TURF_REMOVE_CROWBAR
 	can_paint = 0
+
+/decl/flooring/tiling/os4
+	name = "floor"
+	desc = "Don't slip."
+	icon = 'icons/turf/other_floors.dmi'
+	icon_base = "os4"
+	has_damage_range = null
+	//flags = TURF_REMOVE_CROWBAR
+	//build_type = /obj/item/stack/tile/floor
+
+/decl/flooring/tiling/solarpanel2
+	name = "floor"
+	desc = "Don't slip."
+	icon = 'icons/turf/other_floors.dmi'
+	icon_base = "solarpanel2"
+	has_damage_range = null
+	//flags = TURF_REMOVE_CROWBAR
+	//build_type = /obj/item/stack/tile/floor
+
+/decl/flooring/tiling/polar
+	name = "floor"
+	desc = "Don't slip."
+	icon = 'icons/turf/other_floors.dmi'
+	icon_base = "polar"
+	has_damage_range = null
+	//flags = TURF_REMOVE_CROWBAR
+	//build_type = /obj/item/stack/tile/floor
+
+/decl/flooring/tiling/lev
+	name = "floor"
+	desc = "Don't slip."
+	icon = 'icons/turf/other_floors.dmi'
+	icon_base = "lev"
+	has_damage_range = null
+	//flags = TURF_REMOVE_CROWBAR
+	//build_type = /obj/item/stack/tile/floor
+
+/decl/flooring/tiling/os5
+	name = "floor"
+	desc = "Don't slip."
+	icon = 'icons/turf/other_floors.dmi'
+	icon_base = "os5"
+	has_damage_range = null
+	//flags = TURF_REMOVE_CROWBAR
+	//build_type = /obj/item/stack/tile/floor
+
+/decl/flooring/tiling/os7
+	name = "floor"
+	desc = "Don't slip."
+	icon = 'icons/turf/other_floors.dmi'
+	icon_base = "os7"
+	has_damage_range = null
+	//flags = TURF_REMOVE_CROWBAR
+	//build_type = /obj/item/stack/tile/floor
+
+/decl/flooring/tiling/os8
+	name = "floor"
+	desc = "Don't slip."
+	icon = 'icons/turf/other_floors.dmi'
+	icon_base = "os8"
+	has_damage_range = null
+	//flags = TURF_REMOVE_CROWBAR
+	//build_type = /obj/item/stack/tile/floor
+
+/decl/flooring/tiling/os4warn
+	name = "floor"
+	desc = "Don't slip. Has a warning mark."
+	icon = 'icons/turf/other_floors.dmi'
+	icon_base = "os4warn"
+	has_damage_range = null
+	//flags = TURF_REMOVE_CROWBAR
+	//build_type = /obj/item/stack/tile/floor
+
+/decl/flooring/tiling/os4warn2
+	name = "floor"
+	desc = "Don't slip. Has a warning mark."
+	icon = 'icons/turf/other_floors.dmi'
+	icon_base = "os4warn2"
+	has_damage_range = null
+	//flags = TURF_REMOVE_CROWBAR
+	//build_type = /obj/item/stack/tile/floor
+
+/decl/flooring/tiling/os6
+	name = "floor"
+	desc = "Don't slip."
+	icon = 'icons/turf/other_floors.dmi'
+	icon_base = "os6"
+	has_damage_range = null
+	//flags = TURF_REMOVE_CROWBAR
+	//build_type = /obj/item/stack/tile/floor
+
+/decl/flooring/tiling/os9
+	name = "floor"
+	desc = "Don't slip."
+	icon = 'icons/turf/other_floors.dmi'
+	icon_base = "os9"
+	has_damage_range = null
+	//flags = TURF_REMOVE_CROWBAR
+	//build_type = /obj/item/stack/tile/floor
+
+/decl/flooring/tiling/os10
+	name = "floor"
+	desc = "Don't slip."
+	icon = 'icons/turf/other_floors.dmi'
+	icon_base = "os10"
+	has_damage_range = null
+	//flags = TURF_REMOVE_CROWBAR
+	//build_type = /obj/item/stack/tile/floor
+
+/decl/flooring/tiling/bet
+	name = "floor"
+	desc = "Don't slip."
+	icon = 'icons/turf/other_floors.dmi'
+	icon_base = "bet"
+	has_damage_range = null
+	//flags = TURF_REMOVE_CROWBAR
+	//build_type = /obj/item/stack/tile/floor
+
+/decl/flooring/tiling/sealab
+	name = "floor"
+	desc = "Don't slip."
+	icon = 'icons/turf/other_floors.dmi'
+	icon_base = "sealab"
+	has_damage_range = null
+	//flags = TURF_REMOVE_CROWBAR
+	//build_type = /obj/item/stack/tile/floor
+
+/decl/flooring/tiling/w
+	name = "floor"
+	desc = "Don't slip."
+	icon = 'icons/turf/other_floors.dmi'
+	icon_base = "w"
+	has_damage_range = null
+	//flags = TURF_REMOVE_CROWBAR
+	//build_type = /obj/item/stack/tile/floor
+
+/decl/flooring/tiling/wb
+	name = "floor"
+	desc = "Don't slip."
+	icon = 'icons/turf/other_floors.dmi'
+	icon_base = "wb"
+	has_damage_range = null
+	//flags = TURF_REMOVE_CROWBAR
+	//build_type = /obj/item/stack/tile/floor
+
+/decl/flooring/tiling/wb2
+	name = "floor"
+	desc = "Don't slip."
+	icon = 'icons/turf/other_floors.dmi'
+	icon_base = "wb2"
+	has_damage_range = null
+	//flags = TURF_REMOVE_CROWBAR
+	//build_type = /obj/item/stack/tile/floor
+
+/decl/flooring/tiling/plate
+	name = "floor"
+	desc = "Don't slip."
+	icon = 'icons/turf/other_floors.dmi'
+	icon_base = "plating"
+	has_damage_range = null
+	//flags = TURF_REMOVE_CROWBAR
+	//build_type = /obj/item/stack/tile/floor
+
+/decl/flooring/tiling/circuitoff
+	name = "floor"
+	desc = "Don't slip. Has a strange ornament."
+	icon = 'icons/turf/other_floors.dmi'
+	icon_base = "circuitoff"
+	has_damage_range = null
+	//flags = TURF_REMOVE_CROWBAR
+	//build_type = /obj/item/stack/tile/floor
 
 /decl/flooring/tiling/misc/sec
 	icon_base = "sec_chess"
