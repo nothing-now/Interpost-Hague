@@ -1,9 +1,9 @@
 // Bomb cap!
-GLOBAL_VAR_INIT(max_explosion_range, 14)
+GLOBAL_VAR_INIT(max_explosion_range, 20)
 
 
 var/href_logfile        = null
-var/game_version        = "Baystation12"
+var/game_version        = "InterHippie"
 var/changelog_hash      = ""
 var/game_year           = (text2num(time2text(world.realtime, "YYYY")) + 544)
 var/join_motd = null
