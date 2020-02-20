@@ -18,7 +18,10 @@ I IS TYPIN'!'
 	master.typing_indicator = src
 	src.master = master
 	name = master.name
-
+	//I hate doing this but I don't want to figure out how to do it correctly
+	// Correctly being just getting mob orientation like typing indicators do
+	if(master.resting)
+		icon_state = "typing_resting"
 	GLOB.moved_event.register(master, src, /atom/movable/proc/move_to_turf_or_null)
 
 	GLOB.stat_set_event.register(master, src, /datum/proc/qdel_self) // Making the assumption master is conscious at creation
