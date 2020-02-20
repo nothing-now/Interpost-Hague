@@ -96,6 +96,7 @@ var/list/gamemode_cache = list()
 	var/wikiurl
 	var/forumurl
 	var/githuburl
+	var/discordurl
 
 	var/forbid_singulo_possession = 0
 
@@ -424,6 +425,9 @@ var/list/gamemode_cache = list()
 
 				if ("githuburl")
 					config.githuburl = value
+
+				if ("discordurl")
+					config.discordurl = value
 
 				if ("ghosts_can_possess_animals")
 					config.ghosts_can_possess_animals = value
