@@ -585,7 +585,7 @@ its easier to just keep the beam vertical.
 
 	//Nice, we can jump, let's do that then.
 	playsound(user, user.gender == MALE ? 'sound/effects/jump_male.ogg' : 'sound/effects/jump_female.ogg', 25, 0, 1)
-		user.visible_message("<span class='danger'>[user.name] jumps.</span>", \
+	user.visible_message("<span class='danger'>[user.name] jumps.</span>", \
 					"<span class='warning'> I jump at the [loc]!</span>")
 	user.turf_collision
 	user.adjustStaminaLoss(rand(30,50))//Jumping is exhausting.

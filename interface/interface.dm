@@ -30,9 +30,9 @@
 	if( config.discordurl )
 		if(alert("This will invite you to the discord and will open in your browser. Are you sure?",,"Yes","No")=="No")
 			return
-		src << link(https://discord.gg/abFdhjv)
+		src << link( config.discordurl )
 	else
-		to_chat(src, "<span class='warning'>The discord link is not set in the server configuration.</span>")
+		to_chat(src, "<span class='warning'>The Discord link is not set in the server configuration.</span>")
 	return
 
 #define RULES_FILE "config/rules.html"
