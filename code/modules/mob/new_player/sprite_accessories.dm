@@ -1221,3 +1221,10 @@ May God have mercy.
 	icon_state = "taj_all"
 	body_parts = list(BP_HEAD)
 	species_allowed = list(SPECIES_TAJARA)
+
+//Branding
+
+/datum/sprite_accessory/marking/brandface
+	name = "Brand (Face)"
+	icon_state = "brandface"
+	body_parts = list(BP_HEAD)

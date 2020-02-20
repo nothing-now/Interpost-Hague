@@ -54,6 +54,9 @@
 				H.branded = brand
 				user.doing_something = 0
 				playsound(H, 'sound/items/Welder2.ogg', 40, 1, -1)
+				var/obj/item/organ/external/head = H.get_organ(BP_HEAD)
+				head.markings["brand"] = list("color" = "#330000", "datum" = new /datum/sprite_accessory/marking/brandface)
+				H.force_update_limbs()
 			else
 				user.doing_something = 0
 
