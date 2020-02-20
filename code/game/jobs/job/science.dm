@@ -38,7 +38,6 @@
 	minimal_player_age = 7
 	outfit_type = /decl/hierarchy/outfit/job/science/scientist
 
-/*
 /datum/job/xenobiologist
 	title = "Xenobiologist"
 	department = "Science"
@@ -70,4 +69,3 @@
 	alt_titles = list("Biomechanical Engineer","Mechatronic Engineer")
 	minimal_player_age = 3
 	outfit_type = /decl/hierarchy/outfit/job/science/roboticist
-*/
