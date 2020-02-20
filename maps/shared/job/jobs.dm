@@ -188,6 +188,7 @@
 			access_RC_announce, access_keycard_auth, access_tcomsat, access_gateway, access_xenoarch, access_network, access_rd, access_research, access_medical, access_morgue, access_medical_equip)
 
 	equip(var/mob/living/carbon/human/H)
+		H.set_species("Machine")
 		..()
 		//H.add_stats(rand(5,7), rand(5,8), rand(12,15))
 		H.generate_stats("int")
@@ -199,12 +200,13 @@
 	minimal_player_age = 19
 	economic_modifier = 2
 	ideal_character_age = 30
-	total_positions = 3
+	total_positions = 1
 	spawn_positions = 3
 	access = list(access_robotics, access_tox, access_tox_storage, access_research, access_xenobiology, access_xenoarch, access_robotics)
 	minimal_access = list(access_tox, access_tox_storage, access_research, access_xenoarch, access_robotics)
 
 	equip(var/mob/living/carbon/human/H)
+		H.set_species("Machine")
 		..()
 		//H.add_stats(rand(5,7), rand(5,8), rand(10,14))
 		H.generate_stats("int")
