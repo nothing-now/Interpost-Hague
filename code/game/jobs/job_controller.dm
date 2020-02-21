@@ -531,8 +531,7 @@ var/global/datum/controller/occupations/job_master
 					to_chat(H, "<span class='danger'>Try as you might... you just can't seem to remember the prayer today. This won't look good to the Arbiters.")
 				if(rank == "Supreme Arbiter")
 					H.mind.prayer = accepted_prayer
-					H.verbs += /mob/living/proc/accuse_heretic
-					H.verbs += /mob/living/proc/question_heretic
+					H.verbs += /mob/living/proc/interrogate
 			else
 				//Pick an old god other then the template
 				//to_world("RELIGION TESTING FIX THIS")

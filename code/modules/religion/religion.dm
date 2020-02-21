@@ -62,6 +62,22 @@ proc/generate_random_prayer()//This generates a new one.
 	set name = "Recite the prayer"
 	say(mind.prayer)
 
+
+//Try to reveal a random heretic
+/mob/living/proc/interrogate()
+	set category = "Deo Machina"
+	set name = "Interrogate"
+	var/list/victims = list()
+	for(var/mob/living/carbon/human/C in oview(1))
+		victims += C
+	var/mob/living/carbon/human/T = input(src, "Who will we interrogate?") as null|anything in victims
+	if(!T) return
+	if(!(T in view(1))) return
+	say("[T] are you a heretic!?")
+	if(prob((T.getHalLoss()/3) - T.stats["con"]))  //Higher con helps your resist torture
+		T.reveal_self()
+		return
+
 //Reveals a random heretic
 /mob/living/proc/reveal_heretics()
 	var/msg = " is one of them!"
@@ -76,38 +92,6 @@ proc/generate_random_prayer()//This generates a new one.
 			say(NewStutter("[name] is one of them!"))
 		else 
 			say("I'm the only one!")
-
-/mob/living/proc/accuse_heretic()
-	set category = "Deo Machina"
-	set name = "Accuse Heretic"
-	var/list/victims = list()
-	for(var/mob/living/carbon/human/C in oview(1))
-		victims += C
-	var/mob/living/carbon/human/T = input(src, "Who will we accuse?") as null|anything in victims
-	if(!T)
-		return
-	say("[T] are you a heretic!?")
-	var/organ_pain = 0
-	for(var/obj/item/organ/external/org in T.organs)
-		organ_pain += org.get_pain() + org.get_damage()
-	if(prob(organ_pain - T.stats["con"]))  //Higher con helps your resist torture
-		T.reveal_self()
-
-/mob/living/proc/question_heretic()
-	set category = "Deo Machina"
-	set name = "Question Heretic"
-	var/list/victims = list()
-	for(var/mob/living/carbon/human/C in oview(1))
-		victims += C
-	var/mob/living/carbon/human/T = input(src, "Who will we question?") as null|anything in victims
-	if(!T)
-		return
-	say("[T], who is working in your cult!")
-	var/organ_pain = 0
-	for(var/obj/item/organ/external/org in T.organs)
-		organ_pain += org.get_pain() + org.get_damage()
-	if(prob(organ_pain - T.stats["con"]))  //Higher con helps your resist torture
-		T.reveal_heretics()
 
 /* ILLEGAL RELIGION PROCS */
 /datum/religion/proc/claim_territory(area/territory,var/claiming_religion)
