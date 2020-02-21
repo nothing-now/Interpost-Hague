@@ -193,6 +193,8 @@
 
 	equip(var/mob/living/carbon/human/H)
 		H.set_species("Machine")
+		if(!H.religion_is_legal())//So that they can't be heretics.
+			H.religion = LEGAL_RELIGION
 		..()
 		//H.add_stats(rand(5,7), rand(5,8), rand(12,15))
 		H.generate_stats("int")
@@ -211,6 +213,8 @@
 
 	equip(var/mob/living/carbon/human/H)
 		H.set_species("Machine")
+		if(!H.religion_is_legal())//So that they can't be heretics.
+			H.religion = LEGAL_RELIGION
 		..()
 		//H.add_stats(rand(5,7), rand(5,8), rand(10,14))
 		H.generate_stats("int")

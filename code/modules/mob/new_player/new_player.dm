@@ -176,7 +176,10 @@
 		if(ticker && ticker.mode && ticker.mode.explosion_in_progress)
 			to_chat(usr, "<span class='danger'>The [station_name()] is currently exploding. Joining would go poorly.</span>")
 			return
-
+		if(client.prefs.real_name in GLOB.player_name_list)
+			to_chat(usr, "<span class='danger'>Our records show we already employ a [name].  Please change your name to join the crew.</span>")
+			return
+		
 		var/datum/species/S = all_species[client.prefs.species]
 		if(!check_species_allowed(S))
 			return 0
@@ -439,6 +442,7 @@
 	var/mob/living/carbon/human/new_character
 
 	var/datum/species/chosen_species
+	GLOB.player_name_list |= client.prefs.real_name
 	if(client.prefs.species)
 		chosen_species = all_species[client.prefs.species]
 
@@ -489,7 +493,6 @@
 				R.info = client.prefs.relations_info[T]
 			mind.gen_relations_info = client.prefs.relations_info["general"]
 		mind.transfer_to(new_character)					//won't transfer key since the mind is not active
-
 	new_character.SetName(real_name)
 	new_character.dna.ready_dna(new_character)
 	new_character.dna.b_type = client.prefs.b_type
