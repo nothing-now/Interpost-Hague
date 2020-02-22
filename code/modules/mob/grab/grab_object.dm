@@ -24,7 +24,7 @@
 */
 /obj/item/grab/New(mob/living/carbon/human/attacker, mob/living/carbon/human/victim)
 	..()
-
+	last_upgrade = world.time
 	assailant = attacker
 	affecting = victim
 	target_zone = attacker.zone_sel.selecting
