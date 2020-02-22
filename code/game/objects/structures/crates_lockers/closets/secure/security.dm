@@ -87,30 +87,13 @@
 
 /obj/structure/closet/secure_closet/hos/WillContain()
 	return list(
-		new/datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/security, /obj/item/weapon/storage/backpack/satchel_sec)),
 		/obj/item/clothing/head/HoS,
-		/obj/item/clothing/head/helmet/nt,
-		/obj/item/clothing/suit/armor/vest/nt,
-		/obj/item/clothing/suit/storage/vest/nt/hos,
-		/obj/item/clothing/under/rank/head_of_security/jensen,
-		/obj/item/clothing/under/rank/head_of_security/corp,
-		/obj/item/clothing/suit/armor/hos/jensen,
 		/obj/item/clothing/suit/armor/hos,
-		/obj/item/clothing/head/HoS/dermal,
-		/obj/item/weapon/cartridge/hos,
-		/obj/item/device/radio/headset/heads/hos,
-		/obj/item/clothing/glasses/sunglasses/sechud,
 		/obj/item/taperoll/police,
-		/obj/item/weapon/shield/riot,
-		/obj/item/weapon/storage/box/flashbangs,
-		/obj/item/weapon/storage/belt/security,
 		/obj/item/device/flash,
-		/obj/item/weapon/melee/baton/loaded,
-		/obj/item/weapon/gun/energy/gun,
-		/obj/item/clothing/accessory/holster/waist,
 		/obj/item/weapon/melee/telebaton,
-		/obj/item/clothing/head/beret/sec/corporate/hos,
-		/obj/item/device/holowarrant
+		/obj/item/device/holowarrant,
+		/obj/item/weapon/material/sword
 	)
 
 /obj/structure/closet/secure_closet/warden
@@ -159,20 +142,15 @@
 
 /obj/structure/closet/secure_closet/security/WillContain()
 	return list(
-		new/datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/security, /obj/item/weapon/storage/backpack/satchel_sec)),
-		new/datum/atom_creator/simple(/obj/item/weapon/storage/backpack/dufflebag/sec, 50),
-		/obj/item/clothing/suit/armor/vest/nt,
-		/obj/item/clothing/head/helmet,
+		new/datum/atom_creator/weighted(list(/obj/item/weapon/storage/backpack/satchel_sec)),
 		/obj/item/device/radio/headset/headset_sec,
 		/obj/item/weapon/storage/belt/security,
 		/obj/item/device/flash,
 		/obj/item/weapon/melee/classic_baton,
-		/obj/item/clothing/glasses/sunglasses/sechud,
 		/obj/item/taperoll/police,
 		/obj/item/device/hailer,
 		/obj/item/clothing/accessory/storage/black_vest,
 		/obj/item/clothing/head/soft/sec/corp,
-		/obj/item/clothing/under/rank/security/corp,
 		/obj/item/weapon/gun/energy/taser,
 		/obj/item/device/holowarrant,
 	)
