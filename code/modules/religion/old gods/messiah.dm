@@ -82,7 +82,3 @@
 	name = "Jes shrine"
 	shrine_religion = MESSIAH
 	icon_state = "woodcross"
-
-/obj/old_god_shrine/messiah_shrine/New()
-	..()
-	shrine_religion = GLOB.all_religions[MESSIAH]

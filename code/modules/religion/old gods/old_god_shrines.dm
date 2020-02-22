@@ -19,7 +19,17 @@
 
 
 /obj/old_god_shrine/New()
+	var/turf/T = get_area(src)
+	var/area/A = get_area(src)
+	if(findtext(T.name,"Chapel"))
+		anim(get_turf(src), src, 'icons/effects/effects.dmi', "fire",null,20,null)
+		qdel(src)
+		return
+	shrine_religion = GLOB.all_religions[shrine_religion]
+	shrine_religion.favor -= 30
 	near_camera()
+	shrine_religion.claim_territory(A,shrine_religion.name)
+	log_and_message_admins("created \an [src.name] rune at \the [A.name] - [loc.x]-[loc.y]-[loc.z].")
 	return
 
 //Used when someone breaks a shrine
@@ -32,6 +42,7 @@
 	if(W.type == GLOB.all_religions[shrine_religion.name].holy_item.type) //LMAO THIS WORKS.
 		visible_message("<span class='warning'><b>[user] waves thier [W] and the shrine disolves into mist!</b></span>")
 		playsound(loc, pick(GLOB.rustle_sound), 50, 1, -1)
+		shrine_religion.favor += 30
 		destroy()
 	playsound(src.loc, pick(sounds), 100, 1)
 	if(W.damtype == BRUTE || W.damtype == BURN) 

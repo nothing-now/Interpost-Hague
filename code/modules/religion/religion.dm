@@ -147,6 +147,16 @@ proc/generate_random_prayer()//This generates a new one.
 			user_religion.favor += 10
 			playsound(T, praise_sound,50,1)
 			doing_something = 0
+			var/divisor = 0.1 //multiplication is easy on byond them division with large decimals
+			for(var/obj/old_god_shrine/shrine in view(src, 5))
+				//If we can see an allied shrine nearby, we have more chance to spawn a reward.
+				if(shrine.shrine_religion.name == user_religion.name)
+					divisor = 1
+			if(prob(user_religion.favor * divisor))
+				var/S = pick(GLOB.all_spells)
+				var/reward = pick(GLOB.all_spells[S].requirments)
+				var/obj/reward_obj = GLOB.all_spells[S].requirments[reward]
+				new reward_obj(T)
 			return 1
 		else 
 			to_chat(src, "<span class='notice'>Your prayer is interupted</span>")
@@ -168,16 +178,16 @@ proc/generate_random_prayer()//This generates a new one.
 	if(!istype(get_active_hand(), user_religion.holy_item) && !istype(get_inactive_hand(), user_religion.holy_item))
 		to_chat(src, "<span class='warning'>You can't draw old god runes without your [user_religion.holy_item]!</span>")
 		return
+	//Need 30 favor to make a shrine
+	if(user_religion.favor < 30)
+		to_chat(src, "<span class='warning'>You don't feel devoted enough to your god.</span>")
+		return
 	var/self = "You deftly use your [user_religion.holy_item] to create the shrine."
 	var/timer = 20
 	if(user_religion.can_claim_for_gods(src,T))
 		visible_message("<span class='warning'>\The [src] quickly draws on the floor and begins to whisper quietly to themselves.</span>", "<span class='notice'>[self]</span>", "You hear scratching.")
 		if(do_after(src, timer))
 			//These variables used to just be functions that returned a hard coded value.  So don't blame me, this is actually faster.
-			var/obj/old_god_shrine/S = new user_religion.shrine(T)
-			var/area/A = get_area(S)
-			user_religion.claim_territory(A,user_religion.name)
-			log_and_message_admins("created \an [S.name] rune at \the [A.name] - [loc.x]-[loc.y]-[loc.z].")
-			S.add_fingerprint(src)
+			new user_religion.shrine(T)
 			return 1
 	return 0
