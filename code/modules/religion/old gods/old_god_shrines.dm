@@ -78,7 +78,7 @@
 		// First check if it's empty
 		var/found = FALSE
 		//get turf contents
-		for(var/obj/item/a in get_step(src, DIRECTION_TO_VAL(direction)).contents)
+		for(var/obj/a in get_step(src, DIRECTION_TO_VAL(direction)).contents)
 			if(istype(a, selected_spell.requirments[direction]))
 				found = TRUE
 				spell_components[direction] = a

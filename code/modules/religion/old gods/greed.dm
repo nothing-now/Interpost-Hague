@@ -12,7 +12,6 @@
 	old_god = GREED
 
 	spell_effect(var/mob/living/user, var/list/spell_components)
-		//TODO: his should be turned into a function for other spell use
 		var/obj/item/weapon/paper/target1_paper = spell_components["SOUTHWEST"]
 		var/obj/item/weapon/paper/target2_paper = spell_components["SOUTHEAST"]
 		var/mob/target1 = get_player_from_paper(target1_paper)
@@ -24,7 +23,14 @@
 
 /datum/old_god_spell/blood_gold
 	name = "Blood gold"
-	requirments =  list("SOUTHEAST" = /obj/item/weapon/flame/candle/)
+	requirments =  list("NORTHEAST" = /obj/item/weapon/spacecash/bundle/,
+						"NORTHWEST" = /obj/item/weapon/spacecash/bundle/,
+						"SOUTHEAST" = /obj/item/weapon/spacecash/bundle/,
+						"SOUTHWEST" = /obj/item/weapon/spacecash/bundle/,
+						"NORTH" = /obj/effect/decal/cleanable/blood/,
+						"WEST" = /obj/effect/decal/cleanable/blood/,
+						"SOUTH" = /obj/effect/decal/cleanable/blood/,
+						"EAST" = /obj/effect/decal/cleanable/blood/)
 	old_god = GREED
 
 	spell_effect(var/mob/living/user)
@@ -32,7 +38,7 @@
 		var/sound = "sound/effects/badmood[pick(1,4)].ogg"
 		playsound(get_turf(user), sound,50,1)
 		GLOB.all_religions[GREED].bloodgold = TRUE
-		spawn(300) //30 seconds
+		spawn(600) //30 seconds
 			GLOB.all_religions[GREED].bloodgold = FALSE
 	
 /obj/old_god_shrine/greed_shrine
@@ -70,7 +76,7 @@ Debt contract
 		return -1
 	target = nOwner.mind
 	update_text(target1,target2)
-	spawn(3000)
+	spawn(3000)  //Should be 5 minutes
 		for(var/datum/money_account/acounts in all_money_accounts)
 			if(acounts.owner_name == target2.name)
 				for(var/datum/transaction/T in acounts.transaction_log)
