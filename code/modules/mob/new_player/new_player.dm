@@ -534,7 +534,7 @@
 	return 0
 
 /mob/new_player/proc/close_spawn_windows()
-	src << browse(null, "window=latechoices") //closes late choices window
+	src << browse(null, "window=Character Latejoin") //closes late choices window
 	panel.close()
 
 /mob/new_player/proc/has_admin_rights()
