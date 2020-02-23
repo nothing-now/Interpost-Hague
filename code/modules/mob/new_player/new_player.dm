@@ -397,6 +397,7 @@
 
 /mob/new_player/proc/LateChoices()
 	var/name = client.prefs.be_random_name ? "friend" : client.prefs.real_name
+	var/department = null
 	var/dat = "<html><body><center>"
 	dat += "<b>Welcome, [name].<br></b>"
 	dat += "Round Duration: [roundduration2text()]<br>"
@@ -412,7 +413,12 @@
 	dat += "Choose from the following open/valid positions:<br>"
 	dat += "<a href='byond://?src=\ref[src];invalid_jobs=1'>[show_invalid_jobs ? "Hide":"Show"] unavailable jobs.</a><br>"
 	dat += "<table>"
+	
 	for(var/datum/job/job in job_master.occupations)
+		//Suprisingly, get_announcement_frequency is perfect for getting the name from the depratment_flag var
+		if(department != get_announcement_frequency(job))
+			department = get_announcement_frequency(job)
+			dat += "<tr><td>[department]</td></tr>"
 		if(job && IsJobAvailable(job))
 			if(job.minimum_character_age && (client.prefs.age < job.minimum_character_age))
 				continue
