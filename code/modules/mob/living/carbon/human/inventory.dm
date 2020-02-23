@@ -229,7 +229,6 @@ This saves us from having to call add_fingerprint() any time something is put in
 	if(!has_organ_for_slot(slot)) return
 	if(!species || !species.hud || !(slot in species.hud.equip_slots)) return
 	W.forceMove(src)
-
 	var/obj/item/old_item = get_equipped_item(slot)
 
 	switch(slot)

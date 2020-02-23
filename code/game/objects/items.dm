@@ -315,11 +315,10 @@
 		if(!temp)
 			to_chat(user, "<span class='notice'>You try to use your hand, but realize it is no longer attached!</span>")
 			return
-	src.pickup(user)
 	if (istype(src.loc, /obj/item/weapon/storage))
 		var/obj/item/weapon/storage/S = src.loc
 		S.remove_from_storage(src)
-
+	src.pickup(user)
 	src.throwing = 0
 	if (src.loc == user)
 		if(!user.unEquip(src))

@@ -155,7 +155,6 @@
 			hud_used.swaphands_hud_object.dir = 2
 		else
 			hud_used.swaphands_hud_object.dir = 1
-
 	return
 
 /mob/living/carbon/proc/activate_hand(var/selhand) //0 or "r" or "right" for right hand; 1 or "l" or "left" for left hand.
