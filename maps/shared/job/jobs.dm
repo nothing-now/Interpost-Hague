@@ -142,7 +142,7 @@
 	ideal_character_age = 65
 	outfit_type = /decl/hierarchy/outfit/job/dreyfus/magistrate
 	social_class = SOCIAL_CLASS_MAX
-	department_flag = COM
+	department_flag = SPT
 	sex_lock = MALE
 
 
@@ -162,7 +162,7 @@
 	total_positions = 1
 	spawn_positions = 1
 	outfit_type = /decl/hierarchy/outfit/job/dreyfus/adjoint
-	department_flag = COM
+	department_flag = SPT
 	social_class = SOCIAL_CLASS_HIGH
 	sex_lock = MALE
 
@@ -493,7 +493,7 @@
 	spawn_positions = 2
 	supervisors = "the head of personnel"
 	selection_color = "#515151"
-	minimal_access = list(access_hydroponics)
+	minimal_access = list(access_bar, access_kitchen, access_hydroponics)
 //	alt_titles = list("Hydroponicist")
 	outfit_type = /decl/hierarchy/outfit/job/service/gardener
 
