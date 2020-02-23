@@ -517,13 +517,11 @@
 /obj/item/weapon/gun/equipped(mob/user, var/slot)
 	..()
 	if(!safety && (slot == slot_l_hand || slot == slot_r_hand))
-		to_world("This is back now only for hands hopefully")
 		user.client.mouse_pointer_icon = file("icons/misc/pointer.dmi")
 	else
 		user.client.mouse_pointer_icon = null
 
 /obj/item/weapon/gun/dropped(mob/user)
 	..()
-	to_world("USer's inhand is [user.get_active_hand()] ")
 	if(user.get_active_hand() != src)
 		user.client.mouse_pointer_icon = initial(user.client.mouse_pointer_icon)
