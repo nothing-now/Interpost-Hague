@@ -397,8 +397,7 @@
 
 /mob/new_player/proc/LateChoices()
 	var/name = client.prefs.be_random_name ? "friend" : client.prefs.real_name
-
-	var/list/dat = list("<html><body><center>")
+	var/dat = "<html><body><center>"
 	dat += "<b>Welcome, [name].<br></b>"
 	dat += "Round Duration: [roundduration2text()]<br>"
 
@@ -428,12 +427,15 @@
 
 			if(job.is_restricted(client.prefs))
 				if(show_invalid_jobs)
-					dat += "<tr><td><a style='text-decoration: line-through' href='byond://?src=\ref[src];SelectedJob=[job.title]'>[job.title]</a></td><td>[job.current_positions]</td><td>(Active: [active])</td></tr>"
+					dat += "<tr bgcolor='[job.selection_color]'><td><a style='text-decoration: line-through' href='byond://?src=\ref[src];SelectedJob=[job.title]'>[job.title]</a></td><td>[job.current_positions]</td><td>(Active: [active])</td></tr>"
 			else
-				dat += "<tr><td><a href='byond://?src=\ref[src];SelectedJob=[job.title]'>[job.title]</a></td><td>[job.current_positions]</td><td>(Active: [active])</td></tr>"
+				dat += "<tr bgcolor='[job.selection_color]'><td><a href='byond://?src=\ref[src];SelectedJob=[job.title]'>[job.title]</a></td><td>[job.current_positions]</td><td>(Active: [active])</td></tr>"
 
 	dat += "</table></center>"
-	src << browse(jointext(dat, null), "window=latechoices;size=450x640;can_close=1")
+	//src << browse(jointext(dat, null), "window=latechoices;size=450x640;can_close=1")
+	var/datum/browser/popup = new(src, "Character Latejoin","Character Latejoin", 450, 640, src)
+	popup.set_content(dat)
+	popup.open()
 
 /mob/new_player/proc/create_character(var/turf/spawn_turf)
 	spawning = 1
