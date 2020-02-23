@@ -1,4 +1,4 @@
-/obj/machinery/computer/shuttle_control/multi/vox
+/obj/machinery/computer/shuttle_control/multi/raider
 	name = "skipjack control console"
 	req_access = list(access_syndicate)
 	shuttle_tag = "Skipjack"
@@ -17,4 +17,3 @@
 	name = "stealth shuttle control console"
 	req_access = list(access_syndicate)
 	shuttle_tag = "Ninja"
-
