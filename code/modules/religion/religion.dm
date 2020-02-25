@@ -108,6 +108,14 @@ proc/generate_random_prayer()//This generates a new one.
 			return name
 	return null
 
+//This is general, and should be overloaded for ~flavor~
+/datum/religion/proc/generate_random_phrase()
+		var/phrase = pick("Oh great [name] ", "Oh our Lord [name]. ", "[name], our Lord and Saviour. ")
+		phrase += pick("You bathe us in your glow. ", "You bathe our minds in you omniscient wisdom. ", "You bathe our [pick("outpost","kingdom","cities")] in your wealth. ")
+		phrase += pick("[name] be praised. ", "[name] save us all. ", "[name] guide us all. ")
+		phrase += "Amen."
+		return phrase
+
 /datum/religion/proc/can_claim_for_gods(mob/user, atom/target)
 	//Check the area for if there's another shrine already, or the arbiters have already claimed it with TODO:?????
 	var/area/A = get_area(target)
