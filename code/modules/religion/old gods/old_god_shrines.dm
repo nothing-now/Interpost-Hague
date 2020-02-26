@@ -78,7 +78,6 @@
 	if(M.religion == LEGAL_RELIGION)
 		return
 	for(var/S in GLOB.all_spells)
-		to_world("[GLOB.all_spells[S].name] : [GLOB.all_spells[S].phrase ]")
 		if(GLOB.all_spells[S].phrase == msg)
 			var/datum/old_god_spell/selected_spell = GLOB.all_spells[S]
 			var/list/spell_components = list()
