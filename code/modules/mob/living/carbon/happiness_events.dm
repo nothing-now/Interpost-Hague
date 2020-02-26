@@ -166,6 +166,12 @@
 	happiness = 10
 	timeout = 1800
 
+//When you fulfill an AI request
+/datum/happiness_event/request_failed
+	description = "<span class='binfo'>My god is disapointed with me!</span>\n"
+	happiness = -20
+	timeout = 1800
+
 //Unused so far but I want to remember them to use them later.
 /datum/happiness_event/disturbing
 	description = "<span class='danger'>I recently saw something disturbing</span>\n"

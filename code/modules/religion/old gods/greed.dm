@@ -3,6 +3,8 @@
 	holy_item = new /obj/item/weapon/coin/gold()
 	shrine = /obj/old_god_shrine/greed_shrine
 	var/bloodgold = FALSE
+	whisper_lines = list("Money is time.", "Invest wisely.", "It can't go tits up.")
+	offering_items = list(/obj/item/weapon/spacecash/bundle/c100, /obj/item/stack/material/gold/ten, /obj/item/stack/material/silver/ten)
 
 /datum/religion/greed/generate_random_phrase()
 		var/phrase = pick("Oh great [name] ", "Oh [name]. ", "[name], our Benefactor. ")
@@ -51,7 +53,7 @@
 /obj/old_god_shrine/greed_shrine
 	name = "Gozag Ym Sagoz shrine"
 	shrine_religion = GREED
-	icon_state = "alter_03"
+	icon_state = "greed"
 	var/spell_to_blood = FALSE
 
 /obj/old_god_shrine/greed_shrine/New()

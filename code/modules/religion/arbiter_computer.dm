@@ -49,6 +49,7 @@
 	return
 
 /obj/machinery/computer/arbiter_computer/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+	/*
 	var/list/visible_locations = SSverina.get_shrine_locations()
 	var/dat = list()
 	dat = text("Insert ID to confirm identity: <A href='?src=\ref[];choice=Confirm Identity'>----------</A><HR>", src)
@@ -64,7 +65,7 @@
 		dat += text("<A href='?src=\ref[];choice=Log Out'>{Log Out}</A>",src)
 	user << browse(text("<HEAD><TITLE>Arbiter Records</TITLE></HEAD><TT>[]</TT>", dat), "window=arbiter_rec;size=600x400")
 	onclose(user, "arbiter_rec")
-
+	*/
 
 /obj/machinery/computer/arbiter_computer/Topic(href, href_list)
 	if(..())
