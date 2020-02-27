@@ -6,7 +6,12 @@
 	icon_state = "chefhat"
 	item_state = "chefhat"
 
-
+//Jester
+/obj/item/clothing/head/jester
+	name = "jester's hat"
+	desc = "It's a hat used by fools and clowns."
+	icon_state = "jester"
+	item_state = "jester"
 //Magistrate
 /obj/item/clothing/head/crown
 	name = "magistrate's crown"

@@ -63,3 +63,10 @@
 	l_hand = /obj/item/weapon/storage/bible
 	id_type = /obj/item/weapon/card/id/civilian/chaplain
 	pda_type = /obj/item/device/pda/chaplain
+
+/decl/hierarchy/outfit/job/jester
+	name = OUTFIT_JOB_NAME("Jester")
+	uniform = /obj/item/clothing/under/rank/jester
+	head = /obj/item/clothing/head/jester
+	id_type = /obj/item/weapon/card/id/civilian/jester
+	pda_type = /obj/item/device/pda/

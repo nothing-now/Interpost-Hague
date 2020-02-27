@@ -376,7 +376,7 @@
 "hl" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{dir = 4},/obj/structure/disposalpipe/segment{dir = 4},/turf/simulated/floor/tiled/bar,/area/crew_quarters/bar)
 "hm" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers{tag = "icon-intact-scrubbers (NORTHWEST)"; icon_state = "intact-scrubbers"; dir = 9},/obj/structure/disposalpipe/segment{dir = 4},/turf/simulated/floor/tiled/bar,/area/crew_quarters/bar)
 "hn" = (/obj/structure/disposalpipe/segment{dir = 4},/turf/simulated/floor/tiled/bar,/area/crew_quarters/bar)
-"ho" = (/obj/item/weapon/stool/bar/padded,/obj/structure/disposalpipe/segment{tag = "icon-pipe-c (WEST)"; icon_state = "pipe-c"; dir = 8},/turf/simulated/floor/tiled/bar,/area/crew_quarters/bar)
+"ho" = (/obj/item/weapon/stool/bar/padded,/obj/structure/disposalpipe/segment{tag = "icon-pipe-c (WEST)"; icon_state = "pipe-c"; dir = 8},/obj/effect/landmark/start{name = "Jester"},/turf/simulated/floor/tiled/bar,/area/crew_quarters/bar)
 "hp" = (/obj/effect/floor_decal/carpet{icon_state = "carpet_edges"; dir = 1},/obj/effect/floor_decal/carpet{icon_state = "carpet_edges"; dir = 8},/obj/effect/floor_decal/carpet{icon_state = "carpet_edges"; dir = 9},/obj/structure/sink{dir = 1; pixel_y = 16},/obj/structure/mirror{pixel_y = 32},/turf/simulated/floor/carpet,/area/crew_quarters/bar)
 "hq" = (/obj/effect/floor_decal/newcorner/white/quarter{tag = "icon-white-quarter (NORTH)"; icon_state = "white-quarter"; dir = 1},/turf/simulated/floor/tiled/dark,/area/crew_quarters/bar)
 "hr" = (/obj/effect/floor_decal/newcorner/white{tag = "icon-white (NORTH)"; icon_state = "white"; dir = 1},/turf/simulated/floor/tiled/dark,/area/crew_quarters/bar)

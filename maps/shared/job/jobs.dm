@@ -20,7 +20,8 @@
 						/datum/job/hydro,
 						/datum/job/janitor,
 						/datum/job/engineer,
-						/datum/job/assistant,
+						/datum/job/jester
+						///datum/job/assistant,
 						///datum/job/cadet
 						///datum/job/ouvrier
 						///datum/job/jr_upkeep
@@ -112,7 +113,8 @@
 						/datum/job/arbiter,
 						/datum/job/supreme_arbiter,
 						///datum/job/rd,
-						/datum/job/scientist
+						/datum/job/scientist,
+						/datum/job/jester
 						///datum/job/cadet,
 						)
 
@@ -128,7 +130,7 @@
 	total_positions = 10
 	department_flag = CIV
 	spawn_positions = 1
-
+	access = list(access_maint_tunnels)
 	equip(var/mob/living/carbon/human/H)
 		..()
 		//H.add_stats(rand(9,11), rand(9,11), rand(7,10))
@@ -491,11 +493,27 @@
 	department_flag = SRV
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the head of personnel"
+	supervisors = "the overseer"
 	selection_color = "#515151"
 	minimal_access = list(access_bar, access_kitchen, access_hydroponics)
 //	alt_titles = list("Hydroponicist")
 	outfit_type = /decl/hierarchy/outfit/job/service/gardener
+
+	equip(var/mob/living/carbon/human/H)
+		..()
+		H.generate_stats("con")
+		H.generate_skills("gardening")
+
+/datum/job/jester
+	title = "Jester"
+	department = "Service"
+	department_flag = SRV
+	total_positions = 1
+	spawn_positions = 1
+	supervisors = "The Viscount"
+	selection_color = "#852639"
+	minimal_access = list()
+	outfit_type = /decl/hierarchy/outfit/job/jester
 
 	equip(var/mob/living/carbon/human/H)
 		..()

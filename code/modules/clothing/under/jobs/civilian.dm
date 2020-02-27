@@ -64,6 +64,14 @@
 	worn_state = "clown"
 
 
+/obj/item/clothing/under/rank/jester
+	name = "Jester suit"
+	desc = "<i>'HONK!'</i>"
+	icon_state = "jester"
+	item_state = "jensensuit"
+	worn_state = "jester"
+
+
 /obj/item/clothing/under/rank/head_of_personnel
 	desc = "It's a jumpsuit worn by someone who works in the position of \"Head of Personnel\"."
 	name = "head of personnel's jumpsuit"
