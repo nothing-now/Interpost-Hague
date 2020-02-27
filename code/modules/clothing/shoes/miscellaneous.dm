@@ -178,3 +178,9 @@
 	name = "athletic shoes"
 	desc = "A pair of sleek atheletic shoes. Made by and for the sporty types."
 	icon_state = "sportshoe"
+
+/obj/item/clothing/shoes/jester
+	name = "Jester Shoes"
+	desc = "A pair of red and black shoes worn by fools and clowns."
+	icon_state = "jester"
+	item_state = "jester"
