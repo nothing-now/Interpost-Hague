@@ -194,7 +194,7 @@ var/global/list/string_slot_flags = list(
 	//Religions
 	paths = typesof(/datum/religion)-/datum/religion
 	for(var/T in paths)
-		var/datum/religion/R = new T
+		var/datum/religion/R = new T()
 		GLOB.all_religions[R.name] = R
 
 	//Old god spells

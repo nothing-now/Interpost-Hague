@@ -7,19 +7,25 @@
 	var/favor = 0
 	var/holy_item = null
 	var/shrine = null
-	var/religion_verbs = list()
 	var/followers = list()
 	var/territories = list()
+	var/datum/request/request = null
+	var/selectable_requests = list()
+	var/selectable_rewards = list()
+	var/selectable_punishments = list()
+	var/whisper_lines = list()
+	var/offering_items = list(/obj/item/weapon/paper)
 
+/datum/religion/New()
+	selectable_requests =  subtypesof(/datum/request)
+	selectable_rewards = subtypesof(/datum/reward)
+	selectable_punishments = subtypesof(/datum/punishment/)
 
 /datum/religion/machina
 	name = "Deo Machina"
 	holy_item = /obj/item/weapon/brander
-	favor = 0
-
-/datum/religion/old_gods
-	name = "Old Gods"
-	favor = 0
+	whisper_lines = list("Remeber the prayer.", "Verina provides.", "Follow the Arbiters.")
+	offering_items = list(/obj/item/weapon/spacecash/bundle/c10)
 
 /*
 /datum/religion/narsie
@@ -116,6 +122,33 @@ proc/generate_random_prayer()//This generates a new one.
 		phrase += "Amen."
 		return phrase
 
+/datum/religion/proc/whisper_to_followers()
+	var/whisper_line = pick(whisper_lines)
+	for(var/mob/living/carbon/human/player in GLOB.player_list)
+		if(player.religion == name)
+			playsound(player, "sound/effects/badmood[pick(1,4)].ogg",50,1)
+			to_chat(player, "<span class='danger'>[whisper_line]</span>")
+
+//Makes a request, and tells all followers about it
+/datum/religion/proc/request()
+	request = pick(selectable_requests)
+	//request = new request(name)
+	request = new /datum/request/offering/(name)
+	for(var/mob/living/carbon/human/player in GLOB.player_list)
+		if(player.religion == name)
+			playsound(player, "sound/effects/badmood[pick(1,4)].ogg",50,1)
+			to_chat(player, "<span class='danger'>[request.message]</span>")
+
+/datum/religion/proc/reward(var/mob/living/target)
+	var/datum/reward/reward = pick(selectable_rewards)
+	reward = new reward
+	reward.do_reward(target)
+
+/datum/religion/proc/punish(var/mob/living/target)
+	var/datum/punishment/punishment = pick(selectable_punishments)
+	punishment = new punishment
+	punishment.do_punishment(target)
+
 /datum/religion/proc/can_claim_for_gods(mob/user, atom/target)
 	//Check the area for if there's another shrine already, or the arbiters have already claimed it with TODO:?????
 	var/area/A = get_area(target)
@@ -135,10 +168,23 @@ proc/generate_random_prayer()//This generates a new one.
 	// If you pass the gaunlet of checks, you're good to proceed
 	return TRUE
 
+/datum/religion/proc/spawn_item(mob/living/user, var/divisor = 0.1)
+	var/turf/T = get_turf(user)
+	var/datum/religion/user_religion = GLOB.all_religions[user.religion]
+	for(var/obj/old_god_shrine/shrine in view(user, 5))
+		//If we can see an allied shrine nearby, we have more chance to spawn a reward.
+		if(shrine.shrine_religion.name == user_religion.name)
+			divisor = 1
+		if(prob(user_religion.favor * divisor))
+			var/S = pick(GLOB.all_spells)
+			var/reward = pick(GLOB.all_spells[S].requirments)
+			var/obj/reward_obj = GLOB.all_spells[S].requirments[reward]
+				new reward_obj(T)
+
 /mob/living/proc/praise_god()
 	set category = "Old God Magic"
 	set name = "Praise god"
-	var/turf/T = get_turf(src)
+	
 	var/datum/religion/user_religion = GLOB.all_religions[religion]
 	//You need your god's item to do this
 	if(!istype(get_active_hand(), user_religion.holy_item) && !istype(get_inactive_hand(), user_religion.holy_item))
@@ -153,18 +199,13 @@ proc/generate_random_prayer()//This generates a new one.
 		if(do_after(src, timer))
 			//These variables used to just be functions that returned a hard coded value.  So don't blame me, this is actually faster.
 			user_religion.favor += 10
-			playsound(T, praise_sound,50,1)
+			playsound(get_turf(src), praise_sound,50,1)
 			doing_something = 0
-			var/divisor = 0.1 //multiplication is easy on byond them division with large decimals
-			for(var/obj/old_god_shrine/shrine in view(src, 5))
-				//If we can see an allied shrine nearby, we have more chance to spawn a reward.
-				if(shrine.shrine_religion.name == user_religion.name)
-					divisor = 1
-			if(prob(user_religion.favor * divisor))
-				var/S = pick(GLOB.all_spells)
-				var/reward = pick(GLOB.all_spells[S].requirments)
-				var/obj/reward_obj = GLOB.all_spells[S].requirments[reward]
-				new reward_obj(T)
+			user_religion.spawn_item(src)
+			if(user_religion.request)
+				if(user_religion.request.check_complete(src))
+					user_religion.reward(src)
+					user_religion.request = null
 			return 1
 		else 
 			to_chat(src, "<span class='notice'>Your prayer is interupted</span>")
