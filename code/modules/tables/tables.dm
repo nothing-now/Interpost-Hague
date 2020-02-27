@@ -15,7 +15,7 @@
 	// For racks.
 	var/can_reinforce = 1
 	var/can_plate = 1
-
+	var/hitsound = 'sound/weapons/smash.ogg' //sound door makes when hit with a weapon
 	var/manipulating = 0
 	var/material/material = null
 	var/material/reinforced = null
@@ -45,7 +45,12 @@
 
 	health += maxhealth - old_maxhealth
 
-/obj/structure/table/proc/take_damage(amount)
+/obj/structure/table/proc/take_damage(obj/item/I as obj, mob/user as mob)
+	var/obj/item/weapon/W = I
+	var/amount = W.force
+	//attack stuff Should this be in it's own function?
+	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+	user.do_attack_animation(src)
 	// If the table is made of a brittle material, and is *not* reinforced with a non-brittle material, damage is multiplied by TABLE_BRITTLE_MATERIAL_MULTIPLIER
 	if(material && material.is_brittle())
 		if(reinforced)
@@ -53,6 +58,11 @@
 				amount *= TABLE_BRITTLE_MATERIAL_MULTIPLIER
 		else
 			amount *= TABLE_BRITTLE_MATERIAL_MULTIPLIER
+	if(amount < 0)
+		user.visible_message("<span class='danger'>\The [user] hits \the [src] with \the [W] with no visible effect.</span>")
+	else
+		user.visible_message("<span class='danger'>\The [user] forcefully strikes \the [src] with \the [W]!</span>")
+		playsound(src.loc, hitsound, 100, 1)
 	health -= amount
 	if(health <= 0)
 		visible_message("<span class='warning'>\The [src] breaks down!</span>")
@@ -104,8 +114,12 @@
 				to_chat(user, "<span class='warning'>It looks damaged!</span>")
 			if(0.5 to 1.0)
 				to_chat(user, "<span class='notice'>It has a few scrapes and dents.</span>")
+
 /obj/structure/table/attackby(obj/item/weapon/W, mob/user)
 
+	if (user.a_intent == I_HURT)
+		take_damage(W, user)
+		return 1
 	if(reinforced && istype(W, /obj/item/weapon/screwdriver))
 		remove_reinforced(W, user)
 		if(!reinforced)
