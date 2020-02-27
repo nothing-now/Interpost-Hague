@@ -517,8 +517,8 @@
 
 	equip(var/mob/living/carbon/human/H)
 		..()
-		H.generate_stats("con")
-		H.generate_skills("gardening")
+		H.generate_stats("dex")
+		H.generate_skills("melee")
 
 
 //CHURCH JOBS
