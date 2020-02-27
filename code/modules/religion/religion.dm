@@ -9,7 +9,7 @@
 	var/shrine = null
 	var/followers = list()
 	var/territories = list()
-	var/request = null
+	var/datum/request/request = null
 	var/selectable_requests = list()
 	var/selectable_rewards = list()
 	var/selectable_punishments = list()
@@ -25,9 +25,7 @@
 	name = "Deo Machina"
 	holy_item = /obj/item/weapon/brander
 	whisper_lines = list("Remeber the prayer.", "Verina provides.", "Follow the Arbiters.")
-
-/datum/religion/old_gods
-	name = "Old Gods"
+	offering_items = list(/obj/item/weapon/spacecash/bundle/c10)
 
 /*
 /datum/religion/narsie
@@ -128,14 +126,18 @@ proc/generate_random_prayer()//This generates a new one.
 	var/whisper_line = pick(whisper_lines)
 	for(var/mob/living/carbon/human/player in GLOB.player_list)
 		if(player.religion == name)
+			playsound(player, "sound/effects/badmood[pick(1,4)].ogg",50,1)
 			to_chat(player, "<span class='danger'>[whisper_line]</span>")
 
+//Makes a request, and tells all followers about it
 /datum/religion/proc/request()
 	request = pick(selectable_requests)
-	var/datum/request/current_request = new request(name)
+	//request = new request(name)
+	request = new /datum/request/offering/(name)
 	for(var/mob/living/carbon/human/player in GLOB.player_list)
 		if(player.religion == name)
-			to_chat(player, "<span class='danger'>[current_request.message]</span>")
+			playsound(player, "sound/effects/badmood[pick(1,4)].ogg",50,1)
+			to_chat(player, "<span class='danger'>[request.message]</span>")
 
 /datum/religion/proc/reward(var/mob/living/target)
 	var/datum/reward/reward = pick(selectable_rewards)
@@ -201,8 +203,7 @@ proc/generate_random_prayer()//This generates a new one.
 			doing_something = 0
 			user_religion.spawn_item(src)
 			if(user_religion.request)
-				var/datum/request/R = user_religion.request
-				if(R.check_complete())
+				if(user_religion.request.check_complete(src))
 					user_religion.reward(src)
 					user_religion.request = null
 			return 1

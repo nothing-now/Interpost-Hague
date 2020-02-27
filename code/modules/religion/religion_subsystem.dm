@@ -10,14 +10,15 @@ SUBSYSTEM_DEF(old_gods)
 /datum/controller/subsystem/old_gods/fire()
 	for(var/G in GLOB.all_religions)
 		var/datum/religion/selected_religion = GLOB.all_religions[G]
-		if(selected_religion != LEGAL_RELIGION)
+		if(selected_religion.name != LEGAL_RELIGION)
 			if(prob(5)) 
 				if(selected_religion.request == null)
-					selected_religion.request()
+					selected_religion.request(G)
 				else
 					for(var/mob/living/carbon/human/player in GLOB.player_list)
 						if(player.religion == G)
 							selected_religion.punish(player)
+							selected_religion.request = null
 			if(prob(15))
 				selected_religion.whisper_to_followers()
 

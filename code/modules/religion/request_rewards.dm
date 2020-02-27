@@ -35,7 +35,7 @@
 	message += "   Place [offering_item] before a shrine and praise your god."
 
 /datum/request/offering/check_complete(var/mob/living/target)
-	for(var/obj/O in view(target, 1))
+	for(var/obj/O in view(target, 5))
 		if(istype(O,offering_item))
 			qdel(O)
 			return 1
@@ -96,7 +96,7 @@ datum/punishment/proc/do_punishment()
 	
 datum/punishment/money
 	name = "Money" //LOADSA EMONE
-	message="You'rewages have been garnished..."
+	message="You're wages have been garnished..."
 
 datum/punishment/money/do_punishment(var/mob/living/target)
 	for(var/datum/money_account/acounts in all_money_accounts)
