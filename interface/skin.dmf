@@ -2232,7 +2232,7 @@ window "rpane"
 		button-type = pushbutton
 	elem "discordb"
 		type = BUTTON
-		pos = 175,0
+		pos = 428,0
 		size = 60x16
 		anchor1 = none
 		anchor2 = none
