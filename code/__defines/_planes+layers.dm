@@ -79,6 +79,8 @@ What is the naming convention for planes or layers?
 #define BELOW_TURF_PLANE             -22 // objects that are below turfs. Useful for asteroid smoothing or other such magic.
 	// TURF_LAYER 2
 
+#define OBJ_MOB_SHADOW_PLANE		 -23
+
 #define PLATING_PLANE                -21
 
 #define ABOVE_PLATING_PLANE          -20
