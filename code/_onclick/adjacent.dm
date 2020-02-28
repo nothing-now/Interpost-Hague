@@ -26,35 +26,40 @@
 		* Passing through in this case ignores anything with the throwpass flag, such as tables, racks, and morgue trays.
 */
 /turf/Adjacent(var/atom/neighbor, var/atom/target = null)
-	var/turf/T0 = get_turf(neighbor)
-	if(T0 == src)
-		return 1
-	if(!T0 || T0.z != z)
-		return 0
-	if(get_dist(src,T0) > 1)
-		return 0
 
+	var/turf/T0 = get_turf(neighbor)
+
+	if(T0 == src) //same turf
+		return TRUE
+
+	if(get_dist(src, T0) > 1 || z != T0.z) //too far
+		return FALSE
+
+	// Non diagonal case
 	if(T0.x == x || T0.y == y)
 		// Check for border blockages
-		return T0.ClickCross(get_dir(T0,src), border_only = 1) && src.ClickCross(get_dir(src,T0), border_only = 1, target_atom = target)
+		return T0.ClickCross(get_dir(T0,src), border_only = 1, target_atom = target) && src.ClickCross(get_dir(src,T0), border_only = 1, target_atom = target)
 
-	// Not orthagonal
-	var/in_dir = get_dir(neighbor,src) // eg. northwest (1+8)
-	var/d1 = in_dir&(in_dir-1)		// eg west		(1+8)&(8) = 8
-	var/d2 = in_dir - d1			// eg north		(1+8) - 8 = 1
+	// Diagonal case
+	var/in_dir = get_dir(T0,src) // eg. northwest (1+8) = 9 (00001001)
+	var/d1 = in_dir&3		     // eg. north	  (1+8)&3 (0000 0011) = 1 (0000 0001)
+	var/d2 = in_dir&12			 // eg. west	  (1+8)&12 (0000 1100) = 8 (0000 1000)
 
 	for(var/d in list(d1,d2))
-		if(!T0.ClickCross(d, border_only = 1))
+		if(!T0.ClickCross(d, border_only = 1, target_atom = target))
 			continue // could not leave T0 in that direction
 
 		var/turf/T1 = get_step(T0,d)
-		if(!T1 || T1.density || !T1.ClickCross(get_dir(T1,T0) | get_dir(T1,src), border_only = 0))
+		if(!T1 || T1.density)
+			continue
+		if(!T1.ClickCross(get_dir(T1,src), border_only = 0, target_atom = target) || !T1.ClickCross(get_dir(T1,T0), border_only = 0, target_atom = target))
 			continue // couldn't enter or couldn't leave T1
 
 		if(!src.ClickCross(get_dir(src,T1), border_only = 1, target_atom = target))
 			continue // could not enter src
 
 		return 1 // we don't care about our own density
+
 	return 0
 
 /*
@@ -72,20 +77,18 @@ Quick adjacency (to turf):
 
 	return 1
 
+
 /*
 	Adjacency (to anything else):
 	* Must be on a turf
 	* In the case of a multiple-tile object, all valid locations are checked for adjacency.
-
 	Note: Multiple-tile objects are created when the bound_width and bound_height are creater than the tile size.
 	This is not used in stock /tg/station currently.
 */
 /atom/movable/Adjacent(var/atom/neighbor)
-	if(neighbor == loc) return 1
+	if(neighbor == loc || (neighbor.loc == loc)) return 1
 	if(!isturf(loc)) return 0
-	for(var/turf/T in locs)
-		if(isnull(T)) continue
-		if(T.Adjacent(neighbor,src)) return 1
+	if(loc.Adjacent(neighbor,src)) return 1
 	return 0
 
 // This is necessary for storage items not on your person.
@@ -96,23 +99,6 @@ Quick adjacency (to turf):
 			return loc.Adjacent(neighbor,recurse - 1)
 		return 0
 	return ..()
-/*
-	Special case: This allows you to reach a door when it is visally on top of,
-	but technically behind, a fire door
-
-	You could try to rewrite this to be faster, but I'm not sure anything would be.
-	This can be safely removed if border firedoors are ever moved to be on top of doors
-	so they can be interacted with without opening the door.
-*/
-/obj/machinery/door/Adjacent(var/atom/neighbor)
-	var/obj/machinery/door/firedoor/border_only/BOD = locate() in loc
-	if(BOD)
-		BOD.throwpass = 1 // allow click to pass
-		. = ..()
-		BOD.throwpass = 0
-		return .
-	return ..()
-
 
 /*
 	This checks if you there is uninterrupted airspace between that turf and this one.

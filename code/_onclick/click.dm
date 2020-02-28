@@ -17,7 +17,7 @@
 */
 
 /atom/Click(var/location, var/control, var/params) // This is their reaction to being clicked on (standard proc)
-	var/datum/click_handler/click_handler = usr.GetClickHandler()
+	var/datum/click_handler/default/click_handler = usr.GetClickHandler()
 	click_handler.OnClick(src, params)
 
 /atom/DblClick(var/location, var/control, var/params)
@@ -101,6 +101,7 @@
 	var/obj/item/W = get_active_hand()
 
 	if(W == A) // Handle attack_self
+
 		W.attack_self(src)
 		trigger_aiming(TARGET_CAN_CLICK)
 		if(hand)
@@ -132,26 +133,32 @@
 	// A is a turf or is on a turf, or in something on a turf (pen in a box); but not something in something on a turf (pen in a box in a backpack)
 	sdepth = A.storage_depth_turf()
 	if(isturf(A) || isturf(A.loc) || (sdepth != -1 && sdepth <= 1))
+
 		if(A.Adjacent(src)) // see adjacent.dm
 			if(W)
 				// Return 1 in attackby() to prevent afterattack() effects (when safely moving items for example)
+
 				var/resolved = W.resolve_attackby(A,src, params)
 				if(!resolved && A && W)
 					W.afterattack(A, src, 1, params) // 1: clicking something Adjacent
 			else
 				if(ismob(A)) // No instant mob attacking
 					setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+
 				UnarmedAttack(A, 1)
 
 			trigger_aiming(TARGET_CAN_CLICK)
 			return
 		else // non-adjacent click
 			if(W)
+
 				W.afterattack(A, src, 0, params) // 0: not Adjacent
 			else
+
 				RangedAttack(A, params)
 
 			trigger_aiming(TARGET_CAN_CLICK)
+
 	return 1
 
 /mob/proc/setClickCooldown(var/timeout)
@@ -437,6 +444,7 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 	return
 
 /datum/click_handler/default/OnClick(var/atom/A, var/params)
+	to_world("we are clicking default now")
 	user.ClickOn(A, params)
 
 /datum/click_handler/default/OnDblClick(var/atom/A, var/params)
