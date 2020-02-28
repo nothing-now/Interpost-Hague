@@ -451,7 +451,7 @@ its easier to just keep the beam vertical.
 		return 0
 
 	var/obj/occupied = turf_is_crowded()
-	if(occupied)
+	if(occupied && (occupied != user))
 		to_chat(user, "<span class='danger'>There's \a [occupied] in the way.</span>")
 		return 0
 	return 1

@@ -444,7 +444,6 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 	return
 
 /datum/click_handler/default/OnClick(var/atom/A, var/params)
-	to_world("we are clicking default now")
 	user.ClickOn(A, params)
 
 /datum/click_handler/default/OnDblClick(var/atom/A, var/params)
