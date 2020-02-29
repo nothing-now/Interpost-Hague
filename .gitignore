@@ -11,6 +11,7 @@ data/
 cfg/
 build_log.txt
 use_map
+hub
 stopserver
 reboot_called
 atupdate
