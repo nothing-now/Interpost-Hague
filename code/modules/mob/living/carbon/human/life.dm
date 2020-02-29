@@ -590,7 +590,9 @@
 				//to_chat(src, "<span class='warning'>[species.halloss_message_self]</span>")
 				src.visible_message("<span class='warning'><B>[src]</B> gives into the pain!</span>")//("<B>[src]</B> [species.halloss_message].")
 			Paralyse(10)
-
+		if(health <= maxHealth * 0.4) //This should be 80 total health
+			Paralyse(10)
+			adjustBrainLoss(3)
 		if(paralysis || sleeping)
 			blinded = 1
 			set_stat(UNCONSCIOUS)

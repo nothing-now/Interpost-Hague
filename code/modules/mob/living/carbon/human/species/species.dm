@@ -73,6 +73,7 @@
 
 	// Combat vars.
 	var/total_health = 200                   // Point at which the mob will enter crit.
+	var/crit_threshold = HEALTH_THRESHOLD_CRIT
 	var/list/unarmed_types = list(           // Possible unarmed attacks that the mob will use in combat,
 		/datum/unarmed_attack,
 		/datum/unarmed_attack/bite
