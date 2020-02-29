@@ -187,7 +187,7 @@ default behaviour is:
 /mob/living/verb/succumb()
 	set name = "Succumb"
 	set category = "IC"
-	if ((src.health < src.maxHealth/2) || is_asystole()) // Health below half of maxhealth, or asystole.
+	if ((src.health < src.maxHealth * 0.3) || is_asystole()) // Health below half of maxhealth, or asystole.
 		src.adjustBrainLoss(src.health + src.maxHealth * 2) // Deal 2x health in BrainLoss damage, as before but variable.
 		updatehealth()
 		to_chat(src, "<span class='notice'>You have given up life and succumbed to death.</span>")

@@ -15,6 +15,7 @@
 
 	var/obj/effect/shuttle_landmark/landmark_transition
 	var/move_time = 240		//the time spent in the transition area
+	var/wait_launch_timeout = 0 //The shuttle will only wait for a good undock for so long
 
 	category = /datum/shuttle/autodock
 
@@ -81,7 +82,7 @@
 
 /datum/shuttle/autodock/proc/check_undocked()
 	if(shuttle_docking_controller)
-		return shuttle_docking_controller.can_launch()
+		return shuttle_docking_controller.undocked()
 	return TRUE
 
 /*
@@ -91,10 +92,13 @@
 /datum/shuttle/autodock/proc/process()
 	switch(process_state)
 		if (WAIT_LAUNCH)
-			if(check_undocked())
+			//We will only wait so long to undock before launching
+			if(check_undocked() || wait_launch_timeout > 15)
 				//*** ready to go
+				wait_launch_timeout = 0
 				process_launch()
-
+			else
+				wait_launch_timeout = wait_launch_timeout + 1
 		if (FORCE_LAUNCH)
 			process_launch()
 

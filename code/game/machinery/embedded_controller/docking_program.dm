@@ -272,10 +272,6 @@
 /datum/computer/file/embedded_program/docking/proc/undocked()
 	return (dock_state == STATE_UNDOCKED)
 
-//returns 1 if we are saftely undocked (and the shuttle can leave)
-/datum/computer/file/embedded_program/docking/proc/can_launch()
-	return undocked()
-
 /datum/computer/file/embedded_program/docking/proc/send_docking_command(var/recipient, var/command)
 	var/datum/signal/signal = new
 	signal.data["tag"] = id_tag

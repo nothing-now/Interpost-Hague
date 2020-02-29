@@ -184,3 +184,18 @@
 	desc = "A pair of red and black shoes worn by fools and clowns."
 	icon_state = "jester"
 	item_state = "jester"
+	var/footstep = 1	//used for squeeks whilst walking
+
+/obj/item/clothing/shoes/jester/New()
+	..()
+	slowdown_per_slot[slot_shoes] = 1
+
+/obj/item/clothing/shoes/jester/handle_movement(var/turf/walking, var/running)
+	if(running)
+		if(footstep >= 2)
+			footstep = 0
+			playsound(src, "jesterstep", 50, 1) // this will get annoying very fast.
+		else
+			footstep++
+	else
+		playsound(src, "jesterstep", 20, 1)
