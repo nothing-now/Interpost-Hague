@@ -481,10 +481,15 @@ var/world_topic_spam_protect_time = world.timeofday
 
 	processScheduler.stop()
 
-	if(config.server)	//if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
-		for(var/client/C in GLOB.clients)
-			to_chat(C, link("byond://[config.server]"))
+	var/datum/chatOutput/co
+	for(var/client/C in GLOB.clients)
+		co = C.chatOutput
+		if(co)
+			co.ehjax_send(data = "roundrestart")
 
+		if(config.server) //if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
+			open_link(C, "byond://[config.server]")
+	
 	if(config.wait_for_sigusr1_reboot && reason != 3)
 		text2file("foo", "reboot_called")
 		to_world("<span class=danger>World reboot waiting for external scripts. Please be patient.</span>")

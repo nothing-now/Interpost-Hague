@@ -78,7 +78,8 @@
 
 		ticket.close(client_repository.get_lite_client(usr.client))
 
-
+	if(href_list["_src_"] == "chat") // Oh god the ping hrefs.
+		return chatOutput.Topic(href, href_list)
 
 	//Logs all hrefs
 	if(config && config.log_hrefs && href_logfile)
@@ -111,7 +112,9 @@
 	//CONNECT//
 	///////////
 /client/New(TopicData)
-	TopicData = null							//Prevent calls to client.Topic from connect
+	TopicData = null
+							//Prevent calls to client.Topic from connect
+	chatOutput = new /datum/chatOutput(src) // Right off the bat.
 
 	if(!(connection in list("seeker", "web")))					//Invalid connection type.
 		return null
@@ -158,6 +161,7 @@
 	apply_fps(prefs.clientfps)
 
 	. = ..()	//calls mob.Login()
+	chatOutput.start()
 	prefs.sanitize_preferences()
 
 	GLOB.using_map.map_info(src)
@@ -374,3 +378,6 @@ client/verb/character_setup()
 /client/proc/apply_fps(var/client_fps)
 	if(world.byond_version >= 511 && byond_version >= 511 && client_fps >= CLIENT_MIN_FPS && client_fps <= CLIENT_MAX_FPS)
 		vars["fps"] = prefs.clientfps
+
+
+

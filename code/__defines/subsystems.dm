@@ -70,6 +70,7 @@
 #define INIT_OPEN_SPACE -150
 #define INIT_BAY_LEGACY -200
 #define INIT_ORDER_CRAFT -175
+#define SS_INIT_CHAT     -90 // Should be lower to ensure chat remains smooth during init.
 
 // SS runlevels
 
