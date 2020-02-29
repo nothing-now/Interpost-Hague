@@ -1,7 +1,7 @@
 # InterHippie - InterBay but twice as worse
 
 # Credits go to every person who worked on Interbay's code in the past, such as: mattroks101, kyrahabattoir, muncher2112, etc. Thanks.
-[Baystation's Website](http://baystation12.net/) - [InterHippie's Code](https://github.com/butmun/InterHippie2/) - [InterHippie's Discord](https://discord.gg/z2AKZtS)
+[Baystation's Website](http://baystation12.net/) - [InterHippie's Code](https://github.com/butmun/InterHippie2/) - [InterHippie's Discord](https://discord.gg/abFdhjv)
 ---
 [![forthebadge](http://forthebadge.com/images/badges/60-percent-of-the-time-works-every-time.svg)](http://forthebadge.com)
 

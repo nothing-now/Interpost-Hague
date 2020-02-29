@@ -176,9 +176,6 @@
 		/obj/item/weapon/grenade/chem_grenade/teargas,
 		/obj/item/weapon/melee/baton/loaded,
 		/obj/item/taperoll/police,
-		/obj/item/weapon/reagent_containers/syringe/revelator,
-		/obj/item/weapon/reagent_containers/syringe/revelator,
-		/obj/item/device/arbiter_scanner,
 		/obj/item/weapon/handcuffs,
 		/obj/item/weapon/handcuffs,
 	)

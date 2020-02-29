@@ -1,5 +1,6 @@
 
 //The main controller of verina.  Will manage a few small subsystems, and manage what they are doing based on crew input
+/*
 SUBSYSTEM_DEF(verina)
 	name = "Verina"
 	wait = 300  //30 seconds
@@ -63,54 +64,4 @@ SUBSYSTEM_DEF(verina)
 	reward = new reward
 	reward.do_reward()
 
-/*	Rewards get defined individually with thier own special verb
-	All reward code should be self contained.  All the actual "reward" function will do is
-	pick a reward and run it's verb
 */
-/datum/reward/
-	var/name = null
-	var/value = null //Having these gated by value might be useful at some point, doing it out of 100 right now because I don't know cargo values
-	var/message = null
-
-/datum/reward/proc/do_reward()
-	to_world("You should not be seeing this!")
-	
-/datum/reward/money
-	name = "Money" //LOADSA EMONE
-	value = 10
-	message="has been gracedwith a bonus!  Praise be Verina!"
-
-/datum/reward/money/do_reward()
-	for(var/datum/money_account/account in all_money_accounts)
-		account.money += 10
-
-/datum/reward/happiness/
-	name = "Happiness"
-	value = 25
-	message="will received a burst of soothing psychic energy that will effect all true believers."
-
-/datum/reward/happiness/do_reward()
-	for(var/mob/living/carbon/human/H in GLOB.living_mob_list_)
-		if(H.religion == LEGAL_RELIGION)
-			H.add_event("fulfilledrequest", /datum/happiness_event/request_fulfilled)
-
-/datum/reward/random_crate
-	name = "Random Crate"
-	value = 50
-	message="has been graced with a suprise shipment!"
-
-/datum/reward/random_crate/do_reward()
-	var/datum/supply_order/supply_reward = pick(supply_controller.master_supply_list)
-	var/datum/supply_order/O = new /datum/supply_order()
-	//I pulled this out of supply stuff, but it should be a seperate function, like god damn
-	supply_controller.ordernum++
-	O.ordernum = supply_controller.ordernum
-	O.object = supply_reward
-	O.orderedby = "Verina"
-	O.reason = "For completing Verina's request!"
-	O.orderedrank = "God"
-	O.comment = "#[O.ordernum] Well done servant of Verina." // crates will be labeled with this.
-	supply_controller.shoppinglist += O
-
-/datum/controller/subsystem/verina/proc/punish()
-	log_debug("Punihsments do nothing")

@@ -21,7 +21,7 @@ var/global/datum/controller/occupations/job_master
 		occupations = list()
 		occupations_by_type = list()
 		occupations_by_title = list()
-		var/list/all_jobs = list(/datum/job/assistant) | GLOB.using_map.allowed_jobs
+		var/list/all_jobs = GLOB.using_map.allowed_jobs | /datum/job/assistant
 		if(!all_jobs.len)
 			log_error("<span class='warning'>Error setting up jobs, no job datums found!</span>")
 			return 0
@@ -547,6 +547,13 @@ var/global/datum/controller/occupations/job_master
 				if(prob(5))
 					H.mind.prayer = accepted_prayer
 					to_chat(H, "<span class='notice'>You can't believe your luck, you've managed to pick up on the selected prayer for today. It's: <b>[H.mind.prayer]</b> Remember this prayer, and Gods save you from the Arbiters.\n</span>")
+				var/list/pickable_spells = list()
+				for(var/S in GLOB.all_spells)
+					if(GLOB.all_spells[S].old_god == H.religion)
+						pickable_spells += GLOB.all_spells[S]
+				var/datum/old_god_spell/new_spell = pick(pickable_spells)
+				to_chat(H, "You can only recall a single incantation.  It is the <b><font color='red'>[new_spell.name]</font> spell.  The incantation is <b><font color='red'>[new_spell.phrase]</font>")
+				H.mind.store_memory("[new_spell.name] Incantation: \"[new_spell.phrase]\"")
 
 		
 		BITSET(H.hud_updateflag, ID_HUD)

@@ -11,18 +11,6 @@
 	var/rank = null
 
 /obj/machinery/computer/arbiter_computer/attackby(var/obj/item/I, var/mob/user)
-	if(istype(I,/obj/item/device/arbiter_scanner))
-		var/obj/item/device/arbiter_scanner/scanner = I
-		if(!scanner.stored_info)
-			visible_message("<span class='notice'>The [src] beeps: \"No data detected.\"</span>")
-			return
-		if(scanner.stored_info == 2)
-			visible_message("<span class='notice'>The [src] beeps: \"Subject <b>IS</b> a heretic.\"</span>")
-			scanner_results = 2
-			return
-		else
-			visible_message("<span class='notice'>The [src] beeps: \"Subject is <b>NOT</b> a heretic.\"</span>")
-			scanner_results = 1
 	..()
 
 /obj/machinery/computer/arbiter_computer/emag_act(var/remaining_charges, var/mob/user)
@@ -61,6 +49,7 @@
 	return
 
 /obj/machinery/computer/arbiter_computer/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
+	/*
 	var/list/visible_locations = SSverina.get_shrine_locations()
 	var/dat = list()
 	dat = text("Insert ID to confirm identity: <A href='?src=\ref[];choice=Confirm Identity'>----------</A><HR>", src)
@@ -73,16 +62,10 @@
 			dat += text("Verina is currently satiated. <HR>")
 		if(visible_locations.len > 0)
 			dat += text("verina has detected shrines in the following locations: <strong>[visible_locations.Join(", ")]<strong> <HR>")
-		if(!scanner_results)
-			dat += text("No sample is provided.  Please provide a revelator sample <BR>")
-		else if(scanner_results == 2)
-			dat += text("The [src] beeps: \"Subject <b>IS</b> a heretic. <HR>")
-		else
-			dat += text("The [src] beeps: \"Subject <b>IS NOT</b> a heretic. <HR>")
 		dat += text("<A href='?src=\ref[];choice=Log Out'>{Log Out}</A>",src)
 	user << browse(text("<HEAD><TITLE>Arbiter Records</TITLE></HEAD><TT>[]</TT>", dat), "window=arbiter_rec;size=600x400")
 	onclose(user, "arbiter_rec")
-
+	*/
 
 /obj/machinery/computer/arbiter_computer/Topic(href, href_list)
 	if(..())

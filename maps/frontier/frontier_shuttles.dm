@@ -163,52 +163,57 @@
 
 //Commented out till I map these in.
 //Merc
-/*
+
 /datum/shuttle/autodock/multi/antag/mercenary
 	name = "Mercenary"
 	warmup_time = 0
-	destinations = list(
-		"nav_merc_start",
+	destination_tags = list(
 		"nav_merc_dock",
-		"nav_merc_coupole",
-		"nav_merc_minage",
-		"nav_merc_residentiel",
+		"nav_merc_north",
+		"nav_merc_south",
+		"nav_merc_east",
+		"nav_merc_west"
 		)
-	shuttle_area = /area/shuttle/merc/start
-	dock_target = "ship_merc"
+	shuttle_area = /area/syndicate_station/start
+	dock_target = "merc_shuttle"
 	current_location = "nav_merc_start"
 	landmark_transition = "nav_merc_transition"
-	announcer = "Chasseur Huon"
+	announcer = "Alpha Sensor Array"
 	home_waypoint = "nav_merc_start"
-	arrival_message = "Attention, you have a large signature approaching the station - looks unarmed to surface scans. We're too far out to intercept - brace for visitors."
-	departure_message = "Your visitors are on their way out of the system, burning delta-v like it's nothing. Good riddance."
+	arrival_message = "Attention, vessel detected entering station proximity."
+	departure_message = "Attention, vessel detected leaving station proximity."
 
 /obj/effect/shuttle_landmark/merc/start
 	name = "Mercenary Base"
 	landmark_tag = "nav_merc_start"
 	docking_controller = "dock_merc"
-
+	base_area = /area/syndicate_mothership
+	base_turf = /turf/simulated/floor/snow
 /obj/effect/shuttle_landmark/merc/internim
 	name = "In transit"
 	landmark_tag = "nav_merc_transition"
 
 /obj/effect/shuttle_landmark/merc/dock
-	name = "Docking Port"
+	name = "Arrival Port"
 	landmark_tag = "nav_merc_dock"
-	docking_controller = "dock2"
+	docking_controller = "specops_dock_airlock"
 
-/obj/effect/shuttle_landmark/merc/coupole
-	name = "Near the Dome"
-	landmark_tag = "nav_merc_coupole"
+/obj/effect/shuttle_landmark/merc/north
+	name = "North of the Station"
+	landmark_tag = "nav_merc_north"
 
-/obj/effect/shuttle_landmark/merc/minage
-	name = "At the mining airlock"
-	landmark_tag = "nav_merc_minage"
+/obj/effect/shuttle_landmark/merc/south
+	name = "South of the Station"
+	landmark_tag = "nav_merc_south"
 
-/obj/effect/shuttle_landmark/merc/residentiel
-	name = "Near the Residential Access"
-	landmark_tag = "nav_merc_residentiel"
-*/
+/obj/effect/shuttle_landmark/merc/east
+	name = "East of the Station"
+	landmark_tag = "nav_merc_east"
+
+/obj/effect/shuttle_landmark/merc/west
+	name = "West of the Station"
+	landmark_tag = "nav_merc_west"
+
 //Ninja
 /*
 //Ninja Shuttle.
@@ -247,14 +252,14 @@
 /obj/effect/shuttle_landmark/ninja/asteroid
 	name = "Asteroids on Industrial Deck"
 	landmark_tag = "nav_ninja_asteroid"
-
+*/
 //Skipjack
 
 /datum/shuttle/autodock/multi/antag/skipjack
     name = "Skipjack"
     warmup_time = 0
-    destinations = list(
-        "nav_skipjack_ai",
+    destination_tags = list(
+        "nav_skipjack_arrivals",
         "nav_skipjack_civ",
         "nav_skipjack_ind",
         "nav_skipjack_start"
@@ -263,7 +268,7 @@
     dock_target = "skipjack_shuttle"
     current_location = "nav_skipjack_start"
     landmark_transition = "nav_skipjack_transition"
-    announcer = "ESIN Dreyfus Sensor Array"
+    announcer = "ESIN Frontier Sensor Array"
     home_waypoint = "nav_skipjack_start"
     arrival_message = "Attention, vessel detected entering station proximity."
     departure_message = "Attention, vessel detected leaving station proximity."
@@ -277,9 +282,9 @@
     name = "In transit"
     landmark_tag = "nav_skipjack_transition"
 
-/obj/effect/shuttle_landmark/skipjack/ai
-    name = "Silicon Deck"
-    landmark_tag = "nav_skipjack_ai"
+/obj/effect/shuttle_landmark/skipjack/arrivals
+    name = "Arrivals"
+    landmark_tag = "nav_skipjack_arrivals"
 
 /obj/effect/shuttle_landmark/skipjack/civ
     name = "West of Civilian Deck"
@@ -288,4 +293,3 @@
 /obj/effect/shuttle_landmark/skipjack/ind
     name = "Mining Airlock"
     landmark_tag = "nav_skipjack_ind"
-   */

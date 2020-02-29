@@ -16,6 +16,13 @@ env:
     - TEST=MAP MAP_PATH=torch
     - TEST=MAP MAP_PATH=overmap_example
     - TEST=MAP MAP_PATH=away_sites_testing
+    - TEST=MAP MAP_PATH=alpha
+    - TEST=MAP MAP_PATH=frontier
+    - TEST=MAP MAP_PATH=dreyfus
+    - TEST=MAP MAP_PATH=utopia
+    - TEST=MAP MAP_PATH=random_ruins
+    - TEST=MAP MAP_PATH=box_Flower
+    - TEST=MAP MAP_PATH=away
 
 cache:
   directories:

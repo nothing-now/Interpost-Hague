@@ -19,7 +19,17 @@
 
 
 /obj/old_god_shrine/New()
+	var/turf/T = get_area(src)
+	var/area/A = get_area(src)
+	if(findtext(T.name,"Chapel"))
+		anim(get_turf(src), src, 'icons/effects/effects.dmi', "fire",null,20,null)
+		qdel(src)
+		return
+	shrine_religion = GLOB.all_religions[shrine_religion]
+	shrine_religion.favor -= 30
 	near_camera()
+	shrine_religion.claim_territory(A,shrine_religion.name)
+	log_and_message_admins("created \an [src.name] rune at \the [A.name] - [loc.x]-[loc.y]-[loc.z].")
 	return
 
 //Used when someone breaks a shrine
@@ -32,6 +42,7 @@
 	if(W.type == GLOB.all_religions[shrine_religion.name].holy_item.type) //LMAO THIS WORKS.
 		visible_message("<span class='warning'><b>[user] waves thier [W] and the shrine disolves into mist!</b></span>")
 		playsound(loc, pick(GLOB.rustle_sound), 50, 1, -1)
+		shrine_religion.favor += 30
 		destroy()
 	playsound(src.loc, pick(sounds), 100, 1)
 	if(W.damtype == BRUTE || W.damtype == BURN) 
@@ -51,35 +62,6 @@
 	if (force >= toughness && prob(75))
 		destroy()
 
-// DONT OVERRIDE THIS UNLESS YOU KNOW WHAT YOU ARE DOING
-//  This does all the decoding from old_god_shrine datum -> actual spell
-//  It looks up all spells with your God's tag, and then checks the requirments.  If you meet them, runs the spell's
-/obj/old_god_shrine/proc/activate(var/mob/living/user)
-	var/list/spells = list()
-	for(var/S in GLOB.all_spells)
-		if(GLOB.all_spells[S].old_god == user.religion)
-			spells += GLOB.all_spells[S]
-	var/datum/old_god_spell/selected_spell = input(user, "What spell will we use?") as null|anything in spells
-	if(isnull(selected_spell))
-		return
-	var/list/spell_components = list()
-	for(var/direction in selected_spell.requirments)
-		// First check if it's empty
-		var/found = FALSE
-		//get turf contents
-		for(var/obj/item/a in get_step(src, DIRECTION_TO_VAL(direction)).contents)
-			if(istype(a, selected_spell.requirments[direction]))
-				found = TRUE
-				spell_components[direction] = a
-		if (found == FALSE)
-			visible_message("<span class='notice'>\The [src] is uninpressed with your offering</span>")
-			return
-	selected_spell.spell_consume(spell_components)
-	selected_spell.spell_effect(user,spell_components)
-
-/obj/old_god_shrine/attack_hand(var/mob/living/user)
-	activate(user)
-
 /obj/old_god_shrine/proc/near_camera()
 	if (!isturf(loc))
 		return 0
@@ -87,3 +69,29 @@
 		return 0
 	GLOB.global_headset.autosay("Heretical Shrine detected in [get_area(src)]","Verina","Inquisition")
 	return 1
+
+// DONT OVERRIDE THIS UNLESS YOU KNOW WHAT YOU ARE DOING
+//  This does all the decoding from old_god_shrine datum -> actual spell
+//  It looks up all spells with your God's tag, and then checks the requirments.  If you meet them, runs the spell's
+/obj/old_god_shrine/hear_talk(mob/living/M as mob, msg, var/verb="says", datum/language/speaking=null)
+	//Hopefully this will cut down on it this being called lots of times
+	if(M.religion == LEGAL_RELIGION)
+		return
+	for(var/S in GLOB.all_spells)
+		if(GLOB.all_spells[S].phrase == msg)
+			var/datum/old_god_spell/selected_spell = GLOB.all_spells[S]
+			var/list/spell_components = list()
+			for(var/direction in selected_spell.requirments)
+				// First check if it's empty
+				var/found = FALSE
+				//get turf contents
+				for(var/obj/a in get_step(src, DIRECTION_TO_VAL(direction)).contents)
+					if(istype(a, selected_spell.requirments[direction]))
+						found = TRUE
+						spell_components[direction] = a
+				if (found == FALSE)
+					visible_message("<span class='notice'>\The [src] is uninpressed with your offering</span>")
+					return
+			selected_spell.spell_consume(spell_components)
+			selected_spell.spell_effect(M,spell_components)
+	

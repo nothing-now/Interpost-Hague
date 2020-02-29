@@ -8,6 +8,7 @@
 	status_flags = GODMODE
 	anchored = 1
 	unacidable = 1
+	plane = OBJ_MOB_SHADOW_PLANE
 	density = 0
 	opacity = 0					// Don't trigger lighting recalcs gah! TODO - consider multi-z lighting.
 	//auto_init = FALSE 			// We do not need to be initialize()d
