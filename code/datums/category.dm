@@ -3,8 +3,8 @@
 **********************/
 /datum/category_collection
 	var/category_group_type                          // Type of categories to initialize
-	var/list/datum/category_group/categories         // List of initialized categories
-	var/list/datum/category_group/categories_by_name // Associative list of initialized categories, keyed by name
+	var/list/categories         // List of initialized categories
+	var/list/categories_by_name // Associative list of initialized categories, keyed by name
 
 /datum/category_collection/New()
 	..()

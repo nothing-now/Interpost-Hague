@@ -93,8 +93,8 @@
 
 #define random_id(key,min_id,max_id) uniqueness_repository.Generate(/datum/uniqueness_generator/id_random, key, min_id, max_id)
 
-#define to_chat(target, message)                            target << message
-#define to_world(message)                                   world << message
+#define legacy_chat(target, message)                        target << (message)
+#define to_world(message)                                   to_chat(world, message)
 #define to_world_log(message)                               world.log << message
 #define sound_to(target, sound)                             target << sound
 #define to_file(file_entry, source_var)                     file_entry << source_var
@@ -109,6 +109,8 @@
 #define map_image_file_name(z_level) "[GLOB.using_map.path]-[z_level].png"
 
 #define RANDOM_BLOOD_TYPE pick(4;"O-", 36;"O+", 3;"A-", 28;"A+", 1;"B-", 20;"B+", 1;"AB-", 5;"AB+")
+
+#define open_link(target, url)                              target << link(url)
 
 #define any2ref(x) "\ref[x]"
 

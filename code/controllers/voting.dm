@@ -1,3 +1,4 @@
+/*
 var/datum/controller/vote/vote = new()
 
 datum/controller/vote
@@ -555,3 +556,5 @@ datum/controller/vote/proc/is_addantag_allowed(var/automatic)
 
 	if(vote)
 		src << browse(vote.interface(client),"window=vote;size=450x740")
+
+*/

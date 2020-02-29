@@ -1,477 +1,558 @@
-var/global/datum/controller/vote/vote = new()
-#define vote_head "<script type=\"text/javascript\" src=\"3-jquery.timers.js\"></script><script type=\"text/javascript\" src=\"libraries.min.js\"></script><link rel=\"stylesheet\" type=\"text/css\" href=\"html_interface_icons.css\" /><link rel=\"stylesheet\" type=\"text/css\" href=\"voting.css\" /><script type=\"text/javascript\" src=\"voting.js\"></script>"
+var/datum/controller/vote/vote = new()
 
-#define VOTE_SCREEN_WIDTH 400
-#define VOTE_SCREEN_HEIGHT 400
-
-
-/datum/html_interface/nanotrasen/vote/registerResources()
-	. = ..()
-
-	register_asset("voting.js", 'voting.js')
-	register_asset("voting.css", 'voting.css')
-
-/datum/html_interface/nanotrasen/vote/sendAssets(var/client/client)
-	..()
-
-	send_asset(client, "voting.js")
-	send_asset(client, "voting.css")
-
-/datum/html_interface/nanotrasen/vote/Topic(href, href_list[])
-	..()
-	if(href_list["html_interface_action"] == "onclose")
-
-		var/datum/html_interface_client/hclient = getClient(usr.client)
-		if (istype(hclient))
-			src.hide(hclient)
-			vote.voting -= usr.client
-
-
-/datum/controller/vote
-	var/initiator      = null
-	var/started_time   = null
+datum/controller/vote
+	var/initiator = null
+	var/started_time = null
 	var/time_remaining = 0
-	var/mode           = null
-	var/question       = null
-	var/list/choices   = list()
-	var/list/voted     = list()
-	var/list/voting    = list()
-	var/list/current_votes = list()
-	var/list/discarded_choices = list()
-	var/list/ismapvote
-	var/chosen_map
-	name               = "datum"
-	var/datum/html_interface/nanotrasen/vote/interface
-	var/list/data
-	var/list/status_data
-	var/last_update    = 0
-	var/initialized    = 0
-	var/lastupdate     = 0
-	var/total_votes    = 0
-	var/vote_threshold = 0.15
-	var/discarded_votes = 0
-	var/weighted        = FALSE // Whether to use weighted voting.
+	var/mode = null
+	var/question = null
+	var/list/choices = list()
+	var/list/gamemode_names = list()
+	var/list/voted = list()
+	var/list/voting = list()
+	var/list/current_high_votes = list()
+	var/list/current_med_votes = list()
+	var/list/current_low_votes = list()
+	var/list/additional_text = list()
+	var/auto_muted = 0
+	var/auto_add_antag = 0
 
-	// Jesus fuck some shitcode is breaking because it's sleeping and the SS doesn't like it.
-	var/lock = FALSE
+	New()
+		if(vote != src)
+			if(istype(vote))
+				qdel(vote)
+			vote = src
 
-/datum/controller/vote/New()
-	. = ..()
-	src.data = list()
-	src.status_data = list()
-	spawn(5)
-		if(!src.interface)
-			src.interface = new/datum/html_interface/nanotrasen/vote(src, "Voting Panel", 400, 400, vote_head)
-			src.interface.updateContent("content", "<div id='vote_main'></div><div id='vote_choices'></div><div id='vote_admin'></div>")
-		initialized = 1
-	if (vote != src)
-		if (istype(vote))
-			qdel(vote)
+	proc/process()	//called by master_controller
+		if(mode)
+			// No more change mode votes after the game has started.
+			// 3 is GAME_STATE_PLAYING, but that #define is undefined for some reason
+			if(mode == "gamemode" && ticker.current_state >= GAME_STATE_SETTING_UP)
+				to_world("<b>Voting aborted due to game start.</b>")
 
-		vote = src
-//datum/controller/vote/proc/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 1)
-//	return
+				src.reset()
+				return
 
-/datum/controller/vote/proc/process()	//called by master_controller
-	if (lock)
-		return
-	if(mode)
-		lock = TRUE
-		// No more change mode votes after the game has started.
-		// 3 is GAME_STATE_PLAYING, but that #define is undefined for some reason
-		if(mode == "gamemode" && ticker.current_state >= 2)
-			to_chat(world, "<b>Voting aborted due to game start.</b>")
-			src.reset()
-			return
+			// Calculate how much time is remaining by comparing current time, to time of vote start,
+			// plus vote duration
+			time_remaining = round((started_time + config.vote_period - world.time)/10)
 
-		// Calculate how much time is remaining by comparing current time, to time of vote start,
-		// plus vote duration
-		time_remaining = (ismapvote && ismapvote.len) ? (round((started_time + 600 - world.time)/10)) : (round((started_time + config.vote_period - world.time)/10))
-
-		if(time_remaining <= 0)
-			result()
-			for(var/client/C in voting)
-				if(C)
-					//nanomanager.close_user_uis(C.mob, src)
-					src.interface.hide(C)
-			src.reset()
-		else
-			update(1)
-
-		lock = FALSE
-
-/datum/controller/vote/proc/reset()
-	initiator = null
-	time_remaining = 0
-	mode = null
-	question = null
-	choices.len = 0
-	voted.len = 0
-	voting.len = 0
-	total_votes = 0
-	discarded_votes = 0
-	discarded_choices.len = 0
-	current_votes.len = 0
-	weighted = FALSE
-	update(1)
-
-/datum/controller/vote/proc/get_result()
-	//get the highest number of votes
-	var/greatest_votes = 0
-	for(var/option in choices)
-		var/votes = choices[option]
-		total_votes += votes
-		if(votes > greatest_votes)
-			greatest_votes = votes
-	//default-vote for everyone who didn't vote
-	if(!config.vote_no_default && choices.len)
-		var/non_voters = (clients.len - total_votes)
-		if(non_voters > 0)
-			if(mode == "restart")
-				choices["Continue Playing"] += non_voters
-				if(choices["Continue Playing"] >= greatest_votes)
-					greatest_votes = choices["Continue Playing"]
-			else if(mode == "gamemode")
-				if(master_mode in choices)
-					choices[master_mode] += non_voters
-					if(choices[master_mode] >= greatest_votes)
-						greatest_votes = choices[master_mode]
-			else if(mode == "crew_transfer")
-				var/factor = 0.5
-				switch(world.time / (10 * 60)) // minutes
-					if(0 to 60)
-						factor = 0.5
-					if(61 to 120)
-						factor = 0.8
-					if(121 to 240)
-						factor = 1
-					if(241 to 300)
-						factor = 1.2
-					else
-						factor = 1.4
-				choices["Initiate Crew Transfer"] = round(choices["Initiate Crew Transfer"] * factor)
-				to_chat(world, "<font color='purple'>Crew Transfer Factor: [factor]</font>")
-				greatest_votes = max(choices["Initiate Crew Transfer"], choices["Continue The Round"])
-
-
-	//get all options with that many votes and return them in a list
-	. = list()
-	if(weighted)
-		var/list/filteredchoices = choices.Copy()
-		for(var/a in filteredchoices)
-			if(!filteredchoices[a])
-				filteredchoices -= a //Remove choices with 0 votes, as pickweight gives them 1 vote
-				continue
-			if(filteredchoices[a] / total_votes < vote_threshold)
-				discarded_votes += filteredchoices[a]
-				filteredchoices -= a
-				discarded_choices += a
-		if(filteredchoices.len)
-			. += pickweight(filteredchoices.Copy())
-	else
-		if(greatest_votes)
-			for(var/option in choices)
-				if(choices[option] == greatest_votes)
-					. += option
-
-	return .
-
-/datum/controller/vote/proc/announce_result()
-	stack_trace("Fuck my shit up. Lock is \[[lock]]")
-	var/list/winners = get_result()
-	var/text
-	var/feedbackanswer
-	var/qualified_votes = total_votes - discarded_votes
-	if(winners.len > 0)
-		if(winners.len > 1)
-			text = "<b>Vote Tied Between:</b><br>"
-			for(var/option in winners)
-				text += "\t[option]<br>"
-			feedbackanswer = jointext(winners, " ")
-		. = pick(winners)
-		if(mode == "map")
-			if(!feedbackanswer)
-				feedbackanswer = .
-				feedback_set("map vote winner", feedbackanswer)
-			else
-				feedback_set("map vote tie", "[feedbackanswer] chosen: [.]")
-
-		text += "<b>[weighted ? "Random Weighted " : ""]Vote Result: [.] won with [choices[.]] vote\s[weighted? " and a [round(100*choices[.]/qualified_votes)]% chance of winning" : null].</b>"
-		for(var/choice in choices)
-			if(. == choice)
-				continue
-			text += "<br>\t [choice] had [choices[choice] != null ? choices[choice] : "0"] vote\s[(weighted&&choices[choice])? " and [(choice in discarded_choices) ? "did not get enough votes to qualify" : "a [round(100*choices[choice]/qualified_votes)]% chance of winning"]" : null]."
-	else
-		text += "<b>Vote Result: Inconclusive - No Votes!</b>"
-	log_vote(text)
-	to_chat(world, "<font color='purple'>[text]</font>")
-
-/datum/controller/vote/proc/result()
-	. = announce_result()
-	var/restart = 0
-	if(.)
-		switch(mode)
-			if("restart")
-				if(. == "Restart Round")
-					restart = 1
-			if("gamemode")
-				if(master_mode != .)
-					world.save_mode(.)
-					if(ticker && ticker.mode)
-						restart = 1
-					else
-						master_mode = .
-				if(!going)
-					going = 1
-					to_chat(world, "<span class='red'><b>The round will start soon.</b></span>")
-			if("crew_transfer")
-				if(. == "Initiate Crew Transfer")
-					init_shift_change(null, 1)
-			if("map")
-				if(.)
-					chosen_map = ismapvote[.]
-					var/mapname = .
-					watchdog.chosen_map = copytext(mapname,1,(length(mapname)))
-					log_game("Players voted and chose.... [watchdog.chosen_map]!")
-					//testing("Vote picked [chosen_map]")
-
-
-	if(restart)
-		to_chat(world, "World restarting due to vote...")
-		feedback_set_details("end_error","restart vote")
-		if(blackbox)
-			blackbox.save_all_data_to_sql()
-		CallHook("Reboot",list())
-		sleep(50)
-		log_game("Rebooting due to restart vote")
-		world.Reboot()
-
-/datum/controller/vote/proc/submit_vote(var/ckey, var/vote)
-	if(mode)
-		if(config.vote_no_dead && usr.stat == DEAD && !usr.client.holder)
-			return 0
-		if(mode == "map")
-			if(!usr.client.holder)
-				var/mob/M = usr
-				if(isnewplayer(M))
-					to_chat(usr, "<span class='warning'>Only players that have joined the round may vote for the next map.</span>")
-					return 0
-				if(isobserver(M))
-					var/mob/dead/observer/O = M
-					if(O.started_as_observer)
-						to_chat(usr, "<span class='warning'>Only players that have joined the round may vote for the next map.</span>")
-						return 0
-		if(current_votes[ckey])
-			choices[choices[current_votes[ckey]]]--
-		if(vote && 1<=vote && vote<=choices.len)
-			voted += usr.ckey
-			choices[choices[vote]]++	//check this
-			current_votes[ckey] = vote
-			return vote
-	return 0
-
-/datum/controller/vote/proc/initiate_vote(var/vote_type, var/initiator_key, var/popup = 0, var/weighted_vote = 0)
-	if(!mode)
-		if(started_time != null && !check_rights(R_ADMIN))
-			var/next_allowed_time = (started_time + config.vote_delay)
-			if(next_allowed_time > world.time)
-				return 0
-
-		reset()
-		switch(vote_type)
-			if("restart")
-				choices.Add("Restart Round","Continue Playing")
-				question = "Restart the round?"
-			if("gamemode")
-				if(ticker.current_state >= 2)
-					return 0
-				choices.Add(config.votable_modes)
-				question = "What gamemode?"
-			if("crew_transfer")
-				if(ticker.current_state <= 2)
-					return 0
-				question = "End the shift?"
-				choices.Add("Initiate Crew Transfer", "Continue The Round")
-			if("custom")
-				question = html_encode(input(usr,"What is the vote for?") as text|null)
-				if(!question)
-					return 0
-				for(var/i=1,i<=10,i++)
-					var/option = capitalize(html_encode(input(usr,"Please enter an option or hit cancel to finish") as text|null))
-					if(!option || mode || !usr.client)
-						break
-					choices.Add(option)
-			if("map")
-				question = "What should the next map be?"
-				var/list/maps = get_maps()
-				for(var/key in maps)
-					choices.Add(key)
-				if(!choices.len)
-					to_chat(world, "<span class='danger'>Failed to initiate map vote, no maps found.</span>")
-					return 0
-				ismapvote = maps
-			else
-				return 0
-		mode = vote_type
-		initiator = initiator_key
-		started_time = world.time
-		weighted  = weighted_vote
-		var/text = "[capitalize(mode)] vote started by [initiator]."
-		choices = shuffle(choices)
-		if(mode == "custom")
-			text += "<br>[question]"
-
-		log_vote(text)
-		update(1)
-		if(popup)
-			for(var/client/C in clients)
-				if(vote_type == "map" && !C.holder)
-					if(C.mob)
-						var/mob/M = C.mob
-						//Do not prompt non-admin new players or round start observers for a map vote - Pomf
-						if(isnewplayer(M))
-							continue
-						if(isobserver(M))
-							var/mob/dead/observer/O = M
-							if(O.started_as_observer)
-								continue
-				interact(C)
-		else
-			if(istype(usr) && usr.client)
-				interact(usr.client)
-
-		to_chat(world, "<font color='purple'><b>[text]</b><br> <a href='?src=\ref[vote]'>Click here</a> or type 'vote' to place your votes.<br>You have [ismapvote && ismapvote.len ? "60" : config.vote_period/10] seconds to vote.</font>")
-		switch(vote_type)
-			if("crew_transfer")
-				to_chat(world, sound('sound/voice/Serithi/Shuttlehere.ogg'))
-
-			if("gamemode")
-				to_chat(world, sound('sound/voice/Serithi/pretenddemoc.ogg'))
-
-			if("custom")
-				to_chat(world, sound('sound/voice/Serithi/weneedvote.ogg'))
-
-			if("map")
-				to_chat(world, sound('sound/misc/rockthevote.ogg'))
-
-		if(mode == "gamemode" && going)
-			going = 0
-			to_chat(world, "<span class='red'><b>Round start has been delayed.</b></span>")
-
-		time_remaining = (ismapvote && ismapvote.len ? 60 : round(config.vote_period/10))
-		return 1
-	return 0
-
-/datum/controller/vote/proc/updateFor(hclient_or_mob)
-	// This check will succeed if updateFor is called after showing to the player, but will fail
-	// on regular updates. Since we only really need this once we don't care if it fails.
-
-	interface.callJavaScript("clearAll", new/list(), hclient_or_mob)
-	interface.callJavaScript("update_mode", status_data, hclient_or_mob)
-	if(data.len)
-		for (var/list/L in data)
-			interface.callJavaScript("update_choices", L, hclient_or_mob)
-
-
-/datum/controller/vote/proc/interact(client/user)
-	set waitfor = FALSE // So we don't wait for each individual client's assets to be sent.
-
-	if(!user || !initialized)
-		return
-
-	if(ismob(user))
-		var/mob/M = user
-		if(M.client)
-			user = M.client
-		else
-			CRASH("The user [M.name] of type [M.type] has been passed as a mob reference without a client to voting.interact()")
-
-	voting |= user
-	interface.show(user)
-	var/list/client_data = list()
-	var/admin = 0
-	var/currvote = 0
-	if(current_votes[user.ckey])
-		currvote = current_votes[user.ckey]
-	client_data[++client_data.len] = (currvote)
-		//interface.callJavascript("current_vote", current_votes[user.ckey])
-	if(user.holder)
-		admin = 1
-		if(user.holder.rights & R_ADMIN)
-			admin = 2
-	client_data[++client_data.len] = (admin)
-	interface.callJavaScript("client_data", client_data, user)
-	src.updateFor(user, interface)
-
-
-/datum/controller/vote/proc/update(refresh = 0)
-	if(!interface)
-		interface = new/datum/html_interface/nanotrasen/vote(src, "Voting Panel", 400, 400, vote_head)
-		interface.updateContent("content", "<div id='vote_main'></div><div id='vote_choices'></div><div id='vote_admin'></div>")
-
-	if(world.time < last_update + 2)
-		return
-	last_update = world.time
-	status_data.len = 0
-	status_data[++status_data.len] = mode
-	status_data[++status_data.len] = question
-	status_data[++status_data.len] = time_remaining
-	if(config.allow_vote_restart)
-		status_data[++status_data.len] = 1
-	else
-		status_data[++status_data.len] = 0
-	if(config.allow_vote_mode)
-		status_data[++status_data.len] = 1
-	else
-		status_data[++status_data.len] = 0
-
-	var/list/choices_list = list()
-	if(mode)
-		for(var/i = 1; i <= choices.len; i++)
-			choices_list[++choices_list.len] = list(i, choices[i], (!isnull(choices[choices[i]]) ? choices[choices[i]] : 0))
-	data = choices_list
-	if(refresh && interface)
-		updateFor()
-
-
-/datum/controller/vote/Topic(href,href_list[],hsrc)
-	if(!usr || !usr.client)
-		return	//not necessary but meh...just in-case somebody does something stupid
-	switch(href_list["vote"])
-		if("cancel")
-			if(usr.client.holder)
+			if(time_remaining < 0)
+				result()
+				for(var/client/C in voting)
+					if(C)
+						C << browse(null,"window=vote;size=450x740")
 				reset()
-				update()
-		if("toggle_restart")
-			if(usr.client.holder)
-				config.allow_vote_restart = !config.allow_vote_restart
-				update()
-		if("toggle_gamemode")
-			if(usr.client.holder)
-				config.allow_vote_mode = !config.allow_vote_mode
-				update()
-		if("restart")
-			if(config.allow_vote_restart || usr.client.holder)
-				initiate_vote("restart",usr.key)
-		if("gamemode")
-			if(config.allow_vote_mode || usr.client.holder)
-				initiate_vote("gamemode",usr.key)
-		if("crew_transfer")
-			if(config.allow_vote_restart || usr.client.holder)
-				initiate_vote("crew_transfer",usr.key)
-		if("custom")
-			if(usr.client.holder)
-				initiate_vote("custom",usr.key)
-		else
-			submit_vote(usr.ckey, round(text2num(href_list["vote"])))
-	usr.vote()
+			else
+				for(var/client/C in voting)
+					if(C)
+						C << browse(vote.interface(C),"window=vote;size=450x740")
 
+				voting.Cut()
+
+	proc/autotransfer()
+		initiate_vote("crew_transfer","the server", 1)
+		log_debug("The server has called a crew transfer vote")
+
+	proc/autogamemode()
+		return
+		//initiate_vote("gamemode","the server", 1)
+		//log_debug("The server has called a gamemode vote")
+
+	proc/automap()
+		initiate_vote("map","the server", 1)
+		log_debug("The server has called a map vote")
+
+	proc/autoaddantag()
+		auto_add_antag = 1
+		initiate_vote("add_antagonist","the server", 1)
+		log_debug("The server has called an add antag vote.")
+
+	proc/reset()
+		initiator = null
+		time_remaining = 0
+		mode = null
+		question = null
+		choices.Cut()
+		voted.Cut()
+		voting.Cut()
+		current_high_votes.Cut()
+		current_med_votes.Cut()
+		current_low_votes.Cut()
+		additional_text.Cut()
+
+	proc/get_result()
+		//get the highest number of votes
+		var/greatest_votes = 0
+		var/second_greatest_votes = 0
+		var/third_greatest_votes = 0
+		var/total_votes = 0
+
+		//default-vote for everyone who didn't vote
+		if(!config.vote_no_default && choices.len)
+			var/non_voters = (GLOB.clients.len - total_votes)
+			if(non_voters > 0)
+				if(mode == "restart")
+					choices["Continue Playing"] += non_voters
+				else if(mode == "gamemode")
+					if(master_mode in choices)
+						choices[master_mode] += non_voters
+				else if(mode == "crew_transfer")
+					var/factor = 0.5
+					switch(world.time / (10 * 60)) // minutes
+						if(0 to 60)
+							factor = 0.5
+						if(61 to 120)
+							factor = 0.8
+						if(121 to 240)
+							factor = 1
+						if(241 to 300)
+							factor = 1.2
+						else
+							factor = 1.4
+					choices["Initiate Crew Transfer"] = round(choices["Initiate Crew Transfer"] * factor)
+					to_world("<font color='purple'>Crew Transfer Factor: [factor]</font>")
+
+
+		for(var/option in choices)
+			var/votes = choices[option]
+			total_votes += votes
+			if(votes > greatest_votes)
+				third_greatest_votes = second_greatest_votes
+				second_greatest_votes = greatest_votes
+				greatest_votes = votes
+			else if(votes > second_greatest_votes)
+				third_greatest_votes = second_greatest_votes
+				second_greatest_votes = votes
+			else if(votes > third_greatest_votes)
+				third_greatest_votes = votes
+
+		//get all options with that many votes and return them in a list
+		var/first = list()
+		var/second = list()
+		var/third = list()
+		for(var/option in choices)
+			if(choices[option] == greatest_votes && greatest_votes)
+				first += utf8_to_cp1251(option)
+			else if(choices[option] == second_greatest_votes && second_greatest_votes)
+				second += utf8_to_cp1251(option)
+			else if(choices[option] == third_greatest_votes && third_greatest_votes)
+				third += utf8_to_cp1251(option)
+		return list(first, second, third)
+
+	proc/announce_result()
+		var/list/winners = get_result()
+		var/text
+		var/firstChoice
+		var/secondChoice
+		var/thirdChoice
+		if(length(winners[1]) > 0)
+			if(length(winners[1]) > 1)
+				if(mode != "gamemode" || ticker.hide_mode == 0) // Here we are making sure we don't announce potential game modes
+					text = "<b>Vote Tied Between:</b>\n"
+					for(var/option in winners[1])
+						text += "\t[option]\n"
+			firstChoice = pick(winners[1])
+			winners[1] -= firstChoice
+
+			var/i = 1
+			while(isnull(secondChoice))
+				if(length(winners[i]) > 0)
+					secondChoice = pick(winners[i])
+					winners[i] -= secondChoice
+				else if(i == 3)
+					break
+				else
+					i++
+			while(isnull(thirdChoice))
+				if(length(winners[i]) > 0)
+					thirdChoice = pick(winners[i])
+					winners[i] -= thirdChoice
+				else if(i == 3)
+					break
+				else
+					i++
+
+			if(mode != "gamemode" || (firstChoice == "Extended" || ticker.hide_mode == 0)) // Announce unhidden gamemodes or other results, but not other gamemodes
+				text += "<b>Vote Result: [firstChoice]</b>"
+				if(secondChoice)
+					text += "\nSecond place: [secondChoice]"
+				if(thirdChoice)
+					text += ", third place: [thirdChoice]"
+			else
+				text += "<b>The vote has ended.</b>" // What will be shown if it is a gamemode vote that was hidden
+
+		else
+			text += "<b>Vote Result: Inconclusive - No Votes!</b>"
+			if(mode == "add_antagonist")
+				antag_add_finished = 1
+		log_vote(text)
+		to_world("<font color='purple'>[text]</font>")
+
+		return list(firstChoice, secondChoice, thirdChoice)
+
+	proc/result()
+		. = announce_result()
+		var/restart = 0
+		if(.)
+			switch(mode)
+				if("restart")
+					if(.[1] == "Restart Round")
+						restart = 1
+				if("gamemode")
+					if(master_mode != .[1])
+						world.save_mode(.[1])
+						if(ticker && ticker.mode)
+							restart = 1
+						else
+							master_mode = .[1]
+					secondary_mode = .[2]
+					tertiary_mode = .[3]
+				if("crew_transfer")
+					if(.[1] == "Initiate Crew Transfer")
+						init_autotransfer()
+					else if(.[1] == "Add Antagonist")
+						spawn(10)
+							autoaddantag()
+				if("add_antagonist")
+					if(isnull(.[1]) || .[1] == "None")
+						antag_add_finished = 1
+					else
+						choices -= "Random"
+						if(!auto_add_antag)
+							choices -= "None"
+						for(var/i = 1, i <= length(.), i++)
+							if(.[i] == "Random")
+								.[i] = pick(choices)
+								to_world("The random antag in [i]\th place is [.[i]].")
+
+						var/antag_type = antag_names_to_ids()[.[1]]
+						if(ticker.current_state < GAME_STATE_SETTING_UP)
+							additional_antag_types |= antag_type
+						else
+							spawn(0) // break off so we don't hang the vote process
+								var/list/antag_choices = list(all_antag_types()[antag_type], all_antag_types()[antag_names_to_ids()[.[2]]], all_antag_types()[antag_names_to_ids()[.[3]]])
+								if(ticker.attempt_late_antag_spawn(antag_choices))
+									antag_add_finished = 1
+									if(auto_add_antag)
+										auto_add_antag = 0
+										// the buffer will already have an hour added to it, so we'll give it one more
+										transfer_controller.timerbuffer = transfer_controller.timerbuffer + config.vote_autotransfer_interval
+								else
+									to_world("<b>No antags were added.</b>")
+
+									if(auto_add_antag)
+										auto_add_antag = 0
+										spawn(10)
+											autotransfer()
+				if("map")
+					var/datum/map/M = GLOB.all_maps[.[1]]
+					fdel("use_map")
+					text2file(M.path, "use_map")
+
+		if(mode == "gamemode") //fire this even if the vote fails.
+			if(!round_progressing)
+				round_progressing = 1
+				to_world("<font color='red'><b>The round will start soon.</b></font>")
+
+
+		if(restart)
+			to_world("World restarting due to vote...")
+
+			feedback_set_details("end_error","restart vote")
+			if(blackbox)	blackbox.save_all_data_to_sql()
+			sleep(50)
+			log_game("Rebooting due to restart vote")
+			world.Reboot()
+
+		return .
+
+	proc/submit_vote(var/ckey, var/vote, var/weight)
+		if(mode)
+			if(config.vote_no_dead && usr.stat == DEAD && !usr.client.holder)
+				return 0
+			if(vote && vote >= 1 && vote <= choices.len)
+				if(current_high_votes[ckey] && (current_high_votes[ckey] == vote || weight == 3))
+					choices[choices[current_high_votes[ckey]]] -= 3
+					current_high_votes -= ckey
+				if(current_med_votes[ckey] && (current_med_votes[ckey] == vote || weight == 2))
+					choices[choices[current_med_votes[ckey]]] -= 2
+					current_med_votes -= ckey
+				if(current_low_votes[ckey] && (current_low_votes[ckey] == vote || weight == 1))
+					choices[choices[current_low_votes[ckey]]]--
+					current_low_votes -= ckey
+				voted += usr.ckey
+				switch(weight)
+					if(3)
+						current_high_votes[ckey] = vote
+						choices[choices[vote]] += 3
+					if(2)
+						current_med_votes[ckey] = vote
+						choices[choices[vote]] += 2
+					if(1)
+						current_low_votes[ckey] = vote
+						choices[choices[vote]] += 1
+				return vote
+		return 0
+
+	proc/initiate_vote(var/vote_type, var/initiator_key, var/automatic = 0)
+		if(!mode)
+			if(started_time != null && !(check_rights(R_ADMIN) || automatic))
+				var/next_allowed_time = (started_time + config.vote_delay)
+				if(next_allowed_time > world.time)
+					return 0
+
+			reset()
+			switch(vote_type)
+				if("restart")
+					choices.Add("Restart Round","Continue Playing")
+				if("gamemode")
+					if(ticker.current_state >= GAME_STATE_SETTING_UP)
+						return 0
+					choices.Add(config.votable_modes)
+					for (var/F in choices)
+						var/datum/game_mode/M = gamemode_cache[F]
+						if(!M)
+							continue
+						gamemode_names[M.config_tag] = capitalize(M.name) //It's ugly to put this here but it works
+						additional_text.Add("<td align = 'center'>[M.required_players]</td>")
+					gamemode_names["secret"] = "Secret"
+				if("crew_transfer")
+					if(check_rights(R_ADMIN|R_MOD, 0))
+						question = "End the shift?"
+						choices.Add("Initiate Crew Transfer", "Continue The Round")
+						if (config.allow_extra_antags && !antag_add_finished)
+							choices.Add("Add Antagonist")
+					else
+						var/decl/security_state/security_state = decls_repository.get_decl(GLOB.using_map.security_state)
+						if (security_state.current_security_level_is_same_or_higher_than(security_state.high_security_level) && !automatic)
+							to_chat(initiator_key, "The current alert status is too high to call for a crew transfer!")
+							return 0
+						if(ticker.current_state <= GAME_STATE_SETTING_UP)
+							return 0
+							to_chat(initiator_key, "The crew transfer button has been disabled!")
+						question = "End the shift?"
+						choices.Add("Initiate Crew Transfer", "Continue The Round")
+						if (config.allow_extra_antags && is_addantag_allowed(1))
+							choices.Add("Add Antagonist")
+				if("add_antagonist")
+					if(!is_addantag_allowed(automatic))
+						if(!automatic)
+							to_chat(usr, "The add antagonist vote is unavailable at this time. The game may not have started yet, the game mode may disallow adding antagonists, or you don't have required permissions.")
+						return 0
+
+					if(!config.allow_extra_antags)
+						return 0
+					var/list/all_antag_types = all_antag_types()
+					for(var/antag_type in all_antag_types)
+						var/datum/antagonist/antag = all_antag_types[antag_type]
+						if(!(antag.id in additional_antag_types) && antag.is_votable())
+							choices.Add(antag.role_text)
+					choices.Add("Random")
+					if(!auto_add_antag)
+						choices.Add("None")
+				if("map")
+					if(!config.allow_map_switching)
+						return 0
+					for(var/name in GLOB.all_maps)
+						choices.Add(name)
+				if("custom")
+					question = cp1251_to_utf8(sanitizeSafe(input(usr,"What is the vote for?") as text|null))
+					if(!question)	return 0
+					for(var/i=1,i<=10,i++)
+						var/option = cp1251_to_utf8(capitalize(sanitize(input_cp1251(usr,"Please enter an option or hit cancel to finish"))))
+						if(!option || mode || !usr.client)	break
+						choices.Add(option)
+				else
+					return 0
+			mode = vote_type
+			initiator = initiator_key
+			started_time = world.time
+			var/text = "[capitalize(mode)] vote started by [initiator]."
+			if(mode == "custom")
+				text += "\n[utf8_to_cp1251(question)]"
+
+			log_vote(text)
+			to_world("<font color='purple'><b>[text]</b>\nType <b>vote</b> or click <a href='?src=\ref[src]'>here</a> to place your votes.\nYou have [config.vote_period/10] seconds to vote.</font>")
+
+			to_world(sound('sound/ambience/alarm4.ogg', repeat = 0, wait = 0, volume = 50, channel = 3))
+
+			if(mode == "gamemode" && round_progressing)
+				round_progressing = 0
+				to_world("<font color='red'><b>Round start has been delayed.</b></font>")
+
+
+			time_remaining = round(config.vote_period/10)
+			return 1
+		return 0
+
+	proc/interface(var/client/C)
+		if(!C)	return
+		var/admin = 0
+		var/trialmin = 0
+		if(C.holder)
+			if(C.holder.rights & R_ADMIN)
+				admin = 1
+				trialmin = 1 // don't know why we use both of these it's really weird, but I'm 2 lasy to refactor this all to use just admin.
+		voting |= C
+
+		. = "<html><head><title>Voting Panel</title></head><body>"
+		if(mode)
+			if(question)	. += "<h2>Vote: '[question]'</h2>"
+			else			. += "<h2>Vote: [capitalize(mode)]</h2>"
+			. += "Time Left: [time_remaining] s<hr>"
+			. += "<table width = '100%'><tr><td align = 'center'><b>Choices</b></td><td colspan='3' align = 'center'><b>Vote</b></td><td align = 'center'><b>Votes</b></td>"
+			if(capitalize(mode) == "Gamemode") .+= "<td align = 'center'><b>Minimum Players</b></td></tr>"
+
+			var/totalvotes = 0
+			for(var/i = 1, i <= choices.len, i++)
+				totalvotes += choices[choices[i]]
+
+			for(var/i = 1, i <= choices.len, i++)
+				var/votes = choices[choices[i]]
+				var/votepercent
+				if(totalvotes)
+					votepercent = round((votes/totalvotes)*100)
+				else
+					votepercent = 0
+				if(!votes)	votes = 0
+				. += "<tr><td>"
+				if(mode == "gamemode")
+					. += "[gamemode_names[choices[i]]]"
+				else
+					. += "[choices[i]]"
+				. += "</td><td>"
+				if(current_high_votes[C.ckey] == i)
+					. += "<b><a href='?src=\ref[src];high_vote=[i]'>First</a></b>"
+				else
+					. += "<a href='?src=\ref[src];high_vote=[i]'>First</a>"
+				. += "</td><td>"
+				if(current_med_votes[C.ckey] == i)
+					. += "<b><a href='?src=\ref[src];med_vote=[i]'>Second</a></b>"
+				else
+					. += "<a href='?src=\ref[src];med_vote=[i]'>Second</a>"
+				. += "</td><td>"
+				if(current_low_votes[C.ckey] == i)
+					. += "<b><a href='?src=\ref[src];low_vote=[i]'>Third</a></b>"
+				else
+					. += "<a href='?src=\ref[src];low_vote=[i]'>Third</a>"
+				. += "</td><td align = 'center'>[votepercent]%</td>"
+				if (additional_text.len >= i)
+					. += additional_text[i]
+				. += "</tr>"
+
+			. += "</table><hr>"
+			if(admin)
+				. += "(<a href='?src=\ref[src];vote=cancel'>Cancel Vote</a>) "
+		else
+			. += "<h2>Start a vote:</h2><hr><ul><li>"
+			//restart
+			if(trialmin || config.allow_vote_restart)
+				. += "<a href='?src=\ref[src];vote=restart'>Restart</a>"
+			else
+				. += "<font color='grey'>Restart (Disallowed)</font>"
+			. += "</li><li>"
+			if(trialmin || config.allow_vote_restart)
+				. += "<a href='?src=\ref[src];vote=crew_transfer'>Crew Transfer</a>"
+			else
+				. += "<font color='grey'>Crew Transfer (Disallowed)</font>"
+			if(trialmin)
+				. += "\t(<a href='?src=\ref[src];vote=toggle_restart'>[config.allow_vote_restart?"Allowed":"Disallowed"]</a>)"
+			. += "</li><li>"
+			//gamemode
+			if(trialmin || config.allow_vote_mode)
+				. += "<a href='?src=\ref[src];vote=gamemode'>GameMode</a>"
+			else
+				. += "<font color='grey'>GameMode (Disallowed)</font>"
+			if(trialmin)
+				. += "\t(<a href='?src=\ref[src];vote=toggle_gamemode'>[config.allow_vote_mode?"Allowed":"Disallowed"]</a>)"
+			. += "</li><li>"
+			//map!
+			if(trialmin && config.allow_map_switching)
+				. += "<a href='?src=\ref[src];vote=map'>Map</a>"
+			else
+				. += "<font color='grey'>Map (Disallowed)</font>"
+			. += "</li><li>"
+			//extra antagonists
+			if(config.allow_extra_antags && is_addantag_allowed(0))
+				. += "<a href='?src=\ref[src];vote=add_antagonist'>Add Antagonist Type</a>"
+			else
+				. += "<font color='grey'>Add Antagonist (Disallowed)</font>"
+			. += "</li>"
+			//custom
+			if(trialmin)
+				. += "<li><a href='?src=\ref[src];vote=custom'>Custom</a></li>"
+			. += "</ul><hr>"
+		. += "<a href='?src=\ref[src];vote=close' style='position:absolute;right:50px'>Close</a></body></html>"
+		return .
+
+
+	Topic(href,href_list[],hsrc)
+		if(!usr || !usr.client)	return	//not necessary but meh...just in-case somebody does something stupid
+		if(href_list["vote"])
+			switch(href_list["vote"])
+				if("close")
+					voting -= usr.client
+					usr << browse(null, "window=vote;size=450x740")
+					return
+				if("cancel")
+					if(usr.client.holder)
+						reset()
+				if("toggle_restart")
+					if(usr.client.holder)
+						config.allow_vote_restart = !config.allow_vote_restart
+				if("toggle_gamemode")
+					if(usr.client.holder)
+						config.allow_vote_mode = !config.allow_vote_mode
+				if("restart")
+					if(config.allow_vote_restart || usr.client.holder)
+						initiate_vote("restart",usr.key)
+				if("gamemode")
+					if(config.allow_vote_mode || usr.client.holder)
+						initiate_vote("gamemode",usr.key)
+				if("crew_transfer")
+					if(config.allow_vote_restart || usr.client.holder)
+						initiate_vote("crew_transfer",usr.key)
+				if("add_antagonist")
+					if(config.allow_extra_antags)
+						initiate_vote("add_antagonist",usr.key)
+				if("map")
+					if(config.allow_map_switching && usr.client.holder)
+						initiate_vote("map", usr.key)
+				if("custom")
+					if(usr.client.holder)
+						initiate_vote("custom",usr.key)
+		else
+			var/weight = 1
+			var/t
+			if(href_list["high_vote"])
+				t = round(text2num(href_list["high_vote"]))
+				weight = 3
+			else if(href_list["med_vote"])
+				t = round(text2num(href_list["med_vote"]))
+				weight = 2
+			else if(href_list["low_vote"])
+				t = round(text2num(href_list["low_vote"]))
+			if(t) // it starts from 1, so there's no problem
+				submit_vote(usr.ckey, t, weight)
+		usr.vote()
+
+// Helper proc for determining whether addantag vote can be called.
+datum/controller/vote/proc/is_addantag_allowed(var/automatic)
+	// Gamemode has to be determined before we can add antagonists, so we can respect gamemode's add antag vote settings.
+	if(!ticker || (ticker.current_state <= 2) || !ticker.mode)
+		return 0
+	if(automatic)
+		return (ticker.mode.addantag_allowed & ADDANTAG_AUTO) && !antag_add_finished
+	if(check_rights(R_ADMIN, 0))
+		return ticker.mode.addantag_allowed & (ADDANTAG_ADMIN|ADDANTAG_PLAYER)
+	else
+		return (ticker.mode.addantag_allowed & ADDANTAG_PLAYER) && !antag_add_finished
 
 /mob/verb/vote()
 	set category = "OOC"
 	set name = "Vote"
+
 	if(vote)
-		if(!vote.initialized)
-			to_chat(usr, "<span class='info'>The voting controller isn't fully initialized yet.</span>")
-		else
-			vote.interact(usr.client)
+		src << browse(vote.interface(client),"window=vote;size=450x740")
+
