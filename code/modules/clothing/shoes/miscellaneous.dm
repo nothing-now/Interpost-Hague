@@ -192,10 +192,10 @@
 
 /obj/item/clothing/shoes/jester/handle_movement(var/turf/walking, var/running)
 	if(running)
-		if(footstep >= 2)
+		if(footstep >= 1)
 			footstep = 0
-			playsound(src, "jesterstep", 50, 1) // this will get annoying very fast.
+			playsound(src, "jesterstep", 25, 1) // this will get annoying very fast.
 		else
 			footstep++
 	else
-		playsound(src, "jesterstep", 20, 1)
+		playsound(src, "jesterstep", 10, 1)
