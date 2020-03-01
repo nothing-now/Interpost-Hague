@@ -101,6 +101,15 @@
 
 		hud_elements |= using
 
+	// Draw the combat intent dialogue.
+	if(hud_data.has_a_intent)
+
+		using = new /obj/screen/combat()
+		src.adding += using
+		action_intent = using
+
+		hud_elements |= using
+
 	if(hud_data.has_m_intent)
 		using = new /obj/screen()
 		using.name = "mov_intent"
@@ -368,12 +377,12 @@
 	mymob.combat_icon.screen_loc = ui_combat
 	hud_elements |= mymob.combat_icon
 
-	mymob.combat_intent_icon = new /obj/screen()//combat mode
-	mymob.combat_intent_icon.name = "combat intent"
-	mymob.combat_intent_icon.icon = ui_style//'icons/mob/screen/dark.dmi'
-	mymob.combat_intent_icon.icon_state = "dodge"
-	mymob.combat_intent_icon.screen_loc = ui_combat_intent
-	hud_elements |= mymob.combat_intent_icon
+	mymob.dodge_intent_icon = new /obj/screen()//dodge or parry
+	mymob.dodge_intent_icon.name = "dodge intent"
+	mymob.dodge_intent_icon.icon = ui_style//'icons/mob/screen/dark.dmi'
+	mymob.dodge_intent_icon.icon_state = "dodge"
+	mymob.dodge_intent_icon.screen_loc = ui_combat_intent
+	hud_elements |= mymob.dodge_intent_icon
 
 	mymob.surrender = new /obj/screen()
 	mymob.surrender.name = "surrender"

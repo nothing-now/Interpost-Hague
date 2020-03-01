@@ -45,6 +45,7 @@
 	var/obj/screen/rest = null
 	var/obj/screen/combat_icon = null
 	var/obj/screen/combat_intent_icon = null
+	var/obj/screen/dodge_intent_icon = null
 	var/obj/screen/surrender = null
 	var/obj/screen/happiness_icon = null
 	var/obj/screen/wield_icon = null
@@ -107,6 +108,7 @@
 
 	var/shakecamera = 0
 	var/a_intent = I_HELP//Living
+	var/c_intent = I_AIM
 	var/defense_intent = I_DODGE//Living. For dodging and parrying.
 	var/m_intent = "run"//Living
 	var/middle_click_intent = null //For doing different things with middle click.

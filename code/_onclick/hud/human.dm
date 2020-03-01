@@ -71,6 +71,16 @@
 
 		hud_elements |= using
 
+	// Draw the combat intent dialogue.
+	if(hud_data.has_a_intent)
+
+		using = new /obj/screen/combat()
+		src.adding += using
+		action_intent = using
+
+		hud_elements |= using
+	
+
 	if(hud_data.has_m_intent)
 		using = new /obj/screen()
 		using.SetName("mov_intent")

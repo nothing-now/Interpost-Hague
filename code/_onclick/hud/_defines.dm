@@ -53,6 +53,7 @@
 #define ui_drop_throw "EAST-2:30,SOUTH+1:7"//"EAST-1:28,SOUTH+1:7"
 #define ui_pull_resist "EAST-3:30,SOUTH+1:7"//"EAST-2:26,SOUTH+1:7"
 #define ui_acti "EAST-2:26,SOUTH:5"
+#define ui_atk "SOUTH-1,9"
 #define ui_movi "EAST-3:24,SOUTH:5"
 #define ui_zonesel "EAST-1:28,SOUTH:5"
 #define ui_acti_alt "EAST-1:28,SOUTH:5" //alternative intent switcher for when the interface is hidden (F12)

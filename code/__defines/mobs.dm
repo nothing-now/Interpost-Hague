@@ -62,6 +62,12 @@
 #define I_DISARM	"disarm"
 #define I_GRAB		"grab"
 #define I_HURT		"harm"
+
+//combat flags, this is getting done the first time
+#define I_AIM 		"aim"
+#define I_STRONG	"strong"
+#define I_QUICK	    "quick"
+#define I_DEFEND	"defense"
 #define I_DODGE		"dodge"
 #define I_PARRY		"parry"
 
