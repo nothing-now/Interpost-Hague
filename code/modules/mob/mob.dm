@@ -401,6 +401,7 @@
 		prefs.lastchangelog = changelog_hash
 		prefs.save_preferences()
 		winset(src, "rpane.changelog", "background-color=none;font-style=;")
+		SScharacter_setup.queue_preferences_save(prefs)
 
 /mob/new_player/verb/observe()
 	set name = "Observe"
