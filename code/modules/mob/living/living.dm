@@ -582,7 +582,6 @@ default behaviour is:
 														X.existing_dirs += newdir
 														X.overlays.Add(image('icons/effects/blood.dmi',trail_type,dir = newdir))
 
-								/*
 								//pull damage with injured people
 									if(prob(25))
 										M.adjustBruteLoss(1)
@@ -599,8 +598,6 @@ default behaviour is:
 												var/blood_volume = round(H.vessel.get_reagent_amount(/datum/reagent/blood))
 												if(blood_volume > 0)
 													H.vessel.remove_reagent(/datum/reagent/blood, 1)
-
-								*/
 
 						step(pulling, get_dir(pulling.loc, T))
 						if(t)
