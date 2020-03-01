@@ -102,9 +102,18 @@
 		hud_elements |= using
 
 	// Draw the combat intent dialogue.
-	if(hud_data.has_a_intent)
+	if(hud_data.has_c_intent)
 
 		using = new /obj/screen/combat()
+		src.adding += using
+		action_intent = using
+
+		hud_elements |= using
+
+	// Draw the skill/family dialogue.
+	if(hud_data.has_skills_family)
+
+		using = new /obj/screen/skills_family()
 		src.adding += using
 		action_intent = using
 
@@ -336,15 +345,6 @@
 	mymob.jump_icon.name = "jump"
 	mymob.jump_icon.screen_loc = ui_atk
 	hud_elements |= mymob.jump_icon
-
-/*
-	mymob.skills_family = new /obj/screen()
-	mymob.skills_family = ui_style
-	mymob.skills_family.icon_state = "family_skills"
-	mymob.skills_family.name = "skills_family"
-	mymob.fixeye.screen_loc = ui_skills_family
-	hud_elements |= mymob.skills_family
-*/
 
 	mymob.fixeye = new /obj/screen()
 	mymob.fixeye.icon = ui_style

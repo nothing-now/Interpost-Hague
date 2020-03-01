@@ -62,6 +62,8 @@
 #define I_DISARM	"disarm"
 #define I_GRAB		"grab"
 #define I_HURT		"harm"
+#define I_SKILLS	"skills"
+#define I_FAMILY	"family"
 
 //combat flags, this is getting done the first time
 #define I_AIM 		"aim"

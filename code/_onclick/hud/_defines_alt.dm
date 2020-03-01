@@ -54,6 +54,7 @@
 #define ui_pull "SOUTH-1,11"//12"
 #define ui_atk "SOUTH-1, 12"//Dodge intents
 #define ui_atk_intents "south-1, 9" //atk_intents
+#define ui_skills_family "SOUTH-1,10"
 #define ui_resist "EAST+1,SOUTH-1"
 #define ui_acti "SOUTH-1,8"//"SOUTH-1,8"
 #define ui_combat "SOUTH-1,	14"//COMBAT MODE!

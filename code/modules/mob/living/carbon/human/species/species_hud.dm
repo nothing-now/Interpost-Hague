@@ -1,6 +1,8 @@
 /datum/hud_data
 	var/icon              // If set, overrides ui_style.
 	var/has_a_intent = 1  // Set to draw intent box.
+	var/has_c_intent = 1  // Set to draw combat box.
+	var/has_skills_family = 1  // Set to draw skills_family box.
 	var/has_m_intent = 1  // Set to draw move intent box.
 	var/has_warnings = 1  // Set to draw environment warnings.
 	var/has_pressure = 1  // Draw the pressure indicator.

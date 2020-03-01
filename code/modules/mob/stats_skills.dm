@@ -228,6 +228,8 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 	message += "I am <b>[skillnumtodesc(skills["cleaning"])]</b> at cleaning.</b></i>\n"
 	to_chat(src, message)
 
+/mob/living/carbon/human/verb/check_family()//This is just living here for now
+	to_chat(src,"This doesn't work yet.")
 
 /* LEGACY STAT CODE
 /mob/proc/statcheck(var/stat, var/requirement, var/show_message, var/message = "I have failed to do this.")//Requirement needs to be 1 through 20

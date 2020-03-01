@@ -346,6 +346,24 @@
 /obj/screen/combat/update_icon()
 	icon_state = "[intent]"
 
+/obj/screen/skills_family
+	name = "skills_family"
+	icon = 'icons/mob/screen/dark.dmi'
+	icon_state = "skills_family"
+	screen_loc = ui_skills_family//ui_acti
+
+/obj/screen/skills_family/Click(var/location, var/control, var/params)
+	var/list/P = params2list(params)
+	var/icon_y = text2num(P["icon-y"])
+	if(icon_y <= world.icon_size/2)
+		if(ishuman(usr))
+			var/mob/living/carbon/human/H = usr
+			H.check_skills()
+	else
+		if(ishuman(usr))
+			var/mob/living/carbon/human/H = usr
+			H.check_family()
+
 /obj/screen/Click(location, control, params)
 	if(!usr)	return 1
 	switch(name)
@@ -545,7 +563,6 @@
 				else
 					E.defense_intent = I_PARRY
 					E.dodge_intent_icon.icon_state = "parry"
-
 		if("fixeye")
 			usr.face_direction()
 			if(usr.facing_dir)
