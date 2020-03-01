@@ -205,7 +205,7 @@
 					// We're in a fighting stance, there's a bigger chance we block
 					if(src.canmove && src!=H && prob(30))
 						block = 1
-/*
+*/
 
 			// Process evasion and blocking
 			var/miss_type = 0
