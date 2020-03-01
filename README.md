@@ -3,9 +3,9 @@
 # Credits go to every person who worked on Interbay's code in the past, such as: mattroks101, kyrahabattoir, muncher2112, etc. Thanks.
 [Baystation's Website](http://baystation12.net/) - [InterHippie's Code](https://github.com/butmun/InterHippie2/) - [InterHippie's Discord](https://discord.gg/abFdhjv)
 ---
-[![forthebadge](http://forthebadge.com/images/badges/60-percent-of-the-time-works-every-time.svg)](http://forthebadge.com)
-
-[![forthebadge](http://forthebadge.com/images/badges/built-with-resentment.svg)](http://forthebadge.com)
+[Krihelimeter](http://www.krihelinator.xyz/badge/butmun/InterHippie2)](http://www.krihelinator.xyz/repositories/butmun/InterHippie2)
+[![Percentage of issues still open](http://isitmaintained.com/badge/open/butmun/InterHippie2.svg)](https://isitmaintained.com/project/HippieStation/HippieStation "Percentage of issues still open") [![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/butmun/InterHippie2.svg)](https://isitmaintained.com/project/butmun/InterHippie2 "Average time to resolve an issue") ![Coverage](https://img.shields.io/badge/coverage---777%25-red.svg)
+[![forthebadge](https://forthebadge.com/images/badges/built-with-resentment.svg)](https://forthebadge.com) [![forthebadge](https://forthebadge.com/images/badges/contains-technical-debt.svg)](https://forthebadge.com) [![forinfinityandbyond](https://user-images.githubusercontent.com/5211576/29499758-4efff304-85e6-11e7-8267-62919c3688a9.gif)](https://www.reddit.com/r/SS13/comments/5oplxp/what_is_the_main_problem_with_byond_as_an_engine/dclbu1a)
 
 ### LICENSE
 The code for Baystation12 is licensed under the [GNU Affero General Public License v3](http://www.gnu.org/licenses/agpl.html), which can be found in full in LICENSE-AGPL3.txt.
