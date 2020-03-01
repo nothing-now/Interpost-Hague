@@ -161,6 +161,52 @@
 				accurate = 1 // certain circumstances make it impossible for us to evade punches
 				rand_damage = 3
 
+/*
+	switch(M.atk_intent)
+		if(I_QUICK)
+			visible_message(Turret is retarded!)
+
+		if(I_AIM)
+			visible_message("<span class='danger'>[M] attempted to attack \the [src]'s body part precisely!</span>")
+			//hmmmmmmmmmmm will use the code for melee combat miss chances when it's out
+
+		if(I_STRONG)
+			M.adjustStaminaLoss(rand(5,8))
+			if(!istype(H))
+				attack_generic(H,rand(2,4),"punched")
+				return
+
+			var/rand_damage = rand(3, 8)
+			var/block = 0
+			var/accurate = 0
+			var/hit_zone = H.zone_sel.selecting
+			var/obj/item/organ/external/affecting = get_organ(hit_zone)
+
+			// See what attack they use
+			var/datum/unarmed_attack/attack = H.get_unarmed_attack(src, hit_zone)
+			if(!attack)
+				return 0
+			if(world.time < H.last_attack + attack.delay)
+				to_chat(H, "<span class='notice'>You can't attack strongly again so soon.</span>")
+				return 0
+			else
+				H.last_attack = world.time
+
+			if(!affecting || affecting.is_stump())
+				to_chat(M, "<span class='danger'>They are missing that limb!</span>")
+				return 1
+
+			switch(src.a_intent)
+				if(I_QUICK)
+					// We didn't see this coming and are also in an attack frenzy, so we get the full blow
+					rand_damage = 5
+					accurate = 1
+				if(I_DEFEND, I_STRONG)
+					// We're in a fighting stance, there's a bigger chance we block
+					if(src.canmove && src!=H && prob(30))
+						block = 1
+/*
+
 			// Process evasion and blocking
 			var/miss_type = 0
 			var/attack_message
