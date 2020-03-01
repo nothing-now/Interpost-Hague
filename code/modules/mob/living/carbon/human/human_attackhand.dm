@@ -170,7 +170,7 @@ Defend: Increases parry+dodge chance, but you move slower and your attack damage
 */
 
 /*
-	switch(M.atk_intent)
+	switch(M.c_intent)
 		if(I_QUICK)
 			visible_message(Turret is retarded!)
 
@@ -229,7 +229,7 @@ Defend: Increases parry+dodge chance, but you move slower and your attack damage
 			if(DODGE)
 				to_chat(H, "<span class='notice'>You barely evade [src]'s attack!</span>")
 
-			switch(src.atk_intent)
+			switch(src.c_intent)
 				if(I_QUICK)
 					// We didn't see this coming and are also in an attack frenzy, so we get the full blow
 					rand_damage = 5
