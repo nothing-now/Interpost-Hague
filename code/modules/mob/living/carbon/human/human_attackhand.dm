@@ -162,18 +162,37 @@
 				rand_damage = 3
 
 /*
+COMBAT INTENTS
+Aim: Lets you right click to see farther. Attacks have more chance to hit, but take longer.
+Strong: More damage. Uses more stamina. Counter attacks leave you open for longer.
+Quick: Target has a harder time defending, but deals less damage and tires you out more. Also move slightly faster. Hit&Run.
+Defend: Increases parry+dodge chance, but you move slower and your attack damage is lowered. Can counter attack whenever on combat and defense mode.
+*/
+
+/*
 	switch(M.atk_intent)
 		if(I_QUICK)
 			visible_message(Turret is retarded!)
 
 		if(I_AIM)
 			visible_message("<span class='danger'>[M] attempted to attack \the [src]'s body part precisely!</span>")
-			//hmmmmmmmmmmm will use the code for melee combat miss chances when it's out
+			//hmmmmmmmmmmm will use the code for melee combat miss chances when it's out, also use var/accurate
+
+		if(I_DEFEND)//we're in a defence stance, we obviously can defend and parry much easier but that comes with disadvantages
+			if(PARRY)
+				//should be when a guy's on parry mode
+				if(prob(80))
+				H.do_parry
+				to_chat(H, "<span class='notice'>The [src] tries to attack you, but you easily parry his attack.</span>")
+			if(DODGE)
+				if(prob(80))
+				H.do_dodge
+				to_chat(H, "<span class='notice'>You easily evade [src]'s attack.</span>")
 
 		if(I_STRONG)
 			M.adjustStaminaLoss(rand(5,8))
 			if(!istype(H))
-				attack_generic(H,rand(2,4),"punched")
+				attack_generic(H,rand(2,4)," strongly punched")
 				return
 
 			var/rand_damage = rand(3, 8)
@@ -196,7 +215,21 @@
 				to_chat(M, "<span class='danger'>They are missing that limb!</span>")
 				return 1
 
-			switch(src.a_intent)
+			var/datum/armed_melee_attack/attack = H.get_armed_melee_attack(src, hit_zone)
+			if(!attack)
+				return 0
+			if(PLACEHOLDER FOR MELEE WEAPONS)
+				damageshit
+				to_chat(H, "<span class='notice'>The [src] attacks you furiously!</span>")
+				return 0
+			if(PARRY)
+				//should be when a guy's on parry mode
+				if(prob(20))
+				to_chat(H, "<span class='notice'>The [src] attacks you furiously, almost breaking your defenses and making you get a bit of damage!</span>")
+			if(DODGE)
+				to_chat(H, "<span class='notice'>You barely evade [src]'s attack!</span>")
+
+			switch(src.atk_intent)
 				if(I_QUICK)
 					// We didn't see this coming and are also in an attack frenzy, so we get the full blow
 					rand_damage = 5
