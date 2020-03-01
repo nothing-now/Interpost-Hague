@@ -501,7 +501,7 @@
 			for(var/T in client.prefs.relations)
 				var/TT = matchmaker.relation_types[T]
 				var/datum/relation/R = new TT
-				R.holder = mind
+				R.relation_holder = mind
 				R.info = client.prefs.relations_info[T]
 			mind.gen_relations_info = client.prefs.relations_info["general"]
 		mind.transfer_to(new_character)					//won't transfer key since the mind is not active

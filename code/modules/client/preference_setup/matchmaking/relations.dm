@@ -30,7 +30,7 @@
 	for(var/T in subtypesof(/datum/relation))
 		var/datum/relation/R = T
 		. += "<b>[initial(R.name)]</b>\t"
-		if(initial(R.name) in pref.relations)
+		if(initial(R.name) in pref.relations && R.family_flag == 0)
 			. += "<span class='linkOn'>On</span>"
 			. += "<a href='?src=\ref[src];relation=[initial(R.name)]'>Off</a>"
 		else

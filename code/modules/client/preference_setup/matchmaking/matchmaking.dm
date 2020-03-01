@@ -5,6 +5,7 @@ var/global/datum/matchmaker/matchmaker = new()
 	return TRUE
 
 /datum/matchmaker
+	var/list/families = list()
 	var/list/relation_types = list()
 	var/list/relations = list()
 
@@ -17,17 +18,57 @@ var/global/datum/matchmaker/matchmaker = new()
 /datum/matchmaker/proc/do_matchmaking()
 	var/list/to_warn = list()
 	for(var/datum/relation/R in relations)
-		if(!R.other)
+		if(!R.connected_relation)
 			R.find_match()
-		if(R.other && !R.finalized)
-			to_warn |= R.holder.current
+		if(R.connected_relation && !R.finalized)
+			to_warn |= R.relation_holder.current
 	for(var/mob/M in to_warn)
 		to_chat(M,"<span class='warning'>You have new connections. Use \"See Relationship Info\" to view and finalize them.</span>")
+
+//This is where the families are made.  This is basically the big driver of everything.
+/datum/matchmaker/proc/do_family_matchmaking()
+	var/total_familes = round(GLOB.player_list.len * 0.2) + 1  // How many families we want Makes around 1 family per 4 people, and always at least on family
+	to_world("Trying to make families total_familes = [total_familes]")
+	for(var/mob/living/carbon/human/H in GLOB.player_list)
+		to_world("player_list is [GLOB.player_list]")
+		to_world("Checking out: [H] or [H.name] or [H.mind]")
+
+	for(var/mob/living/carbon/human/H in GLOB.player_list)
+		if(families.len < total_familes) // If we aren't at our limit yet, we make five ned players head of house
+			var/mob/living/carbon/human/pick_human = pick(GLOB.player_list)  //To make heads of families random (for now)
+			var/datum/family/F = new /datum/family(pick_human)
+			families |= F
+		else							 // If we are at our limit, start adding people to familes
+			var/datum/family/F = pick(families)
+			F.add_member(H)
+	//Prints familes
+	for(var/datum/family/F in families)
+		to_world("Families head: [F.family_head] Families last name = [F.name] Memebers are:")
+		for(var/mob/living/carbon/human/M in F.members)
+			to_world("Member: [M.real_name]")
+
+	//Testing stuff
+	/*
+	var/list/test_player_list = list("John Doe", "Jane Dane", "Harold buster", "Jame righter", "Matt James", "Tim Panda", "Stever Typing", "The doom", "Debbie Downer", "Frail Mike")
+	total_familes = round(test_player_list.len * 0.2)  // How many families we want Makes around 1 family per 4 people
+	for(var/H in test_player_list)
+		if(families.len < total_familes) // If we aren't at our limit yet, we make five ned players head of house
+			var/datum/family/F = new /datum/family/(pick(test_player_list))
+			families |= F
+		else							 // If we are at our limit, start adding people to familes
+			var/datum/family/F = pick(families)
+			F.add_member(H)
+	//Prints familes
+	for(var/datum/family/F in families)
+		to_world("Families head: [F.family_head] Families last name = [F.name] Memebers are:")
+		for(var/M in F.members)
+			to_world("Member: [M]")
+	*/
 
 /datum/matchmaker/proc/get_relationships(datum/mind/M)
 	. = list()
 	for(var/datum/relation/R in relations)
-		if(R.holder == M && R.other)
+		if(R.relation_holder == M && R.connected_relation)
 			. += R
 
 //Types of relations
@@ -37,11 +78,13 @@ var/global/datum/matchmaker/matchmaker = new()
 	var/desc = "You just know them."
 	var/list/can_connect_to	//What relations (names) can matchmaking join us with? Defaults to own name.
 	var/list/incompatible 	//If we have relation like this with the mob, we can't join
-	var/datum/mind/holder
-	var/datum/relation/other
+	var/datum/mind/relation_holder  //Whoever owns this relationship
+	var/datum/relation/connected_relation  //Whatever relationship this is connected to
 	var/info
 	var/finalized
-	var/open = 2			//If non-zero, allow other relations to form connections
+	var/open = 2			//If non-zero, allow connected_relation relations to form connections
+	var/sex_restricted = null
+	var/family_flag = 0 //So we don't show family relations in options
 
 /datum/relation/New()
 	..()
@@ -52,12 +95,12 @@ var/global/datum/matchmaker/matchmaker = new()
 /datum/relation/proc/get_candidates()
 	.= list()
 	for(var/datum/relation/R in matchmaker.relations)
-		if(!valid_candidate(R.holder) || !can_connect(R))
+		if(!valid_candidate(R.relation_holder) || !can_connect(R))
 			continue
 		. += R
 
 /datum/relation/proc/valid_candidate(datum/mind/M)
-	if(M == holder)	//no, you NEED other people
+	if(M == relation_holder)	//no, you NEED connected_relation people
 		return FALSE
 
 	if(!M.current)	//no extremely platonic relationships
@@ -71,15 +114,15 @@ var/global/datum/matchmaker/matchmaker = new()
 
 /datum/relation/proc/can_connect(var/datum/relation/R)
 	for(var/datum/relation/D in matchmaker.relations) //have to check all connections between us and them
-		if(D.holder == R.holder && D.other && D.other.holder == holder)
+		if(D.relation_holder == R.relation_holder && D.connected_relation && D.connected_relation.relation_holder == relation_holder)
 			if(D.name in incompatible)
 				return 0
 	return (R.name in can_connect_to) && !(R.name in incompatible) && R.open
 
 /datum/relation/proc/get_copy()
 	var/datum/relation/R = new type
-	R.holder = holder
-	R.info = holder.current && holder.current.client ? holder.current.client.prefs.relations_info[R.name] : info
+	R.relation_holder = relation_holder
+	R.info = relation_holder.current && relation_holder.current.client ? relation_holder.current.client.prefs.relations_info[R.name] : info
 	R.open = 0
 	return R
 
@@ -89,40 +132,40 @@ var/global/datum/matchmaker/matchmaker = new()
 		return 0
 	var/datum/relation/R = pick(candidates)
 	R.open--
-	if(R.other)
+	if(R.connected_relation)
 		R = R.get_copy()
-	other = R
-	R.other = src
+	connected_relation = R
+	R.connected_relation = src
 	return 1
 
 /datum/relation/proc/sever()
-	to_chat(holder.current,"<span class='warning'>Your connection with [other.holder] is no more.</span>")
-	to_chat(other.holder.current,"<span class='warning'>Your connection with [holder] is no more.</span>")
-	other.other = null
-	matchmaker.relations -= other
+	to_chat(relation_holder.current,"<span class='warning'>Your connection with [connected_relation.relation_holder] is no more.</span>")
+	to_chat(connected_relation.relation_holder.current,"<span class='warning'>Your connection with [relation_holder] is no more.</span>")
+	connected_relation.connected_relation = null
+	matchmaker.relations -= connected_relation
 	matchmaker.relations -= src
-	qdel(other)
-	other = null
+	qdel(connected_relation)
+	connected_relation = null
 	qdel(src)
 
 //Finalizes and propagates info if both sides are done.
 /datum/relation/proc/finalize()
 	finalized = 1
-	to_chat(holder.current,"<span class='warning'>You have finalized a connection with [other.holder].</span>")
-	to_chat(other.holder.current,"<span class='warning'>[holder] has finalized a connection with you.</span>")
-	if(other && other.finalized)
-		to_chat(holder.current,"<span class='warning'>Your connection with [other.holder] is now confirmed!</span>")
-		to_chat(other.holder.current,"<span class='warning'>Your connection with [holder] is now confirmed!</span>")
+	to_chat(relation_holder.current,"<span class='warning'>You have finalized a connection with [connected_relation.relation_holder].</span>")
+	to_chat(connected_relation.relation_holder.current,"<span class='warning'>[relation_holder] has finalized a connection with you.</span>")
+	if(connected_relation && connected_relation.finalized)
+		to_chat(relation_holder.current,"<span class='warning'>Your connection with [connected_relation.relation_holder] is now confirmed!</span>")
+		to_chat(connected_relation.relation_holder.current,"<span class='warning'>Your connection with [relation_holder] is now confirmed!</span>")
 		var/list/candidates = filter_list(GLOB.player_list, /mob/living/carbon/human)
-		candidates -= holder.current
-		candidates -= other.holder.current
+		candidates -= relation_holder.current
+		candidates -= connected_relation.relation_holder.current
 		for(var/mob/living/carbon/human/M in candidates)
 			if(!M.mind || M.stat == DEAD || !valid_candidate(M.mind))
 				candidates -= M
 				continue
 			var/datum/job/coworker = job_master.GetJob(M.job)
-			if(coworker && holder.assigned_job && other.holder.assigned_job)
-				if((coworker.department_flag & holder.assigned_job.department_flag) || (coworker.department_flag & other.holder.assigned_job.department_flag))
+			if(coworker && relation_holder.assigned_job && connected_relation.relation_holder.assigned_job)
+				if((coworker.department_flag & relation_holder.assigned_job.department_flag) || (coworker.department_flag & connected_relation.relation_holder.assigned_job.department_flag))
 					candidates[M] = 5	//coworkers are 5 times as likely to know about your relations
 
 		for(var/i=1 to 5)
@@ -135,10 +178,10 @@ var/global/datum/matchmaker/matchmaker = new()
 			if(prob(70))
 				M.mind.known_connections += get_desc_string()
 			else
-				M.mind.known_connections += "[holder] and [other.holder] seem to know each other, but you're not sure on the details."
+				M.mind.known_connections += "[relation_holder] and [connected_relation.relation_holder] seem to know each connected_relation, but you're not sure on the details."
 
 /datum/relation/proc/get_desc_string()
-	return "[holder] and [other.holder] know each other."
+	return "[relation_holder] and [connected_relation.relation_holder] know each connected_relation."
 
 /mob/living/verb/see_relationship_info()
 	set name = "See Relationship Info"
@@ -150,22 +193,22 @@ var/global/datum/matchmaker/matchmaker = new()
 	var/editable = 0
 	if(mind.gen_relations_info)
 		dat += "<b>Things they all know about you:</b><br>[mind.gen_relations_info]<hr>"
-		dat += "An <b>\[F\]</b> indicates that the other player has finalized the connection.<br>"
+		dat += "An <b>\[F\]</b> indicates that the connected_relation player has finalized the connection.<br>"
 		dat += "<br>"
 	for(var/datum/relation/R in relations)
-		dat += "<b>[R.other.finalized ? "\[F\] " : ""][R.other.holder]</b>, [R.other.holder.role_alt_title ? R.other.holder.role_alt_title : R.other.holder.assigned_role]."
+		dat += "<b>[R.connected_relation.finalized ? "\[F\] " : ""][R.connected_relation.relation_holder]</b>, [R.connected_relation.relation_holder.role_alt_title ? R.connected_relation.relation_holder.role_alt_title : R.connected_relation.relation_holder.assigned_role]."
 		if (!R.finalized)
 			dat += " <a href='?src=\ref[src];del_relation=\ref[R]'>Remove</a>"
 			editable = 1
 		dat += "<br>[R.desc]"
 		dat += "<br>"
 		dat += "<b>Things they know about you:</b>[!R.finalized ?"<a href='?src=\ref[src];info_relation=\ref[R]'>Edit</a>" : ""]<br>[R.info ? "[R.info]" : " Nothing specific."]"
-		if(R.other.info)
-			dat += "<br><b>Things you know about them:</b><br>[R.other.info]<br>[R.other.holder.gen_relations_info]"
+		if(R.connected_relation.info)
+			dat += "<br><b>Things you know about them:</b><br>[R.connected_relation.info]<br>[R.connected_relation.relation_holder.gen_relations_info]"
 		dat += "<hr>"
 
 	if(mind.known_connections && mind.known_connections.len)
-		dat += "<b>Other people:</b>"
+		dat += "<b>connected_relation people:</b>"
 		for(var/I in mind.known_connections)
 			dat += "<br><i>[I]</i>"
 
@@ -188,14 +231,14 @@ var/global/datum/matchmaker/matchmaker = new()
 	if(href_list["info_relation"])
 		var/datum/relation/R = locate(href_list["info_relation"])
 		if(istype(R))
-			var/info = sanitize(input("What would you like the other party for this connection to know about your character?","Character info",R.info) as message|null)
+			var/info = sanitize(input("What would you like the connected_relation party for this connection to know about your character?","Character info",R.info) as message|null)
 			if(info)
 				R.info = info
 				see_relationship_info()
 				return 1
 	if(href_list["relations_close"])
 		var/ok = "Close anyway"
-		ok = alert("HEY! You have some non-finalized relationships. You can terminate them if they do not fit your character, or edit the info tidbit that the other party is given. THIS IS YOUR ONLY CHANCE to do so - after you close the window, they won't be editable.","Finalize relationships","Return to edit", "Close anyway")
+		ok = alert("HEY! You have some non-finalized relationships. You can terminate them if they do not fit your character, or edit the info tidbit that the connected_relation party is given. THIS IS YOUR ONLY CHANCE to do so - after you close the window, they won't be editable.","Finalize relationships","Return to edit", "Close anyway")
 		if(ok == "Close anyway")
 			var/list/relations = matchmaker.get_relationships(mind)
 			for(var/datum/relation/R in relations)
