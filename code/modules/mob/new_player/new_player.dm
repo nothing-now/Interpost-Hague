@@ -403,6 +403,9 @@
 	dat += "<b>Welcome, [name].<br></b>"
 	dat += "Round Duration: [roundduration2text()]<br>"
 
+	if(player.client.prefs.gender = job.sex_lock)
+		dat += "<font color='red'><b>Some of the roles are missing due to a gender lock.</b></font><br>"
+
 	if(evacuation_controller.has_evacuated())
 		dat += "<font color='red'><b>The [station_name()] has been evacuated.</b></font><br>"
 	else if(evacuation_controller.is_evacuating())
