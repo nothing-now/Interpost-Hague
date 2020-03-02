@@ -225,7 +225,6 @@
 		msg += "[T.He] [T.is] quite chubby.\n"
 
 	for(var/datum/relation/family/R in matchmaker.get_relationships(user.mind))
-		to_world("user is [user] Relation: [R.connected_relation.relation_holder.current.name]")
 		if(name == R.connected_relation.relation_holder.current.name)
 			msg += "[name] is our [R.name]\n"
 	msg += "</span>"
