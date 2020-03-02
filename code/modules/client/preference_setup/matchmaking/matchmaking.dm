@@ -1,7 +1,7 @@
 var/global/datum/matchmaker/matchmaker = new()
 
 /hook/roundstart/proc/matchmaking()
-	matchmaker.do_matchmaking()
+	//matchmaker.do_matchmaking()
 	return TRUE
 
 /datum/matchmaker
@@ -18,7 +18,7 @@ var/global/datum/matchmaker/matchmaker = new()
 /datum/matchmaker/proc/do_matchmaking()
 	var/list/to_warn = list()
 	for(var/datum/relation/R in relations)
-		if(!R.connected_relation)
+		if(!R.connected_relation && R.family_flag == 0)
 			R.find_match()
 		if(R.connected_relation && !R.finalized)
 			to_warn |= R.relation_holder.current
@@ -28,25 +28,23 @@ var/global/datum/matchmaker/matchmaker = new()
 //This is where the families are made.  This is basically the big driver of everything.
 /datum/matchmaker/proc/do_family_matchmaking()
 	var/total_familes = round(GLOB.player_list.len * 0.2) + 1  // How many families we want Makes around 1 family per 4 people, and always at least on family
-	to_world("Trying to make families total_familes = [total_familes]")
-	for(var/mob/living/carbon/human/H in GLOB.player_list)
-		to_world("player_list is [GLOB.player_list]")
-		to_world("Checking out: [H] or [H.name] or [H.mind]")
-
-	for(var/mob/living/carbon/human/H in GLOB.player_list)
-		if(families.len < total_familes) // If we aren't at our limit yet, we make five ned players head of house
-			var/mob/living/carbon/human/pick_human = pick(GLOB.player_list)  //To make heads of families random (for now)
-			var/datum/family/F = new /datum/family(pick_human)
-			families |= F
-		else							 // If we are at our limit, start adding people to familes
-			var/datum/family/F = pick(families)
-			F.add_member(H)
-	//Prints familes
+	var/list/player_list_copy = GLOB.player_list.Copy()
+	//First setup families, and remove the family heads from the list
+	while(families.len < total_familes)
+		var/mob/living/carbon/human/pick_human = pick(GLOB.player_list)  //To make heads of families random (for now)
+		var/datum/family/F = new /datum/family(pick_human)
+		families |= F
+		player_list_copy.Remove(pick_human)
+	//Now that familes are created, add any left over humans to them
+	for(var/mob/living/carbon/human/H in player_list_copy)
+		var/datum/family/F = pick(families)
+		F.add_member(H)
+	/*Prints familes and memebers
 	for(var/datum/family/F in families)
-		to_world("Families head: [F.family_head] Families last name = [F.name] Memebers are:")
+		to_world("Families head: [F.family_head.mind] Families last name = [F.name] Memebers are:")
 		for(var/mob/living/carbon/human/M in F.members)
 			to_world("Member: [M.real_name]")
-
+	*/
 	//Testing stuff
 	/*
 	var/list/test_player_list = list("John Doe", "Jane Dane", "Harold buster", "Jame righter", "Matt James", "Tim Panda", "Stever Typing", "The doom", "Debbie Downer", "Frail Mike")
@@ -83,7 +81,6 @@ var/global/datum/matchmaker/matchmaker = new()
 	var/info
 	var/finalized
 	var/open = 2			//If non-zero, allow connected_relation relations to form connections
-	var/sex_restricted = null
 	var/family_flag = 0 //So we don't show family relations in options
 
 /datum/relation/New()
@@ -196,7 +193,7 @@ var/global/datum/matchmaker/matchmaker = new()
 		dat += "An <b>\[F\]</b> indicates that the connected_relation player has finalized the connection.<br>"
 		dat += "<br>"
 	for(var/datum/relation/R in relations)
-		dat += "<b>[R.connected_relation.finalized ? "\[F\] " : ""][R.connected_relation.relation_holder]</b>, [R.connected_relation.relation_holder.role_alt_title ? R.connected_relation.relation_holder.role_alt_title : R.connected_relation.relation_holder.assigned_role]."
+		dat += "<b>[R.connected_relation.relation_holder]</b>, [R.connected_relation.relation_holder.role_alt_title ? R.connected_relation.relation_holder.role_alt_title : R.connected_relation.relation_holder.assigned_role]."
 		if (!R.finalized)
 			dat += " <a href='?src=\ref[src];del_relation=\ref[R]'>Remove</a>"
 			editable = 1
