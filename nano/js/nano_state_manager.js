@@ -64,6 +64,7 @@ NanoStateManager = function ()
 		}
 		catch (error)
 		{
+			alert("recieveUpdateData failed. " + "<br>Error name: " + error.name + "<br>Error Message: " + error.message);
 			alert(error.name + ": " + error.Message + " at: " + error.at + " (" + error.text + ")");
 			return;
 		}

@@ -34,7 +34,7 @@ NanoBaseHelpers = function ()
 
 				if (typeof elementClass == 'undefined' || !elementClass)
 				{
-					elementClass = '';
+					elementClass = 'link';
 				}
 
 				var elementIdHtml = '';
@@ -63,7 +63,7 @@ NanoBaseHelpers = function ()
 
 				if (typeof elementClass == 'undefined' || !elementClass)
 				{
-					elementClass = '';
+					elementClass = 'link';
 				}
 
 				var elementIdHtml = '';
@@ -82,6 +82,10 @@ NanoBaseHelpers = function ()
 			// Since jsrender breaks the ^ operator
 			xor: function(number,bit) {
 				return number ^ bit;
+			},
+			// Returns the number fixed to 1 decimal
+			fixed: function(number) {
+				return Math.round(number * 10) / 10;
 			},
 			precisionRound: function (value, places) {
 				if(places==0)
@@ -128,6 +132,10 @@ NanoBaseHelpers = function ()
 				parts[0] = parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",");
 				return parts.join(".");
 			},
+			// Capitalize the first letter of a string. From http://stackoverflow.com/questions/1026069/capitalize-the-first-letter-of-string-in-javascript
+			capitalizeFirstLetter: function(string) {
+				return string.charAt(0).toUpperCase() + string.slice(1);
+			},
 			// Display a bar. Used to show health, capacity, etc.
 			displayBar: function(value, rangeMin, rangeMax, styleClass, showText) {
 
@@ -152,7 +160,7 @@ NanoBaseHelpers = function ()
 					{
 						value = rangeMax;
 					}
-				}
+				} 
 
 				if (typeof styleClass == 'undefined' || !styleClass)
 				{
@@ -163,7 +171,10 @@ NanoBaseHelpers = function ()
 				{
 					showText = '';
 				}
-
+				if (typeof difClass == 'undefined' || !difClass)
+				{
+					difClass = ''
+				}
 				var percentage = Math.round((value - rangeMin) / (rangeMax - rangeMin) * 100);
 
 				return '<div class="displayBar ' + styleClass + '"><div class="displayBarFill ' + styleClass + '" style="width: ' + percentage + '%;"></div><div class="displayBarText ' + styleClass + '">' + showText + '</div></div>';

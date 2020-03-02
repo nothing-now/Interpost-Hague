@@ -481,21 +481,15 @@
 	ui_interact(user)
 	wires.Interact(user)
 
-/obj/machinery/alarm/ui_interact(mob/user, ui_key = "main", datum/nanoui/ui = null, force_open = 1, var/master_ui = null, var/datum/topic_state/state = GLOB.default_state)
+/obj/machinery/alarm/ui_interact(mob/user, ui_key = "main", var/datum/nanoui/ui = null, var/force_open = 0)
 	var/data[0]
 	var/remote_connection = 0
 	var/remote_access = 0
-	if(state)
-		var/list/href = state.href_list(user)
-		remote_connection = href["remote_connection"]	// Remote connection means we're non-adjacent/connecting from another computer
-		remote_access = href["remote_access"]			// Remote access means we also have the privilege to alter the air alarm.
-
 	data["locked"] = locked && !issilicon(user)
 	data["remote_connection"] = remote_connection
 	data["remote_access"] = remote_access
 	data["rcon"] = rcon_setting
 	data["screen"] = screen
-
 	populate_status(data)
 
 	if(!(locked && !remote_connection) || remote_access || issilicon(user))
@@ -503,7 +497,7 @@
 
 	ui = GLOB.nanomanager.try_update_ui(user, src, ui_key, ui, data, force_open)
 	if(!ui)
-		ui = new(user, src, ui_key, "air_alarm.tmpl", src.name, 325, 625, master_ui = master_ui, state = state)
+		ui = new(user, src, ui_key, "air_alarm.tmpl", src.name, 325, 625)
 		ui.set_initial_data(data)
 		ui.open()
 		ui.set_auto_update(1)
