@@ -224,7 +224,9 @@
 	else if(nutrition >= 500)
 		msg += "[T.He] [T.is] quite chubby.\n"
 
-
+	for(var/datum/relation/family/R in matchmaker.get_relationships(user.mind))
+		if(name == R.connected_relation.relation_holder.current.name)
+			msg += "[name] is our [R.name]\n"
 	msg += "</span>"
 
 	var/ssd_msg = species.get_ssd(src)
