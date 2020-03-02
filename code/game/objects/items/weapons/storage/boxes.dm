@@ -500,3 +500,8 @@
 	name = "7.63mm rifle ammo"
 	desc = "A box that contains 7.63 caliber ammo."
 	startswith = list(/obj/item/ammo_casing/brifle = 15)
+
+/obj/item/weapon/storage/box/knifes_throwing
+	name = "box of throwing knifes"
+	desc = "It has a picture of a knife and several warning symbols on the front. <br>WARNING: Box contains sharp and cutting weaponry. Carry with care."
+	startswith = list(/obj/item/weapon/material/knife/throwing = 4)

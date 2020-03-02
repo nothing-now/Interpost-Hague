@@ -22,3 +22,46 @@
 
 /obj/item/weapon/material/star/ninja
 	default_material = "uranium"
+
+/obj/item/weapon/material/knife/throwing
+	name = "throwing knife"
+	icon = 'icons/obj/weapons.dmi'
+	icon_state = "throwing"
+	item_state = "knife"
+	desc = "Knife designed specially for throwing."
+	drop_sound = 'sound/items/knife_drop.ogg'
+	drawsound = 'sound/items/unholster_knife.ogg'
+	attack_verb = list("slashed", "stabbed")
+	w_class = ITEM_SIZE_SMALL
+	force_divisor = 0.10
+	sharpness = 17
+	weapon_speed_delay = 17
+	thrown_force_divisor = 0.58
+	throw_speed = 8
+	throw_range = 15
+	sharp = 1
+	edge = 1
+	randpixel = 5
+
+/obj/item/weapon/material/knife/throwing/hos
+	name = "throwing knife"
+	icon = 'icons/obj/weapons.dmi'
+	icon_state = "throwing_hos"
+	item_state = "knife"
+	desc = "Knife designed specially for throwing. This one looks expensive and has engraving."
+	drop_sound = 'sound/items/knife_drop.ogg'
+	drawsound = 'sound/items/unholster_knife.ogg'
+	attack_verb = list("slashed", "stabbed")
+	w_class = ITEM_SIZE_SMALL
+	force_divisor = 0.10
+	sharpness = 18
+	weapon_speed_delay = 17
+	thrown_force_divisor = 0.63
+	throw_speed = 9
+	throw_range = 15
+	sharp = 1
+	edge = 1
+	randpixel = 3
+
+/obj/item/weapon/material/knife/throwing/hos
+	default_material = "gold"

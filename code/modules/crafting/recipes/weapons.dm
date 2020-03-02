@@ -91,6 +91,11 @@
 	result = list(/obj/item/weapon/beartrap/makeshift = 1)
 	parts = list(/obj/item/weapon/saw = 1,  MATERIAL_STEEL_TYPE = 2, /obj/item/stack/cable_coil = 5)
 
+/datum/crafting_recipe/weapon/throwing_knife
+	name = "Throwing knife"
+	result = list(/obj/item/weapon/material/knife/throwing = 1)
+	parts = list(MATERIAL_STEEL_TYPE = 2)
+
 /*
 GUNS
 */
