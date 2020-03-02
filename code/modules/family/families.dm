@@ -4,6 +4,8 @@
 	var/mob/living/carbon/human/family_head
 	var/mob/living/carbon/human/spouse
 
+
+
 /datum/family/New(var/mob/living/carbon/human/head)
 	var/regex/R = regex("(^\\w+) (.*$)") //Get all words (\w+) that have an end of line ($).  Should pick off last names
 	R.Find(head.real_name)
@@ -38,6 +40,7 @@
 	target_relation.connected_relation = owner_relation
 	owner_relation.relation_holder = owner.mind
 	target_relation.relation_holder = target.mind
+	
 
 //Setup relations between families
 /datum/family/proc/setup_relations(var/mob/living/carbon/human/member)
@@ -176,5 +179,7 @@
 
 
 /mob/living/carbon/human/verb/check_family()
+	var/message = "<big><b>Family:</b></big>\n"
 	for(var/datum/relation/family/R in matchmaker.get_relationships(mind))
-		to_world("[R.connected_relation.relation_holder.current.name] is my [R.name].")
+		message += "[R.connected_relation.relation_holder.current.name] is my [R.name].\n"
+	to_chat(src, message)

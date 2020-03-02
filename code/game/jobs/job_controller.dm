@@ -554,8 +554,6 @@ var/global/datum/controller/occupations/job_master
 				var/datum/old_god_spell/new_spell = pick(pickable_spells)
 				to_chat(H, "You can only recall a single incantation.  It is the <b><font color='red'>[new_spell.name]</font> spell.  The incantation is <b><font color='red'>[new_spell.phrase]</font>")
 				H.mind.store_memory("[new_spell.name] Incantation: \"[new_spell.phrase]\"")
-
-		
 		BITSET(H.hud_updateflag, ID_HUD)
 		BITSET(H.hud_updateflag, IMPLOYAL_HUD)
 		BITSET(H.hud_updateflag, SPECIALROLE_HUD)

@@ -1,7 +1,6 @@
 var/global/datum/matchmaker/matchmaker = new()
 
 /hook/roundstart/proc/matchmaking()
-	//matchmaker.do_matchmaking()
 	return TRUE
 
 /datum/matchmaker
@@ -14,6 +13,15 @@ var/global/datum/matchmaker/matchmaker = new()
 	for(var/T in subtypesof(/datum/relation/))
 		var/datum/relation/R = T
 		relation_types[initial(R.name)] = T
+
+
+/datum/matchmaker/proc/add_relations_to_notes()
+	//Add families to notes
+	for(var/mob/living/carbon/human/H in GLOB.player_list)
+		H.mind.store_memory("<big><b>Family:</b></big>\n")
+		for(var/datum/relation/family/R in matchmaker.get_relationships(H.mind))
+			to_world("This person is our relative: [R.connected_relation.relation_holder.current.name] But this doesnt work [R.connected_relation.relation_holder.current.name]")
+			H.mind.store_memory("[R.connected_relation.relation_holder.current.name] is my [R.name].\n")
 
 /datum/matchmaker/proc/do_matchmaking()
 	var/list/to_warn = list()
@@ -119,7 +127,7 @@ var/global/datum/matchmaker/matchmaker = new()
 /datum/relation/proc/get_copy()
 	var/datum/relation/R = new type
 	R.relation_holder = relation_holder
-	R.info = relation_holder.current && relation_holder.current.client ? relation_holder.current.client.prefs.relations_info[R.name] : info
+	R.info = relation_holder.current && info
 	R.open = 0
 	return R
 
@@ -179,68 +187,3 @@ var/global/datum/matchmaker/matchmaker = new()
 
 /datum/relation/proc/get_desc_string()
 	return "[relation_holder] and [connected_relation.relation_holder] know each connected_relation."
-
-/mob/living/verb/see_relationship_info()
-	set name = "See Relationship Info"
-	set desc = "See what connections between people you know of."
-	set category = "IC"
-
-	var/list/relations = matchmaker.get_relationships(mind)
-	var/list/dat = list()
-	var/editable = 0
-	if(mind.gen_relations_info)
-		dat += "<b>Things they all know about you:</b><br>[mind.gen_relations_info]<hr>"
-		dat += "An <b>\[F\]</b> indicates that the connected_relation player has finalized the connection.<br>"
-		dat += "<br>"
-	for(var/datum/relation/R in relations)
-		dat += "<b>[R.connected_relation.relation_holder]</b>, [R.connected_relation.relation_holder.role_alt_title ? R.connected_relation.relation_holder.role_alt_title : R.connected_relation.relation_holder.assigned_role]."
-		if (!R.finalized)
-			dat += " <a href='?src=\ref[src];del_relation=\ref[R]'>Remove</a>"
-			editable = 1
-		dat += "<br>[R.desc]"
-		dat += "<br>"
-		dat += "<b>Things they know about you:</b>[!R.finalized ?"<a href='?src=\ref[src];info_relation=\ref[R]'>Edit</a>" : ""]<br>[R.info ? "[R.info]" : " Nothing specific."]"
-		if(R.connected_relation.info)
-			dat += "<br><b>Things you know about them:</b><br>[R.connected_relation.info]<br>[R.connected_relation.relation_holder.gen_relations_info]"
-		dat += "<hr>"
-
-	if(mind.known_connections && mind.known_connections.len)
-		dat += "<b>connected_relation people:</b>"
-		for(var/I in mind.known_connections)
-			dat += "<br><i>[I]</i>"
-
-	var/datum/browser/popup = new(usr, "relations", "Relationship Info")
-	if(editable)
-		dat.Insert(1,"<a href='?src=\ref[src];relations_close=1;'>Finalize edits and close</a><br>")
-		popup.set_window_options("focus=0;can_close=0;can_minimize=1;can_maximize=0;can_resize=1;titlebar=1;")
-	popup.set_content(jointext(dat,null))
-	popup.open()
-
-/mob/living/Topic(href, href_list)
-	if(..())
-		return 1
-	if(href_list["del_relation"])
-		var/datum/relation/R = locate(href_list["del_relation"])
-		if(istype(R))
-			R.sever()
-			see_relationship_info()
-			return 1
-	if(href_list["info_relation"])
-		var/datum/relation/R = locate(href_list["info_relation"])
-		if(istype(R))
-			var/info = sanitize(input("What would you like the connected_relation party for this connection to know about your character?","Character info",R.info) as message|null)
-			if(info)
-				R.info = info
-				see_relationship_info()
-				return 1
-	if(href_list["relations_close"])
-		var/ok = "Close anyway"
-		ok = alert("HEY! You have some non-finalized relationships. You can terminate them if they do not fit your character, or edit the info tidbit that the connected_relation party is given. THIS IS YOUR ONLY CHANCE to do so - after you close the window, they won't be editable.","Finalize relationships","Return to edit", "Close anyway")
-		if(ok == "Close anyway")
-			var/list/relations = matchmaker.get_relationships(mind)
-			for(var/datum/relation/R in relations)
-				R.finalize()
-			show_browser(usr,null, "window=relations")
-		else
-			show_browser(usr,null, "window=relations")
-		return 1

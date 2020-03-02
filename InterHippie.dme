@@ -1269,7 +1269,6 @@
 #include "code\modules\client\preference_setup\loadout\loadout_smoking.dm"
 #include "code\modules\client\preference_setup\loadout\loadout_utility.dm"
 #include "code\modules\client\preference_setup\matchmaking\matchmaking.dm"
-#include "code\modules\client\preference_setup\matchmaking\relations.dm"
 #include "code\modules\client\preference_setup\matchmaking\relations_types.dm"
 #include "code\modules\client\preference_setup\occupation\occupation.dm"
 #include "code\modules\clothing\chameleon.dm"
