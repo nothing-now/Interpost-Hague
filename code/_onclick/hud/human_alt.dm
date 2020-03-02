@@ -106,7 +106,6 @@
 
 		using = new /obj/screen/combat()
 		src.adding += using
-		action_intent = using
 
 		hud_elements |= using
 
@@ -115,7 +114,6 @@
 
 		using = new /obj/screen/skills_family()
 		src.adding += using
-		action_intent = using
 
 		hud_elements |= using
 
