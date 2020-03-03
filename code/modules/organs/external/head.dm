@@ -145,6 +145,7 @@
 			T.loc:add_blood(owner)
 
 			teeth.zero_amount() //Try to delete the teeth
+			GLOB.teeth_lost += drop
 			done = 1
 	return done
 

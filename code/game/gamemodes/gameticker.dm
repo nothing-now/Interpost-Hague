@@ -484,6 +484,20 @@ var/global/datum/controller/gameticker/ticker
 		to_world("<b>[max_profit.owner_name]</b> received most <font color='green'><B>PROFIT</B></font> today, with net profit of <b>T[max_profit.get_balance()]</b>.")
 		to_world("On the other hand, <b>[max_loss.owner_name]</b> had most <font color='red'><B>LOSS</B></font>, with total loss of <b>T[max_loss.get_balance()]</b>.")
 
+	//ROUND END STATS
+	var/round_end_stats = "<b>ROUND END STATS:</b>\n"
+	round_end_stats += "Number of times the floor was shit on: <font color='red'><B>[GLOB.shit_left]</B></font>.\n"
+	round_end_stats += "Number of times the floor was pissed on: <font color='red'><B>[GLOB.piss_left]</B></font>.\n"
+	round_end_stats += "Number of deaths in space: <font color='red'><B>[GLOB.deaths_in_space]</B></font>.\n"
+	round_end_stats += "Total teeth lost: <font color='red'><B>[GLOB.teeth_lost]</B></font>.\n"
+	round_end_stats += "Total bloodshed: <font color='red'><B>[GLOB.total_deaths]</B></font>.\n"
+	for(var/old_god in GLOB.all_religions)
+		if(old_god != LEGAL_RELIGION)
+			round_end_stats += "<font color='red'>The [old_god] worshippers were:</font>\n"
+			for(var/H in GLOB.all_religions[old_god].followers)
+				round_end_stats += "<font color='red'><b>[H]</b></font>\n"
+
+	to_world(round_end_stats)
 	mode.declare_completion()//To declare normal completion.
 
 	//Ask the event manager to print round end information

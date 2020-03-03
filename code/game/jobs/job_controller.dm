@@ -543,7 +543,7 @@ var/global/datum/controller/occupations/job_master
 				var/obj/item/I = GLOB.all_religions[H.religion].holy_item.type
 				I = new I()
 				H.equip_to_storage(I)
-				GLOB.all_religions[H.religion].followers += H.name
+				GLOB.all_religions[H.religion].followers += H.mind.name
 				if(prob(5))
 					H.mind.prayer = accepted_prayer
 					to_chat(H, "<span class='notice'>You can't believe your luck, you've managed to pick up on the selected prayer for today. It's: <b>[H.mind.prayer]</b> Remember this prayer, and Gods save you from the Arbiters.\n</span>")

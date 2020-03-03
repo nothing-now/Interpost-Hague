@@ -232,7 +232,7 @@
 
 		playsound(src.loc, 'sound/effects/poo2.ogg', 60, 1)
 		bowels -= rand(60,80)
-
+		GLOB.shit_left++
 	else
 		to_chat(src, "You don't have to.")
 		return
@@ -279,7 +279,7 @@
 		if(reagents)
 			reagents.trans_to(D, rand(1,8))
 		message = "<B>[src]</B> pisses on the [TT.name]."
-
+	GLOB.piss_left++
 	bladder -= 50
 	visible_message("[message]")
 
