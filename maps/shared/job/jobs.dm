@@ -135,6 +135,7 @@
 		..()
 		//H.add_stats(rand(9,11), rand(9,11), rand(7,10))
 		H.generate_stats("dex")
+		H.generate_skills("crafting")
 
 /datum/job/captain
 	title = "Count"
@@ -152,6 +153,7 @@
 		..()
 		//H.add_stats(rand(6,9), rand(9,11), rand(10,12))
 		H.generate_stats("str")
+		H.generate_skills("melee")
 
 
 
@@ -172,6 +174,7 @@
 		..()
 		//H.add_stats(rand(6,9), rand(9,11), rand(10,12))
 		H.generate_stats("int")
+		H.generate_skills("melee")
 
 /datum/job/rd
 	title = "Court Magus"
@@ -348,6 +351,7 @@
 		..()
 		//H.add_stats(rand(8,12), rand(9,12), rand(7,10))
 		H.generate_stats("dex")
+		H.generate_skills("crafting")
 
 /datum/job/engineer
 	title = "Station Engineer"
@@ -388,6 +392,7 @@
 		..()
 		//H.add_stats(rand(9,16), rand(9,12), rand(6,9))
 		H.generate_stats("str")
+		H.generate_skills("crafting")
 
 /datum/job/cargo_tech
 	selection_color = "#7c6a2e"
@@ -405,6 +410,7 @@
 		..()
 		//H.add_stats(rand(9,12), rand(9,12), rand(6,9))
 		H.generate_stats("dex")
+		H.generate_skills("crafting")
 
 /datum/job/cargo_tech/machinist
 	title = "Machinist"
@@ -471,6 +477,8 @@
 		if(!H.religion_is_legal())//Heretical priests would be weird.
 			H.religion = LEGAL_RELIGION
 		H.generate_stats("int")
+		//H.generate_skills("religion")
+// religion skills in the future maybe?
 
 /datum/job/janitor
 	title = "Janitor"
@@ -517,7 +525,8 @@
 
 	equip(var/mob/living/carbon/human/H)
 		..()
-		H.generate_stats("dex")
+		//H.generate_stats("dex")
+		H.generate_stats(rand(2,18), rand(2,18), rand(2,18), rand(2,18))
 		H.generate_skills("melee")
 
 
