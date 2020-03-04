@@ -735,7 +735,7 @@ default behaviour is:
 		resisting++
 		G.handle_resist()
 	if(resisting)
-		visible_message("<span class='danger'>[src] resists!</span>")
+		visible_message("<span class='danger'>[src] tries to resist!</span>")
 
 /mob/living/verb/lay_down()
 	set name = "Rest"
