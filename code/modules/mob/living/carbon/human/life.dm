@@ -736,7 +736,7 @@
 			overlay_fullscreen("brute", /obj/screen/fullscreen/brute, severity)
 			if(grain)
 				grain.icon_state = "9 medium"
-				grain.alpha = 130
+				grain.alpha = 150
 		else
 			clear_fullscreen("brute")
 
