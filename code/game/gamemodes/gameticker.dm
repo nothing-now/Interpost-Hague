@@ -491,6 +491,7 @@ var/global/datum/controller/gameticker/ticker
 	round_end_stats += "Number of deaths in space: <font color='red'><B>[GLOB.deaths_in_space]</B></font>.\n"
 	round_end_stats += "Total teeth lost: <font color='red'><B>[GLOB.teeth_lost]</B></font>.\n"
 	round_end_stats += "Total bloodshed: <font color='red'><B>[GLOB.total_deaths]</B></font>.\n"
+	round_end_stats += "Total orgasms: <font color='red'><B>[GLOB.total_orgasms]</B></font>.\n"
 	for(var/old_god in GLOB.all_religions)
 		if(old_god != LEGAL_RELIGION)
 			round_end_stats += "<font color='red'>The [old_god] worshippers were:</font>\n"

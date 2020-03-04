@@ -231,6 +231,7 @@
 	if (H.staminaloss > 100)
 		H.druggy = 300
 		H.erpcooldown = 600
+	GLOB.total_orgasms++
 	H.add_event("came", /datum/happiness_event/came)
 
 mob/living/carbon/human/proc/fuck(mob/living/carbon/human/H as mob, mob/living/carbon/human/P as mob, var/hole)
