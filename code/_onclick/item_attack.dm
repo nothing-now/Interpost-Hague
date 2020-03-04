@@ -80,8 +80,8 @@ avoid code duplication. This includes items that may sometimes act as a standard
 		admin_attack_log(user, M, "Attacked using \a [src] (DAMTYE: [uppertext(damtype)])", "Was attacked with \a [src] (DAMTYE: [uppertext(damtype)])", "used \a [src] (DAMTYE: [uppertext(damtype)]) to attack")
 	/////////////////////////
 
-	var/cooldown_modifier = user.c_intent == I_QUICK ? -3 : 0 //Quick mode lowers attack cooldown by 1/4th
-	cooldown_modifier += user.c_intent == I_AIM ? 5 : 0 //Aim mode raise attack cooldown by 1/4th
+	var/cooldown_modifier = user.c_intent == I_QUICK ? -4 : 0 //Quick mode lowers attack cooldown by 1/2th
+	cooldown_modifier += user.c_intent == I_AIM ? 4 : 0 //Aim mode raise attack cooldown by 1/2th
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN + cooldown_modifier)
 	
 	//user.do_attack_animation(M)

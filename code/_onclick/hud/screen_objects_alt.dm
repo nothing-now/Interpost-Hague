@@ -554,7 +554,7 @@
 				C.combat_mode = 1
 				C.combat_icon.icon_state = "combat1"
 
-		if("combat intent")
+		if("dodge intent")
 			if(ishuman(usr))
 				var/mob/living/carbon/human/E = usr
 				if(E.defense_intent == I_PARRY)

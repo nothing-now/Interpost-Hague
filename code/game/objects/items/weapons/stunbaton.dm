@@ -65,6 +65,13 @@
 	examine_cell(user)
 	return 1
 
+//Makes batons parry
+
+/obj/item/weapon/material/sword/handle_shield(mob/living/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+	if(default_sword_parry(user, damage, damage_source, attacker, def_zone, attack_text))
+		return 1
+	return 0
+
 // Addition made by Techhead0, thanks for fullfilling the todo!
 /obj/item/weapon/melee/baton/proc/examine_cell(mob/user)
 	if(bcell)

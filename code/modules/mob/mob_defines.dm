@@ -44,7 +44,6 @@
 	var/obj/screen/fixeye = null
 	var/obj/screen/rest = null
 	var/obj/screen/combat_icon = null
-	var/obj/screen/combat_intent_icon = null
 	var/obj/screen/dodge_intent_icon = null
 	var/obj/screen/family_skills_icon = null
 	var/obj/screen/surrender = null

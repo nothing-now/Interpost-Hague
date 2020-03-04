@@ -30,7 +30,7 @@
 			adjustStaminaLoss(1)
 
 /mob/living/proc/attempt_dodge()//Handle parry is an object proc and it's, its own thing.
-	var/dodge_modifier = c_intent == I_QUICK ? 4 : 0 //If they are in quick mode, they dodge more
+	var/dodge_modifier = c_intent == I_DEFEND ? 4 : 0 //If they are in defend mode, they dodge more
 	if (defense_intent != I_DODGE || lying)  // If they are not trying to dodge or are lying down
 		return 0
 	if(combat_mode)//Todo, make use of the check_shield_arc proc to make sure you can't dodge from behind.

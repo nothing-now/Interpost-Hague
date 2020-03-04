@@ -166,7 +166,7 @@ meteor_act
 	if(user == src) // Attacking yourself can't miss
 		return target_zone
 
-	var/hit_modifier = user.c_intent == I_QUICK ? -40 : 0 //If they are in aim mode, miss less
+	var/hit_modifier = user.c_intent == I_AIM ? -40 : 0 //If they are in aim mode, miss less
 	var/hit_zone = get_zone_with_miss_chance(target_zone, src, hit_modifier)
 
 	if(!hit_zone)
