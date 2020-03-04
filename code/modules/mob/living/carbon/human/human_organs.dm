@@ -49,7 +49,7 @@
 			if (!lying && !buckled && world.time - l_move_time < 15)
 			//Moving around with fractured ribs won't do you any good
 				if (prob(10) && !stat && can_feel_pain() && chem_effects[CE_PAINKILLER] < 50 && E.is_broken() && E.internal_organs.len)
-					custom_pain("Pain jolts through your broken [E.encased ? E.encased : E.name], staggering you!", 50, affecting = E)
+					custom_pain("Pain jolts through your broken [E.encased ? E.encased : E.name], staggering you immensely!", 50, affecting = E)
 					drop_item(loc)
 					Stun(2)
 
@@ -107,7 +107,7 @@
 		if(!(lying || resting))
 			if(limb_pain)
 				emote("scream")
-			custom_emote(VISIBLE_MESSAGE, "collapses!")
+			custom_emote(VISIBLE_MESSAGE, "collapses on the ground!")
 		Weaken(5) //can't emote while weakened, apparently.
 
 /mob/living/carbon/human/proc/handle_grasp()
