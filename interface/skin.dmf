@@ -195,6 +195,9 @@ macro "borghotkeymode"
 		name = "F2"
 		command = "ooc"
 	elem 
+		name = "O"
+		command = "ooc"
+	elem 
 		name = "F2+REP"
 		command = ".screenshot auto"
 	elem 
@@ -208,7 +211,7 @@ macro "borghotkeymode"
 		command = ".me"
 	elem 
 		name = "F5"
-		command = "msay"
+		command = "asay"
 	elem 
 		name = "F6"
 		command = "Player-Panel-New"
@@ -616,6 +619,9 @@ macro "hotkeymode"
 		name = "F2"
 		command = "ooc"
 	elem 
+		name = "O"
+		command = "ooc"
+	elem 
 		name = "F2+REP"
 		command = ".screenshot auto"
 	elem 
@@ -629,7 +635,7 @@ macro "hotkeymode"
 		command = ".me"
 	elem 
 		name = "F5"
-		command = "msay"
+		command = "asay"
 	elem 
 		name = "F6"
 		command = "Player-Panel-New"
