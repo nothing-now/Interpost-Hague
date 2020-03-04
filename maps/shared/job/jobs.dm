@@ -526,7 +526,7 @@
 	equip(var/mob/living/carbon/human/H)
 		..()
 		//H.generate_stats("dex")
-		H.generate_stats(rand(2,18), rand(2,18), rand(2,18), rand(2,18))
+		H.add_stats(rand(2,18), rand(2,18), rand(2,18), rand(2,18))
 		H.generate_skills("melee")
 
 
