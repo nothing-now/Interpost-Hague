@@ -1879,13 +1879,13 @@
 	var/socclass = social_class
 	switch(socclass)
 		if(SOCIAL_CLASS_MIN)
-			return "<b>filth.</b>"
+			return "<b>filth</b>"
 		if(SOCIAL_CLASS_MED)
-			return "<b>a commoner.</b>"
+			return "<b>a commoner</b>"
 		if(SOCIAL_CLASS_HIGH)
-			return "<b>a lesser noble.</b>"
+			return "<b>a lesser noble</b>"
 		if(SOCIAL_CLASS_MAX)
-			return "<b>a noble.</b>"
+			return "<b>a noble</b>"
 
 
 /mob/living/carbon/human/proc/get_social_description(var/mob/living/carbon/human/H)
