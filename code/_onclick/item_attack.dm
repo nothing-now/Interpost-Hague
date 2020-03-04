@@ -80,14 +80,18 @@ avoid code duplication. This includes items that may sometimes act as a standard
 		admin_attack_log(user, M, "Attacked using \a [src] (DAMTYE: [uppertext(damtype)])", "Was attacked with \a [src] (DAMTYE: [uppertext(damtype)])", "used \a [src] (DAMTYE: [uppertext(damtype)]) to attack")
 	/////////////////////////
 
-	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
+	var/cooldown_modifier = user.c_intent == I_QUICK ? -3 : 0 //Quick mode lowers attack cooldown by 1/4th
+	cooldown_modifier += user.c_intent == I_AIM ? 5 : 0 //Aim mode raise attack cooldown by 1/4th
+	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN + cooldown_modifier)
 	
 	//user.do_attack_animation(M)
 	if(!user.aura_check(AURA_TYPE_WEAPON, src, user))
 		return 0
 
+	var/combat_mode_stam_modifier = user.c_intent == I_STRONG ? 7 : 0 //If they are attacking strong, they lose more stam
 	if(force)
-		user.adjustStaminaLoss(w_class + 3)
+		user.adjustStaminaLoss(w_class + 3 + combat_mode_stam_modifier )
+
 	if(swing_sound)
 		playsound(M, swing_sound, 50, 1, -1)
 

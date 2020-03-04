@@ -27,8 +27,11 @@
 
 	if(user.defense_intent != I_PARRY)//If you're not on parry intent, you won't parry.
 		return 0
+
 	user.adjustStaminaLoss(5)
-	if(!user.skillcheck(user.skills["melee"], 45, 0, "Melee")) //Need to be decent at melee fighting to parry everything
+
+	var/defense_mode_modifier = user.c_intent == I_DEFEND ? 25 : 0 //If they are blocking, make parrying fairly easy
+	if(!user.skillcheck(user.skills["melee"], 45 - defense_mode_modifier, 0, "Melee")) //Need to be decent at melee fighting to parry everything
 		return 0
 
 	//block as long as they are not directly behind us
@@ -55,7 +58,8 @@
 	return 0
 
 /obj/item/weapon/shield/proc/get_block_chance(mob/user, var/damage, atom/damage_source = null, mob/attacker = null)
-	return base_block_chance + user.skills["melee"]
+	var/defense_mode_modifier = user.c_intent == I_DEFEND ? 25 : 0 //If they are blocking, make parrying fairly easy
+	return base_block_chance + user.skills["melee"] + defense_mode_modifier
 
 /obj/item/weapon/shield/riot
 	name = "riot shield"

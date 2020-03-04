@@ -166,7 +166,8 @@ meteor_act
 	if(user == src) // Attacking yourself can't miss
 		return target_zone
 
-	var/hit_zone = get_zone_with_miss_chance(target_zone, src)
+	var/hit_modifier = user.c_intent == I_QUICK ? -40 : 0 //If they are in aim mode, miss less
+	var/hit_zone = get_zone_with_miss_chance(target_zone, src, hit_modifier)
 
 	if(!hit_zone)
 		visible_message("<span class='danger'>\The [user] misses [src] with \the [I]!</span>")
@@ -180,7 +181,7 @@ meteor_act
 	//	visible_message("<span class='danger'>[user] botches the attack on [src]!</span>")
 	//	return null
 
-
+	//PARRYING HAPPENS HERE
 	if(check_shields(I.force, I, user, target_zone, "the [I.name]"))
 		return null
 
@@ -260,6 +261,7 @@ meteor_act
 		//set the dislocate mult less than the effective force mult so that
 		//dislocating limbs on disarm is a bit easier than breaking limbs on harm
 		attack_joint(affecting, I, effective_force, 0.5, blocked) //...but can dislocate joints
+
 	else if(!..())
 		return 0
 
