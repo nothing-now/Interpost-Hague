@@ -1119,6 +1119,15 @@ window "rpane"
 		saved-params = "is-checked"
 		text = "Bug Report"
 		command = "Bug-Report"
+	elem "Discord"
+		type = BUTTON
+		pos = 596,0
+		size = 60x15
+		anchor1 = none
+		anchor2 = none
+		saved-params = "is-checked"
+		text = "Discord"
+		command = "discord"
 	elem "rulesb"
 		type = BUTTON
 		pos = 120,0
