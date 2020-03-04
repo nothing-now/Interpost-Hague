@@ -46,10 +46,8 @@
 	bladder = rand(0,100)
 	bowels = rand(0, 100)
 
-/*
 	potenzia = (prob(80) ? rand(9, 14) : pick(rand(5, 13), rand(15, 20)))//Interactions
 	resistenza = (prob(80) ? rand(150, 300) : pick(rand(10, 100), rand(350,600)))
-*/
 
 	if(dna)
 		dna.ready_dna(src)
@@ -801,7 +799,7 @@
 					if (H.potenzia > 0)
 						H.fuck(H, P, "anal")
 				else
-					var/message = pick("it's not erect...")//, "Êàê-òî íåò æåëàíè[ya]...", "×òî-òî íå îõîòà...", "Íåò, íå ñåé÷àñ.")
+					var/message = pick("<span class='warning'>It's not erect...yet.</span>")//, "Êàê-òî íåò æåëàíè[ya]...", "×òî-òî íå îõîòà...", "Íåò, íå ñåé÷àñ.")
 					H << message
 		else if (href_list["interaction"] == "vaginal")
 			if (H.loc == P.loc && isnude_p && isnude && haspenis && hasanus_p)
@@ -809,7 +807,7 @@
 					if (H.potenzia > 0)
 						H.fuck(H, P, "vaginal")
 				else
-					var/message = pick("it's not erect...")//"Íå õî÷åòñ[ya] ìíå...", "Êàê-òî íåò æåëàíè[ya]...", "×òî-òî íå îõîòà...", "Íåò, íå ñåé÷àñ.")
+					var/message = pick("<span class='warning'>It's not erect...yet.</span>")//"Íå õî÷åòñ[ya] ìíå...", "Êàê-òî íåò æåëàíè[ya]...", "×òî-òî íå îõîòà...", "Íåò, íå ñåé÷àñ.")
 					H << message
 
 		else if (href_list["interaction"] == "oral")
@@ -818,18 +816,18 @@
 					if (H.potenzia > 0)
 						H.fuck(H, P, "oral")
 				else
-					var/message = pick("it's not erect...")//"Íå õî÷åòñ[ya] ìíå...", "Êàê-òî íåò æåëàíè[ya]...", "×òî-òî íå îõîòà...", "Íåò, íå ñåé÷àñ.")
+					var/message = pick("<span class='warning'>It's not erect...yet.</span>")//"Íå õî÷åòñ[ya] ìíå...", "Êàê-òî íåò æåëàíè[ya]...", "×òî-òî íå îõîòà...", "Íåò, íå ñåé÷àñ.")
 					H << message
 
 		else if (href_list["interaction"] == "mount")
 			if (H.loc == P.loc && isnude && isnude_p && haspenis_p && hasvagina)
 				if (P.lust <= 0)
-					var/message = pick("It's not up...")//"Èíñòðóìåíò íå ïåðåâåäåí â ðàáî÷åå ñîñòî[ya]íèå...", "Ó íåãî åùå íå âñòàë...", "À îí ëåæèò...", "Íèêàê íå íàñàäèòüñ[ya]...")
+					var/message = pick("<span class='warning'>It's not erect...yet.</span>")//"Èíñòðóìåíò íå ïåðåâåäåí â ðàáî÷åå ñîñòî[ya]íèå...", "Ó íåãî åùå íå âñòàë...", "À îí ëåæèò...", "Íèêàê íå íàñàäèòüñ[ya]...")
 					H << message
 				else if (H.erpcooldown == 0)
 					H.fuck(H, P, "mount")
 				else
-					var/message = pick("You have no lust now.")//"Íå õî÷åòñ[ya] ìíå...", "Êàê-òî íåò æåëàíè[ya]...", "×òî-òî íå îõîòà...", "Íåò, íå ñåé÷àñ.")
+					var/message = pick("<span class='warning'>You have no lust anymore.</span>")//"Íå õî÷åòñ[ya] ìíå...", "Êàê-òî íåò æåëàíè[ya]...", "×òî-òî íå îõîòà...", "Íåò, íå ñåé÷àñ.")
 					H << message
 	..()
 	return
@@ -1041,7 +1039,7 @@
 	visible_message("<span class='notice'>\The [src] morphs and changes [get_visible_gender() == MALE ? "his" : get_visible_gender() == FEMALE ? "her" : "their"] appearance!</span>", "<span class='notice'>You change your appearance!</span>", "<span class='warning'>Oh, god!  What the hell was that?  It sounded like flesh getting squished and bone ground into a different shape!</span>")
 
 /mob/living/carbon/human/proc/remotesay()
-	set name = "Project mind"
+	set name = "Project Mind"
 	set category = "Superpower"
 
 	if(stat!=CONSCIOUS)
@@ -1055,7 +1053,7 @@
 	var/list/creatures = list()
 	for(var/mob/living/carbon/h in world)
 		creatures += h
-	var/mob/target = input("Who do you want to project your mind to ?") as null|anything in creatures
+	var/mob/target = input("Who do you want to project your mind to?") as null|anything in creatures
 	if (isnull(target))
 		return
 
@@ -1753,10 +1751,10 @@
 	if(!stat)
 		visible_message( \
 			"<span class='notice'>[src] examines [gender==MALE ? "himself" : "herself"].</span>", \
-			"<span class='notice'><b>Let's see how I am doing.</b></span>" \
+			"<span class='notice'><b>I check my vitals.</b></span>" \
 			)
 	else//We don't want to spam the chat that we're checking ourselves for injuries when we're out fucking cold.
-		to_chat(src, "<span class='notice'><b>Let's see how I am doing.</b></span>")
+		to_chat(src, "<span class='notice'><b>I check my vitals.</b></span>")
 
 
 
@@ -1881,22 +1879,22 @@
 	var/socclass = social_class
 	switch(socclass)
 		if(SOCIAL_CLASS_MIN)
-			return "<b>filth</b>"
+			return "<b>filth.</b>"
 		if(SOCIAL_CLASS_MED)
-			return "<b>a commoner</b>"
+			return "<b>a commoner.</b>"
 		if(SOCIAL_CLASS_HIGH)
-			return "<b>a lesser noble</b>"
+			return "<b>a lesser noble.</b>"
 		if(SOCIAL_CLASS_MAX)
-			return "<b>a noble</b>"
+			return "<b>a noble.</b>"
 
 
 /mob/living/carbon/human/proc/get_social_description(var/mob/living/carbon/human/H)
 	var/socclass = social_class
 	if(ishuman(H))
 		if(socclass < H.social_class)
-			return "They are of a <b>lesser</b> social class than me."
+			return "They are of a <b>lesser</b> social class than me, thus making me superior."
 		else if(socclass > H.social_class)
-			return "They are of a <b>higher</b> social class than me."
+			return "They are of a <b>higher</b> social class than me, I must respect and obey them!"
 		else
 			return "They are of the same social class as me."
 
