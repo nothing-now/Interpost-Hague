@@ -7,15 +7,19 @@
 
 
 /datum/family/New(var/mob/living/carbon/human/head)
-	var/regex/R = regex("(^\\w+) (.*$)") //Get all words (\w+) that have an end of line ($).  Should pick off last names
+	var/regex/R = regex("(^\\S+) (.*$)") //Get all words (\w+) that have an end of line ($).  Should pick off last names
 	R.Find(head.real_name)
-	name = R.group[2]
+	try
+		name = R.group[2]
+	catch(var/exception/e)  //If for some reason they fail our regex
+		log_debug("Someone's name broke the family regex: [e]")
+		name = capitalize(pick(GLOB.last_names))
 	family_head = head
 
 // Handles adding someone to the family datum "members"
 // Also handles setting the player name correctly (TODO)
 /datum/family/proc/add_member(var/mob/living/carbon/human/member)
-	var/regex/R = regex("(^\\w+) (.*$)") //Get first name and last name
+	var/regex/R = regex("(^\\S+) (.*$)") //Get first name and last name
 	R.Find(member.real_name)
 	var/first_name = R.group[1]
 	//var/last_name = R.group[2]
