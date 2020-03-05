@@ -196,7 +196,7 @@
 				return
 		if(1)
 			if(istype(W))
-				user.visible_message("<span class='danger'><b>[user]</b> cracks [src] open like an egg with [W]!</span>")
+				user.visible_message("<span class='danger'><b>[user]</b> cracks [src] open with [W]!</span>")
 				stage++
 				return
 		if(2)
@@ -220,7 +220,7 @@
 						user.put_in_hands(removing)
 					user.visible_message("<span class='danger'><b>[user]</b> extracts [removing] from [src] with [W]!</span>")
 				else
-					user.visible_message("<span class='danger'><b>[user]</b> fishes around fruitlessly in [src] with [W].</span>")
+					user.visible_message("<span class='danger'><b>[user]</b> moves around fruitlessly in [src] with [W].</span>")
 				return
 	..()
 
@@ -465,8 +465,8 @@ This function completely restores a damaged organ to perfect condition.
 						"<span class='danger'>You hear the screech of abused metal.</span>")
 					else
 						owner.visible_message("<span class='danger'>The wound on [owner.name]'s [name] widens with a nasty ripping noise.</span>",\
-						"<span class='danger'>The wound on your [name] widens with a nasty ripping noise.</span>",\
-						"<span class='danger'>You hear a nasty ripping noise, as if flesh is being torn apart.</span>")
+						"<span class='danger'>The wound on your [name] widens with a ripping noise. Your head starts to ring.</span>",\
+						"<span class='danger'>You hear a ripping noise, as if flesh is being torn apart.</span>")
 				return W
 
 	//Creating wound
@@ -759,8 +759,8 @@ Note that amputating the affected organ does in fact remove the infection from t
 			if(!clean)
 				var/gore_sound = "[(robotic >= ORGAN_ROBOT) ? "tortured metal" : "ripping tendons and flesh"]"
 				owner.visible_message(
-					"<span class='danger'><big>\The [owner]'s [src.name] flies off in a bloody arc!</big></span>",\
-					"<span class='moderate'><big><b>Your [src.name] goes flying off!</b></big></span>",\
+					"<span class='danger'><big>\The [owner]'s [src.name] flies off in a bloody arc, spraying things around it with blood!</big></span>",\
+					"<span class='moderate'><big><b>Your [src.name] goes flying off and you feel sharp pain striking you!</b></big></span>",\
 					"<span class='danger'>You hear a terrible sound of [gore_sound].</span>")
 				playsound(owner, severed_sound, 100, 0)
 
@@ -1255,7 +1255,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 	var/list/flavor_text = list()
 	if((status & ORGAN_CUT_AWAY) && !is_stump() && !(parent && parent.status & ORGAN_CUT_AWAY))
-		flavor_text += "a tear at the [amputation_point] so severe that it hangs by a scrap of flesh"
+		flavor_text += "a tear at the [amputation_point] so severe that it hangs by a scrap of flesh."
 
 	var/list/wound_descriptors = list()
 	for(var/datum/wound/W in wounds)
@@ -1330,7 +1330,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 /obj/item/organ/external/proc/inspect(mob/user)
 	if(is_stump())
-		to_chat(user, "<span class='notice'>[owner] is missing that bodypart.</span>")
+		to_chat(user, "<span class='notice'>[owner] is missing that bodypart, the poor soul!</span>")
 		return
 
 	user.visible_message("<span class='notice'>[user] starts inspecting [owner]'s [name] carefully.</span>")
@@ -1400,7 +1400,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 
 	var/armor = owner.run_armor_check(owner, "melee")
 	if(armor < 100)
-		to_chat(owner, "<span class='danger'>You feel extreme pain!</span>")
+		to_chat(owner, "<span class='danger'>You feel extreme pain running through you!</span>")
 
 		var/max_halloss = round(owner.species.total_health * 0.8 * ((100 - armor) / 100)) //up to 80% of passing out, further reduced by armour
 		add_pain(Clamp(0, max_halloss - owner.getHalLoss(), 30))
@@ -1416,7 +1416,6 @@ Note that amputating the affected organ does in fact remove the infection from t
 	W.hits += 1
 	W.damage += damage
 	W.time_inflicted = world.time
-
 
 /obj/item/organ/external/proc/has_genitals()
 	return !isrobotic() && species && species.sexybits_location == organ_tag
