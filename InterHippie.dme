@@ -191,6 +191,7 @@
 #include "code\controllers\subsystems\psi.dm"
 #include "code\controllers\subsystems\skybox.dm"
 #include "code\controllers\subsystems\sun.dm"
+#include "code\controllers\subsystems\ticker.dm"
 #include "code\controllers\subsystems\wireless.dm"
 #include "code\controllers\subsystems\processing\airflow.dm"
 #include "code\controllers\subsystems\processing\fast_process.dm"
