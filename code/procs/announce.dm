@@ -54,7 +54,7 @@
 		message_admins("[key_name_admin(usr)] has made \a [announcement_type].", 1)
 
 datum/announcement/proc/FormMessage(message as text, message_title as text)
-	. = "<h2 class='alert'>[message_title]</h2>"
+	. = "<h2 class='alert' font size=4>[message_title]</h2></font>"
 	. += "<br><span class='alert'>[message]</span>"
 	if (announcer)
 		. += "<br><span class='alert'> -[rhtml_encode(announcer)]</span>"
@@ -115,9 +115,11 @@ datum/announcement/proc/NewsCast(message as text, message_title as text)
 	AnnounceArrivalSimple(character.real_name, rank, join_message, get_announcement_frequency(job))
 
 /proc/AnnounceArrivalSimple(var/name, var/rank = "visitor", var/join_message = "has arrived on the [station_name()]", var/frequency)
-	GLOB.global_announcer.autosay("[name], [rank], [join_message].", "Arrivals Announcement Computer", frequency)
+	GLOB.global_announcer.autosay("[name], [rank], [join_message].", "Arrivals Announcement Computer")
 
 /proc/get_announcement_frequency(var/datum/job/job)
+	//This is just returning common utill we want to re-enable this
+	return "Common"
 	// During red alert all jobs are announced on main frequency.
 	var/decl/security_state/security_state = decls_repository.get_decl(GLOB.using_map.security_state)
 	if (security_state.current_security_level_is_same_or_higher_than(security_state.high_security_level))

@@ -190,7 +190,7 @@ var/list/DEPT_FREQS = list(AI_FREQ, COMM_FREQ, ENG_FREQ, MED_FREQ, INQ_FREQ, SEC
 		return "srvradio"
 	if(frequency == ENT_FREQ) //entertainment
 		return "entradio"
-	if(frequency == INQ_FREQ)//inquisition
+	if(frequency == INQ_FREQ) //inquisition
 		return "inqradio"
 	if(frequency in DEPT_FREQS)
 		return "deptradio"
