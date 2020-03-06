@@ -117,6 +117,9 @@ default behaviour is:
 			if(!(tmob.status_flags & CANPUSH))
 				now_pushing = 0
 				return
+			if(!src.statcheck(src.stats["str"], tmob.stats["str"], "I can't push past [tmob], he's too brawny!", "str"))
+				now_pushing = 0
+				return
 			tmob.LAssailant = src
 		if(isobj(AM) && !AM.anchored)
 			var/obj/I = AM
