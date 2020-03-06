@@ -122,7 +122,7 @@
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/mc9mm
 	allowed_magazines = /obj/item/ammo_magazine/mc9mm
-	jam_chance = 15
+	jam_chance = 25
 
 /obj/item/weapon/gun/projectile/pistol/flash
 	name = "holdout signal pistol"
