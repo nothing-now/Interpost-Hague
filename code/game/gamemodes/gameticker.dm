@@ -494,9 +494,10 @@ var/global/datum/controller/gameticker/ticker
 	round_end_stats += "Total orgasms: <font color='red'><B>[GLOB.total_orgasms]</B></font>.\n"
 	for(var/old_god in GLOB.all_religions)
 		if(old_god != LEGAL_RELIGION)
-			round_end_stats += "<font color='red'>The [old_god] worshippers were:</font>\n"
-			for(var/H in GLOB.all_religions[old_god].followers)
-				round_end_stats += "<font color='red'><b>[H]</b></font>\n"
+			if(GLOB.all_religions[old_god].followers.len > 0)
+				round_end_stats += "<font color='red'>The [old_god] worshippers were:</font>\n"
+				for(var/H in GLOB.all_religions[old_god].followers)
+					round_end_stats += "<font color='red'><b>[H]</b></font>\n"
 
 	to_world(round_end_stats)
 	mode.declare_completion()//To declare normal completion.
