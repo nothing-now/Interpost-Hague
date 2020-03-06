@@ -534,7 +534,7 @@
 
 	var/brightness_range = 2 //how much light it gives off
 	var/brightness_power = 1
-	var/brightness_color = "#ffffff"
+	var/brightness_color = "#F9C763" //this will probably break the game
 	var/list/lighting_modes = list()
 	var/sound_on
 
@@ -548,7 +548,7 @@
 
 	brightness_range = 7	// luminosity when on, also used in power calculation
 	brightness_power = 6
-	brightness_color = "#B2B2B2"//"#FAE1AF"//"#C5D8B3"//#CDFEE0
+	brightness_color = "#F9C763"//"#FAE1AF"//"#C5D8B3"//#CDFEE0//"#B2B2B2"
 	lighting_modes = list(
 		LIGHTMODE_EMERGENCY = list(l_range = 4, l_power = 1, l_color = "#da0205"),
 		)
