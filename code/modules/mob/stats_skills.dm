@@ -46,6 +46,7 @@
 	log_debug("[src] Rolled a [roll] against a DC [requirement] [type] check")
 	roll -= mood_affect(1)// our mood
 	roll += stat_to_modifier(stat) //our stat mod
+	learn_stats(type)
 	if(roll >= requirement)//We met the DC requirement
 		//world << "Rolled and passed."
 		return 1
@@ -54,6 +55,15 @@
 			to_chat(src, "<span class = 'warning'>[message]</span>")
 		return 0
 	return 1
+
+/mob/proc/learn_stats(var/stat_type)
+	var/initial_stat = round(stats[stat_type])
+	if(stat_to_modifier(stats["int"]) > 0)
+		stats[stat_type] += 0.001 * stat_to_modifier(stats["int"])
+	else 
+		stats[stat_type] += 0.001
+	if(round(stats[stat_type]) > initial_stat)
+		to_chat(src,"You feel like live you've gained new insights.")
 
 //having a bad mood fucks your shit up fam.
 /mob/proc/mood_affect(var/stat, var/skill)

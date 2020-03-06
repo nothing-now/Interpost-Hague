@@ -23,7 +23,8 @@
 			playsound(src.loc, 'sound/effects/woodhit.ogg', 25, 1, -1)
 			user.do_attack_animation(src)
 			user.nutrition = user.nutrition - 5
-			to_chat(user, "<span class='warning'>You [pick(hit_message)] \the [src].</span>")
+			if(user.statcheck(user.stats["str"], 13, "You miss all your punches, and they feel weak and wimpy.  You need more training.", "str"))
+				to_chat(user, "<span class='warning'>You [pick(hit_message)] \the [src].</span>")
 
 /obj/structure/fitness/weightlifter
 	name = "weightlifting machine"
@@ -55,10 +56,12 @@
 		playsound(src.loc, 'sound/effects/weightlifter.ogg', 50, 1)
 		user.set_dir(SOUTH)
 		flick("[icon_state]_[weight]", src)
+
 		if(do_after(user, 20 + (weight * 10)))
 			playsound(src.loc, 'sound/effects/weightdrop.ogg', 25, 1)
 			user.nutrition -= weight * 10
-			to_chat(user, "<span class='notice'>You lift the weights [qualifiers[weight]].</span>")
+			if(user.statcheck(user.stats["str"], 13, "You're not swole enough to lift these weight.  You should train more.", "str"))
+				to_chat(user, "<span class='notice'>You lift the weights [qualifiers[weight]].</span>")
 			being_used = 0
 		else
 			to_chat(user, "<span class='notice'>Against your previous judgement, perhaps working out is not for you.</span>")
