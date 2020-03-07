@@ -77,7 +77,7 @@
 						/datum/job/mining,
 						/datum/job/ouvrier,
 						/datum/job/chef,
-						///datum/job/chaplain,
+						/datum/job/chaplain,
 						/datum/job/janitor,
 						/datum/job/arbiter,
 						/datum/job/supreme_arbiter,
@@ -127,7 +127,7 @@
 	ideal_character_age = 21
 	alt_titles = null
 	social_class = SOCIAL_CLASS_MIN
-	total_positions = 10
+	total_positions = 0
 	department_flag = CIV
 	spawn_positions = 1
 	access = list(access_maint_tunnels)
@@ -223,9 +223,9 @@
 	minimal_access = list(access_tox, access_tox_storage, access_research, access_xenoarch, access_robotics)
 
 	equip(var/mob/living/carbon/human/H)
-		H.set_species("Machine")
-		if(!H.religion_is_legal())//So that they can't be heretics.
-			H.religion = LEGAL_RELIGION
+		//H.set_species("Machine") //rd only for now - 08.03
+		//if(!H.religion_is_legal())//So that they can't be heretics.
+			//H.religion = LEGAL_RELIGION
 		..()
 		//H.add_stats(rand(5,7), rand(5,8), rand(10,14))
 		H.generate_stats("int")
