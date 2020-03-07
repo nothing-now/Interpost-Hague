@@ -525,7 +525,6 @@ var/list/datum/power/changeling/powerinstances = list()
 	if(Thepower.isVerb)
 		M.current.ability_master.add_ling_ability(M.current,Thepower.verbpath,Thepower.name,Thepower.icon,null)
 	else
-		to_world("Calling verbpath")
 		call(M.current, Thepower.verbpath)()
 	/*
 	//What if we just... use ability manager
