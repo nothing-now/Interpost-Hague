@@ -11,3 +11,4 @@
 #define SKILL_COOK  "cooking"
 #define SKILL_SCI   "science"
 #define SKILL_CLEAN "cleaning"
+#define SKILL_MINE  "mining"

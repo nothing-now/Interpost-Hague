@@ -59,6 +59,10 @@
 
 	var/excavation_amount = 200
 
+//Used to add mining skill to digging speed
+/obj/item/weapon/pickaxe/proc/get_digspeed(var/mob/user)
+	return digspeed - user.skills[SKILL_MINE] * 0.1 // -10 is the best you can do
+
 /obj/item/weapon/pickaxe/hammer
 	name = "sledgehammer"
 	//icon_state = "sledgehammer" Waiting on sprite

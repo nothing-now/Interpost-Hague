@@ -60,7 +60,8 @@
 	if (istype(I, /obj/item/weapon/pickaxe))
 		var/obj/item/weapon/pickaxe/P = I
 		visible_message("[user] starts clearing away \the [src].")
-		if(do_after(user,P.digspeed, src))
+		user.skillcheck(user.skills["mining"], 70, "You're really not any good at mining...", "mining")
+		if(do_after(user,P.get_digspeed(user), src))
 			visible_message("[user] clears away \the [src].")
 			if(lootleft && prob(1))
 				var/obj/item/booty = pick(loot)

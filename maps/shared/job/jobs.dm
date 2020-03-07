@@ -392,7 +392,7 @@
 		..()
 		//H.add_stats(rand(9,16), rand(9,12), rand(6,9))
 		H.generate_stats("str")
-		H.generate_skills("crafting")
+		H.generate_skills("mining")
 
 /datum/job/cargo_tech
 	selection_color = "#7c6a2e"

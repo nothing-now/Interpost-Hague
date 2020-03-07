@@ -225,7 +225,8 @@
 			var/obj/item/weapon/pickaxe/P = W
 			dismantle_verb = P.drill_verb
 			dismantle_sound = P.drill_sound
-			cut_delay -= P.digspeed
+			user.skillcheck(user.skills["mining"], 70, "You're really not any good at mining...", "mining")
+			cut_delay -= P.get_digspeed(user)
 
 		if(dismantle_verb)
 

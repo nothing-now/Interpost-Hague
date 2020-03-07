@@ -44,14 +44,15 @@
 
 	if(istype(I, /obj/item/weapon/pickaxe))
 		var/obj/item/weapon/pickaxe/P = I
-
-		if(last_act + P.digspeed > world.time)//prevents message spam
+		//Only really here for stat levelup
+		user.skillcheck(user.skills["mining"], 70, "You're really not any good at mining...", "mining")
+		if(last_act + P.get_digspeed(user) > world.time)//prevents message spam
 			return
 		last_act = world.time
 
 		to_chat(user, "<span class='warning'>You start [P.drill_verb] [src].</span>")
 
-		if(!do_after(user, P.digspeed))
+		if(!do_after(user, P.get_digspeed(user)))
 			return
 
 		to_chat(user, "<span class='notice'>You finish [P.drill_verb] [src].</span>")

@@ -181,7 +181,7 @@ var/list/mining_floors = list()
 			return
 
 		var/obj/item/weapon/pickaxe/P = W
-		if(last_act + P.digspeed > world.time)//prevents message spam
+		if(last_act + P.get_digspeed(user) > world.time)//prevents message spam
 			return
 		last_act = world.time
 
@@ -204,8 +204,8 @@ var/list/mining_floors = list()
 				finds.Remove(finds[1])
 				if(prob(50))
 					artifact_debris()
-
-		if(do_after(user,P.digspeed, src))
+		user.skillcheck(user.skills["mining"], 70, "You're really not any good at mining...", "mining")
+		if(do_after(user,P.get_digspeed(user), src))
 			if(finds && finds.len)
 				var/datum/find/F = finds[1]
 				if(newDepth == F.excavation_required) // When the pick hits that edge just right, you extract your find perfectly, it's never confined in a rock
