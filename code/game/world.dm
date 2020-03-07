@@ -1,4 +1,4 @@
-/var/server_name = "InterHippie"
+/var/server_name = "Postbellum - InterHippie"
 
 /var/game_id = null
 /hook/global_init/proc/generate_gameid()
