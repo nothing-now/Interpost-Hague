@@ -1,4 +1,4 @@
-/var/server_name = "Postbellum - InterHippie"
+/var/server_name = "InterHippie Hague - COVID-20 Alert"
 
 /var/game_id = null
 /hook/global_init/proc/generate_gameid()
