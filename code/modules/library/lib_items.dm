@@ -52,6 +52,7 @@
 	return
 
 /obj/structure/bookcase/attack_hand(var/mob/user as mob)
+	user.statcheck(user.stats["int"], 10, "You fail at reading. good job.","int")
 	if(contents.len)
 		var/obj/item/weapon/book/choice = input("Which book would you like to remove from the shelf?") as null|obj in contents
 		if(choice)
