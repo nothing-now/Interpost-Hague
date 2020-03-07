@@ -95,7 +95,7 @@
 /obj/item/weapon/melee/energy/sword
 	color
 	name = "energy sword"
-	desc = "May the force be within you."
+	desc = "An elegant weapon, for a more civilized age."
 	icon_state = "sword0"
 	active_force = 30
 	active_throwforce = 20
