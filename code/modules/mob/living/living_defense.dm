@@ -179,7 +179,7 @@
 		damage_flags &= ~(DAM_SHARP|DAM_EDGE)
 
 	if(user.stats["str"])//If they have strength then add it.
-		effective_force *= strToDamageModifier(user.stats["str"])
+		effective_force += strToDamageModifier(user.stats["str"])
 
 	//to_world("Effective Force: [effective_force].  StrMod: [strToDamageModifier(user.stats["str"])]) damage_modifier:[damage_modifier]") //Debugging
 
