@@ -495,7 +495,7 @@ var/global/datum/controller/gameticker/ticker
 	for(var/old_god in GLOB.all_religions)
 		if(old_god != LEGAL_RELIGION)
 			if(GLOB.all_religions[old_god].followers.len > 0)
-				round_end_stats += "<font color='red'>The [old_god] worshippers were:</font>\n"
+				round_end_stats += "<b>The [old_god] worshippers were:</b>\n"
 				for(var/H in GLOB.all_religions[old_god].followers)
 					round_end_stats += "<font color='red'><b>[H]</b></font>\n"
 
