@@ -72,6 +72,17 @@ if(Datum.is_processing) {\
 //	This flag overrides SS_KEEP_TIMING
 #define SS_POST_FIRE_TIMING 64
 
+// -- SStimer stuff --
+
+#define TIMER_UNIQUE       (1 << 0) // Don't run if there is an identical unique timer active
+#define TIMER_OVERRIDE     (1 << 1) // For unique timers: Replace the old timer rather then not start this one
+#define TIMER_CLIENT_TIME  (1 << 2) // Timing should be based on how timing progresses on clients, not the server - this is more expensive, so should only be used with things that need to progress client-side (like animate or sound)
+#define TIMER_STOPPABLE    (1 << 3) // Timer can be stopped using deltimer()
+#define TIMER_NO_HASH_WAIT (1 << 4) // For unique timers: don't distinguish timers by wait
+#define TIMER_LOOP         (1 << 5) // Repeat the timer until it's deleted.
+
+#define TIMER_ID_NULL -1
+
 //SUBSYSTEM STATES
 #define SS_IDLE 0		//aint doing shit.
 #define SS_QUEUED 1		//queued to run
