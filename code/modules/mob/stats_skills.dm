@@ -222,7 +222,7 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 		skills[skill] = (rand(1,50) + rand(1,50) + rand(1,50))
 		rand_skills -= skill
 	for(var/skill in rand_skills)
-		skills[skill] = (rand(1,20) + rand(1,20) + rand(1,20))
+		skills[skill] = (rand(1,15) + rand(1,15) + rand(1,15))
 /*
 /mob/proc/add_skills(var/melee_val, var/ranged_val, var/medical_val, var/engineering_val)//To make adding skills quicker.
 	if(melee_val)
