@@ -64,7 +64,10 @@
 		if(stats[stat_type] < 20)
 			stats[stat_type] += 0.01
 		else //Learn slower past 20
-			stats[stat_type] += 0.001
+			if(stats[stat_type] >= 40)
+				return 0 //cant learn above 40
+			else
+				stats[stat_type] += 0.001
 	if(round(stats[stat_type]) > initial_stat)
 		to_chat(src,"You feel like live you've gained new insights.")
 
@@ -193,10 +196,13 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 	if(stat_to_modifier(stats["int"]) > 0) // This is still based off int
 		skills[skill_type] += 0.01 * stat_to_modifier(stats["int"])
 	else 
-		if(skills[skill_type] < 100)
-			skills[skill_type] += 0.01
+		if(stats[stat_type] < 20)
+			stats[stat_type] += 0.01
 		else //Learn slower past 20
-			skills[skill_type] += 0.001
+			if(stats[stat_type] >= 40)
+				return 0 //cant learn above 40
+			else
+				stats[stat_type] += 0.001
 	if(round(skills[skill_type]) > initial_skill)
 		to_chat(src,"You feel like live you've gained new insights.")
 
