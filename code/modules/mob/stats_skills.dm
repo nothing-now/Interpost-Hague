@@ -59,15 +59,10 @@
 /mob/proc/learn_stats(var/stat_type)
 	var/initial_stat = round(stats[stat_type])
 	if(stat_to_modifier(stats["int"]) > 0)
-		stats[stat_type] += 0.01 * stat_to_modifier(stats["int"])
+		stats[stat_type] += 0.01 * stat_to_modifier(stats["int"]) //This has to be 
 	else 
 		if(stats[stat_type] < 20)
-			stats[stat_type] += 0.01
-		else //Learn slower past 20
-			if(stats[stat_type] >= 40)
-				return 0 //cant learn above 40
-			else
-				stats[stat_type] += 0.001
+			return 0
 	if(round(stats[stat_type]) > initial_stat)
 		to_chat(src,"You feel like live you've gained new insights.")
 
@@ -196,11 +191,11 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 	if(stat_to_modifier(stats["int"]) > 0) // This is still based off int
 		skills[skill_type] += 0.01 * stat_to_modifier(stats["int"])
 	else 
-		if(skills[skill_type] < 20)
+		if(skills[skill_type] < 30)
 			skills[skill_type] += 0.01
-		else //Learn slower past 20
-			if(skills[skill_type] >= 40)
-				return 0 //cant learn above 40
+		else //Learn slower past 30
+			if(skills[skill_type] >= 50)
+				return 0 //cant learn above 50
 			else
 				skills[skill_type] += 0.001
 	if(round(skills[skill_type]) > initial_skill)
@@ -225,7 +220,7 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 	var/list/rand_skills = skills.Copy()
 	//Roll a new random roll for each stat
 	for(var/skill in generate_skills)
-		skills[skill] = (rand(1,50) + rand(1,50) + rand(1,50))
+		skills[skill] = (rand(1,40) + rand(1,40) + rand(1,40))
 		rand_skills -= skill
 	for(var/skill in rand_skills)
 		skills[skill] = (rand(1,15) + rand(1,15) + rand(1,15))

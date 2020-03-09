@@ -1564,7 +1564,6 @@
 #include "code\modules\lobby_music\absconditus.dm"
 #include "code\modules\lobby_music\conquer.dm"
 #include "code\modules\lobby_music\docking.dm"
-#include "code\modules\lobby_music\mama.dm"
 #include "code\modules\lobby_music\space_oddity.dm"
 #include "code\modules\lobby_music\stahura.dm"
 #include "code\modules\lobby_music\undercurrent.dm"
