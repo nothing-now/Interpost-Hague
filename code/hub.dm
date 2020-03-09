@@ -4,7 +4,7 @@
  */
 #define HUB_ENABLED 1
 	hub = "Exadv1.spacestation13"
-	name = "InterHippie - Not a spin-off"
+	name = "Postbellum InterHippie"
 #ifdef HUB_ENABLED
 	hub_password = "kMZy3U5jJHSiBQjr"
 #else

@@ -8,6 +8,10 @@
 
 #define SS_PRIORITY_DEFAULT 50          // Default priority for both normal and background processes
 
+// SS_TICKER
+#define SS_PRIORITY_TIMER          20
+#define SS_PRIORITY_ICON_UPDATE    20	// Queued icon updates. Mostly used by APCs and tables.
+
 // Normal
 #define SS_PRIORITY_CHAT           95  // Chat.
 #define SS_PRIORITY_MOB            100	// Mob Life().

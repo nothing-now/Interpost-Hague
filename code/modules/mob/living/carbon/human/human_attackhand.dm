@@ -122,7 +122,6 @@
 			if(!istype(H))
 				attack_generic(H,rand(1,3),"punched")
 				return
-
 			var/rand_damage = rand(1, 5)
 			var/block = 0
 			var/accurate = 0
@@ -133,11 +132,14 @@
 			var/datum/unarmed_attack/attack = H.get_unarmed_attack(src, hit_zone)
 			if(!attack)
 				return 0
+			var/cooldown_modifier = H.c_intent == I_QUICK ? -2 : 0 //Quick mode lowers attack cooldown by 1/2th
+			cooldown_modifier += H.c_intent == I_STRONG ? 3 : 0 //Strong mode raises attack cooldown by 1/2th
+			cooldown_modifier += H.c_intent == I_DEFEND ? 3 : 0 //Defense mode raises attack cooldown by 1/2th
 			if(world.time < H.last_attack + attack.delay)
 				to_chat(H, "<span class='notice'>You can't attack again so soon.</span>")
 				return 0
 			else
-				H.last_attack = world.time
+				H.last_attack = world.time + cooldown_modifier 
 
 			if(!affecting || affecting.is_stump())
 				to_chat(M, "<span class='danger'>They are missing that limb!</span>")
@@ -312,7 +314,11 @@ Defend: Increases parry+dodge chance, but you move slower and your attack damage
 			if(HULK in H.mutations)
 				real_damage *= 2 // Hulks do twice the damage
 				rand_damage *= 2
-			real_damage = (max(1, real_damage) * strToDamageModifier(H.stats["str"]))
+			//Strong attack
+			var/damage_modifier = 0
+			if(H.c_intent == I_STRONG) // IF damage_modifier is 0
+				damage_modifier = (stat_to_modifier(H.stats["str"]) > 0) ?  stat_to_modifier(H.stats["str"]) : 1 //This is to prevent low str from fucking you up
+			real_damage = (max(1, real_damage) * strToDamageModifier(H.stats["str"])) + damage_modifier
 			log_debug("Real damage: [real_damage].  StrMod: [strToDamageModifier(H.stats["str"])])") //Debugging
 
 			var/armour = run_armor_check(hit_zone, "melee")

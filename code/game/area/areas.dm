@@ -171,7 +171,8 @@
 		//else if(party && !fire && !eject)
 		//	icon_state = "party"
 		else
-			icon_state = "blue-red"
+			// icon_state = "blue-red" //Turning off party on evac
+			icon_state = null
 	else
 	//	new lighting behaviour with obj lights
 		icon_state = null

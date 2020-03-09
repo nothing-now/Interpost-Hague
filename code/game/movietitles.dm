@@ -175,7 +175,14 @@ client
 	titles += "<center>[jointext(staff,"<br>")]</center>"
 	if(goodboys.len)
 		titles += "<center>STAFF'S GOOD BOYS:<br>[english_list(goodboys)]</center><br>"
-
+	
+	//Add round end stats to ticker
+	titles += "<center>The floor was shit on [GLOB.shit_left] times.</center><br>"
+	titles += "<center>The floor was pissed on [GLOB.piss_left] times.</center><br>"
+	titles += "<center>[GLOB.deaths_in_space] people died in space.</center><br>"
+	titles += "<center>[GLOB.teeth_lost] teeth were lost.</center><br>"
+	titles += "<center>[GLOB.total_deaths] people died in total.</center><br>"
+	titles += "<center>[GLOB.total_orgasms] lucky spacemen came during the shift.</center><br>"
 	var/disclaimer = "<br>Sponsored by [GLOB.using_map.company_name].<br>All rights reserved.<br>\
 					 This motion picture is protected under the copyright laws of the Sol Central Government<br> and other nations throughout the galaxy.<br>\
 					 Colony of First Publication: [pick("Mars", "Luna", "Earth", "Venus", "Phobos", "Ceres", "Tiamat", "Ceti Epsilon", "Eos", "Pluto", "Ouere",\

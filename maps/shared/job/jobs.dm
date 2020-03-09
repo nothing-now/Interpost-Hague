@@ -77,7 +77,7 @@
 						/datum/job/mining,
 						/datum/job/ouvrier,
 						/datum/job/chef,
-						///datum/job/chaplain,
+						/datum/job/chaplain,
 						/datum/job/janitor,
 						/datum/job/arbiter,
 						/datum/job/supreme_arbiter,
@@ -91,33 +91,35 @@
 
 /datum/map/alpha
 	allowed_jobs = list(
-						/datum/job/assistant,
 						/datum/job/captain,
 						/datum/job/hop,
-						/datum/job/doctor,
-						/datum/job/doctor/undertaker,
-						///datum/job/medassist,
+						/datum/job/supreme_arbiter,
+						/datum/job/arbiter,
+						///datum/job/medassist
 						/datum/job/hos,
 						/datum/job/officer,
+						/datum/job/detective,
+						/datum/job/doctor,
+						/datum/job/doctor/undertaker,
+						/datum/job/rd,
+						/datum/job/scientist,
 						/datum/job/qm,
-						/datum/job/engineer,
-						///datum/job/jr_upkeep,
 						/datum/job/cargo_tech,
 						/datum/job/cargo_tech/machinist,
 						/datum/job/mining,
-						///datum/job/ouvrier,
 						/datum/job/chef,
-						///datum/job/chaplain,
-						/datum/job/janitor,
 						/datum/job/hydro,
-						/datum/job/arbiter,
-						/datum/job/supreme_arbiter,
-						///datum/job/rd,
-						/datum/job/scientist,
+						/datum/job/janitor,
+						/datum/job/engineer,
 						/datum/job/jester
-						///datum/job/cadet,
+						///datum/job/assistant,
+						///datum/job/cadet
+						///datum/job/ouvrier
+						///datum/job/jr_upkeep
+						///datum/job/raider
+						///datum/job/raider/leader
+						///datum/job/chaplain,
 						)
-
 
 /datum/job/assistant
 	title = "Assistant"
@@ -127,7 +129,7 @@
 	ideal_character_age = 21
 	alt_titles = null
 	social_class = SOCIAL_CLASS_MIN
-	total_positions = 10
+	total_positions = 0
 	department_flag = CIV
 	spawn_positions = 1
 	access = list(access_maint_tunnels)
@@ -135,7 +137,7 @@
 		..()
 		//H.add_stats(rand(9,11), rand(9,11), rand(7,10))
 		H.generate_stats("dex")
-		H.generate_skills("crafting")
+		H.generate_skills(list("crafting","melee","cleaning","mining"))
 
 /datum/job/captain
 	title = "Count"
@@ -153,7 +155,7 @@
 		..()
 		//H.add_stats(rand(6,9), rand(9,11), rand(10,12))
 		H.generate_stats("str")
-		H.generate_skills("melee")
+		H.generate_skills(list("melee","ranged","medical"))
 
 
 
@@ -174,7 +176,7 @@
 		..()
 		//H.add_stats(rand(6,9), rand(9,11), rand(10,12))
 		H.generate_stats("int")
-		H.generate_skills("melee")
+		H.generate_skills(list("melee","ranged","medical"))
 
 /datum/job/rd
 	title = "Court Magus"
@@ -208,7 +210,7 @@
 		..()
 		//H.add_stats(rand(5,7), rand(5,8), rand(12,15))
 		H.generate_stats("int")
-		H.generate_skills("science")
+		H.generate_skills(list("science","medical", "crafting"))
 
 /datum/job/scientist
 	title = "Scientist"
@@ -223,13 +225,13 @@
 	minimal_access = list(access_tox, access_tox_storage, access_research, access_xenoarch, access_robotics)
 
 	equip(var/mob/living/carbon/human/H)
-		H.set_species("Machine")
-		if(!H.religion_is_legal())//So that they can't be heretics.
-			H.religion = LEGAL_RELIGION
+		//H.set_species("Machine") //rd only for now - 08.03
+		//if(!H.religion_is_legal())//So that they can't be heretics.
+			//H.religion = LEGAL_RELIGION
 		..()
 		//H.add_stats(rand(5,7), rand(5,8), rand(10,14))
 		H.generate_stats("int")
-		H.generate_skills("science")
+		H.generate_skills(list("science","medical", "crafting"))
 
 /datum/job/doctor
 	selection_color = "#633d63"
@@ -249,7 +251,7 @@
 		..()
 		//H.add_stats(rand(5,7), rand(5,8), rand(10,14))
 		H.generate_stats("int")
-		H.generate_skills("medical")
+		H.generate_skills(list("medical","cleaning", "surgery"))
 
 /datum/job/doctor/undertaker
 	title = "Undertaker"
@@ -265,7 +267,7 @@
 	equip(var/mob/living/carbon/human/H)
 		..()
 		H.generate_stats("int")
-		H.generate_skills("medical")
+		H.generate_skills(list("medical","cleaning", "surgery"))
 	
 	
 /datum/job/hos
@@ -293,7 +295,7 @@
 		..()
 		//H.add_stats(rand(12,18), rand(10,16), rand(8,12))
 		H.generate_stats("str")
-		H.generate_skills("melee")
+		H.generate_skills(list("melee","ranged"))
 
 
 /datum/job/officer
@@ -313,7 +315,7 @@
 		..()
 		//H.add_stats(rand(11,16), rand(10,14), rand(7,10))
 		H.generate_stats("str")
-		H.generate_skills("melee")
+		H.generate_skills(list("melee","ranged"))
 
 
 /datum/job/detective
@@ -333,7 +335,7 @@
 		..()
 		//H.add_stats(rand(11,16), rand(10,14), rand(7,10))
 		H.generate_stats("str")
-		H.generate_skills("melee")
+		H.generate_skills(list("melee","ranged"))
 
 
 /datum/job/qm
@@ -351,7 +353,7 @@
 		..()
 		//H.add_stats(rand(8,12), rand(9,12), rand(7,10))
 		H.generate_stats("dex")
-		H.generate_skills("crafting")
+		H.generate_skills(list("crafting","engineering", "mining"))
 
 /datum/job/engineer
 	title = "Station Engineer"
@@ -372,7 +374,7 @@
 		..()
 		//H.add_stats(rand(10,15), rand(7,10), rand(9,14))
 		H.generate_stats("int")
-		H.generate_skills("engineering")
+		H.generate_skills(list("crafting","engineering"))
 
 /datum/job/mining
 	selection_color = "#7c6a2e"
@@ -392,7 +394,7 @@
 		..()
 		//H.add_stats(rand(9,16), rand(9,12), rand(6,9))
 		H.generate_stats("str")
-		H.generate_skills("mining")
+		H.generate_skills(list("crafting","engineering", "mining"))
 
 /datum/job/cargo_tech
 	selection_color = "#7c6a2e"
@@ -410,7 +412,7 @@
 		..()
 		//H.add_stats(rand(9,12), rand(9,12), rand(6,9))
 		H.generate_stats("dex")
-		H.generate_skills("crafting")
+		H.generate_skills(list("crafting","engineering", "mining"))
 
 /datum/job/cargo_tech/machinist
 	title = "Machinist"
@@ -420,7 +422,7 @@
 		..()
 		//H.add_stats(rand(10,15), rand(7,10), rand(9,14))
 		H.generate_stats("int")
-		H.generate_skills("crafting")
+		H.generate_skills(list("crafting","engineering"))
 
 //kid roles
 /datum/job/ouvrier
@@ -461,7 +463,7 @@
 	equip(var/mob/living/carbon/human/H)
 		..()
 		H.generate_stats("con")
-		H.generate_skills("cleaning")
+		H.generate_skills(list("cooking","melee"))
 
 /datum/job/chaplain
 	title = "Priest"
@@ -477,7 +479,7 @@
 		if(!H.religion_is_legal())//Heretical priests would be weird.
 			H.religion = LEGAL_RELIGION
 		H.generate_stats("int")
-		//H.generate_skills("religion")
+		H.generate_skills(list("melee"))
 // religion skills in the future maybe?
 
 /datum/job/janitor
@@ -493,7 +495,7 @@
 		..()
 		//H.add_stats(rand(9,12), rand(9,12), rand(5,9))
 		H.generate_stats("con")
-		H.generate_skills("cleaning")
+		H.generate_skills(list("cleaning","melee"))
 
 /datum/job/hydro
 	title = "Botanic"
@@ -510,7 +512,7 @@
 	equip(var/mob/living/carbon/human/H)
 		..()
 		H.generate_stats("con")
-		H.generate_skills("gardening")
+		H.generate_skills(list("gardening","cooking"))
 
 /datum/job/jester
 	title = "Jester"
@@ -527,7 +529,7 @@
 		..()
 		//H.generate_stats("dex")
 		H.add_stats(rand(2,18), rand(2,18), rand(2,18), rand(2,18))
-		H.generate_skills("melee")
+		H.generate_skills(list("melee"))
 
 
 //CHURCH JOBS
@@ -553,7 +555,7 @@
 			H.religion = LEGAL_RELIGION
 		//H.add_stats(rand(9,14), rand(8,12), rand(12,16))
 		H.generate_stats("str")
-		H.generate_skills("melee")
+		H.generate_skills(list("melee","ranged"))
 
 /datum/job/arbiter
 	title = "Arbiter"
@@ -575,7 +577,7 @@
 			H.religion = LEGAL_RELIGION
 		//H.add_stats(rand(11,16), rand(10,14), rand(7,10))
 		H.generate_stats("str")
-		H.generate_skills("melee")
+		H.generate_skills(list("melee","ranged"))
 
 
 /datum/job/medassist
@@ -598,7 +600,7 @@
 	equip(var/mob/living/carbon/human/H)
 		H.set_species("Child")//Actually makes them a child. Called before ..() so they can get their clothes.
 		H.add_stats(rand(3,6), rand(12,16), rand(6,9))
-		H.generate_skills("medical")
+		H.generate_skills(list("medical","cleaning", "surgery"))
 		..()
 
 /* Children roles.  They were too buggy, need TODO later

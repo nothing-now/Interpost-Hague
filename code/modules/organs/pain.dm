@@ -28,16 +28,16 @@ mob/var/next_pain_time = 0
 				actual_flash = flash_pain
 
 			switch(actual_flash)
-				if(1 to 10)
+				if(1 to 20)
 					flash_weakest_pain()
-				if(11 to 90)
+				if(20 to 90)
 					flash_weak_pain()
-					if(stuttering < 10)
-						stuttering += 5
+					if(stuttering < 3)
+						stuttering += 3
 				if(91 to INFINITY)
 					flash_pain()
-					if(stuttering < 10)
-						stuttering += 10
+					if(stuttering < 5)
+						stuttering += 5
 					if(prob(2))
 						Stun(5)//makes you drop what you're holding.
 						shake_camera(src, 20, 3)
