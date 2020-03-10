@@ -12,6 +12,7 @@ SUBSYSTEM_DEF(ticker)
 
 	var/lastTickerTimeDuration
 	var/lastTickerTime
+	var/force_ending = 0
 
 
 /datum/controller/subsystem/ticker/New()

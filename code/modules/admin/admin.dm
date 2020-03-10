@@ -835,6 +835,24 @@ var/global/floorIsLava = 0
 		to_chat(usr, "<span class='warning'>Error: Start Now: Game has already started.</span>")
 		return 0
 
+/datum/admins/proc/endnow()
+	set category = "Server"
+	set desc = "Ending game round"
+	set name = "End Round"
+	if(!usr.client.holder || !check_rights(R_ADMIN))
+		return
+
+	if(GAME_STATE_PREGAME)
+		to_chat(usr, "<span class='bigdanger'>The round has not started yet!</span>")
+		return
+
+	var/confirm = alert("End the game round?", "Game Ending", "Yes", "Cancel")
+	if(confirm == "Yes")
+		SSticker.force_ending = 1
+		log_and_message_admins("initiated a game ending.")
+		to_world("<span class='danger'>Game ending!</span> <span class='notice'>Initiated by [usr.key]!</span>")
+		feedback_add_details("admin_verb","ER") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
+
 /datum/admins/proc/toggleenter()
 	set category = "Server"
 	set desc="People can't enter"
@@ -844,7 +862,7 @@ var/global/floorIsLava = 0
 		to_world("<B>New players may no longer enter the game.</B>")
 	else
 		to_world("<B>New players may now enter the game.</B>")
-	log_and_message_admins("[key_name_admin(usr)] toggled new player game entering.")
+	log_and_message_admins("toggled new player game entering.")
 	world.update_status()
 	feedback_add_details("admin_verb","TE") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
 
@@ -1011,6 +1029,47 @@ var/global/floorIsLava = 0
 			return 1
 
 	return 0
+
+/*
+/datum/admins/proc/mass_debug_closet_icons()
+
+	set name = "Mass Debug Closet Icons"
+	set desc = "Spawn every possible custom closet. Do not do this on live."
+	set category = "Debug"
+
+	if(!check_rights(R_SPAWN))
+		return
+
+	if((input(usr, "Are you sure you want to spawn all these closets?", "So Many Closets") as null|anything in list("No", "Yes")) == "Yes")
+		log_admin("[key_name(usr)] mass-spawned closets (icon debug), if this is a live server you should yell at them.")
+		var/x = 0
+		var/y = 0
+		for(var/check_appearance in typesof(/decl/closet_appearance))
+			x++
+			if(x > 10)
+				x = 0
+				y++
+			var/turf/T = locate(usr.x+x, usr.y+y, usr.z)
+			if(T)
+				new /obj/structure/closet/debug(T, check_appearance)
+*/
+
+/*
+/datum/admins/proc/check_unconverted_single_icon_items()
+	set category = "Debug"
+	set desc = "Count items missing single icon definition."
+	set name = "Check Single Mob Icons"
+	if(!check_rights(R_DEBUG))
+		return
+	var/types_missing_icons
+	for(var/checktype in typesof(/obj/item))
+		var/obj/item/I = checktype
+		if(!initial(I.on_mob_icon))
+			LAZYADD(types_missing_icons, checktype)
+	if(alert("[LAZYLEN(types_missing_icons)] item\s are missing on_mob_icon being set. Do you wish to see the full list?", "Check missing icons", "Yes", "No") == "Yes")
+		for(var/checktype in types_missing_icons)
+			to_chat(usr, checktype)
+*/
 
 /datum/admins/proc/spawn_fruit(seedtype in plant_controller.seeds)
 	set category = "Debug"

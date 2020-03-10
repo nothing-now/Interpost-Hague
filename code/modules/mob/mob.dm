@@ -259,7 +259,7 @@
 	P.set_invisibility(invisibility)
 	P.pixel_x = A.pixel_x
 	P.pixel_y = A.pixel_y
-	QDEL_IN(P, 2 SECONDS)
+	qdel(P, 2 SECONDS)
 
 	face_atom(A)
 	return TRUE
@@ -898,7 +898,7 @@
 
 /mob/living/carbon/human/remove_implant(var/obj/item/implant, var/surgical_removal = FALSE, var/obj/item/organ/external/affected)
 	if(!affected) //Grab the organ holding the implant.
-		for(var/obj/item/organ/external/organ in organs) 
+		for(var/obj/item/organ/external/organ in organs)
 			for(var/obj/item/O in organ.implants)
 				if(O == implant)
 					affected = organ
@@ -912,7 +912,7 @@
 			if(prob(implant.w_class * 5) && affected.sever_artery()) //I'M SO ANEMIC I COULD JUST -DIE-.
 				custom_pain("Something tears wetly in your [affected.name] as [implant] is pulled free!", 50, affecting = affected)
 	. = ..()
-	
+
 mob/proc/yank_out_object()
 	set category = "Object"
 	set name = "Yank out object"
