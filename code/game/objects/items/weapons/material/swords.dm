@@ -38,13 +38,13 @@
 /obj/item/proc/default_sword_parry(mob/living/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 
 	if(default_parry_check(user, attacker, damage_source) && (user.get_active_hand() == src))//You gotta be holding onto that sheesh bro
-		if(prob((user.skills["melee"]/2) + block_chance)) //a check on block chanc
+		if(prob((user.skills["melee"]) + block_chance)) //a check on block chance
 			user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
 			if(parry_sounds)
 				playsound(user.loc, pick(parry_sounds), 50, 1)
 			user.adjustStaminaLoss(10)
 			health -= 0.5
-			if(!user.statcheck(user.stats["str"], 8, "I couldn't keep the grip on my weapon!", "str"))
+			if(!user.statcheck(user.stats["str"], 5, "I couldn't keep the grip on my weapon!", "str"))
 				user.visible_message("<span class='danger'>\The [src] flies out of \the [user]'s hand!</span>")
 				user.drop_from_inventory(src)
 				throw_at(get_edge_target_turf(src, pick(GLOB.alldirs)), rand(1,3), throw_speed)//Throw that sheesh away
