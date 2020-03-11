@@ -58,10 +58,13 @@
 
 /mob/proc/learn_stats(var/stat_type)
 	var/initial_stat = round(stats[stat_type])
-	if(stats[stat_type] > 35)
+	if(stats[stat_type] > 15)
 		return 0
-	else 
-		stats[stat_type] += 0.01 * stat_to_modifier(stats["int"]) //This has to be 
+	else
+		//If they're stat mod is less then or equal to zero, don't set it so they can learn slowly.
+		//This is not the STAT, it's the STAT MODIFIER.  (stat - 10) / 2
+		var/learn_speed = stat_to_modifier(stats["int"]) > 0 ? stat_to_modifier(stats["int"]) : 1
+		stats[stat_type] += 0.001 * learn_speed
 	if(round(stats[stat_type]) > initial_stat)
 		to_chat(src,"You feel like live you've gained new insights.")
 
@@ -191,9 +194,9 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 		skills[skill_type] += 0.01 * stat_to_modifier(stats["int"]) 
 	else //Learn slower past 30
 		if(skills[skill_type] >= 70)
-			return 0 //cant learn above 70 in any skill because this was abused (THIS IS A SURGERY BUFF)
+			return 0 //cant learn above 70 in any skill because this was abused
 		else
-			skills[skill_type] += 0.01
+			skills[skill_type] += 0.001
 	if(round(skills[skill_type]) > initial_skill)
 		to_chat(src,"You feel like live you've gained new insights.")
 
@@ -240,6 +243,14 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 		if(skills[skill] > 0)
 			message += "I am <b>[skillnumtodesc(skills[skill])]</b> at [skill].\n"
 	to_chat(src, message)
+
+/mob/living/carbon/human/verb/reset_stats_skills()
+	for(var/stats in stats)
+		if(stats[stat] > 20)
+			stats[stat] = 20
+	for(var/skill in skills)
+		if(stats[stat] > 100)
+			stats[stat] = 100
 
 /* LEGACY STAT CODE
 /mob/proc/statcheck(var/stat, var/requirement, var/show_message, var/message = "I have failed to do this.")//Requirement needs to be 1 through 20
