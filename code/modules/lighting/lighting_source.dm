@@ -195,6 +195,7 @@
 	applied_lum_b = lum_b
 
 	FOR_DVIEW(var/turf/T, light_range, source_turf, INVISIBILITY_LIGHTING)
+		check_t:
 		if(!T.lighting_corners_initialised)
 			T.generate_missing_corners()
 
@@ -219,13 +220,11 @@
 		T.affecting_lights += src
 		affecting_turfs    += T
 
-		var/turf/simulated/open/O = T
-		if(istype(O) && O.below)
-			// Consider the turf below us as well. (Z-lights)
-			//Do subprocessing for open turfs
-			for(T = O.below; !isnull(T); T = process_the_turf(T,update_gen));
+		if (T.z_flags & ZM_ALLOW_LIGHTING)
+			T = T.below
+			goto check_t
 
-
+	END_FOR_DVIEW
 
 	update_gen++
 

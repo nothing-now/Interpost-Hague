@@ -350,6 +350,10 @@
 	var/on_floor = 0
 	var/use_material
 	var/goes_in_hands = 1
+	var/use_reinf_material
+	var/difficulty = 1 // higher difficulty requires higher skill level to make.
+	var/send_material_data = 0 //Whether the recipe will send the material name as an argument when creating product.
+	var/apply_material_name = 1 //Whether the recipe will prepend a material name to the title - 'steel clipboard' vs 'clipboard'
 
 	New(title, result_type, req_amount = 1, res_amount = 1, max_res_amount = 1, time = 0, one_per_turf = 0, on_floor = 0, supplied_material = null, goes_in_hands = 1)
 		src.title = title
@@ -362,6 +366,42 @@
 		src.on_floor = on_floor
 		src.use_material = supplied_material
 		src.goes_in_hands = goes_in_hands
+
+/*
+/datum/stack_recipe/New(material/material, var/reinforce_material)
+	if(material)
+		use_material = material.name
+		//difficulty += material.construction_difficulty
+	if(reinforce_material)
+		use_reinf_material = reinforce_material
+*/
+/datum/stack_recipe/proc/display_name()
+	if(!use_material || !apply_material_name)
+		return title
+	. = "[material_display_name(use_material)] [title]"
+	if(use_reinf_material)
+		. = "[material_display_name(use_reinf_material)]-reinforced [.]"
+
+/datum/stack_recipe/proc/spawn_result(mob/user, location, amount)
+	var/atom/O
+	if(send_material_data && use_material)
+		O = new result_type(location, use_material, use_reinf_material)
+	else
+		O = new result_type(location)
+	O.set_dir(user.dir)
+	return O
+
+/datum/stack_recipe/proc/can_make(mob/user)
+	if (one_per_turf && (locate(result_type) in user.loc))
+		to_chat(user, "<span class='warning'>There is another [display_name()] here!</span>")
+		return FALSE
+
+	var/turf/T = get_turf(user.loc)
+	if (on_floor && !T.is_floor())
+		to_chat(user, "<span class='warning'>\The [display_name()] must be constructed on the floor!</span>")
+		return FALSE
+
+	return TRUE
 
 /*
  * Recipe list datum

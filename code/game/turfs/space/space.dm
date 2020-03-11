@@ -8,9 +8,12 @@
 	temperature = T20C
 	thermal_conductivity = OPEN_HEAT_TRANSFER_COEFFICIENT
 	var/static/list/dust_cache
+	permit_ao = FALSE
 
 /turf/space/New()
 	icon_state = "white"
+
+	z_eventually_space = TRUE
 
 /turf/space/proc/build_dust_cache()
 	LAZYINITLIST(dust_cache)
@@ -42,6 +45,14 @@
 
 
 	return INITIALIZE_HINT_LATELOAD // oh no! we need to switch to being a different kind of turf!
+
+/turf/space/Destroy()
+	// Cleanup cached z_eventually_space values above us.
+	if (above)
+		var/turf/T = src
+		while ((T = GetAbove(T)))
+			T.z_eventually_space = FALSE
+	return ..()
 
 /turf/space/LateInitialize()
 	// We alter area type before the turf to ensure the turf-change-event-propagation is handled as expected.
@@ -226,3 +237,6 @@
 /turf/space/bluespace
 	name = "bluespace"
 	icon_state = "bluespace"
+
+/turf/space/is_open()
+	return TRUE

@@ -183,13 +183,7 @@
 
 // Called on a successful Move().
 /atom/movable/proc/Moved(atom/oldloc)
-	if(ismob(src))
-		src:check_shadow()
-
-	/*  We not longer do this
-	if(istype(src, /obj/item))
-		src:check_shadow()
-	*/
+	//We not longer do this
 	return
 
 /client/proc/Move_object(direct)

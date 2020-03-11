@@ -11,9 +11,8 @@
 // Called after turf replaces old one
 /turf/proc/post_change()
 	levelupdate()
-	var/turf/simulated/open/T = GetAbove(src)
-	if(istype(T))
-		T.update_icon()
+	if (above)
+		above.update_mimic()
 
 //Creates a new turf
 /turf/proc/ChangeTurf(var/turf/N, var/tell_universe=1, var/force_lighting_update = 0)
@@ -32,9 +31,11 @@
 	var/old_affecting_lights = affecting_lights
 	var/old_lighting_overlay = lighting_overlay
 	var/old_corners = corners
+	var/old_ao_neighbors = ao_neighbors
 
 //	log_debug("Replacing [src.type] with [N]")
 
+	changing_turf = TRUE
 
 	if(connections) connections.erase_all()
 
@@ -46,8 +47,19 @@
 		//the zone will only really do heavy lifting once.
 		var/turf/simulated/S = src
 		if(S.zone) S.zone.rebuild()
+	// Closest we can do as far as giving sane alerts to listeners. In particular, this calls Exited and moved events in a self-consistent way.
+	var/list/old_contents = list()
+	for(var/atom/movable/A in src)
+		old_contents += A
+		A.forceMove(null)
 
-	var/turf/simulated/W = new N( locate(src.x, src.y, src.z) )
+	// Run the Destroy() chain.
+	qdel(src)
+
+	var/turf/simulated/W = new N(src)
+
+	if (permit_ao)
+		regenerate_ao()
 
 	W.opaque_counter = opaque_counter
 
@@ -70,6 +82,7 @@
 	W.post_change()
 	. = W
 
+	W.ao_neighbors = old_ao_neighbors
 	if(lighting_overlays_initialised)
 		lighting_overlay = old_lighting_overlay
 		affecting_lights = old_affecting_lights
@@ -81,6 +94,9 @@
 				lighting_build_overlay()
 			else
 				lighting_clear_overlay()
+
+	for(var/turf/T in RANGE_TURFS(src, 1))
+		T.update_icon()
 
 /turf/proc/transport_properties_from(turf/other)
 	if(!istype(other, src.type))

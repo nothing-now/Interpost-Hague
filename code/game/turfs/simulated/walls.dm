@@ -37,6 +37,7 @@
 /turf/simulated/wall/Destroy()
 	processing_turfs -= src
 	dismantle_wall(null,null,1)
+	//STOP_PROCESSING(src)
 	. = ..()
 
 // Walls always hide the stuff below them.
@@ -263,3 +264,17 @@
 				W.burn((temperature/4))
 			for(var/obj/machinery/door/airlock/phoron/D in range(3,src))
 				D.ignite(temperature/4)
+
+///turf/simulated/wall/get_color()
+	//return paint_color
+
+/turf/simulated/wall/proc/CheckPenetration(var/base_chance, var/damage)
+	return round(damage/material.integrity*180)
+
+/*
+/turf/simulated/wall/can_engrave()
+	return (material && material.hardness >= 10 && material.hardness <= 100)
+*/
+
+/turf/simulated/wall/is_wall()
+	return TRUE

@@ -70,10 +70,9 @@ What is the naming convention for planes or layers?
 	#define DUST_LAYER 2
 
 //Reserve planes for openspace
-#define OPENSPACE_PLANE_START -462
-#define OPENSPACE_PLANE_END -22
-#define OPENSPACE_PLANE -463
-#define OVER_OPENSPACE_PLANE -22
+#define OPENSPACE_PLANE_END -16
+#define OPENSPACE_PLANE -18
+#define OPENSPACE_LAYER -463
 
 
 #define BELOW_TURF_PLANE             -22 // objects that are below turfs. Useful for asteroid smoothing or other such magic.
@@ -112,6 +111,7 @@ What is the naming convention for planes or layers?
 	#define BLOOD_LAYER                 9
 	#define MOUSETRAP_LAYER             10
 	#define PLANT_LAYER                 11
+	#define AO_LAYER                    12
 
 #define HIDING_MOB_PLANE              -16 // for hiding mobs like MoMMIs or spiders or whatever, under most objects but over pipes & such.
 
@@ -123,6 +123,7 @@ What is the naming convention for planes or layers?
 	#define BELOW_TABLE_LAYER       0.75
 	#define TABLE_LAYER             1
 	#define BELOW_OBJ_LAYER         2
+	#define STRUCTURE_LAYER         3
 	// OBJ_LAYER                    3
 	#define ABOVE_OBJ_LAYER         4
 	#define CLOSED_DOOR_LAYER       5
@@ -169,6 +170,7 @@ What is the naming convention for planes or layers?
 	#define ABOVE_PROJECTILE_LAYER  5
 	#define SINGULARITY_LAYER       6
 	#define POINTER_LAYER           7
+	#define MIMICED_LIGHTING_LAYER  8	// Z-Mimic-managed lighting
 
 #define OBSERVER_PLANE                 -3 // For observers and ghosts
 
@@ -214,10 +216,12 @@ What is the naming convention for planes or layers?
 
 /image/proc/plating_decal_layerise()
 	plane = ABOVE_PLATING_PLANE
+	return
 	layer = DECAL_PLATING_LAYER
 
 /image/proc/turf_decal_layerise()
 	plane = ABOVE_TURF_PLANE
+	return
 	layer = DECAL_LAYER
 
 /atom/proc/hud_layerise()
@@ -226,6 +230,7 @@ What is the naming convention for planes or layers?
 
 /atom/proc/reset_plane_and_layer()
 	plane = initial(plane)
+	return
 	layer = initial(layer)
 
 /*
