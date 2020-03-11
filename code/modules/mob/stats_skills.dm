@@ -194,8 +194,8 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 		if(skills[skill_type] < 30)
 			skills[skill_type] += 0.01
 		else //Learn slower past 30
-			if(skills[skill_type] >= 50)
-				return 0 //cant learn above 50
+			if(skills[skill_type] >= 70)
+				return 0 //cant learn above 70 in any skill because this was abused (THIS IS A SURGERY BUFF)
 			else
 				skills[skill_type] += 0.001
 	if(round(skills[skill_type]) > initial_skill)
