@@ -291,7 +291,7 @@ meteor_act
 
 	//Finally if we pass all that, we cut the limb off. This should reduce the number of one hit sword kills.
 	else if(I.sharp && I.edge)
-		if(prob(I.sharpness * strToDamageModifier(user.stats["str"])))
+		if(prob(I.sharpness + stat_to_modifier(user.stats["str"])))
 			log_debug("Sharpness: [I.sharpness].  StrMod: [strToDamageModifier(user.stats["str"])])") //Debugging
 			affecting.droplimb(0, DROPLIMB_EDGE)
 

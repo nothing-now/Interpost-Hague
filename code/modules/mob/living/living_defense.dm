@@ -181,7 +181,7 @@
 	if(user.stats["str"])//If they have strength then add it.
 		effective_force += strToDamageModifier(user.stats["str"])
 
-	//to_world("Effective Force: [effective_force].  StrMod: [strToDamageModifier(user.stats["str"])]) damage_modifier:[damage_modifier]") //Debugging
+	//to_world("Effective Force: [effective_force].  StrMod: [strToDamageModifier(user.stats["str"])])") //DebuggingstrToDamageModifier
 
 	apply_damage(effective_force, I.damtype, hit_zone, blocked, damage_flags, used_weapon=I)
 

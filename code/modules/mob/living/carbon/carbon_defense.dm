@@ -8,7 +8,7 @@
 		effective_force *= 2
 
 	//Strong attack
-	var/damage_modifier = user.c_intent == I_STRONG ? stat_to_modifier(user.stats["str"]) : 0
+	var/damage_modifier = user.c_intent == I_STRONG ? strToDamageModifier(user.stats["str"]) : 0
 	if(!damage_modifier) // IF damage_modifier is 0
 		damage_modifier = 1 // Give them the barest of buff 
 	effective_force += damage_modifier

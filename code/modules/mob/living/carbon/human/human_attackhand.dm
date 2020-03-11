@@ -122,7 +122,7 @@
 			if(!istype(H))
 				attack_generic(H,rand(1,3),"punched")
 				return
-			var/rand_damage = rand(1, 5)
+			var/rand_damage = rand(1, 3)
 			var/block = 0
 			var/accurate = 0
 			var/hit_zone = H.zone_sel.selecting
@@ -145,12 +145,11 @@
 				to_chat(M, "<span class='danger'>They are missing that limb!</span>")
 				return 1
 
-			switch(src.a_intent)
-				if(I_HELP)
+			switch(src.combat_mode)
+				if(0)
 					// We didn't see this coming, so we get the full blow
-					rand_damage = 5
 					accurate = 1
-				if(I_HURT, I_GRAB)
+				if(1)
 					// We're in a fighting stance, there's a chance we block
 					if(src.canmove && src!=H && prob(20))
 						block = 1
@@ -162,86 +161,6 @@
 			if(src.grabbed_by.len || src.buckled || !src.canmove || src==H || H.species.species_flags & SPECIES_FLAG_NO_BLOCK)
 				accurate = 1 // certain circumstances make it impossible for us to evade punches
 				rand_damage = 3
-
-/*
-COMBAT INTENTS
-Aim: Lets you right click to see farther. Attacks have more chance to hit, but take longer.
-Strong: More damage. Uses more stamina. Counter attacks leave you open for longer.
-Quick: Target has a harder time defending, but deals less damage and tires you out more. Also move slightly faster. Hit&Run.
-Defend: Increases parry+dodge chance, but you move slower and your attack damage is lowered. Can counter attack whenever on combat and defense mode.
-*/
-
-/*
-	switch(M.c_intent)
-		if(I_QUICK)
-			visible_message(Turret is retarded!)
-
-		if(I_AIM)
-			visible_message("<span class='danger'>[M] attempted to attack \the [src]'s body part precisely!</span>")
-			//hmmmmmmmmmmm will use the code for melee combat miss chances when it's out, also use var/accurate
-
-		if(I_DEFEND)//we're in a defence stance, we obviously can defend and parry much easier but that comes with disadvantages
-			if(PARRY)
-				//should be when a guy's on parry mode
-				if(prob(80))
-				H.do_parry
-				to_chat(H, "<span class='notice'>The [src] tries to attack you, but you easily parry his attack.</span>")
-			if(DODGE)
-				if(prob(80))
-				H.do_dodge
-				to_chat(H, "<span class='notice'>You easily evade [src]'s attack.</span>")
-
-		if(I_STRONG)
-			M.adjustStaminaLoss(rand(5,8))
-			if(!istype(H))
-				attack_generic(H,rand(2,4)," strongly punched")
-				return
-
-			var/rand_damage = rand(3, 8)
-			var/block = 0
-			var/accurate = 0
-			var/hit_zone = H.zone_sel.selecting
-			var/obj/item/organ/external/affecting = get_organ(hit_zone)
-
-			// See what attack they use
-			var/datum/unarmed_attack/attack = H.get_unarmed_attack(src, hit_zone)
-			if(!attack)
-				return 0
-			if(world.time < H.last_attack + attack.delay)
-				to_chat(H, "<span class='notice'>You can't attack strongly again so soon.</span>")
-				return 0
-			else
-				H.last_attack = world.time
-
-			if(!affecting || affecting.is_stump())
-				to_chat(M, "<span class='danger'>They are missing that limb!</span>")
-				return 1
-
-			var/datum/armed_melee_attack/attack = H.get_armed_melee_attack(src, hit_zone)
-			if(!attack)
-				return 0
-			if(PLACEHOLDER FOR MELEE WEAPONS)
-				damageshit
-				to_chat(H, "<span class='notice'>The [src] attacks you furiously!</span>")
-				return 0
-			if(PARRY)
-				//should be when a guy's on parry mode
-				if(prob(20))
-				to_chat(H, "<span class='notice'>The [src] attacks you furiously, almost breaking your defenses and making you get a bit of damage!</span>")
-			if(DODGE)
-				to_chat(H, "<span class='notice'>You barely evade [src]'s attack!</span>")
-
-			switch(src.c_intent)
-				if(I_QUICK)
-					// We didn't see this coming and are also in an attack frenzy, so we get the full blow
-					rand_damage = 5
-					accurate = 1
-				if(I_DEFEND, I_STRONG)
-					// We're in a fighting stance, there's a bigger chance we block
-					if(src.canmove && src!=H && prob(30))
-						block = 1
-*/
-
 			// Process evasion and blocking
 			var/miss_type = 0
 			var/attack_message
@@ -309,16 +228,18 @@ Defend: Increases parry+dodge chance, but you move slower and your attack damage
 
 			var/real_damage = rand_damage
 			real_damage += attack.get_unarmed_damage(H)
+			//real
 			real_damage *= damage_multiplier
+			//rand
 			rand_damage *= damage_multiplier
 			if(HULK in H.mutations)
 				real_damage *= 2 // Hulks do twice the damage
 				rand_damage *= 2
 			//Strong attack
 			var/damage_modifier = 0
-			if(H.c_intent == I_STRONG) // IF damage_modifier is 0
-				damage_modifier = (stat_to_modifier(H.stats["str"]) > 0) ?  stat_to_modifier(H.stats["str"]) : 1 //This is to prevent low str from fucking you up
-			real_damage = (max(1, real_damage) * strToDamageModifier(H.stats["str"])) + damage_modifier
+			if(H.c_intent == I_STRONG) // If H is using STRONG combat mod
+				damage_modifier = (stat_to_modifier(H.stats["str"]) > 0) ?  strToDamageModifier(H.stats["str"]) : 1 //This is to prevent low str from fucking you up
+			real_damage = (max(1, real_damage) + strToDamageModifier(H.stats["str"])) + damage_modifier
 			log_debug("Real damage: [real_damage].  StrMod: [strToDamageModifier(H.stats["str"])])") //Debugging
 
 			var/armour = run_armor_check(hit_zone, "melee")
