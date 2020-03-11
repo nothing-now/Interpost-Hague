@@ -61,7 +61,7 @@
 	if(stat_to_modifier(stats["int"]) > 0)
 		stats[stat_type] += 0.01 * stat_to_modifier(stats["int"]) //This has to be 
 	else 
-		if(stats[stat_type] < 20)
+		if(stats[stat_type] < 35)
 			return 0
 	if(round(stats[stat_type]) > initial_stat)
 		to_chat(src,"You feel like live you've gained new insights.")
