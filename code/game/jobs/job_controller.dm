@@ -241,7 +241,6 @@ var/global/datum/controller/occupations/job_master
 			AssignRole(candidate, command_position)
 		return
 
-
 /** Proc DivideOccupations
  *  fills var "assigned_role" for all ready players.
  *  This proc must not have any side effect besides of modifying "assigned_role".
@@ -554,6 +553,8 @@ var/global/datum/controller/occupations/job_master
 				var/datum/old_god_spell/new_spell = pick(pickable_spells)
 				to_chat(H, "You can only recall a single incantation.  It is the <b><font color='red'>[new_spell.name]</font> spell.  The incantation is <b><font color='red'>[new_spell.phrase]</font>")
 				H.mind.store_memory("[new_spell.name] Incantation: \"[new_spell.phrase]\"")
+
+		SetCombatMusic(H,rank)
 		BITSET(H.hud_updateflag, ID_HUD)
 		BITSET(H.hud_updateflag, IMPLOYAL_HUD)
 		BITSET(H.hud_updateflag, SPECIALROLE_HUD)
@@ -624,7 +625,22 @@ var/global/datum/controller/occupations/job_master
 			tmp_str += "HIGH=[level1]|MEDIUM=[level2]|LOW=[level3]|NEVER=[level4]|BANNED=[level5]|YOUNG=[level6]|-"
 			feedback_add_details("job_preferences",tmp_str)
 
-
+	
+	proc/SetCombatMusic(var/mob/living/carbon/human/H, var/rank)
+		to_world("Setting combat music for [H] with rank [rank]")
+		switch(rank)
+			if("Count" || "Viscount")
+				H.combat_music = GLOB.command_combat_music
+				to_world("setting music for [rank]")
+			if("Head of Security" || "Security Officer")
+				H.combat_music = GLOB.security_combat_music
+				to_world("setting music for [rank]")
+			if("Supreme Arbiter" || "Arbiter")
+				H.combat_music = GLOB.religion_combat_music
+				to_world("setting music for [rank]")
+			if("Jester")
+				H.combat_music = GLOB.jester_combat_music
+				to_world("setting music for [rank]")
 /**
  *  Return appropriate /datum/spawnpoint for given client and rank
  *

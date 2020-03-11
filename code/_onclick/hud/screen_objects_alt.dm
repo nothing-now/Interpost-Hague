@@ -545,9 +545,9 @@
 				usr.kick_icon.icon_state = "kick"
 		if("combat mode")
 			if(!ishuman(usr))	return
-			var/song = 'sound/music/combat_music.ogg'
 			usr << 'sound/effects/ui_toggle.ogg'
 			var/mob/living/carbon/human/C = usr
+			var/song = C.combat_music
 			if(C.combat_mode)
 				C.combat_mode = 0
 				C.combat_icon.icon_state = "combat0"
