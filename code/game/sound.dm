@@ -68,6 +68,14 @@ GLOBAL_LIST_INIT(blunt_swing, list('sound/weapons/blunt_swing1.ogg','sound/weapo
 GLOBAL_LIST_INIT(swing_sound, list('sound/weapons/swing_01.ogg', 'sound/weapons/swing_02.ogg', 'sound/weapons/swing_03.ogg'))
 GLOBAL_LIST_INIT(chop_sound,list('sound/weapons/chop1.ogg','sound/weapons/chop2.ogg','sound/weapons/chop3.ogg'))
 
+/*
+job music
+*/
+GLOBAL_LIST_INIT(command_combat_music, pick(list('sound/music/noble_combat_01.ogg','sound/music/noble_combat_02.ogg','sound/music/noble_combat_03.ogg')))
+GLOBAL_LIST_INIT(religion_combat_music, pick(list('sound/music/religion_combat_01.ogg','sound/music/religion_combat_02.ogg')))
+GLOBAL_LIST_INIT(jester_combat_music, pick(list('sound/music/jester_combat_01.ogg','sound/music/jester_combat_02.ogg')))
+GLOBAL_LIST_INIT(security_combat_music, pick(list('sound/music/security_combat_01.ogg','sound/music/security_combat_02.ogg')))
+
 /proc/playsound(var/atom/source, soundin, vol as num, vary, extrarange as num, falloff, var/is_global, var/frequency, var/is_ambiance = 0)
 
 	soundin = get_sfx(soundin) // same sound for everyone

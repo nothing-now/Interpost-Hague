@@ -61,7 +61,7 @@
 	if(stat_to_modifier(stats["int"]) > 0)
 		stats[stat_type] += 0.01 * stat_to_modifier(stats["int"]) //This has to be 
 	else 
-		if(stats[stat_type] < 20)
+		if(stats[stat_type] < 35)
 			return 0
 	if(round(stats[stat_type]) > initial_stat)
 		to_chat(src,"You feel like live you've gained new insights.")
@@ -194,8 +194,8 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 		if(skills[skill_type] < 30)
 			skills[skill_type] += 0.01
 		else //Learn slower past 30
-			if(skills[skill_type] >= 50)
-				return 0 //cant learn above 50
+			if(skills[skill_type] >= 70)
+				return 0 //cant learn above 70 in any skill because this was abused (THIS IS A SURGERY BUFF)
 			else
 				skills[skill_type] += 0.001
 	if(round(skills[skill_type]) > initial_skill)

@@ -13,7 +13,9 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "baton"
 	item_state = "baton"
+	parry_sounds = list('sound/weapons/blade_parry1.ogg', 'sound/weapons/blade_parry2.ogg', 'sound/weapons/blade_parry3.ogg')
 	slot_flags = SLOT_BELT
+	block_chance = 20
 	force = 10
 
 /obj/item/weapon/melee/classic_baton/attack(mob/M as mob, mob/living/user as mob)
@@ -28,6 +30,11 @@
 		return
 	return ..()
 
+/obj/item/weapon/melee/classic_baton/handle_shield(mob/living/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+	if(default_sword_parry(user, damage, damage_source, attacker, def_zone, attack_text))
+		return 1
+	return 0
+	
 //Telescopic baton
 /obj/item/weapon/melee/telebaton
 	name = "telescopic baton"
@@ -35,6 +42,7 @@
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "telebaton_0"
 	item_state = "telebaton_0"
+	parry_sounds = list('sound/weapons/blade_parry1.ogg', 'sound/weapons/blade_parry2.ogg', 'sound/weapons/blade_parry3.ogg')
 	slot_flags = SLOT_BELT
 	w_class = ITEM_SIZE_SMALL
 	force = 3
@@ -95,3 +103,9 @@
 			return
 	else
 		return ..()
+
+/obj/item/weapon/melee/telebaton/handle_shield(mob/living/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+	if(on)
+		if(default_sword_parry(user, damage, damage_source, attacker, def_zone, attack_text))
+			return 1
+	return 0

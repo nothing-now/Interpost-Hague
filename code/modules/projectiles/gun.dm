@@ -68,6 +68,7 @@
 	var/wielded_item_state
 	var/combustion	//whether it creates hotspot when fired
 	var/is_jammed = 0	//Whether this gun is jammed
+	var/has_jammed = FALSE
 	var/jam_chance = 0  //Chance it jams on fire
 	var/safety = 1		//Whether or not the safety is on.
 
@@ -392,6 +393,7 @@
 			return
 		is_jammed = 0
 		playsound(src.loc, 'sound/effects/unjam.ogg', 50, 1)
+		has_jammed = TRUE
 		return
 
 

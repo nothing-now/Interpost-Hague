@@ -57,11 +57,17 @@
 
 /obj/item/weapon/gun/projectile/consume_next_projectile()
 	if(!is_jammed && prob(jam_chance))
-		playsound(src.loc, 'sound/effects/jam.ogg', 50, 1)
-		src.visible_message("<span class='danger'>\The [src] jams!</span>")
-		is_jammed = 1
-	if(is_jammed)
+		if(!has_jammed)  //If we just unjammed, don't jam again
+			playsound(src.loc, 'sound/effects/jam.ogg', 50, 1)
+			src.visible_message("<span class='danger'>\The [src] jams!</span>")
+			is_jammed = 1
+			has_jammed = TRUE
+
+	if(is_jammed)  //
 		return null
+
+	if(has_jammed) //If we passed on jam check, then we're done
+		has_jammed = FALSE
 	//get the next casing
 	if(loaded.len)
 		chambered = loaded[1] //load next casing.
@@ -201,11 +207,12 @@
 	load_ammo(A, user)
 
 /obj/item/weapon/gun/projectile/attack_self(mob/user as mob)
+	if(is_jammed)
+		unjam(user)
+
 	if(firemodes.len > 1)
 		..()
-	else
-		unload_ammo(user)
-
+		
 /obj/item/weapon/gun/projectile/MouseDrop(var/obj/over_object)
 	if (!over_object || !(ishuman(usr) || issmall(usr)))
 		return
