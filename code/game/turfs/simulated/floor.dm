@@ -2,7 +2,6 @@
 	name = "plating"
 	icon = 'icons/turf/flooring/plating.dmi'
 	icon_state = "plating"
-	permit_ao = TRUE
 
 	// Damage to flooring.
 	var/broken
@@ -80,20 +79,3 @@
 		plane = TURF_PLANE
 	else
 		plane = PLATING_PLANE
-
-/*
-/turf/simulated/floor/can_engrave()
-	return (!flooring || flooring.can_engrave)
-*/
-
-/turf/simulated/floor/shuttle_ceiling
-	name = "hull plating"
-	icon = 'icons/turf/flooring/tiles.dmi'
-	icon_state = "reinforced_light"
-	initial_gas = null
-
-/turf/simulated/floor/shuttle_ceiling/air
-	initial_gas = list("oxygen" = MOLES_O2STANDARD, "nitrogen" = MOLES_N2STANDARD)
-
-/turf/simulated/floor/is_floor()
-	return TRUE

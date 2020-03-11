@@ -24,7 +24,7 @@
 	// Convert if/when you can easily get stacks of these.
 	var/carpeted = 0
 
-	connections = list("nw0", "ne0", "sw0", "se0")
+	var/list/connections = list("nw0", "ne0", "sw0", "se0")
 
 /obj/structure/table/New()
 	if(istext(material))
@@ -386,11 +386,9 @@
 		if(carpeted)
 			overlays += "carpet_flip[type]"
 
-
 /obj/structure/table/proc/can_connect()
 	return TRUE
 
-/*
 // set propagate if you're updating a table that should update tables around it too, for example if it's a new table or something important has changed (like material).
 /obj/structure/table/proc/update_connections(propagate=0)
 	if(!material)
@@ -446,7 +444,6 @@
 				T.update_icon()
 
 	connections = dirs_to_corner_states(connection_dirs)
-*/
 
 #define CORNER_NONE 0
 #define CORNER_COUNTERCLOCKWISE 1

@@ -2,7 +2,8 @@
 	icon = 'icons/turf/floors.dmi'
 	level = 1
 
-	layer = TURF_LAYER
+	plane = TURF_PLANE
+	layer = BASE_TURF_LAYER
 
 	var/turf_flags
 
@@ -23,69 +24,25 @@
 	var/icon_old = null
 	var/pathweight = 1          // How much does it cost to pathfind over this turf?
 	var/blessed = 0             // Has the turf been blessed?
-	var/list/decals
-	var/movement_delay
-	/var/footstep_type
-	/var/tmp/changing_turf
 
-/turf/Initialize(mapload, ...)
-	. = ..()
+	var/list/decals
+
+	var/movement_delay
+
+/turf/New()
+	..()
+	for(var/atom/movable/AM as mob|obj in src)
+		spawn( 0 )
+			src.Entered(AM)
+			return
+
 	if(dynamic_lighting)
 		luminosity = 0
 	else
 		luminosity = 1
 
-	opaque_counter = opacity
-
-	if (mapload && permit_ao)
-		queue_ao()
-
-	if (z_flags & ZM_MIMIC_BELOW)
-		setup_zmimic(mapload)
-/*
-/turf/update_icon()
-	//update_flood_overlay()
-	if (mapload && permit_ao)
-		queue_ao()
-
-/turf/update_icon()
-	//update_flood_overlay()
-	queue_ao(FALSE)
-*/
-/*
-/turf/proc/update_flood_overlay()
-	if(is_flooded(absolute = TRUE))
-		if(!flood_object)
-			flood_object = new(src)
-	else if(flood_object)
-		QDEL_NULL(flood_object)
-*/
-
 /turf/Destroy()
-	if (!changing_turf)
-		crash_with("Improper turf qdel. Do not qdel turfs directly.")
-
-	changing_turf = FALSE
-
 	remove_cleanables()
-	//fluid_update()
-	//REMOVE_ACTIVE_FLUID_SOURCE(src)
-
-	if (ao_queued)
-		SSao.queue -= src
-		ao_queued = 0
-
-	if (z_flags & ZM_MIMIC_BELOW)
-		cleanup_zmimic()
-
-	if (bound_overlay)
-		QDEL_NULL(bound_overlay)
-
-	//fluid_update()
-	//REMOVE_ACTIVE_FLUID_SOURCE(src)
-	if (ao_queued)
-		SSao.queue -= src
-		ao_queued = 0
 	..()
 	return QDEL_HINT_IWILLGC
 
@@ -315,56 +272,3 @@ var/const/enterloopsanity = 100
 		if(isliving(AM))
 			var/mob/living/M = AM
 			M.turf_collision(src, speed)
-
-/*
-/turf/proc/can_engrave()
-	return FALSE
-
-/turf/proc/try_graffiti(var/mob/vandal, var/obj/item/tool)
-
-	if(!tool.sharp || !can_engrave() || vandal.a_intent != I_HELP)
-		return FALSE
-
-	if(jobban_isbanned(vandal, "Graffiti"))
-		to_chat(vandal, SPAN_WARNING("You are banned from leaving persistent information across rounds."))
-		return
-
-	var/too_much_graffiti = 0
-	for(var/obj/effect/decal/writing/W in src)
-		too_much_graffiti++
-	if(too_much_graffiti >= 5)
-		to_chat(vandal, "<span class='warning'>There's too much graffiti here to add more.</span>")
-		return FALSE
-
-	var/message = sanitize(input("Enter a message to engrave.", "Graffiti") as null|text, trim = TRUE)
-	if(!message)
-		return FALSE
-
-	if(!vandal || vandal.incapacitated() || !Adjacent(vandal) || !tool.loc == vandal)
-		return FALSE
-
-	vandal.visible_message("<span class='warning'>\The [vandal] begins carving something into \the [src].</span>")
-
-	if(!do_after(vandal, max(20, length(message)), src))
-		return FALSE
-
-	vandal.visible_message("<span class='danger'>\The [vandal] carves some graffiti into \the [src].</span>")
-	var/obj/effect/decal/writing/graffiti = new(src)
-	graffiti.message = message
-	graffiti.author = vandal.ckey
-	vandal.update_personal_goal(/datum/goal/achievement/graffiti, TRUE)
-*/
-
-	//if(lowertext(message) == "elbereth")
-		//to_chat(vandal, "<span class='notice'>You feel much safer.</span>")
-
-	return TRUE
-
-/turf/proc/is_wall()
-	return FALSE
-
-/turf/proc/is_open()
-	return FALSE
-
-/turf/proc/is_floor()
-	return FALSE

@@ -11,9 +11,8 @@ var/list/floor_decals = list()
 	appearance_flags = RESET_COLOR
 	var/supplied_dir
 
-/obj/effect/floor_decal/New(var/newloc, var/newdir, var/newcolour, var/newappearance)
+/obj/effect/floor_decal/New(var/newloc, var/newdir, var/newcolour)
 	supplied_dir = newdir
-	if(newappearance) appearance = newappearance
 	if(newcolour) color = newcolour
 	..(newloc)
 

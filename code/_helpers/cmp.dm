@@ -58,31 +58,5 @@
 /proc/cmp_ruincost_priority(datum/map_template/ruin/A, datum/map_template/ruin/B)
 	return initial(A.cost) - initial(B.cost)
 
-///proc/cmp_timer(datum/timedevent/a, datum/timedevent/b)
-	//return a.timeToRun - b.timeToRun
-
-/*
-/proc/cmp_clientcolor_priority(datum/client_color/A, datum/client_color/B)
-	return B.priority - A.priority
-
-/proc/cmp_power_component_priority(obj/item/weapon/stock_parts/power/A, obj/item/weapon/stock_parts/power/B)
-	return B.priority - A.priority
-
-/proc/cmp_fusion_reaction_asc(var/decl/fusion_reaction/A, var/decl/fusion_reaction/B)
-	return A.priority - B.priority
-
-/proc/cmp_fusion_reaction_des(var/decl/fusion_reaction/A, var/decl/fusion_reaction/B)
-	return B.priority - A.priority
-*/
-
-/proc/cmp_program(var/datum/computer_file/program/A, var/datum/computer_file/program/B)
-	return cmp_text_asc(A.filedesc, B.filedesc)
-
-/proc/cmp_emails_asc(var/datum/computer_file/data/email_account/A, var/datum/computer_file/data/email_account/B)
-	return cmp_text_asc(A.login,B.login)
-
-/proc/cmp_planelayer(atom/A, atom/B)
-	return (B.plane - A.plane) || (B.layer - A.layer)
-
 /proc/cmp_timer(datum/timedevent/a, datum/timedevent/b)
 	return a.timeToRun - b.timeToRun
