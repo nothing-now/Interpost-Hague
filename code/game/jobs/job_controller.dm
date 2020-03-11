@@ -627,20 +627,15 @@ var/global/datum/controller/occupations/job_master
 
 	
 	proc/SetCombatMusic(var/mob/living/carbon/human/H, var/rank)
-		to_world("Setting combat music for [H] with rank [rank]")
 		switch(rank)
 			if("Count" || "Viscount")
 				H.combat_music = GLOB.command_combat_music
-				to_world("setting music for [rank]")
 			if("Head of Security" || "Security Officer")
 				H.combat_music = GLOB.security_combat_music
-				to_world("setting music for [rank]")
 			if("Supreme Arbiter" || "Arbiter")
 				H.combat_music = GLOB.religion_combat_music
-				to_world("setting music for [rank]")
 			if("Jester")
 				H.combat_music = GLOB.jester_combat_music
-				to_world("setting music for [rank]")
 /**
  *  Return appropriate /datum/spawnpoint for given client and rank
  *

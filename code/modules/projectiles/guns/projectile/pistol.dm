@@ -111,7 +111,7 @@
 
 /obj/item/weapon/gun/projectile/pistol
 	name = "holdout pistol"
-	desc = "The Lumoco Arms P3 Whisper. A small, easily concealable gun. Uses 9mm rounds."
+	desc = "The Glukco Arms G22. A small, easily concealable gun. Uses 9mm rounds."
 	icon_state = "pistol"
 	item_state = null
 	w_class = ITEM_SIZE_SMALL
@@ -122,7 +122,7 @@
 	load_method = MAGAZINE
 	magazine_type = /obj/item/ammo_magazine/mc9mm
 	allowed_magazines = /obj/item/ammo_magazine/mc9mm
-	jam_chance = 25
+	jam_chance = 15
 
 /obj/item/weapon/gun/projectile/pistol/flash
 	name = "holdout signal pistol"
