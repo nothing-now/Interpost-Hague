@@ -65,7 +65,7 @@
 		"nav_lavalette_residen",
 		"nav_lavalette_start",
 		)
-	shuttle_area = /area/shuttle/specops/centcomm
+	shuttle_area = /area/shuttle/specops/centcom
 	current_location = "nav_specops_start"
 	landmark_transition = "nav_specops_transition"
 	home_waypoint = "nav_specops_start"

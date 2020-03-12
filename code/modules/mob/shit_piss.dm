@@ -88,6 +88,7 @@
 	icon_state = "pee1"
 	random_icon_states = list("pee1", "pee2", "pee3")
 	var/dried = 0
+	reagents = list()
 
 /obj/effect/decal/cleanable/urine/Crossed(AM as mob|obj)
 	if (istype(AM, /mob/living/carbon))

@@ -53,29 +53,52 @@
 	number = 1
 /obj/effect/shuttle_landmark/escape_pod/transit/pod1
 	number = 1
-
+*/
 //Rescue shuttle
 
 /datum/shuttle/autodock/multi/antag/rescue
 	name = "Rescue"
-	warmup_time = 0
-	destinations = list(
-		"nav_lavalette_coupole",
-		"nav_lavalette_xenoarch",
-		"nav_lavalette_residen",
-		"nav_lavalette_start",
+	warmup_time = 10
+	destination_tags = list(
+		"nav_specops_start",
+		"nav_specops_xenoarch",
+		"nav_specops_residen",
+		"nav_specops_coupole",
 		)
-	shuttle_area = /area/shuttle/specops/centcomm
+	shuttle_area = /area/shuttle/specops/centcom
+	dock_target = "specops_shuttle_port"
 	current_location = "nav_specops_start"
 	landmark_transition = "nav_specops_transition"
 	home_waypoint = "nav_specops_start"
 	announcer = "CMA"
 	arrival_message = "You guys fucked it all up. CMA units are on the way to fix you're mistake."
 	departure_message = "The units."
-
+/*
+/datum/shuttle/autodock/multi/antag/mercenary
+	name = "Mercenary"
+	warmup_time = 0
+	destination_tags = list(
+		"nav_merc_dock",
+		"nav_merc_north",
+		"nav_merc_south",
+		"nav_merc_east",
+		"nav_merc_west"
+		)
+	shuttle_area = /area/syndicate_station/start
+	dock_target = "merc_shuttle"
+	current_location = "nav_merc_start"
+	landmark_transition = "nav_merc_transition"
+	announcer = "Alpha Sensor Array"
+	home_waypoint = "nav_merc_start"
+	arrival_message = "Attention, vessel detected entering station proximity."
+	departure_message = "Attention, vessel detected leaving station proximity."
+	*/
 /obj/effect/shuttle_landmark/specops/start
 	name = "Patrol Area"
 	landmark_tag = "nav_specops_start"
+	docking_controller = "specops_centcom_dock"
+	base_area = /area/syndicate_mothership
+	base_turf = /turf/simulated/floor/snow
 
 /obj/effect/shuttle_landmark/specops/internim
 	name = "In transit"
@@ -92,7 +115,7 @@
 /obj/effect/shuttle_landmark/specops/residentiel
 	name = "Near the Residential Access"
 	landmark_tag = "nav_specops_residen"
-*/
+
 //Cargo shuttle
 
 /datum/shuttle/autodock/ferry/supply/drone
@@ -186,7 +209,7 @@
 /obj/effect/shuttle_landmark/merc/start
 	name = "Mercenary Base"
 	landmark_tag = "nav_merc_start"
-	docking_controller = "dock_merc"
+	docking_controller = "merc_base"
 	base_area = /area/syndicate_mothership
 	base_turf = /turf/simulated/floor/snow
 /obj/effect/shuttle_landmark/merc/internim
