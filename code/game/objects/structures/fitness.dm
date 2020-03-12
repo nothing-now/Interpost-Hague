@@ -23,7 +23,7 @@
 			playsound(src.loc, 'sound/effects/woodhit.ogg', 25, 1, -1)
 			user.do_attack_animation(src)
 			user.nutrition = user.nutrition - 5
-			if(user.statcheck(user.stats[STAT_ST], 13, "You miss all your punches, and they feel weak and wimpy.  You need more training.", "st"))
+			if(user.statcheck(user.stats[STAT_ST], 13, "You miss all your punches, and they feel weak and wimpy.  You need more training.", STAT_ST))
 				to_chat(user, "<span class='warning'>You [pick(hit_message)] \the [src].</span>")
 
 /obj/structure/fitness/weightlifter
@@ -60,7 +60,7 @@
 		if(do_after(user, 20 + (weight * 10)))
 			playsound(src.loc, 'sound/effects/weightdrop.ogg', 25, 1)
 			user.nutrition -= weight * 10
-			if(user.statcheck(user.stats[STAT_ST], 13, "You're not swole enough to lift these weight.  You should train more.", "st"))
+			if(user.statcheck(user.stats[STAT_ST], 13, "You're not swole enough to lift these weight.  You should train more.", STAT_ST))
 				to_chat(user, "<span class='notice'>You lift the weights [qualifiers[weight]].</span>")
 			being_used = 0
 		else

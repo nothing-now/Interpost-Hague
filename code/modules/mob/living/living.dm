@@ -117,7 +117,7 @@ default behaviour is:
 			if(!(tmob.status_flags & CANPUSH))
 				now_pushing = 0
 				return
-			if(!src.statcheck(src.stats[STAT_ST], tmob.stats[STAT_ST], "I can't push past [tmob], he's too brawny!", "st"))
+			if(!src.statcheck(src.stats[STAT_ST], tmob.stats[STAT_ST], "I can't push past [tmob], he's too brawny!", STAT_ST))
 				now_pushing = 0
 				return
 			tmob.LAssailant = src
