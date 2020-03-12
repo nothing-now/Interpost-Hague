@@ -363,7 +363,7 @@
 	ideal_character_age = 21
 	total_positions = 3
 	spawn_positions = 3
-	alt_titles = null
+	//alt_titles = null
 	sex_lock = MALE
 	department_flag = ENG
 	outfit_type = /decl/hierarchy/outfit/job/dreyfus/inge/inge
