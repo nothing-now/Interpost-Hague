@@ -136,7 +136,7 @@
 	equip(var/mob/living/carbon/human/H)
 		..()
 		//H.add_stats(rand(9,11), rand(9,11), rand(7,10))
-		H.generate_stats("dex")
+		H.generate_stats(STAT_DX)
 		H.generate_skills(list("crafting","melee","cleaning","mining"))
 
 /datum/job/captain
@@ -154,7 +154,7 @@
 	equip(var/mob/living/carbon/human/H)
 		..()
 		//H.add_stats(rand(6,9), rand(9,11), rand(10,12))
-		H.generate_stats("st")
+		H.generate_stats(STAT_ST)
 		H.generate_skills(list("melee","ranged","medical"))
 
 
@@ -175,7 +175,7 @@
 	equip(var/mob/living/carbon/human/H)
 		..()
 		//H.add_stats(rand(6,9), rand(9,11), rand(10,12))
-		H.generate_stats("int")
+		H.generate_stats(STAT_IQ)
 		H.generate_skills(list("melee","ranged","medical"))
 
 /datum/job/rd
@@ -209,7 +209,7 @@
 			H.religion = LEGAL_RELIGION
 		..()
 		//H.add_stats(rand(5,7), rand(5,8), rand(12,15))
-		H.generate_stats("int")
+		H.generate_stats(STAT_IQ)
 		H.generate_skills(list("science","medical", "crafting"))
 
 /datum/job/scientist
@@ -230,7 +230,7 @@
 			//H.religion = LEGAL_RELIGION
 		..()
 		//H.add_stats(rand(5,7), rand(5,8), rand(10,14))
-		H.generate_stats("int")
+		H.generate_stats(STAT_IQ)
 		H.generate_skills(list("science","medical", "crafting"))
 
 /datum/job/doctor
@@ -250,7 +250,7 @@
 	equip(var/mob/living/carbon/human/H)
 		..()
 		//H.add_stats(rand(5,7), rand(5,8), rand(10,14))
-		H.generate_stats("int")
+		H.generate_stats(STAT_IQ)
 		H.generate_skills(list("medical","cleaning", "surgery"))
 
 /datum/job/doctor/undertaker
@@ -266,7 +266,7 @@
 			access_chemistry, access_virology, access_cmo, access_surgery, access_maint_tunnels)
 	equip(var/mob/living/carbon/human/H)
 		..()
-		H.generate_stats("int")
+		H.generate_stats(STAT_IQ)
 		H.generate_skills(list("medical","cleaning", "surgery"))
 	
 	
@@ -294,7 +294,7 @@
 	equip(var/mob/living/carbon/human/H)
 		..()
 		//H.add_stats(rand(12,18), rand(10,16), rand(8,12))
-		H.generate_stats("st")
+		H.generate_stats(STAT_ST)
 		H.generate_skills(list("melee","ranged"))
 
 
@@ -314,7 +314,7 @@
 	equip(var/mob/living/carbon/human/H)
 		..()
 		//H.add_stats(rand(11,16), rand(10,14), rand(7,10))
-		H.generate_stats("st")
+		H.generate_stats(STAT_ST)
 		H.generate_skills(list("melee","ranged"))
 
 
@@ -334,7 +334,7 @@
 	equip(var/mob/living/carbon/human/H)
 		..()
 		//H.add_stats(rand(11,16), rand(10,14), rand(7,10))
-		H.generate_stats("st")
+		H.generate_stats(STAT_ST)
 		H.generate_skills(list("melee","ranged"))
 
 
@@ -352,7 +352,7 @@
 	equip(var/mob/living/carbon/human/H)
 		..()
 		//H.add_stats(rand(8,12), rand(9,12), rand(7,10))
-		H.generate_stats("dex")
+		H.generate_stats(STAT_DX)
 		H.generate_skills(list("crafting","engineering", "mining"))
 
 /datum/job/engineer
@@ -373,7 +373,7 @@
 	equip(var/mob/living/carbon/human/H)
 		..()
 		//H.add_stats(rand(10,15), rand(7,10), rand(9,14))
-		H.generate_stats("int")
+		H.generate_stats(STAT_IQ)
 		H.generate_skills(list("crafting","engineering"))
 
 /datum/job/mining
@@ -393,7 +393,7 @@
 	equip(var/mob/living/carbon/human/H)
 		..()
 		//H.add_stats(rand(9,16), rand(9,12), rand(6,9))
-		H.generate_stats("st")
+		H.generate_stats(STAT_ST)
 		H.generate_skills(list("crafting","engineering", "mining"))
 
 /datum/job/cargo_tech
@@ -411,7 +411,7 @@
 	equip(var/mob/living/carbon/human/H)
 		..()
 		//H.add_stats(rand(9,12), rand(9,12), rand(6,9))
-		H.generate_stats("dex")
+		H.generate_stats(STAT_DX)
 		H.generate_skills(list("crafting","engineering", "mining"))
 
 /datum/job/cargo_tech/machinist
@@ -421,7 +421,7 @@
 	equip(var/mob/living/carbon/human/H)
 		..()
 		//H.add_stats(rand(10,15), rand(7,10), rand(9,14))
-		H.generate_stats("int")
+		H.generate_stats(STAT_IQ)
 		H.generate_skills(list("crafting","engineering"))
 
 //kid roles
@@ -462,7 +462,7 @@
 	department_flag = SRV
 	equip(var/mob/living/carbon/human/H)
 		..()
-		H.generate_stats("con")
+		H.generate_stats(STAT_HT)
 		H.generate_skills(list("cooking","melee"))
 
 /datum/job/chaplain
@@ -478,7 +478,7 @@
 		..()
 		if(!H.religion_is_legal())//Heretical priests would be weird.
 			H.religion = LEGAL_RELIGION
-		H.generate_stats("int")
+		H.generate_stats(STAT_IQ)
 		H.generate_skills(list("melee"))
 // religion skills in the future maybe?
 
@@ -494,7 +494,7 @@
 	equip(var/mob/living/carbon/human/H)
 		..()
 		//H.add_stats(rand(9,12), rand(9,12), rand(5,9))
-		H.generate_stats("con")
+		H.generate_stats(STAT_HT)
 		H.generate_skills(list("cleaning","melee"))
 
 /datum/job/hydro
@@ -511,7 +511,7 @@
 
 	equip(var/mob/living/carbon/human/H)
 		..()
-		H.generate_stats("con")
+		H.generate_stats(STAT_HT)
 		H.generate_skills(list("gardening","cooking"))
 
 /datum/job/jester
@@ -527,7 +527,7 @@
 
 	equip(var/mob/living/carbon/human/H)
 		..()
-		//H.generate_stats("dex")
+		//H.generate_stats(STAT_DX)
 		H.add_stats(rand(2,18), rand(2,18), rand(2,18), rand(2,18))
 		H.generate_skills(list("melee"))
 
@@ -554,7 +554,7 @@
 		if(!H.religion_is_legal())//So that they can't be heretics.
 			H.religion = LEGAL_RELIGION
 		//H.add_stats(rand(9,14), rand(8,12), rand(12,16))
-		H.generate_stats("st")
+		H.generate_stats(STAT_ST)
 		H.generate_skills(list("melee","ranged"))
 
 /datum/job/arbiter
@@ -576,7 +576,7 @@
 		if(!H.religion_is_legal())//So that they can't be heretics.
 			H.religion = LEGAL_RELIGION
 		//H.add_stats(rand(11,16), rand(10,14), rand(7,10))
-		H.generate_stats("st")
+		H.generate_stats(STAT_ST)
 		H.generate_skills(list("melee","ranged"))
 
 
@@ -671,7 +671,7 @@
 
 		//Peacekeeper setup.
 		//H.add_stats(rand(11,18), rand(10,14), rand(7,10))
-		H.generate_stats("st")
+		H.generate_stats(STAT_ST)
 		H.generate_skills("ranged")
 
 		//Some dumb if shit.

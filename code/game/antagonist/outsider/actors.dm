@@ -35,7 +35,7 @@ var/datum/antagonist/actor/actor
 	C.assignment = "Actor"
 	player.set_id_info(C)
 	player.equip_to_slot_or_del(C,slot_wear_id)
-	player.generate_stats("dex")
+	player.generate_stats(STAT_DX)
 	player.generate_skills("melee")
 
 	return 1

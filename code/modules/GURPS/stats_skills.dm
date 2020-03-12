@@ -19,7 +19,7 @@
 
 //I am aware this is probably the worst possible way of doing it but I'm using this method till I get a better one. - Matt
 /mob
-	var/list/stats = list(str = 10, dex = 10, int = 10, con = 10)
+	var/list/stats = list(st = 10, dx = 10, iq = 10, ht = 10)
 	var/list/skills = list("melee" = 0, "ranged" = 0, "medical" = 0, "surgery" = 0, "engineering" = 0, "crafting" = 0, "cooking" = 0, "science" = 0, "cleaning" = 0, "gardening" = 0, "mining" = 0)
 
 /*    ===== STATS ====
