@@ -122,7 +122,6 @@ var/global/datum/controller/gameticker/ticker
 		mode = null
 		job_master.ResetOccupations()
 		return 0
-
 	if(hide_mode)
 		to_world("<B>The current game mode is - Secret!</B>")
 

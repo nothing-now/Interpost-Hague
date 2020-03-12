@@ -68,6 +68,7 @@
 
 	if(has_jammed) //If we passed on jam check, then we're done
 		has_jammed = FALSE
+
 	//get the next casing
 	if(loaded.len)
 		chambered = loaded[1] //load next casing.

@@ -152,14 +152,19 @@
 		return 0
 
 	if(!is_jammed && prob(jam_chance))
-		playsound(src.loc, 'sound/effects/jam.ogg', 50, 1)
-		src.visible_message("<span class='danger'>[user]\'s [src] jams!</span>")
-		is_jammed = 1
-		return 0
+		if(!has_jammed)  //If we just unjammed, don't jam again
+			playsound(src.loc, 'sound/effects/jam.ogg', 50, 1)
+			src.visible_message("<span class='danger'>[user]\'s [src] jams!</span>")
+			is_jammed = 1
+			has_jammed = TRUE
+			return 0
 
 	if(is_jammed)
 		handle_click_empty(user)
 		return 0
+
+	if(has_jammed) //If we passed on jam check, then we're done
+		has_jammed = FALSE
 
 	return 1
 
