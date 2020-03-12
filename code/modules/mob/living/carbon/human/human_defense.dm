@@ -256,8 +256,8 @@ meteor_act
 	if(!affecting)
 		return 0
 
-	if(user.stats["str"])//If they have strength then add it.
-		effective_force += strToDamageModifier(user.stats["str"])
+	if(user.stats[STAT_ST])//If they have strength then add it.
+		effective_force += strToDamageModifier(user.stats[STAT_ST])
 
 	// Handle striking to cripple.
 	if(user.a_intent == I_DISARM)
@@ -291,8 +291,8 @@ meteor_act
 
 	//Finally if we pass all that, we cut the limb off. This should reduce the number of one hit sword kills.
 	else if(I.sharp && I.edge)
-		if(prob(I.sharpness + stat_to_modifier(user.stats["str"])))
-			log_debug("Sharpness: [I.sharpness].  StrMod: [strToDamageModifier(user.stats["str"])])") //Debugging
+		if(prob(I.sharpness + stat_to_modifier(user.stats[STAT_ST])))
+			log_debug("Sharpness: [I.sharpness].  StrMod: [strToDamageModifier(user.stats[STAT_ST])])") //Debugging
 			affecting.droplimb(0, DROPLIMB_EDGE)
 
 	var/obj/item/organ/external/head/O = locate(/obj/item/organ/external/head) in src.organs
@@ -306,7 +306,7 @@ meteor_act
 		if(!stat)
 			if(headcheck(hit_zone))
 				//Harder to score a stun but if you do it lasts a bit longer
-				if(prob(effective_force - stat_to_modifier(user.stats["con"])))
+				if(prob(effective_force - stat_to_modifier(user.stats[STAT_HT])))
 					visible_message("<span class='danger'>[src] [species.knockout_message]</span>")
 					apply_effect(20, PARALYZE, blocked)
 			else
@@ -650,8 +650,8 @@ meteor_act
 				return
 
 	//STR makes you hit harder, DEX makes it less tiring
-	var/kickdam = rand(0,15) + stat_to_modifier(user.stats["str"])
-	user.adjustStaminaLoss(rand(10,15) - stat_to_modifier(user.stats["dex"]))//Kicking someone is a big deal.
+	var/kickdam = rand(0,15) + stat_to_modifier(user.stats[STAT_ST])
+	user.adjustStaminaLoss(rand(10,15) - stat_to_modifier(user.stats[STAT_DX]))//Kicking someone is a big deal.
 	if(kickdam)
 		playsound(user.loc, 'sound/weapons/kick.ogg', 50, 0)
 		apply_damage(kickdam, BRUTE, hit_zone, armour)

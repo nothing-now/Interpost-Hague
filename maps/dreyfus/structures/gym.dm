@@ -11,7 +11,7 @@
 /obj/structure/punching_bag/attack_hand(mob/user as mob)
 	flick("[icon_state]2", src)
 	playsound(src.loc, pick(src.hit_sounds), 25, 1, -1)
-	if(user.statcheck(user.stats["str"], 13, "You miss all your punches, and they feel weak and wimpy.  You need more training.", "str"))
+	if(user.statcheck(user.stats[STAT_ST], 13, "You miss all your punches, and they feel weak and wimpy.  You need more training.", "st"))
 		var/finishmessage = pick("You feel stronger!","You feel like you can take on the world!","You feel robust!","You feel indestructible!")
 		to_chat(user, "[finishmessage]")
 
@@ -48,7 +48,7 @@
 		playsound(user, 'sound/machines/click.ogg', 60, 1)
 		in_use = 0
 		user.pixel_y = 0
-		if(user.statcheck(user.stats["str"], 13, "You're not swole enough to lift these weight.  You should train more.", "str"))
+		if(user.statcheck(user.stats[STAT_ST], 13, "You're not swole enough to lift these weight.  You should train more.", "st"))
 			var/finishmessage = pick("You feel stronger!","You feel like you can take on the world!","You feel robust!","You feel indestructible!")
 			to_chat(user, "[finishmessage]")
 		icon_state = "fitnesslifter"	
@@ -96,7 +96,7 @@
 		playsound(user, 'sound/machines/click.ogg', 60, 1)
 		in_use = 0
 		animate(user, pixel_y = 0, time = 3)
-		if(user.statcheck(user.stats["str"], 13, "You're not swole enough to lift these weight.  You should train more.", "str"))
+		if(user.statcheck(user.stats[STAT_ST], 13, "You're not swole enough to lift these weight.  You should train more.", "st"))
 			var/finishmessage = pick("You feel stronger!","You feel like you can take on the world!","You feel robust!","You feel indestructible!")
 			to_chat(user, "[finishmessage]")
 		icon_state = "fitnessweight"

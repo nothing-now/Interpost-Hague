@@ -78,11 +78,11 @@
 	message="You feel an incredible power within you"
 
 /datum/reward/str_up/do_reward(var/mob/living/target)
-	var/initial = target.stats["str"] 
+	var/initial = target.stats[STAT_ST] 
 	to_chat(target, message)
-	target.stats["str"] = 20
+	target.stats[STAT_ST] = 20
 	spawn(1200)
-		target.stats["str"] = initial
+		target.stats[STAT_ST] = initial
 
 
 /*	 Punishmentss are basically rewards but bad.
@@ -120,8 +120,8 @@ datum/punishment/str_up/
 	message="You feel a terrible weakness in your body"
 
 datum/punishment/str_up/do_punishment(var/mob/living/target)
-	var/initial = target.stats["str"] 
+	var/initial = target.stats[STAT_ST] 
 	to_chat(target, message)
-	target.stats["str"] = 2
+	target.stats[STAT_ST] = 2
 	spawn(1200)
-		target.stats["str"] = initial
+		target.stats[STAT_ST] = initial

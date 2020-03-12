@@ -240,7 +240,7 @@
 		return
 
 	if(!istype(landing, /turf/simulated/open))
-		if(statcheck(stats["dex"], 15, "You completely fail the landing.", "dex") && !lying)  //Gotta be dexterous to land when falling
+		if(statcheck(stats[STAT_DX], 15, "You completely fail the landing.", "dex") && !lying)  //Gotta be dexterous to land when falling
 			to_chat(src, "<span class = 'notice'>You land softly.</span>")
 			return
 

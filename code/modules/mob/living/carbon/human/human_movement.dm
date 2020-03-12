@@ -81,7 +81,7 @@
 	if(mRun in mutations)
 		tally = 0
 	//good dex means you run slightly faster, so delay goes down
-	tally -= (stat_to_modifier(stats["dex"]) * 0.005)
+	tally -= (stat_to_modifier(stats[STAT_DX]) * 0.005)
 	var/combat_mode_speed_modifier = c_intent == I_QUICK ? 0.01 : 0 //If they are attacking strong, they lose more stam
 	combat_mode_speed_modifier -= c_intent == I_DEFEND ? 0.01 : 0 //If they are in defensive mode, then we !SUBTRACT! because we will be subtracting this number from tally
 	if(c_intent == I_QUICK)

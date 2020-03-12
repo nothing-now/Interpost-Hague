@@ -63,7 +63,7 @@
 	else
 		//If they're stat mod is less then or equal to zero, don't set it so they can learn slowly.
 		//This is not the STAT, it's the STAT MODIFIER.  (stat - 10) / 2
-		var/learn_speed = stat_to_modifier(stats["int"]) > 0 ? stat_to_modifier(stats["int"]) : 1
+		var/learn_speed = stat_to_modifier(stats[STAT_IQ]) > 0 ? stat_to_modifier(stats[STAT_IQ]) : 1
 		stats[stat_type] += 0.001 * learn_speed
 	if(round(stats[stat_type]) > initial_stat)
 		to_chat(src,"You feel like live you've gained new insights.")
@@ -99,13 +99,13 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 //Stats helpers.
 /mob/proc/add_stats(var/stre, var/dexe, var/inti, var/cons)//To make adding stats quicker.
 	if(stre)
-		stats["str"] = stre
+		stats[STAT_ST] = stre
 	if(dexe)
-		stats["dex"] = dexe
+		stats[STAT_DX] = dexe
 	if(inti)
-		stats["int"] = inti
+		stats[STAT_IQ] = inti
 	if(cons)
-		stats["con"] = cons
+		stats[STAT_HT] = cons
 
 //Different way of generating stats.  Takes a "main_stat" argument.
 // Totals top 3 D6 for stats.  Then puts the top stat in the "main_stat" and the rest randomly
@@ -126,13 +126,13 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 		rand_stats.Remove(stats[stat])
 
 /mob/proc/adjustStrength(var/num)
-	stats["str"] += num
+	stats[STAT_ST] += num
 
 /mob/proc/adjustDexterity(var/num)
-	stats["dex"] += num
+	stats[STAT_DX] += num
 
 /mob/proc/adjustInteligence(var/num)
-	stats["int"] += num
+	stats[STAT_IQ] += num
 
 
 /mob/proc/temporary_stat_adjust(var/stat, var/modifier, var/time)
@@ -190,8 +190,8 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 
 /mob/proc/learn_skills(var/skill_type)
 	var/initial_skill = round(skills[skill_type])
-	if(skills[skill_type] < 30 && stat_to_modifier(stats["int"]) >= 0) //the minimum for reading
-		skills[skill_type] += 0.01 * stat_to_modifier(stats["int"]) 
+	if(skills[skill_type] < 30 && stat_to_modifier(stats[STAT_IQ]) >= 0) //the minimum for reading
+		skills[skill_type] += 0.01 * stat_to_modifier(stats[STAT_IQ]) 
 	else //Learn slower past 30
 		if(skills[skill_type] >= 70)
 			return 0 //cant learn above 70 in any skill because this was abused

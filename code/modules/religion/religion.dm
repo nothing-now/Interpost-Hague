@@ -80,7 +80,7 @@ proc/generate_random_prayer()//This generates a new one.
 	if(!T) return
 	if(!(T in view(1))) return
 	say("[T] are you a heretic!?")
-	if(prob((T.getHalLoss()/3) - T.stats["con"]))  //Higher con helps your resist torture
+	if(prob((T.getHalLoss()/3) - T.stats[STAT_HT]))  //Higher con helps your resist torture
 		T.reveal_self()
 		return
 

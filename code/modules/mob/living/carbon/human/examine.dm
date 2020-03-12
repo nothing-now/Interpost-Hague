@@ -142,13 +142,13 @@
 	//buckled
 	if(buckled)
 		msg += "<span class='warning'>[T.He] [T.is] \icon[buckled] buckled to [buckled]!</span>\n"
-	if(stats["str"] > user.stats["str"] && stats["str"] < (user.stats["str"] + 5))
+	if(stats[STAT_ST] > user.stats[STAT_ST] && stats[STAT_ST] < (user.stats[STAT_ST] + 5))
 		msg += "[T.He] looks stronger than you.\n"
 
-	if(stats["str"] > (user.stats["str"]+ 5))
+	if(stats[STAT_ST] > (user.stats[STAT_ST]+ 5))
 		msg += "<b>[T.He] looks a lot stronger than you.</b>\n"
 
-	if(stats["str"] < user.stats["str"])
+	if(stats[STAT_ST] < user.stats[STAT_ST])
 		msg += "[T.He] looks weaker than you.\n"
 
 	//Jitters

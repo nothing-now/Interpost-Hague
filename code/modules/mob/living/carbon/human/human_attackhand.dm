@@ -122,7 +122,12 @@
 			if(!istype(H))
 				attack_generic(H,rand(1,3),"punched")
 				return
-			var/rand_damage = rand(1, 3)
+			var/rand_damage = rand(1, 4)
+			var/damage_modifier = 0
+			if(H.c_intent == I_STRONG) // If H is using STRONG combat mod
+				damage_modifier = (stat_to_modifier(H.stats[STAT_ST]) > 0) ?  strToDamageModifier(H.stats[STAT_ST]) : 1 //This is to prevent low str from fucking you up
+			rand_damage += strToDamageModifier(H.stats[STAT_ST]) + damage_modifier
+			log_debug("Real damage: [rand_damage].  StrMod: [strToDamageModifier(H.stats[STAT_ST])])") //Debugging
 			var/block = 0
 			var/accurate = 0
 			var/hit_zone = H.zone_sel.selecting
@@ -154,13 +159,8 @@
 					if(src.canmove && src!=H && prob(20))
 						block = 1
 
-			if (M.grabbed_by.len)
-				// Someone got a good grip on them, they won't be able to do much damage
-				rand_damage = max(1, rand_damage - 2)
-
 			if(src.grabbed_by.len || src.buckled || !src.canmove || src==H || H.species.species_flags & SPECIES_FLAG_NO_BLOCK)
 				accurate = 1 // certain circumstances make it impossible for us to evade punches
-				rand_damage = 3
 			// Process evasion and blocking
 			var/miss_type = 0
 			var/attack_message
@@ -227,6 +227,7 @@
 				return 0
 
 			var/real_damage = rand_damage
+
 			real_damage += attack.get_unarmed_damage(H)
 			//real
 			real_damage *= damage_multiplier
@@ -235,12 +236,6 @@
 			if(HULK in H.mutations)
 				real_damage *= 2 // Hulks do twice the damage
 				rand_damage *= 2
-			//Strong attack
-			var/damage_modifier = 0
-			if(H.c_intent == I_STRONG) // If H is using STRONG combat mod
-				damage_modifier = (stat_to_modifier(H.stats["str"]) > 0) ?  strToDamageModifier(H.stats["str"]) : 1 //This is to prevent low str from fucking you up
-			real_damage = (max(1, real_damage) + strToDamageModifier(H.stats["str"])) + damage_modifier
-			log_debug("Real damage: [real_damage].  StrMod: [strToDamageModifier(H.stats["str"])])") //Debugging
 
 			var/armour = run_armor_check(hit_zone, "melee")
 			// Apply additional unarmed effects.

@@ -7,12 +7,6 @@
 	if(HULK in user.mutations)
 		effective_force *= 2
 
-	//Strong attack
-	var/damage_modifier = user.c_intent == I_STRONG ? strToDamageModifier(user.stats["str"]) : 0
-	if(!damage_modifier) // IF damage_modifier is 0
-		damage_modifier = 1 // Give them the barest of buff 
-	effective_force += damage_modifier
-
 	//Apply weapon damage
 	var/damage_flags = I.damage_flags()
 	if(prob(blocked)) //armour provides a chance to turn sharp/edge weapon attacks into blunt ones

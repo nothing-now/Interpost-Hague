@@ -586,7 +586,7 @@
 
 		if(get_shock() >= species.total_health)
 			//Constitution check to see if you can take the pain
-			if(!stat && statcheck(stats["con"],15,"I can't take the pain!  It's too much!", "con"))
+			if(!stat && statcheck(stats[STAT_HT],15,"I can't take the pain!  It's too much!", "con"))
 				//to_chat(src, "<span class='warning'>[species.halloss_message_self]</span>")
 				src.visible_message("<span class='warning'><B>[src]</B> gives into the pain!</span>")//("<B>[src]</B> [species.halloss_message].")
 			Paralyse(10)
@@ -1260,7 +1260,7 @@
 				return
 			to_chat(H, "<spawn class='warning'>You smell something foul...")
 			H.add_event("disgust", /datum/happiness_event/disgust/verygross)
-			if(prob(75 - H.stats["con"]))
+			if(prob(75 - H.stats[STAT_HT]))
 				H.vomit()
 
 //So that people will stop shitting in the fucking hallways all the time. Actually this will probably encourage them.
@@ -1272,7 +1272,7 @@
 		if(prob(2))
 			to_chat(src, "<spawn class='warning'>Something smells like shit...")
 			add_event("disgust", /datum/happiness_event/disgust/verygross)
-			if(prob(50 - stats["con"]))
+			if(prob(50 - stats[STAT_HT]))
 				vomit()
 
 	for(var/obj/item/weapon/reagent_containers/food/snacks/poo/P in range(5, src))
@@ -1282,7 +1282,7 @@
 		if(prob(2))
 			to_chat(src, "<spawn class='warning'>Something smells like shit...")
 			add_event("disgust", /datum/happiness_event/disgust/verygross)
-			if(prob(50 - stats["con"]))
+			if(prob(50 - stats[STAT_HT]))
 				vomit()
 
 

@@ -78,7 +78,7 @@
 // If a user has all the stuff, but not the tool, they can still see they are on the right track
 /datum/crafting_recipe/proc/can_see(var/mob/user, var/turf/spot)
 	var/list/things = spot.contents + user.contents
-	return check_parts(things) && user.stats["int"] >= int_required && result //Int effects what you can craft
+	return check_parts(things) && user.stats[STAT_IQ] >= int_required && result //Int effects what you can craft
 
 /datum/crafting_recipe/proc/make(var/mob/user, var/turf/spot)
 	if(!can_make(user,spot))

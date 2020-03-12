@@ -67,10 +67,10 @@
 /mob/living/carbon/human/Stat()
 	. = ..()
 	if(statpanel("Status"))
-		stat("STR:", "[round(stats["str"])]")//Stats!
-		stat("DEX:", "[round(stats["dex"])]")
-		stat("INT:", "[round(stats["int"])]")
-		stat("CON:", "[round(stats["con"])]")
+		stat(uppertext(STAT_ST), "[round(stats[STAT_ST])]")
+		stat(uppertext(STAT_DX), "[round(stats[STAT_DX])]")
+		stat(uppertext(STAT_IQ), "[round(stats[STAT_IQ])]")
+		stat(uppertext(STAT_HT), "[round(stats[STAT_HT])]")
 
 		if(evacuation_controller)
 			var/eta_status = evacuation_controller.get_status_panel_eta()

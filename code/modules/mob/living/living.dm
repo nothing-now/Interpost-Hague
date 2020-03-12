@@ -117,7 +117,7 @@ default behaviour is:
 			if(!(tmob.status_flags & CANPUSH))
 				now_pushing = 0
 				return
-			if(!src.statcheck(src.stats["str"], tmob.stats["str"], "I can't push past [tmob], he's too brawny!", "str"))
+			if(!src.statcheck(src.stats[STAT_ST], tmob.stats[STAT_ST], "I can't push past [tmob], he's too brawny!", "st"))
 				now_pushing = 0
 				return
 			tmob.LAssailant = src
@@ -660,7 +660,7 @@ default behaviour is:
 
 	if(gaspsound)
 		playsound(src, gaspsound, 25, 0, 1)
-	if(!statcheck(stats["con"],15,"I'm too tired to keep going.","con"))
+	if(!statcheck(stats[STAT_HT],15,"I'm too tired to keep going.","con"))
 		Weaken(5)
 	setStaminaLoss(185)  //Give them a bit of stamina back to avoid calling this multiple times
 
