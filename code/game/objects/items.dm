@@ -583,7 +583,7 @@ var/list/global/slot_flags_enumeration = list(
 	attack_self(usr)
 
 /obj/item/weapon/proc/get_block_chance(mob/user, var/damage, atom/damage_source = null, mob/attacker = null)
-	var/defense_mode_modifier = user.c_intent == I_DEFEND ? 25 : 0 //If they are blocking, make parrying fairly easy
+	var/defense_mode_modifier = user.c_intent == I_DEFEND ? 15 : 0 //If they are blocking, make parrying fairly easy
 	return base_block_chance + user.skills["melee"] + defense_mode_modifier
 
 //RETURN VALUES

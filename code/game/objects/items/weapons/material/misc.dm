@@ -22,6 +22,7 @@
 	attack_verb = list("chopped", "torn", "cut")
 	applies_material_colour = 0
 	hitsound = "chop"
+	block_chance = 10
 
 /obj/item/weapon/material/hatchet/tacknife
 	name = "tactical knife"

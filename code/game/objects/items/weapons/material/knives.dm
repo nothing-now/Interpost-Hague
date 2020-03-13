@@ -61,6 +61,7 @@
 	origin_tech = list(TECH_MATERIAL = 1)
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	unbreakable = 1
+	block_chance = 10
 
 /obj/item/weapon/material/knife/hook
 	name = "meat hook"
