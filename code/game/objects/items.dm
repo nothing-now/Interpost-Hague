@@ -83,7 +83,7 @@
 	var/sharpness = 0 //This is a special snowflake var that lets us cut peoples' heads off.
 	var/block_chance = 0 //This is the chance in percent that we will be able to block an attack with this weapon.
 	var/var/base_block_chance = 0
-	var/list/parry_sounds = list() //List of parry sounds to play when we block.
+	var/list/parry_sounds = null //List of parry sounds to play when we block.
 
 	var/next_attack_time = 0
 	var/weapon_speed_delay = 15
@@ -594,16 +594,19 @@ var/list/global/slot_flags_enumeration = list(
 /obj/item/weapon/proc/handle_shield(mob/living/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	if(block_chance <= 0)
 		return 0
-	else
-		if(user.incapacitated())
-			return 0
-		//block as long as they are not directly behind us
-		var/bad_arc = reverse_direction(user.dir) //arc of directions from which we cannot block
-		if(check_shield_arc(user, bad_arc, damage_source, attacker))
-			if(prob(get_block_chance(user, damage, damage_source, attacker)))
-				user.visible_message("<span class='danger'>\The [user] blocks [attack_text] with \the [src]!</span>")
-				return 1
+	if(user.incapacitated())
 		return 0
+	//block as long as they are not directly behind us
+	var/bad_arc = reverse_direction(user.dir) //arc of directions from which we cannot block
+	if(check_shield_arc(user, bad_arc, damage_source, attacker))
+		if(prob(get_block_chance(user, damage, damage_source, attacker)))
+			user.visible_message("<span class='danger'>\The [user] blocks [attack_text] with \the [src]!</span>")
+			if(parry_sounds)
+				playsound(user.loc, pick(parry_sounds), 50, 1)
+			else
+				parry_sounds = list('sound/weapons/blunt_parry1.ogg', 'sound/weapons/blunt_parry2.ogg', 'sound/weapons/blunt_parry3.ogg')
+			return 1
+	return 0
 
 /obj/item/proc/get_loc_turf()
 	var/atom/L = loc

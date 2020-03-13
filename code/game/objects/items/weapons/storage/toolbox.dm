@@ -17,6 +17,7 @@
 	max_storage_space = DEFAULT_LARGEBOX_STORAGE //enough to hold all starting contents
 	origin_tech = list(TECH_COMBAT = 1)
 	attack_verb = list("robusted")
+	block_chance = 10
 
 /obj/item/weapon/storage/toolbox/emergency
 	name = "emergency toolbox"

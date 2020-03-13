@@ -14,6 +14,7 @@ var/global/list/stool_cache = list() //haha stool
 	var/base_icon = "stool"
 	var/material/material
 	var/material/padding_material
+	block_chance = 5
 
 /obj/item/weapon/stool/padded
 	icon_state = "stool_padded_preview" //set for the map
