@@ -88,7 +88,7 @@
 	icon_state = "pee1"
 	random_icon_states = list("pee1", "pee2", "pee3")
 	var/dried = 0
-	reagents = list()
+	reagents = null
 
 /obj/effect/decal/cleanable/urine/Crossed(AM as mob|obj)
 	if (istype(AM, /mob/living/carbon))
@@ -100,9 +100,11 @@
 			M.slip("urine")
 
 /obj/effect/decal/cleanable/urine/New()
+	var/datum/reagents/R = new/datum/reagents(30, GLOB.temp_reagents_holder)
+	reagents = R
 	..()
 	icon_state = pick(random_icon_states)
-	reagents.add_reagent(/datum/reagent/urine,5)
+	reagents.add_reagent(/datum/reagent/urine,20)
 	for(var/obj/effect/decal/cleanable/urine/piss in src.loc)
 		if(piss != src)
 			qdel(piss)

@@ -9,6 +9,9 @@
 	var/filling_color = "#ffffff" //Used by sandwiches.
 	var/trash = null
 
+/obj/item/weapon/reagent_containers/food/snacks/poo
+	icon = 'icons/obj/poop.dmi'
+	
 /obj/item/weapon/reagent_containers/food/snacks/poo/New()
 	..()
 	icon_state = pick("poop1", "poop2", "poop3", "poop4", "poop5", "poop6", "poop7")
