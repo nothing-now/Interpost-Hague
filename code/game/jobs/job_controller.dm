@@ -696,3 +696,26 @@ var/global/datum/controller/occupations/job_master
 		return pick(loc_list)
 	else
 		return locate("start*[rank]") // use old stype
+
+/proc/get_department_names(var/datum/job/job)
+	if(job.department_flag & (COM | CIV | MSC))
+		return "Common"
+	if(job.department_flag & SUP)
+		return "Supply"
+	if(job.department_flag & SPT)
+		return "Command"
+	if(job.department_flag & SEC)
+		return "Security"
+	if(job.department_flag & ENG)
+		return "Engineering"
+	if(job.department_flag & MED)
+		return "Medical"
+	if(job.department_flag & SCI)
+		return "Science"
+	if(job.department_flag & SRV)
+		return "Service"
+	if(job.department_flag & EXP)
+		return "Exploration"
+	if(job.department_flag & CRH)
+		return "Inquisition"
+	return "Common"
