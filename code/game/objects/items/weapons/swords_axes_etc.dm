@@ -17,6 +17,8 @@
 	slot_flags = SLOT_BELT
 	block_chance = 30
 	force = 10
+	var/stunforce = 3 //10 was way to high
+	var/agonyforce = 15
 
 /obj/item/weapon/melee/classic_baton/attack(mob/M as mob, mob/living/user as mob)
 	if ((CLUMSY in user.mutations) && prob(50))
@@ -29,7 +31,31 @@
 			user.take_organ_damage(2*force)
 		return
 	return ..()
-	
+
+/obj/item/weapon/melee/classic_baton/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
+	var/stun = rand(1,stunforce)
+	var/agony = rand(5,agonyforce)
+	var/obj/item/organ/external/affecting = null
+	if(ishuman(target))
+		var/mob/living/carbon/human/H = target
+		affecting = H.get_organ(hit_zone)
+	//stun effects
+	target.stun_effect_act(stun, agony, hit_zone, src)
+	msg_admin_attack("[key_name(user)] beat [key_name(target)] with the [src].")
+	if(affecting)
+		target.visible_message("<span class='warning'>[target] has been beat down by [affecting.name] with [src] by [user].</span>")
+	else
+		target.visible_message("<span class='warning'>[target] has been beat down with [src] by [user].</span>")
+	if(user.a_intent == I_HURT)
+		. = ..()
+	else
+		playsound(loc, pick(GLOB.swing_hit_sound), 50, 1, -1)
+	if(ishuman(target))
+		var/mob/living/carbon/human/H = target
+		H.forcesay(GLOB.hit_appends)
+
+	return 0
+
 //Telescopic baton
 /obj/item/weapon/melee/telebaton
 	name = "telescopic baton"
