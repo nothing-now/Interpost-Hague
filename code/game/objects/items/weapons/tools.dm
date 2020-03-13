@@ -135,6 +135,7 @@
 	attack_verb = list("pinched", "nipped")
 	sharp = 1
 	edge = 1
+	block_chance = 5
 
 /obj/item/weapon/wirecutters/improvised
 	name = "wiremanglers"

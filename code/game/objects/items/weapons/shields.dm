@@ -43,7 +43,7 @@
 
 /obj/item/weapon/shield
 	name = "shield"
-	var/base_block_chance = 50
+	base_block_chance = 50
 
 /obj/item/weapon/shield/handle_shield(mob/living/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	if(user.incapacitated())
@@ -56,10 +56,6 @@
 			user.visible_message("<span class='danger'>\The [user] blocks [attack_text] with \the [src]!</span>")
 			return 1
 	return 0
-
-/obj/item/weapon/shield/proc/get_block_chance(mob/user, var/damage, atom/damage_source = null, mob/attacker = null)
-	var/defense_mode_modifier = user.c_intent == I_DEFEND ? 25 : 0 //If they are blocking, make parrying fairly easy
-	return base_block_chance + user.skills["melee"] + defense_mode_modifier
 
 /obj/item/weapon/shield/riot
 	name = "riot shield"

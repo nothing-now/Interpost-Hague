@@ -82,6 +82,7 @@
 
 	var/sharpness = 0 //This is a special snowflake var that lets us cut peoples' heads off.
 	var/block_chance = 0 //This is the chance in percent that we will be able to block an attack with this weapon.
+	var/var/base_block_chance = 0
 	var/list/parry_sounds = list() //List of parry sounds to play when we block.
 
 	var/next_attack_time = 0
@@ -581,13 +582,28 @@ var/list/global/slot_flags_enumeration = list(
 /obj/item/proc/ui_action_click()
 	attack_self(usr)
 
+/obj/item/weapon/proc/get_block_chance(mob/user, var/damage, atom/damage_source = null, mob/attacker = null)
+	var/defense_mode_modifier = user.c_intent == I_DEFEND ? 25 : 0 //If they are blocking, make parrying fairly easy
+	return base_block_chance + user.skills["melee"] + defense_mode_modifier
+
 //RETURN VALUES
 //handle_shield should return a positive value to indicate that the attack is blocked and should be prevented.
 //If a negative value is returned, it should be treated as a special return value for bullet_act() and handled appropriately.
 //For non-projectile attacks this usually means the attack is blocked.
 //Otherwise should return 0 to indicate that the attack is not affected in any way.
-/obj/item/proc/handle_shield(mob/living/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	return 0
+/obj/item/weapon/proc/handle_shield(mob/living/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+	if(block_chance <= 0)
+		return 0
+	else
+		if(user.incapacitated())
+			return 0
+		//block as long as they are not directly behind us
+		var/bad_arc = reverse_direction(user.dir) //arc of directions from which we cannot block
+		if(check_shield_arc(user, bad_arc, damage_source, attacker))
+			if(prob(get_block_chance(user, damage, damage_source, attacker)))
+				user.visible_message("<span class='danger'>\The [user] blocks [attack_text] with \the [src]!</span>")
+				return 1
+		return 0
 
 /obj/item/proc/get_loc_turf()
 	var/atom/L = loc

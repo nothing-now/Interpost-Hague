@@ -158,7 +158,7 @@ meteor_act
 		P.redirect(P.starting.x + rand(-2,2), P.starting.y + rand(-2,2), get_turf(src), src)
 		return PROJECTILE_FORCE_MISS
 
-	for(var/obj/item/shield in list(l_hand, r_hand, wear_suit))
+	for(var/obj/item/weapon/shield in list(l_hand, r_hand, wear_suit))
 		if(!shield) continue
 		. = shield.handle_shield(src, damage, damage_source, attacker, def_zone, attack_text)
 		if(.) return
