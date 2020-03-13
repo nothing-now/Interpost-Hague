@@ -16,7 +16,7 @@
 		client.screen = list()
 	if(mind && mind.current == src)
 		spellremove(src)
-	ghostize()
+	ghostize(0)
 	..()
 	return QDEL_HINT_HARDDEL
 
