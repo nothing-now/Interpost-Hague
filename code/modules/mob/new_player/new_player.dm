@@ -419,7 +419,6 @@
 	dat += "<table>"
 	
 	for(var/datum/job/job in job_master.occupations)
-		to_world("Adding [job] to latejoin menu with frequency [get_announcement_frequency(job)]")
 		//Suprisingly, get_announcement_frequency is perfect for getting the name from the depratment_flag var
 		if(department != get_department_names(job))
 			department = get_department_names(job)
