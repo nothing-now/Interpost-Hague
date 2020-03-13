@@ -606,7 +606,7 @@ var/list/global/slot_flags_enumeration = list(
 //It's in  a different funtion so we can make it more difficult then the default parry check, which is used for shields, which anoyone can use to parry.
 /obj/item/proc/default_sword_parry(mob/living/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
 	if(default_parry_check(user, attacker, damage_source) && (user.get_active_hand() == src))//You gotta be holding onto that sheesh bro
-		if(prob((user.skills["melee"] * 0.75) + block_chance)) //a check on block chance
+		if(prob((user.skills["melee"]/2) + block_chance)) //a check on block chance
 			user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
 			if(parry_sounds)
 				playsound(user.loc, pick(parry_sounds), 50, 1)

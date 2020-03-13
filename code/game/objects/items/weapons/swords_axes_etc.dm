@@ -15,7 +15,7 @@
 	item_state = "baton"
 	parry_sounds = list('sound/weapons/blade_parry1.ogg', 'sound/weapons/blade_parry2.ogg', 'sound/weapons/blade_parry3.ogg')
 	slot_flags = SLOT_BELT
-	block_chance = 20
+	block_chance = 30
 	force = 10
 
 /obj/item/weapon/melee/classic_baton/attack(mob/M as mob, mob/living/user as mob)

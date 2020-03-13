@@ -79,7 +79,7 @@
 	force = WEAPON_FORCE_PAINFUL
 	throwforce = WEAPON_FORCE_PAINFUL
 	w_class = ITEM_SIZE_LARGE
-	block_chance = 15
+	block_chance = 25
 	origin_tech = list(TECH_COMBAT = 3)
 	attack_verb = list("robusted", "slammed")
 	var/reinforced = FALSE
@@ -167,7 +167,7 @@
 	force = WEAPON_FORCE_PAINFUL
 	throwforce = WEAPON_FORCE_PAINFUL
 	w_class = ITEM_SIZE_NORMAL
-	block_chance = 20
+	block_chance = 25
 	origin_tech = list(TECH_COMBAT = 2)
 	attack_verb = list("beaten", "slammed", "smacked", "struck", "battered")
 	//structure_damage_factor = STRUCTURE_DAMAGE_HEAVY

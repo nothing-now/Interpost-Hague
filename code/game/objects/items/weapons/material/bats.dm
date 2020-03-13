@@ -12,7 +12,7 @@
 	force_divisor = 1.1           // 22 when wielded with weight 20 (steel)
 	unwielded_force_divisor = 0.7 // 15 when unwielded based on above.
 	slot_flags = SLOT_BACK
-	block_chance = 20
+	block_chance = 30
 
 //Predefined materials go here.
 /obj/item/weapon/material/twohanded/baseballbat/metal/New(var/newloc)

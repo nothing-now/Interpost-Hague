@@ -17,7 +17,7 @@
 	attack_verb = list("slashed", "sliced")
 	hitsound = "slash_sound"
 	var/atk_mode = SLASH
-	block_chance = 25
+	block_chance = 40
 	applies_material_colour = FALSE
 	drawsound = 'sound/items/unholster_sword02.ogg'
 	equipsound = 'sound/items/holster_sword1.ogg'
@@ -103,7 +103,7 @@
 	item_state = "knife"
 	attack_verb = list("slashed")
 	force_divisor = 0.3
-	block_chance = 15
+	block_chance = 20
 	w_class = ITEM_SIZE_SMALL
 	drawsound = 'sound/items/unholster_knife.ogg'
 	sharpness = 15

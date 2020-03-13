@@ -56,7 +56,7 @@
 	var/drill_sound = 'sound/weapons/Genhit.ogg'
 	var/drill_verb = "drilling"
 	sharp = 1
-	block_chance = 15
+	block_chance = 25
 
 	var/excavation_amount = 200
 

@@ -135,7 +135,7 @@
 	attack_verb = list("pinched", "nipped")
 	sharp = 1
 	edge = 1
-	block_chance = 5
+	block_chance = 10
 
 /obj/item/weapon/wirecutters/improvised
 	name = "wiremanglers"
@@ -693,7 +693,7 @@
 	throwforce = 7.0
 	throw_range = 3
 	item_state = "crowbar"
-	block_chance = 10
+	block_chance = 20
 	w_class = ITEM_SIZE_NORMAL
 	origin_tech = list(TECH_ENGINEERING = 1)
 	matter = list(DEFAULT_WALL_MATERIAL = 140)

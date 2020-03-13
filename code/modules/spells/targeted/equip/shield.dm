@@ -19,7 +19,7 @@
 	duration = 300
 	delete_old = 0
 	var/item_color = "#6666ff"
-	var/block_chance = 30
+	var/block_chance = 40
 
 	hud_state = "wiz_shield"
 
