@@ -47,7 +47,7 @@
 	var/msg = ""
 	if (religion_is_legal())  //Non-heretics will still deny
 		msg = "I'm not one I swear it!"
-	else 
+	else
 		msg = "Yes!  I'm a heretic!"
 	agony_scream()
 	say(NewStutter(msg))
@@ -96,7 +96,7 @@ proc/generate_random_prayer()//This generates a new one.
 		name = pick(GLOB.all_religions[ILLEGAL_RELIGION].followers)  //Wow the datums saves us an entire for loop
 		if(name)
 			say(NewStutter("[name] is one of them!"))
-		else 
+		else
 			say("I'm the only one!")
 
 /* ILLEGAL RELIGION PROCS */
@@ -184,22 +184,22 @@ proc/generate_random_prayer()//This generates a new one.
 /mob/living/proc/praise_god()
 	set category = "Old God Magic"
 	set name = "Praise god"
-	
+
 	var/datum/religion/user_religion = GLOB.all_religions[religion]
 	//You need your god's item to do this
 	if(!istype(get_active_hand(), user_religion.holy_item) && !istype(get_inactive_hand(), user_religion.holy_item))
 		to_chat(src, "<span class='warning'>You can't praise god without your [user_religion.holy_item]!</span>")
 		return
 	var/timer = 30
-	var/praise_sound = "sound/effects/badmood[pick(1,4)].ogg"
+	var/praise_sound = "sound/effects/Cultistemessage[pick(1,10)].ogg"
 	if(!doing_something)
 		var/self = "You raise your [user_religion.holy_item] and chant praise to your god."
-		visible_message("<span class='warning'>\The [src] begins speaking praise for thier god.</span>", "<span class='notice'>[self]</span>", "You hear scratching.")
+		visible_message("<span class='warning'>\The [src] begins speaking praise for their god.</span>", "<span class='notice'>[self]</span>", "[src] praises their god! .")
 		doing_something = 1
 		if(do_after(src, timer))
 			//These variables used to just be functions that returned a hard coded value.  So don't blame me, this is actually faster.
 			user_religion.favor += 10
-			playsound(get_turf(src), praise_sound,50,1)
+			playsound(get_turf(src), praise_sound,50,0)
 			doing_something = 0
 			user_religion.spawn_item(src)
 			if(user_religion.request)
@@ -207,12 +207,12 @@ proc/generate_random_prayer()//This generates a new one.
 					user_religion.reward(src)
 					user_religion.request = null
 			return 1
-		else 
+		else
 			to_chat(src, "<span class='notice'>Your prayer is interupted</span>")
 			doing_something = 0
 			return
 		return 0
-	else 
+	else
 		to_chat(src, "<span class='notice'>You are already doing something.</span>")
 		return 0
 	return 0
