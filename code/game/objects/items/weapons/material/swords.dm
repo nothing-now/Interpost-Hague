@@ -27,31 +27,6 @@
 	drop_sound = 'sound/items/drop_sword.ogg'
 
 
-/obj/item/weapon/material/sword/handle_shield(mob/living/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	if(default_sword_parry(user, damage, damage_source, attacker, def_zone, attack_text))
-		return 1
-
-	return 0
-
-//The point of this is for weapons that blocks puts significant stress on your hand, making it hard to hold (Sword, crowbar)
-//It's in  a different funtion so we can make it more difficult then the default parry check, which is used for shields, which anoyone can use to parry.
-/obj/item/proc/default_sword_parry(mob/living/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-
-	if(default_parry_check(user, attacker, damage_source) && (user.get_active_hand() == src))//You gotta be holding onto that sheesh bro
-		if(prob((user.skills["melee"]) + block_chance)) //a check on block chance
-			user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
-			if(parry_sounds)
-				playsound(user.loc, pick(parry_sounds), 50, 1)
-			user.adjustStaminaLoss(10)
-			health -= 0.5
-			if(!user.statcheck(user.stats[STAT_ST], 5, "I couldn't keep the grip on my weapon!", STAT_ST))
-				user.visible_message("<span class='danger'>\The [src] flies out of \the [user]'s hand!</span>")
-				user.drop_from_inventory(src)
-				throw_at(get_edge_target_turf(src, pick(GLOB.alldirs)), rand(1,3), throw_speed)//Throw that sheesh away
-			return 1
-	return 0
-
-
 /obj/item/weapon/material/sword/attack_self(mob/user)
 	..()
 	if(atk_mode == SLASH)

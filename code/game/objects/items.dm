@@ -596,17 +596,56 @@ var/list/global/slot_flags_enumeration = list(
 		return 0
 	if(user.incapacitated())
 		return 0
-	//block as long as they are not directly behind us
-	var/bad_arc = reverse_direction(user.dir) //arc of directions from which we cannot block
-	if(check_shield_arc(user, bad_arc, damage_source, attacker))
-		if(prob(get_block_chance(user, damage, damage_source, attacker)))
-			user.visible_message("<span class='danger'>\The [user] blocks [attack_text] with \the [src]!</span>")
+	if(isnull(parry_sounds))
+		parry_sounds = list('sound/weapons/blunt_parry1.ogg', 'sound/weapons/blunt_parry2.ogg', 'sound/weapons/blunt_parry3.ogg')
+	if(default_sword_parry(user, attacker, damage_source))
+		return 1
+	return 0
+
+//The point of this is for weapons that blocks puts significant stress on your hand, making it hard to hold (Sword, crowbar)
+//It's in  a different funtion so we can make it more difficult then the default parry check, which is used for shields, which anoyone can use to parry.
+/obj/item/proc/default_sword_parry(mob/living/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
+	if(default_parry_check(user, attacker, damage_source) && (user.get_active_hand() == src))//You gotta be holding onto that sheesh bro
+		if(prob((user.skills["melee"] * 0.75) + block_chance)) //a check on block chance
+			user.visible_message("<span class='danger'>\The [user] parries [attack_text] with \the [src]!</span>")
 			if(parry_sounds)
 				playsound(user.loc, pick(parry_sounds), 50, 1)
-			else
-				parry_sounds = list('sound/weapons/blunt_parry1.ogg', 'sound/weapons/blunt_parry2.ogg', 'sound/weapons/blunt_parry3.ogg')
+			user.adjustStaminaLoss(10)
+			health -= 0.5
+			if(!user.statcheck(user.stats[STAT_ST], 5, "I couldn't keep the grip on my weapon!", STAT_ST))
+				user.visible_message("<span class='danger'><font size =3>\The [src] flies out of \the [user]'s hand!</font></span>")
+				user.drop_from_inventory(src)
+				throw_at(get_edge_target_turf(src, pick(GLOB.alldirs)), rand(1,3), throw_speed)//Throw that sheesh away
 			return 1
 	return 0
+
+/proc/default_parry_check(mob/living/user, mob/attacker, atom/damage_source)
+	//parry only melee attacks
+	if(istype(damage_source, /obj/item/projectile) || (attacker && get_dist(user, attacker) > 1) || user.incapacitated())
+		return 0
+
+	var/defense_mode_modifier = user.c_intent == I_DEFEND ? 25 : 0 //If they are blocking, make parrying fairly easy
+
+	if(!user.combat_mode)//If you're not in combat mode you will have a harder time parrying
+		defense_mode_modifier -= 25
+
+	if(user.staminaloss >= 100) //Less tamina makes it harder to block
+		defense_mode_modifier -= 25
+
+	if(user.defense_intent != I_PARRY)//If you're not on parry intent, you won't parry.
+		return 0
+
+	user.adjustStaminaLoss(10)
+
+	if(!user.skillcheck(user.skills["melee"], 45 - defense_mode_modifier, 0, "Melee")) //Need to be decent at melee fighting to parry everything
+		return 0
+
+	//block as long as they are not directly behind us
+	var/bad_arc = reverse_direction(user.dir) //arc of directions from which we cannot block
+	if(!check_shield_arc(user, bad_arc, damage_source, attacker))
+		return 0
+
+	return 1
 
 /obj/item/proc/get_loc_turf()
 	var/atom/L = loc

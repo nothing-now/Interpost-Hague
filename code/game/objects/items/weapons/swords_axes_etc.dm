@@ -29,11 +29,6 @@
 			user.take_organ_damage(2*force)
 		return
 	return ..()
-
-/obj/item/weapon/melee/classic_baton/handle_shield(mob/living/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	if(default_sword_parry(user, damage, damage_source, attacker, def_zone, attack_text))
-		return 1
-	return 0
 	
 //Telescopic baton
 /obj/item/weapon/melee/telebaton

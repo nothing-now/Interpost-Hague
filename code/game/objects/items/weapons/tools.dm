@@ -701,11 +701,6 @@
 	attack_verb = list("attacked", "bashed", "battered", "bludgeoned", "whacked")
 	parry_sounds = list('sound/weapons/blade_parry1.ogg', 'sound/weapons/blade_parry2.ogg', 'sound/weapons/blade_parry3.ogg')
 
-/obj/item/weapon/crowbar/handle_shield(mob/living/user, var/damage, atom/damage_source = null, mob/attacker = null, var/def_zone = null, var/attack_text = "the attack")
-	if(default_sword_parry(user, damage, damage_source, attacker, def_zone, attack_text))
-		return 1
-	return 0
-
 /obj/item/weapon/crowbar/improvised
 	name = "rebar"
 	desc = "A pair of metal rods laboriously twisted into a useful shape"
