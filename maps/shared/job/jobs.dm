@@ -157,7 +157,7 @@
 			H.religion = LEGAL_RELIGION
 		//H.add_stats(rand(6,9), rand(9,11), rand(10,12))
 		H.generate_stats(STAT_ST)
-		H.generate_skills(list("melee","ranged","medical"))
+		H.generate_skills(list("melee","ranged","medical","engineering"))
 
 
 
