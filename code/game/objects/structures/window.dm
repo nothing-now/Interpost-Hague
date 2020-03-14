@@ -434,8 +434,8 @@
 /obj/structure/window/phoronreinforced
 	name = "reinforced borosilicate window"
 	desc = "A borosilicate alloy window, with rods supporting it. It seems to be very strong."
-	basestate = "phoronrwindow"
-	icon_state = "phoronrwindow"
+	basestate = "phoronwindow"
+	icon_state = "phoronwindow"
 	shardtype = /obj/item/weapon/material/shard/phoron
 	glasstype = /obj/item/stack/material/glass/phoronrglass
 	reinf = 1
@@ -445,13 +445,13 @@
 
 /obj/structure/window/phoronreinforced/full
 	dir = 5
-	icon_state = "phoronwindow0"
+	icon_state = "pwindow"
 
 /obj/structure/window/reinforced
 	name = "reinforced window"
 	desc = "It looks rather strong. Might take a few good hits to shatter it."
-	icon_state = "rwindow"
 	basestate = "rwindow"
+	icon_state = "rwindow"
 	maxhealth = 40.0
 	reinf = 1
 	maximal_heat = T0C + 750
@@ -472,7 +472,8 @@
 
 /obj/structure/window/reinforced/full
 	dir = 5
-	icon_state = "fwindow"
+	icon = 'icons/obj/newwindows.dmi'
+	icon_state = "window1"
 
 /obj/structure/window/reinforced/tinted
 	name = "tinted window"
