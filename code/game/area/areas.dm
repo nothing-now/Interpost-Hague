@@ -294,14 +294,14 @@ var/list/mob/living/forced_ambiance_list = new
 	else if(hum)
 		if(!L.client.ambience_playing)
 			L.client.ambience_playing = 1
-			L.playsound_local(T,sound('sound/ambience/NEambi.ogg', repeat = 1, wait = 0, volume = 20, channel = 2))
+			L.playsound_local(T,sound('sound/ambience/NEambi.ogg', repeat = 1, wait = 0, volume = 70, channel = 2))
 	else
 		if(L.client.ambience_playing)
 			L.client.ambience_playing = 0
 			sound_to(L, sound(null, channel = 2))
 
 	
-	if(src.ambience.len && prob(35))
+	if(src.ambience.len && prob(75))
 		if((world.time >= L.client.played + 3 MINUTES))
 			var/sound = pick(ambience)
 			L.playsound_local(T, sound(sound, repeat = 0, wait = 0, volume = 15, channel = 1))
