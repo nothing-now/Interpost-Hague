@@ -257,6 +257,7 @@
 
 	var/obj/P = new /obj/effect/decal/point(tile)
 	P.set_invisibility(invisibility)
+	spawn(20)
 	P.pixel_x = A.pixel_x
 	P.pixel_y = A.pixel_y
 	qdel(P, 2 SECONDS)
