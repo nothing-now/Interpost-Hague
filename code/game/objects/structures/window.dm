@@ -412,7 +412,7 @@
 
 
 /obj/structure/window/basic
-	desc = "It looks thin and flimsy. A few knocks with... anything, really should shatter it."
+	desc = "It looks thin and flimsy. A few knocks with anything should shatter it."
 	icon_state = "window"
 	basestate = "window"
 	glasstype = /obj/item/stack/material/glass
@@ -422,7 +422,7 @@
 
 /obj/structure/window/phoronbasic
 	name = "phoron window"
-	desc = "A borosilicate alloy window. It seems to be quite strong."
+	desc = "A borosilicate alloy window. It seems to be quite durable against hits."
 	basestate = "phoronwindow"
 	icon_state = "phoronwindow"
 	shardtype = /obj/item/weapon/material/shard/phoron
@@ -433,7 +433,7 @@
 
 /obj/structure/window/phoronreinforced
 	name = "reinforced borosilicate window"
-	desc = "A borosilicate alloy window, with rods supporting it. It seems to be very strong."
+	desc = "A borosilicate alloy window, with rods supporting it. It seems to be very durable."
 	basestate = "phoronrwindow"
 	icon_state = "phoronrwindow"
 	shardtype = /obj/item/weapon/material/shard/phoron
@@ -449,7 +449,7 @@
 
 /obj/structure/window/reinforced
 	name = "reinforced window"
-	desc = "It looks rather strong. Might take a few good hits to shatter it."
+	desc = "It looks rather durable. It will take a few good hits to shatter it."
 	icon_state = "rwindow"
 	basestate = "rwindow"
 	maxhealth = 40.0
