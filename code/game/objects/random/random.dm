@@ -20,12 +20,12 @@
 
 	if(isnull(loc))
 		return
-
 	var/build_path = pickweight(spawn_choices())
 	var/atom/A = new build_path(src.loc)
 	if(pixel_x || pixel_y)
 		A.pixel_x = pixel_x
 		A.pixel_y = pixel_y
+	return A
 
 // Returns an associative list in format path:weight
 /obj/random/proc/spawn_choices()
@@ -38,7 +38,9 @@
 	var/spawn_object = null
 
 /obj/random/single/spawn_choices()
-	return pick(typesof(/obj/random/)).spawn_choices()
+	var/obj/random/random_type = pick(typesof(/obj/random/) - /obj/random/)
+	random_type = new random_type()
+	return random_type.spawn_choices()
 
 /obj/random/tool
 	name = "random tool"
