@@ -199,7 +199,7 @@ proc/generate_random_prayer()//This generates a new one.
 		if(do_after(src, timer))
 			//These variables used to just be functions that returned a hard coded value.  So don't blame me, this is actually faster.
 			user_religion.favor += 10
-			playsound(get_turf(src), praise_sound,50,0)
+			playsound(get_turf(src), praise_sound,30,0)
 			doing_something = 0
 			user_religion.spawn_item(src)
 			if(user_religion.request)
