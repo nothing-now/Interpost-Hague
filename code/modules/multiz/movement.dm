@@ -249,7 +249,7 @@
 		   Even worse, we smash our face into the ground.
 		*/
 		playsound(src.loc, 'sound/effects/gore/fallsmash.ogg', 75, 1)//Splat
-		var/damage = 10
+		var/damage = 15
 		if(statcheck(stats[STAT_DX], 12, 0, "dex")	)
 			to_chat(src, "<span class='danger'>You manage to get your feet under you.</span>")
 			apply_damage(rand(0, damage), BRUTE, BP_L_LEG)
