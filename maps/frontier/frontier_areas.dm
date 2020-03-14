@@ -487,7 +487,6 @@
 
 /area/hallway/primary/
 	sound_env = LARGE_ENCLOSED
-	ambience = '
 
 /area/hallway/primary/fore
 	name = "\improper Fore Primary Hallway"
