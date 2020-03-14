@@ -487,6 +487,7 @@
 
 /area/hallway/primary/
 	sound_env = LARGE_ENCLOSED
+	ambience = '
 
 /area/hallway/primary/fore
 	name = "\improper Fore Primary Hallway"
@@ -766,22 +767,27 @@
 /area/security/main
 	name = "\improper Security Office"
 	icon_state = "security"
+	ambience = list('sound/ambience/regenerator.ogg')
 
 /area/security/meeting
 	name = "\improper Security Meeting Room"
 	icon_state = "security"
+	ambience = list('sound/ambience/regenerator.ogg')
 
 /area/security/lobby
 	name = "\improper Security Lobby"
 	icon_state = "security"
+	ambience = list('sound/ambience/regenerator.ogg')
 
 /area/security/brig/processing
 	name = "\improper Security - Processing"
 	icon_state = "brig"
+	ambience = list('sound/ambience/regenerator.ogg')
 
 /area/security/brig/interrogation
 	name = "\improper Security - Interrogation"
 	icon_state = "brig"
+	ambience = list('sound/ambience/regenerator.ogg')
 
 /area/security/brig/solitaryA
 	name = "\improper Security - Solitary 1"
@@ -818,14 +824,17 @@
 /area/security/warden
 	name = "\improper Security - Warden's Office"
 	icon_state = "Warden"
+	ambience = list('sound/ambience/regenerator.ogg')
 
 /area/security/tactical
 	name = "\improper Security - Tactical Equipment"
 	icon_state = "Tactical"
+	ambience = list('sound/ambience/regenerator.ogg')
 
 /area/security/vacantoffice
 	name = "\improper Vacant Office"
 	icon_state = "security"
+	ambience = list('sound/ambience/regenerator.ogg')
 
 /area/quartermaster
 	name = "\improper Quartermasters"
