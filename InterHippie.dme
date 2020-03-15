@@ -2624,6 +2624,7 @@
 #include "interface\interface.dm"
 #include "interface\skin.dmf"
 #include "maps\_map_include.dm"
+#include "maps\alpha\alpha.dm"
 #include "maps\alpha\alpha_define.dm"
 #include "maps\away\away_sites.dm"
 #include "maps\away_sites_testing\away_sites_testing_define.dm"
