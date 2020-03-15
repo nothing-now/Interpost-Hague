@@ -269,3 +269,6 @@
 
 /turf/simulated/wall/is_wall()
 	return TRUE
+
+/turf/simulated/wall/can_engrave()
+	return (material && material.hardness >= 10 && material.hardness <= 100)

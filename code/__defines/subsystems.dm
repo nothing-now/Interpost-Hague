@@ -87,6 +87,7 @@
 #define SS_INIT_OPEN_SPACE    -150
 #define SS_INIT_BAY_LEGACY    -200
 #define SS_INIT_UNIT_TESTS    -250
+#define SS_INIT_MISC_LATE     -200
 
 // SS runlevels
 
