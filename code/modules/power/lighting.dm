@@ -534,7 +534,7 @@
 
 	var/brightness_range = 2 //how much light it gives off
 	var/brightness_power = 1
-	var/brightness_color = "#D4B983" //this will probably break the game
+	var/brightness_color = "#D9AA4C" //this will probably break the game
 	var/list/lighting_modes = list()
 	var/sound_on
 
@@ -546,7 +546,7 @@
 	item_state = "c_tube"
 	matter = list("glass" = 100)
 
-	brightness_range = 6	// luminosity when on, also used in power calculation
+	brightness_range = 5	// luminosity when on, also used in power calculation
 	brightness_power = 5
 	brightness_color = "#D9AA4C"//"#FAE1AF"//"#C5D8B3"//#CDFEE0//"#B2B2B2"
 	lighting_modes = list(
