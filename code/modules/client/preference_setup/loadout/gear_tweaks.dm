@@ -48,24 +48,35 @@
 */
 
 /datum/gear_tweak/path
-	var/list/valid_paths
+	var/list/valid_paths = list()
 
 /datum/gear_tweak/path/New(var/list/valid_paths)
-	if(!valid_paths.len)
-		CRASH("No type paths given")
-	var/list/duplicate_keys = duplicates(valid_paths)
-	if(duplicate_keys.len)
-		CRASH("Duplicate names found: [english_list(duplicate_keys)]")
-	var/list/duplicate_values = duplicates(list_values(valid_paths))
-	if(duplicate_values.len)
-		CRASH("Duplicate types found: [english_list(duplicate_values)]")
-	for(var/path_name in valid_paths)
-		if(!istext(path_name))
-			CRASH("Expected a text key, was [log_info_line(path_name)]")
-		var/selection_type = valid_paths[path_name]
-		if(!ispath(selection_type, /obj/item))
-			CRASH("Expected an /obj/item path, was [log_info_line(selection_type)]")
-	src.valid_paths = sortAssoc(valid_paths)
+	// We didn't get a list.  Hopefully we got a single path.  Make a temp item, and make a single noce list of [name] : [path] and add to valie_paths
+	// This is to prevent runtimes from shitcode that only passes a single type
+	if(!islist(valid_paths))
+		var/valid_path = valid_paths
+		if(!ispath(valid_path, /obj/item))
+			CRASH("Expected an /obj/item path, was [log_info_line(valid_path)].  This is from the single path IF")
+		var/obj/item/temp_path_item = new valid_path()
+		valid_paths = list(temp_path_item.name = valid_path)
+		src.valid_paths += valid_paths
+		qdel(temp_path_item)
+	else
+		if(!valid_paths.len)
+			CRASH("No type paths given")
+		var/list/duplicate_keys = duplicates(valid_paths)
+		if(duplicate_keys.len)
+			CRASH("Duplicate names found: [english_list(duplicate_keys)]")
+		var/list/duplicate_values = duplicates(list_values(valid_paths))
+		if(duplicate_values.len)
+			CRASH("Duplicate types found: [english_list(duplicate_values)]")
+		for(var/path_name in valid_paths)
+			if(!istext(path_name))
+				CRASH("Expected a text key, was [log_info_line(path_name)]")
+			var/selection_type = valid_paths[path_name]
+			if(!ispath(selection_type, /obj/item))
+				CRASH("Expected an /obj/item path, was [log_info_line(selection_type)]")
+		src.valid_paths = sortAssoc(valid_paths)
 
 /datum/gear_tweak/path/type/New(var/type_path)
 	..(atomtype2nameassoclist(type_path))
