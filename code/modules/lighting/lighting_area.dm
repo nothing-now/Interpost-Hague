@@ -1,6 +1,6 @@
 /area
 	luminosity           = TRUE
-	var/dynamic_lighting = FALSE
+	var/dynamic_lighting = TRUE
 
 /area/New()
 	..()
