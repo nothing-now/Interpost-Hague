@@ -14,25 +14,25 @@
 
 	allowed_spawns = list("Arrivals Shuttle")
 
-	station_name  = "Space Station Alpha"
+	station_name  = "Stellar Fortress Alpha"
 	station_short = "Alpha"
-	dock_name     = "NAS Crescent"
-	boss_name     = "Central Command"
-	boss_short    = "Centcomm"
-	company_name  = "NanoTrasen"
-	company_short = "NT"
-	system_name = "somewhere in space"
+	dock_name     = "NAS Aeternum"
+	boss_name     = "King's Authority"
+	boss_short    = "The Authority"
+	company_name  = "The Kingdom of Jubilee"
+	company_short = "Kingdom"
+	system_name = "Algol, Beta Persei"
 
-	map_admin_faxes = list("Colonial Magistrate Authority")
+	map_admin_faxes = list("King's Authority Mail System")
 
-	shuttle_docked_message = "The shuttle has docked."
-	shuttle_leaving_dock = "The shuttle has departed from home dock."
-	shuttle_called_message = "A scheduled transfer shuttle has been sent."
-	shuttle_recall_message = "The shuttle has been recalled"
-	emergency_shuttle_docked_message = "The emergency escape shuttle has docked."
-	emergency_shuttle_leaving_dock = "The emergency escape shuttle has departed from %dock_name%."
-	emergency_shuttle_called_message = "An emergency escape shuttle has been sent."
-	emergency_shuttle_recall_message = "The emergency shuttle has been recalled"
+	shuttle_docked_message = "The Spiteful has docked with the station. The nobles are awaited onboard."
+	shuttle_leaving_dock = "The Spiteful has departed from home dock."
+	shuttle_called_message = "A scheduled crew transfer shuttle Spiteful has been sent."
+	shuttle_recall_message = "The Spiteful has been recalled. Continuous wasting of resources may result in the crew's termination."
+	emergency_shuttle_docked_message = "The Spiteful has docked with the station. The nobles are awaited onboard."
+	emergency_shuttle_leaving_dock = "The Spiteful emergency escape shuttle has departed from %dock_name%."
+	emergency_shuttle_called_message = "Spiteful emergency escape shuttle has been sent. It will arrive in approximately 10 minutes."
+	emergency_shuttle_recall_message = "The Spiteful emergency escape shuttle has been recalled. Continuous wasting of resources may result in the crew's termination."
 
 	evac_controller_type = /datum/evacuation_controller/shuttle
 
