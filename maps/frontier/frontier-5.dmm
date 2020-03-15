@@ -116,7 +116,7 @@
 "cl" = (/obj/effect/floor_decal/corner/yellow{tag = "icon-corner_white (EAST)"; icon_state = "corner_white"; dir = 4},/turf/simulated/floor/tiled,/area/syndicate_mothership)
 "cm" = (/obj/effect/wingrille_spawn/reinforced,/turf/simulated/floor/plating,/area/syndicate_station/start)
 "cn" = (/turf/simulated/floor/tiled/bunker,/area/syndicate_station/start)
-"co" = (/obj/item/weapon/cigbutt,/turf/simulated/floor/tiled/bunker,/area/syndicate_station/start)
+"co" = (/obj/item/trash/cigbutt,/turf/simulated/floor/tiled/bunker,/area/syndicate_station/start)
 "cp" = (/obj/machinery/door/window{dir = 2; name = "Seating"; req_access = list(150)},/obj/effect/floor_decal/industrial/warning,/turf/simulated/floor/tiled/bunker/red,/area/syndicate_station/start)
 "cq" = (/obj/structure/table/standard,/obj/machinery/computer/pod/old/syndicate{id = "smindicate"},/obj/machinery/door/window{dir = 4; name = "Blast Door Control"; req_access = list(150)},/turf/simulated/floor/tiled/bunker,/area/syndicate_station/start)
 "cr" = (/obj/machinery/atmospherics/pipe/manifold4w/visible,/turf/simulated/floor/tiled/bunker,/area/syndicate_station/start)
