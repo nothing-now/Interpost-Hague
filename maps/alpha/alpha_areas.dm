@@ -1541,6 +1541,18 @@ area/rnd/test_area
 	ambience = list('sound/ambience/ambicha1.ogg','sound/ambience/ambicha2.ogg','sound/ambience/ambicha3.ogg','sound/ambience/ambicha4.ogg','sound/music/traitor.ogg')
 	sound_env = LARGE_ENCLOSED
 
+// Arbiter HQ
+
+/area/arbiter
+	name = "Arbiter HQ"
+	icon_state = "chapel"
+	sound_env = SMALL_ENCLOSED
+
+/area/arbiter/fake_office
+	name = "Vacant Office"
+	icon_state = "chapel"
+	sound_env = SMALL_ENCLOSED
+
 // Merchant
 
 /area/merchant_station
