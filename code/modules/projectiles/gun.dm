@@ -70,7 +70,7 @@
 	var/is_jammed = 0	//Whether this gun is jammed
 	var/has_jammed = FALSE
 	var/jam_chance = 0  //Chance it jams on fire
-	var/safety = 0		//Whether or not the safety is on. FUCK YOU MATT
+	var/safety = 1		//Whether or not the safety is on. BLESS YOU MATT
 
 	var/next_fire_time = 0
 
