@@ -17,7 +17,7 @@
 	var/phrase = "Test Phrase"
 
 	New()
-		phrase = GLOB.all_religions[old_god].generate_random_phrase()
+		phrase = GLOB.all_religions[LEGAL_RELIGION].generate_random_phrase()
 
 	proc/spell_effect(var/mob/living/user)
 		to_world("Something is fucked up, you should not be seeing this.  It's from old god spell code, go tell a coder.")
