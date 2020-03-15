@@ -82,7 +82,7 @@
 
 	var/sharpness = 0 //This is a special snowflake var that lets us cut peoples' heads off.
 	var/block_chance = 0 //This is the chance in percent that we will be able to block an attack with this weapon.
-	var/var/base_block_chance = 0
+	var/base_block_chance = 0
 	var/list/parry_sounds = null //List of parry sounds to play when we block.
 
 	var/next_attack_time = 0
