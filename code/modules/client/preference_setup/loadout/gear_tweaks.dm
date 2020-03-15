@@ -60,7 +60,7 @@
 		var/obj/item/temp_path_item = new valid_path()
 		valid_paths = list(temp_path_item.name = valid_path)
 		src.valid_paths += valid_paths
-		qdel(temp_path_item)
+		temp_path_item = null
 	else
 		if(!valid_paths.len)
 			CRASH("No type paths given")

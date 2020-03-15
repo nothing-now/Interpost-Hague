@@ -67,9 +67,9 @@
 /datum/gear/suit/suit_jacket/New()
 	..()
 	var/suitjackets = list()
-	suitjackets += /obj/item/clothing/suit/storage/toggle/suit/black
-	suitjackets += /obj/item/clothing/suit/storage/toggle/suit/blue
-	suitjackets += /obj/item/clothing/suit/storage/toggle/suit/purple
+	suitjackets["black suit jacket"] = /obj/item/clothing/suit/storage/toggle/suit/black
+	suitjackets["blue suit jacket"] = /obj/item/clothing/suit/storage/toggle/suit/blue
+	suitjackets["purple suit jacket"] = /obj/item/clothing/suit/storage/toggle/suit/purple
 	gear_tweaks += new/datum/gear_tweak/path/specified_types_list(suitjackets)
 
 /datum/gear/suit/custom_suit_jacket
