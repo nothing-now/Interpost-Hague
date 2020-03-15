@@ -145,6 +145,7 @@
 	. = ..()
 	if(gun)
 		gun = new gun(src)
+		gun.safety = 0
 
 /obj/item/rig_module/mounted/engage(atom/target)
 
