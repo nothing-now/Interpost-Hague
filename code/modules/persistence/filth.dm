@@ -9,4 +9,5 @@
 
 /obj/effect/decal/cleanable/filth/Initialize()
 	. = ..()
-	alpha = rand(180,220)
+	icon_state = pick(list("mfloor1", "mfloor2", "mfloor3", "mfloor4", "mfloor5", "mfloor6", "mfloor7"))
+	alpha = rand(200/age,250) //Gets more transparent as it ages out

@@ -422,7 +422,7 @@
 "if" = (/obj/structure/table/woodentable,/obj/machinery/microwave,/turf/unsimulated/floor{dir = 8; icon_state = "wood"},/area/ninja_dojo/dojo)
 "ig" = (/obj/structure/grille,/obj/structure/window/reinforced/full,/obj/structure/window/reinforced{dir = 8},/obj/structure/window/reinforced,/obj/structure/window/reinforced{dir = 1},/obj/structure/window/reinforced{dir = 4},/turf/simulated/floor/plating,/area/syndicate_station/start)
 "ih" = (/turf/simulated/floor/shuttle/black,/area/syndicate_station/start)
-"ii" = (/obj/item/weapon/cigbutt,/turf/simulated/floor/shuttle/black,/area/syndicate_station/start)
+"ii" = (/obj/item/trash/cigbutt,/turf/simulated/floor/shuttle/black,/area/syndicate_station/start)
 "ij" = (/obj/machinery/door/window{dir = 2; name = "Seating"; req_access = list(150)},/turf/simulated/floor/shuttle/darkred,/area/syndicate_station/start)
 "ik" = (/obj/structure/table/standard,/obj/machinery/computer/pod/old/syndicate{id = "smindicate"},/obj/machinery/door/window{dir = 4; name = "Blast Door Control"; req_access = list(150)},/turf/simulated/floor/shuttle/darkred,/area/syndicate_station/start)
 "il" = (/obj/machinery/atmospherics/pipe/manifold4w/visible,/turf/simulated/floor/shuttle/darkred,/area/syndicate_station/start)
