@@ -350,6 +350,10 @@
 	var/on_floor = 0
 	var/use_material
 	var/goes_in_hands = 1
+	var/use_reinf_material
+	var/difficulty = 1 // higher difficulty requires higher skill level to make.
+	var/send_material_data = 0 //Whether the recipe will send the material name as an argument when creating product.
+	var/apply_material_name = 1 //Whether the recipe will prepend a material name to the title - 'steel clipboard' vs 'clipboard'
 
 	New(title, result_type, req_amount = 1, res_amount = 1, max_res_amount = 1, time = 0, one_per_turf = 0, on_floor = 0, supplied_material = null, goes_in_hands = 1)
 		src.title = title
@@ -363,17 +367,13 @@
 		src.use_material = supplied_material
 		src.goes_in_hands = goes_in_hands
 
-	var/use_reinf_material
-	var/difficulty = 1 // higher difficulty requires higher skill level to make.
-	var/send_material_data = 0 //Whether the recipe will send the material name as an argument when creating product.
-	var/apply_material_name = 1 //Whether the recipe will prepend a material name to the title - 'steel clipboard' vs 'clipboard'
-
+/*
 /datum/stack_recipe/New(material/material, var/reinforce_material)
 	if(material)
 		use_material = material.name
 	if(reinforce_material)
 		use_reinf_material = reinforce_material
-
+*/
 /datum/stack_recipe/proc/display_name()
 	if(!use_material || !apply_material_name)
 		return title
