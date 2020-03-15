@@ -140,7 +140,6 @@
 	interface_desc = "A shoulder-mounted cell-powered laser cannon."
 
 	var/obj/item/weapon/gun/gun = /obj/item/weapon/gun/energy/lasercannon/mounted
-	var/safety = 0
 
 /obj/item/rig_module/mounted/Initialize()
 	. = ..()
@@ -169,7 +168,6 @@
 	interface_desc = "A forearm-mounted suit-powered energy gun."
 	origin_tech = list(TECH_POWER = 6, TECH_COMBAT = 6, TECH_ENGINEERING = 6)
 	gun = /obj/item/weapon/gun/energy/gun/mounted
-	var/safety = 0
 
 /obj/item/rig_module/mounted/taser
 
@@ -186,7 +184,6 @@
 	interface_desc = "A palm-mounted, cell-powered taser."
 	origin_tech = list(TECH_POWER = 5, TECH_COMBAT = 5, TECH_ENGINEERING = 6)
 	gun = /obj/item/weapon/gun/energy/taser/mounted
-	var/safety = 0
 
 /obj/item/rig_module/mounted/energy_blade
 
@@ -210,7 +207,6 @@
 	passive_power_cost = 0
 
 	gun = /obj/item/weapon/gun/energy/crossbow/ninja
-	var/safety = 0
 
 /obj/item/rig_module/mounted/energy_blade/Process()
 
