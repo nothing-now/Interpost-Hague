@@ -390,7 +390,7 @@ macro "macro"
 		command = ".me"
 	elem 
 		name = "F5"
-		command = "msay"
+		command = "asay"
 	elem 
 		name = "F6"
 		command = "Player-Panel-New"
@@ -1110,7 +1110,7 @@ window "rpane"
 	elem "github"
 		type = BUTTON
 		pos = 476,0
-		size = 60x15
+		size = 60x20
 		anchor1 = none
 		anchor2 = none
 		saved-params = "is-checked"
@@ -1119,7 +1119,7 @@ window "rpane"
 	elem "BugReport"
 		type = BUTTON
 		pos = 536,0
-		size = 60x15
+		size = 60x20
 		anchor1 = none
 		anchor2 = none
 		saved-params = "is-checked"
@@ -1128,7 +1128,7 @@ window "rpane"
 	elem "Discord"
 		type = BUTTON
 		pos = 596,0
-		size = 60x15
+		size = 60x20
 		anchor1 = none
 		anchor2 = none
 		saved-params = "is-checked"
@@ -1137,7 +1137,7 @@ window "rpane"
 	elem "rulesb"
 		type = BUTTON
 		pos = 120,0
-		size = 60x15
+		size = 60x20
 		anchor1 = none
 		anchor2 = none
 		saved-params = "is-checked"
@@ -1147,7 +1147,7 @@ window "rpane"
 	elem "changelog"
 		type = BUTTON
 		pos = 416,0
-		size = 60x15
+		size = 60x20
 		anchor1 = none
 		anchor2 = none
 		saved-params = "is-checked"
@@ -1157,7 +1157,7 @@ window "rpane"
 	elem "Lore"
 		type = BUTTON
 		pos = 208,0
-		size = 60x15
+		size = 60x20
 		anchor1 = none
 		anchor2 = none
 		saved-params = "is-checked"
@@ -1167,7 +1167,7 @@ window "rpane"
 	elem "forumb"
 		type = BUTTON
 		pos = 328,0
-		size = 60x15
+		size = 60x20
 		anchor1 = none
 		anchor2 = none
 		saved-params = "is-checked"
@@ -1177,7 +1177,7 @@ window "rpane"
 	elem "wikib"
 		type = BUTTON
 		pos = 268,0
-		size = 60x15
+		size = 60x20
 		anchor1 = none
 		anchor2 = none
 		saved-params = "is-checked"
@@ -1187,7 +1187,7 @@ window "rpane"
 	elem "textb"
 		type = BUTTON
 		pos = 0,0
-		size = 60x15
+		size = 60x20
 		anchor1 = none
 		anchor2 = none
 		is-visible = false
@@ -1195,18 +1195,6 @@ window "rpane"
 		text = "Text"
 		command = ".winset \"rpanewindow.left=;\""
 		is-checked = true
-		group = "rpanemode"
-		button-type = pushbox
-	elem "infob"
-		type = BUTTON
-		pos = 60,0
-		size = 60x15
-		anchor1 = none
-		anchor2 = none
-		is-visible = false
-		saved-params = "is-checked"
-		text = "Info"
-		command = ".winset \"rpanewindow.left=infowindow\""
 		group = "rpanemode"
 		button-type = pushbox
 
