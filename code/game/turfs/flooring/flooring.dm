@@ -38,6 +38,7 @@ var/list/flooring_types
 	var/descriptor = "tiles"
 	var/flags
 	var/can_paint
+	var/can_engrave = TRUE
 
 	//How we smooth with other flooring
 	var/decal_layer = DECAL_LAYER
@@ -65,6 +66,7 @@ var/list/flooring_types
 	damage_temperature = T0C+80
 	flags = TURF_HAS_EDGES | TURF_HAS_CORNERS | TURF_REMOVE_SHOVEL
 	build_type = /obj/item/stack/tile/grass
+	can_engrave = FALSE
 	floor_smooth = SMOOTH_NONE
 	wall_smooth = SMOOTH_ALL
 	space_smooth = SMOOTH_NONE
@@ -77,6 +79,7 @@ var/list/flooring_types
 	icon_base = "asteroid"
 	flags = TURF_HAS_EDGES | TURF_REMOVE_SHOVEL
 	build_type = null
+	can_engrave = FALSE
 
 /decl/flooring/carpet
 	name = "brown carpet"
@@ -90,6 +93,7 @@ var/list/flooring_types
 	floor_smooth = SMOOTH_NONE
 	wall_smooth = SMOOTH_NONE
 	space_smooth = SMOOTH_NONE
+	can_engrave = FALSE
 
 /decl/flooring/carpet/blue
 	name = "blue carpet"
@@ -507,6 +511,7 @@ var/list/flooring_types
 	build_type = null
 	flags = TURF_ACID_IMMUNE | TURF_CAN_BREAK | TURF_REMOVE_WRENCH
 	can_paint = 1
+	can_engrave = FALSE
 
 /decl/flooring/reinforced/circuit/green
 	icon_base = "gcircuit"
@@ -535,6 +540,7 @@ var/list/flooring_types
 	build_type = null
 	flags = TURF_ACID_IMMUNE | TURF_CAN_BREAK | TURF_REMOVE_WRENCH
 	can_paint = 1
+	can_engrave = FALSE
 
 /decl/flooring/reinforced/shuttle/blue
 	icon_base = "floor"

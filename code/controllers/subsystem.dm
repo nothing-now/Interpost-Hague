@@ -163,6 +163,7 @@
 	var/msg = "Initialized [name] subsystem within [time] second[time == 1 ? "" : "s"]!"
 	to_chat(world, "<span class='boldannounce'>[msg]</span>")
 	log_world(msg)
+	initialized = TRUE
 	return time
 
 //hook for printing stats to the "MC" statuspanel for admins to see performance and related stats etc.

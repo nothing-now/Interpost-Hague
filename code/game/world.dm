@@ -474,6 +474,7 @@ var/world_topic_spam_protect_time = world.timeofday
 
 		*/
 
+	Master.Shutdown()
 	processScheduler.stop()
 
 	var/datum/chatOutput/co
@@ -597,7 +598,7 @@ var/world_topic_spam_protect_time = world.timeofday
 			features += master_mode
 	else
 		features += "<b>STARTING</b>"
-
+	s += "<img src=\"https://i.imgur.com/jkCHCCJ.png\">" //Banner image
 	if (!config.enter_allowed)
 		features += "closed"
 
