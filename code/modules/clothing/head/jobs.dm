@@ -20,6 +20,13 @@
 	item_state = "crown"
 	desc = "It's good being magistrate."
 
+//Countess
+/obj/item/clothing/head/crown_countess
+	name = "countess's crown"
+	icon_state = "crown_countess"
+	item_state = "crown_countess"
+	desc = "It's good being magistrate's wife."
+
 //Captain
 /obj/item/clothing/head/caphat
 	name = "captain's hat"

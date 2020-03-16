@@ -1,6 +1,7 @@
 /datum/map/frontier
 	allowed_jobs = list(
 						/datum/job/captain,
+						/datum/job/countess,
 						/datum/job/hop,
 						/datum/job/supreme_arbiter,
 						/datum/job/arbiter,
@@ -92,6 +93,7 @@
 /datum/map/alpha
 	allowed_jobs = list(
 						/datum/job/captain,
+						/datum/job/countess,
 						/datum/job/hop,
 						/datum/job/supreme_arbiter,
 						/datum/job/arbiter,
@@ -165,7 +167,7 @@
 	minimal_player_age = 41
 	economic_modifier = 10
 	ideal_character_age = 55
-	outfit_type = /decl/hierarchy/outfit/job/dreyfus/magistrate
+	outfit_type = /decl/hierarchy/outfit/job/dreyfus/countess
 	social_class = SOCIAL_CLASS_MAX
 	department_flag = SPT
 	sex_lock = FEMALE

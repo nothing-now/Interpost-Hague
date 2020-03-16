@@ -9,6 +9,17 @@
 	head = /obj/item/clothing/head/crown//FIT FOR A FUCKING KING
 	suit = /obj/item/clothing/suit/robes
 
+/decl/hierarchy/outfit/job/dreyfus/countess
+	name = OUTFIT_JOB_NAME("Countess")
+	l_ear = /obj/item/device/radio/headset/heads/captain
+	uniform = /obj/item/clothing/under/rank/magistrate
+	shoes = /obj/item/clothing/shoes/dress
+	id_type = /obj/item/weapon/card/id/dreyfus/gold
+	pda_type = /obj/item/device/pda/captain
+	gloves = /obj/item/clothing/gloves/white
+	head = /obj/item/clothing/head/crown_countess//FIT FOR A FUCKING QUEEN
+	suit = /obj/item/clothing/suit/robes
+
 /decl/hierarchy/outfit/job/dreyfus/adjoint
 	name = OUTFIT_JOB_NAME("Directeur Adjoint")
 	l_ear = /obj/item/device/radio/headset/heads/hop
