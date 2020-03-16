@@ -38,3 +38,9 @@
 	name = "\improper Mounted Laser Cannon"
 	item_cost = 64
 	path = /obj/item/rig_module/mounted
+
+/datum/uplink_item/item/hardsuit_modules/heavy_rig
+	name = "\improper Mercenary Rig"
+	item_cost = 100
+	antag_costs = list(MODE_MERCENARY = 89)
+	path = /obj/item/weapon/rig/merc/heavy
