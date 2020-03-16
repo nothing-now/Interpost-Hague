@@ -546,7 +546,7 @@
 	item_state = "c_tube"
 	matter = list("glass" = 100)
 
-	brightness_range = 5	// luminosity when on, also used in power calculation
+	brightness_range = 6	// luminosity when on, also used in power calculation
 	brightness_power = 5
 	brightness_color = "#D9AA4C"//"#FAE1AF"//"#C5D8B3"//#CDFEE0//"#B2B2B2"
 	lighting_modes = list(
