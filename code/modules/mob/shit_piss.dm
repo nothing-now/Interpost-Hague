@@ -22,11 +22,13 @@
 	icon_state = "floor1"
 	random_icon_states = list("floor1", "floor2", "floor3", "floor4", "floor5", "floor6", "floor7", "floor8")
 	var/dried = 0
+	persistent = TRUE
 
 
 /obj/effect/decal/cleanable/poo/New()
 	icon = 'icons/effects/pooeffect.dmi'
 	icon_state = pick(src.random_icon_states)
+	..()
 	for(var/obj/effect/decal/cleanable/poo/shit in src.loc)
 		if(shit != src)
 			qdel(shit)
