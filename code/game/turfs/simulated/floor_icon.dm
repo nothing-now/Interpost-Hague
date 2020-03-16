@@ -88,11 +88,12 @@ var/list/flooring_cache = list()
 			F.queue_ao(FALSE)
 			F.update_icon()
 
-/turf/simulated/floor/proc/get_flooring_overlay(var/cache_key, var/icon_base, var/icon_dir = 0, var/external = FALSE)
+/turf/simulated/floor/proc/get_flooring_overlay(var/cache_key, var/icon_base, var/icon_dir = 0)
 	if(!flooring_cache[cache_key])
 		var/image/I = image(icon = flooring.icon, icon_state = icon_base, dir = icon_dir)
 		I.turf_decal_layerise()
 
+/*
 		//External overlays will be offset out of this tile
 		if (external)
 			if (icon_dir & NORTH)
@@ -105,6 +106,7 @@ var/list/flooring_cache = list()
 			else if (icon_dir & EAST)
 				I.pixel_x = world.icon_size
 		I.layer = flooring.decal_layer
+*/
 
 		flooring_cache[cache_key] = I
 	return flooring_cache[cache_key]
