@@ -54,7 +54,7 @@
 	player.equip_to_slot_or_del(R, slot_l_ear)
 	return R
 
-/datum/antagonist/proc/create_nuke(var/atom/paper_spawn_loc, var/datum/mind/code_owner)
+/datum/antagonist/proc/create_nuke(var/datum/mind/player, var/atom/paper_spawn_loc, )
 
 	// Decide on a code.
 	var/obj/effect/landmark/nuke_spawn = locate(nuke_spawn_loc ? nuke_spawn_loc : "landmark*Nuclear-Bomb")
@@ -80,12 +80,8 @@
 			if(leader && leader.current)
 				if(get_turf(P) == get_turf(leader.current) && !(leader.current.l_hand && leader.current.r_hand))
 					leader.current.put_in_hands(P)
-
-		if(!code_owner && leader)
-			code_owner = leader
-		if(code_owner)
-			code_owner.store_memory("<B>Nuclear Bomb Code</B>: [code]", 0, 0)
-			to_chat(code_owner.current, "The nuclear authorization code is: <B>[code]</B>")
+		player.store_memory("<B>Nuclear Bomb Code</B>: [code]", 0, 0)
+		to_chat(player.current, "The nuclear authorization code is: <B>[code]</B>")
 	else
 		message_admins("<span class='danger'>Could not spawn nuclear bomb. Contact a developer.</span>")
 		return
@@ -105,7 +101,7 @@
 		to_chat(player.current, "<span class='notice'>[antag_text]</span>")
 
 	if((flags & ANTAG_HAS_NUKE) && !spawned_nuke)
-		create_nuke()
+		create_nuke(player)
 
 	src.show_objectives_at_creation(player)
 	return 1
