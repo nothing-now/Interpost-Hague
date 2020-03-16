@@ -635,7 +635,9 @@ var/global/datum/controller/occupations/job_master
 			if("Supreme Arbiter" || "Arbiter")
 				H.combat_music = GLOB.religion_combat_music
 			if("Jester")
-				H.combat_music = GLOB.jester_combat_music
+				H.combat_music = GLOB.jester_combat_music 
+			else
+				H.combat_music = GLOB.generic_combat_music
 /**
  *  Return appropriate /datum/spawnpoint for given client and rank
  *

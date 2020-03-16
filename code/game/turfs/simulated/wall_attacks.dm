@@ -132,7 +132,7 @@
 
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 
-	if(!construction_stage && try_graffiti(user, W))
+	if(!construction_stage)
 		return
 
 	if (!user.IsAdvancedToolUser())

@@ -71,10 +71,11 @@ GLOBAL_LIST_INIT(chop_sound,list('sound/weapons/chop1.ogg','sound/weapons/chop2.
 /*
 job music
 */
-GLOBAL_LIST_INIT(command_combat_music, pick(list('sound/music/noble_combat_01.ogg','sound/music/noble_combat_02.ogg','sound/music/noble_combat_03.ogg')))
-GLOBAL_LIST_INIT(religion_combat_music, pick(list('sound/music/religion_combat_01.ogg','sound/music/religion_combat_02.ogg')))
-GLOBAL_LIST_INIT(jester_combat_music, pick(list('sound/music/jester_combat_01.ogg','sound/music/jester_combat_02.ogg')))
-GLOBAL_LIST_INIT(security_combat_music, pick(list('sound/music/security_combat_01.ogg','sound/music/security_combat_02.ogg')))
+GLOBAL_VAR_INIT(generic_combat_music, pick(list('sound/music/combat_music.ogg','sound/music/bloodlust.ogg')))
+GLOBAL_VAR_INIT(command_combat_music, pick(list('sound/music/noble_combat_01.ogg','sound/music/noble_combat_02.ogg','sound/music/noble_combat_03.ogg')))
+GLOBAL_VAR_INIT(religion_combat_music, pick(list('sound/music/religion_combat_01.ogg','sound/music/religion_combat_02.ogg')))
+GLOBAL_VAR_INIT(jester_combat_music, pick(list('sound/music/jester_combat_01.ogg','sound/music/jester_combat_02.ogg')))
+GLOBAL_VAR_INIT(security_combat_music, pick(list('sound/music/security_combat_01.ogg','sound/music/security_combat_02.ogg')))
 
 /proc/playsound(var/atom/source, soundin, vol as num, vary, extrarange as num, falloff, var/is_global, var/frequency, var/is_ambiance = 0)
 

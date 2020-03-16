@@ -6,7 +6,7 @@
 	if(isCoil(C) || (flooring && istype(C, /obj/item/stack/rods)))
 		return ..(C, user)
 
-	if(!(isScrewdriver(C) && flooring && (flooring.flags & TURF_REMOVE_SCREWDRIVER)) && try_graffiti(user, C))
+	if(!(isScrewdriver(C) && flooring && (flooring.flags & TURF_REMOVE_SCREWDRIVER)))
 		return
 
 	if(flooring)

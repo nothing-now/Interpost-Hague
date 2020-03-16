@@ -859,7 +859,7 @@ obj/item/clothing/mask/chewable/Destroy()
 /obj/item/trash/cigbutt/spitwad
 	name = "spit wad"
 	desc = "A disgusting spitwad."
-	icon_state = "spit-chew"
+	icon_state = "spit-gum"
 
 /obj/item/clothing/mask/chewable/proc/extinguish(var/mob/user, var/no_message)
 	STOP_PROCESSING(SSobj, src)
@@ -890,6 +890,7 @@ obj/item/clothing/mask/chewable/Destroy()
 	desc = "A chewy wad of synthetic rubber, laced with nicotine. Possibly the least disgusting method of nicotine delivery."
 	icon_state = "nic_gum"
 	type_butt = /obj/item/trash/cigbutt/spitgum
+
 /obj/item/clothing/mask/chewable/tobacco/nico/New()
 	..()
 	reagents.add_reagent(/datum/reagent/nicotine, 2)

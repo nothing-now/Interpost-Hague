@@ -141,7 +141,7 @@
 
 /datum/job/captain
 	title = "Count"
-	supervisors = "CMA and your good will."
+	supervisors = "Your own wits"
 	minimal_player_age = 41
 	economic_modifier = 10
 	ideal_character_age = 65
@@ -158,6 +158,27 @@
 		//H.add_stats(rand(6,9), rand(9,11), rand(10,12))
 		H.generate_stats(STAT_ST)
 		H.generate_skills(list("melee","ranged","medical","engineering"))
+
+/datum/job/countess
+	title = "Countess"
+	supervisors = "Your husband the Count"
+	minimal_player_age = 41
+	economic_modifier = 10
+	ideal_character_age = 55
+	outfit_type = /decl/hierarchy/outfit/job/dreyfus/magistrate
+	social_class = SOCIAL_CLASS_MAX
+	department_flag = SPT
+	sex_lock = FEMALE
+
+
+	equip(var/mob/living/carbon/human/H)
+		..()
+		if(!H.religion_is_legal())//So that they can't be heretics.
+			H.religion = LEGAL_RELIGION
+		//H.add_stats(rand(6,9), rand(9,11), rand(10,12))
+		H.generate_stats(STAT_DX)
+		H.generate_skills(list("melee","ranged","medical","cleaning"))
+
 
 
 

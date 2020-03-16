@@ -36,15 +36,12 @@
 	requirments =  list("NORTH" = /obj/item/clothing/glasses/sunglasses/,
 						"EAST" = /obj/item/weapon/flame/candle/,
 						"WEST" = /obj/item/weapon/flame/candle/,
-						"SOUTH" = /obj/item/organ/internal/eyes)
+						"SOUTH" = /obj/item/weapon/paper)
 	old_god = MESSIAH
 	
-	spell_effect(var/mob/living/user)
-		var/possible_targets = list()
-		for(var/mob/living/carbon/human/player in GLOB.player_list)
-			if(player.religion != MESSIAH)
-				possible_targets += player
-		var/mob/living/carbon/human/target = pick(possible_targets)
+	spell_effect(var/mob/living/user, var/list/spell_components)
+		var/obj/item/weapon/paper/target1_paper = spell_components["SOUTH"]
+		var/mob/living/carbon/human/target = get_player_from_paper(target1_paper)
 		if(!target)	return 0
 		to_chat(target, "<span class='danger'>Your eyes burn horrificly!</span>")
 		target.disabilities |= BLIND

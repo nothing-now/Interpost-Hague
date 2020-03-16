@@ -32,7 +32,7 @@
 /datum/request/offering/New(var/religion)
 	offering_item = pick(GLOB.all_religions[religion].offering_items)
 	offering_item = new offering_item
-	message += "   Place [offering_item] before a shrine and praise your god."
+	message += "   Place \the [offering_item] before a shrine and praise your god."
 
 /datum/request/offering/check_complete(var/mob/living/target)
 	for(var/obj/O in view(target, 5))
