@@ -143,6 +143,10 @@
 	safety = !safety
 	to_chat(usr, "<span class = 'notice'>You switch the safety [safety ? "on" : "off"].</span>")
 
+/obj/item/weapon/gun/AltClick(var/mob/user)
+	safety = !safety
+	to_chat(usr, "<span class = 'notice'>You switch the safety [safety ? "on" : "off"].</span>")
+
 /obj/item/weapon/reagent_containers/spray/pepper/Spray_at(atom/A as mob|obj)
 	if(safety)
 		to_chat(usr, "<span class = 'warning'>The safety is on!</span>")
