@@ -1197,6 +1197,18 @@ window "rpane"
 		is-checked = true
 		group = "rpanemode"
 		button-type = pushbox
+	elem "infob"	
+		type = BUTTON	
+		pos = 40,0	
+		size = 60x20	
+		anchor1 = none	
+		anchor2 = none	
+		is-visible = false	
+		saved-params = "is-checked"	
+		text = "Info"	
+		command = ".winset \"rpanewindow.left=infowindow\""	
+		group = "rpanemode"	
+		button-type = pushbox
 
 window "infowindow"
 	elem "infowindow"
