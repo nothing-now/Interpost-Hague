@@ -220,6 +220,8 @@ var/datum/antagonist/raider/raiders
 		player.equip_to_slot_or_del(new new_glasses(player),slot_glasses)
 		player.equip_to_slot_or_del(new new_helmet(player),slot_head)
 		player.equip_to_slot_or_del(new new_suit(player),slot_wear_suit)
+		player.generate_stats(STAT_ST)
+		player.generate_skills("melee", "ranged")
 		equip_weapons(player)
 
 	var/obj/item/weapon/card/id/id = create_id("Visitor", player, equip = 0)
