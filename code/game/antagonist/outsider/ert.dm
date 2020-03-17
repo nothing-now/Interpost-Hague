@@ -47,6 +47,8 @@ var/datum/antagonist/ert/ert
 	player.equip_to_slot_or_del(new /obj/item/clothing/shoes/swat(src), slot_shoes)
 	player.equip_to_slot_or_del(new /obj/item/clothing/gloves/thick/swat(src), slot_gloves)
 	player.equip_to_slot_or_del(new /obj/item/clothing/glasses/sunglasses(src), slot_glasses)
+	player.generate_stats(STAT_ST)
+	player.generate_skills("melee", "ranged")
 
 	create_id(role_text, player)
 	return 1
