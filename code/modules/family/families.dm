@@ -17,7 +17,7 @@
 	family_head = head
 
 // Handles adding someone to the family datum "members"
-// Also handles setting the player name correctly (TODO)
+// Also handles setting the player name correctly
 /datum/family/proc/add_member(var/mob/living/carbon/human/member)
 	var/regex/R = regex("(^\\S+) (.*$)") //Get first name and last name
 	R.Find(member.real_name)
