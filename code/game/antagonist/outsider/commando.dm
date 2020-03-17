@@ -31,6 +31,8 @@ var/datum/antagonist/deathsquad/mercenary/commandos
 	player.equip_to_slot_or_del(new /obj/item/weapon/rig/merc(player), slot_back)
 	player.equip_to_slot_or_del(new /obj/item/weapon/gun/energy/pulse_rifle(player), slot_r_hand)
 	player.equip_to_slot_or_del(new /obj/item/weapon/melee/energy/sword(player), slot_l_hand)
+	player.generate_stats(STAT_ST)
+	player.generate_skills("melee", "ranged")
 
 	create_id("Commando", player)
 	create_radio(SYND_FREQ, player)
