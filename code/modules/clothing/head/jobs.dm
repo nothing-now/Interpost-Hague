@@ -16,8 +16,8 @@
 //Magistrate
 /obj/item/clothing/head/crown
 	name = "count's crown"
-	icon_state = "crownOLD"
-	item_state = "crownOLD"
+	icon_state = "crown"
+	item_state = "crown"
 	desc = "It's good being the Count."
 
 //Countess
