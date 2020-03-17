@@ -49,6 +49,8 @@ var/datum/antagonist/deathsquad/deathsquad
 	player.equip_to_slot_or_del(new /obj/item/weapon/gun/energy/pulse_rifle(player), slot_r_hand)
 	player.equip_to_slot_or_del(new /obj/item/weapon/rig/ert/assetprotection(player), slot_back)
 	player.equip_to_slot_or_del(new /obj/item/weapon/melee/energy/sword(player), slot_l_hand)
+	player.generate_stats(STAT_ST)
+	player.generate_skills("melee", "ranged")
 	player.implant_loyalty(player)
 
 	var/obj/item/weapon/card/id/id = create_id("Asset Protection", player)
@@ -75,8 +77,6 @@ var/datum/antagonist/deathsquad/deathsquad
 	player.name = "[syndicate_commando_rank] [syndicate_commando_name]"
 	player.current.real_name = player.name
 	player.current.SetName(player.current.name)
-	player.generate_stats(STAT_ST)
-	player.generate_skills("melee", "ranged")
 
 	var/mob/living/carbon/human/H = player.current
 	if(istype(H))
