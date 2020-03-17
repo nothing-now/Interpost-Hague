@@ -301,4 +301,10 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 /datum/chatOutput/proc/swaptodarkmode()
 	owner.force_dark_theme()
 
+/proc/to_chat(target, message, handle_whitespace = TRUE)
+	if(Master.current_runlevel == RUNLEVEL_INIT || !SSchat?.initialized)
+		to_chat_immediate(target, message, handle_whitespace)
+		return
+	SSchat.queue(target, message, handle_whitespace)
+
 #undef MAX_COOKIE_LENGTH
