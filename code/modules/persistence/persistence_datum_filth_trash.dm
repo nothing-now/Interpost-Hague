@@ -1,6 +1,6 @@
 /datum/persistent/filth/trash
 	name = "trash"
-	entries_expire_at = 5
+	entries_expire_at = 3
 
 /datum/persistent/filth/trash/set_filename()
 	filename = "data/persistent/[lowertext(GLOB.using_map.name)]-trash.txt"

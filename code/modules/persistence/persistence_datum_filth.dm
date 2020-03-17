@@ -1,7 +1,7 @@
 /datum/persistent/filth
 	name = "filth"
 	tokens_per_line = 5
-	entries_expire_at = 5
+	entries_expire_at = 2
 
 /datum/persistent/filth/set_filename()
 	filename = "data/persistent/[lowertext(GLOB.using_map.name)]-filth.txt"
