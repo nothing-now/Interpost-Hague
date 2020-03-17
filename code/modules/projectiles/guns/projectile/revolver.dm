@@ -14,7 +14,7 @@
 	reload_sound 	= 'sound/weapons/guns/interact/rev_magin.ogg'
 	bulletinsert_sound 	= 'sound/weapons/guns/interact/rev_magin.ogg'
 
-/obj/item/weapon/gun/projectile/revolver/AltClick()
+/obj/item/weapon/gun/projectile/revolver/MiddleClick()
 	if(CanPhysicallyInteract(usr))
 		spin_cylinder()
 
