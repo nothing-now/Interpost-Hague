@@ -80,6 +80,9 @@ var/datum/antagonist/wizard/wizards
 	var/decl/hierarchy/outfit/wizard_outfit = outfit_by_type(outfit_type)
 	wizard_outfit.equip(wizard_mob)
 
+	player.generate_stats(STAT_DX)
+	player.generate_skills("ranged", "cleaning")
+
 	return 1
 
 /datum/antagonist/wizard/check_victory()
