@@ -1136,7 +1136,7 @@ window "rpane"
 		command = "discord"
 	elem "rulesb"
 		type = BUTTON
-		pos = 120,0
+		pos = 150,0
 		size = 60x20
 		anchor1 = none
 		anchor2 = none
