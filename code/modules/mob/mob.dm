@@ -247,22 +247,24 @@
 	set category = "Object"
 
 	if(!src || !isturf(src.loc) || !(A in view(src.loc)))
-		return FALSE
+		return 0
 	if(istype(A, /obj/effect/decal/point))
-		return FALSE
+		return 0
 
 	var/tile = get_turf(A)
 	if (!tile)
-		return FALSE
+		return 0
 
 	var/obj/P = new /obj/effect/decal/point(tile)
 	P.set_invisibility(invisibility)
 	spawn(20)
 		if(P)
-			qdel(P)
+			P.pixel_x = A.pixel_x
+			P.pixel_y = A.pixel_y
+		qdel(P)
 
 	face_atom(A)
-	return TRUE
+	return 1
 
 //Gets the mob grab conga line.
 /mob/proc/ret_grab(list/L)
