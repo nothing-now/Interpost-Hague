@@ -684,7 +684,7 @@
 
 /obj/item/clothing/under/dress/dress_countess
 	name = "countess dress"
-	desc = "A fine embroidered gown"
+	desc = "A fine embroidered gown, fit for a noble princess."
 	icon_state = "servdress"
 	item_state = "blackskirt"
 	worn_state = "servdress"
