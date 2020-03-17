@@ -39,14 +39,10 @@
 /obj/item/weapon/implant/freedom/proc/remove_cuffs_and_unbuckle(mob/living/carbon/user)
 	if(!user.handcuffed)
 		return 0
-	if (!user.legcuffed)
-		return 0
 	. = user.unEquip(user.handcuffed)
 	if(. && user.buckled && user.buckled.buckle_require_restraints)
 		user.buckled.unbuckle_mob()
 		return
-	if (user.legcuffed)
-		user.unEquip(user.legcuffed)
 
 /obj/item/weapon/implant/freedom/implanted(mob/living/carbon/source)
 	src.activation_emote = input("Choose activation emote:") in list("blink", "blink_r", "eyebrow", "chuckle", "twitch_v", "frown", "nod", "blush", "giggle", "grin", "groan", "shrug", "smile", "pale", "sniff", "whimper", "wink")
