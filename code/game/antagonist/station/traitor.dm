@@ -5,6 +5,11 @@ var/datum/antagonist/traitor/traitors
 	id = MODE_TRAITOR
 	protected_jobs = list(/datum/job/officer, /datum/job/warden, /datum/job/detective, /datum/job/captain, /datum/job/lawyer, /datum/job/hos)
 	flags = ANTAG_SUSPICIOUS | ANTAG_RANDSPAWN | ANTAG_VOTABLE
+	hard_cap = 7
+	hard_cap_round = 7
+	initial_spawn_req = 2
+	initial_spawn_target = 5
+	show_objectives_on_creation = 0 //we are not antagonists, we do not need the antagonist shpiel/objectives
 
 /datum/antagonist/traitor/New()
 	..()
