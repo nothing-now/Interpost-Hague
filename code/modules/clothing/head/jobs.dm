@@ -15,17 +15,17 @@
 
 //Magistrate
 /obj/item/clothing/head/crown
-	name = "magistrate's crown"
-	icon_state = "crown"
-	item_state = "crown"
-	desc = "It's good being magistrate."
+	name = "count's crown"
+	icon_state = "crownOLD"
+	item_state = "crownOLD"
+	desc = "It's good being the Count."
 
 //Countess
 /obj/item/clothing/head/crown_countess
 	name = "countess's crown"
 	icon_state = "crown_countess"
 	item_state = "crown_countess"
-	desc = "It's good being magistrate's wife."
+	desc = "It's good being the Count's wife."
 
 //Captain
 /obj/item/clothing/head/caphat
