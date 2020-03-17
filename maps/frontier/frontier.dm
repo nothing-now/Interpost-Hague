@@ -25,6 +25,7 @@
 
 	#include "../shared/exodus_torch/_include.dm"
 
+	#include "../../code/modules/lobby_music/museum.dm"
 	#include "../../code/modules/lobby_music/absconditus.dm"
 	#include "../../code/modules/lobby_music/space_oddity.dm"
 	#include "../../code/modules/lobby_music/undercurrent.dm"

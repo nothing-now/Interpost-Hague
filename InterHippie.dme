@@ -1575,6 +1575,7 @@
 #include "code\modules\lobby_music\space_oddity.dm"
 #include "code\modules\lobby_music\stahura.dm"
 #include "code\modules\lobby_music\undercurrent.dm"
+#include "code\modules\lobby_music\museum.dm"
 #include "code\modules\locks\key.dm"
 #include "code\modules\locks\lock.dm"
 #include "code\modules\locks\lock_construct.dm"
