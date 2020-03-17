@@ -28,8 +28,6 @@ var/datum/antagonist/mercenary/mercs
 		return 0
 	global_objectives = list()
 	global_objectives |= new /datum/objective/nuclear
-	player.generate_stats(STAT_ST)
-	player.generate_skills("melee", "ranged")
 	return 1
 
 /datum/antagonist/mercenary/equip(var/mob/living/carbon/human/player)
@@ -41,5 +39,8 @@ var/datum/antagonist/mercenary/mercs
 
 	var/obj/item/device/radio/uplink/U = new(get_turf(player), player.mind, DEFAULT_TELECRYSTAL_AMOUNT)
 	player.put_in_hands(U)
+
+	player.generate_stats(STAT_ST)
+	player.generate_skills("melee", "ranged")
 
 	return 1
