@@ -610,6 +610,9 @@ meteor_act
 		return
 	if(user == src)//Can't kick yourself dummy.
 		return
+	if(legcuffed)
+		to_chat(user, "<span class='danger'>Your legs are cuffed!</span>")
+		return
 
 	var/hit_zone = user.zone_sel.selecting
 	var/too_high_message = "You can't reach that high."
