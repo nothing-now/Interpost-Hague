@@ -128,6 +128,8 @@ var/datum/antagonist/ninja/ninjas
 	player.mind.store_memory("<B>Uplink Passcode:</B> [pda_pass].")
 	U.hidden_uplink.uses = 0
 	player.put_in_hands(U)
+	player.generate_stats(STAT_DX)
+	player.generate_skills("melee", "ranged")
 
 	spawn(10)
 		if(player.internal)
