@@ -75,6 +75,8 @@ var/datum/antagonist/deathsquad/deathsquad
 	player.name = "[syndicate_commando_rank] [syndicate_commando_name]"
 	player.current.real_name = player.name
 	player.current.SetName(player.current.name)
+	player.generate_stats(STAT_ST)
+	player.generate_skills("melee", "ranged")
 
 	var/mob/living/carbon/human/H = player.current
 	if(istype(H))
