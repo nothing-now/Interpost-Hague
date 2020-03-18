@@ -208,6 +208,10 @@
 
 	if(holder)
 		src.control_freak = 0 //Devs need 0 for profiler access
+
+	if(get_preference_value(/datum/client_preference/fullscreen_mode) == GLOB.PREF_YES)
+		toggle_fullscreen(TRUE)
+
 	//////////////
 	//DISCONNECT//
 	//////////////
@@ -391,7 +395,6 @@ client/verb/character_setup()
 
 	if (fullscreen)
 		winset(usr, "mainwindow", "titlebar=false")
-		winset(usr, "mainwindow", "statusbar=false")
 		winset(usr, "mainwindow", "can-resize=false")
 		winset(usr, "mainwindow", "is-maximized=false")
 		winset(usr, "mainwindow", "is-maximized=true")
@@ -399,7 +402,6 @@ client/verb/character_setup()
 	else
 		winset(usr, "mainwindow", "is-maximized=false")
 		winset(usr, "mainwindow", "titlebar=true")
-		winset(usr, "mainwindow", "statusbar=true")
 		winset(usr, "mainwindow", "can-resize=true")
 		winset(usr, "mainwindow", "menu=menu")
 
