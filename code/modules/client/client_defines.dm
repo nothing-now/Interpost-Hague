@@ -22,6 +22,7 @@
 	var/staffwarn = null
 	var/datum/chatOutput/chatOutput
 
+	var/fullscreen = FALSE
 		///////////////
 		//SOUND STUFF//
 		///////////////
