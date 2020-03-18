@@ -391,6 +391,7 @@ client/verb/character_setup()
 
 	if (fullscreen)
 		winset(usr, "mainwindow", "titlebar=false")
+		winset(usr, "mainwindow", "statusbar=false")
 		winset(usr, "mainwindow", "can-resize=false")
 		winset(usr, "mainwindow", "is-maximized=false")
 		winset(usr, "mainwindow", "is-maximized=true")
@@ -398,6 +399,7 @@ client/verb/character_setup()
 	else
 		winset(usr, "mainwindow", "is-maximized=false")
 		winset(usr, "mainwindow", "titlebar=true")
+		winset(usr, "mainwindow", "statusbar=true")
 		winset(usr, "mainwindow", "can-resize=true")
 		winset(usr, "mainwindow", "menu=menu")
 
