@@ -842,13 +842,17 @@ var/global/floorIsLava = 0
 	if(!usr.client.holder || !check_rights(R_ADMIN))
 		return
 
-	if(GAME_STATE_PREGAME)
+	if(ticker.current_state == GAME_STATE_PREGAME)
 		to_chat(usr, "<span class='bigdanger'>The round has not started yet!</span>")
 		return
 
 	var/confirm = alert("End the game round?", "Game Ending", "Yes", "Cancel")
 	if(confirm == "Yes")
 		SSticker.force_ending = 1
+		ticker.current_state = GAME_STATE_FINISHED
+		Master.SetRunLevel(RUNLEVEL_POSTGAME)
+		spawn
+			ticker.declare_completion()
 		log_and_message_admins("initiated a game ending.")
 		to_world("<span class='danger'>Game ending!</span> <span class='notice'>Initiated by [usr.key]!</span>")
 		feedback_add_details("admin_verb","ER") //If you are copy-pasting this, ensure the 2nd parameter is unique to the new proc!
