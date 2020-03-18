@@ -483,6 +483,8 @@ var/global/datum/controller/gameticker/ticker
 		to_world("<b>[max_profit.owner_name]</b> received most <font color='green'><B>PROFIT</B></font> today, with net profit of <b>T[max_profit.get_balance()]</b>.")
 		to_world("On the other hand, <b>[max_loss.owner_name]</b> had most <font color='red'><B>LOSS</B></font>, with total loss of <b>T[max_loss.get_balance()]</b>.")
 
+	mode.declare_completion()//To declare normal completion.
+	/* Old stats that were just printed to chat
 	//ROUND END STATS
 	var/round_end_stats = "<b>ROUND END STATS:</b>\n"
 	round_end_stats += "Number of times the floor was shit on: <font color='red'><B>[GLOB.shit_left]</B></font>.\n"
@@ -498,9 +500,13 @@ var/global/datum/controller/gameticker/ticker
 				for(var/H in GLOB.all_religions[old_god].followers)
 					round_end_stats += "<font color='red'><b>[H]</b></font>\n"
 
-	to_world(round_end_stats)
-	mode.declare_completion()//To declare normal completion.
+	for(var/datum/family/F in families)
+		round_end_stats += "<b>[F.name] head: [F.family_head.mind]. [F.name] Memebers were:</b>\n"
+		for(var/mob/living/carbon/human/M in F.members)
+				round_end_stats += "<b>Member: [M.real_name]</b>\n"
 
+	to_world(round_end_stats)
+	*/
 	//Ask the event manager to print round end information
 	GLOB.event_manager.RoundEnd()
 

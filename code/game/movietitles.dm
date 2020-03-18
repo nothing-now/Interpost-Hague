@@ -177,12 +177,24 @@ client
 		titles += "<center>STAFF'S GOOD BOYS:<br>[english_list(goodboys)]</center><br>"
 	
 	//Add round end stats to ticker
-	titles += "<center>The floor was shit on [GLOB.shit_left] times.</center><br>"
-	titles += "<center>The floor was pissed on [GLOB.piss_left] times.</center><br>"
-	titles += "<center>[GLOB.deaths_in_space] people died in space.</center><br>"
-	titles += "<center>[GLOB.teeth_lost] teeth were lost.</center><br>"
-	titles += "<center>[GLOB.total_deaths] people died in total.</center><br>"
-	titles += "<center>[GLOB.total_orgasms] lucky spacemen came during the shift.</center><br>"
+	//These need to be in two vars because ???????????  But it doesn't print the two lines when it's in one var
+	var/end_round_stat1 =  "The floor was shit on [GLOB.shit_left] times.<br>\
+							The floor was pissed on [GLOB.piss_left] times.<br>"
+							
+	var/end_round_stat2 =  "[GLOB.total_deaths] people died in total.<br>\
+							[GLOB.total_orgasms] lucky spacemen came during the shift.<br>\
+							[GLOB.deaths_in_space] people died in space.<br>\
+						 	[GLOB.teeth_lost] teeth were lost.<br>"
+							
+	titles += "<center>[end_round_stat1]</center>"
+	titles += "<center>[end_round_stat2]</center>"
+	var/members = ""
+	for(var/datum/family/F in matchmaker.families)
+		members =  "[F.name] Family head: [F.family_head.mind]. [F.name] family members were:<br>"
+		for(var/mob/living/carbon/human/M in F.members)
+			members += "Member: [M.real_name]"
+		titles += "<center>[members]</center>"
+		
 	var/disclaimer = "<br>Sponsored by [GLOB.using_map.company_name].<br>All rights reserved.<br>\
 					 This motion picture is protected under the copyright laws of the Sol Central Government<br> and other nations throughout the galaxy.<br>\
 					 Colony of First Publication: [pick("Mars", "Luna", "Earth", "Venus", "Phobos", "Ceres", "Tiamat", "Ceti Epsilon", "Eos", "Pluto", "Ouere",\

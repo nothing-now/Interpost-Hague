@@ -104,7 +104,7 @@ var/list/gamemode_cache = list()
 
 	var/health_threshold_dead = -100
 
-	var/organ_health_multiplier = 0.9
+	var/organ_health_multiplier = 1
 	var/organ_regeneration_multiplier = 0.25
 	var/organs_decay
 
