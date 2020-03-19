@@ -399,7 +399,7 @@ client/verb/character_setup()
 		winset(usr, "mainwindow", "statusbar=false")
 		winset(usr, "mainwindow", "is-maximized=false")
 		winset(usr, "mainwindow", "is-maximized=true")
-		winset(usr, "mainwindow", "menu=")
+		winset(usr, "mainwindow", "menu=false")
 	else
 		winset(usr, "mainwindow", "is-maximized=false")
 		winset(usr, "mainwindow", "titlebar=true")
