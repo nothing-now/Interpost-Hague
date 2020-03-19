@@ -107,6 +107,7 @@
 	item_cost = 48
 	path = /obj/item/weapon/gun/projectile/revolver/detective
 
+/*
 /datum/uplink_item/item/visible_weapons/pulserifle
 	name = "Pulse Rifle"
 	item_cost = 100
@@ -118,3 +119,4 @@
 	item_cost = 60
 	antag_costs = list(MODE_MERCENARY = 80)
 	path = /obj/item/weapon/gun/magnetic/railgun/flechette
+*/ //No.
