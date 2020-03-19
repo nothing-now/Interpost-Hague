@@ -391,7 +391,6 @@
 
 	icon_state = ""
 	for(var/i = 1 to 4)
-		to_world("Adding our overlays [basestate][connections[i]] ")
 		var/image/I = image(icon, "[basestate][connections[i]]", dir = 1<<(i-1))
 		overlays += I
 
