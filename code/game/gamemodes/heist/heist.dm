@@ -14,3 +14,4 @@
 		attempts of robbery, fraud and other malicious actions."
 	end_on_antag_death = 1
 	antag_tags = list(MODE_RAIDER)
+	antag_scaling_coeff = 6
