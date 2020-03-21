@@ -10,6 +10,7 @@
 	var/citizenship = "None"            //Current home system.
 	var/faction = "None"                //Antag faction/general associated faction.
 	var/religion = "None"               //Religious association.
+	var/family = TRUE
 /*
 /datum/category_item/player_setup_item/general/background
 	name = "Religion"
@@ -23,6 +24,7 @@
 	from_file(S["citizenship"],pref.citizenship)
 	from_file(S["faction"],pref.faction)
 	from_file(S["religion"],pref.religion)
+	from_file(S["family"],pref.family)
 	from_file(S["nanotrasen_relation"],pref.nanotrasen_relation)
 	from_file(S["memory"],pref.memory)
 
@@ -34,14 +36,15 @@
 	to_file(S["citizenship"],pref.citizenship)
 	to_file(S["faction"],pref.faction)
 	to_file(S["religion"],pref.religion)
+	to_file(S["family"],pref.family)
 	to_file(S["nanotrasen_relation"],pref.nanotrasen_relation)
 	to_file(S["memory"],pref.memory)
 
 /datum/category_item/player_setup_item/general/background/sanitize_character()
-	if(!pref.home_system) pref.home_system = "Unset"
-	if(!pref.citizenship) pref.citizenship = "None"
-	if(!pref.faction)     pref.faction =     "None"
-	if(!pref.religion)    pref.religion =    "None"
+	if(!pref.home_system)		 pref.home_system = "Unset"
+	if(!pref.citizenship) 		pref.citizenship = "None"
+	if(!pref.faction)    		pref.faction =     "None"
+	if(!pref.religion)    		pref.religion =    "None"
 
 	pref.nanotrasen_relation = sanitize_inlist(pref.nanotrasen_relation, COMPANY_ALIGNMENTS, initial(pref.nanotrasen_relation))
 

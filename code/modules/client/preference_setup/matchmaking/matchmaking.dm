@@ -38,8 +38,11 @@ var/global/datum/matchmaker/matchmaker = new()
 	var/total_familes = round(GLOB.player_list.len * 0.2) + 1  // How many families we want Makes around 1 family per 4 people, and always at least on family
 	var/list/player_list_copy = GLOB.player_list.Copy()
 	//First setup families, and remove the family heads from the list
+	for(var/mob/living/carbon/human/H in player_list_copy)
+		if(!H.client.prefs.family)
+			player_list_copy.Remove(H)
 	while(families.len < total_familes)
-		var/mob/living/carbon/human/pick_human = pick(GLOB.player_list)  //To make heads of families random (for now)
+		var/mob/living/carbon/human/pick_human = pick(player_list_copy)  //To make heads of families random (for now)
 		var/datum/family/F = new /datum/family(pick_human)
 		families |= F
 		player_list_copy.Remove(pick_human)
