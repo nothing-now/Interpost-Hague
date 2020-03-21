@@ -47,6 +47,7 @@
 	desc = "The Lumoco Arms MP6 Vesper, A fairly common machine pistol. Sometimes refered to as an 'uzi' by the backwater spacers it is often associated with. Uses .45 rounds."
 	icon_state = "mac"
 	item_state = "mac"
+	wielded_item_state = "mac-wielded"
 	//wielded_item_state = "mac-wielded"
 	w_class = ITEM_SIZE_NORMAL
 	load_method = MAGAZINE
@@ -66,10 +67,8 @@
 
 /obj/item/weapon/gun/projectile/automatic/machine_pistol/update_icon()
 	..()
-	if(ammo_magazine)
-		icon_state = "mac"
-	else
-		icon_state = "mac-empty"
+	icon_state = (ammo_magazine)? "mac" : "mac-empty"
+	wielded_item_state = (ammo_magazine)? "mac-wielded" : "mac-wielded-empty"
 
 /obj/item/weapon/gun/projectile/automatic/mini_uzi/update_icon()
 	..()
