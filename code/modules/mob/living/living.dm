@@ -147,6 +147,8 @@ default behaviour is:
 						now_pushing = 0
 						return
 				step(AM, t)
+				//Turn around to face whoever pushed us
+				AM.set_dir(get_dir(AM, src))
 				if (istype(AM, /mob/living))
 					var/mob/living/tmob = AM
 					if(istype(tmob.buckled, /obj/structure/bed))
