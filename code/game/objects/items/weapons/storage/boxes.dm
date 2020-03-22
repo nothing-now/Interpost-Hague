@@ -140,7 +140,7 @@
 /obj/item/weapon/storage/box/beanbags
 	name = "box of beanbag shells"
 	desc = "It has a picture of a gun and several warning symbols on the front.<br>WARNING: Live ammunition. Misuse may result in serious injury or death."
-	startswith = list(/obj/item/ammo_casing/shotgun/beanbag = 7)
+	startswith = list(/obj/item/stack/bullets/beanbag = 7)
 
 /obj/item/weapon/storage/box/shotgunammo
 	name = "box of shotgun slugs"
@@ -150,7 +150,7 @@
 /obj/item/weapon/storage/box/shotgunshells
 	name = "box of shotgun shells"
 	desc = "It has a picture of a gun and several warning symbols on the front.<br>WARNING: Live ammunition. Misuse may result in serious injury or death."
-	startswith = list(/obj/item/ammo_casing/shotgun/pellet = 7)
+	startswith = list(/obj/item/stack/bullets/buckshot = 7)
 
 /obj/item/weapon/storage/box/flashshells
 	name = "box of illumination shells"

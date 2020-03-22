@@ -89,12 +89,44 @@
 	ammo_type = /obj/item/ammo_casing/shotgun/beanbag
 	one_hand_penalty = 2
 	wielded_item_state = "dshotgun1"
+	var/opened = FALSE
 
 	burst_delay = 0
 	firemodes = list(
 		list(mode_name="fire one barrel at a time", burst=1),
 		list(mode_name="fire both barrels at once", burst=2),
 		)
+
+/obj/item/weapon/gun/projectile/shotgun/doublebarrel/special_check(var/mob/user)
+	if(opened)
+		return 0
+	return ..()
+
+/obj/item/weapon/gun/projectile/shotgun/doublebarrel/attack_hand(mob/user as mob)
+	to_world("Doing attack_hand")
+	if(user.get_inactive_hand() == src)
+		opened = !opened
+		update_icon()
+	else
+		return ..()
+
+/obj/item/weapon/gun/projectile/shotgun/doublebarrel/MouseDrop(mob/user as mob)
+	opened = TRUE
+	update_icon()
+	..()
+
+/obj/item/weapon/gun/projectile/shotgun/doublebarrel/update_icon()
+	if(opened)
+		icon_state = "[initial(icon_state)]-broke"
+	else
+		icon_state = "[initial(icon_state)]"
+	return ..()
+
+/obj/item/weapon/gun/projectile/shotgun/doublebarrel/attackby(var/obj/item/A as obj, mob/user as mob)
+	if(!opened) //Can't load shells if it's closed
+		user.visible_message("<span class='notice'>\The [src] is closed. Open it to load shells.</span>")
+		return
+	..(A,user)
 
 /obj/item/weapon/gun/projectile/shotgun/doublebarrel/pellet
 	ammo_type = /obj/item/ammo_casing/shotgun/pellet
@@ -108,6 +140,7 @@
 	..(user, allow_dump=1)
 
 //this is largely hacky and bad :(	-Pete
+//Yes it is
 /obj/item/weapon/gun/projectile/shotgun/doublebarrel/attackby(var/obj/item/A as obj, mob/user as mob)
 	if(w_class > 3 && (istype(A, /obj/item/weapon/circular_saw) || istype(A, /obj/item/weapon/melee/energy) || istype(A, /obj/item/weapon/gun/energy/plasmacutter)))
 		to_chat(user, "<span class='notice'>You begin to shorten the barrel of \the [src].</span>")

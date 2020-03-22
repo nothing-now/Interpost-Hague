@@ -118,6 +118,11 @@
 //Attempts to load A into src, depending on the type of thing being loaded and the load_method
 //Maybe this should be broken up into separate procs for each load method?
 /obj/item/weapon/gun/projectile/proc/load_ammo(var/obj/item/A, mob/user)
+	if(istype(A,/obj/item/stack/bullets))
+		var/obj/item/stack/bullets/bullet_stack = A
+		A = new bullet_stack.stacktype()
+		bullet_stack.use(1)
+		
 	if(istype(A, /obj/item/ammo_magazine))
 		var/obj/item/ammo_magazine/AM = A
 		if(!(load_method & AM.mag_type) || caliber != AM.caliber)
@@ -232,12 +237,6 @@
 			unload_ammo(usr, allow_dump=0)
 		if("l_hand")
 			unload_ammo(usr, allow_dump=0)
-
-///obj/item/weapon/gun/projectile/attack_hand(mob/user as mob)
-//	if(user.get_inactive_hand() == src)
-//		unload_ammo(user, allow_dump=0)
-//	else
-//		return ..()
 
 /obj/item/weapon/gun/projectile/afterattack(atom/A, mob/living/user)
 	..()

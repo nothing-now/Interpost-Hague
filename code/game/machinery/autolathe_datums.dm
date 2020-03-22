@@ -518,7 +518,7 @@ var/const/EXTRA_COST_FACTOR = 1.25
 
 /datum/autolathe/recipe/shotgun_pellet
 	name = "ammunition (shell, shotgun)"
-	path = /obj/item/ammo_casing/shotgun/pellet
+	path = /obj/item/stack/bullets/buckshot
 	hidden = 1
 	category = "Arms and Ammunition"
 
