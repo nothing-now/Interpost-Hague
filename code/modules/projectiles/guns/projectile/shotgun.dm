@@ -173,6 +173,7 @@
 	w_class = ITEM_SIZE_NORMAL
 	force = 5
 	one_hand_penalty = 0
+	wielded_item_state = "sshotgun"
 
 
 /obj/item/weapon/gun/projectile/shotgun/pump/boltaction
