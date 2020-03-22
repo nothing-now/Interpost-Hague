@@ -43,24 +43,55 @@
 /obj/item/stack/bullets/update_icon()
 	icon_state = "[initial(icon_state)][amount]"
 
-/obj/item/stack/bullets/buckshot
-	name = "buckshot shells"
-	desc = "It's a stack of buckshot"
-	singular_name = "buckshol"
-	icon_state = "gshell"
+/obj/item/stack/bullets/shotgun/
+	name = "12 gauge slug"
+	desc = "It's a stack of 12 gauge slugs"
+	singular_name = "12 gauge slug"
+	icon_state = "slshell"
 	w_class = ITEM_SIZE_TINY
 	max_amount = 5
 	amount = 1
 	item_flags = ITEM_FLAG_NO_BLUDGEON
+	stacktype = /obj/item/ammo_casing/shotgun
+
+/obj/item/stack/bullets/shotgun/buckshot
+	name = "buckshot shells"
+	desc = "It's a stack of buckshot"
+	singular_name = "buckshot"
+	icon_state = "gshell"
 	stacktype = /obj/item/ammo_casing/shotgun/pellet
 
-/obj/item/stack/bullets/beanbag
+/obj/item/stack/bullets/shotgun/beanbag
 	name = "beanbag shells"
 	desc = "It's a stack of beanbag shells"
 	singular_name = "buckshol"
 	icon_state = "bshell"
-	w_class = ITEM_SIZE_TINY
-	max_amount = 5
-	amount = 1
-	item_flags = ITEM_FLAG_NO_BLUDGEON
 	stacktype = /obj/item/ammo_casing/shotgun/beanbag
+
+/obj/item/stack/bullets/shotgun/blank
+	name = "blank shotgun shells"
+	desc = "It's a stack of blank shells"
+	singular_name = "blanks"
+	icon_state = "blshell"
+	stacktype =	/obj/item/ammo_casing/shotgun/blank
+
+/obj/item/stack/bullets/shotgun/stun
+	name = "stun shells"
+	desc = "It's a stack of stun shells"
+	singular_name = "stun shell"
+	icon_state = "stunshell"
+	stacktype =	/obj/item/ammo_casing/shotgun/stunshell
+
+/obj/item/stack/bullets/shotgun/flash
+	name = "flash shells"
+	desc = "It's a stack of flash shells"
+	singular_name = "flash shell"
+	icon_state = "fshell"
+	stacktype = /obj/item/ammo_casing/shotgun/flash
+
+/obj/item/stack/bullets/shotgun/practice
+	name = "practice shells"
+	desc = "It's a stack of practice shells"
+	singular_name = "practice shell"
+	icon_state = "pshell"
+	stacktype =	/obj/item/ammo_casing/shotgun/practice 

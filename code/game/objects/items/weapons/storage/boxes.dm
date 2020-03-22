@@ -140,32 +140,32 @@
 /obj/item/weapon/storage/box/beanbags
 	name = "box of beanbag shells"
 	desc = "It has a picture of a gun and several warning symbols on the front.<br>WARNING: Live ammunition. Misuse may result in serious injury or death."
-	startswith = list(/obj/item/stack/bullets/beanbag = 7)
+	startswith = list(/obj/item/stack/bullets/shotgun/beanbag = 7)
 
 /obj/item/weapon/storage/box/shotgunammo
 	name = "box of shotgun slugs"
 	desc = "It has a picture of a gun and several warning symbols on the front.<br>WARNING: Live ammunition. Misuse may result in serious injury or death."
-	startswith = list(/obj/item/ammo_casing/shotgun = 7)
+	startswith = list(/obj/item/stack/bullets/shotgun = 7)
 
 /obj/item/weapon/storage/box/shotgunshells
 	name = "box of shotgun shells"
 	desc = "It has a picture of a gun and several warning symbols on the front.<br>WARNING: Live ammunition. Misuse may result in serious injury or death."
-	startswith = list(/obj/item/stack/bullets/buckshot = 7)
+	startswith = list(/obj/item/stack/bullets/shotgun/buckshot = 7)
 
 /obj/item/weapon/storage/box/flashshells
 	name = "box of illumination shells"
 	desc = "It has a picture of a gun and several warning symbols on the front.<br>WARNING: Live ammunition. Misuse may result in serious injury or death."
-	startswith = list(/obj/item/ammo_casing/shotgun/flash = 7)
+	startswith = list(/obj/item/stack/bullets/shotgun/flash = 7)
 
 /obj/item/weapon/storage/box/stunshells
 	name = "box of stun shells"
 	desc = "It has a picture of a gun and several warning symbols on the front.<br>WARNING: Live ammunition. Misuse may result in serious injury or death."
-	startswith = list(/obj/item/ammo_casing/shotgun/stunshell = 7)
+	startswith = list(/obj/item/stack/bullets/shotgun/stun = 7)
 
 /obj/item/weapon/storage/box/practiceshells
 	name = "box of practice shells"
 	desc = "It has a picture of a gun and several warning symbols on the front.<br>WARNING: Live ammunition. Misuse may result in serious injury or death."
-	startswith = list(/obj/item/ammo_casing/shotgun/practice = 7)
+	startswith = list(/obj/item/stack/bullets/shotgun/practice = 7)
 
 /obj/item/weapon/storage/box/sniperammo
 	name = "box of 14.5mm shells"
