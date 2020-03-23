@@ -293,7 +293,6 @@
 		. = TRUE
 	else if(H.head)
 		. = TRUE
-	to_world("Returning: [.]")
 
 /obj/machinery/shower/proc/process_heat(mob/living/M)
 	if(!on || !istype(M)) return

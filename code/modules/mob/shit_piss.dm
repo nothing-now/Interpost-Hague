@@ -220,7 +220,9 @@
 
 		else if(w_uniform)
 			message = "<B>[src]</B> shits \his pants."
-			reagents.add_reagent(/datum/reagent/poo, 10)
+			var/obj/item/weapon/reagent_containers/food/snacks/poo/V = new/obj/item/weapon/reagent_containers/food/snacks/poo(src.loc)
+			if(reagents)
+				reagents.trans_to(V, rand(1,5))
 			adjust_hygiene(-25)
 			add_event("shitself", /datum/happiness_event/hygiene/shit)
 
