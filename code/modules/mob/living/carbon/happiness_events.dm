@@ -60,6 +60,11 @@
 	happiness = -5
 	timeout = 1800
 
+/datum/happiness_event/hygiene/shower
+	description = "<span class='info'>I had a nice hot shower!\n"
+	happiness = 5
+	timeout = 1800
+
 
 
 //Disgust
