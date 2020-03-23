@@ -103,8 +103,8 @@ GLOBAL_VAR_INIT(religion_combat_music, pick(list('sound/music/religion_combat_01
 GLOBAL_VAR_INIT(jester_combat_music, pick(list('sound/music/jester_combat_01.ogg','sound/music/jester_combat_02.ogg')))
 GLOBAL_VAR_INIT(security_combat_music, pick(list('sound/music/security_combat_01.ogg','sound/music/security_combat_02.ogg')))
 
-/proc/playsound(var/atom/source, soundin, vol as num, vary, extrarange as num, falloff, var/is_global, var/frequency, var/is_ambiance = 0)
-
+//We should look into making this shit work
+/*
 var/list/climb_sound = list(
 	'sound/effects/ladder.ogg',
 	'sound/effects/ladder2.ogg',
@@ -299,6 +299,7 @@ var/list/rummage_sound = list(\
 
 
 	return toplay
+*/
 
 /proc/playsound(atom/source, soundin, vol as num, vary, extrarange as num, falloff, is_global, frequency, is_ambiance = 0,  ignore_walls = TRUE, zrange = 2, override_env, envdry, envwet)
 	if(isarea(source))
@@ -421,8 +422,9 @@ var/const/FALLOFF_SOUNDS = 0.5
 
 	sound_to(src, S)
 
-
-
+/client/proc/playtitlemusic()
+	if(get_preference_value(/datum/client_preference/play_lobby_music) == GLOB.PREF_YES)
+		GLOB.using_map.lobby_music.play_to(src)
 
 /proc/get_rand_frequency()
 	return rand(32000, 55000) //Frequency stuff only works with 45kbps oggs.
