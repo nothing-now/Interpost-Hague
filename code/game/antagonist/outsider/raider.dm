@@ -11,9 +11,9 @@ var/datum/antagonist/raider/raiders
 	antaghud_indicator = "hudmutineer"
 
 	hard_cap = 6
-	hard_cap_round = 10
-	initial_spawn_req = 4
-	initial_spawn_target = 6
+	hard_cap_round = 6
+	initial_spawn_req = 2
+	initial_spawn_target = 4
 	min_player_age = 14
 
 	id_type = /obj/item/weapon/card/id/syndicate

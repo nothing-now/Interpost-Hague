@@ -184,7 +184,11 @@
 //assigned, so that job restrictions can be respected.
 /datum/antagonist/proc/attempt_spawn(var/spawn_target = null)
 	if(spawn_target == null)
-		spawn_target = initial_spawn_target
+		update_current_antag_max()
+		testing("Setting spawn target to [cur_max]")
+		spawn_target = cur_max
+		//spawn_target = initial_spawn_target
+	testing("We are in attempt_spawn and our spawn_target is [spawn_target]")
 
 	// Update our boundaries.
 	if(!candidates.len)
