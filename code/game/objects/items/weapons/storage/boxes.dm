@@ -499,7 +499,7 @@
 /obj/item/weapon/storage/box/ammo/rifle
 	name = "7.63mm rifle ammo"
 	desc = "A box that contains 7.63 caliber ammo."
-	startswith = list(/obj/item/ammo_casing/brifle = 15)
+	startswith = list(/obj/item/stack/bullets/rifle = 15)
 
 /obj/item/weapon/storage/box/knifes_throwing
 	name = "box of throwing knifes"

@@ -94,4 +94,15 @@
 	desc = "It's a stack of practice shells"
 	singular_name = "practice shell"
 	icon_state = "pshell"
-	stacktype =	/obj/item/ammo_casing/shotgun/practice 
+	stacktype =	/obj/item/ammo_casing/shotgun/practice
+
+/obj/item/stack/bullets/rifle
+	name = "Rifle bullets"
+	desc = "An old worn out looking bullet casing."
+	singular_name = "Rifle bullet"
+	icon_state = "rifle-casing"
+	w_class = ITEM_SIZE_TINY
+	max_amount = 5
+	amount = 1
+	item_flags = ITEM_FLAG_NO_BLUDGEON
+	stacktype = /obj/item/ammo_casing/brifle
