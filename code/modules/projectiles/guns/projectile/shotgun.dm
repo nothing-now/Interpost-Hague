@@ -99,11 +99,13 @@
 
 /obj/item/weapon/gun/projectile/shotgun/doublebarrel/special_check(var/mob/user)
 	if(opened)
+		playsound(src.loc, 'sound/weapons/empty.ogg', 50, 1)
 		return 0
 	return ..()
 
 /obj/item/weapon/gun/projectile/shotgun/doublebarrel/attack_hand(mob/user as mob)
 	if(user.get_inactive_hand() == src)
+		playsound(src.loc, 'sound/weapons/guns/interact/selector.ogg', 50, 1)
 		opened = !opened
 		update_icon()
 	else
