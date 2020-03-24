@@ -472,8 +472,8 @@
 
 /obj/structure/window/reinforced/full
 	dir = 5
-	icon_state = "twindow1"
-	basestate = "twindow"
+	icon_state = "nwindow1"
+	basestate = "nwindow"
 
 /obj/structure/window/reinforced/tinted
 	name = "tinted window"
