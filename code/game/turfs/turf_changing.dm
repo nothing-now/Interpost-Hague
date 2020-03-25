@@ -84,7 +84,7 @@
 			else
 				lighting_clear_overlay()
 
-	for(var/turf/T in RANGE_TURFS(src, 1))
+	for(var/turf/T in RANGE_TURFS(1, src))
 		T.update_icon()
 
 /turf/proc/transport_properties_from(turf/other)

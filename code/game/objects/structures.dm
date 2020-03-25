@@ -56,7 +56,7 @@
 	return istype(S, src)
 
 /obj/structure/proc/refresh_neighbors()
-	for(var/thing in RANGE_TURFS(src, 1))
+	for(var/thing in RANGE_TURFS(1, src))
 		var/turf/T = thing
 		T.update_icon()
 
