@@ -458,14 +458,6 @@
 	damage_per_fire_tick = 2.0
 	glasstype = /obj/item/stack/material/glass/reinforced
 
-
-/obj/structure/window/New(Loc, constructed=0)
-	..()
-
-	//player-constructed windows
-	if (constructed)
-		state = 0
-
 /obj/structure/window/Initialize()
 	. = ..()
 	layer = is_full_window() ? FULL_WINDOW_LAYER : SIDE_WINDOW_LAYER

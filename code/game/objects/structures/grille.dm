@@ -111,39 +111,13 @@
 		var/obj/item/stack/material/ST = W
 		if(!ST.material.created_window)
 			return 0
-
-		var/dir_to_set = 1
-		if(loc == user.loc)
-			dir_to_set = user.dir
-		else
-			if( ( x == user.x ) || (y == user.y) ) //Only supposed to work for cardinal directions.
-				if( x == user.x )
-					if( y > user.y )
-						dir_to_set = 2
-					else
-						dir_to_set = 1
-				else if( y == user.y )
-					if( x > user.x )
-						dir_to_set = 8
-					else
-						dir_to_set = 4
-			else
-				to_chat(user, "<span class='notice'>You can't reach.</span>")
-				return //Only works for cardinal direcitons, diagonals aren't supposed to work like this.
-		for(var/obj/structure/window/WINDOW in loc)
-			if(WINDOW.dir == dir_to_set)
-				to_chat(user, "<span class='notice'>There is already a window facing this way there.</span>")
-				return
 		to_chat(user, "<span class='notice'>You start placing the window.</span>")
 		if(do_after(user,20,src))
-			for(var/obj/structure/window/WINDOW in loc)
-				if(WINDOW.dir == dir_to_set)//checking this for a 2nd time to check if a window was made while we were waiting.
-					to_chat(user, "<span class='notice'>There is already a window facing this way there.</span>")
-					return
 
 			var/wtype = ST.material.created_window
 			if (ST.use(1))
-				var/obj/structure/window/WD = new wtype(loc, dir_to_set, 1)
+				var/obj/structure/window/WD = new wtype(loc, null, 1)
+				to_world("Window name is [WD.icon_state]")
 				to_chat(user, "<span class='notice'>You place the [WD] on [src].</span>")
 				WD.update_icon()
 		return

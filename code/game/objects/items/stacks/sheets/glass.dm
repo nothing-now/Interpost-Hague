@@ -130,7 +130,7 @@
 	singular_name = "reinforced glass sheet"
 	icon_state = "sheet-rglass"
 	default_type = "reinforced glass"
-	created_window = /obj/structure/window/reinforced
+	created_window = /obj/structure/window/reinforced/full
 	is_reinforced = 1
 	construction_options = list("One Direction", "Full Window", "Windoor")
 
