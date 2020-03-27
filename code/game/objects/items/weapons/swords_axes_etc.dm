@@ -18,7 +18,7 @@
 	block_chance = 30
 	force = 10
 	var/stunforce = 3 //10 was way to high
-	var/agonyforce = 15
+	var/agonyforce = 20
 
 /obj/item/weapon/melee/classic_baton/attack(mob/M as mob, mob/living/user as mob)
 	if ((CLUMSY in user.mutations) && prob(50))
@@ -33,8 +33,8 @@
 	return ..()
 
 /obj/item/weapon/melee/classic_baton/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
-	var/stun = rand(1,stunforce)
-	var/agony = rand(5,agonyforce)
+	var/stun = stunforce + stat_to_modifier(user.stats[STAT_ST]
+	var/agony = agonyforce + stat_to_modifier(user.stats[STAT_ST]
 	var/obj/item/organ/external/affecting = null
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
