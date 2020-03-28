@@ -33,8 +33,8 @@
 	return ..()
 
 /obj/item/weapon/melee/classic_baton/apply_hit_effect(mob/living/target, mob/living/user, var/hit_zone)
-	var/stun = stunforce + stat_to_modifier(user.stats[STAT_ST]
-	var/agony = agonyforce + stat_to_modifier(user.stats[STAT_ST]
+	var/stun = stunforce + stat_to_modifier(user.stats[STAT_ST])
+	var/agony = agonyforce + stat_to_modifier(user.stats[STAT_ST])
 	var/obj/item/organ/external/affecting = null
 	if(ishuman(target))
 		var/mob/living/carbon/human/H = target
