@@ -598,7 +598,7 @@ var/list/global/slot_flags_enumeration = list(
 		return 0
 	if(isnull(parry_sounds))
 		parry_sounds = list('sound/weapons/blunt_parry1.ogg', 'sound/weapons/blunt_parry2.ogg', 'sound/weapons/blunt_parry3.ogg')
-	if(default_sword_parry(user, attacker, damage_source))
+	if(default_sword_parry(user, damage, attacker, damage_source))
 		return 1
 	return 0
 
@@ -612,7 +612,7 @@ var/list/global/slot_flags_enumeration = list(
 				playsound(user.loc, pick(parry_sounds), 50, 1)
 			user.adjustStaminaLoss(10)
 			health -= 0.5
-			if(!user.statcheck(user.stats[STAT_ST], 5, "I couldn't keep the grip on my weapon!", STAT_ST))
+			if(!user.statcheck(user.stats[STAT_ST], damage/2, "I couldn't keep the grip on my weapon!", STAT_ST))
 				user.visible_message("<span class='danger'><font size =3>\The [src] flies out of \the [user]'s hand!</font></span>")
 				user.drop_from_inventory(src)
 				throw_at(get_edge_target_turf(src, pick(GLOB.alldirs)), rand(1,3), throw_speed)//Throw that sheesh away
