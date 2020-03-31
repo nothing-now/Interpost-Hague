@@ -104,6 +104,7 @@ client
 	possible_titles += "[pick("THE DAY [uppertext(GLOB.using_map.station_short)] STOOD STILL", "HUNT FOR THE GREEN WEENIE", "ALIEN VS VENDOMAT", "SPACE TRACK")]"
 	titles += "<center><h1>EPISODE [rand(1,1000)]<br>[pick(possible_titles)]<h1></h1></h1></center>"
 
+
 	for(var/mob/living/carbon/human/H in GLOB.living_mob_list_|GLOB.dead_mob_list_)
 		if(findtext(H.real_name,"(mannequin)"))
 			continue
@@ -117,6 +118,7 @@ client
 		if(GetAssignment(H) != "Unassigned")
 			job = ", [uppertext(GetAssignment(H))]"
 		var/used_name = H.real_name
+
 		/*
 		var/datum/computer_file/crew_record/R = get_crewmember_record(H.real_name)
 		I don't think we need this anymore, but it could be cool later
@@ -125,6 +127,7 @@ client
 			if(rank.name_short)
 				used_name = "[rank.name_short] [used_name]"
 		*/
+
 		if(prob(90))
 			var/actor_name = H.species.get_random_name(H.gender)
 			if(!(H.species.spawn_flags & SPECIES_CAN_JOIN) || prob(10)) //sometimes can't get actor of thos species
@@ -144,6 +147,7 @@ client
 
 	titles += cast
 
+
 	var/list/corpses = list()
 	var/list/monkies = list()
 	for(var/mob/living/carbon/human/H in GLOB.dead_mob_list_)
@@ -158,6 +162,7 @@ client
 		corpses += "[monkies[spec]] [lowertext(monkies[spec] > 1 ? S.name_plural : S.name)]"
 	if(corpses.len)
 		titles += "<center>BASED ON REAL EVENTS<br>In memory of [english_list(corpses)].</center>"
+
 
 	var/list/staff = list("PRODUCTION STAFF:")
 	var/list/staffjobs = list("Coffee Fetcher", "Cameraman", "Angry Yeller", "Chair Operator", "Choreographer", "Historical Consultant", "Costume Designer", "Chief Editor", "Executive Assistant")
@@ -176,6 +181,7 @@ client
 	if(goodboys.len)
 		titles += "<center>STAFF'S GOOD BOYS:<br>[english_list(goodboys)]</center><br>"
 	
+
 	//Add round end stats to ticker
 	//These need to be in two vars because ???????????  But it doesn't print the two lines when it's in one var
 	var/end_round_stat1 =  "The floor was shit on [GLOB.shit_left] times.<br>\
@@ -188,9 +194,10 @@ client
 							
 	titles += "<center>[end_round_stat1]</center>"
 	titles += "<center>[end_round_stat2]</center>"
-		
+
+
 	var/disclaimer = "<br>Sponsored by [GLOB.using_map.company_name].<br>All rights reserved.<br>\
-					 This motion picture is protected under the copyright laws of the Sol Central Government<br> and other nations throughout the galaxy.<br>\
+					 This motion picture is protected under the copyright laws of the Kingdom<br>, which are used everywhere throughout the galaxy.<br>\
 					 Colony of First Publication: [pick("Mars", "Luna", "Earth", "Venus", "Phobos", "Ceres", "Tiamat", "Ceti Epsilon", "Eos", "Pluto", "Ouere",\
 					 "Lordania", "Kingston", "Cinu", "Yuklid V", "Lorriman", "Tersten", "Gaia")].<br>"
 	disclaimer += pick("Use for parody prohibited.",

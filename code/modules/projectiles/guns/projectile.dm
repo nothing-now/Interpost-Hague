@@ -119,6 +119,9 @@
 //Maybe this should be broken up into separate procs for each load method?
 /obj/item/weapon/gun/projectile/proc/load_ammo(var/obj/item/A, mob/user)
 	if(istype(A,/obj/item/stack/bullets))
+		if(loaded.len >= max_shells)
+			to_chat(user, "<span class='warning'>[src] is full.</span>")
+			return
 		var/obj/item/stack/bullets/bullet_stack = A
 		A = new bullet_stack.stacktype()
 		bullet_stack.use(1)

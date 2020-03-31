@@ -78,6 +78,9 @@
 				handle_shit()
 			if(bladder >= 30)
 				handle_piss()
+	if(istype(src.head, /obj/item/clothing/head/helmet/arbiter) || istype(src.head, /obj/item/clothing/head/helmet/arbiter/supreme))
+		var/death_sound = 'sound/misc/arbiterdie1.ogg'
+		playsound(src.loc, death_sound, 50, 0)
 	handle_hud_list()
 
 /mob/living/carbon/human/proc/ChangeToHusk()
