@@ -1,4 +1,4 @@
-# Interpost Hague - It's bad, so bad it's actually good
+# Interpost Hague - DONE AND DUSTED WITH
 
 # Credits go to every person who worked on Interbay's/Baystation's code in the past. Thanks.
 [Baystation's Website](http://baystation12.net/) - [Interpost Hague's/InterHippie's Code](https://github.com/butmun/Interpost-Hague) - [Interpost Hague's Discord](https://discord.gg/abFdhjv)
