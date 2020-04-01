@@ -43,3 +43,6 @@
 	else
 		deferred_login()
 
+/mob/new_player/proc/deferred_login()
+	if(client)
+		client.playtitlemusic()
