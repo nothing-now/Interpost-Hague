@@ -1,6 +1,6 @@
 /obj/effect/decal/cleanable/bloodpool
-	name = "bloodpool"
-	desc = "A pool of blood, why would you have this?"
+	name = "blood pool"
+	desc = "A pool of blood. Or, perhaps, the chef spilled his cooking again?"
 	gender = PLURAL //pool of blood refers to itself by zie xie or some shit those retards with colored hair make up
 	density = 0
 	anchored = 1
