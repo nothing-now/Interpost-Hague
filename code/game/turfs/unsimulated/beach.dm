@@ -18,3 +18,12 @@
 /turf/unsimulated/beach/water/New()
 	..()
 	overlays += image("icon"='icons/misc/beach.dmi',"icon_state"="water2","layer"=MOB_LAYER+0.1)
+
+/turf/unsimulated/beach/seashallow
+	name = "Shallow Water"
+	icon = 'icons/turf/waterandgrass.dmi'
+	icon_state = "seashallow"
+
+/turf/unsimulated/beach/seashallow/New()
+	..()
+	overlays += image("layer"=MOB_LAYER+0.4)
