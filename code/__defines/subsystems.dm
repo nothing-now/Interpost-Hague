@@ -77,6 +77,7 @@
 #define SS_INIT_ANTAGS           6
 #define SS_INIT_SKYBOX           5
 #define SS_INIT_MAPPING          4
+#define SS_INIT_PROJECTILES		 -20
 #define SS_INIT_GARBAGE          13
 #define SS_INIT_DONATIONS        12
 #define SS_INIT_PLANTS           11
