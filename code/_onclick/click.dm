@@ -392,7 +392,10 @@
 	else
 		var/turf/T = screen_loc2turf(screen_loc, get_turf(usr))
 		if(T)
-			T.Click(location, control, params)
+			//icon-x/y is relative to the object clicked. click_catcher may occupy several tiles. Here we convert them to the proper offsets relative to the tile.
+			modifiers["icon-x"] = num2text(ABS_PIXEL_TO_REL(text2num(modifiers["icon-x"])))
+			modifiers["icon-y"] = num2text(ABS_PIXEL_TO_REL(text2num(modifiers["icon-y"])))
+			T.Click(location, control, list2params(modifiers))
 	. = 1
 
 /*
