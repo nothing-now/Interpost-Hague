@@ -58,6 +58,12 @@ datum/preferences
 		SScharacter_setup.queue_preferences_save(src)
 		save_character()
 
+/datum/preferences/proc/keybindings_setup(client/C)
+	var/choice = tgalert(C, "Would you prefer 'Hotkey' or 'Classic' defaults?", "Setup keybindings", "Hotkey", "Classic")
+	focus_chat = (choice == "Classic")
+	key_bindings = (!focus_chat) ? deepCopyList(GLOB.hotkey_keybinding_list_by_key) : deepCopyList(GLOB.classic_keybinding_list_by_key)
+	save_preferences()
+
 /datum/preferences/proc/ShowKeybindings(mob/user)
 	// Create an inverted list of keybindings -> key
 	var/list/user_binds = list()
@@ -373,6 +379,12 @@ datum/preferences
 
 	return
 
+		if("focus_chat")
+			focus_chat = !focus_chat
+			if(focus_chat)
+				winset(user, null, "input.focus=true input.background-color=[COLOR_INPUT_ENABLED]")
+			else
+				winset(user, null, "input.focus=false input.background-color=[COLOR_INPUT_DISABLED]")
 
 /datum/preferences/proc/open_load_dialog(mob/user)
 	var/dat  = list()
