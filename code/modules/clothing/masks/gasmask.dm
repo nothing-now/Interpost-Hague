@@ -134,3 +134,12 @@
 	body_parts_covered = 0
 	species_restricted = list(SPECIES_VOX)
 	filtered_gases = list("phoron", "sleeping_agent", "oxygen")
+
+/obj/item/clothing/mask/gas/newsecurity
+	name = "federal gas mask"
+	icon_state = "hgasmask"
+	item_state = "hgasmask"
+	siemens_coefficient = 0.7
+	body_parts_covered = FACE|EYES
+	armor = list(melee = 15, bullet = 15, laser = 15, energy = 0, bomb = 0, bio = 75, rad = 0)
+	filtered_gases = list("phoron", "sleeping_agent")

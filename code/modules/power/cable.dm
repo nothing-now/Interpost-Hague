@@ -823,3 +823,173 @@ obj/structure/cable/proc/cableColor(var/colorC)
 /obj/item/stack/cable_coil/random/New()
 	color = possible_cable_coil_colours[pick(possible_cable_coil_colours)]
 	..()
+
+/obj/structure/noose
+	name = "noose"
+	desc = "A morbid apparatus."
+	icon_state = "noose"
+	buckle_lying = 0
+	icon = 'icons/obj/noose.dmi'
+	anchored = 1
+	can_buckle = 1
+	layer = 5
+	var/image/over = null
+	var/ticks = 0
+
+/obj/structure/noose/attackby(obj/item/W, mob/user, params)
+	if(isWirecutter(W))
+		user.visible_message("[user] cuts the noose.", "<span class='notice'>You cut the noose.</span>")
+		if(buckled_mob)
+			buckled_mob.visible_message("<span class='danger'>[buckled_mob] falls over and hits the ground!</span>",\
+										"<span class='danger'>You fall over and hit the ground!</span>")
+			buckled_mob.adjustBruteLoss(10)
+		var/obj/item/stack/cable_coil/C = new(get_turf(src))
+		C.amount = 25
+		qdel(src)
+		return
+	..()
+
+/obj/structure/noose/Initialize()
+	. = ..()
+	pixel_y += 16 //Noose looks like it's "hanging" in the air
+	over = image(icon, "noose_overlay")
+	over.layer = MOB_LAYER + 0.1
+
+/obj/structure/noose/Destroy()
+	STOP_PROCESSING(SSprocessing, src)
+	return ..()
+
+/obj/structure/noose/post_buckle_mob(mob/living/M)
+	if(M == buckled_mob)
+		layer = MOB_LAYER
+		START_PROCESSING(SSprocessing, src)
+		M.pixel_y = initial(M.pixel_y) + 8 //rise them up a bit
+		M.dir = SOUTH
+	else
+		layer = initial(layer)
+		STOP_PROCESSING(SSprocessing, src)
+		pixel_x = initial(pixel_x)
+		M.pixel_x = initial(M.pixel_x)
+		M.pixel_y = initial(M.pixel_y)
+
+/obj/structure/noose/user_unbuckle_mob(mob/living/user)
+
+	if(!user.IsAdvancedToolUser())
+		return
+
+	if(buckled_mob && buckled_mob.buckled == src)
+		var/mob/living/M = buckled_mob
+		if(M != user)
+			user.visible_message("<span class='notice'>[user] begins to untie the noose over [M]'s neck...</span>",\
+								"<span class='notice'>You begin to untie the noose over [M]'s neck...</span>")
+			if(do_mob(user, M, 100))
+				user.visible_message("<span class='notice'>[user] unties the noose over [M]'s neck!</span>",\
+									"<span class='notice'>You untie the noose over [M]'s neck!</span>")
+			else
+				return
+		else
+			M.visible_message(\
+				"<span class='warning'>[M] struggles to untie the noose over their neck!</span>",\
+				"<span class='notice'>You struggle to untie the noose over your neck.</span>")
+			if(!do_after(M, 150))
+				if(M && M.buckled)
+					to_chat(M, "<span class='warning'>You fail to untie yourself!</span>")
+				return
+			if(!M.buckled)
+				return
+			M.visible_message(\
+				"<span class='warning'>[M] unties the noose over their neck!</span>",\
+				"<span class='notice'>You untie the noose over your neck!</span>")
+			M.Weaken(3)
+		unbuckle_mob()
+		add_fingerprint(user)
+
+/obj/structure/noose/user_buckle_mob(mob/living/carbon/human/M, mob/user)
+	if(!in_range(user, src) || user.stat || user.restrained() || !istype(M))
+		return 0
+
+	if(!user.IsAdvancedToolUser())
+		return
+
+	if (ishuman(M))
+		var/mob/living/carbon/human/H = M
+		var/obj/item/organ/external/affecting = H.get_organ("head")
+		if(!affecting)
+			to_chat (user, "<span class='danger'>They don't have a head.</span>")
+			return
+
+	if(M.loc != src.loc) return 0 //Can only noose someone if they're on the same tile as noose
+
+	add_fingerprint(user)
+
+	if(M == user && buckle_mob(M))
+		M.visible_message(\
+			"<span class='warning'>[M] ties \the [src] over their neck!</span>",\
+			"<span class='warning'>You tie \the [src] over your neck!</span>")
+		playsound(user.loc, 'sound/effects/noosed.ogg', 50, 1, -1)
+		return 1
+	else
+		M.visible_message(\
+			"<span class='danger'>[user] attempts to tie \the [src] over [M]'s neck!</span>",\
+			"<span class='danger'>[user] ties \the [src] over your neck!</span>")
+		user << "<span class='notice'>It will take 20 seconds and you have to stand still.</span>"
+		if(do_after(user, 200))
+			if(buckle_mob(M))
+				M.visible_message(\
+					"<span class='danger'>[user] ties \the [src] over [M]'s neck!</span>",\
+					"<span class='danger'>[user] ties \the [src] over your neck!</span>")
+				playsound(user.loc, 'sound/effects/noosed.ogg', 50, 1, -1)
+				return 1
+			else
+				user.visible_message(\
+					"<span class='warning'>[user] fails to tie \the [src] over [M]'s neck!</span>",\
+					"<span class='warning'>You fail to tie \the [src] over [M]'s neck!</span>")
+				return 0
+		else
+			user.visible_message(\
+				"<span class='warning'>[user] fails to tie \the [src] over [M]'s neck!</span>",\
+				"<span class='warning'>You fail to tie \the [src] over [M]'s neck!</span>")
+			return 0
+
+/obj/structure/noose/Process(mob/living/carbon/human/M, mob/user)
+	if(!buckled_mob)
+		STOP_PROCESSING(SSprocessing, src)
+		buckled_mob.pixel_x = initial(buckled_mob.pixel_x)
+		pixel_x = initial(pixel_x)
+		return
+
+	ticks++
+	switch(ticks)
+		if(1)
+			pixel_x -= 1
+			buckled_mob.pixel_x -= 1
+		if(2)
+			pixel_x = initial(pixel_x)
+			buckled_mob.pixel_x = initial(buckled_mob.pixel_x)
+		if(3) //Every third tick it plays a sound and RNG's a flavor text
+			pixel_x += 1
+			buckled_mob.pixel_x += 1
+			if(buckled_mob)
+
+				if(prob(15))
+					var/flavor_text = list("<span class='warning'>[buckled_mob]'s legs flail for anything to stand on.</span>",\
+											"<span class='warning'>[buckled_mob]'s hands are desperately clutching the noose.</span>",\
+											"<span class='warning'>[buckled_mob]'s limbs sway back and forth with diminishing strength.</span>")
+					if(buckled_mob.stat == DEAD)
+						flavor_text = list("<span class='warning'>[buckled_mob]'s limbs lifelessly sway back and forth.</span>",\
+											"<span class='warning'>[buckled_mob]'s eyes stare straight ahead.</span>")
+					buckled_mob.visible_message(pick(flavor_text))
+				playsound(buckled_mob.loc, 'sound/effects/noose_idle.ogg', 50, 1, -3)
+		if(4)
+			pixel_x = initial(pixel_x)
+			buckled_mob.pixel_x = initial(buckled_mob.pixel_x)
+			ticks = 0
+
+	if(buckled_mob)
+
+		buckled_mob.adjustOxyLoss(5)
+		buckled_mob.adjustBrainLoss(1)
+		buckled_mob.silent = max(buckled_mob.silent, 10)
+		if(prob(25)) //to reduce gasp spam
+			buckled_mob.emote("gasp")
+
