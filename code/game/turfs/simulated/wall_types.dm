@@ -7,6 +7,9 @@
 /turf/simulated/wall/ocp_wall/New(var/newloc)
 	..(newloc, "osmium-carbide plasteel", "osmium-carbide plasteel")
 
+
+
+
 /turf/simulated/wall/cult
 	icon_state = "cult"
 
@@ -77,10 +80,3 @@
 
 /turf/simulated/wall/other_gwall
 	icon = 'icons/turf/gwalls.dmi'
-
-/turf/simulated/wall/wooden
-	icon = 'icons/turf/woodenwalls.dmi'
-	icon_state = "wood0"
-
-/turf/simulated/wall/wooden/New(var/newloc)
-	..(newloc,"wood")
