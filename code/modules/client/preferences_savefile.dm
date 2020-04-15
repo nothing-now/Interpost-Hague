@@ -1,5 +1,5 @@
 #define SAVEFILE_VERSION_MIN	8
-#define SAVEFILE_VERSION_MAX	35
+#define SAVEFILE_VERSION_MAX	17
 
 /datum/preferences/proc/load_path(ckey,filename="preferences.sav")
 	if(!ckey)	return
@@ -17,36 +17,6 @@
 	player_setup.load_preferences(S)
 	loaded_preferences = S
 	return 1
-
-
-	if(savefile_version < 35)
-		WRITE_FILE(S["focus_chat"], FALSE)
-
-	if(savefile_version < 34)
-		READ_FILE(S["key_bindings"], key_bindings)
-		if(key_bindings)
-			key_bindings = sanitize_islist(key_bindings, list())
-			key_bindings["T"] = list(1 = "say")
-			key_bindings["M"] = list(1 = "me")
-			key_bindings["O"] = list(1 = "ooc")
-			key_bindings["L"] = list(1 = "looc")
-			WRITE_FILE(S["key_bindings"], key_bindings)
-
-	if(savefile_version < 33)
-		if(!length(S["key_bindings"]))
-			WRITE_FILE(S["key_bindings"], deepCopyList(GLOB.hotkey_keybinding_list_by_key))
-
-	if(savefile_version < 31)
-		WRITE_FILE(S["key_bindings"], null)
-
-	if(savefile_version < 30)
-		WRITE_FILE(S["key_bindings"], null)
-
-	if(savefile_version < 26)
-		WRITE_FILE(S["key_bindings"], null)
-
-	if(savefile_version < 23)
-		WRITE_FILE(S["focus_chat"], TRUE)
 
 /datum/preferences/proc/save_preferences()
 	if(!path)				return 0
@@ -82,10 +52,6 @@
 		player_setup.load_character(S)
 		S.cd = GLOB.using_map.character_load_path(S, default_slot)
 
-	READ_FILE(S["focus_chat"], focus_chat)
-	READ_FILE(S["tooltips"], tooltips)
-	READ_FILE(S["key_bindings"], key_bindings)
-
 	loaded_character = S
 
 	return 1
@@ -103,11 +69,6 @@
 
 /datum/preferences/proc/sanitize_preferences()
 	player_setup.sanitize_setup()
-
-	focus_chat			= sanitize_integer(focus_chat, FALSE, TRUE, initial(focus_chat))
-
-	key_bindings 	= sanitize_islist(key_bindings, list())
-
 	return 1
 
 /datum/preferences/proc/update_setup(var/savefile/preferences, var/savefile/character)
