@@ -88,7 +88,6 @@
 #define SS_INIT_SKYBOX           7
 #define SS_INIT_MAPPING          6
 #define SS_INIT_OPEN_SPACE       5
-#define SS_PRIORITY_INPUT        14
 #define SS_INIT_CIRCUIT          4
 #define SS_INIT_ATOMS            3
 #define SS_INIT_ICON_UPDATE      2
