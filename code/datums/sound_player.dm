@@ -2,11 +2,9 @@ GLOBAL_DATUM_INIT(sound_player, /decl/sound_player, new)
 
 /*
 	A sound player/manager for looping 3D sound effects.
-
 	Due to how the BYOND sound engine works a sound datum must be played on a specific channel for updates to work properly.
 	If a channel is not assigned it will just result in a new sound effect playing, even if re-using the same datum instance.
 	We also use the channel to play a null-sound on Stop(), just in case BYOND clients don't like having a large nuber, albeit stopped, looping sounds.
-
 	As such there is a maximum limit of 1024 sound sources, with further limitations due to some channels already being potentially in use.
 	However, multiple sources may share the same sound_id and there is a best-effort attempt to play the closest source where possible.
 	The line above is currently a lie. Will probably just have to enforce moderately short sound ranges.
@@ -26,11 +24,11 @@ GLOBAL_DATUM_INIT(sound_player, /decl/sound_player, new)
 
 
 //This can be called if either we're doing whole sound setup ourselves or it will be as part of from-file sound setup
-/decl/sound_player/proc/PlaySoundDatum(var/atom/source, var/sound_id, var/sound/sound, var/range, var/prefer_mute, var/ignore_vis = FALSE)
+/decl/sound_player/proc/PlaySoundDatum(var/atom/source, var/sound_id, var/sound/sound, var/range, var/prefer_mute, var/ignore_vis = FALSE, var/streaming)
 	var/token_type = isnum(sound.environment) ? /datum/sound_token : /datum/sound_token/static_environment
-	return new token_type(source, sound_id, sound, range, prefer_mute, ignore_vis)
+	return new token_type(source, sound_id, sound, range, prefer_mute, ignore_vis, streaming)
 
-/decl/sound_player/proc/PlayLoopingSound(var/atom/source, var/sound_id, var/sound, var/volume, var/range, var/falloff = 1, var/echo, var/frequency, var/prefer_mute, var/ignore_vis = FALSE)
+/decl/sound_player/proc/PlayLoopingSound(var/atom/source, var/sound_id, var/sound, var/volume, var/range, var/falloff = 1, var/echo, var/frequency, var/prefer_mute, var/ignore_vis = FALSE, var/streaming)
 	var/sound/S = istype(sound, /sound) ? sound : new(sound)
 	S.environment = 0 // Ensures a 3D effect even if x/y offset happens to be 0 the first time it's played
 	S.volume  = volume
@@ -40,7 +38,7 @@ GLOBAL_DATUM_INIT(sound_player, /decl/sound_player, new)
 	S.repeat = TRUE
 	S.ignore_vis = ignore_vis
 
-	return PlaySoundDatum(source, sound_id, S, range, prefer_mute, ignore_vis)
+	return PlaySoundDatum(source, sound_id, S, range, prefer_mute, ignore_vis, streaming)
 
 /decl/sound_player/proc/PrivStopSound(var/datum/sound_token/sound_token)
 	var/channel = sound_token.sound.channel
@@ -92,7 +90,7 @@ GLOBAL_DATUM_INIT(sound_player, /decl/sound_player, new)
 	var/list/can_be_heard_from
 	var/ignore_vis = FALSE
 
-/datum/sound_token/New(var/atom/source, var/sound_id, var/sound/sound, var/range = 4, var/prefer_mute = FALSE, var/ignore_vis = FALSE)
+/datum/sound_token/New(var/atom/source, var/sound_id, var/sound/sound, var/range = 4, var/prefer_mute = FALSE, var/ignore_vis = FALSE, var/streaming)
 	..()
 	if(!istype(source))
 		CRASH("Invalid sound source: [log_info_line(source)]")
@@ -109,6 +107,9 @@ GLOBAL_DATUM_INIT(sound_player, /decl/sound_player, new)
 	src.sound       = sound
 	src.sound_id    = sound_id
 	src.ignore_vis  = ignore_vis
+
+	if(streaming) // Streams music
+		src.status |= SOUND_STREAM
 
 	if(sound.repeat) // Non-looping sounds may not reserve a sound channel due to the risk of not hearing when someone forgets to stop the token
 		var/channel = GLOB.sound_player.PrivGetChannel(src) //Attempt to find a channel
@@ -131,14 +132,14 @@ GLOBAL_DATUM_INIT(sound_player, /decl/sound_player, new)
 	Stop()
 	. = ..()
 
-datum/sound_token/proc/SetVolume(var/new_volume)
+/datum/sound_token/proc/SetVolume(var/new_volume)
 	new_volume = Clamp(new_volume, 0, 100)
 	if(sound.volume == new_volume)
 		return
 	sound.volume = new_volume
 	PrivUpdateListeners()
 
-datum/sound_token/proc/Mute()
+/datum/sound_token/proc/Mute()
 	PrivUpdateStatus(status|SOUND_MUTE)
 
 /datum/sound_token/proc/Unmute()

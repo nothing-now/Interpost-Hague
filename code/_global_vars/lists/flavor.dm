@@ -79,3 +79,24 @@ GLOBAL_LIST_INIT(numbers_as_words, list("One", "Two", "Three", "Four",
 	"Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve",
 	"Thirteen", "Fourteen", "Fifteen", "Sixteen", "Seventeen",
 	"Eighteen", "Nineteen"))
+
+GLOBAL_LIST_INIT(music_tracks, list(
+		"Starter" = 'sound/jukebox/barsong1.ogg',
+		"Pupper" = 'sound/jukebox/barsong2.ogg',
+		"Hellfire" = 'sound/jukebox/barsong3.ogg',
+		"Chop" = 'sound/jukebox/barsong4.ogg',
+		"Cosmic" = 'sound/jukebox/barsong5.ogg',
+		"Streak" = 'sound/jukebox/barsong6.ogg',
+		"Drive" = 'sound/jukebox/barsong7.ogg',
+		"Jammed" = 'sound/jukebox/barsong8.ogg',
+		"Pixies" = 'sound/jukebox/barsong9.ogg',
+		"Chery Bomb" = 'sound/jukebox/barsong10.ogg',
+))
+
+/proc/setup_music_tracks(list/tracks)
+	. = list()
+	var/track_list = LAZYLEN(tracks) ? tracks : GLOB.music_tracks
+	for(var/track_name in track_list)
+		var/track_path = track_list[track_name]
+		. += new /datum/track(track_name, track_path)
+

@@ -296,7 +296,7 @@
 
 
 /datum/job/hos
-	title = "Head of Security"
+	title = "Enforcer Chief"
 	supervisors = "the Count"
 	department_flag = SEC
 	total_positions = 1
@@ -326,7 +326,7 @@
 
 
 /datum/job/officer
-	title = "Security Officer"
+	title = "Loyaler Enforcer"
 	department = "Security"
 	department_flag = SEC
 	total_positions = 4

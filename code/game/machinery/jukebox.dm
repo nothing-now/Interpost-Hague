@@ -1,12 +1,18 @@
 //This file was auto-corrected by findeclaration.exe on 25.5.2012 20:42:32
 
-datum/track
+/datum/track
 	var/title
 	var/sound
 
-datum/track/New(var/title_name, var/audio)
-	title = title_name
-	sound = audio
+/datum/track/New(var/title_name, var/audio)
+	src.title = title_name
+	src.sound = audio
+
+/datum/track/proc/GetTrack()
+	if(ispath(sound, /lobby_music))
+		var/lobby_music/music_track = decls_repository.get_decl(sound)
+		return music_track.song
+	return sound // Allows admins to continue their adminbus simply by overriding the track var
 
 /obj/machinery/media/jukebox
 	name = "space jukebox"
@@ -27,27 +33,23 @@ datum/track/New(var/title_name, var/audio)
 	var/sound_id
 	var/datum/sound_token/sound_token
 
-	var/datum/track/current_track
-	var/list/datum/track/tracks = list(
-		new/datum/track("Starter", 'sound/jukebox/barsong1.ogg'),
-		new/datum/track("Pupper", 'sound/jukebox/barsong2.ogg'),
-		new/datum/track("Hellfire", 'sound/jukebox/barsong3.ogg'),
-		new/datum/track("Chop", 'sound/jukebox/barsong4.ogg'),
-		new/datum/track("Cosmic", 'sound/jukebox/barsong5.ogg'),
-		new/datum/track("Streak", 'sound/jukebox/barsong6.ogg'),
-		new/datum/track("Drive", 'sound/jukebox/barsong7.ogg'),
-		new/datum/track("Jammed", 'sound/jukebox/barsong8.ogg'),
-		new/datum/track("Pixies", 'sound/jukebox/barsong9.ogg'),
-		new/datum/track("Chery Bomb", 'sound/jukebox/barsong10.ogg'),
-	)
+	var/obj/item/music_tape/tape
 
-/obj/machinery/media/jukebox/New()
-	..()
+	var/datum/track/current_track
+
+	var/list/datum/track/tracks
+
+/obj/machinery/media/jukebox/Initialize()
+	. = ..()
+	tracks = setup_music_tracks(tracks)
 	update_icon()
-	sound_id = "[type]_[sequential_id(type)]"
+	sound_id = "[/obj/machinery/media/jukebox]_[sequential_id(/obj/machinery/media/jukebox)]"
 
 /obj/machinery/media/jukebox/Destroy()
 	StopPlaying()
+	QDEL_NULL_LIST(tracks)
+	current_track = null
+	QDEL_NULL(tape)
 	. = ..()
 
 /obj/machinery/media/jukebox/powered()
@@ -75,7 +77,7 @@ datum/track/New(var/title_name, var/audio)
 
 /obj/machinery/media/jukebox/interact(mob/user)
 	if(!anchored)
-		to_chat(usr, "<span class='warning'>You must secure \the [src] first.</span>")
+		to_chat(usr, SPAN_WARNING("You must secure \the [src] first."))
 		return
 
 	if(stat & (NOPOWER|BROKEN))
@@ -104,7 +106,8 @@ datum/track/New(var/title_name, var/audio)
 		"current_track" = current_track != null ? current_track.title : "No track selected",
 		"playing" = playing,
 		"tracks" = juke_tracks,
-		"volume" = volume
+		"volume" = volume,
+		"tape" = tape
 	)
 
 	return data
@@ -134,6 +137,9 @@ datum/track/New(var/title_name, var/audio)
 		if("volume")
 			AdjustVolume(text2num(params["level"]))
 			. = TRUE
+		if("eject")
+			eject()
+			. = TRUE
 
 /obj/machinery/media/jukebox/proc/emag_play()
 	playsound(loc, 'sound/items/AirHorn.ogg', 100, 1)
@@ -161,16 +167,16 @@ datum/track/New(var/title_name, var/audio)
 	interact(user)
 
 /obj/machinery/media/jukebox/proc/explode()
-	walk_to(src,0)
-	src.visible_message("<span class='danger'>\the [src] blows apart!</span>", 1)
+	walk_to(src, 0)
+	src.visible_message(SPAN_DANGER("\the [src] blows apart!"), 1)
 
-	explosion(src.loc, 0, 0, 1, rand(1,2), 1)
+	explosion(get_turf(src), 0, 0, 1, rand(1,2), 1)
 
 	var/datum/effect/effect/system/spark_spread/s = new /datum/effect/effect/system/spark_spread
 	s.set_up(3, 1, src)
 	s.start()
 
-	new /obj/effect/decal/cleanable/blood/oil(src.loc)
+	new /obj/effect/decal/cleanable/blood/oil(loc)
 	qdel(src)
 
 /obj/machinery/media/jukebox/attackby(obj/item/W as obj, mob/user as mob)
@@ -179,13 +185,30 @@ datum/track/New(var/title_name, var/audio)
 		wrench_floor_bolts(user, 0)
 		power_change()
 		return
+	else if(istype(W, /obj/item/music_tape))
+		var/obj/item/music_tape/D = W
+		if(tape)
+			to_chat(user, SPAN_NOTICE("There is already \a [tape] inside."))
+			return
+
+		if(D.ruined)
+			to_chat(user, SPAN_WARNING("\The [D] is ruined, you can't use it."))
+			return
+
+		if(user.drop_item())
+			visible_message(SPAN_NOTICE("[usr] insert \a [tape] into \the [src]."))
+			D.forceMove(src)
+			tape = D
+			tracks += tape.track
+			verbs += /obj/machinery/media/jukebox/verb/eject
+		return
 	return ..()
 
 /obj/machinery/media/jukebox/emag_act(var/remaining_charges, var/mob/user)
 	if(!emagged)
 		emagged = 1
 		StopPlaying()
-		visible_message("<span class='danger'>\The [src] makes a fizzling sound.</span>")
+		visible_message(SPAN_DANGER("\The [src] makes a fizzling sound."))
 		update_icon()
 		return 1
 
@@ -203,7 +226,7 @@ datum/track/New(var/title_name, var/audio)
 
 	// Jukeboxes cheat massively and actually don't share id. This is only done because it's music rather than ambient noise.
 	// It also has the "ignore_vis" flag so it can be heard through walls and zlevels
-	sound_token = GLOB.sound_player.PlayLoopingSound(src, sound_id, current_track.sound, volume = volume, range = 14, falloff = 3, prefer_mute = TRUE, ignore_vis = TRUE)
+	sound_token = GLOB.sound_player.PlayLoopingSound(src, sound_id, current_track.sound, volume = volume, range = 14, falloff = 3, prefer_mute = TRUE, ignore_vis = TRUE, streaming = TRUE)
 	playing = 1
 	update_use_power(2)
 	update_icon()
@@ -212,3 +235,25 @@ datum/track/New(var/title_name, var/audio)
 	volume = Clamp(new_volume, 0, 50)
 	if(sound_token)
 		sound_token.SetVolume(volume)
+
+/obj/machinery/media/jukebox/verb/eject()
+	set name = "Eject"
+	set category = "Object"
+	set src in oview(1)
+
+	if(!CanPhysicallyInteract(usr))
+		return
+
+	if(tape)
+		StopPlaying()
+		current_track = null
+		for(var/datum/track/T in tracks)
+			if(T == tape.track)
+				tracks -= T
+
+		if(!usr.put_in_hands(tape))
+			tape.dropInto(loc)
+
+		tape = null
+		visible_message(SPAN_NOTICE("[usr] eject \a [tape] from \the [src]."))
+		verbs -= /obj/machinery/media/jukebox/verb/eject

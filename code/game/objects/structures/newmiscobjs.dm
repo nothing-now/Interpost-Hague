@@ -174,16 +174,15 @@
 
 
 /obj/structure/woodenclock/Initialize()
-	. = ..()
 	START_PROCESSING(SSobj, src)
+	. = ..()
 
 /obj/structure/woodenclock/Destroy()
-	STOP_PROCESSING(SSobj, src)
 	. = ..()
+	STOP_PROCESSING(SSobj, src)
 
 /obj/structure/woodenclock/Process()
-	if(Initialize())
-		playsound(src.loc, 'sound/machines/clock_ticking.ogg', 100, 0)
+	playsound(src.loc, 'sound/machines/clock_ticking.ogg', 100, 0)
 
 /obj/structure/nuclearwaste
 	name = "big nuclear waste canister"
