@@ -113,9 +113,11 @@
 		/mob/living/carbon/human/proc/threat_display
 		)
 
+/datum/species/nabber/New()
 	equip_adjust = list(
 		slot_back_str = list(NORTH = list("x" = 0, "y" = 7), EAST = list("x" = 0, "y" = 8), SOUTH = list("x" = 0, "y" = 8), WEST = list("x" = 0, "y" = 8))
 			)
+	..()
 
 /datum/species/nabber/get_eyes(var/mob/living/carbon/human/H)
 	var/obj/item/organ/internal/eyes/nabber/O = H.internal_organs_by_name[BP_EYES]
