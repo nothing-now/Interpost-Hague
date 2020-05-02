@@ -16,20 +16,21 @@
 	var/old_god = LEGAL_RELIGION
 	var/phrase = "Test Phrase"
 
-	New()
+/datum/old_god_spell/New()
 		phrase = GLOB.all_religions[old_god].generate_random_phrase()
+		..()
 
-	proc/spell_effect(var/mob/living/user)
+/datum/old_god_spell/proc/spell_effect(var/mob/living/user)
 		to_world("Something is fucked up, you should not be seeing this.  It's from old god spell code, go tell a coder.")
 	
 	//Helper to make spells involving paper easier TODO: same thing for blood/limbs/organs
-	proc/get_player_from_paper(var/obj/item/weapon/paper/target_paper)
+/datum/old_god_spell/proc/get_player_from_paper(var/obj/item/weapon/paper/target_paper)
 		for(var/mob/player in GLOB.player_list)
 			if(findtext(target_paper.info, player.name))
 				return player
 
 	//Consumes the spell componenets before casting.  Some spells may want to leave some items behind, and it's more efficient if they specify as well
-	proc/spell_consume(var/list/spell_components)
+/datum/old_god_spell/proc/spell_consume(var/list/spell_components)
 		for(var/direction in spell_components)
 			qdel(spell_components[direction])
 
@@ -45,7 +46,7 @@
 		smoke.start()
 
 //Yeah this is fucking stupid, but I can't make associatve lists like list(NORTH=1) because fucking byond, so we need to do list("NORTH"=1) and pass through here.  
-proc/DIRECTION_TO_VAL(var/direction)
+/datum/old_god_spell/proc/DIRECTION_TO_VAL(var/direction)
 	switch(direction)
 		if("NORTH") return NORTH
 		if("NORTHEAST") return NORTHEAST
