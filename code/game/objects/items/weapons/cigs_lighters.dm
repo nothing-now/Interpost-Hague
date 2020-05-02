@@ -1047,6 +1047,13 @@ obj/item/clothing/mask/chewable/Destroy()
 	item_state = "zippo"
 	max_fuel = 10
 
+/obj/item/weapon/flame/lighter/bullet
+	name = "bullet ligther"
+	desc = "A homemade lighter made out of a big caliber bullet."
+	icon_state = "bulletzip"
+	item_state = "zippo"
+	max_fuel = 20
+
 /obj/item/weapon/flame/lighter/zippo/light_effects(mob/user)
 	user.visible_message("<span class='rose'>Without even breaking stride, [user] flips open and lights [src] in one smooth movement.</span>")
 	playsound(src.loc, 'sound/items/zippo_open.ogg', 100, 1, -4)

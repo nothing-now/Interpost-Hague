@@ -180,6 +180,13 @@ proc/spawn_money(var/sum, spawnloc, mob/living/carbon/human/human_user as mob)
 	desc = "A card that holds an amount of money."
 	var/owner_name = "" //So the ATM can set it so the EFTPOS can put a valid name on transactions.
 
+/obj/item/weapon/spacecash/ecoin
+	name = "Charge card"
+	icon_state = "bitcoin"
+	desc = "A virtual currency made in true form!."
+	worth = 3200
+	var/owner_name = ""
+
 /obj/item/weapon/spacecash/ewallet/examine(mob/user)
 	. = ..(user)
 	if (!(user in view(2)) && user!=src.loc) return
