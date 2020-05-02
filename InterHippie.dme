@@ -847,6 +847,7 @@
 #include "code\game\objects\items\weapons\handcuffs.dm"
 #include "code\game\objects\items\weapons\improvised_components.dm"
 #include "code\game\objects\items\weapons\janitor_sign.dm"
+#include "code\game\objects\items\weapons\lux.dm"
 #include "code\game\objects\items\weapons\mop.dm"
 #include "code\game\objects\items\weapons\nuclear_cylinder.dm"
 #include "code\game\objects\items\weapons\paint.dm"
