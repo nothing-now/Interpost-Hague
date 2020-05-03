@@ -39,7 +39,7 @@
 	desc = "A flat bit of metal with some usefully shaped holes cut into it."
 	icon_state = "impro_wrench"
 	//degradation = 4
-	//tool_qualities = list(QUALITY_BOLT_TURNING = 15) 
+	//tool_qualities = list(QUALITY_BOLT_TURNING = 15)
 
 /obj/item/weapon/wrench/Initialize()
 	icon_state = "wrench[pick("","_red","_black")]"
@@ -222,7 +222,41 @@
 		else
 			to_chat(user, "<span class='notice'>You are already trying to pull out a tooth!</span>")
 		return
-	else 
+
+	//Cutting off dick.
+	if(ishuman(C) && user.zone_sel.selecting == "groin")//Todo, make this it's own proc.
+		var/mob/living/carbon/human/H = C
+		var/haspenis = (H.gender == MALE && H.potenzia > -1 && H.species.genitals && !H.mutilated_genitals)
+		if(H.is_nude())//Gotta be naked.
+			if(haspenis)//And have a dick.
+				if(!user.doing_something)//Are they doing something?
+					user.doing_something = 1//Good their not run all this shit.
+					H.visible_message("<span class='danger'>[user] tries to cut off [H]'s penis with [src]!</span>",
+										"<span class='danger'>[user] tries to cut off your penis with [src]!</span>")
+					if(do_after(user, 50))
+
+						H.visible_message("<span class='danger'>[user] cuts off [H]'s penis with [src]!</span>",
+										"<span class='danger'>[user] cuts off your penis with [src]!</span>")
+						H.custom_pain("[pick("OH GOD YOUR DICK!", "OH GOD WHY!", "OH GOD IT HURTS!")]", 100, BP_GROIN)//Pain.
+						H.apply_damage(rand(30,45), BRUTE, BP_GROIN)
+						playsound(H, 'sound/effects/gore/severed.ogg', 50, 1, -1)
+						H.mutilate_genitals()
+						new /obj/item/organ/internal/penis(H.loc)
+
+						user.doing_something = 0
+
+					else
+						to_chat(user, "<span class='notice'>You fail to cut off their penis...</span>")
+						user.doing_something = 0
+						return
+				else
+					to_chat(user, "<span class='notice'>You are already trying to cut off their penis!</span>")
+			else
+				to_chat(user, "They have no penis.")
+		else
+			to_chat(user, "They must be naked to perform the act.")
+
+	else
 		..()
 
 /*
@@ -753,7 +787,7 @@ Saws
 	desc = "A wicked serrated blade made of whatever nasty sharp things you could find. It would make a pretty decent weapon"
 	icon_state = "impro_saw"
 	//tool_qualities = list(QUALITY_SAWING = 15, QUALITY_CUTTING = 10, QUALITY_WIRE_CUTTING = 10)
-	//degradation = 1 
+	//degradation = 1
 /*
  * Combitool
  */

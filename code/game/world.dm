@@ -1,4 +1,4 @@
-/var/server_name = "Interpost/Hippie Hague - COVID-20 Alert"
+/var/server_name = "Interpost Hague"
 
 /var/game_id = null
 /hook/global_init/proc/generate_gameid()
@@ -485,7 +485,7 @@ var/world_topic_spam_protect_time = world.timeofday
 
 		if(config.server) //if you set a server location in config.txt, it sends you there instead of trying to reconnect to the same world address. -- NeoFite
 			open_link(C, "byond://[config.server]")
-	
+
 	if(config.wait_for_sigusr1_reboot && reason != 3)
 		text2file("foo", "reboot_called")
 		to_world("<span class=danger>World reboot waiting for external scripts. Please be patient.</span>")
@@ -585,9 +585,9 @@ var/world_topic_spam_protect_time = world.timeofday
 
 	s += "<b>[station_name()]</b>";
 	s += " ("
-	s += "<a href=\"http://\">" //Change this to wherever you want the hub to link to.
-	s += "[game_version]"
-//	s += "Default"  //Replace this with something else. Or ever better, delete it and uncomment the game version.
+	s += "<a href=\"https://discord.gg/gD6Vbw4\">" //Change this to wherever you want the hub to link to.
+	s += "Discord"
+	//s += "Default"  //Replace this with something else. Or ever better, delete it and uncomment the game version.
 	s += "</a>"
 	s += ")"
 
@@ -621,8 +621,8 @@ var/world_topic_spam_protect_time = world.timeofday
 		features += "~[n] player"
 
 
-	if (config && config.hostedby)
-		features += "hosted by <b>[config.hostedby]</b>"
+	//if (config && config.hostedby)
+		//features += "hosted by <b>[config.hostedby]</b>"
 
 	if (features)
 		s += ": [jointext(features, ", ")]"
