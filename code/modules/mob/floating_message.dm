@@ -34,6 +34,7 @@ var/list/floating_chat_colors = list()
 				C.images += understood
 			else
 				C.images += gibberish
+
 /proc/generate_floating_text(atom/movable/holder, message, style, size, duration, show_to)
 	var/image/I = image(null, holder)
 	I.layer=FLY_LAYER
