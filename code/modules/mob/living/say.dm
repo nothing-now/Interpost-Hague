@@ -284,6 +284,7 @@ proc/get_radio_key_from_channel(var/channel)
 				speech_bubble_recipients += M.client
 
 	flick_overlay(speech_bubble, speech_bubble_recipients, 30)
+	flick_overlay(src, /atom/movable/proc/animate_chat, message, speaking, italics, speech_bubble_recipients, 30)
 
 	for(var/obj/O in listening_obj)
 		spawn(0)
