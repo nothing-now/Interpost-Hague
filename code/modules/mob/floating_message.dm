@@ -38,7 +38,7 @@ var/list/floating_chat_colors = list()
 /proc/generate_floating_text(atom/movable/holder, message, style, size, duration, show_to)
 	var/image/I = image(null, holder)
 	I.layer=FLY_LAYER
-	I.alpha = 0
+	I.alpha = 255
 	I.maptext_width = 80
 	I.maptext_height = 64
 	I.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA
