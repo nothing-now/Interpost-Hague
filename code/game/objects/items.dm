@@ -183,8 +183,6 @@
 /obj/item/proc/update_wield_icon()
 	if(wielded && wielded_icon)
 		item_state = wielded_icon
-	if(!wielded && wielded_icon)
-		qdel(src)
 
 /obj/item/proc/update_unwield_icon()//That way it doesn't interupt any other special icon_states.
 	if(wielded && wielded_icon)
@@ -258,8 +256,8 @@
 		I.unwield(user)
 	if(II)
 		II.unwield(user)
-	qdel(src)
-
+	if(!QDELETED(src)) //fixes the multiple qdel error
+		qdel(src)
 
 /obj/item/ex_act(severity)
 	switch(severity)
