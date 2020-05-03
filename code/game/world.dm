@@ -621,8 +621,8 @@ var/world_topic_spam_protect_time = world.timeofday
 		features += "~[n] player"
 
 
-	if (config && config.hostedby)
-		features += "hosted by <b>[config.hostedby]</b>"
+	//if (config && config.hostedby)
+		//features += "hosted by <b>[config.hostedby]</b>"
 
 	if (features)
 		s += ": [jointext(features, ", ")]"
