@@ -63,7 +63,7 @@ em						{font-style: normal;font-weight: bold;}
 /* Miscellaneous */
 .name					{font-weight: bold;}
 .say					{}
-.alert					{color: #ff0000; text-shadow: 0 0 3px red;}
+.alert					{color: #ff0000; text-shadow: 0 0 1px red;}
 h1.alert, h2.alert		{color: #000000;}
 
 .emote					{font-style: italic;}
@@ -76,8 +76,8 @@ h1.alert, h2.alert		{color: #000000;}
 .passive				{color: #660000;}
 
 .danger					{color: #ff0000; font-weight: bold; text-shadow: 0 0 7px red;}
-.warning				{color: #ff0000; font-style: italic; text-shadow: 0 0 6px red;}
-.boldannounce			{color: #ff0000; font-weight: bold; text-shadow: 0 0 4px red;}
+.warning				{color: #ff0000; font-style: italic; text-shadow: 0 0 2px red;}
+.boldannounce			{color: #ff0000; font-weight: bold; text-shadow: 0 0 1px red;}
 .rose					{color: #ff5050;}
 .info					{color: #0000cc;}
 .notice					{color: #000099;}
