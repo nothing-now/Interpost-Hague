@@ -288,9 +288,9 @@
 
 	mymob.film_grain = new()
 	mymob.film_grain.icon = 'icons/effects/static.dmi'
-	mymob.film_grain.icon_state = "9 medium"
+	mymob.film_grain.icon_state = "6 light"
 	mymob.film_grain.screen_loc = ui_entire_screen
-	mymob.film_grain.alpha = 150
+	mymob.film_grain.alpha = 110
 	mymob.film_grain.layer = FULLSCREEN_LAYER
 	mymob.film_grain.mouse_opacity = 0
 	hud_elements |= mymob.film_grain
