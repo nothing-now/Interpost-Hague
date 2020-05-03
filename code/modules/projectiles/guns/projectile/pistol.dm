@@ -70,6 +70,21 @@
 	magazine_type = /obj/item/ammo_magazine/c45m
 	allowed_magazines = /obj/item/ammo_magazine/c45m
 
+/obj/item/weapon/gun/projectile/maka
+	name = "black makarov"
+	desc = "A tactical makarov, mostly used by officers."
+	icon_state = "maka_special"
+	item_state = "pistol"
+	w_class = ITEM_SIZE_SMALL
+	caliber = "9mm"
+	silenced = 0
+	fire_delay = 1
+	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 2)
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/makaspecial
+	allowed_magazines = /obj/item/ammo_magazine/makaspecial
+	jam_chance = 2
+
 /obj/item/weapon/gun/projectile/magnum_pistol
 	name = ".50 magnum pistol"
 	desc = "The HelTek Magnus, a robust terran handgun that uses .50 AE ammo."

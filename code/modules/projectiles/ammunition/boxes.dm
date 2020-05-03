@@ -89,6 +89,20 @@
 /obj/item/ammo_magazine/c45uzi/empty
 	initial_ammo = 0
 
+/obj/item/ammo_magazine/makaspecial
+	name = "magazine (9mm)"
+	icon_state = "maka_special"
+	origin_tech = list(TECH_COMBAT = 2)
+	mag_type = MAGAZINE
+	matter = list(DEFAULT_WALL_MATERIAL = 600)
+	caliber = "9mm"
+	ammo_type = /obj/item/ammo_casing/c9mm
+	max_ammo = 8
+	multiple_sprites = 1
+
+/obj/item/ammo_magazine/makaspecial/empty
+	initial_ammo = 0
+
 /obj/item/ammo_magazine/mc9mm
 	name = "magazine (9mm)"
 	icon_state = "9x19p"

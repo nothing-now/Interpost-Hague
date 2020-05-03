@@ -57,6 +57,12 @@
 	icon_state = "webbing_large"
 	slots = 4
 
+/obj/item/clothing/accessory/storage/Lifchik
+	name = "Lifchik webbing"
+	desc = "A large webbing."
+	icon_state = "lifchik"
+	slots = 6
+
 /obj/item/clothing/accessory/storage/black_vest
 	name = "black webbing vest"
 	desc = "Robust black synthcotton vest with lots of pockets to hold whatever you need, but cannot hold in hands."

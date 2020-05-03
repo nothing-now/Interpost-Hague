@@ -441,3 +441,9 @@
 	desc = "An armored vest of uncertain quality. Provides a good protection against physical damage, for piece of crap."
 	icon_state = "hm_armorvest"
 	armor = list(melee = 30, bullet = 30, energy = 15, bomb = 15, bio = 0, rad = 0)
+
+/obj/item/clothing/suit/vest/civilian/kevlar
+	name = "kevlar vest"
+	desc = "A level II kevlar vest."
+	icon_state = "civ_kevlar"
+	armor = list(melee = 40, bullet = 50, energy = 20, bomb = 25, bio = 10, rad = 5)

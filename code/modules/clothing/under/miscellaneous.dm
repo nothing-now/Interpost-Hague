@@ -595,6 +595,12 @@
 	icon_state = "saare"
 	worn_state = "saare"
 
+/obj/item/clothing/under/secdp
+	name = "Loyaler uniform"
+	desc = "A uniform used by the PMC loyaler."
+	icon_state = "secdp"
+	worn_state = "secdp"
+
 /obj/item/clothing/under/frontier
 	name = "frontier clothes"
 	desc = "A rugged flannel shirt and denim overalls. A popular style among frontier colonists."
