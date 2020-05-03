@@ -57,3 +57,5 @@
 
 	var/religion = LEGAL_RELIGION
 	var/doing_something = 0	//Like pulling teeth?
+
+	var/obj/screen/plane_master/blur_all/blur_effect = new

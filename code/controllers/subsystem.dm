@@ -7,9 +7,12 @@
 	var/priority = SS_PRIORITY_DEFAULT  //When mutiple subsystems need to run in the same tick, higher priority subsystems will run first and be given a higher share of the tick before MC_TICK_CHECK triggers a sleep
 
 	var/flags = 0                       //see MC.dm in __DEFINES Most flags must be set on world start to take full effect. (You can also restart the mc to force them to process again)
+	// Similar to can_fire, but intended explicitly for subsystems that are asleep. Using this var instead of can_fire
+	//	 allows admins to disable subsystems without them re-enabling themselves.
+	var/suspended = FALSE
 
 	var/initialized = FALSE	//set to TRUE after it has been initialized, will obviously never be set if the subsystem doesn't initialize
-	
+
 	//set to 0 to prevent fire() calls, mostly for admin use or subsystems that may be resumed later
 	//	use the SS_NO_FIRE flag instead for systems that never fire to keep it from even being added to the list
 	var/can_fire = TRUE
@@ -220,3 +223,15 @@
 	if (var_value)
 		SS.next_fire = world.time + SS.wait
 	SS.can_fire = var_value
+
+// Suspends this subsystem.
+// 	Preferred over disable() for self-disabling subsystems.
+/datum/controller/subsystem/proc/suspend()
+	suspended = TRUE
+
+// Wakes a suspended subsystem.
+/datum/controller/subsystem/proc/wake()
+	if (suspended)
+		suspended = FALSE
+		if (can_fire)
+			next_fire = world.time + wait

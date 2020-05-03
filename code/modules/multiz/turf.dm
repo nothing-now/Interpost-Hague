@@ -84,6 +84,11 @@
 			depth += 1
 		to_chat(user, "It is about [depth] level\s deep.")
 
+		if (depth > OPENTURF_MAX_DEPTH)
+			depth = OPENTURF_MAX_DEPTH
+
+		//var/t_target = OPENTURF_MAX_PLANE - depth	// this is where the openturf gets put
+
 /turf/simulated/open/is_open()
 	return TRUE
 

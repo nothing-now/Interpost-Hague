@@ -60,6 +60,8 @@ What is the naming convention for planes or layers?
 	FLOAT_PLANE = -32767
 */
 
+#define GLIDE_SIZE_CONSTANT world.tick_lag
+
 #define CLICKCATCHER_PLANE -500
 
 #define SPACE_PLANE -499
@@ -241,6 +243,18 @@ What is the naming convention for planes or layers?
 
 /obj/screen/plane_master/ghost_master
 	plane = OBSERVER_PLANE
+	filters = filter(type = "outline", size = 2)
+
+/obj/screen/plane_master/blur_all
+	plane = BASE_PLANE
+	filters = filter(type = "blur", size = 2)
+
+/obj/screen/plane_master/blurs
+	filters = filter(type = "blur", size = 2)
+
+/obj/screen/plane_master/openspace_blur
+	plane = OVER_OPENSPACE_PLANE
+	filters = filter(type = "blur", size = 1)
 
 /obj/screen/plane_master/ghost_dummy
 	// this avoids a bug which means plane masters which have nothing to control get angry and mess with the other plane masters out of spite

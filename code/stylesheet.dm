@@ -1,11 +1,11 @@
 client/script = {"<style>
-body					{font-family: Verdana, sans-serif;}
+body					{font-family: Alternate Gothic, sans-serif;}
 
-h1, h2, h3, h4, h5, h6	{color: #0000ff;font-family: Georgia, Verdana, sans-serif;}
+h1, h2, h3, h4, h5, h6	{color: #0000ff;font-family: Georgia, Alternate Gothic, sans-serif;}
 
 em						{font-style: normal;font-weight: bold;}
 
-.motd					{color: #638500;font-family: Verdana, sans-serif;}
+.motd					{color: #638500;font-family: Arial, sans-serif;}
 .motd h1, .motd h2, .motd h3, .motd h4, .motd h5, .motd h6
 						{color: #638500;text-decoration: underline;}
 .motd a, .motd a:link, .motd a:visited, .motd a:active, .motd a:hover
@@ -79,7 +79,7 @@ h1.alert, h2.alert		{color: #000000;}
 .warning				{color: #ff0000; font-style: italic; text-shadow: 0 0 2px red;}
 .boldannounce			{color: #ff0000; font-weight: bold; text-shadow: 0 0 1px red;}
 .rose					{color: #ff5050;}
-.info					{color: #0000cc;}
+.info					{color: #01018a;}
 .notice					{color: #000099;}
 .alium					{color: #00ff00;}
 .cult					{color: #800080; font-weight: bold; font-style: italic;}
@@ -98,7 +98,7 @@ h1.alert, h2.alert		{color: #000000;}
 .changeling				{color: #800080;}
 .vox					{color: #aa00aa;}
 .rough					{font-family: "Trebuchet MS", cursive, sans-serif;}
-.say_quote				{font-family: Georgia, Verdana, sans-serif;}
+.say_quote				{font-family: Georgia, Alternate Gothic, sans-serif;}
 .terran					{color: #9c250b;}
 .moon					{color: #422863;}
 .spacer					{color: #ff6600;}

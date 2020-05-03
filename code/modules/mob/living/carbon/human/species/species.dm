@@ -417,7 +417,11 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 		H.set_fullscreen(H.equipment_tint_total, "welder", /obj/screen/fullscreen/impaired, H.equipment_tint_total)
 	var/how_nearsighted = get_how_nearsighted(H)
 	H.set_fullscreen(how_nearsighted, "nearsighted", /obj/screen/fullscreen/oxy, how_nearsighted)
-	H.set_fullscreen(H.eye_blurry, "blurry", /obj/screen/fullscreen/blurry)
+	if(H.eye_blurry)
+		H.set_all_blur()
+	else
+		H.remove_all_blur()
+	//H.set_fullscreen(H.eye_blurry, "blurry", /obj/screen/fullscreen/blurry)
 	H.set_fullscreen(H.druggy, "high", /obj/screen/fullscreen/high)
 
 	for(var/overlay in H.equipment_overlays)
@@ -569,3 +573,13 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 			facial_hair_style_by_gender[facialhairstyle] = S
 
 	return facial_hair_style_by_gender
+
+/mob/living/proc/set_all_blur()
+	if(!client)
+		return
+	client.screen += blur_effect
+
+/mob/living/proc/remove_all_blur()
+	if(!client)
+		return
+	client.screen -= blur_effect

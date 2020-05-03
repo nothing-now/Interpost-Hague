@@ -2,6 +2,16 @@
 // Controller handling icon updates of open space turfs
 //
 
+#define OPENTURF_MAX_PLANE -70
+#define OPENTURF_MAX_DEPTH 10		// The maxiumum number of planes deep we'll go before we just dump everything on the same plane.
+#define SHADOWER_DARKENING_FACTOR 0.6	// The multiplication factor for openturf shadower darkness. Lighting will be multiplied by this.
+
+/mob/proc/add_filter_effects()
+	for(var/i in 1 to OPENTURF_MAX_DEPTH)
+		var/obj/screen/plane_master/blurs/B = new
+		B.plane = OPENTURF_MAX_PLANE - i
+		client.screen += B
+
 GLOBAL_DATUM_INIT(over_OS_darkness, /image, image('icons/turf/open_space.dmi', "black_open"))
 
 
@@ -19,7 +29,6 @@ SUBSYSTEM_DEF(open_space)
 	. = ..()
 	GLOB.over_OS_darkness.plane = OVER_OPENSPACE_PLANE
 	GLOB.over_OS_darkness.layer = MOB_LAYER
-	GLOB.open_space_initialised = TRUE
 	return INITIALIZE_HINT_LATELOAD
 
 

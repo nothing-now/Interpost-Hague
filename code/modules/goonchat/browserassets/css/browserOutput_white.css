@@ -11,7 +11,7 @@ html, body {
 }
 body {
 	background: #fff;
-	font-family: Verdana, sans-serif;
+	font-family: Alternate Gothic, sans-serif;
 	font-size: 13px;
 	line-height: 1.2;
 	overflow-x: hidden;
@@ -242,7 +242,7 @@ a.popt {text-decoration: none;}
 ******************************************/
 
 /* MOTD */
-.motd {color: #638500;	font-family: Verdana, sans-serif;}
+.motd {color: #638500;	font-family: Arial, sans-serif;}
 .motd h1, .motd h2, .motd h3, .motd h4, .motd h5, .motd h6 {color: #638500;	text-decoration: underline;}
 .motd a, .motd a:link, .motd a:visited, .motd a:active, .motd a:hover {color: #638500;}
 
@@ -255,7 +255,7 @@ a.popt {text-decoration: none;}
 /* OUTPUT COLORS */
 .highlight {background: yellow;}
 
-h1, h2, h3, h4, h5, h6	{color: #0000ff;font-family: Georgia, Verdana, sans-serif;}
+h1, h2, h3, h4, h5, h6	{color: #0000ff;font-family: Georgia, Alternate Gothic, sans-serif;}
 
 em						{font-style: normal;font-weight: bold;}
 
@@ -339,7 +339,7 @@ h1.alert, h2.alert		{color: #000080;}
 .solcom					{color: #22228b;}
 .vox					{color: #aa00aa;}
 .rough					{font-family: "Trebuchet MS", cursive, sans-serif;}
-.say_quote				{font-family: Georgia, Verdana, sans-serif;}
+.say_quote				{font-family: Georgia, Alternate Gothic, sans-serif;}
 .terran					{color: #9c250b;}
 .moon					{color: #422863;}
 .spacer					{color: #ff6600;}

@@ -5,6 +5,7 @@
 	glide_size = 8
 
 	var/last_move = null
+	var/last_move_time = 0
 	var/anchored = 0
 	// var/elevation = 2    - not used anywhere
 	var/move_speed = 10
@@ -17,6 +18,7 @@
 	var/throw_range = 7
 	var/moved_recently = 0
 	var/mob/pulledby = null
+	var/moving_diagonally = 0 //to know whether we're in the middle of a diagonal move
 	var/item_state = null // Used to specify the item state for the on-mob overlays.
 
 /atom/movable/Destroy()
@@ -137,6 +139,7 @@
 					src.throw_impact(A,speed)
 
 /atom/movable/proc/throw_at(atom/target, range, speed, thrower)
+	glide_size = world.icon_size / max((speed - GLIDE_SIZE_CONSTANT), world.tick_lag) * world.tick_lag
 	if(!target || !src)
 		return 0
 	if(target.z != src.z)
@@ -299,4 +302,4 @@
 			forceMove(T)
 
 /atom/movable/proc/get_bullet_impact_effect_type()
-	return BULLET_IMPACT_NONE 
+	return BULLET_IMPACT_NONE

@@ -54,6 +54,10 @@
 #define WAIT_ARRIVE  3
 #define WAIT_FINISH  4
 
+// Diagonal movement for movable atoms
+#define FIRST_DIAG_STEP 	1
+#define SECOND_DIAG_STEP 	2
+
 // Setting this much higher than 1024 could allow spammers to DOS the server easily.
 #define MAX_MESSAGE_LEN       1024
 #define MAX_PAPER_MESSAGE_LEN 3072
