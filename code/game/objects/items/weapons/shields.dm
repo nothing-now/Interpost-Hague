@@ -99,6 +99,31 @@
 		return 0 //No blocking bullets, I'm afraid.
 	return base_block_chance
 
+/obj/item/weapon/shield/steelshield
+	name = "steel shield"
+	desc = "A steel shield commonly used by knights."
+	icon = 'icons/obj/weapons.dmi'
+	icon_state = "steelshield"
+	slot_flags = SLOT_BACK
+	force = 10
+	throwforce = 5
+	base_block_chance = 75
+	throw_speed = 5
+	throw_range = 5
+	w_class = ITEM_SIZE_HUGE
+	origin_tech = list(TECH_MATERIAL = 1)
+	matter = list(DEFAULT_WALL_MATERIAL = 1000, "steel" = 1000)
+	attack_verb = list("shoved", "bashed")
+
+/obj/item/weapon/shield/steel/handle_shield(mob/living/user)
+	. = ..()
+	if(.) playsound(user.loc, 'sound/items/buckler_block.ogg', 50, 1)
+
+/obj/item/weapon/shield/steel/get_block_chance(mob/user, var/damage, atom/damage_source = null, mob/attacker = null)
+	if(istype(damage_source, /obj/item/projectile))
+		return 0 //No blocking bullets, I'm afraid.
+	return base_block_chance
+
 /*
  * Handmade shield
  */
