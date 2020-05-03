@@ -234,7 +234,7 @@ macro "borghotkeymode"
 macro "macro"
 	elem 
 		name = "Tab"
-		command = ".winset \"mainwindow.macro=hotkeymode hotkey_toggle.is-checked=true mapwindow.map.focus=true input.background-color=#f0f0f0\""
+		command = ".winset \"mainwindow.macro=hotkeymode hotkey_toggle.is-checked=true mapwindow.map.focus=true\""
 	elem 
 		name = "Center+REP"
 		command = ".center"
@@ -664,7 +664,7 @@ macro "hotkeymode"
 macro "borgmacro"
 	elem 
 		name = "Tab"
-		command = ".winset \"mainwindow.macro=borghotkeymode hotkey_toggle.is-checked=true mapwindow.map.focus=true input.background-color=#f0f0f0\""
+		command = ".winset \"mainwindow.macro=borghotkeymode hotkey_toggle.is-checked=true mapwindow.map.focus=true\""
 	elem 
 		name = "Center+REP"
 		command = ".center"
