@@ -1924,3 +1924,9 @@
 				B.transform = M.Scale(scale)
 
 				new /obj/effect/temp_visual/bloodsplatter(loc, hit_dir, species.blood_color)
+
+/mob/living/carbon/human/proc/mutilate_genitals()
+	if(!mutilated_genitals)
+		potenzia = -1
+		mutilated_genitals = 1
+		return 1
