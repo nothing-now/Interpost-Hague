@@ -103,7 +103,7 @@ var/list/_client_preferences_by_type
 		var/mob/living/carbon/human/H = preference_mob
 		if(new_value == GLOB.PREF_NO)
 			H.hovertext.maptext = ""
-			
+
 
 /datum/client_preference/play_ambiance
 	description ="Play ambience"
@@ -152,6 +152,11 @@ var/list/_client_preferences_by_type
 	description ="OOC chat"
 	key = "CHAT_OOC"
 	options = list(GLOB.PREF_SHOW, GLOB.PREF_HIDE)
+
+/datum/client_preference/floating_messages
+	description ="Floating chat messages"
+	key = "FLOATING_CHAT"
+	options = list(GLOB.PREF_HIDE, GLOB.PREF_SHOW)
 
 /datum/client_preference/show_aooc
 	description ="AOOC chat"
