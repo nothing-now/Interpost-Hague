@@ -3,7 +3,7 @@
 #define FOOTSTEP_PLATING 	"plating"
 #define FOOTSTEP_WOOD 		"wood"
 #define FOOTSTEP_ASTEROID 	"asteroid"
-#define FOOSTEP_DIRT		"dirt"
+#define FOOTSTEP_DIRT		"dirt"
 #define FOOTSTEP_GRASS 		"grass"
 #define FOOTSTEP_WATER		"water"
 #define FOOTSTEP_BLANK		"blank"
@@ -19,8 +19,7 @@
 		'sound/effects/footstep/floor1.ogg',
 		'sound/effects/footstep/floor2.ogg',
 		'sound/effects/footstep/floor3.ogg',
-		'sound/effects/footstep/floor4.ogg',
-		'sound/effects/footstep/floor5.ogg'),
+		'sound/effects/footstep/floor4.ogg'),
 	FOOTSTEP_PLATING =  list(
 		'sound/effects/footstep/plating1.ogg',
 		'sound/effects/footstep/plating2.ogg',
@@ -39,11 +38,10 @@
 		'sound/effects/footstep/asteroid3.ogg',
 		'sound/effects/footstep/asteroid4.ogg',
 		'sound/effects/footstep/asteroid5.ogg'),
-	FOOSTEP_DIRT = list(
+	FOOTSTEP_DIRT = list(
 		'sound/effects/footstep/dirt1.ogg',
 		'sound/effects/footstep/dirt2.ogg',
 		'sound/effects/footstep/dirt3.ogg'),
-
 	FOOTSTEP_GRASS = list(
 		'sound/effects/footstep/grass1.ogg',
 		'sound/effects/footstep/grass2.ogg',

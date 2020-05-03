@@ -52,6 +52,7 @@
 	drawsound = 'sound/items/unholster.ogg'
 
 	var/burst = 1
+	var/automatic = 0  //can gun use it, 0 is no, anything above 0 is the delay between clicks in ds
 	var/fire_delay = 6 	//delay after shooting before the gun can be used again
 	var/burst_delay = 2	//delay between shots, if firing in bursts
 	var/move_delay = 1
@@ -61,6 +62,7 @@
 	var/screen_shake = 0 //shouldn't be greater than 2 unless zoomed
 	var/silenced = 0
 	var/accuracy = 0   //accuracy is measured in tiles. +1 accuracy means that everything is effectively one tile closer for the purpose of miss chance, -1 means the opposite. launchers are not supported, at the moment.
+	var/accuracy_power = 5  //increase of to-hit chance per 1 point of accuracy
 	var/scoped_accuracy = null
 	var/list/burst_accuracy = list(0) //allows for different accuracies for each shot in a burst. Applied on top of accuracy
 	var/list/dispersion = list(0)
@@ -87,6 +89,8 @@
 	var/tmp/told_cant_shoot = 0 //So that it doesn't spam them with the fact they cannot hit them.
 	var/tmp/lock_time = -100
 
+	var/bulk = 0			//how unwieldy this weapon for its size, affects accuracy when fired without aiming
+	var/last_handled		//time when hand gun's in became active, for purposes of aiming bonuses
 
 /obj/item/weapon/gun/New()
 	..()
@@ -246,6 +250,10 @@
 	user.setClickCooldown(DEFAULT_QUICK_COOLDOWN)
 	user.setMoveCooldown(move_delay)
 	next_fire_time = world.time + fire_delay
+	var/delay = max(burst_delay+1, fire_delay)//, DEFAULT_QUICK_COOLDOWN)
+	if(delay)
+		user.setClickCooldown(delay)
+	next_fire_time = world.time + delay
 
 //obtains the next projectile to fire
 /obj/item/weapon/gun/proc/consume_next_projectile()
@@ -533,3 +541,53 @@
 	..()
 	if(user.get_active_hand() != src)
 		user.client.mouse_pointer_icon = initial(user.client.mouse_pointer_icon)
+
+var/dispersion_modifyer = 0 //while(automatic) dispersion_mod++; dispersion = 0.1 + dispersion_mod;
+
+/mob
+	var/dispersion_mouse_display_number = 0
+
+/client
+	var/list/selected_target[2]
+
+/client/MouseDown(object, location, control, params)
+	var/delay = mob.CanMobAutoclick(object, location, params)
+	if(delay)
+		selected_target[1] = object
+		selected_target[2] = params
+		while(selected_target[1])
+			dispersion_modifyer += 0.04
+			Click(selected_target[1], location, control, selected_target[2])
+			sleep(delay)
+		dispersion_modifyer = 0
+		usr.dispersion_mouse_display_number = 0
+
+/client/MouseUp(object, location, control, params)
+	selected_target[1] = null
+
+/client/MouseDrag(src_object,atom/over_object,src_location,over_location,src_control,over_control,params)
+	if(selected_target[1] && over_object.IsAutoclickable())
+		selected_target[1] = over_object
+		selected_target[2] = params
+
+/mob/proc/CanMobAutoclick(object, location, params)
+	return
+
+/mob/living/carbon/CanMobAutoclick(atom/object, location, params)
+	if(!object.IsAutoclickable())
+		return
+	var/obj/item/h = get_active_hand()
+	if(h)
+		. = h.CanItemAutoclick(object, location, params)
+
+/obj/item/proc/CanItemAutoclick(object, location, params)
+	return
+
+/obj/item/weapon/gun/CanItemAutoclick(object, location, params)
+	. = automatic
+
+/atom/proc/IsAutoclickable()
+	. = 1
+
+/obj/screen/IsAutoclickable()
+	. = 0

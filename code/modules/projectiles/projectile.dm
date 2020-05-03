@@ -30,6 +30,7 @@
 
 	var/accuracy = 0
 	var/dispersion = 0.0
+	var/can_autofire
 
 	var/damage = 10
 	var/damage_type = BRUTE //BRUTE, BURN, TOX, OXY, CLONE, PAIN are the only things that should be in here
@@ -49,9 +50,10 @@
 	var/agony = 0
 	var/embed = 0 // whether or not the projectile can embed itself in the mob
 	var/penetration_modifier = 0.2 //How much internal damage this projectile can deal, as a multiplier.
+	var/hitchance_mod = 0
 
 	var/hitscan = 0		// whether the projectile should be hitscan
-	var/step_delay = 1	// the delay between iterations if not a hitscan projectile
+	var/step_delay = 0.4	// the delay between iterations if not a hitscan projectile
 
 	// effect types to be used
 	var/muzzle_type
