@@ -55,6 +55,7 @@
 	id_type = /obj/item/weapon/card/id/security
 	pda_type = /obj/item/device/pda/security
 
+/*
 /decl/hierarchy/outfit/job/security/officer/post_equip(var/mob/living/carbon/human/H)
 	..()
 	// Since we can have something other than the default uniform at this
@@ -66,3 +67,4 @@
 			uniform.attach_accessory(null, Lifchik)
 		else
 			qdel(Lifchik)
+*/

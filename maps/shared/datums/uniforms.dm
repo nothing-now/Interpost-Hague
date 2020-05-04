@@ -89,6 +89,7 @@
 	pda_type = /obj/item/device/pda/security
 	pda_slot = slot_l_store //So they don't lose their PDA.
 
+/*
 /decl/hierarchy/outfit/job/security/peacekeeper/post_equip(var/mob/living/carbon/human/H)
 	..()
 	// Since we can have something other than the default uniform at this
@@ -100,6 +101,7 @@
 			uniform.attach_accessory(null, Lifchik)
 		else
 			qdel(Lifchik)
+*/
 
 /decl/hierarchy/outfit/job/security/head_peacekeeper
 	name = OUTFIT_JOB_NAME("Head Peacekeeper")
