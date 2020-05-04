@@ -50,6 +50,12 @@
 	icon_state = "machetedx"
 	item_state = "machete"
 
+/obj/item/weapon/material/hatchet/machete/old
+	name = "wooden machete"
+	desc = "A wooden machete, used to cut off pines."
+	icon_state = "machete_homemade"
+	item_state = "machete"
+
 /obj/item/weapon/material/minihoe // -- Numbers
 	name = "mini hoe"
 	desc = "It's used for removing weeds or scratching your back."
