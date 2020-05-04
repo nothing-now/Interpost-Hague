@@ -323,7 +323,7 @@ h1.alert, h2.alert		{color: #a4bad6;}
 .passive				{color: #660000;}
 
 .danger					{color: #c51e1e; text-shadow: 0 0 7px red;}
-.warning				{color: #c51e1e;	font-style: italic; text-shadow: 0 0 2px red}
+.warning				{color: #c51e1e; text-shadow: 0 0 2px red}
 .boldannounce			{color: #c51e1e;	font-weight: bold; text-shadow: 0 0 1px red}
 .rose					{color: #ff5050;}
 .info					{color: #6685f5;}

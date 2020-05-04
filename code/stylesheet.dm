@@ -76,7 +76,7 @@ h1.alert, h2.alert		{color: #000000;}
 .passive				{color: #660000;}
 
 .danger					{color: #ff0000; font-weight: bold; text-shadow: 0 0 7px red;}
-.warning				{color: #ff0000; font-style: italic; text-shadow: 0 0 2px red;}
+.warning				{color: #ff0000; text-shadow: 0 0 2px red;}
 .boldannounce			{color: #ff0000; font-weight: bold; text-shadow: 0 0 1px red;}
 .rose					{color: #ff5050;}
 .info					{color: #01018a;}
