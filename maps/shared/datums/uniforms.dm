@@ -12,7 +12,7 @@
 /decl/hierarchy/outfit/job/dreyfus/countess
 	name = OUTFIT_JOB_NAME("Countess")
 	l_ear = /obj/item/device/radio/headset/heads/captain
-	uniform = /obj/item/clothing/under/abaya
+	uniform = /obj/item/clothing/under/dress/dress_countess
 	shoes = /obj/item/clothing/shoes/dress
 	id_type = /obj/item/weapon/card/id/dreyfus/gold
 	pda_type = /obj/item/device/pda/captain

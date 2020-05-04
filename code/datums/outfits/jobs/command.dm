@@ -31,7 +31,7 @@
 /decl/hierarchy/outfit/job/countess
 	name = OUTFIT_JOB_NAME("Countess")
 	l_ear = /obj/item/device/radio/headset/heads/captain
-	uniform = /obj/item/clothing/under/rank/magistrate
+	uniform = /obj/item/clothing/under/dress/dress_countess
 	shoes = /obj/item/clothing/shoes/dress
 	id_type = /obj/item/weapon/card/id/dreyfus/gold
 	pda_type = /obj/item/device/pda/captain
@@ -45,7 +45,7 @@
 	backpack_overrides[/decl/backpack_outfit/backpack]      = /obj/item/weapon/storage/backpack/captain
 	backpack_overrides[/decl/backpack_outfit/satchel]       = /obj/item/weapon/storage/backpack/satchel_cap
 	backpack_overrides[/decl/backpack_outfit/messenger_bag] = /obj/item/weapon/storage/backpack/messenger/com
-	
+
 /decl/hierarchy/outfit/job/hop
 	name = OUTFIT_JOB_NAME("Head of Personnel")
 	uniform = /obj/item/clothing/under/rank/head_of_personnel
