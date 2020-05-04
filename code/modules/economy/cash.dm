@@ -118,6 +118,18 @@
 	desc = "It's worth 1 credit."
 	worth = 1
 
+/obj/item/weapon/spacecash/bundle/coin1
+	name = "1 Thaler"
+	icon_state = "coin1"
+	desc = "It's worth 1 credit."
+	worth = 1
+
+/obj/item/weapon/spacecash/bundle/coin5
+	name = "1 Thaler"
+	icon_state = "coin5"
+	desc = "It's worth 5 credit."
+	worth = 5
+
 /obj/item/weapon/spacecash/bundle/c10
 	name = "10 Thaler"
 	icon_state = "spacecash10"
