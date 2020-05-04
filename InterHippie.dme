@@ -2332,6 +2332,7 @@
 #include "code\modules\religion\religion_subsystem.dm"
 #include "code\modules\religion\religion_tools.dm"
 #include "code\modules\religion\request_rewards.dm"
+#include "code\modules\religion\old gods\chaos.dm"
 #include "code\modules\religion\old gods\greed.dm"
 #include "code\modules\religion\old gods\messiah.dm"
 #include "code\modules\religion\old gods\old_god_shrines.dm"
