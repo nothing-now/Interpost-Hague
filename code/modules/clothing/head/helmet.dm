@@ -89,6 +89,15 @@
 	armor = list(melee = 46, bullet = 58, laser = 30, energy = 10, bomb = 30, bio = 2, rad = 5)
 	siemens_coefficient = 0.7
 
+/obj/item/clothing/head/helmet/bucksteelhelm
+	name = "bucklels steel helmet"
+	desc = "A helmet made out of steel."
+	icon_state = "merchelm"
+	valid_accessory_slots = null
+	armor = list(melee = 55, bullet = 70, laser = 10, energy = 10, bomb = 30, bio = 2, rad = 5)
+	siemens_coefficient = 0.7
+	body_parts_covered = HEAD|FACE
+
 /obj/item/clothing/head/helmet/swat
 	name = "\improper SWAT helmet"
 	desc = "They're often used by highly trained Swat Members."

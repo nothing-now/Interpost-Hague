@@ -83,3 +83,67 @@
 	desc = "A huge thing used for chopping and chopping up meat. This includes clowns and clown-by-products."
 	force_divisor = 0.25 // 15 when wielded with hardness 60 (steel)
 	attack_verb = list("cleaved", "slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+
+/obj/item/weapon/material/knife/lux
+	name = "knife"
+	icon = 'icons/obj/weapons.dmi'
+	icon_state = "luxknife"
+	desc = "A expensive knife with gold in it."
+	force_divisor = 0.25 // 15 when wielded with hardness 60 (steel)
+	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+
+/obj/item/weapon/material/knife/bread
+	name = "bread knife"
+	icon = 'icons/obj/weapons.dmi'
+	icon_state = "breadknife"
+	desc = "A knife used to cut bread, or humans."
+	force_divisor = 0.15 // 15 when wielded with hardness 60 (steel)
+	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+
+/obj/item/weapon/material/knife/modern
+	name = "knife"
+	icon = 'icons/obj/weapons.dmi'
+	icon_state = "knife"
+	desc = "A knife, figure the rest."
+	force_divisor = 0.20 // 15 when wielded with hardness 60 (steel)
+	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+
+/obj/item/weapon/material/knife/fishknife
+	name = "fish knife"
+	icon = 'icons/obj/weapons.dmi'
+	icon_state = "fishknife"
+	desc = "A knife used to cut fish."
+	force_divisor = 0.26 // 15 when wielded with hardness 60 (steel)
+	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+
+/obj/item/weapon/material/knife/bowie
+	name = "bowie knife"
+	icon = 'icons/obj/weapons.dmi'
+	icon_state = "bowieknife"
+	desc = "a military grade knife, looks quite sharp."
+	force_divisor = 1 // 15 when wielded with hardness 60 (steel)
+	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+
+/obj/item/weapon/material/knife/black
+	name = "knife"
+	icon = 'icons/obj/weapons.dmi'
+	icon_state = "blackknife"
+	desc = "a very black and weird knife, looks tacticool."
+	force_divisor = 1 // 15 when wielded with hardness 60 (steel)
+	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+
+/obj/item/weapon/material/knife/shaggy
+	name = "makeshift knife"
+	icon = 'icons/obj/weapons.dmi'
+	icon_state = "shaggy"
+	desc = "a makeshift shank, looks like shit."
+	force_divisor = 0.30 // 15 when wielded with hardness 60 (steel)
+	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+
+/obj/item/weapon/material/knife/tacti
+	name = "tactical knife"
+	icon = 'icons/obj/weapons.dmi'
+	icon_state = "tacti"
+	desc = "a very small knife, fits in your hand."
+	force_divisor = 0.20 // 15 when wielded with hardness 60 (steel)
+	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")

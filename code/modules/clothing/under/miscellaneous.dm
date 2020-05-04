@@ -479,6 +479,13 @@
 	item_state = "gy_suit"
 	worn_state = "assistant_formal"
 
+/obj/item/clothing/under/merc
+	name = "trench uniform"
+	desc = "A uniform worn by WW1 soldiers."
+	icon_state = "trenchuni"
+	item_state = "trenchuni"
+	worn_state = "trenchuni"
+
 /obj/item/clothing/under/suit_jacket/charcoal
 	name = "charcoal suit"
 	desc = "A charcoal suit and red tie. Very professional."

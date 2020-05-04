@@ -63,6 +63,12 @@
 	icon_state = "lifchik"
 	slots = 6
 
+/obj/item/clothing/accessory/storage/skurl
+	name = "skurl webbing"
+	desc = "A webbing used by mercs."
+	icon_state = "skurl_webbing"
+	slots = 3
+
 /obj/item/clothing/accessory/storage/black_vest
 	name = "black webbing vest"
 	desc = "Robust black synthcotton vest with lots of pockets to hold whatever you need, but cannot hold in hands."

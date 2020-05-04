@@ -447,9 +447,18 @@
 	desc = "A level II kevlar vest."
 	icon_state = "civ_kevlar"
 	armor = list(melee = 40, bullet = 50, energy = 20, bomb = 25, bio = 10, rad = 5)
+	body_parts_covered = UPPER_TORSO
+
+/obj/item/clothing/suit/vest/civilian/steelplate
+	name = "steel plated armor"
+	desc = "A steel plated armor-set with shoulder pads."
+	icon_state = "mercplate"
+	armor = list(melee = 80, bullet = 40, energy = 10, bomb = 20, bio = 10, rad = 0)
+	body_parts_covered = UPPER_TORSO|ARMS
 
 /obj/item/clothing/suit/vest/civilian/bulletproof
 	name = "security vest"
 	desc = "A level III kevlar vest. Used by PMCs."
 	icon_state = "bulletproofvest1"
 	armor = list(melee = 60, bullet = 80, energy = 25, bomb = 30, bio = 15, rad = 5)
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
