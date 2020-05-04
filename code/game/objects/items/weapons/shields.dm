@@ -46,7 +46,7 @@
 	throw_range = 4
 	w_class = ITEM_SIZE_HUGE
 	origin_tech = list(TECH_MATERIAL = 2)
-	matter = list("glass" = 7500, DEFAULT_WALL_MATERIAL = 1000)
+	matter = list("steel" = 7500, DEFAULT_WALL_MATERIAL = 1000)
 	attack_verb = list("shoved", "bashed")
 	var/cooldown = 0 //shield bash cooldown. based on world.time
 
@@ -69,6 +69,47 @@
 		..()
 
 /obj/item/weapon/shield/riot/proc/on_bash(var/obj/item/weapon/W, var/mob/user)
+	if(cooldown < world.time - 25)
+		user.visible_message(SPAN_WARNING("[user] bashes [src] with [W]!"))
+		playsound(user.loc, 'sound/effects/shieldbash.ogg', 50, 1)
+		cooldown = world.time
+
+/obj/item/weapon/shield/modern
+	name = "heavy steel shield"
+	desc = "A military grade shield."
+	icon = 'icons/obj/weapons.dmi'
+	icon_state = "kevlarshield"
+	obj_flags = OBJ_FLAG_CONDUCTIBLE
+	slot_flags = SLOT_BACK
+	force = 5.0
+	throwforce = 5.0
+	throw_speed = 1
+	throw_range = 4
+	w_class = ITEM_SIZE_HUGE
+	origin_tech = list(TECH_MATERIAL = 2)
+	matter = list("steel" = 7500, DEFAULT_WALL_MATERIAL = 1000)
+	attack_verb = list("shoved", "bashed")
+	var/cooldown = 0 //shield bash cooldown. based on world.time
+
+/obj/item/weapon/shield/modern/handle_shield(mob/living/user)
+	. = ..()
+	if(.) playsound(user.loc, 'sound/effects/shieldhit.ogg', 50, 1)
+
+/obj/item/weapon/shield/modern/get_block_chance(mob/user, var/damage, atom/damage_source = null, mob/attacker = null)
+	if(istype(damage_source, /obj/item/projectile))
+		var/obj/item/projectile/P = damage_source
+		//plastic shields do not stop bullets or lasers, even in space. Will block beanbags, rubber bullets, and stunshots just fine though.
+		if((is_sharp(P) && damage > 10) || istype(P, /obj/item/projectile/beam))
+			return 0
+	return base_block_chance
+
+/obj/item/weapon/shield/modern/attackby(obj/item/weapon/W as obj, mob/user as mob)
+	if(istype(W, /obj/item/weapon/melee/baton))
+		on_bash(W, user)
+	else
+		..()
+
+/obj/item/weapon/shield/modern/proc/on_bash(var/obj/item/weapon/W, var/mob/user)
 	if(cooldown < world.time - 25)
 		user.visible_message(SPAN_WARNING("[user] bashes [src] with [W]!"))
 		playsound(user.loc, 'sound/effects/shieldbash.ogg', 50, 1)
