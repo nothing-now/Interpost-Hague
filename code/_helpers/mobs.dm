@@ -149,6 +149,9 @@ proc/ageAndGender2Desc(age, gender)//Used for the radio
 	if (progress)
 		progbar = new(user, time, target)
 
+	if(user)
+		user.client.mouse_pointer_icon = file("icons/misc/pointer_cursor.dmi")
+
 	var/endtime = world.time+time
 	var/starttime = world.time
 	. = 1
