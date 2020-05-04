@@ -1,8 +1,7 @@
 /decl/hierarchy/outfit/job/security
 	hierarchy_type = /decl/hierarchy/outfit/job/security
-	glasses = /obj/item/clothing/glasses/sunglasses/sechud
 	l_ear = /obj/item/device/radio/headset/headset_sec
-	gloves = /obj/item/clothing/gloves/thick
+	gloves = /obj/item/clothing/gloves/combat/gloves
 	shoes = /obj/item/clothing/shoes/jackboots
 	backpack_contents = list(/obj/item/weapon/handcuffs = 1)
 
@@ -48,8 +47,22 @@
 
 /decl/hierarchy/outfit/job/security/officer
 	name = OUTFIT_JOB_NAME("Security Officer")
-	uniform = /obj/item/clothing/under/rank/security
+	head = /obj/item/clothing/head/helmet/steelhelm
+	uniform = /obj/item/clothing/under/secdp
+	suit = /obj/item/clothing/suit/vest/civilian/bulletproof
 	l_pocket = /obj/item/device/flash
 	r_pocket = /obj/item/weapon/handcuffs
 	id_type = /obj/item/weapon/card/id/security
 	pda_type = /obj/item/device/pda/security
+
+/decl/hierarchy/outfit/job/security/officer/post_equip(var/mob/living/carbon/human/H)
+	..()
+	// Since we can have something other than the default uniform at this
+	// point, check if we can actually attach the medal
+	var/obj/item/clothing/uniform = H.w_uniform
+	if(uniform)
+	var/obj/item/clothing/accessory/storage/Lifchik = new()
+		if(uniform.can_attach_accessory(Lifchik))
+			uniform.attach_accessory(null, Lifchik)
+		else
+			qdel(Lifchik)
