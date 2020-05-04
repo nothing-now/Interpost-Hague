@@ -81,6 +81,14 @@
 	armor = list(melee = 5, bullet = 82, laser = 30, energy = 5, bomb = 30, bio = 2, rad = 0)
 	siemens_coefficient = 0.7
 
+/obj/item/clothing/head/helmet/steelhelm
+	name = "steel helmet"
+	desc = "A helmet with steel plates."
+	icon_state = "steelhelm"
+	valid_accessory_slots = null
+	armor = list(melee = 46, bullet = 58, laser = 30, energy = 10, bomb = 30, bio = 2, rad = 5)
+	siemens_coefficient = 0.7
+
 /obj/item/clothing/head/helmet/swat
 	name = "\improper SWAT helmet"
 	desc = "They're often used by highly trained Swat Members."
