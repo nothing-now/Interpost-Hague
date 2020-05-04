@@ -99,10 +99,10 @@
 /obj/item/weapon/material/sword/combat_knife
 	name = "combat knife"
 	desc = "For self defense, and self offense."
-	icon_state = "combatknife"
+	icon_state = "combati"
 	item_state = "knife"
 	attack_verb = list("slashed")
-	force_divisor = 0.3
+	force_divisor = 0.2
 	block_chance = 20
 	w_class = ITEM_SIZE_SMALL
 	drawsound = 'sound/items/unholster_knife.ogg'
@@ -110,3 +110,39 @@
 	weapon_speed_delay = 10
 	drop_sound = 'sound/items/knife_drop.ogg'
 	swing_sound = "blunt_swing"
+
+
+/obj/item/weapon/material/sword/longsword
+	name = "steel longsword"
+	desc = "A long sword, used by knights."
+	icon_state = "longsword"
+	item_state = "longsword"
+	force_divisor = 0.5
+	block_chance = 50
+	w_class = ITEM_SIZE_HUGE
+	drawsound = 'sound/items/unholster_sword02.ogg'
+	equipsound = 'sound/items/holster_sword1.ogg'
+	sharpness = 25
+	weapon_speed_delay = 15
+	parry_sounds = list('sound/weapons/blade_parry1.ogg', 'sound/weapons/blade_parry2.ogg', 'sound/weapons/blade_parry3.ogg')
+	drop_sound = 'sound/items/drop_sword.ogg'
+
+/obj/item/weapon/material/sword/makeshiftspear
+	name = "makeshift spear"
+	desc = "A long pointy stick."
+	icon_state = "makeshift_spear"
+	item_state = "makeshift_spear"
+	force_divisor = 0.2
+	block_chance = 4
+	w_class = ITEM_SIZE_HUGE
+	drawsound = 'sound/items/unholster_sword02.ogg'
+	equipsound = 'sound/items/holster_sword1.ogg'
+	sharp = 1
+	edge = 0
+	sharpness = 9
+	weapon_speed_delay = 10
+	parry_sounds = list('sound/weapons/blade_parry1.ogg', 'sound/weapons/blade_parry2.ogg', 'sound/weapons/blade_parry3.ogg')
+	drop_sound = 'sound/items/drop_sword.ogg'
+
+
+
