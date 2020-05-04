@@ -144,12 +144,61 @@
 	projectile_type = /obj/item/projectile/energy/flash/flare
 	matter = list(DEFAULT_WALL_MATERIAL = 90, "glass" = 90)
 
+/obj/item/ammo_casing/a25
+	desc = "A .25 bullet casing."
+	caliber = "a25"
+	projectile_type = /obj/item/projectile/bullet/a25
+	icon_state = "s-casing"
+	spent_icon = "s-casing-spent"
+
+/obj/item/ammo_casing/a32
+	desc = "A .32 bullet casing."
+	caliber = "a32"
+	projectile_type = /obj/item/projectile/bullet/a32
+	icon_state = "revolver-casing"
+	spent_icon = "revolver-casing-spent"
+
+/obj/item/ammo_casing/a9mm
+	desc = "A 19x19mm bullet casing."
+	caliber = "a9mm"
+	projectile_type = /obj/item/projectile/bullet/a9mm
+	icon_state = "s-casing"
+	spent_icon = "s-casing-spent"
+
+/obj/item/ammo_casing/a45acp
+	desc = "A .45 ACP bullet casing."
+	caliber = "a45acp"
+	projectile_type = /obj/item/projectile/bullet/a45acp
+	icon_state = "revolver-casing"
+	spent_icon = "revolver-casing-spent"
+
 /obj/item/ammo_casing/a556
 	desc = "A 5.56mm bullet casing."
 	caliber = "a556"
 	projectile_type = /obj/item/projectile/bullet/rifle/a556
 	icon_state = "rifle-casing"
 	spent_icon = "rifle-casing-spent"
+
+/obj/item/ammo_casing/a762x51
+	desc = "A 7.62x51 bullet casing."
+	caliber = "a762x51"
+	projectile_type = /obj/item/projectile/bullet/rifle/a762x51
+	icon_state = "b-casing"
+	spent_icon = "b-casing-spent"
+
+/obj/item/ammo_casing/a762x54
+	desc = "A 7.62x54 bullet casing."
+	caliber = "a762x54"
+	projectile_type = /obj/item/projectile/bullet/rifle/a762x54
+	icon_state = "b-casing"
+	spent_icon = "b-casing-spent"
+
+/obj/item/ammo_casing/a50bmg
+	desc = "A .50 BMG bullet casing."
+	caliber = "a50bmg"
+	projectile_type = /obj/item/projectile/bullet/rifle/a50bmg
+	icon_state = "lcasing"
+	spent_icon = "lcasing-spent"
 
 /obj/item/ammo_casing/a145
 	name = "shell casing"

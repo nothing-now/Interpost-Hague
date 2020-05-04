@@ -153,11 +153,11 @@
 	fire_sound = "gunshot"
 	armor_penetration = 8
 
-/obj/item/projectile/bullet/a25
+/obj/item/projectile/bullet/a45acp
 	fire_sound = 'sound/weapons/gunshot/gunshot_pistol.ogg'
-	damage = 14
+	damage = 30
 	fire_sound = "gunshot"
-	armor_penetration = 6
+	armor_penetration = 7
 
 /obj/item/projectile/bullet/a25
 	fire_sound = 'sound/weapons/gunshot/gunshot_pistol.ogg'
