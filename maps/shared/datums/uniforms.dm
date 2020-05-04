@@ -79,15 +79,27 @@
 
 /decl/hierarchy/outfit/job/security/peacekeeper
 	name = OUTFIT_JOB_NAME("Peacekeeper")
-	glasses = /obj/item/clothing/glasses/sunglasses
-	uniform = /obj/item/clothing/under/syndicate/soldier
+	head = /obj/item/clothing/head/helmet/steelhelm
+	uniform = /obj/item/clothing/under/secdp
+	suit = /obj/item/clothing/suit/vest/civilian/bulletproof
 	shoes = /obj/item/clothing/shoes/jackboots
-	suit = /obj/item/clothing/suit/storage/vest/opvest
 	belt = /obj/item/weapon/melee/classic_baton//So they at least start off with some kind of weapon to defend themselves.
 	r_pocket = /obj/item/weapon/handcuffs
 	id_type = /obj/item/weapon/card/id/dreyfus/sec
 	pda_type = /obj/item/device/pda/security
 	pda_slot = slot_l_store //So they don't lose their PDA.
+
+/decl/hierarchy/outfit/job/security/peacekeeper/post_equip(var/mob/living/carbon/human/H)
+	..()
+	// Since we can have something other than the default uniform at this
+	// point, check if we can actually attach the medal
+	var/obj/item/clothing/uniform = H.w_uniform
+	if(uniform)
+	var/obj/item/clothing/accessory/storage/Lifchik = new()
+		if(uniform.can_attach_accessory(Lifchik))
+			uniform.attach_accessory(null, Lifchik)
+		else
+			qdel(Lifchik)
 
 /decl/hierarchy/outfit/job/security/head_peacekeeper
 	name = OUTFIT_JOB_NAME("Head Peacekeeper")
