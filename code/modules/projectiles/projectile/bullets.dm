@@ -135,6 +135,36 @@
 	damage = 25
 	armor_penetration = 13.5
 
+/obj/item/projectile/bullet/a9mm
+	fire_sound = 'sound/weapons/gunshot/gunshot_pistol.ogg'
+	damage = 25
+	fire_sound = "gunshot"
+	armor_penetration = 13
+
+/obj/item/projectile/bullet/a32
+	fire_sound = 'sound/weapons/gunshot/gunshot_pistol.ogg'
+	damage = 18
+	fire_sound = "gunshot"
+	armor_penetration = 10
+
+/obj/item/projectile/bullet/a357
+	fire_sound = 'sound/weapons/gunshot/gunshot_pistol.ogg'
+	damage = 24
+	fire_sound = "gunshot"
+	armor_penetration = 8
+
+/obj/item/projectile/bullet/a25
+	fire_sound = 'sound/weapons/gunshot/gunshot_pistol.ogg'
+	damage = 14
+	fire_sound = "gunshot"
+	armor_penetration = 6
+
+/obj/item/projectile/bullet/a25
+	fire_sound = 'sound/weapons/gunshot/gunshot_pistol.ogg'
+	damage = 14
+	fire_sound = "gunshot"
+	armor_penetration = 6
+
 /obj/item/projectile/bullet/pistol/medium
 	damage = 26.5 //.45
 	armor_penetration = 14.5
@@ -200,12 +230,13 @@
 
 /obj/item/projectile/bullet/rifle/a556
 	fire_sound = 'sound/weapons/newrifle2.ogg'
-	damage = 30
+	damage = 33
+	armor_penetration = 22
 
 /obj/item/projectile/bullet/rifle/a762
 	fire_sound = 'sound/weapons/newrifle3.ogg'
 	damage = 35
-	armor_penetration = 30
+	armor_penetration = 20
 
 /obj/item/projectile/bullet/rifle/a145
 	fire_sound = 'sound/weapons/gunshot/sniper.ogg'
@@ -222,6 +253,27 @@
 	penetrating = 6
 	armor_penetration = 95
 	penetration_modifier = 1.5
+
+
+/obj/item/projectile/bullet/rifle/a308
+	damage = 40
+	penetrating = 3
+	armor_penetration = 25
+
+/obj/item/projectile/bullet/rifle/a762x51
+	damage = 42
+	penetrating = 4
+	armor_penetration = 25
+
+/obj/item/projectile/bullet/rifle/a762x54
+	damage = 65
+	penetrating = 5
+	armor_penetration = 34
+
+/obj/item/projectile/bullet/rifle/a50bmg
+	damage = 100
+	penetrating = 9
+	armor_penetration = 130
 
 /* Miscellaneous */
 
