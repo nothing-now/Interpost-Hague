@@ -2,7 +2,7 @@
 	name = MESSIAH
 	holy_item = new /obj/item/crucifix()
 	shrine = /obj/old_god_shrine/messiah_shrine
-	whisper_lines = list("Father, son, ghost", "Peace be with you my servant.", "Turn the other cheek.")
+	whisper_lines = list("Father, son, ghost.", "Peace be with you, my humble servant.", "Turn the other cheek.")
 	offering_items = list(/obj/item/weapon/flame/candle/, /obj/item/weapon/spacecash/bundle/c10, /obj/effect/decal/cleanable/blood/)
 
 /datum/religion/messiah/generate_random_phrase()
@@ -39,7 +39,7 @@
 						"WEST" = /obj/item/weapon/flame/candle/,
 						"SOUTH" = /obj/item/weapon/paper)
 	old_god = MESSIAH
-	
+
 	spell_effect(var/mob/living/user, var/list/spell_components)
 		var/obj/item/weapon/paper/target1_paper = spell_components["SOUTH"]
 		var/mob/living/carbon/human/target = get_player_from_paper(target1_paper)
@@ -49,7 +49,7 @@
 		spawn(600)
 			playsound(target.loc, 'sound/effects/messiah_choir.ogg', 50, 1, -1)
 			target.disabilities &= ~BLIND
-			to_chat(target, "<span class='danger'>You blink rapidly as scales fall from your eyes.  You realize you've been following a false god.  Jes is the true Messiah!</span>")
+			to_chat(target, "<span class='danger'>You blink rapidly as scales fall from your eyes. You realize you've been following a false god. Jes is the true Messiah!</span>")
 			target.religion = GLOB.all_religions[MESSIAH]
 			target.verbs += /mob/living/proc/make_shrine
 			target.verbs += /mob/living/proc/praise_god
@@ -62,14 +62,14 @@
 						"SOUTHWEST" = /obj/item/weapon/flame/candle/,
 						"SOUTH" = /obj/item/weapon/wirecutters)
 	old_god = MESSIAH
-	
+
 	spell_effect(var/mob/living/user, var/list/spell_components)
 		var/datum/action/uncuff_action = new/datum/action/uncuff
 		uncuff_action.target = new/obj/item/weapon/implant/freedom()
 		uncuff_action.Grant(user)
 		spawn(1500)
 			uncuff_action.Remove(user)
-	
+
 	//We want to leave behind lit candles and take the wirecutters
 	spell_consume(var/list/spell_components)
 		for(var/O in spell_components)
@@ -107,7 +107,7 @@
 				M.Weaken(10)
 		empowered = FALSE
 		update_icon()
-	
+
 /obj/old_god_shrine/messiah_shrine
 	name = "Jes shrine"
 	shrine_religion = MESSIAH

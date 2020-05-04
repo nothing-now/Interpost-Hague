@@ -24,7 +24,7 @@
 /datum/religion/machina
 	name = "Deo Machina"
 	holy_item = /obj/item/weapon/brander
-	whisper_lines = list("Remeber the prayer.", "Verina provides.", "Follow the Arbiters.")
+	whisper_lines = list("Remember the prayer.", "Verina provides.", "Follow the Arbiters.")
 	offering_items = list(/obj/item/weapon/spacecash/bundle/c10)
 
 /*
@@ -46,9 +46,9 @@
 /mob/living/proc/reveal_self()
 	var/msg = ""
 	if (religion_is_legal())  //Non-heretics will still deny
-		msg = "I'm not one I swear it!"
+		msg = "I'm not one, I swear it!"
 	else
-		msg = "Yes!  I'm a heretic!"
+		msg = "YES!! I'M A HERETIC!"
 	agony_scream()
 	say(NewStutter(msg))
 

@@ -43,13 +43,13 @@
 	old_god = GREED
 
 	spell_effect(var/mob/living/user)
-		to_chat(user, "<span class='danger'>You hear a sinister voice whisper unspeakable acts in your mind, promising untold profits</span>")
+		to_chat(user, "<span class='danger'>You hear a sinister voice, whispering unspeakable acts in your mind...promising untold profits.</span>")
 		var/sound = "sound/effects/badmood[pick(1,4)].ogg"
 		playsound(get_turf(user), sound,50,1)
 		GLOB.all_religions[GREED].bloodgold = TRUE
 		spawn(600) //30 seconds
 			GLOB.all_religions[GREED].bloodgold = FALSE
-	
+
 /obj/old_god_shrine/greed_shrine
 	name = "Gozag Ym Sagoz shrine"
 	shrine_religion = GREED
@@ -61,7 +61,7 @@
 	shrine_religion = GLOB.all_religions[GREED]
 
 
-/* 
+/*
 Debt contract
 */
 /obj/item/weapon/paper/contract
@@ -95,7 +95,7 @@ Debt contract
 			if(gore_target.name == target1.name)
 				var/obj/item/organ/external/E = pick(gore_target.organs)
 				E.droplimb(0, DROPLIMB_EDGE)
-					
+
 
 /obj/item/weapon/paper/contract/debt/update_text(var/mob/target1, var/mob/target2)
 	name = "paper- [target] employment contract"
