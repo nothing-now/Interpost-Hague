@@ -91,9 +91,9 @@
 	desc = "Like a claymore but for an officer."
 	icon_state = "sabre"
 	item_state = "sabre"
-	force_divisor = 0.4
+	force_divisor = 0.3
 	thrown_force_divisor = 0.4
-	block_chance = 50
+	block_chance = 30
 
 
 /obj/item/weapon/material/sword/combat_knife

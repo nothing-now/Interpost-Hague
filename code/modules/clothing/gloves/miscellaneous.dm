@@ -142,3 +142,14 @@
 	permeability_coefficient = 0.03
 	armor = list(melee = 40, bullet = 40, laser = 40, energy = 25, bomb = 30, bio = 0, rad = 0)
 
+/obj/item/clothing/gloves/combat/gloves
+	desc = "A pair of kevlar gloves."
+	name = "combat gloves"
+	icon_state = "combatglov"
+	item_state = "combatglov"
+	body_parts_covered = HANDS
+	w_class = ITEM_SIZE_NORMAL
+	siemens_coefficient = 0.7
+	permeability_coefficient = 0.07
+	armor = list(melee = 50, bullet = 50, laser = 50, energy = 28, bomb = 30, bio = 10, rad = 30)
+
