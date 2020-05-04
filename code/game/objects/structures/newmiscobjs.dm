@@ -163,7 +163,7 @@
 	anchored = 1
 
 /obj/structure/woodenclock
-	name = "an old wooden clock"
+	name = "old wooden clock"
 	desc = "An old, wooden clock. Tick tack."
 	icon = 'icons/obj/miscobjs.dmi'
 	icon_state = "pclock"
@@ -172,7 +172,17 @@
 	density = 1
 	anchored = 1
 
+
+/obj/structure/woodenclock/Initialize()
+	. = ..()
+	START_PROCESSING(SSobj, src)
+
+/obj/structure/woodenclock/Destroy()
+	STOP_PROCESSING(SSobj, src)
+	. = ..()
+
 /obj/structure/woodenclock/Process()
+	if(Initialize())
 		playsound(src.loc, 'sound/machines/clock_ticking.ogg', 100, 0)
 
 /obj/structure/nuclearwaste
