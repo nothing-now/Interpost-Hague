@@ -365,7 +365,7 @@ var/global/datum/controller/occupations/job_master
 
 		if(SSticker.eof)
 			if(SSticker.eof.id == "assjesters")
-				if(H.mind.assigned_role == "Assistant")
+				if(H.mind.assigned_role == "Arbiter")
 					rank = "Jester"
 			if(SSticker.eof.id == "clumpsydumbasses")
 				if(prob(69))

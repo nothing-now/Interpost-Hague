@@ -48,9 +48,9 @@
 		LO.update_overlay()
 		CHECK_TICK
 
-/datum/round_event/assclowns
+/datum/round_event/assjesters
 	id = "assclowns"
-	event_message = "Life is bananas. Time is pie. The essence is the HONK. On this wild shift, the members of the grey brotherhood decided to fold their clothes to raise the banner of absurdity and demonstrate the real meaning of \"Space Station\" to the plebians!"
+	event_message = "On this wild shift, the members of the grey brotherhood decided to fold their clothes to raise the banner of absurdity and demonstrate the real meaning of \"Space Station\" to the plebians!"
 
 /*
 /datum/round_event/ghetto_medbay
@@ -205,3 +205,24 @@
 			W.color = COLOR_LIGHT_PINK
 		for(var/obj/machinery/door/airlock/A in S)
 			A.color = COLOR_LIGHT_PINK
+
+
+/datum/round_event/wherecams
+    id = "wherecams"
+    event_message = "It seems like the station's cameras suddenly packed their things and disappeared. Huh."
+
+/datum/round_event/wherecams/apply_event()
+    for(var/obj/machinery/camera/C in world)
+        qdel(C)
+
+/datum/round_event/whereaccess
+    id = "whereaccess"
+    event_message = "As you arrive, you notice that the whole station has no access. Oh God."
+
+/datum/round_event/whereaccess/apply_event()
+    for(var/obj/machinery/door/airlock/A in world)
+        A.req_access = list()
+        A.req_one_access = list()
+    for(var/obj/machinery/door/window/W in world)
+        W.req_access = list()
+        W.req_one_access = list()
