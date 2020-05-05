@@ -50,9 +50,8 @@ var/global/datum/controller/gameticker/ticker
 			else
 				master_mode = "extended"
 
-		to_world("<b>Trying to start [master_mode]...</b>")
-		to_world("<B><FONT color='blue'>Welcome to the pre-game lobby!</FONT></B>")
-		to_world("Please, setup your character and select ready. Game will start in [pregame_timeleft] seconds")
+		to_world("<b>Trying to start [master_mode].</b>")
+		to_world("Select ready after you setup your character. The game will start in [pregame_timeleft] seconds.")
 
 		while(current_state == GAME_STATE_PREGAME)
 			for(var/i=0, i<10, i++)
