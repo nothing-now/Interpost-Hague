@@ -256,7 +256,7 @@
 
 /mob/living/verb/wield_hotkey()//For the hotkeys
 	set name = ".wield"
-	do_wield()
+	set hidden = 1
 
 /obj/item/ex_act(severity)
 	switch(severity)

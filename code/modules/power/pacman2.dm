@@ -8,7 +8,6 @@
 	power_gen = 4500
 	var/obj/item/weapon/tank/phoron/P = null
 	var/board_path = /obj/item/weapon/circuitboard/pacman2
-	var/emagged = 0
 	var/heat = 0
 /*
 	process()
@@ -21,17 +20,17 @@
 		return
 */
 
-	HasFuel()
+/obj/machinery/power/port_gen/pacman2/proc/HasFuel()
 		if(P.air_contents.phoron >= 0.1)
 			return 1
 		return 0
 
-	UseFuel()
+/obj/machinery/power/port_gen/pacman2/proc/UseFuel()
 		P.air_contents.phoron -= 0.01
 		return
 
-	New()
-		..()
+/obj/machinery/power/port_gen/pacman2/proc/Initialize()
+		.=..()
 		component_parts = list()
 		component_parts += new /obj/item/weapon/stock_parts/matter_bin(src)
 		component_parts += new /obj/item/weapon/stock_parts/micro_laser(src)
@@ -107,9 +106,6 @@
 		interact(user)
 
 	attack_ai(mob/user as mob)
-		interact(user)
-
-	attack_paw(mob/user as mob)
 		interact(user)
 
 	proc
