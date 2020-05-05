@@ -234,7 +234,6 @@
 					H.visible_message("<span class='danger'>[user] tries to cut off [H]'s penis with [src]!</span>",
 										"<span class='danger'>[user] tries to cut off your penis with [src]!</span>")
 					if(do_after(user, 50))
-
 						H.visible_message("<span class='danger'>[user] cuts off [H]'s penis with [src]!</span>",
 										"<span class='danger'>[user] cuts off your penis with [src]!</span>")
 						H.custom_pain("[pick("OH GOD YOUR DICK!", "OH GOD WHY!", "OH GOD IT HURTS!")]", 100, BP_GROIN)//Pain.
@@ -242,9 +241,7 @@
 						playsound(H, 'sound/effects/gore/severed.ogg', 50, 1, -1)
 						H.mutilate_genitals()
 						new /obj/item/organ/internal/penis(H.loc)
-
 						user.doing_something = 0
-
 					else
 						to_chat(user, "<span class='notice'>You fail to cut off their penis...</span>")
 						user.doing_something = 0
@@ -255,7 +252,6 @@
 				to_chat(user, "They have no penis.")
 		else
 			to_chat(user, "They must be naked to perform the act.")
-
 	else
 		..()
 
