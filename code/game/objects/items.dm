@@ -230,34 +230,33 @@
 	name = "offhand"
 	icon_state = "offhand"
 	w_class = ITEM_SIZE_NO_CONTAINER
-	obj_flags = ATOM_FLAG_NO_BLOOD//ABSTRACT | NOBLOODY
+	obj_flags = ATOM_FLAG_NO_BLOOD | OBJ_FLAG_ABSTRACT
 
-/*
-/obj/item/weapon/twohanded/offhand/Destroy()
-	var/obj/item/I = user.get_active_hand()
-	if(I && I.wielded)
-		I.wielded = FALSE
-		I.update_twohanding()
-*/
 /obj/item/weapon/twohanded/offhand/unwield()
-	//if(wielded)//Only delete if we're wielded
 	wielded = FALSE
-	qdel(src)
+	if(!QDELETED(src))
+		qdel(src)
 
 /obj/item/weapon/twohanded/offhand/wield()
 	if(wielded)//Only delete if we're wielded
 		wielded = FALSE
-		qdel(src)
+		if(!QDELETED(src))
+			qdel(src)
 
-/obj/item/weapon/twohanded/offhand/dropped(mob/user)
+/obj/item/weapon/twohanded/offhand/dropped(mob/living/user)
+	..()
 	var/obj/item/I = user.get_active_hand()
 	var/obj/item/II = user.get_inactive_hand()
 	if(I)
 		I.unwield(user)
 	if(II)
 		II.unwield(user)
-	if(!QDELETED(src)) //fixes the multiple qdel error
+	if(!QDELETED(src))
 		qdel(src)
+
+/mob/living/verb/wield_hotkey()//For the hotkeys
+	set name = ".wield"
+	do_wield()
 
 /obj/item/ex_act(severity)
 	switch(severity)
