@@ -1154,6 +1154,28 @@
 		..()
 		bitesize = 2
 
+/obj/item/weapon/reagent_containers/food/snacks/selax
+	name = "Selax bread"
+	desc = "Everyone loves bread! Will expire in 79 years!."
+	icon_state = "donk_olive"
+	center_of_mass = "x=16;y=10"
+
+	New()
+		..()
+		reagents.add_reagent(/datum/reagent/nutriment/protein, 4)
+		bitesize = 3
+
+/obj/item/weapon/reagent_containers/food/snacks/selax_tan
+	name = "Selax bread"
+	desc = "Everyone loves bread! Will expire in 79 years!."
+	icon_state = "donk_tan"
+	center_of_mass = "x=16;y=10"
+
+	New()
+		..()
+		reagents.add_reagent(/datum/reagent/nutriment/protein, 4)
+		bitesize = 3
+
 /obj/item/weapon/reagent_containers/food/snacks/cubancarp
 	name = "Cuban Carp"
 	desc = "A sandwich that burns your tongue and then leaves it numb!"
