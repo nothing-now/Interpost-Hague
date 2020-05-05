@@ -1,4 +1,4 @@
-#define SS_INIT_TICKER            -21
+#define SS_INIT_TICKER            3
 #define SS_PRIORITY_TICKER         200
 #define SS_DISPLAY_TICKER         -10
 
