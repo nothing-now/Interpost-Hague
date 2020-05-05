@@ -89,6 +89,23 @@
 	armor = list(melee = 46, bullet = 58, laser = 30, energy = 10, bomb = 30, bio = 2, rad = 5)
 	siemens_coefficient = 0.7
 
+/obj/item/clothing/head/helmet/varangian
+	name = "varangian helmet"
+	desc = "A robust varangian guard style helmet, with tightly wrapped chainmail over everything but the eye holes."
+	icon_state = "varangian_guard"
+	item_state = "varangian_guard"
+	flags_inv = BLOCKHAIR
+	body_parts_covered = HEAD|FACE
+	armor = list(melee = 70, gun = 10, energy = 15, bomb = 30, bio = 0, rad = 0)
+	var/restricts_view = 1
+
+/obj/item/clothing/head/helmet/medievalhelmet1
+	name = "protective conical helmet"
+	desc = "A conical helmet, with nose and ear protection."
+	icon_state = "medieval_helmet1"
+	item_state = "medieval_helmet1"
+	armor = list(melee = 45, gun = 5, energy = 15, bomb = 20, bio = 0, rad = 0)
+
 /obj/item/clothing/head/helmet/bucksteelhelm
 	name = "bucklels steel helmet"
 	desc = "A helmet made out of steel."

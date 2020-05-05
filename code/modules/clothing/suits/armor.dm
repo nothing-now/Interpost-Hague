@@ -60,6 +60,18 @@
 	armor = list(melee = 50, bullet = 15, laser = 50, energy = 10, bomb = 25, bio = 0, rad = 0)
 
 
+/obj/item/clothing/suit/armor/medieval
+	name = "plated armor"
+	desc = "A thick, expensive iron armor, covering most of the body."
+	icon_state = "knight_simple"
+	item_state = "knight_simple"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS|FEET
+	armor = list(melee = 85, gun = 10, energy = 15, bomb = 60, bio = 20, rad = 0)
+
+/obj/item/clothing/suit/armor/medieval/New()
+	..()
+	slowdown_per_slot[slot_wear_suit] = 1.5
+
 //Reactive armor
 //When the wearer gets hit, this armor will teleport the user a short distance away (to safety or to more danger, no one knows. That's the fun of it!)
 /obj/item/clothing/suit/armor/reactive

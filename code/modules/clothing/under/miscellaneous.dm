@@ -96,6 +96,15 @@
 	armor = list(melee = 10, bullet = 5, laser = 5,energy = 0, bomb = 0, bio = 0, rad = 0)
 	siemens_coefficient = 0.9
 
+/obj/item/clothing/under/ctac
+	name = "CTAC tactical uniform"
+	desc = "A very comfortable suit made of hard carbon alloys. Making it a great resistance to ballistics."
+	icon_state = "ctac_combat"
+	item_state = "ctac_combat"
+	worn_state = "ctac_combat"
+	armor = list(melee = 25, bullet = 30, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 0)
+	siemens_coefficient = 0.9
+
 /obj/item/clothing/under/space
 	name = "\improper NASA jumpsuit"
 	desc = "It has a NASA logo on it and is made of space-proofed materials."

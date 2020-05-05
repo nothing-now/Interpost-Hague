@@ -121,6 +121,13 @@
 /obj/item/clothing/gloves/duty/modified
 	item_flags = ITEM_FLAG_PREMODIFIED
 
+/obj/item/clothing/gloves/gauntlets
+	name = "armored gauntlets"
+	desc = "A pair of armored iron gauntlets."
+	icon_state = "gauntlet"
+	item_state = "gauntlet"
+	armor = list(melee = 75, gun = 10, energy = 8, bomb = 25, bio = 15, rad = 0)
+
 /obj/item/clothing/gloves/tactical
 	desc = "These brown tactical gloves are made from a durable synthetic, and have hardened knuckles."
 	name = "tactical gloves"

@@ -220,6 +220,12 @@
 	icon_state = "leathercoat"
 	item_state = "leathercoat"
 
+/obj/item/clothing/suit/bomberjacketblack
+	name = "black bomber's jacket"
+	desc = "A black jacket meant for high-alititude temperatures."
+	icon_state = "bomberjacket"
+	item_state = "bomberjacket"
+
 /obj/item/clothing/suit/browncoat
 	name = "brown leather coat"
 	desc = "A long, brown leather coat."
