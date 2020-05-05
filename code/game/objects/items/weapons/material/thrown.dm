@@ -65,3 +65,23 @@
 
 /obj/item/weapon/material/knife/throwing/hos
 	default_material = "gold"
+
+/obj/item/weapon/material/knife/throwing/athrowing
+	name = "throwing knife"
+	icon = 'icons/obj/weapons.dmi'
+	icon_state = "athrowing"
+	item_state = "knife1"
+	desc = "A hard steel throwing knife."
+	drop_sound = 'sound/items/knife_drop.ogg'
+	drawsound = 'sound/items/unholster_knife.ogg'
+	attack_verb = list("slashed", "stabbed")
+	w_class = ITEM_SIZE_SMALL
+	force_divisor = 0.10
+	sharpness = 19
+	weapon_speed_delay = 17
+	thrown_force_divisor = 0.58
+	throw_speed = 8
+	throw_range = 15
+	sharp = 1
+	edge = 1
+	randpixel = 5

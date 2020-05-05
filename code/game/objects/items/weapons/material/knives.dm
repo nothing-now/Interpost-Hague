@@ -88,6 +88,7 @@
 	name = "knife"
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "luxknife"
+	item_state = "knife1"
 	desc = "A expensive knife with gold in it."
 	force_divisor = 0.25 // 15 when wielded with hardness 60 (steel)
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
@@ -96,6 +97,7 @@
 	name = "bread knife"
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "breadknife"
+	item_state = "knife1"
 	desc = "A knife used to cut bread, or humans."
 	force_divisor = 0.15 // 15 when wielded with hardness 60 (steel)
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
@@ -104,6 +106,7 @@
 	name = "knife"
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "knife"
+	item_state = "knife1"
 	desc = "A knife, figure the rest."
 	force_divisor = 0.20 // 15 when wielded with hardness 60 (steel)
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
@@ -112,6 +115,7 @@
 	name = "fish knife"
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "fishknife"
+	item_state = "knife1"
 	desc = "A knife used to cut fish."
 	force_divisor = 0.26 // 15 when wielded with hardness 60 (steel)
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
@@ -120,6 +124,7 @@
 	name = "bowie knife"
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "bowieknife"
+	item_state = "knife1"
 	desc = "a military grade knife, looks quite sharp."
 	force_divisor = 1 // 15 when wielded with hardness 60 (steel)
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
@@ -128,6 +133,7 @@
 	name = "knife"
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "blackknife"
+	item_state = "knife1"
 	desc = "a very black and weird knife, looks tacticool."
 	force_divisor = 1 // 15 when wielded with hardness 60 (steel)
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
@@ -136,6 +142,7 @@
 	name = "makeshift knife"
 	icon = 'icons/obj/weapons.dmi'
 	icon_state = "shaggy"
+	item_state = "knife1"
 	desc = "a makeshift shank, looks like shit."
 	force_divisor = 0.30 // 15 when wielded with hardness 60 (steel)
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")

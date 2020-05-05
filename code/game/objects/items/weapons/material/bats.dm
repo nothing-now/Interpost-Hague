@@ -29,3 +29,19 @@
 
 /obj/item/weapon/material/twohanded/baseballbat/diamond/New(var/newloc)
 	..(newloc,"diamond")
+
+/obj/item/weapon/material/twohanded/steelmace
+	name = "steel mace"
+	desc = "A steel handle with a big heavy steel club at the end. You could really bash someones head in with it."
+	icon_state = "steel_mace"
+	base_icon = "steel_mace"
+	item_state = "club"
+	w_class = ITEM_SIZE_LARGE
+	throwforce = 2
+	attack_verb = list("smashed", "beaten", "slammed", "smacked", "struck", "battered", "bonked")
+	hitsound = 'sound/weapons/genhit3.ogg'
+	default_material = "wood"
+	force_divisor = 2.1           // 22 when wielded with weight 20 (steel)
+	unwielded_force_divisor = 1.2 // 15 when unwielded based on above.
+	slot_flags = SLOT_BACK
+	block_chance = 35

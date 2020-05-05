@@ -24,6 +24,22 @@
 	hitsound = "chop"
 	block_chance = 20
 
+/obj/item/weapon/material/hatchet/wooden
+	name = "wooden hatchet"
+	desc = "A very sharp axe blade upon a short wooden handle. It has a long history of chopping things, but now it is used for chopping wood."
+	icon = 'icons/obj/weapons.dmi'
+	icon_state = "axe"
+	force_divisor = 0.2 // 12 with hardness 60 (steel)
+	thrown_force_divisor = 0.75 // 15 with weight 20 (steel)
+	w_class = ITEM_SIZE_SMALL
+	sharp = 1
+	edge = 1
+	origin_tech = list(TECH_MATERIAL = 2, TECH_COMBAT = 1)
+	attack_verb = list("chopped", "torn", "cut")
+	applies_material_colour = 0
+	hitsound = "chop"
+	block_chance = 20
+
 /obj/item/weapon/material/hatchet/tacknife
 	name = "tactical knife"
 	desc = "You'd be killing loads of people if this was Medal of Valor: Heroes of Space."
@@ -82,4 +98,19 @@
 	origin_tech = list(TECH_MATERIAL = 2, TECH_COMBAT = 2)
 	attack_verb = list("chopped", "sliced", "cut", "reaped")
 
+/obj/item/weapon/material/bardiche
+	icon_state = "bardiche"
+	item_state = "bardiche"
+	name = "bardiche"
+	desc = "A sharp and long curved blade on a wooden pole."
+	force_divisor = 0.425 // 16 with hardness 60 (steel)
+	thrown_force_divisor = 0.25 // 5 with weight 20 (steel)
+	sharp = 1
+	edge = 1
+	throw_speed = 1
+	throw_range = 3
+	w_class = ITEM_SIZE_HUGE
+	slot_flags = SLOT_BACK
+	origin_tech = list(TECH_MATERIAL = 2, TECH_COMBAT = 2)
+	attack_verb = list("chopped", "sliced", "cut")
 

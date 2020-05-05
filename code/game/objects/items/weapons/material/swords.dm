@@ -103,7 +103,7 @@
 	item_state = "knife"
 	attack_verb = list("slashed")
 	force_divisor = 0.2
-	block_chance = 20
+	block_chance = 10
 	w_class = ITEM_SIZE_SMALL
 	drawsound = 'sound/items/unholster_knife.ogg'
 	sharpness = 15
@@ -123,7 +123,142 @@
 	drawsound = 'sound/items/unholster_sword02.ogg'
 	equipsound = 'sound/items/holster_sword1.ogg'
 	sharpness = 25
+	weapon_speed_delay = 25
+	parry_sounds = list('sound/weapons/blade_parry1.ogg', 'sound/weapons/blade_parry2.ogg', 'sound/weapons/blade_parry3.ogg')
+	drop_sound = 'sound/items/drop_sword.ogg'
+
+/obj/item/weapon/material/sword/bastard
+	name = "bastard sword"
+	desc = "A long bladed sword made of steel."
+	icon_state = "bastard"
+	item_state = "bastard"
+	force_divisor = 0.4
+	block_chance = 45
+	w_class = ITEM_SIZE_HUGE
+	drawsound = 'sound/items/unholster_sword02.ogg'
+	equipsound = 'sound/items/holster_sword1.ogg'
+	sharpness = 20
+	weapon_speed_delay = 18
+	parry_sounds = list('sound/weapons/blade_parry1.ogg', 'sound/weapons/blade_parry2.ogg', 'sound/weapons/blade_parry3.ogg')
+	drop_sound = 'sound/items/drop_sword.ogg'
+
+/obj/item/weapon/material/sword/falchion
+	name = "falchion sword"
+	desc = "A falchion sword is a single handed sword."
+	icon_state = "falchion"
+	item_state = "falchion"
+	force_divisor = 0.4
+	block_chance = 60
+	w_class = ITEM_SIZE_HUGE
+	drawsound = 'sound/items/unholster_sword02.ogg'
+	equipsound = 'sound/items/holster_sword1.ogg'
+	sharpness = 22
+	weapon_speed_delay = 16
+	parry_sounds = list('sound/weapons/blade_parry1.ogg', 'sound/weapons/blade_parry2.ogg', 'sound/weapons/blade_parry3.ogg')
+	drop_sound = 'sound/items/drop_sword.ogg'
+
+/obj/item/weapon/material/sword/zweihander
+	name = "Zweihander"
+	desc = "A huge blade made of fine steel."
+	icon_state = "zweihander"
+	item_state = "longsword"
+	force_divisor = 0.6
+	block_chance = 5
+	w_class = ITEM_SIZE_HUGE
+	drawsound = 'sound/items/unholster_sword02.ogg'
+	equipsound = 'sound/items/holster_sword1.ogg'
+	sharpness = 25
+	weapon_speed_delay = 40
+	parry_sounds = list('sound/weapons/blade_parry1.ogg', 'sound/weapons/blade_parry2.ogg', 'sound/weapons/blade_parry3.ogg')
+	drop_sound = 'sound/items/drop_sword.ogg'
+
+/obj/item/weapon/material/sword/broadsword
+	name = "broad sword"
+	desc = "A huge two handed sword."
+	icon_state = "broadsword"
+	item_state = "longsword"
+	force_divisor = 0.8
+	block_chance = 10
+	w_class = ITEM_SIZE_HUGE
+	drawsound = 'sound/items/unholster_sword02.ogg'
+	equipsound = 'sound/items/holster_sword1.ogg'
+	sharpness = 20
+	weapon_speed_delay = 60
+	parry_sounds = list('sound/weapons/blade_parry1.ogg', 'sound/weapons/blade_parry2.ogg', 'sound/weapons/blade_parry3.ogg')
+	drop_sound = 'sound/items/drop_sword.ogg'
+
+/obj/item/weapon/material/sword/siegesword
+	name = "Beserk sword"
+	desc = "A rucky medium sized blade with a rusty handle. Mostly used by mercenaries & raiders."
+	icon_state = "siegesword"
+	item_state = "sabre"
+	force_divisor = 0.6
+	block_chance = 50
+	w_class = ITEM_SIZE_HUGE
+	drawsound = 'sound/items/unholster_sword02.ogg'
+	equipsound = 'sound/items/holster_sword1.ogg'
+	sharpness = 18
+	weapon_speed_delay = 20
+	parry_sounds = list('sound/weapons/blade_parry1.ogg', 'sound/weapons/blade_parry2.ogg', 'sound/weapons/blade_parry3.ogg')
+	drop_sound = 'sound/items/drop_sword.ogg'
+
+/obj/item/weapon/material/sword/oldsabre
+	name = "sabre"
+	desc = "A fine bladed sabre."
+	icon_state = "old_sabre"
+	item_state = "sabre"
+	force_divisor = 0.4
+	block_chance = 30
+	w_class = ITEM_SIZE_HUGE
+	drawsound = 'sound/items/unholster_sword02.ogg'
+	equipsound = 'sound/items/holster_sword1.ogg'
+	sharpness = 25
 	weapon_speed_delay = 15
+	parry_sounds = list('sound/weapons/blade_parry1.ogg', 'sound/weapons/blade_parry2.ogg', 'sound/weapons/blade_parry3.ogg')
+	drop_sound = 'sound/items/drop_sword.ogg'
+
+/obj/item/weapon/material/sword/silversword
+	name = "silver longsword"
+	desc = "A fancy silver bladed sword."
+	icon_state = "silversword"
+	item_state = "longsword"
+	force_divisor = 0.5
+	block_chance = 52
+	w_class = ITEM_SIZE_HUGE
+	drawsound = 'sound/items/unholster_sword02.ogg'
+	equipsound = 'sound/items/holster_sword1.ogg'
+	sharpness = 27
+	weapon_speed_delay = 17
+	parry_sounds = list('sound/weapons/blade_parry1.ogg', 'sound/weapons/blade_parry2.ogg', 'sound/weapons/blade_parry3.ogg')
+	drop_sound = 'sound/items/drop_sword.ogg'
+
+/obj/item/weapon/material/sword/royal
+	name = "royal sword"
+	desc = "A decent sword with incravings of gold."
+	icon_state = "royalsword"
+	item_state = "longsword"
+	force_divisor = 0.5
+	block_chance = 50
+	w_class = ITEM_SIZE_HUGE
+	drawsound = 'sound/items/unholster_sword02.ogg'
+	equipsound = 'sound/items/holster_sword1.ogg'
+	sharpness = 20
+	weapon_speed_delay = 22
+	parry_sounds = list('sound/weapons/blade_parry1.ogg', 'sound/weapons/blade_parry2.ogg', 'sound/weapons/blade_parry3.ogg')
+	drop_sound = 'sound/items/drop_sword.ogg'
+
+/obj/item/weapon/material/sword/blurdens
+	name = "blurdens sword"
+	desc = "A decent sword made of hard blue steel."
+	icon_state = "blurdens_sword"
+	item_state = "longsword"
+	force_divisor = 0.6
+	block_chance = 39
+	w_class = ITEM_SIZE_HUGE
+	drawsound = 'sound/items/unholster_sword02.ogg'
+	equipsound = 'sound/items/holster_sword1.ogg'
+	sharpness = 28
+	weapon_speed_delay = 28
 	parry_sounds = list('sound/weapons/blade_parry1.ogg', 'sound/weapons/blade_parry2.ogg', 'sound/weapons/blade_parry3.ogg')
 	drop_sound = 'sound/items/drop_sword.ogg'
 
