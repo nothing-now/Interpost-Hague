@@ -208,21 +208,23 @@
 
 
 /datum/round_event/wherecams
-    id = "wherecams"
-    event_message = "It seems like the station's cameras suddenly packed their things and disappeared. Huh."
+	id = "wherecams"
+	event_message = "It seems like the station's cameras suddenly packed their things and disappeared. Huh."
 
 /datum/round_event/wherecams/apply_event()
-    for(var/obj/machinery/camera/C in world)
-        qdel(C)
+	for(var/obj/machinery/camera/C in world)
+		qdel(C)
 
+/*
 /datum/round_event/whereaccess
-    id = "whereaccess"
-    event_message = "As you arrive, you notice that the whole station has no access. Oh God."
+	id = "whereaccess"
+	event_message = "As you arrive, you notice that the whole station has no access. Oh God."
 
 /datum/round_event/whereaccess/apply_event()
-    for(var/obj/machinery/door/airlock/A in world)
-        A.req_access = list()
-        A.req_one_access = list()
-    for(var/obj/machinery/door/window/W in world)
-        W.req_access = list()
-        W.req_one_access = list()
+	for(var/obj/machinery/door/airlock/A in world)
+		A.req_access = list()
+		A.req_one_access = list()
+	for(var/obj/machinery/door/window/W in world)
+		W.req_access = list()
+		W.req_one_access = list()
+*/

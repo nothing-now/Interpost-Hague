@@ -26,6 +26,12 @@ SUBSYSTEM_DEF(ticker)
 	if (config.roundstart_events)
 		eof = pick_round_event()
 
+	if (eof)
+		if(prob(30))
+			eof.apply_event()
+			eof.announce_event()
+
+
 	spawn (0)
 		if (ticker)
 			ticker.pregame()
@@ -35,11 +41,6 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/fire(resumed = FALSE)
 	var/currentTime = world.timeofday
-
-	if (eof)
-		if(prob(30))
-			eof.apply_event()
-			eof.announce_event()
 
 	if(currentTime < lastTickerTime) // check for midnight rollover
 		lastTickerTimeDuration = (currentTime - (lastTickerTime - TICKS_IN_DAY)) / TICKS_IN_SECOND
