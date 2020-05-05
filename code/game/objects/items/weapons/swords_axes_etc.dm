@@ -43,7 +43,7 @@
 	target.stun_effect_act(stun, agony, hit_zone, src)
 	msg_admin_attack("[key_name(user)] beat [key_name(target)] with the [src].")
 	if(affecting)
-		target.visible_message("<span class='warning'>[target] has been beat down by [affecting.name] with [src] by [user].</span>")
+		target.visible_message("<span class='warning'>[target] has been beat in the [affecting.name] with [src] by [user].</span>")
 	else
 		target.visible_message("<span class='warning'>[target] has been beat down with [src] by [user].</span>")
 	if(user.a_intent == I_HURT)
