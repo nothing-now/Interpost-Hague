@@ -153,6 +153,13 @@
 	fire_sound = "gunshot"
 	armor_penetration = 8
 
+/obj/item/projectile/bullet/reaper //I got no clue if this will work
+	fire_sound = 'sound/weapons/gunshot/gunshot_pistol.ogg'
+	damage = 30
+	damage_type = TOX
+	fire_sound = "gunshot"
+	armor_penetration = 5
+
 /obj/item/projectile/bullet/a45acp
 	fire_sound = 'sound/weapons/gunshot/gunshot_pistol.ogg'
 	damage = 30
