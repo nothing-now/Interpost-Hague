@@ -293,3 +293,19 @@
 	cost = 10
 	containername = "\improper Pest Control Crate"
 
+/decl/hierarchy/supply_pack/miscellaneous/boomboxntapes
+	contains = list(/obj/item/music_player/boombox,
+					/obj/item/music_tape/custom,
+					/obj/item/music_tape/custom,
+					/obj/item/music_tape/custom,
+					/obj/item/music_tape/custom)
+	name = "Boombox Crate"
+	cost = 300
+	containername = "\improper Boombox n' Tapes Crate."
+
+/decl/hierarchy/supply_pack/miscellaneous/tape
+	name = "50 cardboard sheets"
+	contains = list(/obj/item/music_tape/custom)
+	cost = 80
+	containername = "\improper Tape Crate"
+
