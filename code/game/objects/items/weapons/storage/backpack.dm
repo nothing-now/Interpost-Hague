@@ -399,3 +399,26 @@
 	name = "security messenger bag"
 	desc = "A tactical backpack worn over one shoulder. This one is in Security colors."
 	icon_state = "courierbagsec"
+
+/obj/item/weapon/storage/backpack/rucksack
+	name = "black rucksack"
+	desc = "A sturdy military-grade backpack with low-profile straps. Designed to work well with armor."
+	icon_state = "rucksack"
+	w_class = ITEM_SIZE_HUGE
+	max_storage_space = DEFAULT_BACKPACK_STORAGE + 10
+
+/obj/item/weapon/storage/backpack/rucksack/New()
+	..()
+	slowdown_per_slot[slot_back] = 1
+
+/obj/item/weapon/storage/backpack/rucksack/green
+	name = "green rucksack"
+	icon_state = "rucksack_green"
+
+/obj/item/weapon/storage/backpack/rucksack/navy
+	name = "navy rucksack"
+	icon_state = "rucksack_navy"
+
+/obj/item/weapon/storage/backpack/rucksack/tan
+	name = "tan rucksack"
+	icon_state = "rucksack_tan"
