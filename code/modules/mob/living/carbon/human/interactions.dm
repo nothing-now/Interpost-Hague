@@ -82,7 +82,7 @@
 	var/dat = "<B><HR><FONT size=3>INTERACTIONS - [H.partner]</FONT></B><BR><HR>"
 	//var/ya = "&#1103;"
 
-	dat +=  {"• <A href='?src=\ref[usr];interaction=bow'>Bow.</A><BR>"}
+	dat +=  {"<A href='?src=\ref[usr];interaction=bow'>Bow.</A><BR>"}
 		//if(Adjacent(P))
 		//dat +=  {"• <A href='?src=\ref[src];interaction=handshake'>Ïîïðèâåòñòâîâàòü.</A><BR>"}
 			//else
@@ -161,11 +161,11 @@
 	var/potenzia = 10
 	var/resistenza = 200
 	var/lust = 0
-	var/erpcooldown = 0
+	var/erpcooldown = 3
 	var/multiorgasms = 0
 	var/lastmoan
 	var/mutilated_genitals = 0 //Whether or not they can do the fug.
-	var/virgin = FALSE //:mistake:
+	var/virgin = TRUE //:mistake: :mistake:
 
 /mob/living/carbon/human/proc/cum(mob/living/carbon/human/H as mob, mob/living/carbon/human/P as mob, var/hole = "floor")
 	var/message = ""
@@ -429,7 +429,7 @@ mob/living/carbon/human/proc/fuck(mob/living/carbon/human/H as mob, mob/living/c
 		if("mount")
 			message = pick("fucks [P]'s dick", "rides [P]'s dick", "rides [P]")
 			if (H.lastfucked != P || H.lfhole != hole)
-				message = pick("begins to hop on [P]'s dick")
+				message = pick("begins to hop on [P]'s dick.")
 				H.lastfucked = P
 				H.lfhole = hole
 
@@ -440,7 +440,7 @@ mob/living/carbon/human/proc/fuck(mob/living/carbon/human/H as mob, mob/living/c
 				H.visible_message("<font color=purple>[H] [message].</font>")
 			if(H.virgin)
 				H.virgin = FALSE
-				H.visible_message("<font color=purple><B>[P] pop's [H]'s cherry.</B></font>")
+				H.visible_message("<font color=purple><B>[P] pops [H]'s cherry.</B></font>")
 			if (istype(P.loc, /obj/structure/closet))
 				P.visible_message("<font color=purple>[H] [message].</font>")
 				playsound(P.loc.loc, 'sound/effects/clang.ogg', 50, 0, 0)
