@@ -131,3 +131,15 @@
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/tea,
 			/obj/item/weapon/reagent_containers/chem_disp_cartridge/ice
 		)
+
+/obj/machinery/chemical_dispenser/lower_budget
+	spawn_cartridges = list(
+			/obj/item/weapon/reagent_containers/chem_disp_cartridge/silicon,
+			/obj/item/weapon/reagent_containers/chem_disp_cartridge/ammonia,
+			/obj/item/weapon/reagent_containers/chem_disp_cartridge/potassium,
+			/obj/item/weapon/reagent_containers/chem_disp_cartridge/ethanol,
+			/obj/item/weapon/reagent_containers/chem_disp_cartridge/acetone,
+			/obj/item/weapon/reagent_containers/chem_disp_cartridge/radium,
+			/obj/item/weapon/reagent_containers/chem_disp_cartridge/carbon,
+			/obj/item/weapon/reagent_containers/chem_disp_cartridge/sugar
+		)

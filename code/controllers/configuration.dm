@@ -218,6 +218,8 @@ var/list/gamemode_cache = list()
 
 	var/max_gear_cost = 10 // Used in chargen for accessory loadout limit. 0 disables loadout, negative allows infinite points.
 
+	var/roundstart_events = TRUE			// Allow roundstart events to appear
+
 /datum/configuration/New()
 	var/list/L = typesof(/datum/game_mode) - /datum/game_mode
 	for (var/T in L)
@@ -516,6 +518,9 @@ var/list/gamemode_cache = list()
 
 				if("allow_random_events")
 					config.allow_random_events = 1
+
+				if ("roundstart_events")
+					roundstart_events = 1
 
 				if("kick_inactive")
 					config.kick_inactive = text2num(value)

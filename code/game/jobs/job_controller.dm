@@ -363,6 +363,18 @@ var/global/datum/controller/occupations/job_master
 	proc/EquipRank(var/mob/living/carbon/human/H, var/rank, var/joined_late = 0)
 		if(!H)	return null
 
+		if(SSticker.eof)
+			if(SSticker.eof.id == "assjesters")
+				if(H.mind.assigned_role == "Assistant")
+					rank = "Jester"
+			if(SSticker.eof.id == "clumpsydumbasses")
+				if(prob(69))
+					H.mutations.Add(CLUMSY)
+			if(SSticker.eof.id == "randomnames")
+				H.real_name = random_name(H.gender)
+				H.f_style = random_facial_hair_style(H.gender)
+				H.h_style = random_hair_style(H.gender)
+
 		var/datum/job/job = GetJob(rank)
 		var/list/spawn_in_storage = list()
 
@@ -625,7 +637,7 @@ var/global/datum/controller/occupations/job_master
 			tmp_str += "HIGH=[level1]|MEDIUM=[level2]|LOW=[level3]|NEVER=[level4]|BANNED=[level5]|YOUNG=[level6]|-"
 			feedback_add_details("job_preferences",tmp_str)
 
-	
+
 	proc/SetCombatMusic(var/mob/living/carbon/human/H, var/rank)
 		switch(rank)
 			if("Count" || "Viscount")
@@ -635,7 +647,7 @@ var/global/datum/controller/occupations/job_master
 			if("Supreme Arbiter" || "Arbiter")
 				H.combat_music = GLOB.religion_combat_music
 			if("Jester")
-				H.combat_music = GLOB.jester_combat_music 
+				H.combat_music = GLOB.jester_combat_music
 			else
 				H.combat_music = GLOB.generic_combat_music
 /**

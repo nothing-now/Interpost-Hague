@@ -142,6 +142,7 @@
 #include "code\_onclick\hud\screen_objects_alt.dm"
 #include "code\_onclick\hud\skybox.dm"
 #include "code\controllers\admin.dm"
+#include "code\controllers\aspects.dm"
 #include "code\controllers\autotransfer.dm"
 #include "code\controllers\communications.dm"
 #include "code\controllers\configuration.dm"
