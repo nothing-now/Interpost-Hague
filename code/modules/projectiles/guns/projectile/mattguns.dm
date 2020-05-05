@@ -62,3 +62,25 @@
 	name = "\improper WTX Frontier Special"
 	desc = "A common shotgun used on the frontiers of space. It's not the best made and is prone to jamming."
 	jam_chance = 15
+
+/obj/item/weapon/gun/projectile/shotgun/pump/boltaction/persuasion
+	name = "Persuasion MK2"
+	desc = "A very modern sniper rifle. Chambered in (7.62x54)."
+	icon_state = "Persuasion_mk2"
+	item_state = "madsen"
+	jam_chance = 1
+	//pumpsound = 'sound/weapons/newrifle_reload.ogg'
+	fire_sound = "brifle"
+	caliber = "a762x54"
+	ammo_type = /obj/item/ammo_casing/a762x54
+	handle_casings = HOLD_CASINGS //please work please work.
+	load_method = SINGLE_CASING
+	max_shells = 20 //Maybe needs a nerf.
+
+/obj/item/weapon/gun/projectile/shotgun/pump/boltaction/persuasion/verb/scope()
+	set category = "Object"
+	set name = "Use Iron Sights"
+	set popup_menu = 1
+
+	toggle_scope(usr, 2.0)
+/
