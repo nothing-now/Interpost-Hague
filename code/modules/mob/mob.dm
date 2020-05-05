@@ -376,6 +376,7 @@
 /client/verb/changes()
 	set name = "Changelog"
 	set category = "OOC"
+	set hidden = 1
 	getFiles(
 		'html/88x31.png',
 		'html/bug-minus.png',
