@@ -25,6 +25,8 @@ avoid code duplication. This includes items that may sometimes act as a standard
 
 //I would prefer to rename this to attack(), but that would involve touching hundreds of files.
 /obj/item/proc/resolve_attackby(atom/A, mob/user, var/click_params)
+	if(obj_flags & OBJ_FLAG_ABSTRACT)//Abstract items cannot be interacted with. They're not real.
+		return 1
 	if(!(item_flags & ITEM_FLAG_NO_PRINT))
 		add_fingerprint(user)
 	return A.attackby(src, user, click_params)
@@ -83,7 +85,7 @@ avoid code duplication. This includes items that may sometimes act as a standard
 	var/cooldown_modifier = user.c_intent == I_QUICK ? -4 : 0 //Quick mode lowers attack cooldown by 1/2th
 	cooldown_modifier += user.c_intent == I_AIM ? 4 : 0 //Aim mode raise attack cooldown by 1/2th
 	user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN + cooldown_modifier)
-	
+
 	//user.do_attack_animation(M)
 	if(!user.aura_check(AURA_TYPE_WEAPON, src, user))
 		return 0

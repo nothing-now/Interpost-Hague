@@ -331,6 +331,9 @@ EVENT_DELAY_UPPER 5;24;35
 # EVENT_CUSTOM_START_MODERATE 20;35
 EVENT_CUSTOM_START_MAJOR 30;60
 
+## Allow roundstart events to apply
+ROUNDSTART_EVENTS
+
 ## Uncomment to make proccall require R_ADMIN instead of R_DEBUG
 ## designed for environments where you have testers but don't want them
 ## able to use the more powerful debug options.

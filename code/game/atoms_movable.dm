@@ -2,7 +2,7 @@
 	plane = OBJ_PLANE
 
 	appearance_flags = TILE_BOUND
-	glide_size = 8
+	glide_size = 7
 
 	var/last_move = null
 	var/last_move_time = 0
@@ -139,7 +139,6 @@
 					src.throw_impact(A,speed)
 
 /atom/movable/proc/throw_at(atom/target, range, speed, thrower)
-	glide_size = world.icon_size / max((speed - GLIDE_SIZE_CONSTANT), world.tick_lag) * world.tick_lag
 	if(!target || !src)
 		return 0
 	if(target.z != src.z)

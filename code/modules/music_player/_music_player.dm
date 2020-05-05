@@ -412,7 +412,7 @@ GLOBAL_LIST_EMPTY(music_players)
 		sound_token.Unpause()
 	else
 		QDEL_NULL(sound_token)
-		sound_token = GLOB.sound_player.PlayLoopingSound(src, sound_id, tape.track.GetTrack(), volume = volume, frequency = frequency, range = 7, falloff = 4, prefer_mute = TRUE, streaming = TRUE, ignore_vis = FALSE)
+		sound_token = GLOB.sound_player.PlayLoopingSound(src, sound_id, tape.track.sound, volume = volume, frequency = frequency, range = 7, falloff = 4, prefer_mute = TRUE, streaming = TRUE, ignore_vis = FALSE)
 
 	mode = PLAYER_STATE_PLAY
 	START_PROCESSING(SSobj, src)

@@ -1,5 +1,5 @@
-#define SS_INIT_TICKER            -21
-#define SS_PRIORITY_TICKER         200
+#define SS_INIT_TICKER          -20
+#define SS_PRIORITY_TICKER         100
 #define SS_DISPLAY_TICKER         -10
 
 SUBSYSTEM_DEF(ticker)
@@ -14,16 +14,17 @@ SUBSYSTEM_DEF(ticker)
 	var/lastTickerTime
 	var/force_ending = 0
 
-
-/datum/controller/subsystem/ticker/New()
-	NEW_SS_GLOBAL(SSticker)
-
+	var/datum/round_event/eof
 
 /datum/controller/subsystem/ticker/Initialize(timeofday)
+	NEW_SS_GLOBAL(SSticker)
 	lastTickerTime = world.timeofday
 
 	if (!ticker)
 		ticker = new
+
+	if (config.roundstart_events)
+		eof = pick_round_event()
 
 	spawn (0)
 		if (ticker)
@@ -34,6 +35,11 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/fire(resumed = FALSE)
 	var/currentTime = world.timeofday
+
+	if (eof)
+		if(prob(30))
+			eof.apply_event()
+			eof.announce_event()
 
 	if(currentTime < lastTickerTime) // check for midnight rollover
 		lastTickerTimeDuration = (currentTime - (lastTickerTime - TICKS_IN_DAY)) / TICKS_IN_SECOND

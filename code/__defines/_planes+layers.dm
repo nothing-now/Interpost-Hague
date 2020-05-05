@@ -243,7 +243,6 @@ What is the naming convention for planes or layers?
 
 /obj/screen/plane_master/ghost_master
 	plane = OBSERVER_PLANE
-	filters = filter(type = "outline", size = 2)
 
 /obj/screen/plane_master/blur_all
 	plane = BASE_PLANE
