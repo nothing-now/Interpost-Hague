@@ -22,6 +22,7 @@
 		qdel(air)
 	for(var/obj/machinery/atmospherics/pipe/P in members)
 		P.parent = null
+	members = null
 	leaks.Cut()
 	. = ..()
 

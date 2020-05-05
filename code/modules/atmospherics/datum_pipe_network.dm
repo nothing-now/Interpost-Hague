@@ -12,8 +12,8 @@
 	STOP_PROCESSING_PIPENET(src)
 	for(var/datum/pipeline/line_member in line_members)
 		line_member.network = null
-	for(var/obj/machinery/atmospherics/normal_member in normal_members)
-		normal_member.reassign_network(src, null)
+	for (var/obj/machinery/atmospherics/thing in normal_members)
+		thing.reassign_network(src, null)
 	gases.Cut()  // Do not qdel the gases, we don't own them
 	leaks.Cut()
 	return ..()

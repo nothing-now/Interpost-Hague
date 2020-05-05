@@ -255,7 +255,7 @@
 		node1 = null
 	if(node2)
 		node2.disconnect(src)
-		node1 = null
+		node2 = null //really
 
 	. = ..()
 
