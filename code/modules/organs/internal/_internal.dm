@@ -139,8 +139,3 @@
 				if(damage < 5)
 					degree = " a bit"
 				owner.custom_pain("Something inside your [parent.name] hurts[degree].", amount, affecting = parent)
-
-/obj/item/organ/internal/penis
-	name = "penis"
-	icon_state = "penis"
-	desc = "Ah, the ol one eyed snake."
