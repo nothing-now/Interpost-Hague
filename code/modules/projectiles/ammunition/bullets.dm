@@ -172,6 +172,13 @@
 	icon_state = "revolver-casing"
 	spent_icon = "revolver-casing-spent"
 
+/obj/item/ammo_casing/reaper
+	desc = "A .45 REAPER bullet casing."
+	caliber = "reaper"
+	projectile_type = /obj/item/projectile/bullet/reaper
+	icon_state = "reaper-casing"
+	spent_icon = "revolver-casing-spent"
+
 /obj/item/ammo_casing/a556
 	desc = "A 5.56mm bullet casing."
 	caliber = "a556"
