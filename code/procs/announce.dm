@@ -54,7 +54,7 @@
 		message_admins("[key_name_admin(usr)] has made \a [announcement_type].", 1)
 
 datum/announcement/proc/FormMessage(message as text, message_title as text)
-	. = "<h2 class='alert' font size=4>[message_title]</h2></font>"
+	. = "<h2 class='alert' font size=4, font-family: Germanica>[message_title]</h2></font>"
 	. += "<br><span class='alert'>[message]</span>"
 	if (announcer)
 		. += "<br><span class='alert'> -[rhtml_encode(announcer)]</span>"
