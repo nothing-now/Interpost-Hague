@@ -293,8 +293,8 @@
 		..()
 		H.generate_stats(STAT_IQ)
 		H.generate_skills(list("medical","cleaning", "surgery"))
-	
-	
+
+
 /datum/job/hos
 	title = "Head of Security"
 	supervisors = "the Count"
@@ -405,8 +405,8 @@
 
 /datum/job/mining
 	selection_color = "#7c6a2e"
-	title = "Miner"
-	supervisors = "the Quartermaster"
+	title = "Excavation Officer"
+	supervisors = "the Quartermaster and the Court Magus"
 	minimal_player_age = 16
 	economic_modifier = 2
 	ideal_character_age = 21
@@ -414,8 +414,8 @@
 	spawn_positions = 2
 	department_flag = SUP
 	sex_lock = MALE
-	access = list(access_maint_tunnels, access_mailsorting, access_manufacturing, access_cargo, access_cargo_bot, access_mining, access_mining_station)
-	minimal_access = list(access_maint_tunnels, access_mailsorting, access_manufacturing, access_cargo, access_cargo_bot, access_mining, access_mining_station)
+	access = list(access_maint_tunnels, access_mailsorting, access_manufacturing, access_cargo, access_cargo_bot, access_mining, access_mining_station, access_xenoarch)
+	minimal_access = list(access_maint_tunnels, access_mailsorting, access_manufacturing, access_cargo, access_cargo_bot, access_mining, access_mining_station, access_xenoarch)
 
 	equip(var/mob/living/carbon/human/H)
 		..()
