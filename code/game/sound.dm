@@ -70,6 +70,7 @@ GLOBAL_LIST_INIT(punch_sound,list('sound/weapons/punch1.ogg','sound/weapons/punc
 GLOBAL_LIST_INIT(clown_sound,list('sound/effects/clownstep1.ogg','sound/effects/clownstep2.ogg'))
 GLOBAL_LIST_INIT(jeseter_sound,list('sound/effects/jesterstep1.ogg','sound/effects/jesterstep2.ogg','sound/effects/jesterstep3.ogg'))
 GLOBAL_LIST_INIT(swing_hit_sound,list('sound/weapons/genhit1.ogg', 'sound/weapons/genhit2.ogg', 'sound/weapons/genhit3.ogg'))
+GLOBAL_LIST_INIT(far_fire_sound,list('sound/weapons/Distant_1.ogg','sound/weapons/Distant_2.ogg','sound/weapons/Distant_3.ogg','sound/weapons/Distant_4.ogg','sound/weapons/Distant_5.ogg'))
 GLOBAL_LIST_INIT(hiss_sound,list('sound/voice/hiss1.ogg','sound/voice/hiss2.ogg','sound/voice/hiss3.ogg','sound/voice/hiss4.ogg'))
 GLOBAL_LIST_INIT(page_sound,list('sound/effects/pageturn1.ogg', 'sound/effects/pageturn2.ogg','sound/effects/pageturn3.ogg'))
 GLOBAL_LIST_INIT(fracture_sound,list('sound/effects/bonebreak1.ogg','sound/effects/bonebreak2.ogg','sound/effects/bonebreak3.ogg','sound/effects/bonebreak4.ogg'))
@@ -348,7 +349,7 @@ var/const/FALLOFF_SOUNDS = 0.5
 
 	//sound volume falloff with pressure
 	var/pressure_factor = 1.0
-	
+
 	var/turf/T = get_turf(src)
 	// 3D sounds, the technology is here!
 	if(isturf(turf_source))
@@ -372,7 +373,7 @@ var/const/FALLOFF_SOUNDS = 0.5
 			pressure_factor = max(pressure_factor, 0.15)	//hearing through contact
 
 		S.volume *= pressure_factor
-		
+
 		if (S.volume <= 0)
 			return //no volume means no sound
 
@@ -433,6 +434,7 @@ var/const/FALLOFF_SOUNDS = 0.5
 	if(istext(soundin))
 		switch(soundin)
 			if ("shatter") soundin = pick(GLOB.shatter_sound)
+			if ("far_fire") soundin = pick(GLOB.far_fire_sound)
 			if ("explosion") soundin = pick(GLOB.explosion_sound)
 			if ("sparks") soundin = pick(GLOB.spark_sound)
 			if ("rustle") soundin = pick(GLOB.rustle_sound)

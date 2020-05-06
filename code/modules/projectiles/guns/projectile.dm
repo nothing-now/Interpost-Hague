@@ -35,6 +35,8 @@
 	var/mag_insert_sound = 'sound/weapons/guns/interaction/pistol_magin.ogg'
 	var/mag_remove_sound = 'sound/weapons/guns/interaction/pistol_magout.ogg'
 
+	far_fire_sound = "far_fire"
+
 
 	//var/is_jammed = 0           //Whether this gun is jammed
 	//var/jam_chance = 0          //Chance it jams on fire
@@ -125,7 +127,7 @@
 		var/obj/item/stack/bullets/bullet_stack = A
 		A = new bullet_stack.stacktype()
 		bullet_stack.use(1)
-		
+
 	if(istype(A, /obj/item/ammo_magazine))
 		var/obj/item/ammo_magazine/AM = A
 		if(!(load_method & AM.mag_type) || caliber != AM.caliber)
@@ -146,7 +148,7 @@
 				user.visible_message("[user] inserts [AM] into [src].", "<span class='notice'>You insert [AM] into [src].</span>")
 				if(reload_sound)
 					playsound(src.loc, reload_sound, 75, 1)
-				
+
 			if(SPEEDLOADER)
 				if(loaded.len >= max_shells)
 					to_chat(user, "<span class='warning'>[src] is full!</span>")
@@ -227,7 +229,7 @@
 	else
 		if(firemodes.len > 1)
 			..()
-		
+
 /obj/item/weapon/gun/projectile/MouseDrop(var/obj/over_object)
 	if (!over_object || !(ishuman(usr) || issmall(usr)))
 		return
