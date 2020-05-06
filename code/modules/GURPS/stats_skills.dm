@@ -191,7 +191,7 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 /mob/proc/learn_skills(var/skill_type)
 	var/initial_skill = round(skills[skill_type])
 	if(skills[skill_type] < 30 && stat_to_modifier(stats[STAT_IQ]) >= 0) //the minimum for reading
-		skills[skill_type] += 0.01 * stat_to_modifier(stats[STAT_IQ]) 
+		skills[skill_type] += 0.01 * stat_to_modifier(stats[STAT_IQ])
 	else //Learn slower past 30
 		if(skills[skill_type] >= 70)
 			return 0 //cant learn above 70 in any skill because this was abused
@@ -245,6 +245,7 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 	to_chat(src, message)
 
 /mob/living/carbon/human/verb/reset_stats_skills()
+	set hidden = 1
 	for(var/stats in stats)
 		if(stats[stat] > 20)
 			stats[stat] = 20
