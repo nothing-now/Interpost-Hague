@@ -6,8 +6,9 @@
 
 // spell_effect: All spells have an effect when they are activated and the requirments are met.  Define anything you want the spell to do here.
 
-// THESE ARE THE ONLY THINGS YOU NEED TO DO TO CREATE A NEW OLD GOD SPELL.  THERE ARE SOME THINGS NOT TO DO
-// DO NOT OVERRIDE
+// THESE ARE THE ONLY THINGS YOU NEED TO DO TO CREATE A NEW OLD GOD SPELL.  
+// THERE ARE SOME THINGS NOT TO DO:
+// 		DO NOT OVERRIDE /obj/old_god_shrine/hear_talk
 
 
 /datum/old_god_spell

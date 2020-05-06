@@ -26,7 +26,7 @@
 
 /datum/request/offering/
 	name ="Offering"
-	message = "You're god demands an offering!"
+	message = "Your god demands an offering!"
 	var/offering_item
 
 /datum/request/offering/New(var/religion)
@@ -61,8 +61,7 @@
 		if(acounts.owner_name == target.name)
 			var/datum/transaction/T = new("[target.religion]", "Request fufilled", 1000)
 			to_chat(target, message)
-			var/L = target.loc
-			playsound(L, 'sound/effects/phone_ring.ogg', 50, 1, -1)
+			playsound(target, 'sound/effects/phone_ring.ogg', 25, 1, -1)
 			acounts.do_transaction(T)
 
 /datum/reward/happiness/

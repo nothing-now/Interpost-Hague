@@ -10,7 +10,7 @@
 		var/phrase = pick("Oh great [name] ", "Oh [name]. ", "[name], our Benefactor. ")
 		phrase += pick("You enrich our lives ", "You will shower us with gold ", "You bathe our [pick("outpost","kingdom","cities")] in your opulence. ")
 		phrase += pick("In your golden light ", "[name] enrish us all. ", "[name] fill our pockets. ")
-		phrase += "Amen."
+		phrase += "Amen"
 		return phrase
 
 /datum/old_god_spell/debt

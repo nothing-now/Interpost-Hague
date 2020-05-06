@@ -137,7 +137,7 @@ proc/generate_random_prayer()//This generates a new one.
 	for(var/mob/living/carbon/human/player in GLOB.player_list)
 		if(player.religion == name)
 			playsound(player, "sound/effects/badmood[pick(1,4)].ogg",50,1)
-			to_chat(player, "<span class='danger'>[request.message]</span>")
+			to_chat(player, "<span class='danger'><font size=3>[request.message]</font></span>")
 
 /datum/religion/proc/reward(var/mob/living/target)
 	var/datum/reward/reward = pick(selectable_rewards)

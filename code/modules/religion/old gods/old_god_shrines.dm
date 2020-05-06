@@ -78,7 +78,7 @@
 	if(M.religion == LEGAL_RELIGION)
 		return
 	for(var/S in GLOB.all_spells)
-		if(GLOB.all_spells[S].phrase == msg)
+		if(findtext(msg,GLOB.all_spells[S].phrase))
 			var/datum/old_god_spell/selected_spell = GLOB.all_spells[S]
 			var/list/spell_components = list()
 			for(var/direction in selected_spell.requirments)
@@ -90,7 +90,10 @@
 						found = TRUE
 						spell_components[direction] = a
 				if (found == FALSE)
-					visible_message("<span class='notice'>\The [shrine_religion.name] is uninpressed with your offering</span>")
+					var/obj/temp_obj = selected_spell.requirments[direction]
+					temp_obj = new temp_obj
+					visible_message("<span class='notice'>\The [shrine_religion.name] is uninpressed with your offering.  He still wants a [temp_obj.name] to the [lowertext(direction)]</span>")
+					qdel(temp_obj)
 					return
 			selected_spell.spell_consume(spell_components)
 			selected_spell.spell_effect(M,spell_components)

@@ -9,7 +9,7 @@
 		var/phrase = pick("Oh great [name] ", "Oh [name]. ", "[name], our Lord and Saviour. ")
 		phrase += pick("You forgive our sins. ", "You will come again. ", "You bathe our [pick("outpost","kingdom","cities")] in your mercy. ")
 		phrase += pick("Father son and holy ghost. ", "[name] save us all. ", "[name] guide us all. ")
-		phrase += "Amen."
+		phrase += "Amen"
 		return phrase
 
 /datum/old_god_spell/imbue

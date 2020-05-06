@@ -9,7 +9,7 @@
 		var/phrase = pick("Oh great [name] ", "Oh [name]. ", "[name], the God of Chaos! ")
 		phrase += pick("You bathe the world in happiness. ", "You always return. ", "Every jester is at your mercy. ")
 		phrase += pick("[name], bless us all. ", "[name], guide us all. ")
-		phrase += "Amen."
+		phrase += "Amen"
 		return phrase
 
 /datum/old_god_spell/madness_combat
