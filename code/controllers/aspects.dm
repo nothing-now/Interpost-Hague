@@ -148,6 +148,7 @@
 			qdel(SC)
 */
 
+/*
 /datum/round_event/clumpsy_dumbasses
 	id = "clumpsydumbasses"
 	event_message = "By a really wild coincidence, most of the staff makes a lot of effort to concentrate the flow of their thoughts, and even the targeting of those spend a huge amount of effort. As long as their heels are safe!"
@@ -156,6 +157,7 @@
 	for(var/mob/living/carbon/human/H in GLOB.human_mob_list)
 		if(prob(69))
 			H.mutations.Add(CLUMSY)
+*/
 
 /datum/round_event/can_you_hear_me_major_tom
 	id = "CANYOUHEARMEMAJTOM"
