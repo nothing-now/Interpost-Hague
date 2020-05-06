@@ -192,6 +192,13 @@ proc/get_radio_key_from_channel(var/channel)
 	message = trim_left(message)
 
 	message = handle_autohiss(message, speaking)
+	message = replacetext(message, "/", "")//None of this.
+	message = replacetext(message, "~", "")//Or this.
+	message = replacetext(message, ".", "")//no dots
+	message = replacetext(message, " i ", " I ")//FUCKING USE CAPITAL LETTERS JAMES YOU FUCK!
+	message = replacetext(message, " ive ", " I've ")//I'M SO FUCKING SICK OF SEEING IVE YOU FUCKS
+	message = replacetext(message, " im ", " I'm ")//AND IM TOO! STOP THAT YOU FUCKS!
+	message = replacetext(message, " u ", " you ")//STOP USING FUCKING U YOU SICK FUCKS!
 
 	if(!(speaking && (speaking.flags & NO_STUTTER)))
 		var/list/message_data = list(message, verb, 0)
@@ -284,7 +291,7 @@ proc/get_radio_key_from_channel(var/channel)
 				speech_bubble_recipients += M.client
 
 	flick_overlay(speech_bubble, speech_bubble_recipients, 30)
-	flick_overlay(src, /atom/movable/proc/animate_chat, message, speaking, italics, speech_bubble_recipients, 30)
+	INVOKE_ASYNC(src, /atom/movable/proc/animate_chat, message, speaking, italics, speech_bubble_recipients, 30)
 
 	for(var/obj/O in listening_obj)
 		spawn(0)
