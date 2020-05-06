@@ -60,6 +60,14 @@
 	armor = list(melee = 50, bullet = 15, laser = 50, energy = 10, bomb = 25, bio = 0, rad = 0)
 
 
+/obj/item/clothing/suit/armor/breastplate
+	name = "breast plated armor"
+	desc = "A breast plate made of steel."
+	icon_state = "breastplate"
+	item_state = "breastplate"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	armor = list(melee = 67, gun = 0, energy = 15, bomb = 20, bio = 20, rad = 0)
+
 /obj/item/clothing/suit/armor/medieval
 	name = "plated armor"
 	desc = "A thick, expensive iron armor, covering most of the body."
