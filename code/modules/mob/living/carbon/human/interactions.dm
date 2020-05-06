@@ -161,7 +161,7 @@
 	var/potenzia = 10
 	var/resistenza = 200
 	var/lust = 0
-	var/erpcooldown = 3
+	var/erpcooldown = 0
 	var/multiorgasms = 0
 	var/lastmoan
 	var/mutilated_genitals = 0 //Whether or not they can do the fug.

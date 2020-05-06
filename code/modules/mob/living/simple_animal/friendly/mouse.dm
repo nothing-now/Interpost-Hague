@@ -69,12 +69,12 @@
 		name = "[name] ([sequential_id(/mob/living/simple_animal/mouse)])"
 	real_name = name
 
-	if(prob(40))
+	if(prob(8))
 		if(prob(1))
 			virus = new (VIRUS_EXOTIC)
 		else if(prob(10))
 			virus = new (VIRUS_ENGINEERED)
-		else if(prob(50))
+		else if(prob(1))
 			virus = new (VIRUS_COMMON)
 		else
 			virus = new (VIRUS_MILD)
@@ -105,7 +105,7 @@
 				break
 
 		var/blocked = H.run_armor_check(limb.organ_tag, "melee")
-		if(H.apply_damage(rand(2, 5), BRUTE, limb.organ_tag, blocked) && prob(70 - blocked))
+		if(H.apply_damage(rand(1, 1), BRUTE, limb.organ_tag, blocked) && prob(70 - blocked))
 			limb.germ_level += rand(75, 150)
 			if(virus)
 				infect_virus2(H, virus)

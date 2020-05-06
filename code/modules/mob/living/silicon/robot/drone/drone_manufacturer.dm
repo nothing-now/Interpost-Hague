@@ -91,6 +91,7 @@
 	set category = "Ghost"
 	set name = "Join As Drone"
 	set desc = "If there is a powered, enabled fabricator in the game world with a prepared chassis, join as a maintenance drone."
+	set hidden = 1
 	try_drone_spawn(src)
 
 /proc/try_drone_spawn(var/mob/user, var/obj/machinery/drone_fabricator/fabricator)
