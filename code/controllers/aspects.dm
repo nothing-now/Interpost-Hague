@@ -1,4 +1,4 @@
-/datum/controller/subsystem/ticker/proc/pick_round_event()
+/datum/controller/gameticker/proc/pick_round_event()
 	var/event_type = pick(typesof(/datum/round_event) - /datum/round_event)
 	if (event_type)
 		var/event = new event_type

@@ -14,8 +14,6 @@ SUBSYSTEM_DEF(ticker)
 	var/lastTickerTime
 	var/force_ending = 0
 
-	var/datum/round_event/eof
-
 /datum/controller/subsystem/ticker/Initialize(timeofday)
 	NEW_SS_GLOBAL(SSticker)
 	lastTickerTime = world.timeofday
@@ -23,20 +21,11 @@ SUBSYSTEM_DEF(ticker)
 	if (!ticker)
 		ticker = new
 
-	if(config.roundstart_events)
-		eof = pick_round_event()
-
-	if(eof)
-		eof.apply_event()
-		eof.announce_event()
-
-
 	spawn (0)
 		if (ticker)
 			ticker.pregame()
 
 	..()
-
 
 /datum/controller/subsystem/ticker/fire(resumed = FALSE)
 	var/currentTime = world.timeofday
