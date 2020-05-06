@@ -222,6 +222,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	else
 		medHUD = 1
 		to_chat(src, "<span class='notice'>Medical HUD Enabled</span>")
+
 /mob/observer/ghost/verb/toggle_antagHUD()
 	set category = "Ghost"
 	set name = "Toggle AntagHUD"
@@ -249,6 +250,7 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	else
 		M.antagHUD = 1
 		to_chat(src, "<span class='notice'>AntagHUD Enabled</span>")
+
 /mob/observer/ghost/verb/dead_tele(A in area_repository.get_areas_by_z_level())
 	set category = "Ghost"
 	set name = "Teleport"
@@ -349,7 +351,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 /mob/observer/ghost/verb/become_mouse()
 	set name = "Become mouse"
 	set category = "Ghost"
-	set hidden = 1
 
 	if(config.disable_player_mice)
 		to_chat(src, "<span class='warning'>Spawning as a mouse is currently disabled.</span>")
@@ -365,7 +366,6 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 
 	var/response = alert(src, "Are you -sure- you want to become a mouse?","Are you sure you want to squeek?","Squeek!","Nope!")
 	if(response != "Squeek!") return  //Hit the wrong key...again.
-
 
 	//find a viable mouse candidate
 	var/mob/living/simple_animal/mouse/host
