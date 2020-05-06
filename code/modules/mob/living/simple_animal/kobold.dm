@@ -18,7 +18,7 @@
 	response_disarm = "gently pushes aside"
 	response_harm   = "kicks"
 	minbodytemp = 250
-	min_oxy = 16 //Require atleast 16kPA oxygen
+	//min_oxy = 16 //Require atleast 16kPA oxygen
 	minbodytemp = 223		//Below -50 Degrees Celcius
 	maxbodytemp = 323	//Above 50 Degrees Celcius
 
