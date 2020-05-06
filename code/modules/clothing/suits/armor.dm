@@ -469,6 +469,20 @@
 	armor = list(melee = 40, bullet = 50, energy = 20, bomb = 25, bio = 10, rad = 5)
 	body_parts_covered = UPPER_TORSO
 
+/obj/item/clothing/suit/vest/civilian/kevlar3
+	name = "kevlar vest"
+	desc = "A level III kevlar vest."
+	icon_state = "kevlarvest3"
+	armor = list(melee = 40, bullet = 80, energy = 25, bomb = 40, bio = 10, rad = 5)
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+
+/obj/item/clothing/suit/vest/civilian/kevlar4
+	name = "kevlar vest"
+	desc = "A level IV kevlar vest."
+	icon_state = "kevlarvest4"
+	armor = list(melee = 40, bullet = 100, energy = 30, bomb = 70, bio = 10, rad = 5)
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+
 /obj/item/clothing/suit/vest/civilian/steelplate
 	name = "steel plated armor"
 	desc = "A steel plated armor-set with shoulder pads."
