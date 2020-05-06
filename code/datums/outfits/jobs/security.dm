@@ -50,7 +50,6 @@
 	head = /obj/item/clothing/head/helmet/steelhelm
 	uniform = /obj/item/clothing/under/secdp
 	suit = /obj/item/clothing/suit/vest/civilian/bulletproof
-	l_pocket = /obj/item/device/flash
 	r_pocket = /obj/item/weapon/handcuffs
 	id_type = /obj/item/weapon/card/id/security
 	pda_type = /obj/item/device/pda/security
