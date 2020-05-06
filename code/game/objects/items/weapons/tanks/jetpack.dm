@@ -53,7 +53,7 @@
 
 	to_chat(usr, "You toggle the thrusters [on? "on":"off"].")
 
-/obj/item/weapon/tank/jetpack/proc/allow_thrust(num, mob/living/user as mob)
+/obj/item/weapon/tank/jetpack/proc/allow_thrust(num, mob/living/user)
 	if(!(src.on))
 		return 0
 	if((num < 0.005 || src.air_contents.total_moles < num))
@@ -101,8 +101,7 @@
 
 /obj/item/weapon/tank/jetpack/rig/examine()
 	. = ..()
-	to_chat(usr, "It's a jetpack. If you can see this, report it on the bug tracker.")
-	return 0
+	CRASH("A [name] was examined")
 
 /obj/item/weapon/tank/jetpack/rig/allow_thrust(num, mob/living/user as mob)
 
