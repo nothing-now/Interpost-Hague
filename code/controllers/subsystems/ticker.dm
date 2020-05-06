@@ -23,13 +23,14 @@ SUBSYSTEM_DEF(ticker)
 	if (!ticker)
 		ticker = new
 
-	if (config.roundstart_events)
+	if(config.roundstart_events)
 		eof = pick_round_event()
 
-	if (eof)
+	if(eof)
 		if(prob(30))
 			eof.apply_event()
-			eof.announce_event()
+			if(eof.apply_event())
+				eof.announce_event()
 
 
 	spawn (0)
