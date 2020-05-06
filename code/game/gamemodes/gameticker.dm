@@ -35,6 +35,8 @@ var/global/datum/controller/gameticker/ticker
 	var/list/antag_pool = list()
 	var/looking_for_antags = 0
 
+	var/datum/round_event/eof
+
 /datum/controller/gameticker/proc/pregame()
 	do
 		if(!gamemode_voted)
@@ -141,6 +143,8 @@ var/global/datum/controller/gameticker/ticker
 	create_characters() //Create player characters and transfer them
 	collect_minds()
 	matchmaker.do_family_matchmaking()  //Do this before equipping
+	if(config.roundstart_events)
+		eof = pick_round_event()
 	equip_characters()
 	for(var/mob/living/carbon/human/H in GLOB.player_list)
 		if(!H.mind || player_is_antag(H.mind, only_offstation_roles = 1) || !job_master.ShouldCreateRecords(H.mind.assigned_role))
@@ -154,6 +158,9 @@ var/global/datum/controller/gameticker/ticker
 	spawn(0)//Forking here so we dont have to wait for this to finish
 		mode.post_setup()
 		to_world("<FONT color='dark red'><B>Hell is let loose.</B></FONT>")
+		if (eof)
+			eof.apply_event()
+			eof.announce_event()
 		sound_to(world, sound(GLOB.using_map.welcome_sound))
 
 		//Holiday Round-start stuff	~Carn

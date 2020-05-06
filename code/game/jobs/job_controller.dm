@@ -363,14 +363,14 @@ var/global/datum/controller/occupations/job_master
 	proc/EquipRank(var/mob/living/carbon/human/H, var/rank, var/joined_late = 0)
 		if(!H)	return null
 
-		if(SSticker.eof)
-			if(SSticker.eof.id == "assjesters")
+		if(ticker.eof)
+			if(ticker.eof.id == "assjesters")
 				if(H.mind.assigned_role == "Arbiter")
 					rank = "Jester"
-			if(SSticker.eof.id == "clumpsydumbasses")
+			if(ticker.eof.id == "clumpsydumbasses")
 				if(prob(69))
 					H.mutations.Add(CLUMSY)
-			if(SSticker.eof.id == "randomnames")
+			if(ticker.eof.id == "randomnames")
 				H.real_name = random_name(H.gender)
 				H.f_style = random_facial_hair_style(H.gender)
 				H.h_style = random_hair_style(H.gender)
