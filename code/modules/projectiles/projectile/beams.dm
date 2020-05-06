@@ -183,7 +183,7 @@
 	fire_sound = 'sound/weapons/Taser.ogg'
 	check_armour = "energy"
 	sharp = 0 //not a laser
-	agony = 40
+	agony = 60
 	damage_type = STUN
 
 	muzzle_type = /obj/effect/projectile/stun/muzzle
