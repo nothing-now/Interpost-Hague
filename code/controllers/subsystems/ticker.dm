@@ -27,10 +27,8 @@ SUBSYSTEM_DEF(ticker)
 		eof = pick_round_event()
 
 	if(eof)
-		if(prob(30))
-			eof.apply_event()
-			if(eof.apply_event())
-				eof.announce_event()
+		eof.apply_event()
+		eof.announce_event()
 
 
 	spawn (0)
