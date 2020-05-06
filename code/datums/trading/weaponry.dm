@@ -2,8 +2,8 @@
 	name = "Gun Shop Employee"
 	name_language = TRADER_DEFAULT_NAME
 	origin = "Gun Shop"
-	possible_origins = list("Rooty Tootie's Point-n-Shooties", "Bang-Bang Shop", "Wild Wild West Shop", "Keleshnikov", "Hunting Depot", "Big Game Hunters")
-	speech = list("hail_generic"    = "Hello, hello! I hope you have your permit. Oh, who are we kidding, you're welcome anyway!",
+	possible_origins = list("Internian Federation", "TARvos")
+	speech = list("hail_generic"    = "Greetings stranger. What can we assist you with?",
 				"hail_deny"         = "Store policy dictates that you can fuck off.",
 
 				"trade_complete"    = "Thanks for buying your guns from ORIGIN!",
@@ -22,6 +22,17 @@
 								/obj/item/weapon/gun/projectile/colt        = TRADER_ALL,
 								/obj/item/weapon/gun/projectile/magnum_pistol= TRADER_ALL,
 								/obj/item/weapon/gun/projectile/sec         = TRADER_ALL,
+								/obj/item/clothing/head/helmet/kevlar         = TRADER_ALL,
+								/obj/item/clothing/head/helmet/siege         = TRADER_ALL,
+								/obj/item/clothing/suit/armor/breastplate         = TRADER_ALL,
+								/obj/item/clothing/suit/vest/civilian/steelplate         = TRADER_ALL,
+								/obj/item/clothing/suit/vest/civilian/kevlar         = TRADER_ALL,
+								/obj/item/weapon/material/sword/silversword         = TRADER_ALL,
+								/obj/item/weapon/material/sword/combat_knife         = TRADER_ALL,
+								/obj/item/weapon/material/sword/bastard         = TRADER_ALL,
+								/obj/item/weapon/material/sword/siegesword         = TRADER_ALL,
+								/obj/item/weapon/material/sword/longsword         = TRADER_ALL,
+								/obj/item/weapon/material/sword/falchion         = TRADER_ALL,
 								/obj/item/weapon/gun/projectile/sec/MK      = TRADER_BLACKLIST,
 								/obj/item/weapon/gun/projectile/shotgun/pump= TRADER_SUBTYPES_ONLY,
 								/obj/item/ammo_magazine                     = TRADER_SUBTYPES_ONLY,
