@@ -43,6 +43,11 @@
 	icon_state = "black"
 	item_state = "bl_suit"
 
+/obj/item/clothing/under/crew/navy
+	name = "crew jumpsuit"
+	icon_state = "crewuni"
+	item_state = "crewuni"
+
 /obj/item/clothing/under/color/grey
 	name = "grey jumpsuit"
 	desc = "A tasteful grey jumpsuit that reminds you of the good old days."
