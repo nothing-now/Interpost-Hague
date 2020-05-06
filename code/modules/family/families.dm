@@ -44,7 +44,7 @@
 	target_relation.connected_relation = owner_relation
 	owner_relation.relation_holder = owner.mind
 	target_relation.relation_holder = target.mind
-	
+
 
 //Setup relations between families
 /datum/family/proc/setup_relations(var/mob/living/carbon/human/member)
@@ -81,23 +81,23 @@
 	if((family_type == "Brother" || family_type == "Sister") && (isnull(spouse)) && (owner.gender != target.gender))  //If we are the same age but different gender, but don't have a spouse, marry us!
 		spouse = target
 		switch(owner.gender)
-			if(MALE) 
+			if(MALE)
 				family_type = "Husband"
-			if(FEMALE) 
+			if(FEMALE)
 				family_type = "Wife"
 	//Only heads of house can have children
 	if((family_type == "Son" || family_type == "Daughter") && (target != family_head && target != spouse))
 		switch(owner.gender)
-			if(MALE) 
+			if(MALE)
 				family_type = "Nephew"
-			if(FEMALE) 
+			if(FEMALE)
 				family_type = "Niece"
 	//Only heads of house can be parents
 	if((family_type == "Father" || family_type == "Mother") && (target != family_head && target != spouse))
 		switch(owner.gender)
-			if(MALE) 
+			if(MALE)
 				family_type = "Uncle"
-			if(FEMALE) 
+			if(FEMALE)
 				family_type = "Aunt"
 
 	if(!isnull(family_type))
@@ -130,7 +130,7 @@
 				if("Aunt")     return "Niece"
 				if("Nephew")   return "Aunt"
 				if("Niece")    return "Aunt"
-	
+
 
 /datum/relation/family
 	var/sex_restricted = null
@@ -183,6 +183,7 @@
 
 
 /mob/living/carbon/human/verb/check_family()
+	set hidden = 1
 	var/message = "<big><b>Family:</b></big>\n"
 	for(var/datum/relation/family/R in matchmaker.get_relationships(mind))
 		message += "[R.connected_relation.relation_holder.current.name] is my [R.name].\n"
