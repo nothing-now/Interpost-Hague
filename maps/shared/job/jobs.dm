@@ -18,6 +18,7 @@
 						/datum/job/cargo_tech/machinist,
 						/datum/job/mining,
 						/datum/job/chef,
+						/datum/job/bartender,
 						/datum/job/hydro,
 						/datum/job/janitor,
 						/datum/job/engineer,
@@ -78,6 +79,7 @@
 						/datum/job/mining,
 						/datum/job/ouvrier,
 						/datum/job/chef,
+						/datum/job/bartender,
 						/datum/job/chaplain,
 						/datum/job/janitor,
 						/datum/job/arbiter,
@@ -491,6 +493,22 @@
 		..()
 		H.generate_stats(STAT_HT)
 		H.generate_skills(list("cooking","melee"))
+
+/datum/job/bartender
+	title = "Bartender"
+	department = "Service"
+	department_flag = SRV
+	total_positions = 1
+	spawn_positions = 1
+	supervisors = "the Viscount"
+	selection_color = "#515151"
+	access = list(access_hydroponics, access_bar, access_kitchen)
+	minimal_access = list(access_bar)
+	outfit_type = /decl/hierarchy/outfit/job/service/bartender
+	equip(var/mob/living/carbon/human/H)
+		..()
+		H.generate_stats(STAT_HT)
+		H.generate_skills(list("cooking","ranged"))
 
 /datum/job/chaplain
 	title = "Priest"
