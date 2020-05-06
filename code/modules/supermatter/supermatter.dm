@@ -71,7 +71,7 @@
 	var/grav_pulling = 0
 	// Time in ticks between delamination ('exploding') and exploding (as in the actual boom)
 	var/pull_time = 300
-	var/explosion_power = 9
+	var/explosion_power_modifier = 9
 
 	var/emergency_issued = 0
 
@@ -104,8 +104,8 @@
 	var/aw_delam = FALSE
 	var/aw_EPR = FALSE
 
-/obj/machinery/power/supermatter/New()
-	..()
+/obj/machinery/power/supermatter/Initialize()
+	. = ..()
 	uid = gl_uid++
 
 /obj/machinery/power/supermatter/proc/handle_admin_warnings()
@@ -177,7 +177,7 @@
 	return SUPERMATTER_INACTIVE
 
 
-/obj/machinery/power/supermatter/proc/explode()
+/obj/machinery/power/supermatter/proc/explode(stored_power)
 	set waitfor = 0
 
 	if(exploded)
@@ -208,6 +208,14 @@
 		mob.Weaken(DETONATION_MOB_CONCUSSION)
 		to_chat(mob, "<span class='danger'>An invisible force slams you against the ground!</span>")
 
+		if(iscarbon(mob))
+			var/mob/living/carbon/C = mob
+			var/area/A = get_area(TM)
+			if(A && !(A.area_flags & AREA_FLAG_RAD_SHIELDED))
+				var/dist = 200 - get_dist(src, C)
+				if(dist >= 1)
+					C.hallucination(round(dist * 1.5), dist)
+
 	// Effect 2: Z-level wide electrical pulse
 	for(var/obj/machinery/power/apc/A in SSmachines.machinery)
 		if(!(A.z in affected_z))
@@ -229,6 +237,8 @@
 		// Causes SMESes to shut down for a bit
 		var/random_change = rand(100 - DETONATION_SHUTDOWN_RNG_FACTOR, 100 + DETONATION_SHUTDOWN_RNG_FACTOR) / 100
 		S.energy_fail(round(DETONATION_SHUTDOWN_SMES * random_change))
+		if(prob(100 - get_dist(src, S) * 0.5))
+			S.grounding = 0
 
 	// Effect 3: Break solar arrays
 
@@ -238,12 +248,12 @@
 		if(prob(DETONATION_SOLAR_BREAK_CHANCE))
 			S.broken()
 
-
-
 	// Effect 4: Medium scale explosion
-	spawn(0)
-		explosion(TS, explosion_power/2, explosion_power, explosion_power * 2, explosion_power * 4, 1)
-		qdel(src)
+	if(!stored_power)
+		stored_power = round(sqrt(power) * 0.1 * explosion_power_modifier)
+	stored_power = Clamp(stored_power, 1, 50)
+	explosion(TS, stored_power * 0.5, stored_power, stored_power * 2, stored_power * 4, 1)
+	qdel(src)
 
 //Changes color and luminosity of the light to these values if they were not already set
 /obj/machinery/power/supermatter/proc/shift_light(var/lum, var/clr)
@@ -279,6 +289,8 @@
 		//Public alerts
 		if((damage > emergency_point) && !public_alert)
 			GLOB.global_announcer.autosay("WARNING: SUPERMATTER CRYSTAL DELAMINATION IMMINENT!", "Supermatter Monitor")
+			if(power >= 1400)
+				GLOB.global_announcer.autosay("WARNING: AN EXTREMELY POWERFUL EXPLOSION EXPECTED!", "Supermatter Monitor") // hell yeah
 			public_alert = 1
 			for(var/mob/M in GLOB.player_list)
 				var/turf/T = get_turf(M)
@@ -303,7 +315,7 @@
 		if(!exploded)
 			if(!istype(L, /turf/space))
 				announce_warning()
-			explode()
+			explode(round(sqrt(power) * 0.1 * explosion_power_modifier))
 	else if(damage > warning_point) // while the core is still damaged and it's still worth noting its status
 		shift_light(5, warning_color)
 		if(damage > emergency_point)
@@ -495,8 +507,22 @@
 
 
 /proc/supermatter_pull(var/atom/target, var/pull_range = 255, var/pull_power = STAGE_FIVE)
-	for(var/atom/A in range(pull_range, target))
-		A.singularity_pull(target, pull_power)
+	var/list/movable_atoms = list()
+	for(var/atom/movable/AM in range(pull_range, target))
+		movable_atoms += AM
+
+	var/turf/below = GetBelow(target)
+	if(below)
+		for(var/atom/movable/AM in range(round(pull_range * 0.75), below))
+			movable_atoms += AM
+
+	var/turf/above = GetAbove(target)
+	if(above)
+		for(var/atom/movable/AM in range(round(pull_range * 0.75), above))
+			movable_atoms += AM
+
+	for(var/atom/movable/AM in movable_atoms)
+		AM.singularity_pull(target, pull_power)
 
 /obj/machinery/power/supermatter/GotoAirflowDest(n) //Supermatter not pushed around by airflow
 	return
@@ -517,7 +543,7 @@
 	gasefficency = 0.125
 
 	pull_time = 150
-	explosion_power = 3
+	explosion_power_modifier = 3
 
 /obj/machinery/power/supermatter/shard/announce_warning() //Shards don't get announcements
 	return
