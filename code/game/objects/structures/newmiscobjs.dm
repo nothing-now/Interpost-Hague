@@ -182,7 +182,7 @@
 	STOP_PROCESSING(SSobj, src)
 
 /obj/structure/woodenclock/Process()
-	playsound(src.loc, 'sound/machines/clock_ticking.ogg', 50, 1)
+	playsound(get_turf(loc), 'sound/machines/clock_ticking.ogg', 30, 0, -3)
 
 /obj/structure/nuclearwaste
 	name = "big nuclear waste canister"
