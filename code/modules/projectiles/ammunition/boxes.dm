@@ -103,6 +103,34 @@
 /obj/item/ammo_magazine/makaspecial/empty
 	initial_ammo = 0
 
+/obj/item/ammo_magazine/sig250
+	name = "SIG Sauer 250 magazine (.45 ACP)"
+	icon_state = "maka_special"
+	origin_tech = list(TECH_COMBAT = 2)
+	mag_type = MAGAZINE
+	matter = list(DEFAULT_WALL_MATERIAL = 600)
+	caliber = "a45acp"
+	ammo_type = /obj/item/ammo_casing/a45acp
+	max_ammo = 10
+	multiple_sprites = 1
+
+/obj/item/ammo_magazine/sig250/empty
+	initial_ammo = 0
+
+/obj/item/ammo_magazine/glock17
+	name = "glock 17 magazine (9mm)"
+	icon_state = "maka_special"
+	origin_tech = list(TECH_COMBAT = 2)
+	mag_type = MAGAZINE
+	matter = list(DEFAULT_WALL_MATERIAL = 600)
+	caliber = "a9mm"
+	ammo_type = /obj/item/ammo_casing/a9mm
+	max_ammo = 17
+	multiple_sprites = 1
+
+/obj/item/ammo_magazine/glock17/empty
+	initial_ammo = 0
+
 /obj/item/ammo_magazine/mc9mm
 	name = "magazine (9mm)"
 	icon_state = "9x19p"

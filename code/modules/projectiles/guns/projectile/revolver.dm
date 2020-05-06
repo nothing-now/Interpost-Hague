@@ -126,3 +126,13 @@
 	caliber = ".44"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	ammo_type = /obj/item/ammo_casing/c44
+
+/obj/item/weapon/gun/projectile/revolver/smithwesson32
+	name = "Smith&Wesson 32"
+	desc = "A smith&wesson small revolver chambered in (.32)."
+	icon_state = "smithwesson32"
+	item_state = "pistol1"
+	max_shells = 6
+	caliber = "a32"
+	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
+	ammo_type = /obj/item/ammo_casing/a32

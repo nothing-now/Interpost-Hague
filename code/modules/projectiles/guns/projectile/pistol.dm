@@ -70,6 +70,50 @@
 	magazine_type = /obj/item/ammo_magazine/c45m
 	allowed_magazines = /obj/item/ammo_magazine/c45m
 
+/obj/item/weapon/gun/projectile/sig250
+	name = "SIG 250"
+	desc = "A heavily modified SIG Sauer 250 pistol. Chambered in (.45 ACP)."
+	icon_state = "sig250"
+	item_state = "sig250"
+	w_class = ITEM_SIZE_SMALL
+	caliber = "a45acp"
+	silenced = 0
+	fire_delay = 1
+	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 2)
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/sig250
+	allowed_magazines = /obj/item/ammo_magazine/sig250
+	jam_chance = 1
+
+/obj/item/weapon/gun/projectile/sig250/update_icon()
+	..()
+	if(ammo_magazine && ammo_magazine.stored_ammo.len)
+		icon_state = "sig250"
+	else
+		icon_state = "sig250_empty"
+
+/obj/item/weapon/gun/projectile/glock17
+	name = "glock 17"
+	desc = "The iconic glock 17. Chambered in (9mm)."
+	icon_state = "glock17"
+	item_state = "pistol1"
+	w_class = ITEM_SIZE_SMALL
+	caliber = "a9mm"
+	silenced = 0
+	fire_delay = 1
+	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 2)
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/glock17
+	allowed_magazines = /obj/item/ammo_magazine/glock17
+	jam_chance = 0
+
+/obj/item/weapon/gun/projectile/glock17/update_icon()
+	..()
+	if(ammo_magazine && ammo_magazine.stored_ammo.len)
+		icon_state = "glock17"
+	else
+		icon_state = "glock17_empty"
+
 /obj/item/weapon/gun/projectile/maka
 	name = "black makarov"
 	desc = "A tactical makarov, mostly used by officers."
