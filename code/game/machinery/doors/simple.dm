@@ -88,9 +88,10 @@
 	playsound(src.loc, material.dooropen_noise, 100, 1)
 	..()
 
-/obj/machinery/door/unpowered/simple/set_broken()
+/obj/machinery/door/unpowered/simple/set_broken(var/new_state)
 	..()
-	deconstruct(null)
+	if(new_state)
+		deconstruct(null)
 
 /obj/machinery/door/unpowered/simple/deconstruct(mob/user, moved = FALSE)
 	material.place_dismantled_product(get_turf(src))
@@ -194,9 +195,8 @@
 	return 1
 
 /obj/machinery/door/unpowered/simple/Destroy()
-	qdel(lock)
-	lock = null
-	..()
+	QDEL_NULL(lock)
+	return ..()
 
 /obj/machinery/door/unpowered/simple/iron/New(var/newloc,var/material_name,var/complexity)
 	..(newloc, "iron", complexity)

@@ -240,7 +240,7 @@
 						H.apply_damage(rand(30,45), BRUTE, BP_GROIN)
 						playsound(H, 'sound/effects/gore/severed.ogg', 50, 1, -1)
 						H.mutilate_genitals()
-						new /obj/item/organ/external/groin/penis(H.loc)
+						new /obj/item/organ/external/penis(H.loc)
 						user.doing_something = 0
 					else
 						to_chat(user, "<span class='notice'>You fail to cut off their penis...</span>")

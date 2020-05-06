@@ -144,7 +144,7 @@
 				to_chat(H, "<span class='notice'>You can't attack again so soon.</span>")
 				return 0
 			else
-				H.last_attack = world.time + cooldown_modifier 
+				H.last_attack = world.time + cooldown_modifier
 
 			if(!affecting || affecting.is_stump())
 				to_chat(M, "<span class='danger'>They are missing that limb!</span>")
@@ -259,7 +259,7 @@
 /mob/living/carbon/human/proc/afterattack(atom/target as mob|obj|turf|area, mob/living/user as mob|obj, inrange, params)
 	return
 
-/mob/living/carbon/human/attack_generic(var/mob/user, var/damage, var/attack_message, var/damtype = BRUTE, var/armorcheck = "melee")
+/mob/living/carbon/human/attack_generic(var/mob/user, var/damage, var/attack_message, var/environment_smash, var/damtype = BRUTE, var/armorcheck = "melee")
 
 	if(!damage || !istype(user))
 		return
