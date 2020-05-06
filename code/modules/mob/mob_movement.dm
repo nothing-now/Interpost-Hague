@@ -262,9 +262,6 @@
 	if(!mob.canmove)
 		return
 
-	//if(istype(mob.loc, /turf/space) || (mob.flags & NOGRAV))
-	//	if(!mob.Process_Spacemove(0))	return 0
-
 	if(!mob.lastarea)
 		mob.lastarea = get_area(mob.loc)
 
@@ -491,18 +488,6 @@
 
 	update_floating()
 	return 1
-
-// Checks whether this mob is allowed to move in space
-// Return 1 for movement, 0 for none,
-// -1 to allow movement but with a chance of slipping
-/mob/proc/Allow_Spacemove(var/check_drift = 0)
-	if(!Check_Dense_Object()) //Nothing to push off of so end here
-		return 0
-
-	if(restrained()) //Check to see if we can do things
-		return 0
-
-	return -1
 
 /mob/proc/check_solid_ground()
 	if(istype(loc, /turf/space))
