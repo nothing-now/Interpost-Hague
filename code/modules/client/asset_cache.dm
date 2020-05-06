@@ -342,16 +342,12 @@ var/decl/asset_cache/asset_cache = new()
 	..()
 	cache = new
 
-/*
-/hook/roundstart/proc/send_assets()
+/decl/asset_cache/proc/load()
 	for(var/type in typesof(/datum/asset) - list(/datum/asset, /datum/asset/simple))
 		var/datum/asset/A = new type()
 		A.register()
 
-	for(var/client/C in GLOB.clients)
+	for(var/client/C in GLOB.clients) // This is also called in client/New, but as we haven't initialized the cache until now, and it's possible the client is already connected, we risk doing it twice.
 		// Doing this to a client too soon after they've connected can cause issues, also the proc we call sleeps.
 		spawn(10)
-			getFilesSlow(C, asset_cache.cache, FALSE)
-
-	return TRUE
-*/
+			getFilesSlow(C, cache, FALSE)
