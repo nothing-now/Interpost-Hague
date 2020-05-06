@@ -228,6 +228,13 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 	if(handle_whitespace)
 		message = replacetext(message, "\n", "<br>")
 		message = replacetext(message, "\t", "[FOURSPACES][FOURSPACES]")
+		message = replacetext(message, "/", "")//None of this.
+		message = replacetext(message, "~", "")//Or this.
+		message = replacetext(message, ".", "")//no dots
+		message = replacetext(message, "i", " I ")//FUCKING USE CAPITAL LETTERS JAMES YOU FUCK!
+		message = replacetext(message, "ive", " I've ")//I'M SO FUCKING SICK OF SEEING IVE YOU FUCKS
+		message = replacetext(message, "im", " I'm ")//AND IM TOO! STOP THAT YOU FUCKS!
+		message = replacetext(message, "u", " you ")//STOP USING FUCKING U YOU SICK FUCKS!
 
 	//Replace expanded \icon macro with icon2html
 	//regex/Replace with a proc won't work here because icon2html takes target as an argument and there is no way to pass it to the replacement proc
