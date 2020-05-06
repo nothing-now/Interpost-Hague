@@ -1,7 +1,7 @@
 /datum/religion/xom
 	name = XOM // he travelled many places
 	holy_item = new /obj/item/weapon/bikehorn()
-	shrine = /obj/old_god_shrine/messiah_shrine
+	shrine = /obj/old_god_shrine/xom_shrine
 	whisper_lines = list("This is a game, just a game!", "TURN THE PC OFF, RIGHT NOW.", "HA-HA-HA-HA-HA!!!")
 	offering_items = list(/obj/item/weapon/flame/candle/, /obj/item/weapon/spacecash/bundle/c10, /obj/item/clothing/head/jester)
 
