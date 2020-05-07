@@ -126,7 +126,7 @@ SUBSYSTEM_DEF(zcopy)
 		if (depth > OPENTURF_MAX_DEPTH)
 			depth = OPENTURF_MAX_DEPTH
 
-		var/t_target = OPENSPACE_PLANE - depth	// this is where the openturf gets put
+		var/t_target = OPENSPACE_PLANE// this is where the openturf gets put
 
 		// Handle space parallax.
 		if (T.below.z_eventually_space)
@@ -143,6 +143,7 @@ SUBSYSTEM_DEF(zcopy)
 			TO.gender = T.gender	// Need to grab this too so PLURAL works properly in examine.
 			TO.opacity = FALSE
 			TO.plane = t_target
+			TO.layer = OPENSPACE_LAYER
 		else
 			// This openturf doesn't care about its icon, so we can just overwrite it.
 			if (T.below.bound_overlay)
@@ -153,6 +154,7 @@ SUBSYSTEM_DEF(zcopy)
 			T.gender = NEUTER
 			T.opacity = FALSE
 			T.plane = t_target
+			T.layer = OPENSPACE_LAYER
 
 		T.queue_ao()
 
@@ -232,7 +234,7 @@ SUBSYSTEM_DEF(zcopy)
 		// Actually update the overlay.
 		OO.dir = OO.associated_atom.dir
 		OO.appearance = OO.associated_atom
-		OO.plane = OPENSPACE_PLANE - OO.depth
+		OO.plane = OPENSPACE_PLANE + OO.depth
 
 		OO.opacity = FALSE
 		OO.queued = FALSE

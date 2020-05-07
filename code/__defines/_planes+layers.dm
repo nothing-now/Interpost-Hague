@@ -61,7 +61,7 @@ What is the naming convention for planes or layers?
 #define OPENSPACE_PLANE_START -462
 #define OPENSPACE_PLANE_END -16
 #define OPENSPACE_PLANE -18
-#define OPENSPACE_LAYER -463
+#define OPENSPACE_LAYER 8
 
 #define OVER_OPENSPACE_PLANE        -3
 
