@@ -1,6 +1,6 @@
 /obj/item/weapon/gun/projectile/colt
 	name = "vintage .45 pistol"
-	desc = "A cheap Martian knock-off of a Colt M1911. Uses .45 rounds."
+	desc = "A cheap knock-off of a Colt M1911. Uses .45 rounds."
 	magazine_type = /obj/item/ammo_magazine/c45m
 	allowed_magazines = /obj/item/ammo_magazine/c45m
 	icon_state = "colt"
@@ -11,7 +11,7 @@
 /obj/item/weapon/gun/projectile/colt/officer
 	name = "military .45 pistol"
 	icon_state = "secgundark"
-	desc = "The WT45 - a mass produced kinetic sidearm well-known in films and entertainment programming for being the daily carry choice issued to officers of the Sol Central Government Defense Forces. Uses .45 rounds."
+	desc = "The WT45 - a mass produced kinetic sidearm well-known in films and entertainment programming for being the daily carry choice. Uses .45 rounds."
 	icon_state = "secgundark"
 	accuracy = 0.35
 	fire_delay = 6.5
@@ -25,7 +25,7 @@
 
 /obj/item/weapon/gun/projectile/sec
 	name = ".45 pistol"
-	desc = "The NT Mk58 is a cheap, ubiquitous sidearm, produced by a NanoTrasen subsidiary. Found pretty much everywhere humans are. Uses .45 rounds."
+	desc = "The NT Mk58 is a cheap, ubiquitous sidearm. Found pretty much everywhere humans are. Uses .45 rounds."
 	icon_state = "secguncomp"
 	magazine_type = /obj/item/ammo_magazine/c45m/flash
 	allowed_magazines = /obj/item/ammo_magazine/c45m
@@ -46,7 +46,7 @@
 	name = ".45 signal pistol"
 
 /obj/item/weapon/gun/projectile/sec/wood
-	desc = "The NT Mk58 is a cheap, ubiquitous sidearm, produced by a NanoTrasen subsidiary. This one has a sweet wooden grip, among other modifications. Uses .45 rounds."
+	desc = "The NT Mk58 is a cheap, ubiquitous sidearm. This one has a sweet wooden grip, among other modifications. Uses .45 rounds."
 	name = "custom .45 Pistol"
 	icon_state = "secgundark"
 	accuracy = 0
@@ -94,7 +94,7 @@
 
 /obj/item/weapon/gun/projectile/glock17
 	name = "glock 17"
-	desc = "The iconic glock 17. Chambered in (9mm)."
+	desc = "The iconic Glock 17. Chambered in (9mm)."
 	icon_state = "glock17"
 	item_state = "pistol1"
 	w_class = ITEM_SIZE_SMALL

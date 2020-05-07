@@ -131,7 +131,7 @@ var/const/MAP_HAS_RANK = 2		//Rank system, also togglable
 		"Vey Med",
 		"Einstein Engines",
 		"Free Trade Union",
-		"NanoTrasen",
+		"Mulytic Ltd.",
 		"Ward-Takahashi GMB",
 		"Gilthari Exports",
 		"Grayson Manufactories Ltd.",

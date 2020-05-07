@@ -146,6 +146,7 @@ default behaviour is:
 					for(var/obj/structure/window/win in get_step(AM,t))
 						now_pushing = 0
 						return
+				AM.glide_size = glide_size
 				step(AM, t)
 				//Turn around to face whoever pushed us
 				AM.set_dir(get_dir(AM, src))
@@ -283,7 +284,7 @@ default behaviour is:
 
 /mob/living/proc/adjustHalLoss(var/amount)
 	adjustBruteLoss(amount * 0.5)
-		
+
 
 /mob/living/proc/setHalLoss(var/amount)
 	adjustBruteLoss((amount * 0.5)-getBruteLoss())
@@ -642,12 +643,12 @@ default behaviour is:
 			adjustStaminaLoss(-5)
 		else
 			adjustStaminaLoss(-1)
-	
+
 	if(m_intent == "run" && staminaloss < 50)
 		adjustStaminaLoss(1)
 	else
 		adjustStaminaLoss(-2)
-	
+
 	if(staminaloss >= STAMINA_EXHAUST && !stat)//Oh shit we've lost too much stamina and now we're tired!
 		Exhaust()
 		return

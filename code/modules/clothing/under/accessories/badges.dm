@@ -39,10 +39,10 @@
  */
 /obj/item/clothing/accessory/badge/holo
 	name = "holobadge"
-	desc = "This glowing blue badge marks the holder as a member of corporate security."
+	desc = "This glowing blue badge marks the holder as a member of station's security."
 	icon_state = "holobadge"
 	item_state = "holobadge"
-	badge_string = "NanoTrasen Security"
+	badge_string = "Station Security"
 	var/emagged //Emagging removes Sec check.
 
 /obj/item/clothing/accessory/badge/holo/cord
@@ -115,8 +115,8 @@
 	badge_string = "Office of Interstellar Intelligence"
 
 /obj/item/clothing/accessory/badge/nanotrasen
-	name = "\improper NanoTrasen badge"
-	desc = "A leather-backed plastic badge with a variety of information printed on it. Belongs to a NanoTrasen corporate executive."
+	name = "\improper Corporate badge"
+	desc = "A leather-backed plastic badge with a variety of information printed on it. Belongs to a Corporate executive."
 	icon_state = "ntbadge"
 	badge_string = "NanoTrasen"
 
@@ -127,7 +127,7 @@
 	slot_flags = SLOT_BELT | SLOT_TIE
 	slot = ACCESSORY_SLOT_INSIGNIA
 	badge_string = "Colonial Marshal Bureau"
-	
+
 /obj/item/clothing/accessory/badge/press
 	name = "press badge"
 	desc = "A leather-backed plastic badge displaying that the owner is certified press personnel."

@@ -1168,3 +1168,11 @@ mob/proc/yank_out_object()
 		return
 	var/obj/screen/zone_sel/selector = mob.zone_sel
 	selector.set_selected_zone(next_in_list(mob.zone_sel.selecting,zones))
+
+proc/uh(var/S)
+	var/regex/upper = new("\[A-Z\]", "g")
+	var/regex/lower = new("\[a-z\]", "g")
+	S = upper.Replace(S,"U")	 //All uppercases become "U"
+	S = lower.Replace(S, "h")	 //replaces all lowercase letters with "h"
+	S = replacetext(S," h"," u") //makes it so we words start with "u" most of the time.
+	return S

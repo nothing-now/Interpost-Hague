@@ -199,7 +199,7 @@
 
 /obj/item/clothing/mask/rubber/trasen
 	name = "Jack Trasen mask"
-	desc = "CEO of NanoTrasen corporation. Perfect for scaring the unionizing children."
+	desc = "CEO of Mulytic Ltd. Perfect for scaring the unionizing children."
 	icon_state = "trasen"
 	visible_name = "Jack Trasen"
 
@@ -259,7 +259,7 @@
 	item_state = "spirit_mask"
 	flags_inv = HIDEFACE
 	body_parts_covered = FACE|EYES
-	
+
 // Bandanas below
 /obj/item/clothing/mask/bandana
 	name = "black bandana"
@@ -307,22 +307,22 @@
 	name = "gold bandana"
 	icon_state = "bandgold"
 	item_state = "bandgold"
-	
+
 /obj/item/clothing/mask/bandana/orange
 	name = "orange bandana"
 	icon_state = "bandorange"
 	item_state = "bandorange"
-	
+
 /obj/item/clothing/mask/bandana/purple
 	name = "purple bandana"
 	icon_state = "bandpurple"
 	item_state = "bandpurple"
-	
+
 /obj/item/clothing/mask/bandana/botany
 	name = "botany bandana"
 	icon_state = "bandbotany"
 	item_state = "bandbotany"
-	
+
 /obj/item/clothing/mask/bandana/camo
 	name = "camo bandana"
 	icon_state = "bandcamo"
@@ -333,4 +333,4 @@
 	desc = "A fine black bandana with nanotech lining and a skull emblem. Can be worn on the head or face."
 	icon_state = "bandskull"
 	item_state = "bandskull"
-	
+

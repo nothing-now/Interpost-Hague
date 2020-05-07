@@ -46,10 +46,10 @@
 	filled = TRUE
 
 /obj/item/weapon/storage/lunchbox/nt
-	name = "NanoTrasen brand lunchbox"
+	name = "Corporate brand lunchbox"
 	icon_state = "lunchbox_nanotrasen"
 	item_state = "toolbox_blue"
-	desc = "A little lunchbox. This one is branded with the Nanotrasen logo!"
+	desc = "A little lunchbox. This one is branded with the Corporate logo!"
 
 /obj/item/weapon/storage/lunchbox/nt/filled
 	filled = TRUE

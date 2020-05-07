@@ -439,8 +439,8 @@
 	icon_state = "deck5"
 
 /obj/structure/sign/nanotrasen
-	name = "\improper NanoTrasen"
-	desc = "An old metal sign which reads 'NanoTrasen'."
+	name = "\improper Corporate"
+	desc = "An old metal sign which reads 'NT'. You don't know what it means. Go away."
 	icon_state = "NT"
 
 /obj/structure/sign/church

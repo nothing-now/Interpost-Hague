@@ -63,6 +63,8 @@ What is the naming convention for planes or layers?
 #define OPENSPACE_PLANE -18
 #define OPENSPACE_LAYER -463
 
+#define OVER_OPENSPACE_PLANE        -3
+
 
 #define BELOW_TURF_PLANE             -22 // objects that are below turfs. Useful for asteroid smoothing or other such magic.
 	// TURF_LAYER 2
@@ -242,7 +244,7 @@ What is the naming convention for planes or layers?
 	filters = filter(type = "blur", size = 2)
 
 /obj/screen/plane_master/openspace_blur
-	//plane = OVER_OPENSPACE_PLANE
+	plane = OVER_OPENSPACE_PLANE
 	filters = filter(type = "blur", size = 1)
 
 /obj/screen/plane_master/ghost_dummy
