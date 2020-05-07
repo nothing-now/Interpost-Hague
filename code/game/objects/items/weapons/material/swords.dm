@@ -279,5 +279,19 @@
 	parry_sounds = list('sound/weapons/blade_parry1.ogg', 'sound/weapons/blade_parry2.ogg', 'sound/weapons/blade_parry3.ogg')
 	drop_sound = 'sound/items/drop_sword.ogg'
 
-
+/obj/item/weapon/material/sword/mace
+	name = "steel mace"
+	desc = "A blunt force weapon. You do not want to get hit with this."
+	icon_state = "mace"
+	item_state = "mace"
+	force_divisor = 0.6
+	block_chance = 20
+	w_class = ITEM_SIZE_NORMAL
+	drawsound = 'sound/items/unholster_sword02.ogg'
+	equipsound = 'sound/items/holster_sword1.ogg'
+	sharpness = 0
+	weapon_speed_delay = 18
+	drop_sound = 'sound/items/drop_sword.ogg'
+	sharp = 0
+	edge = 0
 
