@@ -51,7 +51,7 @@
 		if(user.statcheck(user.stats[STAT_ST], 13, "You're not swole enough to lift these weight.  You should train more.", STAT_ST))
 			var/finishmessage = pick("You feel stronger!","You feel like you can take on the world!","You feel robust!","You feel indestructible!")
 			to_chat(user, "[finishmessage]")
-		icon_state = "fitnesslifter"	
+		icon_state = "fitnesslifter"
 		if(prob(1))
 			user.adjustStrength(1)
 
@@ -75,7 +75,6 @@
 		user.adjustStaminaLoss(rand(20,40))
 		user.loc = src.loc
 		var/image/W = image('icons/obj/fitness.dmi',"fitnessweight-w")
-		W.plane = ABOVE_HUMAN_PLANE
 		W.layer = ABOVE_HUMAN_LAYER
 		overlays += W
 		var/reps = 0

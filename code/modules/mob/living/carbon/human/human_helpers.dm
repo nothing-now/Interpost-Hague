@@ -135,7 +135,7 @@
 		return 0
 	if(!species)
 		return 0
-	
+
 	if(bodytemperature > species.cold_level_1)
 		return 0
 	else if(bodytemperature > species.cold_level_2)
@@ -206,10 +206,8 @@
 
 /mob/living/carbon/human/reset_layer()
 	if(hiding)
-		plane = HIDING_MOB_PLANE
 		layer = HIDING_MOB_LAYER
 	else if(lying)
-		plane = LYING_HUMAN_PLANE
 		layer = LYING_HUMAN_LAYER
 	else
 		..()

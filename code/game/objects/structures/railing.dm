@@ -20,9 +20,7 @@
 	icon = 'icons/obj/railing.dmi'
 	density = 1
 	throwpass = 1
-	//layer = 3.2//Just above doors 	//Layers mean nothing.
-	plane = ABOVE_HUMAN_PLANE // They go ontop of humans.
-	//pressure_resistance = 4*ONE_ATMOSPHERE
+	layer = OBJ_LAYER
 	anchored = 1
 	atom_flags = ATOM_FLAG_CHECKS_BORDER
 	atom_flags = ATOM_FLAG_CLIMBABLE
@@ -34,9 +32,9 @@
 	//var/RightSide = list(0,0,0)
 	var/check = 0
 
-/obj/structure/railing/grey	
-	name = "grey railing"	
-	desc = "A standard steel railing. Prevents stupid people from falling to their doom."	
+/obj/structure/railing/grey
+	name = "grey railing"
+	desc = "A standard steel railing. Prevents stupid people from falling to their doom."
 	icon_state = "grey_railing0"
 
 /obj/structure/railing/Initialize(loc, constructed=0)

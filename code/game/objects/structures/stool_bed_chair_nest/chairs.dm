@@ -43,7 +43,6 @@
 		var/image/I = image('icons/obj/furniture.dmi', "[base_icon]_over")
 		if(material_alteration & MATERIAL_ALTERATION_COLOR)
 			I.color = material.icon_colour
-		I.plane = ABOVE_HUMAN_PLANE
 		I.layer = ABOVE_HUMAN_LAYER
 		stool_cache[cache_key] = I
 	overlays |= stool_cache[cache_key]
@@ -54,7 +53,6 @@
 			var/image/I =  image(icon, "[base_icon]_padding_over")
 			if(material_alteration & MATERIAL_ALTERATION_COLOR)
 				I.color = padding_material.icon_colour
-			I.plane = ABOVE_HUMAN_PLANE
 			I.layer = ABOVE_HUMAN_LAYER
 			stool_cache[padding_cache_key] = I
 		overlays |= stool_cache[padding_cache_key]
@@ -63,7 +61,6 @@
 		cache_key = "[base_icon]-armrest-[padding_material.name]"
 		if(isnull(stool_cache[cache_key]))
 			var/image/I = image(icon, "[base_icon]_armrest")
-			I.plane = ABOVE_HUMAN_PLANE
 			I.layer = ABOVE_HUMAN_LAYER
 			if(material_alteration & MATERIAL_ALTERATION_COLOR)
 				I.color = padding_material.icon_colour

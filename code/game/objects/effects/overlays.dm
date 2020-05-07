@@ -17,7 +17,6 @@
 	icon = 'icons/misc/beach2.dmi'
 	icon_state = "palm1"
 	density = 1
-	plane = ABOVE_HUMAN_PLANE
 	layer = ABOVE_HUMAN_LAYER
 	anchored = 1
 
@@ -26,7 +25,6 @@
 	icon = 'icons/misc/beach2.dmi'
 	icon_state = "palm2"
 	density = 1
-	plane = ABOVE_HUMAN_PLANE
 	layer = ABOVE_HUMAN_LAYER
 	anchored = 1
 
@@ -48,7 +46,6 @@
 	icon = 'icons/effects/wallrot.dmi'
 	anchored = 1
 	density = 1
-	plane = ABOVE_TURF_PLANE
 	layer = ABOVE_TILE_LAYER
 	mouse_opacity = 0
 
@@ -56,9 +53,10 @@
 	..()
 	pixel_x += rand(-10, 10)
 	pixel_y += rand(-10, 10)
+
 /obj/effect/overlay/temp
 	anchored = 1
-	plane = ABOVE_HUMAN_PLANE
+	layer = ABOVE_HUMAN_LAYER
 	mouse_opacity = 0
 	var/duration = 10
 	var/randomdir = 1
@@ -76,7 +74,6 @@
 	icon = 'icons/effects/blood.dmi'
 	duration = 5
 	randomdir = 0
-	plane = ABOVE_HUMAN_PLANE
 	layer = ABOVE_HUMAN_LAYER
 	color = "#C80000"
 	var/splatter_type = "splatter"
