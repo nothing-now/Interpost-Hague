@@ -50,11 +50,9 @@
 	. = ..()
 	if(density)
 		layer = closed_layer
-		explosion_resistance = initial(explosion_resistance)
 		update_heat_protection(get_turf(src))
 	else
 		layer = open_layer
-		explosion_resistance = 0
 
 
 	if(width > 1)
@@ -382,7 +380,6 @@
 	update_nearby_tiles()
 	sleep(7)
 	src.layer = open_layer
-	explosion_resistance = 0
 	update_icon()
 	set_opacity(0)
 	operating = 0
@@ -405,7 +402,6 @@
 	do_animate("closing")
 	sleep(3)
 	src.set_density(1)
-	explosion_resistance = initial(explosion_resistance)
 	src.layer = closed_layer
 	update_nearby_tiles()
 	sleep(7)
