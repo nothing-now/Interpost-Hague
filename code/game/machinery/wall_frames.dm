@@ -41,7 +41,7 @@
 		to_chat(usr, "<span class='danger'>\The [src] cannot be placed in this area.</span>")
 		return
 
-	if(gotwallitem(loc, ndir))
+	if(gotwallitem(loc, get_dir(usr,on_wall))) // Use actual dir, not the new machine's dir
 		to_chat(usr, "<span class='danger'>There's already an item on this wall!</span>")
 		return
 
