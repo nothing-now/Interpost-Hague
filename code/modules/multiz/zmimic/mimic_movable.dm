@@ -2,6 +2,11 @@
 	var/tmp/atom/movable/openspace/overlay/bound_overlay	// The overlay that is directly mirroring us that we proxy movement to.
 	var/no_z_overlay	// If TRUE, this atom will not be drawn on open turfs.
 
+/atom/movable/Initialize(mapload, ...)
+    . = ..()
+    if (!mapload && isturf(loc) && loc:above)
+        update_above()
+
 /atom/movable/forceMove(atom/dest)
 	. = ..(dest)
 	if (. && bound_overlay)
@@ -75,8 +80,8 @@
 	name = "openspace multiplier"
 	desc = "You shouldn't see this."
 	icon = 'icons/effects/lighting_overlay.dmi'
-	icon_state = "dark"
-	plane = OPENSPACE_PLANE
+	icon_state = "transparent"
+	plane = OPENSPACE_PLANE_END
 	layer = MIMICED_LIGHTING_LAYER
 	blend_mode = BLEND_MULTIPLY
 	color = list(
@@ -98,7 +103,7 @@
 	plane = OPENSPACE_PLANE
 	invisibility = 0
 	blend_mode = BLEND_MULTIPLY
-	if (icon_state == null)
+	if (LO.icon_state == null)
 		// We're using a color matrix, so just darken the colors across the board.
 		// Bay stores lights as inverted so the lighting PM can invert it for darksight, but
 		//   we don't have a plane master, so invert it again.
@@ -118,7 +123,7 @@
 		color = c_list
 	else
 		// Not a color matrix, so we just ignore the lighting values.
-		icon_state = "dark"	// this is actually just a white sprite, which is what this blending needs
+		icon_state = "transparent"	// this is actually just a white sprite, which is what this blending needs
 		color = list(
 			SHADOWER_DARKENING_FACTOR, 0, 0,
 			0, SHADOWER_DARKENING_FACTOR, 0,
