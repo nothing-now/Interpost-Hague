@@ -14,7 +14,7 @@ obj/structure/closet/crate
 	var/rigged = 0
 
 /obj/structure/closet/crate/Destroy()
-	QDEL_NULL()
+	qdel(src)
 	. = ..()
 
 /obj/structure/closet/crate/open()

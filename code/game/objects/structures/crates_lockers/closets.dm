@@ -48,7 +48,7 @@
 		store_contents()
 
 /obj/structure/closet/Destroy()
-	QDEL_NULL()
+	qdel(src)
 	. = ..()
 
 /obj/structure/closet/proc/WillContain()

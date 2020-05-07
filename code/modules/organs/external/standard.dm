@@ -60,12 +60,7 @@
 		owner.mutilate_genitals()
 		owner.visible_message("<span class='danger'><big>\The [owner]'s penis flies off in a bloody arc!</big></span>")
 		playsound(owner, 'sound/effects/gore/severed.ogg', 50, 1, -1)
-		new /obj/item/organ/external/penis(owner.loc)
-
-/obj/item/organ/external/penis
-	name = "penis"
-	icon_state = "penis"
-	desc = "Ah, the ol one eyed snake."
+		new /obj/item/organ/internal/penis(owner.loc)
 
 /obj/item/organ/external/arm
 	organ_tag = BP_L_ARM
