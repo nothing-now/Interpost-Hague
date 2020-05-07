@@ -142,21 +142,6 @@
 	parry_sounds = list('sound/weapons/blade_parry1.ogg', 'sound/weapons/blade_parry2.ogg', 'sound/weapons/blade_parry3.ogg')
 	drop_sound = 'sound/items/drop_sword.ogg'
 
-/obj/item/weapon/material/sword/bastard
-	name = "bastard sword"
-	desc = "A long bladed sword made of steel."
-	icon_state = "bastard"
-	item_state = "bastard"
-	force_divisor = 0.4
-	block_chance = 45
-	w_class = ITEM_SIZE_HUGE
-	drawsound = 'sound/items/unholster_sword02.ogg'
-	equipsound = 'sound/items/holster_sword1.ogg'
-	sharpness = 20
-	weapon_speed_delay = 18
-	parry_sounds = list('sound/weapons/blade_parry1.ogg', 'sound/weapons/blade_parry2.ogg', 'sound/weapons/blade_parry3.ogg')
-	drop_sound = 'sound/items/drop_sword.ogg'
-
 /obj/item/weapon/material/sword/falchion
 	name = "falchion sword"
 	desc = "A falchion sword is a single handed sword."
@@ -199,21 +184,6 @@
 	equipsound = 'sound/items/holster_sword1.ogg'
 	sharpness = 20
 	weapon_speed_delay = 60
-	parry_sounds = list('sound/weapons/blade_parry1.ogg', 'sound/weapons/blade_parry2.ogg', 'sound/weapons/blade_parry3.ogg')
-	drop_sound = 'sound/items/drop_sword.ogg'
-
-/obj/item/weapon/material/sword/greatsword
-	name = "Greatsword"
-	desc = "A fine steel blade, this weapons is a two handed only."
-	icon_state = "greatsword"
-	item_state = "longsword"
-	force_divisor = 0.8
-	block_chance = 50
-	w_class = ITEM_SIZE_HUGE
-	drawsound = 'sound/items/unholster_sword02.ogg'
-	equipsound = 'sound/items/holster_sword1.ogg'
-	sharpness = 25
-	weapon_speed_delay = 40
 	parry_sounds = list('sound/weapons/blade_parry1.ogg', 'sound/weapons/blade_parry2.ogg', 'sound/weapons/blade_parry3.ogg')
 	drop_sound = 'sound/items/drop_sword.ogg'
 
@@ -308,5 +278,6 @@
 	weapon_speed_delay = 10
 	parry_sounds = list('sound/weapons/blade_parry1.ogg', 'sound/weapons/blade_parry2.ogg', 'sound/weapons/blade_parry3.ogg')
 	drop_sound = 'sound/items/drop_sword.ogg'
+
 
 

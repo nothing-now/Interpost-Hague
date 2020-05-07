@@ -203,6 +203,13 @@
 	icon_state = "metal_chair"
 	color = "#ffffff"
 
+/obj/structure/bed/chair/bunker/test
+	name = "metal chair"
+	desc = "A pretty boring cold chair to sit your ass in."
+	base_icon = "metal_chair"
+	icon_state = "metal_chair"
+	color = "#ffffff"
+
 /obj/structure/bed/chair/bunker/vlt
 	name = "metal chair"
 	desc = "A comfy metal chair to sit in."

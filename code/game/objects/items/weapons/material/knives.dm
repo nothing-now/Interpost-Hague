@@ -94,6 +94,16 @@
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
 	applies_material_colour = FALSE
 
+/obj/item/weapon/material/knife/test
+	name = "knife"
+	icon = 'icons/obj/weapons.dmi'
+	icon_state = "luxknife"
+	item_state = "knife1"
+	desc = "A expensive knife with gold in it."
+	force_divisor = 0.25 // 15 when wielded with hardness 60 (steel)
+	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	applies_material_colour = FALSE
+
 /obj/item/weapon/material/knife/bread
 	name = "bread knife"
 	icon = 'icons/obj/weapons.dmi'
