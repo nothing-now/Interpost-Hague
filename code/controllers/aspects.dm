@@ -186,7 +186,7 @@
 	event_message = "Today the Security Department is acting especially gently. This tenderness is expressed by the general attitude of the department...  As well as its equipment."
 
 /datum/round_event/pussy_riot/apply_event()
-	for(var/obj/item/weapon/melee/baton/B in world)
+	for(var/obj/item/weapon/melee/classic_baton/B in world)
 		B.color = COLOR_LIGHT_PINK
 	for(var/obj/item/weapon/handcuffs/H in world)
 		H.icon = 'icons/obj/pinkcuffs.dmi'
@@ -217,10 +217,9 @@
 	for(var/obj/machinery/camera/C in world)
 		qdel(C)
 
-/*
 /datum/round_event/whereaccess
 	id = "whereaccess"
-	event_message = "As you arrive, you notice that the whole station has no access. Oh God."
+	event_message = "As you arrive, you notice that the whole station has all access. Oh God."
 
 /datum/round_event/whereaccess/apply_event()
 	for(var/obj/machinery/door/airlock/A in world)
@@ -229,4 +228,11 @@
 	for(var/obj/machinery/door/window/W in world)
 		W.req_access = list()
 		W.req_one_access = list()
-*/
+
+/datum/round_event/guns_n_roses
+	id = "guns_n_roses"
+	event_message = "After a renowned 21st century band song started playing on the jukebox before you arrived, you suddenly notice that all melee weapons are now suddenly gone."
+
+/datum/round_event/guns_n_roses/apply_event()
+	for(var/obj/item/weapon/material/sword/B in world)
+		qdel(B)

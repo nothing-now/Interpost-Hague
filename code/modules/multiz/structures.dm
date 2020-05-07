@@ -64,6 +64,7 @@
 	if(!M.may_climb_ladders(src))
 		return
 
+	add_fingerprint(M)
 	var/obj/structure/ladder/target_ladder = getTargetLadder(M)
 	if(!target_ladder)
 		return
@@ -150,6 +151,10 @@
 					M.attackby(I, user)
 
 			return FALSE
+
+	playsound(src, pick(climbsounds), 50)
+	playsound(target_ladder, pick(climbsounds), 50)
+	return user.Move(T)
 
 /obj/structure/ladder/CanPass(obj/mover, turf/source, height, airflow)
 	return airflow || !density

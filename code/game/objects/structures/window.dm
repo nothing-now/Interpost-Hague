@@ -306,8 +306,8 @@
 	update_nearby_tiles(need_rebuild=1)
 	return
 
-/obj/structure/window/New(Loc, start_dir=null, constructed=0)
-	..()
+/obj/structure/window/Initialize(Loc, start_dir=null, constructed=0)
+	. = ..()
 
 	//player-constructed windows
 	if (constructed)
@@ -409,8 +409,6 @@
 			var/mob/living/M = AM
 			M.turf_collision(src, speed)
 
-
-
 /obj/structure/window/basic
 	desc = "It looks thin and flimsy. A few knocks with anything should shatter it."
 	icon_state = "window"
@@ -458,14 +456,16 @@
 	damage_per_fire_tick = 2.0
 	glasstype = /obj/item/stack/material/glass/reinforced
 
-/obj/structure/window/Initialize()
-	. = ..()
-	layer = is_full_window() ? FULL_WINDOW_LAYER : SIDE_WINDOW_LAYER
-
 /obj/structure/window/reinforced/full
 	dir = 5
 	icon_state = "nwindow1"
 	basestate = "nwindow"
+
+/obj/structure/window/reinforced/full/Destroy()
+	set_density(0)
+	update_nearby_tiles()
+	. = ..()
+	update_icon()
 
 /obj/structure/window/reinforced/tinted
 	name = "tinted window"

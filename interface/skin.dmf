@@ -538,12 +538,6 @@ macro "macro"
 		name = "CTRL+H"
 		command = "holster"
 	elem 
-		name = "J"
-		command = "toggle-gun-mode"
-	elem 
-		name = "CTRL+J"
-		command = "toggle-gun-mode"
-	elem 
 		name = "Q"
 		command = ".northwest"
 	elem 

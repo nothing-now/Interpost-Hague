@@ -159,8 +159,9 @@ var/global/datum/controller/gameticker/ticker
 		mode.post_setup()
 		to_world("<FONT color='dark red'><B>Hell is let loose.</B></FONT>")
 		if (eof)
-			eof.apply_event()
-			eof.announce_event()
+			if(prob(30))
+				eof.apply_event()
+				eof.announce_event()
 		sound_to(world, sound(GLOB.using_map.welcome_sound))
 
 		//Holiday Round-start stuff	~Carn

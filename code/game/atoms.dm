@@ -620,3 +620,14 @@ its easier to just keep the beam vertical.
 			</span></center>"
 		else
 			H.hovertext.maptext = ""  // ui is blank
+
+/atom/MouseMove(location, control, params)
+	..()
+	if(get_dist(usr,src) <= 10 && usr.get_preference_value(/datum/client_preference/automousemove) == GLOB.PREF_YES) return usr.face_atom(src)
+	if(usr.get_preference_value(/datum/client_preference/automousemove) == GLOB.PREF_NO)
+		return 0
+	if(usr.resting || usr.lying)
+		return 0
+	if(usr.facing_dir)
+		return 0
+

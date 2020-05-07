@@ -27,10 +27,8 @@
 	recalculateChannels(1)
 
 /obj/item/device/radio/headset/Destroy()
-	qdel(keyslot1)
-	qdel(keyslot2)
-	keyslot1 = null
-	keyslot2 = null
+	QDEL_NULL_LIST(keyslot1)
+	QDEL_NULL_LIST(keyslot2)
 	return ..()
 
 /obj/item/device/radio/headset/list_channels(var/mob/user)

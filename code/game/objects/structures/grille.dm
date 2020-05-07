@@ -11,6 +11,14 @@
 	var/health = 10
 	var/destroyed = 0
 
+/obj/structure/grille/Initialize(mapload, var/new_material)
+	. = ..()
+	update_icon()
+
+
+/obj/structure/grille/Destroy()
+	. = ..()
+	qdel(src)
 
 /obj/structure/grille/ex_act(severity)
 	qdel(src)
