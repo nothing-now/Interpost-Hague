@@ -201,24 +201,28 @@
 	desc = "A pretty boring cold chair to sit your ass in."
 	base_icon = "metal_chair"
 	icon_state = "metal_chair"
+	color = "#ffffff"
 
 /obj/structure/bed/chair/bunker/vlt
 	name = "metal chair"
 	desc = "A comfy metal chair to sit in."
 	base_icon = "vlt_chair"
 	icon_state = "vlt_chair"
+	color = "#ffffff"
 
 /obj/structure/bed/chair/bunker/comfy1
 	name = "metal chair"
 	desc = "A comfy metal chair to sit in."
 	base_icon = "tcomfy_chair"
 	icon_state = "tcomfy_chair"
+	color = "#ffffff"
 
 /obj/structure/bed/chair/bunker/comfy
 	name = "comfy chair"
 	desc = "A comfy wooden chair to sit in."
 	base_icon = "comfy_chair1"
 	icon_state = "comfy_chair1"
+	color = "#ffffff"
 
 // Chair types
 /obj/structure/bed/chair/wood

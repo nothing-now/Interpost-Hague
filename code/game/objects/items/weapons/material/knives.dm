@@ -92,6 +92,7 @@
 	desc = "A expensive knife with gold in it."
 	force_divisor = 0.25 // 15 when wielded with hardness 60 (steel)
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	applies_material_colour = FALSE
 
 /obj/item/weapon/material/knife/bread
 	name = "bread knife"
@@ -101,6 +102,7 @@
 	desc = "A knife used to cut bread, or humans."
 	force_divisor = 0.15 // 15 when wielded with hardness 60 (steel)
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	applies_material_colour = FALSE
 
 /obj/item/weapon/material/knife/modern
 	name = "knife"
@@ -110,6 +112,7 @@
 	desc = "A knife, figure the rest."
 	force_divisor = 0.20 // 15 when wielded with hardness 60 (steel)
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	applies_material_colour = FALSE
 
 /obj/item/weapon/material/knife/fishknife
 	name = "fish knife"
@@ -119,6 +122,7 @@
 	desc = "A knife used to cut fish."
 	force_divisor = 0.26 // 15 when wielded with hardness 60 (steel)
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	applies_material_colour = FALSE
 
 /obj/item/weapon/material/knife/bowie
 	name = "bowie knife"
@@ -128,6 +132,7 @@
 	desc = "a military grade knife, looks quite sharp."
 	force_divisor = 1 // 15 when wielded with hardness 60 (steel)
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	applies_material_colour = FALSE
 
 /obj/item/weapon/material/knife/black
 	name = "knife"
@@ -137,6 +142,7 @@
 	desc = "a very black and weird knife, looks tacticool."
 	force_divisor = 1 // 15 when wielded with hardness 60 (steel)
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	applies_material_colour = FALSE
 
 /obj/item/weapon/material/knife/shaggy
 	name = "makeshift knife"
@@ -146,6 +152,7 @@
 	desc = "a makeshift shank, looks like shit."
 	force_divisor = 0.30 // 15 when wielded with hardness 60 (steel)
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	applies_material_colour = FALSE
 
 /obj/item/weapon/material/knife/tacti
 	name = "tactical knife"
@@ -154,3 +161,4 @@
 	desc = "a very small knife, fits in your hand."
 	force_divisor = 0.20 // 15 when wielded with hardness 60 (steel)
 	attack_verb = list("slashed", "stabbed", "sliced", "torn", "ripped", "diced", "cut")
+	applies_material_colour = FALSE
