@@ -239,7 +239,7 @@ What is the naming convention for planes or layers?
 	filters = filter(type = "blur", size = 2)
 
 /obj/screen/plane_master/blurs
-	filters = filter(type = "blur", size = 1.5)
+	filters = filter(type = "blur", size = 2)
 
 /obj/screen/plane_master/openspace_blur
 	plane = OVER_OPENSPACE_PLANE

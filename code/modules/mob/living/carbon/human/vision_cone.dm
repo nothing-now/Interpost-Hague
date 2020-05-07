@@ -10,7 +10,7 @@
 
 
 //Defines.
-#define OPPOSITE_DIR(D) turn(D, 200) // in theory should make the view cone a bit bigger
+#define OPPOSITE_DIR(D) turn(D, 180)
 
 client/
 	var/list/hidden_atoms = list()
@@ -53,14 +53,12 @@ mob/proc/update_vision_cone()
 	return
 
 mob/living/carbon/human/update_vision_cone()
-	var/delay = 10
+	CHECK_TICK
 	if(src.client)
 		var/image/I = null
 		for(I in src.client.hidden_atoms)
 			I.override = 0
-			spawn(delay)
-				qdel(I)
-			delay += 10
+			qdel(I)
 		check_fov()
 		src.client.hidden_atoms = list()
 		src.client.hidden_mobs = list()

@@ -36,8 +36,6 @@
 	my_client = client
 	set_sight(sight|SEE_TURFS)
 	GLOB.player_list |= src
-	var/decl/asset_cache/asset_cache = decls_repository.get_decl(/decl/asset_cache)
-	asset_cache.load()
 
 	new_player_panel()
 	client.playtitlemusic()

@@ -11,3 +11,7 @@
 		icon_state = icon_closed
 	else
 		icon_state = icon_opened
+
+/obj/structure/closet/coffin/Destroy()
+	QDEL_NULL()
+	. = ..()

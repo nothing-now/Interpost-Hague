@@ -231,10 +231,10 @@ macro "borghotkeymode"
 		name = "."
 		command = "move-down"
 
-macro "macro"
+macro "oldmode"
 	elem 
 		name = "Tab"
-		command = ".winset \"mainwindow.macro=hotkeymode hotkey_toggle.is-checked=true mapwindow.map.focus=true\""
+		command = ".winset mapwindow.map.focus=true\""
 	elem 
 		name = "Center+REP"
 		command = ".center"
@@ -410,10 +410,10 @@ macro "macro"
 		name = "CTRL+Subtract"
 		command = "move-down"
 
-macro "hotkeymode"
+macro "macro"
 	elem 
 		name = "Tab"
-		command = ".winset \"mainwindow.macro=macro hotkey_toggle.is-checked=false input.focus=true\""
+		command = ".winset input.focus=true\""
 	elem 
 		name = "Center+REP"
 		command = ".center"
@@ -1071,22 +1071,12 @@ window "outputwindow"
 	elem "input"
 		type = INPUT
 		pos = 1,459
-		size = 517x20
+		size = 637x20
 		anchor1 = 0,100
 		anchor2 = 100,100
 		is-default = true
 		border = sunken
 		saved-params = "command"
-	elem "hotkey_toggle"
-		type = BUTTON
-		pos = 560,459
-		size = 80x20
-		anchor1 = 100,100
-		anchor2 = none
-		saved-params = ""
-		text = "Hotkey Toggle"
-		command = ".winset \"mainwindow.macro!=macro ? mainwindow.macro=macro hotkey_toggle.is-checked=false input.focus=true : mainwindow.macro=hotkeymode hotkey_toggle.is-checked=true mapwindow.map.focus=true\""
-		button-type = pushbox
 
 window "rpane"
 	elem "rpane"

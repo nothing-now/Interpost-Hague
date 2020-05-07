@@ -47,6 +47,10 @@
 	if(!opened && mapload) // if closed and it's the map loading phase, relevant items at the crate's loc are put in the contents
 		store_contents()
 
+/obj/structure/closet/Destroy()
+	QDEL_NULL()
+	. = ..()
+
 /obj/structure/closet/proc/WillContain()
 	return null
 

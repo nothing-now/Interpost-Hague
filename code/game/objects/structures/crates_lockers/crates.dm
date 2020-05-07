@@ -13,6 +13,10 @@ obj/structure/closet/crate
 	var/points_per_crate = 5
 	var/rigged = 0
 
+/obj/structure/closet/crate/Destroy()
+	QDEL_NULL()
+	. = ..()
+
 /obj/structure/closet/crate/open()
 	if((atom_flags & ATOM_FLAG_OPEN_CONTAINER) && !opened && can_open())
 		object_shaken()
