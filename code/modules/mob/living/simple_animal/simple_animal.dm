@@ -60,11 +60,19 @@
 	var/supernatural = 0
 	var/purge = 0
 
+	var/damtype = BRUTE
+	var/defense = "melee" //what armor protects against its attacks
+
 	// contained in a cage
 	var/in_stasis = 0
 
+/mob/living/simple_animal/Initialize()
+	. = ..()
+
 /mob/living/simple_animal/Life()
-	..()
+	. = ..()
+	if(!.)
+		return FALSE
 	if(!living_observers_present(GetConnectedZlevels(z)))
 		return
 	//Health
@@ -174,6 +182,7 @@
 
 	bullet_impact_visuals(Proj)
 	adjustBruteLoss(Proj.damage)
+	Proj.on_hit(src)
 	return 0
 
 /mob/living/simple_animal/attack_hand(mob/living/carbon/human/M as mob)
@@ -205,19 +214,15 @@
 				to_chat(user, "<span class='notice'>That [MED] won't help \the [src] at all!</span>")
 				return
 			if(health < maxHealth)
-				if(MED.amount >= 1)
+				if(MED.can_use(1))
 					adjustBruteLoss(-MED.animal_heal)
-					MED.amount -= 1
-					if(MED.amount <= 0)
-						qdel(MED)
-					for(var/mob/M in viewers(src, null))
-						if ((M.client && !( M.blinded )))
-							M.show_message("<span class='notice'>[user] applies the [MED] on [src].</span>")
+					visible_message("<span class='notice'>[user] applies the [MED] on [src].</span>")
+					MED.use(1)
 		else
 			to_chat(user, "<span class='notice'>\The [src] is dead, medical items won't bring \him back to life.</span>")
 		return
 	if(meat_type && (stat == DEAD))	//if the animal has a meat, and if it is dead.
-		if(istype(O, /obj/item/weapon/material/knife) || istype(O, /obj/item/weapon/material/knife/butch))
+		if(O.edge)
 			harvest(user)
 	else
 		if(!O.force)
@@ -262,6 +267,7 @@
 
 /mob/living/simple_animal/death(gibbed, deathmessage = "dies!", show_dead_message)
 	icon_state = icon_dead
+	update_icon()
 	density = 0
 	adjustBruteLoss(maxHealth) //Make sure dey dead.
 	walk_to(src,0)

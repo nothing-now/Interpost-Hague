@@ -15,8 +15,8 @@
 	speak_chance = 1
 	turns_per_move = 5
 	see_in_dark = 6
-	maxHealth = 5
-	health = 5
+	maxHealth = 1
+	health = 1
 	meat_type = /obj/item/weapon/reagent_containers/food/snacks/meat
 	response_help  = "pets"
 	response_disarm = "gently pushes aside"
@@ -69,12 +69,12 @@
 		name = "[name] ([sequential_id(/mob/living/simple_animal/mouse)])"
 	real_name = name
 
-	if(prob(8))
+	if(prob(15))
 		if(prob(1))
 			virus = new (VIRUS_EXOTIC)
-		else if(prob(10))
+		else if(prob(5))
 			virus = new (VIRUS_ENGINEERED)
-		else if(prob(1))
+		else if(prob(10))
 			virus = new (VIRUS_COMMON)
 		else
 			virus = new (VIRUS_MILD)
@@ -97,6 +97,10 @@
 	if(ishuman(A))
 		var/mob/living/carbon/human/H = A
 
+		if(hiding)
+			to_chat(src, "<span class='warning'>You can't bite while you are hiding!</span>")
+			return
+
 		var/available_limbs = H.lying ? BP_ALL_LIMBS : BP_BELOW_GROIN
 		var/obj/item/organ/external/limb
 		for(var/L in shuffle(available_limbs))
@@ -105,13 +109,14 @@
 				break
 
 		var/blocked = H.run_armor_check(limb.organ_tag, "melee")
-		if(H.apply_damage(rand(1, 1), BRUTE, limb.organ_tag, blocked) && prob(70 - blocked))
+		if(H.apply_damage(rand(1, 2), BRUTE, limb.organ_tag, blocked) && prob(70 - blocked))
 			limb.germ_level += rand(75, 150)
 			if(virus)
 				infect_virus2(H, virus)
 		visible_message(SPAN_DANGER("[src] bites [H]'s [organ_name_by_zone(H, limb.organ_tag)]!"),
 						SPAN_WARNING("You bite [H]'s [organ_name_by_zone(H, limb.organ_tag)]!"))
 		admin_attack_log(src, H, "Bit the victim", "Was bitten", "bite")
+		setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 		do_attack_animation(H)
 		playsound(loc, attack_sound, 25, 1, 1)
 		return
