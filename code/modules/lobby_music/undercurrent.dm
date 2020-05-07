@@ -1,5 +1,5 @@
 /lobby_music/undercurrent
 	artist = "Ian Taylor"
 	title = "Undercurrent"
-	album = "Runscape OST"
+	album = "Runescape OST"
 	song = 'sound/music/undercurrent.ogg'

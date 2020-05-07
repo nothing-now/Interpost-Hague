@@ -24,15 +24,9 @@
 
 /lobby_music/lobby8
 	song = 'sound/music/lobby8.ogg'
-	
+
 /lobby_music/lobby9
 	song = 'sound/music/lobby9.ogg'
 
 /lobby_music/lobby10
 	song = 'sound/music/lobby10.ogg'
-
-/lobby_music/lobby11
-	song = 'sound/music/lobby11.ogg'
-
-/lobby_music/lobby12
-	song = 'sound/music/lobby12.ogg'

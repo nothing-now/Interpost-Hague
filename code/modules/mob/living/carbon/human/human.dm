@@ -1284,6 +1284,7 @@
 	set name = "Look up"
 	set desc = "If you want to know what's above."
 	set category = "IC"
+	set hidden = 1
 
 	if(!is_physically_disabled())
 		var/turf/above = GetAbove(src)

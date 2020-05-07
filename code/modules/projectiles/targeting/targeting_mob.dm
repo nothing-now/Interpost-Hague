@@ -5,6 +5,7 @@
 	set name = "Toggle Gun Mode"
 	set desc = "Begin or stop aiming."
 	set category = "IC"
+	set hidden = 1
 
 	if(isliving(src)) //Needs to be a mob verb to prevent error messages when using hotkeys
 		var/mob/living/M = src

@@ -1,11 +1,12 @@
-//#define OPENTURF_MAX_PLANE -70
+#define OPENTURF_MAX_PLANE -70
 #define OPENTURF_MAX_DEPTH 10		// The maxiumum number of planes deep we'll go before we just dump everything on the same plane.
 #define SHADOWER_DARKENING_FACTOR 0.6	// The multiplication factor for openturf shadower darkness. Lighting will be multiplied by this.
 
 /mob/proc/add_filter_effects()
-	for(var/i in 1 to OPENSPACE_PLANE)
+	for(var/i in 1 to OPENTURF_MAX_DEPTH)
 		var/obj/screen/plane_master/blurs/B = new
-		B.plane = OPENSPACE_PLANE - i
+		B.plane = EFFECTS_ABOVE_LIGHTING_PLANE
+		B.layer = ABOVE_OPENSPACE_LAYER
 		client.screen += B
 
 SUBSYSTEM_DEF(zcopy)

@@ -1,7 +1,7 @@
 /var/obj/effect/lobby_image = new/obj/effect/lobby_image()
 
 /obj/effect/lobby_image
-	name = "InterHippie" // god bless us
+	name = "Interpost Hague" // god bless us
 	desc = "This shouldn't be read."
 	screen_loc = "WEST,SOUTH"
 
@@ -22,9 +22,7 @@
 
 /mob/new_player/Login()
 	update_Login_details()	//handles setting lastKnownIP and computer_id for use by the ban systems as well as checking for multikeying
-	if(join_motd)
-		to_chat(src, "<div class=\"motd\">[join_motd]</div>")
-	to_chat(src, "<div class='info'><font size='5'>Story ID:</div>")
+	to_chat(src, "<h1 class='alert'>Story ID:</h1>")
 
 	to_chat(src, "<div class='danger'>[game_id]</div>")
 
@@ -38,6 +36,8 @@
 	my_client = client
 	set_sight(sight|SEE_TURFS)
 	GLOB.player_list |= src
+	var/decl/asset_cache/asset_cache = decls_repository.get_decl(/decl/asset_cache)
+	asset_cache.load()
 
 	new_player_panel()
 	client.playtitlemusic()

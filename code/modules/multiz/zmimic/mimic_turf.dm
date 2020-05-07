@@ -75,7 +75,7 @@
 
 // Movable for mimicing turfs that don't allow appearance mutation.
 /atom/movable/openspace/turf_overlay
-	plane = OPENSPACE_PLANE_END
+	plane = OPENSPACE_PLANE
 
 /atom/movable/openspace/turf_overlay/attackby(obj/item/W, mob/user)
 	loc.attackby(W, user)

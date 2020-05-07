@@ -81,7 +81,7 @@
 	desc = "You shouldn't see this."
 	icon = 'icons/effects/lighting_overlay.dmi'
 	icon_state = "transparent"
-	plane = OPENSPACE_PLANE_END
+	plane = OPENTURF_MAX_PLANE
 	layer = MIMICED_LIGHTING_LAYER
 	blend_mode = BLEND_MULTIPLY
 	color = list(
@@ -100,7 +100,7 @@
 /atom/movable/openspace/multiplier/proc/copy_lighting(atom/movable/lighting_overlay/LO)
 	appearance = LO
 	layer = MIMICED_LIGHTING_LAYER
-	plane = OPENSPACE_PLANE
+	plane = OPENSPACE_PLANE_END
 	invisibility = 0
 	blend_mode = BLEND_MULTIPLY
 	if (LO.icon_state == null)

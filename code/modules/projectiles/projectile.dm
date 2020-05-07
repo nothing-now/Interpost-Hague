@@ -80,6 +80,8 @@
 	. = ..()
 
 /obj/item/projectile/Destroy()
+	spawn(step_delay)
+		QDEL_NULL_LIST(segments)
 	return ..()
 
 /obj/item/projectile/forceMove()
