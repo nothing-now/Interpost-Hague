@@ -7,6 +7,7 @@
 	var/tmp/z_queued = 0	// How many times this turf is currently queued - multiple queue occurrences are allowed to ensure update consistency
 	var/tmp/z_eventually_space = FALSE
 	var/z_flags = 0
+	var/tmp/z_depth
 
 /turf/Entered(atom/movable/thing, turf/oldLoc)
 	. = ..()
@@ -75,7 +76,7 @@
 
 // Movable for mimicing turfs that don't allow appearance mutation.
 /atom/movable/openspace/turf_overlay
-	plane = OPENSPACE_PLANE
+	plane = OPENTURF_MAX_PLANE
 
 /atom/movable/openspace/turf_overlay/attackby(obj/item/W, mob/user)
 	loc.attackby(W, user)

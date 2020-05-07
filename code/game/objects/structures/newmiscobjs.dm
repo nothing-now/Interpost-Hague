@@ -3,7 +3,6 @@
 	desc = "Rotting and festering. Seems like it was here for a while."
 	icon = 'icons/obj/miscobjs.dmi'
 	icon_state = "dead1"
-	plane = ABOVE_HUMAN_PLANE
 	layer = ABOVE_HUMAN_LAYER
 	density = 0
 	anchored = 1
@@ -21,7 +20,6 @@
 	desc = "Rotting and festering. Seems like it was here for a while."
 	icon = 'icons/obj/miscobjs.dmi'
 	icon_state = "dead2"
-	plane = ABOVE_HUMAN_PLANE
 	layer = ABOVE_HUMAN_LAYER
 	density = 0
 	anchored = 1
@@ -39,7 +37,6 @@
 	desc = "Rotting and festering. Seems like it was here for a while. Is impaled on a spike."
 	icon = 'icons/obj/miscobjs.dmi'
 	icon_state = "dead3"
-	plane = ABOVE_HUMAN_PLANE
 	layer = ABOVE_HUMAN_LAYER
 	density = 0
 	anchored = 1
@@ -57,14 +54,12 @@
 	desc = "An old, wooden TV. Doesn't seem to show anything of value."
 	icon = 'icons/obj/miscobjs.dmi'
 	icon_state = "wooden_tv_unpowered"
-	plane = OBJ_PLANE
 	layer = ABOVE_WINDOW_LAYER
 	density = 1
 	anchored = 1
 
 /obj/structure/woodentv/on
 	icon_state = "wooden_tv"
-	plane = ABOVE_HUMAN_PLANE
 	layer = ABOVE_HUMAN_LAYER
 	anchored = 1
 
@@ -76,11 +71,9 @@
 /obj/structure/woodentv/proc/toggle()
 	if(attack_hand())
 		icon_state = "wooden_tv"
-		plane = ABOVE_HUMAN_PLANE
 		layer = ABOVE_WINDOW_LAYER
 	else
 		icon_state = "wooden_tv_unpowered"
-		plane = OBJ_PLANE
 		layer = ABOVE_WINDOW_LAYER
 
 /obj/structure/microscope
@@ -88,7 +81,6 @@
 	desc = "A microscope. It's broken."
 	icon = 'icons/obj/miscobjs.dmi'
 	icon_state = "microscope1"
-	plane = OBJ_PLANE
 	layer = ABOVE_WINDOW_LAYER
 	density = 1
 
@@ -98,7 +90,6 @@
 	icon = 'icons/obj/miscobjs.dmi'
 	icon_state = "fish"
 	pixel_y = 32
-	plane = OBJ_PLANE
 	layer = ABOVE_WINDOW_LAYER
 	density = 0
 
@@ -107,7 +98,6 @@
 	desc = "A weird hospital device. Doesn't do anything."
 	icon = 'icons/obj/miscobjs.dmi'
 	icon_state = "a3"
-	plane = OBJ_PLANE
 	layer = ABOVE_WINDOW_LAYER
 	density = 1
 	anchored = 1
@@ -117,7 +107,6 @@
 	desc = "A weird hospital device. Doesn't do anything."
 	icon = 'icons/obj/miscobjs.dmi'
 	icon_state = "a5"
-	plane = OBJ_PLANE
 	layer = ABOVE_WINDOW_LAYER
 	density = 1
 	anchored = 1
@@ -127,7 +116,6 @@
 	desc = "A weird hospital device. Doesn't do anything."
 	icon = 'icons/obj/miscobjs.dmi'
 	icon_state = "a9"
-	plane = OBJ_PLANE
 	layer = ABOVE_WINDOW_LAYER
 	density = 1
 	anchored = 1
@@ -137,7 +125,6 @@
 	desc = "A weird hospital device. Doesn't do anything."
 	icon = 'icons/obj/miscobjs.dmi'
 	icon_state = "a10"
-	plane = OBJ_PLANE
 	layer = ABOVE_WINDOW_LAYER
 	density = 1
 	anchored = 1
@@ -147,7 +134,6 @@
 	desc = "A weird hospital device. Doesn't do anything."
 	icon = 'icons/obj/miscobjs.dmi'
 	icon_state = "a11"
-	plane = OBJ_PLANE
 	layer = ABOVE_WINDOW_LAYER
 	density = 1
 	anchored = 1
@@ -157,7 +143,6 @@
 	desc = "A weird hospital device. Doesn't do anything except...work on something."
 	icon = 'icons/obj/miscobjs.dmi'
 	icon_state = "a13"
-	plane = OBJ_PLANE
 	layer = ABOVE_WINDOW_LAYER
 	density = 1
 	anchored = 1
@@ -167,7 +152,6 @@
 	desc = "An old, wooden clock. Tick tack."
 	icon = 'icons/obj/miscobjs.dmi'
 	icon_state = "pclock"
-	plane = OBJ_PLANE
 	layer = ABOVE_WINDOW_LAYER
 	density = 1
 	anchored = 1
@@ -189,7 +173,6 @@
 	desc = "A big nuclear waste canister. Better stay away from this..."
 	icon = 'icons/obj/miscobjs.dmi'
 	icon_state = "a8"
-	plane = OBJ_PLANE
 	layer = ABOVE_WINDOW_LAYER
 	density = 1
 	anchored = 1
