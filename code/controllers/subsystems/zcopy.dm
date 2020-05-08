@@ -170,8 +170,6 @@ SUBSYSTEM_DEF(zcopy)
 				T.gender = initial(T.gender)
 				T.opacity = FALSE
 				T.plane = t_target
-				//This is to keep turf damage from coming up to open space
-				T.overlays = 0
 			else
 				// Some openturfs have icons, so we can't overwrite their appearance.
 				if (!T.below.bound_overlay)
@@ -182,8 +180,6 @@ SUBSYSTEM_DEF(zcopy)
 				TO.gender = T.gender	// Need to grab this too so PLURAL works properly in examine.
 				TO.opacity = FALSE
 				TO.plane = t_target
-				//This is to keep turf damage from coming up to open space
-				TO.overlays = 0
 
 		else if (T.below.bound_overlay)
 			QDEL_NULL(T.below.bound_overlay)

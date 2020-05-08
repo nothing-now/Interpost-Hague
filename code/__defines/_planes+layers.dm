@@ -191,8 +191,9 @@ What is the naming convention for planes or layers?
 	layer = DECAL_PLATING_LAYER
 
 /image/proc/turf_decal_layerise()
-	plane =  DEFAULT_PLANE
-	layer = DECAL_LAYER
+	//This is disabled because it cause issues with overlays + zmimic
+	//plane =  DEFAULT_PLANE
+	//layer = DECAL_LAYER
 
 /atom/proc/hud_layerise()
 	plane = HUD_PLANE
