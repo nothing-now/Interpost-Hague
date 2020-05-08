@@ -161,9 +161,6 @@
 	prefs.sanitize_preferences()
 	fit_viewport()
 
-	var/decl/asset_cache/asset_cache = decls_repository.get_decl(/decl/asset_cache)
-	asset_cache.load()
-
 	GLOB.using_map.map_info(src)
 
 	if(custom_event_msg && custom_event_msg != "")

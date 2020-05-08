@@ -26,6 +26,9 @@
 
 	to_chat(src, "<div class='danger'>[game_id]</div>")
 
+	var/decl/asset_cache/asset_cache = decls_repository.get_decl(/decl/asset_cache)
+	asset_cache.load()
+
 	if(!mind)
 		mind = new /datum/mind(key)
 		mind.active = 1
