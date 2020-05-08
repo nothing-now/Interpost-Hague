@@ -207,3 +207,9 @@
 	set category = "Emotes"
 
 	emote("clearthroat",1)
+
+/mob/living/carbon/human/verb/hums()
+	set name = "Hums"
+	set category = "Emotes"
+
+	emote("hums",1)

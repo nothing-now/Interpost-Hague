@@ -250,6 +250,26 @@
 /decl/emote/audible/charge
 	key = "charge"
 
+/decl/emote/audible/hums/do_emote(var/mob/living/carbon/human/user)
+	var/emotesound = null
+	if(user.isMonkey())
+		return
+
+	else if(user.gender == MALE)
+		emotesound = "sound/voice/emotes/malehumming.ogg"
+
+	else
+		emotesound = "sound/voice/emotes/femalehumming.ogg"
+
+	if(emotesound)
+		playsound(user, emotesound, 50, 0, 1)
+
+	user.custom_emote(2,"hums.")
+	user.handle_emote_CD()
+
+/decl/emote/audible/hums
+	key = "hums"
+
 /decl/emote/audible/mumble/do_emote(var/mob/living/carbon/human/user)
 	var/emotesound = null
 	if(user.isMonkey())
