@@ -106,6 +106,12 @@
 
 	emote("cry",1)
 
+/mob/living/carbon/human/verb/charge()
+	set name = "Charge"
+	set category = "Emotes"
+
+	emote("charge",1)
+
 /mob/living/carbon/human/verb/sigh()
 	set name = "Sigh"
 	set category = "Emotes"
