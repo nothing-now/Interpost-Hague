@@ -174,6 +174,7 @@
 		M.remove_from_mob(W)
 	W.forceMove(src)
 	W.on_enter_storage(src)
+	W.mouse_opacity = 2 //So you can click on the area around the item to equip it, instead of having to pixel hunt
 	if(usr)
 		add_fingerprint(usr)
 
@@ -282,9 +283,13 @@
 /obj/item/weapon/storage/proc/gather_all(var/turf/T, var/mob/user)
 	var/success = 0
 	var/failure = 0
+	var/list/rejections = list()
 
 	for(var/obj/item/I in T)
+		if(I.type in rejections)			//Skip anything that already failed
+			continue
 		if(!can_be_inserted(I, user, 0))	// Note can_be_inserted still makes noise when the answer is no
+			rejections += I.type
 			failure = 1
 			continue
 		success = 1
