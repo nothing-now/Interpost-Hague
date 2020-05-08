@@ -36,9 +36,7 @@
 	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_surgery, access_virology)
 	alt_titles = list(
 		"Surgeon" = /decl/hierarchy/outfit/job/medical/doctor/surgeon,
-		"Emergency Physician" = /decl/hierarchy/outfit/job/medical/doctor/emergency_physician,
-		"Nurse" = /decl/hierarchy/outfit/job/medical/doctor/nurse,
-		"Chemist" = /decl/hierarchy/outfit/job/medical/chemist)
+		"Alchemist" = /decl/hierarchy/outfit/job/medical/chemist)
 	outfit_type = /decl/hierarchy/outfit/job/medical/doctor
 
 //Chemist is a medical job damnit	//YEAH FUCK YOU SCIENCE	-Pete	//Guys, behave -Erro

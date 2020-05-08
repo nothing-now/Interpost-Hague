@@ -125,7 +125,7 @@
 		else
 			createwound(BURN, burn)
 
-	add_pain(0.6*burn + 0.4*brute)
+	adjust_pain(0.6*burn + 0.4*brute)
 	//If there are still hurties to dispense
 	if (spillover)
 		owner.shock_stage += spillover * config.organ_damage_spillover_multiplier
@@ -210,43 +210,55 @@
 	src.status &= ~ORGAN_MUTATED
 	if(owner) owner.update_body()
 
-// Pain/halloss
-/obj/item/organ/external/proc/get_pain()
-	if(!can_feel_pain() || robotic >= ORGAN_ROBOT)
-		return 0
+/obj/item/organ/external/proc/update_pain()
+	if(!can_feel_pain())
+		pain = 0
+		full_pain = 0
+		return
+
+	if(pain)
+		pain -= owner.lying ? 3 : 1
+		pain = max(pain, 0)
+
 	var/lasting_pain = 0
 	if(is_broken())
 		lasting_pain += 10
 	else if(is_dislocated())
 		lasting_pain += 5
+
 	var/tox_dam = 0
 	for(var/i in internal_organs)
 		var/obj/item/organ/internal/I = i
 		tox_dam += I.getToxLoss()
-	return pain + lasting_pain + 0.7 * brute_dam + 0.8 * burn_dam + 0.3 * tox_dam + 0.5 * get_genetic_damage()
 
-/obj/item/organ/external/proc/remove_pain(var/amount)
-	if(!can_feel_pain() || robotic >= ORGAN_ROBOT)
-		pain = 0
-		return
-	var/last_pain = pain
-	pain = max(0,min(max_damage,pain-amount))
-	return -(pain-last_pain)
+	full_pain = pain + lasting_pain + 0.7 * brute_dam + 0.8 * burn_dam + 0.3 * tox_dam + 0.5 * get_genetic_damage()
 
-/obj/item/organ/external/proc/add_pain(var/amount)
-	if(!can_feel_pain() || robotic >= ORGAN_ROBOT)
-		pain = 0
-		return
+/obj/item/organ/external/proc/get_pain()
+	return pain
+
+/obj/item/organ/external/proc/get_full_pain()
+	return full_pain
+
+/obj/item/organ/external/proc/adjust_pain(change)
+	if(!can_feel_pain())
+		return 0
 	var/last_pain = pain
-	pain = max(0,min(max_damage,pain+amount))
-	if(owner && ((amount > 15 && prob(20)) || (amount > 30 && prob(60))))
-		owner.agony_scream()
-	return pain-last_pain
+	pain = max(0, min(max_damage, pain + change))
+
+	if(change > 0 && owner)
+		if((change > 15 && prob(20)) || (change > 30 && prob(60)))
+			owner.emote("scream")
+
+	return pain - last_pain
+
+/obj/item/organ/external/proc/remove_all_pain()
+	pain = 0
+	full_pain = 0
 
 /obj/item/organ/external/proc/stun_act(var/stun_amount, var/agony_amount)
-	if(agony_amount > 5 && owner && vital && get_pain() > 0.5 * max_damage)
+	if(agony_amount > 5 && owner && vital && get_full_pain() > 0.5 * max_damage)
 		owner.visible_message("<span class='warning'>[owner] reels in pain!</span>")
-		if(has_genitals() || get_pain() + agony_amount > max_damage)
+		if(has_genitals() || get_full_pain() + agony_amount > max_damage)
 			owner.Weaken(6)
 		else
 			owner.Stun(6)

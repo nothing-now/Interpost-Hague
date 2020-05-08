@@ -10,7 +10,6 @@
 	selection_color = "#515151"
 	access = list(access_morgue, access_chapel_office, access_crematorium, access_maint_tunnels)
 	minimal_access = list(access_morgue, access_chapel_office, access_crematorium)
-	alt_titles = list("Counselor")
 	outfit_type = /decl/hierarchy/outfit/job/chaplain
 
 	equip(var/mob/living/carbon/human/H, var/alt_title, var/ask_questions = TRUE)
@@ -26,7 +25,7 @@
 
 		spawn(0)
 			var/religion_name = "Christianity"
-			var/new_religion = sanitize(input(H, "You are the crew services officer. Would you like to change your religion? Default is Christianity, in SPACE.", "Name change", religion_name), MAX_NAME_LEN)
+			var/new_religion = sanitize(input(H, "You are the crew services officer. Would you like to change your religion? Default is Deo Machina. Praise Verina!", "Name change", religion_name), MAX_NAME_LEN)
 
 			if (!new_religion)
 				new_religion = religion_name

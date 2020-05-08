@@ -184,8 +184,6 @@
 		H.generate_skills(list("melee","ranged","medical","cleaning"))
 
 
-
-
 /datum/job/hop
 	title = "Viscount"
 	supervisors = "the Count"
@@ -240,8 +238,8 @@
 		H.generate_skills(list("science","medical", "crafting"))
 
 /datum/job/scientist
-	title = "Scientist"
-	supervisors = "the Research Director"
+	title = "Technology Researcher"
+	supervisors = "the Court Magus"
 	minimal_player_age = 19
 	economic_modifier = 2
 	ideal_character_age = 30
@@ -262,9 +260,9 @@
 
 /datum/job/doctor
 	selection_color = "#633d63"
-	title = "Medical Doctor"
+	title = "Lifebringer"
 	department_flag = MED
-	supervisors = "the Viscount"
+	supervisors = "the Undertaker"
 	minimal_player_age = 19
 	economic_modifier = 2
 	ideal_character_age = 30
@@ -369,7 +367,7 @@
 
 /datum/job/qm
 	selection_color = "#3d3315"
-	title = "Quartermaster"
+	title = "Cargo Overseer"
 	supervisors = "the Viscount"
 	minimal_player_age = 21
 	economic_modifier = 3
@@ -385,7 +383,7 @@
 		H.generate_skills(list("crafting","engineering", "mining"))
 
 /datum/job/engineer
-	title = "Station Engineer"
+	title = "Station Maintainer"
 	supervisors = "the Viscount"
 	minimal_player_age = 16
 	economic_modifier = 3
@@ -408,7 +406,7 @@
 /datum/job/mining
 	selection_color = "#7c6a2e"
 	title = "Excavation Officer"
-	supervisors = "the Quartermaster and the Court Magus"
+	supervisors = "the Cargo Overseer and the Court Magus"
 	minimal_player_age = 16
 	economic_modifier = 2
 	ideal_character_age = 21
@@ -427,8 +425,8 @@
 
 /datum/job/cargo_tech
 	selection_color = "#7c6a2e"
-	title = "Cargo Technician"
-	supervisors = "the Quartermaster"
+	title = "Cargo Worker"
+	supervisors = "the Cargo Overseer"
 	minimal_player_age = 16
 	economic_modifier = 2
 	ideal_character_age = 21
@@ -457,7 +455,7 @@
 /datum/job/ouvrier
 	selection_color = "#7c6a2e"
 	title = "Cargo Assistant"
-	supervisors = "the Quartermaster"
+	supervisors = "the Cargo Overseer"
 	minimal_player_age = 16
 	economic_modifier = 2
 	ideal_character_age = 21
@@ -476,11 +474,8 @@
 		..()
 
 
-
-
-
 /datum/job/chef
-	title = "Cook"
+	title = "Chef"
 	supervisors = "the Viscount"
 	minimal_player_age = 16
 	economic_modifier = 2
@@ -495,7 +490,7 @@
 		H.generate_skills(list("cooking","melee"))
 
 /datum/job/bartender
-	title = "Bartender"
+	title = "Barkeeper"
 	department = "Service"
 	department_flag = SRV
 	total_positions = 1
@@ -528,7 +523,7 @@
 // religion skills in the future maybe?
 
 /datum/job/janitor
-	title = "Janitor"
+	title = "Cleaner"
 	supervisors = "the Viscount"
 	minimal_player_age = 16
 	economic_modifier = 1
@@ -548,7 +543,7 @@
 	department_flag = SRV
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the overseer"
+	supervisors = "the Viscount"
 	selection_color = "#515151"
 	minimal_access = list(access_bar, access_kitchen, access_hydroponics)
 //	alt_titles = list("Hydroponicist")
@@ -628,7 +623,7 @@
 /datum/job/medassist
 	selection_color = "#633d63"
 	title = "Medical Assistant"
-	supervisors = "the doctors"
+	supervisors = "the Undertaker"
 	minimal_player_age = 16
 	economic_modifier = 2
 	ideal_character_age = 21

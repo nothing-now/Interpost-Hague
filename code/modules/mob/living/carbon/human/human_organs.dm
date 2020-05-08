@@ -87,7 +87,8 @@
 				spark_system.start()
 				spawn(10)
 					qdel(spark_system)
-		else if (E.is_broken())
+
+		else if(E.is_broken() || (E.get_pain() >= E.pain_disability_threshold))
 			stance_damage += 1
 		else if (E.is_dislocated())
 			stance_damage += 0.5

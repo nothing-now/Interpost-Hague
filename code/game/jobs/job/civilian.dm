@@ -76,7 +76,6 @@
 	economic_modifier = 5
 	access = list(access_maint_tunnels, access_mailsorting, access_cargo, access_cargo_bot, access_qm, access_mining, access_mining_station)
 	minimal_access = list(access_mining, access_mining_station, access_mailsorting)
-	alt_titles = list("Drill Technician","Prospector")
 	outfit_type = /decl/hierarchy/outfit/job/cargo/mining
 
 /datum/job/janitor
@@ -89,7 +88,6 @@
 	selection_color = "#515151"
 	access = list(access_janitor, access_maint_tunnels, access_engine, access_research, access_sec_doors, access_medical)
 	minimal_access = list(access_janitor, access_maint_tunnels, access_engine, access_research, access_sec_doors, access_medical)
-	alt_titles = list("Custodian","Sanitation Technician")
 	outfit_type = /decl/hierarchy/outfit/job/service/janitor
 
 //More or less assistants
@@ -103,7 +101,6 @@
 	selection_color = "#515151"
 	access = list(access_library, access_maint_tunnels)
 	minimal_access = list(access_library)
-	alt_titles = list("Journalist")
 	outfit_type = /decl/hierarchy/outfit/job/librarian
 
 /datum/job/lawyer

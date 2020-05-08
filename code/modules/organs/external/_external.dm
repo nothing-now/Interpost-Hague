@@ -23,6 +23,7 @@
 	var/burn_ratio = 0                 // Ratio of current burn damage to max damage.
 	var/last_dam = -1                  // used in healing/processing calculations.
 	var/pain = 0                       // How much the limb hurts.
+	var/full_pain = 0                  // Overall pain including damages.
 	var/pain_disability_threshold      // Point at which a limb becomes unusable due to pain.
 
 	// Appearance vars.
@@ -375,7 +376,7 @@ This function completely restores a damaged organ to perfect condition.
 	brute_dam = 0
 	burn_dam = 0
 	germ_level = 0
-	pain = 0
+	remove_all_pain()
 	genetic_degradation = 0
 	for(var/datum/wound/wound in wounds)
 		wound.embedded_objects.Cut()
@@ -496,7 +497,7 @@ This function completely restores a damaged organ to perfect condition.
 
 //Determines if we even need to process this organ.
 /obj/item/organ/external/proc/need_process()
-	if(get_pain())
+	if(get_full_pain())
 		return 1
 	if(status & (ORGAN_CUT_AWAY|ORGAN_BLEEDING|ORGAN_BROKEN|ORGAN_DEAD|ORGAN_MUTATED))
 		return 1
@@ -513,11 +514,7 @@ This function completely restores a damaged organ to perfect condition.
 
 /obj/item/organ/external/Process()
 	if(owner)
-
-		if(pain)
-			pain -= owner.lying ? 3 : 1
-			if(pain<0)
-				pain = 0
+		update_pain()
 
 		// Process wounds, doing healing etc. Only do this every few ticks to save processing power
 		if(owner.life_tick % wound_update_accuracy == 0)
@@ -526,7 +523,7 @@ This function completely restores a damaged organ to perfect condition.
 		//Infections
 		update_germs()
 	else
-		pain = 0
+		remove_all_pain()
 		..()
 
 //Updating germ levels. Handles organ germ levels and necrosis.
@@ -798,7 +795,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 	var/use_blood_colour = species.get_blood_colour(owner)
 
 	removed(null, ignore_children)
-	add_pain(60)
+	adjust_pain(60)
 	if(!clean)
 		victim.shock_stage += min_broken_damage
 
@@ -812,7 +809,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 			stump.SetName("stump of \a [name]")
 			stump.artery_name = "mangled [artery_name]"
 			stump.arterial_bleed_severity = arterial_bleed_severity
-			stump.add_pain(max_damage)
+			stump.adjust_pain(max_damage)
 			if(robotic >= ORGAN_ROBOT)
 				stump.robotize()
 			stump.wounds |= W
@@ -1403,7 +1400,7 @@ Note that amputating the affected organ does in fact remove the infection from t
 		to_chat(owner, "<span class='danger'>You feel extreme pain running through you!</span>")
 
 		var/max_halloss = round(owner.species.total_health * 0.8 * ((100 - armor) / 100)) //up to 80% of passing out, further reduced by armour
-		add_pain(Clamp(0, max_halloss - owner.getHalLoss(), 30))
+		adjust_pain(Clamp(0, max_halloss - owner.getHalLoss(), 30))
 
 //Adds autopsy data for used_weapon.
 /obj/item/organ/external/proc/add_autopsy_data(var/used_weapon, var/damage)

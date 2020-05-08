@@ -21,7 +21,7 @@ mob/var/next_pain_time = 0
 	if(!nohalloss && (power || flash_pain))//Flash pain is so that handle_pain actually makes use of this proc to flash pain.
 		var/actual_flash
 		if(affecting)
-			affecting.add_pain(ceil(power/2))
+			affecting.adjust_pain(ceil(power/2))
 			if(power > flash_pain)
 				actual_flash = power
 			else
