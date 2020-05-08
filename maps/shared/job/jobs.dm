@@ -281,7 +281,6 @@
 /datum/job/doctor/undertaker
 	title = "Undertaker"
 	department_flag = MED
-	alt_titles = list()
 	total_positions = 1
 	spawn_positions = 1
 	outfit_type = /decl/hierarchy/outfit/job/medical/doctor/undertaker

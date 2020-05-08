@@ -174,7 +174,6 @@
 		M.remove_from_mob(W)
 	W.forceMove(src)
 	W.on_enter_storage(src)
-	W.mouse_opacity = 2 //So you can click on the area around the item to equip it, instead of having to pixel hunt
 	if(usr)
 		add_fingerprint(usr)
 

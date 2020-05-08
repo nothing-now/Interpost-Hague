@@ -346,6 +346,7 @@
 		'html/images/talisman.png'
 		)
 
+	var/decl/asset_cache/asset_cache = decls_repository.get_decl(/decl/asset_cache)
 	spawn (10) //removing this spawn causes all clients to not get verbs.
 		if(!src) // client disconnected
 			return
