@@ -42,6 +42,8 @@ proc/explosion_rec(turf/epicenter, power, shaped)
 		var/turf/T = spot
 		if(explosion_turfs[T] <= 0) continue
 		if(!T) continue
+		if (T.above)
+			T.above.update_mimic()
 
 		//Wow severity looks confusing to calculate... Fret not, I didn't leave you with any additional instructions or help. (just kidding, see the line under the calculation)
 		var/severity = 4 - round(max(min( 3, ((explosion_turfs[T] - T.get_explosion_resistance()) / (max(3,(power/3)))) ) ,1), 1)								//sanity			effective power on tile				divided by either 3 or one third the total explosion power
