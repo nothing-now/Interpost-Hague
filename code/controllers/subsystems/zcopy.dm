@@ -180,6 +180,7 @@ SUBSYSTEM_DEF(zcopy)
 				TO.gender = T.gender	// Need to grab this too so PLURAL works properly in examine.
 				TO.opacity = FALSE
 				TO.plane = t_target
+
 		else if (T.below.bound_overlay)
 			QDEL_NULL(T.below.bound_overlay)
 

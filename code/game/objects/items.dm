@@ -185,7 +185,7 @@
 		item_state = wielded_icon
 
 /obj/item/proc/update_unwield_icon()//That way it doesn't interupt any other special icon_states.
-	if(wielded && wielded_icon)
+	if(!wielded && wielded_icon)
 		item_state = "[initial(item_state)]"
 
 //For general weapons.
@@ -247,16 +247,13 @@
 	..()
 	var/obj/item/I = user.get_active_hand()
 	var/obj/item/II = user.get_inactive_hand()
+	loc = null
 	if(I)
 		I.unwield(user)
 	if(II)
 		II.unwield(user)
 	if(!QDELETED(src))
 		qdel(src)
-
-/mob/living/verb/wield_hotkey()//For the hotkeys
-	set name = ".wield"
-	set hidden = 1
 
 /obj/item/ex_act(severity)
 	switch(severity)
@@ -372,6 +369,8 @@
 			user.l_hand.update_twohanding()
 		if(user.r_hand)
 			user.r_hand.update_twohanding()
+	if(wielded)
+		unwield(user)
 
 // called just as an item is picked up (loc is not yet changed)
 /obj/item/proc/pickup(mob/user)

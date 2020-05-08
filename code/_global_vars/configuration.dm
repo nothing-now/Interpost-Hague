@@ -1,5 +1,5 @@
 // Bomb cap!
-GLOBAL_VAR_INIT(max_explosion_range, 20)
+GLOBAL_VAR_INIT(max_explosion_range, 14)
 
 
 var/href_logfile        = null

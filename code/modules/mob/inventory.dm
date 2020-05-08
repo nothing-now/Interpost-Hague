@@ -153,6 +153,8 @@ var/list/slot_equipment_priority = list( \
 // If canremove or other conditions need to be checked then use unEquip instead.
 /mob/proc/drop_from_inventory(var/obj/item/W, var/atom/target = null)
 	if(W)
+		if(W.wielded)
+			W.unwield(src)
 		remove_from_mob(W, target)
 		if(!(W && W.loc)) return 1 // self destroying objects (tk, grabs)
 		update_icons()
