@@ -689,6 +689,7 @@
 
 //Updates canmove, lying and icons. Could perhaps do with a rename but I can't think of anything to describe it.
 /mob/proc/update_canmove()
+	var/oriDir = dir
 
 	if(!resting && cannot_stand() && can_stand_overridden())
 		lying = 0
@@ -733,8 +734,9 @@
 		regenerate_icons()
 	else if(lying != lying_prev)
 		update_icons()
-	update_vision_cone()
-
+	// Only update the vision cone of the direction after turning around is different than what we had before.
+	if(oriDir != dir)
+		update_vision_cone()
 	return canmove
 
 /mob/proc/reset_layer()

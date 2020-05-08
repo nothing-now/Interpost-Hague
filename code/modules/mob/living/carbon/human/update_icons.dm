@@ -11,7 +11,7 @@ var/global/list/light_overlay_cache = list()
 /proc/overlay_image(icon,icon_state,color,flags)
 	var/image/ret = image(icon,icon_state)
 	ret.color = color
-	ret.appearance_flags = flags
+	ret.appearance_flags = flags | PIXEL_SCALE
 	return ret
 
 	///////////////////////
@@ -373,7 +373,7 @@ var/global/list/damage_icon_parts = list()
 		var/obj/item/underwear/UW = entry
 
 		var/image/I = image(icon = UW.icon, icon_state = UW.icon_state)
-		I.appearance_flags = RESET_COLOR
+		I.appearance_flags = RESET_COLOR | PIXEL_SCALE
 		I.color = UW.color
 
 		overlays_standing[UNDERWEAR_LAYER] += I
@@ -624,6 +624,7 @@ var/global/list/damage_icon_parts = list()
 		var/image/standing = r_hand.get_mob_overlay(src,slot_r_hand_str)
 		if(standing)
 			standing.appearance_flags |= RESET_ALPHA
+			standing.appearance_flags |= PIXEL_SCALE
 		overlays_standing[R_HAND_LAYER] = standing
 
 		if (handcuffed) drop_r_hand() //this should be moved out of icon code
@@ -638,6 +639,7 @@ var/global/list/damage_icon_parts = list()
 		var/image/standing = l_hand.get_mob_overlay(src,slot_l_hand_str)
 		if(standing)
 			standing.appearance_flags |= RESET_ALPHA
+			standing.appearance_flags |= PIXEL_SCALE
 		overlays_standing[L_HAND_LAYER] = standing
 
 		if (handcuffed) drop_l_hand() //This probably should not be here
@@ -760,7 +762,7 @@ var/global/list/damage_icon_parts = list()
 		if(E.robotic < ORGAN_ROBOT && E.open())
 			var/image/I = image("icon"='icons/mob/surgery.dmi', "icon_state"="[E.icon_name][round(E.open())]", "layer"=-SURGERY_LEVEL)
 			total.overlays += I
-	total.appearance_flags = RESET_COLOR
+	total.appearance_flags = RESET_COLOR | PIXEL_SCALE
 	overlays_standing[SURGERY_LEVEL] = total
 	if(update_icons)   update_icons()
 

@@ -44,16 +44,29 @@ mob/living/InCone(mob/center = usr, dir = NORTH)
 		else
 			return .
 
-
+// And from now on, in "cone" we will only hide LIVING MOBS
 proc/cone(atom/center = usr, dir = NORTH, list/list = oview(center))
-	for(var/atom/O in list) if(!O.InCone(center, dir)) list -= O
+	for(var/mob/living/A in list)
+		if(!A.InCone(center, dir))
+			list -= A
 	return list
 
 mob/proc/update_vision_cone()
 	return
 
+/mob/living/proc/clear_cone_effect(var/image/I)
+	if(I)
+		qdel(I)
+
 mob/living/carbon/human/update_vision_cone()
-	CHECK_TICK
+	var/delay = 10
+	if(src.client)
+		var/image/I = null
+		for(I in src.client.hidden_atoms)
+			I.override = 0
+			addtimer(CALLBACK(src, .proc/clear_cone_effect, I), delay)
+			delay += 10
+
 	if(src.client)
 		var/image/I = null
 		for(I in src.client.hidden_atoms)
@@ -116,3 +129,18 @@ mob/living/carbon/human/proc/hide_cone()
 	if(src.fov)
 		src.fov.alpha = 0
 		src.usefov = 0
+
+/mob/living/Move(NewLoc, direct)
+	for(var/client/C in in_vision_cones)
+		if(src in C.hidden_mobs)
+			var/image/noise = image(icon = 'icons/effects/noise.dmi', icon_state = "noise", loc = src, layer = 18)
+			noise.alpha = 200
+			show_image(C, noise)
+			addtimer(CALLBACK(src, .proc/clear_noise_effect, C, noise), 7)
+		else
+			in_vision_cones.Remove(C)
+	. = ..()
+
+/mob/living/proc/clear_noise_effect(var/client/C, var/image/I)
+	if(C && I)
+		C.images -= I
