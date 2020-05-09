@@ -19,6 +19,8 @@
 	var/list/flags = list()
 	//Products created when burned. For fuel only for now (not oxidizers)
 	var/list/burn_product = list()
+	// Reagent created when inhaled by lungs.
+	var/list/breathed_product = list()
 
 /decl/xgm_gas
 	var/id = ""

@@ -35,3 +35,18 @@
 	if (istype(M, build_path))
 		return 1
 	return 0
+
+/obj/item/weapon/circuitboard/sublimator
+	name = T_BOARD("reagent sublimator")
+	build_path = /obj/machinery/portable_atmospherics/reagent_sublimator
+	board_type = "machine"
+	origin_tech = list(TECH_POWER = 2, TECH_ENGINEERING = 1)
+	req_components = list(
+		/obj/item/weapon/stock_parts/micro_laser = 1,
+		/obj/item/weapon/stock_parts/capacitor = 1,
+		/obj/item/weapon/stock_parts/matter_bin = 1
+	)
+
+/obj/item/weapon/circuitboard/sublimator/sauna
+	name = T_BOARD("sauna sublimator")
+	build_path = /obj/machinery/portable_atmospherics/reagent_sublimator/sauna

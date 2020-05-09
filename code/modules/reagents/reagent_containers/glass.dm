@@ -251,6 +251,14 @@
 		var/image/lid = image(icon, src, "lid_[initial(icon_state)]")
 		overlays += lid
 
+/obj/item/weapon/reagent_containers/glass/bucket/wood
+	name = "bucket"
+	desc = "It's a wooden bucket. How rustic."
+	icon_state = "wbucket"
+	item_state = "wbucket"
+	matter = list(MATERIAL_WOOD = 280)
+	volume = 200
+
 /*
 /obj/item/weapon/reagent_containers/glass/blender_jug
 	name = "Blender Jug"

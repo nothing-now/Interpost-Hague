@@ -32,6 +32,23 @@
 	var/list/air_vent_info = list()
 	var/list/air_scrub_info = list()
 
+/decl/environment_data
+	var/list/important_gasses = list(
+		GAS_OXYGEN =         TRUE,
+		GAS_NITROGEN =       TRUE,
+		GAS_CO2 = TRUE
+	)
+	var/list/dangerous_gasses = list(
+		GAS_CO2 = TRUE
+	)
+	var/list/filter_gasses = list(
+		GAS_OXYGEN,
+		GAS_NITROGEN,
+		GAS_CO2,
+		GAS_N2O,
+		GAS_PHORON
+	)
+
 /obj/machinery/alarm
 	name = "alarm"
 	icon = 'icons/obj/monitors.dmi'
@@ -81,6 +98,7 @@
 	var/oxygen_dangerlevel = 0
 	var/co2_dangerlevel = 0
 	var/phoron_dangerlevel = 0
+	var/environment_type = /decl/environment_data
 	var/temperature_dangerlevel = 0
 	var/other_dangerlevel = 0
 
@@ -88,6 +106,15 @@
 
 /obj/machinery/alarm/cold
 	target_temperature = T0C+4
+
+/decl/environment_data/sauna/Initialize()
+	. = ..()
+	important_gasses["steam"] = TRUE
+	dangerous_gasses -= "steam"
+
+/obj/machinery/alarm/warm
+	target_temperature = T0C+75
+	environment_type = /decl/environment_data/sauna
 
 /obj/machinery/alarm/nobreach
 	breach_detection = 0

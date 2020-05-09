@@ -206,6 +206,19 @@
 	else
 		owner.phoron_alert = 0
 
+	// Pass reagents from the gas into our body.
+	// Presumably if you breathe it you have a specialized metabolism for it, so we drop/ignore breath_type. Also avoids
+	// humans processing thousands of units of oxygen over the course of a round for the sole purpose of poisoning vox.
+	for(var/gasname in breath.gas - breath_type)
+		var/breathed_product = gas_data.breathed_product[gasname]
+		if(breathed_product)
+			var/reagent_amount = breath.gas[gasname] * REAGENT_GAS_EXCHANGE_FACTOR
+			 // Little bit of sanity so we aren't trying to add 0.0000000001 units of CO2, and so we don't end up with 99999 units of CO2.
+			if(reagent_amount >= 0.05)
+				owner.reagents.add_reagent(breathed_product, reagent_amount)
+				breath.adjust_gas(gasname, -breath.gas[gasname], update = 0) //update after
+
+
 	// If there's some other shit in the air lets deal with it here.
 	if(breath.gas["sleeping_agent"])
 		var/SA_pp = (breath.gas["sleeping_agent"] / breath.total_moles) * breath_pressure
@@ -336,7 +349,7 @@
 		breathtype += pick("shallow and rapid")
 	if(!breathtype.len)
 		breathtype += "healthy"
-	
+
 	. += "[english_list(breathtype)] breathing"
 
 	return english_list(.)
