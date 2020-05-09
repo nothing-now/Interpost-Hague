@@ -6,6 +6,7 @@
 	force_divisor = 0.1
 	thrown_force_divisor = 0.1
 	randpixel = 5
+	obj_flags = OBJ_FLAG_NO_EMBED
 	var/max_butts = 10
 
 /obj/item/weapon/material/ashtray/examine(mob/user)

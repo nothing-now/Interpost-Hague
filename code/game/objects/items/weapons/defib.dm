@@ -9,7 +9,8 @@
 	icon_state = "defibunit"
 	item_state = "defibunit"
 	slot_flags = SLOT_BACK
-	force = 5
+	force = 2
+	obj_flags = OBJ_FLAG_NO_EMBED
 	throwforce = 6
 	w_class = ITEM_SIZE_LARGE
 	origin_tech = list(TECH_BIO = 4, TECH_POWER = 2)

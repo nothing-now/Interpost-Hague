@@ -16,9 +16,14 @@
 	#include "utopia-5.dmm"
 	#include "utopia-6.dmm"
 
-	#include "job/jobs.dm"
+	#include "../shared/job/jobs.dm"
+	#include "../shared/datums/uniforms.dm"
+	#include "../shared/items/cards_ids.dm"
+	#include "../shared/items/clothing.dm"
 
 	#define using_map_DATUM /datum/map/utopia
+
+	#include "../../code/modules/lobby_music/generic_songs.dm"
 
 #elif !defined(MAP_OVERRIDE)
 

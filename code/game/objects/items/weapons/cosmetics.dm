@@ -5,6 +5,7 @@
 	icon = 'icons/obj/items.dmi'
 	icon_state = "lipstick"
 	w_class = ITEM_SIZE_TINY
+	obj_flags = OBJ_FLAG_NO_EMBED
 	slot_flags = SLOT_EARS
 	var/colour = "red"
 	var/open = 0

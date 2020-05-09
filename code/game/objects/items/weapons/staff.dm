@@ -6,6 +6,7 @@
 	force = 3.0
 	throwforce = 5.0
 	throw_speed = 1
+	obj_flags = OBJ_FLAG_NO_EMBED
 	throw_range = 5
 	w_class = ITEM_SIZE_SMALL
 	attack_verb = list("bludgeoned", "whacked", "disciplined")

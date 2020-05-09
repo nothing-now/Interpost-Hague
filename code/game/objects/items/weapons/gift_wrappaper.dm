@@ -13,6 +13,7 @@
 	icon = 'icons/obj/items.dmi'
 	icon_state = "gift1"
 	item_state = "gift1"
+	obj_flags = OBJ_FLAG_NO_EMBED
 	randpixel = 10
 
 /obj/item/weapon/a_gift/New()

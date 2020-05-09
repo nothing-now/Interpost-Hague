@@ -13,6 +13,7 @@ RSF
 	density = 0
 	anchored = 0.0
 	var/stored_matter = 30
+	obj_flags = OBJ_FLAG_NO_EMBED
 	var/mode = 1
 	w_class = ITEM_SIZE_NORMAL
 

@@ -11,7 +11,7 @@
 	opacity = 0
 	density = 0
 	anchored = 0.0
-	obj_flags = OBJ_FLAG_CONDUCTIBLE
+	obj_flags = OBJ_FLAG_CONDUCTIBLE | OBJ_FLAG_NO_EMBED
 	slot_flags = SLOT_BELT|SLOT_HOLSTER
 	force = 10.0
 	throwforce = 10.0

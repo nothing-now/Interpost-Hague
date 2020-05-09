@@ -9,6 +9,7 @@
 	var/cell_type = /obj/item/weapon/cell/device/standard
 	w_class = ITEM_SIZE_TINY
 	slot_flags = SLOT_EARS | SLOT_MASK
+	obj_flags = OBJ_FLAG_NO_EMBED
 	attack_verb = list("attacked", "poked", "battered")
 	body_parts_covered = 0
 	var/brightness_on = 1

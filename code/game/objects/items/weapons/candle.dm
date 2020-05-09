@@ -5,6 +5,7 @@
 	icon_state = "candle1"
 	item_state = "candle1"
 	w_class = ITEM_SIZE_TINY
+	obj_flags = OBJ_FLAG_NO_EMBED
 	light_color = "#e09d37"
 	var/wax = 2000
 

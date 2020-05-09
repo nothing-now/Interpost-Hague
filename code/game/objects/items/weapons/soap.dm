@@ -6,6 +6,7 @@
 	icon_state = "soap"
 	atom_flags = ATOM_FLAG_OPEN_CONTAINER
 	w_class = ITEM_SIZE_SMALL
+	obj_flags = OBJ_FLAG_NO_EMBED
 	throwforce = 0
 	throw_speed = 4
 	throw_range = 20

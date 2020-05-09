@@ -4,6 +4,7 @@
 	icon = 'icons/obj/wallet.dmi'
 	icon_state = "wallet-white"
 	w_class = ITEM_SIZE_SMALL
+	obj_flags = OBJ_FLAG_NO_EMBED
 	max_w_class = ITEM_SIZE_SMALL //Don't worry, see can_hold[]
 	max_storage_space = 8
 	can_hold = list(
