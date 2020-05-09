@@ -2,6 +2,20 @@
 	var/tmp/gc_destroyed //Time when this object was destroyed.
 	var/tmp/is_processing = FALSE
 	var/list/active_timers  //for SStimer
+	var/list/datum_components //for /datum/components
+
+	var/list/comp_lookup
+	/// Lazy associated list in the structure of `signals:proctype` that are run when the datum receives that signal
+	var/list/list/datum/callback/signal_procs
+	/**
+	  * Is this datum capable of sending signals?
+	  *
+	  * Set to true when a signal has been registered
+	  */
+	var/signal_enabled = FALSE
+
+	/// Datum level flags
+	var/datum_flags = null
 
 #ifdef TESTING
 	var/tmp/running_find_references

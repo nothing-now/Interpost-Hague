@@ -110,7 +110,7 @@
 	var/a_intent = I_HELP//Living
 	var/c_intent = I_AIM
 	var/defense_intent = I_DODGE//Living. For dodging and parrying.
-	var/m_intent = "run"//Living
+	var/m_intent = "walk"//Living
 	var/middle_click_intent = null //For doing different things with middle click.
 	var/combat_mode = 0//Living
 	var/using_alt_hud = 0 //For the lunahud.
@@ -122,8 +122,10 @@
 	var/obj/item/weapon/storage/s_active = null//Carbon
 	var/obj/item/clothing/mask/wear_mask = null//Carbon
 
+	///Whether the mob is updating glide size when movespeed updates or not
+	var/updating_glide_size = TRUE
 
-//	var/datum/hud/hud_used = null
+	var/cached_multiplicative_slowdown // The calculated mob speed slowdown based on the modifiers list.
 
 	var/list/grabbed_by = list(  )
 
