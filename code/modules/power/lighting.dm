@@ -192,13 +192,13 @@
 	update_icon(0)
 	switch(dir)
 		if(NORTH)
-			pixel_y = 5
+			pixel_y = 2
 		if(EAST)
-			pixel_x = 5
+			pixel_x = 2
 		if(SOUTH)
-			pixel_y = -5
+			pixel_y = -2
 		if(WEST)
-			pixel_x = -5
+			pixel_x = -2
 
 /obj/machinery/light/Destroy()
 	QDEL_NULL(lightbulb)
