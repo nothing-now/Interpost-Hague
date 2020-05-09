@@ -152,24 +152,24 @@
 		icon_state = "railing1"
 		//ëåâàÿ ñòîðîíà
 		if (check & 32)
-			overlays += image ('maps/dreyfus/icons/railing.dmi', src, "corneroverlay")
+			overlays += image ('icons/obj/railing.dmi', src, "corneroverlay")
 			//world << "32 check"
 		if ((check & 16) || !(check & 32) || (check & 64))
-			overlays += image ('maps/dreyfus/icons/railing.dmi', src, "frontoverlay_l")
+			overlays += image ('icons/obj/railing.dmi', src, "frontoverlay_l")
 			//world << "16 check"
 		if (!(check & 2) || (check & 1) || (check & 4))
-			overlays += image ('maps/dreyfus/icons/railing.dmi', src, "frontoverlay_r")
+			overlays += image ('icons/obj/railing.dmi', src, "frontoverlay_r")
 			//world << "no 4 or 2 check"
 			if(check & 4)
 				switch (src.dir)
 					if (NORTH)
-						overlays += image ('maps/dreyfus/icons/railing.dmi', src, "mcorneroverlay", pixel_x = 32)
+						overlays += image ('icons/obj/railing.dmi', src, "mcorneroverlay", pixel_x = 32)
 					if (SOUTH)
-						overlays += image ('maps/dreyfus/icons/railing.dmi', src, "mcorneroverlay", pixel_x = -32)
+						overlays += image ('icons/obj/railing.dmi', src, "mcorneroverlay", pixel_x = -32)
 					if (EAST)
-						overlays += image ('maps/dreyfus/icons/railing.dmi', src, "mcorneroverlay", pixel_y = -32)
+						overlays += image ('icons/obj/railing.dmi', src, "mcorneroverlay", pixel_y = -32)
 					if (WEST)
-						overlays += image ('maps/dreyfus/icons/railing.dmi', src, "mcorneroverlay", pixel_y = 32)
+						overlays += image ('icons/obj/railing.dmi', src, "mcorneroverlay", pixel_y = 32)
 
 
 //obj/structure/railing/proc/NeighborsCheck2()

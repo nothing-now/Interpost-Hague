@@ -1,7 +1,4 @@
-/obj/item/weapon/card/id/dreyfus
-	name = "identification card"
-	icon = 'maps/dreyfus/icons/card.dmi'
-	icon_state = "id"
+
 /*
 /obj/item/weapon/card/id/dreyfus/civilian/employe
 	name = "identification card"
