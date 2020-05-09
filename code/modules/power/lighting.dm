@@ -190,6 +190,15 @@
 
 	on = powered()
 	update_icon(0)
+	switch(dir)
+		if(NORTH)
+			pixel_y = 5
+		if(EAST)
+			pixel_x = 5
+		if(SOUTH)
+			pixel_y = -5
+		if(WEST)
+			pixel_x = -5
 
 /obj/machinery/light/Destroy()
 	QDEL_NULL(lightbulb)
