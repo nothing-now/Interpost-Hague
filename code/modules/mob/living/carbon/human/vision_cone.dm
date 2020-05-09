@@ -46,8 +46,13 @@ proc/cone(atom/center = usr, dir = NORTH, list/list = oview(center))
 		if(!A.InCone(center, dir))
 			list -= A
 	return list
+
 mob/proc/update_vision_cone()
 	return
+
+/mob/living/proc/clear_cone_effect(var/image/I)
+	if(I)
+		qdel(I)
 
 mob/living/carbon/human/update_vision_cone()
 	var/delay = 10

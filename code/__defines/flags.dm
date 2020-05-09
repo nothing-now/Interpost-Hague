@@ -28,6 +28,7 @@ GLOBAL_LIST_INIT(bitflags, list(1, 2, 4, 8, 16, 32, 64, 128, 256, 512, 1024, 204
 #define OBJ_FLAG_CONDUCTIBLE             0x0002 // Conducts electricity. (metal etc.)
 #define OBJ_FLAG_ABSTRACT			     0x0004 //For items that don't really exist. Can't be put on tables or interacted with.
 #define OBJ_FLAG_NOFALL		             0x0008 // Will prevent mobs from falling
+#define OBJ_FLAG_NO_EMBED                0x0010 // Disallows it to be embeded in a body
 
 //Flags for items (equipment)
 #define ITEM_FLAG_NO_BLUDGEON            0x0001 // When an item has this it produces no "X has been hit by Y with Z" message with the default handler.
