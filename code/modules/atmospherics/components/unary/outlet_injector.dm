@@ -7,11 +7,11 @@
 	icon_state = "map_injector"
 
 	name = "air injector"
-	desc = "Passively injects air into its surroundings. Has a valve attached to it that can control flow rate."
+	desc = "Injects air into its surroundings using a passive or injection mode. Passive mode will only inject when internal pressure is greater."
 
 	use_power = 0
 	idle_power_usage = 150		//internal circuitry, friction losses and stuff
-	power_rating = 15000	//15000 W ~ 20 HP
+	power_rating = 45000	//45000 W ~ 60 HP
 
 	var/injecting = 0
 
@@ -23,9 +23,9 @@
 
 	level = 1
 
-/obj/machinery/atmospherics/unary/outlet_injector/New()
-	..()
-	air_contents.volume = ATMOS_DEFAULT_VOLUME_PUMP + 500	//Give it a small reservoir for injecting. Also allows it to have a higher flow rate limit than vent pumps, to differentiate injectors a bit more.
+/obj/machinery/atmospherics/unary/outlet_injector/Initialize()
+	. = ..()
+	air_contents.volume = ATMOS_DEFAULT_VOLUME_PUMP + 1000	//Give it a small reservoir for injecting. Also allows it to have a higher flow rate limit than vent pumps, to differentiate injectors a bit more.
 
 /obj/machinery/atmospherics/unary/outlet_injector/update_icon()
 	if(!powered())

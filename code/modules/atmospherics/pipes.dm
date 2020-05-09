@@ -6,7 +6,9 @@
 	var/leaking = 0		// Do not set directly, use set_leaking(TRUE/FALSE)
 	use_power = 0
 
-	var/alert_pressure = 170*ONE_ATMOSPHERE
+	var/maximum_pressure = 210 * ONE_ATMOSPHERE
+	var/fatigue_pressure = 170 * ONE_ATMOSPHERE
+	var/alert_pressure = 170 * ONE_ATMOSPHERE
 	var/in_stasis = 0
 		//minimum pressure before check_pressure(...) should be called
 
@@ -171,11 +173,7 @@
 	initialize_directions = SOUTH|NORTH
 
 	var/minimum_temperature_difference = 300
-	var/thermal_conductivity = 0 //WALL_HEAT_TRANSFER_COEFFICIENT No
-
-	var/maximum_pressure = 210*ONE_ATMOSPHERE
-	var/fatigue_pressure = 170*ONE_ATMOSPHERE
-	alert_pressure = 170*ONE_ATMOSPHERE
+	var/thermal_conductivity = 0 //WALL_HEAT_TRANSFER_COEFFICIENT
 
 	level = 1
 
