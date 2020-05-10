@@ -112,6 +112,17 @@
 	name = "grey trenchcoat"
 	icon_state = "detective2"
 
+/obj/item/clothing/suit/storage/trenchcoat
+	name = "gray trenchcoat"
+	desc = "A old trenchcoat from the war. Seems to have some sort of material that protects against bullets."
+	icon_state = "trenchsuit"
+	item_state = "trenchsuit"
+	valid_accessory_slots = list(ACCESSORY_SLOT_INSIGNIA)
+	blood_overlay_type = "coat"
+	body_parts_covered = UPPER_TORSO|ARMS|LOWER_TORSO
+	allowed = list(/obj/item/weapon/tank/emergency,/obj/item/device/flashlight,/obj/item/weapon/gun/energy,/obj/item/weapon/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs,/obj/item/weapon/storage/fancy/cigarettes,/obj/item/weapon/flame/lighter,/obj/item/device/taperecorder)
+	armor = list(melee = 40, bullet = 30, laser = 25, energy = 10, bomb = 0, bio = 0, rad = 0)
+
 //Forensics
 /obj/item/clothing/suit/storage/forensics
 	name = "jacket"
