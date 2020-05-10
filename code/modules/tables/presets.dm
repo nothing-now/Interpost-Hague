@@ -35,14 +35,18 @@
 	carpeted = 1
 	material = "wood"
 
-/obj/structure/table/luxtable
-	icon_state = "gamble_preview"
-	carpeted = 1
-	material = "wood"
+/obj/structure/table/ruintable
+	icon_state = "ruin_table"
+	material = "steel"
+	color = "#ffffff"
 
-/obj/structure/table/gamblingtable
-	icon_state = "gamble_preview"
-	carpeted = 1
+/obj/structure/table/spacetable
+	icon_state = "spacetable"
+	material = "steel"
+	color = "#ffffff"
+
+/obj/structure/table/finetable
+	icon_state = "finetable"
 	material = "wood"
 
 /obj/structure/table/glass

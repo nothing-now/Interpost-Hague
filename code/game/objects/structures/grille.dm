@@ -227,6 +227,12 @@
 	icon_state = "alien_grate"
 	health = 150 //hella strong
 
+/obj/structure/grille/bars
+	name = "steel bars"
+	desc = "A bars built out of a steel material."
+	icon_state = "bars"
+	health = 150 //Make it strong enough to avoid people breaking in too easily
+
 /obj/structure/grille/bogani/CanPass(atom/movable/mover, turf/target, height = 1.5, air_group = 0)
 	if(air_group)
 		return 0 //Make sure air doesn't drain
