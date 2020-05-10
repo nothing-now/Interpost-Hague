@@ -19,7 +19,8 @@
 	set name = "Change UI"
 	set category = "OOC"
 	set desc = "Configure your user interface"
-	
+	set hidden = 1 // We don't have that.
+
 	if(!ishuman(usr))
 		to_chat(usr, "<span class='warning'>You must be human to use this verb.</span>")
 		return
