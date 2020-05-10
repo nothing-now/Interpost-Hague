@@ -519,10 +519,10 @@
 			H.religion = LEGAL_RELIGION
 		H.generate_stats(STAT_IQ)
 		H.generate_skills(list("melee"))
-// religion skills in the future maybe?
+// religion skills in the future maybe...HAHAHA No.
 
 /datum/job/janitor
-	title = "Cleaner"
+	title = "Sanitation Technician"
 	supervisors = "the Viscount"
 	minimal_player_age = 16
 	economic_modifier = 1
