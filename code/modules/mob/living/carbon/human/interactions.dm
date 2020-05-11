@@ -137,7 +137,7 @@
 		if(H.partner.age >= 16)
 			if(H.partner.species.name != "xenos")
 				if (haspenis && hashands)
-					dat += {"<font size=3><B>ERP:</B></font><BR>"}
+					dat += {"<font size=3><B>MISTAKES WILL BE MADE:</B></font><BR>"}
 					if (isnude_p)
 						if (hasvagina_p && (!P.mutilated_genitals))
 							dat += {"<A href='?src=\ref[usr];interaction=vaginal'><font color=purple>Fuck vagina.</font></A><BR>"}
@@ -165,7 +165,7 @@
 	var/multiorgasms = 0
 	var/lastmoan
 	var/mutilated_genitals = 0 //Whether or not they can do the fug.
-	var/virgin = FALSE //:mistake:
+	var/virgin = TRUE //:mistake:
 
 /mob/living/carbon/human/proc/cum(mob/living/carbon/human/H as mob, mob/living/carbon/human/P as mob, var/hole = "floor")
 	var/message = ""
