@@ -136,7 +136,7 @@
 
 /datum/job/assistant
 	title = "Assistant"
-	supervisors = "Everyone"
+	supervisors = "everyone"
 	minimal_player_age = 14
 	economic_modifier = 1
 	ideal_character_age = 21
@@ -154,7 +154,7 @@
 
 /datum/job/captain
 	title = "Count"
-	supervisors = "Your own wits, boredom, the King"
+	supervisors = "your own wits, boredom, the King"
 	minimal_player_age = 41
 	economic_modifier = 10
 	ideal_character_age = 65
@@ -174,7 +174,7 @@
 
 /datum/job/countess
 	title = "Countess"
-	supervisors = "Your husband, the Count"
+	supervisors = "your husband, the Count"
 	minimal_player_age = 41
 	economic_modifier = 10
 	ideal_character_age = 55
