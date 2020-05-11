@@ -33,3 +33,5 @@
 
 // Determines the exchange ratio of reagents being converted to gas and vice versa.
 #define REAGENT_GAS_EXCHANGE_FACTOR 10
+
+#define ATAN2(x, y) ( !(x) && !(y) ? 0 : (y) >= 0 ? arccos((x) / sqrt((x)*(x) + (y)*(y))) : -arccos((x) / sqrt((x)*(x) + (y)*(y))) )
