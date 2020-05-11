@@ -44,7 +44,7 @@ var/list/gamemode_cache = list()
 	var/continous_rounds = 0			// Gamemodes which end instantly will instead keep on going until the round ends by escape shuttle or nuke.
 	var/allow_Metadata = 0				// Metadata is supported.
 	var/popup_admin_pm = 0				//adminPMs to non-admins show in a pop-up 'reply' window when set to 1.
-	var/fps = 20
+	var/fps = 30
 	var/tick_limit_mc_init = TICK_LIMIT_MC_INIT_DEFAULT	//SSinitialization throttling
 	var/list/resource_urls = null
 	var/antag_hud_allowed = 0			// Ghosts can turn on Antagovision to see a HUD of who is the bad guys this round.
@@ -127,8 +127,8 @@ var/list/gamemode_cache = list()
 
 	//Used for modifying movement speed for mobs.
 	//Unversal modifiers
-	var/run_speed = 3
-	var/walk_speed = 6
+	var/run_speed = 4
+	var/walk_speed = 8
 
 	//Mob specific modifiers. NOTE: These will affect different mob types in different ways
 	var/human_delay = 0
@@ -184,7 +184,7 @@ var/list/gamemode_cache = list()
 	var/ninjas_allowed = 0
 	var/abandon_allowed = 1
 	var/ooc_allowed = 1
-	var/looc_allowed = 1
+	var/looc_allowed = 0
 	var/dooc_allowed = 1
 	var/dsay_allowed = 1
 	var/aooc_allowed = 1
