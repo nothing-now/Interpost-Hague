@@ -34,62 +34,71 @@
 
 /datum/map/utopia
 	allowed_jobs = list(
-						/datum/job/assistant,
 						/datum/job/captain,
+						/datum/job/countess,
 						/datum/job/hop,
-						/datum/job/doctor,
-						/datum/job/doctor/undertaker,
-						/datum/job/medassist,
+						/datum/job/supreme_arbiter,
+						/datum/job/arbiter,
+						///datum/job/medassist
 						/datum/job/hos,
 						/datum/job/officer,
-						/datum/job/qm,
-						/datum/job/engineer,
-						/datum/job/cargo_tech,
-						/datum/job/cargo_tech/machinist,
-						///datum/job/mining,
-						/datum/job/ouvrier,
-						/datum/job/chef,
-						///datum/job/chaplain,
-						/datum/job/janitor,
-						/datum/job/arbiter,
-						/datum/job/supreme_arbiter
-						///datum/job/jr_upkeep,
-						///datum/job/cadet,
+						/datum/job/detective,
+						/datum/job/doctor,
+						/datum/job/doctor/undertaker,
 						///datum/job/rd,
 						///datum/job/scientist,
-						///datum/job/raider,
+						/datum/job/qm,
+						/datum/job/cargo_tech,
+						/datum/job/cargo_tech/machinist,
+						/datum/job/mining,
+						/datum/job/chef,
+						/datum/job/bartender,
+						/datum/job/hydro,
+						/datum/job/janitor,
+						/datum/job/engineer,
+						/datum/job/jester
+						///datum/job/assistant,
+						///datum/job/cadet
+						///datum/job/ouvrier
+						///datum/job/jr_upkeep
+						///datum/job/raider
 						///datum/job/raider/leader
+						///datum/job/chaplain,
 						)
 
 
 /datum/map/dreyfus
 	allowed_jobs = list(
-						/datum/job/assistant,
 						/datum/job/captain,
+						/datum/job/countess,
 						/datum/job/hop,
-						/datum/job/doctor,
-						/datum/job/doctor/undertaker,
-						/datum/job/medassist,
+						/datum/job/supreme_arbiter,
+						/datum/job/arbiter,
+						///datum/job/medassist
 						/datum/job/hos,
 						/datum/job/officer,
+						/datum/job/detective,
+						/datum/job/doctor,
+						/datum/job/doctor/undertaker,
+						/datum/job/rd,
+						/datum/job/scientist,
 						/datum/job/qm,
-						/datum/job/engineer,
 						/datum/job/cargo_tech,
 						/datum/job/cargo_tech/machinist,
 						/datum/job/mining,
-						/datum/job/ouvrier,
 						/datum/job/chef,
 						/datum/job/bartender,
-						/datum/job/chaplain,
+						/datum/job/hydro,
 						/datum/job/janitor,
-						/datum/job/arbiter,
-						/datum/job/supreme_arbiter,
-						/datum/job/rd,
-						/datum/job/scientist
-						///datum/job/jr_upkeep,
-						///datum/job/cadet,
-						///datum/job/raider,
+						/datum/job/engineer,
+						/datum/job/jester
+						///datum/job/assistant,
+						///datum/job/cadet
+						///datum/job/ouvrier
+						///datum/job/jr_upkeep
+						///datum/job/raider
 						///datum/job/raider/leader
+						///datum/job/chaplain,
 						)
 
 /datum/map/alpha
@@ -127,7 +136,7 @@
 
 /datum/job/assistant
 	title = "Assistant"
-	supervisors = "Everyone"
+	supervisors = "everyone"
 	minimal_player_age = 14
 	economic_modifier = 1
 	ideal_character_age = 21
@@ -145,7 +154,7 @@
 
 /datum/job/captain
 	title = "Count"
-	supervisors = "Your own wits, boredom, the King"
+	supervisors = "your own wits, boredom, the King"
 	minimal_player_age = 41
 	economic_modifier = 10
 	ideal_character_age = 65
@@ -165,7 +174,7 @@
 
 /datum/job/countess
 	title = "Countess"
-	supervisors = "Your husband, the Count"
+	supervisors = "your husband, the Count"
 	minimal_player_age = 41
 	economic_modifier = 10
 	ideal_character_age = 55
@@ -204,6 +213,7 @@
 		H.generate_skills(list("melee","ranged","medical"))
 
 /datum/job/rd
+	selection_color = "#0055A1"
 	title = "Court Magus"
 	supervisors = "the Count"
 	minimal_player_age = 21
@@ -238,6 +248,7 @@
 		H.generate_skills(list("science","medical", "crafting"))
 
 /datum/job/scientist
+	selection_color = "#006BCA"
 	title = "Technology Researcher"
 	supervisors = "the Court Magus"
 	minimal_player_age = 19

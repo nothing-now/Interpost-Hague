@@ -53,7 +53,7 @@
 	var/hitchance_mod = 0
 
 	var/hitscan = 0		// whether the projectile should be hitscan
-	var/step_delay = 0.8	// the delay between iterations if not a hitscan projectile
+	var/step_delay = 0.7	// the delay between iterations if not a hitscan projectile
 
 	// effect types to be used
 	var/muzzle_type

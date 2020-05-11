@@ -175,7 +175,7 @@
 "ds" = (/obj/structure/table/rack/shelf,/obj/item/weapon/tape_roll,/obj/effect/floor_decal/newcorner/blue/solid,/turf/simulated/floor/tiled,/area/dreyfus/administration/bureaux/openspace)
 "dt" = (/obj/structure/extinguisher_cabinet{pixel_x = 30},/turf/simulated/floor/tiled/dark,/area/dreyfus/administration/corridor)
 "du" = (/obj/machinery/light{tag = "icon-tube1 (EAST)"; icon_state = "tube1"; dir = 4},/obj/machinery/atmospherics/pipe/simple/hidden,/turf/simulated/floor/tiled/dark,/area/dreyfus/administration/corridor)
-"dv" = (/obj/structure/bookcase,/turf/simulated/floor/carpet,/area/dreyfus/administration/bureaux/directeur)
+"dv" = (/obj/structure/woodenclock,/turf/simulated/floor/carpet,/area/dreyfus/administration/bureaux/directeur)
 "dw" = (/obj/structure/closet/cabinet,/obj/item/weapon/reagent_containers/food/drinks/bottle/vodka,/obj/item/weapon/melee/whip/chainofcommand,/obj/item/weapon/handcuffs,/obj/machinery/light{tag = "icon-tube1 (NORTH)"; icon_state = "tube1"; dir = 1},/obj/machinery/camera/network/administration{c_tag = "Commandant's Quarters"},/turf/simulated/floor/carpet,/area/dreyfus/administration/bureaux/directeur)
 "dx" = (/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/turf/simulated/floor/wood,/area/dreyfus/administration/bureaux/directeur)
 "dy" = (/obj/structure/table/woodentable,/obj/machinery/chemical_dispenser/bar_alc/full{pixel_y = 8},/turf/simulated/floor/carpet,/area/dreyfus/administration/bureaux/directeur)

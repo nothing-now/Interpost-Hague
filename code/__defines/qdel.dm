@@ -10,6 +10,8 @@
 #define QDEL_HINT_IFFAIL_FINDREFERENCE 6		//Above but only if gc fails.
 //defines for the gc_destroyed var
 
+#define QDEL_IN(item, time) addtimer(CALLBACK(GLOBAL_PROC, .proc/qdel, item), time, TIMER_STOPPABLE)
+
 #define GC_QUEUE_CHECK 1
 #define GC_QUEUE_HARDDELETE 2
 #define GC_QUEUE_COUNT 2 //increase this when adding more steps.

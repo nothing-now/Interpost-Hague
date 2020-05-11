@@ -1838,6 +1838,7 @@
 			setOxyLoss(75)
 		heart.pulse = PULSE_NORM
 		heart.handle_pulse()
+		return TRUE
 
 /mob/living/carbon/human/proc/make_adrenaline(amount)
 	if(stat == CONSCIOUS)

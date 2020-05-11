@@ -26,6 +26,8 @@
 
 	to_chat(src, "<div class='danger'>[game_id]</div>")
 
+	to_world("<span class='notice'>LOBBY: [usr.ckey] has joined.</span>")
+
 	if(!mind)
 		mind = new /datum/mind(key)
 		mind.active = 1

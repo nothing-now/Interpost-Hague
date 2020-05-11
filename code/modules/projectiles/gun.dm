@@ -69,6 +69,7 @@
 	var/list/dispersion = list(0)
 	var/one_hand_penalty
 	var/wielded_item_state
+	var/deaf_ability = 1
 	var/combustion	//whether it creates hotspot when fired
 	var/is_jammed = 0	//Whether this gun is jammed
 	var/has_jammed = FALSE
@@ -139,19 +140,20 @@
 	if(HULK in M.mutations)
 		to_chat(M, "<span class='danger'>Your fingers are much too large for the trigger guard!</span>")
 		return 0
-	if((CLUMSY in M.mutations) && prob(40)) //Clumsy handling
-		var/obj/P = consume_next_projectile()
-		if(P)
-			if(process_projectile(P, user, user, pick(BP_L_FOOT, BP_R_FOOT)))
-				handle_post_fire(user, user)
-				user.visible_message(
-					"<span class='danger'>\The [user] shoots \himself in the foot with \the [src]!</span>",
-					"<span class='danger'>You shoot yourself in the foot with \the [src]!</span>"
-					)
-				M.drop_item()
-		else
-			handle_click_empty(user)
-		return 0
+	if(CLUMSY in M.mutations) //Clumsy handling
+		if(prob(30))
+			var/obj/P = consume_next_projectile()
+			if(P)
+				if(process_projectile(P, user, user, pick(BP_L_FOOT, BP_R_FOOT)))
+					handle_post_fire(user, user)
+					user.visible_message(
+						"<span class='danger'>\The [user] shoots \himself in the foot with \the [src]!</span>",
+						"<span class='danger'>You shoot yourself in the foot with \the [src]!</span>"
+						)
+					M.drop_item()
+			else
+				handle_click_empty(user)
+			return 0
 	if(safety)
 		to_chat(user, "<span class='danger'>The gun's safety is on!</span>")
 		handle_click_empty(user)
@@ -417,7 +419,6 @@
 	if (!silenced)
 		if (!far_fire_sound)
 			playsound(user, shot_sound, rand(50, 70))
-			return
 
 		var/list/mob/mobs = view(world.view, user)
 
@@ -427,7 +428,7 @@
 		var/list/mob/far_mobs = (orange(world.view * 3, user) - mobs)
 
 		for (var/mob/M in far_mobs)
-			M.playsound_local(M, far_fire_sound, rand(20, 50))
+			M.playsound_local(user, far_fire_sound, rand(20, 50))
 	else
 		for (var/mob/M in view(world.view, user))
 			M.playsound_local(user, shot_sound, rand(10, 30), FALSE)

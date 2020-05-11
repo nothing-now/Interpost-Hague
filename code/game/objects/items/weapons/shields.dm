@@ -5,7 +5,7 @@
 /proc/check_shield_arc(mob/user, var/bad_arc, atom/damage_source = null, mob/attacker = null)
 	//check attack direction
 	var/attack_dir = 0 //direction from the user to the source of the attack
-	if(istype(damage_source, /obj/item/projectile))
+	if(istype(damage_source, /obj/item/projectile/bullet))
 		var/obj/item/projectile/P = damage_source
 		attack_dir = get_dir(get_turf(user), P.starting)
 	else if(attacker)
@@ -136,7 +136,7 @@
 	if(.) playsound(user.loc, 'sound/items/buckler_block.ogg', 50, 1)
 
 /obj/item/weapon/shield/buckler/get_block_chance(mob/user, var/damage, atom/damage_source = null, mob/attacker = null)
-	if(istype(damage_source, /obj/item/projectile))
+	if(istype(damage_source, /obj/item/projectile/bullet))
 		return 0 //No blocking bullets, I'm afraid.
 	return base_block_chance
 

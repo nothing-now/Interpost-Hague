@@ -22,8 +22,8 @@
 /datum/language/common
 	name = LANGUAGE_GALCOM
 	desc = "The common galactic tongue."
-	speech_verb = "says"
-	whisper_verb = "whispers"
+	speech_verb = "—"
+	whisper_verb = "—"
 	key = "0"
 	flags = RESTRICTED
 	syllables = list("blah","blah","blah","bleh","meh","neh","nah","wah")

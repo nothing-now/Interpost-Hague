@@ -21,6 +21,12 @@
 	teeth_type = /obj/item/stack/teeth/human //Teeth
 	sexybits_location = BP_GROIN
 
+/datum/species/human/handle_post_spawn(var/mob/living/carbon/human/H)
+	if(prob(H.age))
+		H.virgin = FALSE
+	else
+		H.virgin = TRUE
+
 /datum/species/human/get_bodytype(var/mob/living/carbon/human/H)
 	return SPECIES_HUMAN
 

@@ -53,7 +53,7 @@
 /obj/item/stack/tile/floor
 	name = "steel floor tile"
 	singular_name = "steel floor tile"
-	desc = "Those could work as a pretty decent throwing weapon." //why?
+	desc = "Pretty heavy." //why? same question, changed
 	icon_state = "tile"
 	force = 6
 	matter = list(DEFAULT_WALL_MATERIAL = 937.5)
