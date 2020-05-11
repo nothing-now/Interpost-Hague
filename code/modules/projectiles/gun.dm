@@ -419,9 +419,10 @@
 		if (!far_fire_sound)
 			playsound(user, shot_sound, rand(50, 70))
 		if(deaf_ability == 1)
-			playsound(src.loc, 'sound/effects/earing.ogg', 20, 1)
-			user.ear_deaf += 15
-			return
+			if(prob(33))
+				playsound(src.loc, 'sound/effects/earing.ogg', 20, 1)
+				user.ear_deaf += 5
+				return
 
 		var/list/mob/mobs = view(world.view, user)
 

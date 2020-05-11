@@ -203,13 +203,6 @@
 		if(speaker_name != speaker.real_name && !isAI(speaker)) //Announce computer and various stuff that broadcasts doesn't use it's real name but AI's can't pretend to be other mobs.
 			speaker_name = "[speaker.real_name] ([speaker_name])"
 		track = "[speaker_name] ([ghost_follow_link(speaker, src)])"
-	message = replacetext(message, "/", "")//None of this.
-	message = replacetext(message, "~", "")//Or this.
-	message = replacetext(message, ".", "")//no dots
-	message = replacetext(message, " i ", " I ")//FUCKING USE CAPITAL LETTERS JAMES YOU FUCK!
-	message = replacetext(message, " ive ", " I've ")//I'M SO FUCKING SICK OF SEEING IVE YOU FUCKS
-	message = replacetext(message, " im ", " I'm ")//AND IM TOO! STOP THAT YOU FUCKS!
-	message = replacetext(message, " u ", " you ")//STOP USING FUCKING U YOU SICK FUCKS!
 	message = add_shout_append(capitalize(message))//So that if they end in an ! it gets bolded
 
 	var/formatted

@@ -295,18 +295,14 @@ var/list/organ_cache = list()
 	if(alert("Do you really want to use this organ as food? It will be useless for anything else afterwards.",,"Ew, no.","Bon appetit!") == "Ew, no.")
 		to_chat(user, "<span class='notice'>You successfully repress your cannibalistic tendencies.</span>")
 		return
-
-	user.drop_from_inventory(src)
+	if(!user.unEquip(src))
+		return
 	var/obj/item/weapon/reagent_containers/food/snacks/organ/O = new(get_turf(src))
 	O.SetName(name)
 	O.appearance = src
-	reagents.trans_to(O, reagents.total_volume)
-	if(fingerprints)
-		O.fingerprints = fingerprints.Copy()
-	if(fingerprintshidden)
-		O.fingerprintshidden = fingerprintshidden.Copy()
-	if(fingerprintslast)
-		O.fingerprintslast = fingerprintslast
+	if(reagents && reagents.total_volume)
+		reagents.trans_to(O, reagents.total_volume)
+	transfer_fingerprints_to(O)
 	user.put_in_active_hand(O)
 	qdel(src)
 	target.attackby(O, user)
