@@ -20,6 +20,7 @@
 	var/charge_tick = 0
 	var/icon_rounder = 25
 	combustion = 1
+	deaf_ability = 0
 
 /obj/item/weapon/gun/energy/switch_firemodes()
 	. = ..()
