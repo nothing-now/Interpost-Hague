@@ -148,7 +148,7 @@
 	name = "TBR-21"
 	desc = "The rugged TBR-21 is an open bolt, gas operated, battle rifle, reliable, and expensive, as body armor becomes more popular so too will this rifle."
 	icon_state = "ctacassault"
-	item_state = null
+	item_state = "rifle1"
 	w_class = ITEM_SIZE_HUGE
 	force = 10
 	caliber = "a762x51"
@@ -167,6 +167,32 @@
 		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, one_hand_penalty=4, burst_accuracy=null, dispersion=null, automatic = 0),
 		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=null,    one_hand_penalty=5, burst_accuracy=list(0,0,0),       dispersion=list(0.0, 0.6, 1.0), automatic = 0),
 		list(mode_name="automatic",   burst=1, fire_delay=null, move_delay=null,    one_hand_penalty=6, burst_accuracy=list(0,0,0,0,0), dispersion=list(0.0, 0.0, 0.0, 1.1, 1.0), automatic = 1),
+		)
+
+/obj/item/weapon/gun/projectile/automatic/tbr16
+	name = "TBR-16"
+	desc = "The compact TBR-16 is an open bolt, gas operated, battle SMG, reliable, and expensive."
+	icon_state = "ctacsmg"
+	item_state = "rifle1"
+	w_class = ITEM_SIZE_HUGE
+	force = 10
+	caliber = "a762x51"
+	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 5)
+	slot_flags = SLOT_BACK
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/ctac
+	allowed_magazines = /obj/item/ammo_magazine/ctac
+	one_hand_penalty = 2
+	wielded_item_state = "arifle-wielded"
+	unload_sound 	= 'sound/weapons/guns/interact/ltrifle_magout.ogg'
+	reload_sound 	= 'sound/weapons/guns/interact/ltrifle_magin.ogg'
+
+
+	firemodes = list(
+		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, one_hand_penalty=2, burst_accuracy=null, dispersion=null, automatic = 0),
+		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=null,    one_hand_penalty=2, burst_accuracy=list(0,0,0),       dispersion=list(0.0, 0.6, 1.0), automatic = 0),
+		list(mode_name="6-round bursts", burst=6, fire_delay=null, move_delay=null,    one_hand_penalty=3, burst_accuracy=list(0,0,0),       dispersion=list(0.0, 0.6, 1.0), automatic = 0),
+		list(mode_name="automatic",   burst=1, fire_delay=null, move_delay=null,    one_hand_penalty=2, burst_accuracy=list(0,0,0,0,0), dispersion=list(0.0, 0.0, 0.0, 1.1, 1.0), automatic = 1),
 		)
 
 /obj/item/weapon/gun/projectile/automatic/tbr12/update_icon()

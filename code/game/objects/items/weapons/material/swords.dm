@@ -187,6 +187,36 @@
 	parry_sounds = list('sound/weapons/blade_parry1.ogg', 'sound/weapons/blade_parry2.ogg', 'sound/weapons/blade_parry3.ogg')
 	drop_sound = 'sound/items/drop_sword.ogg'
 
+/obj/item/weapon/material/sword/greatsword
+	name = "greatsword"
+	desc = "A huge two handed sword."
+	icon_state = "greatsword"
+	item_state = "longsword"
+	force_divisor = 0.9
+	block_chance = 35
+	w_class = ITEM_SIZE_HUGE
+	drawsound = 'sound/items/unholster_sword02.ogg'
+	equipsound = 'sound/items/holster_sword1.ogg'
+	sharpness = 27
+	weapon_speed_delay = 50
+	parry_sounds = list('sound/weapons/blade_parry1.ogg', 'sound/weapons/blade_parry2.ogg', 'sound/weapons/blade_parry3.ogg')
+	drop_sound = 'sound/items/drop_sword.ogg'
+
+/obj/item/weapon/material/sword/executioner
+	name = "executioner sword"
+	desc = "A sword used to decapitate heads.."
+	icon_state = "greatsword"
+	item_state = "longsword"
+	force_divisor = 1.4
+	block_chance = 0
+	w_class = ITEM_SIZE_HUGE
+	drawsound = 'sound/items/unholster_sword02.ogg'
+	equipsound = 'sound/items/holster_sword1.ogg'
+	sharpness = 30
+	weapon_speed_delay = 90
+	parry_sounds = list('sound/weapons/blade_parry1.ogg', 'sound/weapons/blade_parry2.ogg', 'sound/weapons/blade_parry3.ogg')
+	drop_sound = 'sound/items/drop_sword.ogg'
+
 /obj/item/weapon/material/sword/siegesword
 	name = "Beserk sword"
 	desc = "A rucky medium sized blade with a rusty handle. Mostly used by mercenaries & raiders."
@@ -205,6 +235,21 @@
 /obj/item/weapon/material/sword/oldsabre
 	name = "sabre"
 	desc = "A fine bladed sabre."
+	icon_state = "old_sabre"
+	item_state = "sabre"
+	force_divisor = 0.4
+	block_chance = 30
+	w_class = ITEM_SIZE_HUGE
+	drawsound = 'sound/items/unholster_sword02.ogg'
+	equipsound = 'sound/items/holster_sword1.ogg'
+	sharpness = 25
+	weapon_speed_delay = 15
+	parry_sounds = list('sound/weapons/blade_parry1.ogg', 'sound/weapons/blade_parry2.ogg', 'sound/weapons/blade_parry3.ogg')
+	drop_sound = 'sound/items/drop_sword.ogg'
+
+/obj/item/weapon/material/sword/siegesabre
+	name = "sabre"
+	desc = "A pld rugged sabre used by space raiders and the like."
 	icon_state = "old_sabre"
 	item_state = "sabre"
 	force_divisor = 0.4
@@ -284,8 +329,10 @@
 	desc = "A blunt force weapon. You do not want to get hit with this."
 	icon_state = "mace"
 	item_state = "mace"
-	force_divisor = 0.6
+	force_divisor = 0.7
 	block_chance = 20
+	attack_verb = list("bashed", "smashed", "slammed", "smacked")
+	hitsound = list("bash1", "bash2")
 	w_class = ITEM_SIZE_NORMAL
 	drawsound = 'sound/items/unholster_sword02.ogg'
 	equipsound = 'sound/items/holster_sword1.ogg'
@@ -294,4 +341,23 @@
 	drop_sound = 'sound/items/drop_sword.ogg'
 	sharp = 0
 	edge = 0
+
+/obj/item/weapon/material/sword/club
+	name = "steel club"
+	desc = "A blunt force weapon. You do not want to get hit with this."
+	icon_state = "steelclub2"
+	item_state = "mace"
+	force_divisor = 0.8
+	block_chance = 30
+	attack_verb = list("bashed", "smashed", "slammed", "smacked")
+	hitsound = list("bash1", "bash2")
+	w_class = ITEM_SIZE_HUGE
+	drawsound = 'sound/items/unholster_sword02.ogg'
+	equipsound = 'sound/items/holster_sword1.ogg'
+	sharpness = 0
+	weapon_speed_delay = 27
+	drop_sound = 'sound/items/drop_sword.ogg'
+	sharp = 0
+	edge = 0
+
 
