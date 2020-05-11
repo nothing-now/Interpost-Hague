@@ -74,6 +74,7 @@
 	var/hasvagina_p = (P.gender == FEMALE && P.species.genitals)
 	var/hasanus_p = P.species.anus
 	var/isnude = H.is_nude()
+	var/erpcooldown = 0
 	var/isnude_p = P.is_nude()
 
 	H.lastfucked = null
@@ -129,8 +130,8 @@
 							dat += {"<A href='?src=\ref[usr];interaction=vaglick'><font color=purple>Lick pussy.</font></A><BR>"}
 						if (hasanus_p)
 							dat += {"<A href='?src=\ref[usr];interaction=asslick'><font color=purple>Lick ass.</font></A><BR>"}
-				//	dat +=  {"<A href='?src=\ref[usr];interaction=spit'><font color=red>Spit.</font></A><BR>"}
-				//dat +=  {"<A href='?src=\ref[usr];interaction=tongue'><font color=red>Stick out tongue.</font></A><BR>"}
+					dat +=  {"<A href='?src=\ref[usr];interaction=spit'><font color=red>Spit.</font></A><BR>"}
+				dat +=  {"<A href='?src=\ref[usr];interaction=tongue'><font color=red>Stick out tongue.</font></A><BR>"}
 
 	if (isnude && usr.loc == H.partner.loc)
 		if(H.partner.age >= 16)
@@ -161,11 +162,10 @@
 	var/potenzia = 10
 	var/resistenza = 200
 	var/lust = 0
-	var/erpcooldown = 0
 	var/multiorgasms = 0
 	var/lastmoan
 	var/mutilated_genitals = 0 //Whether or not they can do the fug.
-	var/virgin = TRUE //:mistake: :mistake:
+	var/virgin = FALSE //:mistake:
 
 /mob/living/carbon/human/proc/cum(mob/living/carbon/human/H as mob, mob/living/carbon/human/P as mob, var/hole = "floor")
 	var/message = ""
@@ -195,7 +195,7 @@
 				holder.trans_to_mob(P, amt, CHEM_INGEST)
 
 			else if (hole == "vagina")
-				message = pick("cums in [P]'s pussy")
+				message = pick("cums in [P]'s pussy.")
 
 			else if (hole == "anus")
 				message = pick("cums in [P]'s asshole.")
@@ -203,7 +203,7 @@
 				message = "cums on the floor!"
 
 		else
-			message = pick("cums!", "orgams!")
+			message = pick("cums!", "orgasms!")
 
 		playsound(loc, "honk/sound/interactions/final_m[rand(1, 5)].ogg", 70, 1, 0)
 
@@ -224,7 +224,7 @@
 
 	H.druggy = 60
 	H.multiorgasms += 1
-	H.erpcooldown = rand(200, 450)
+	H.erpcooldown += 3
 	if (H.multiorgasms > H.potenzia / 3)
 		if (H.staminaloss < P.potenzia * 4)
 			H.staminaloss += H.potenzia
@@ -260,7 +260,7 @@ mob/living/carbon/human/proc/fuck(mob/living/carbon/human/H as mob, mob/living/c
 					P.cum(P, H)
 				else
 					P.moan()
-			if(emote_cd == 1)
+			if(erpcooldown == 3)
 				return
 			H.do_fucking_animation(P)
 
@@ -286,7 +286,7 @@ mob/living/carbon/human/proc/fuck(mob/living/carbon/human/H as mob, mob/living/c
 					P.cum(P, H)
 				else
 					P.moan()
-			if(emote_cd == 1)
+			if(erpcooldown == 3)
 				return
 			playsound(loc, "honk/sound/interactions/champ_fingering.ogg", 50, 1, -1)
 			H.do_fucking_animation(P)
@@ -308,7 +308,7 @@ mob/living/carbon/human/proc/fuck(mob/living/carbon/human/H as mob, mob/living/c
 				P.lust += 10
 				if (P.lust >= P.resistenza)
 					P.cum(P, H, "mouth")
-			if(emote_cd == 1)
+			if(erpcooldown == 3)
 				return
 			playsound(loc, "honk/sound/interactions/bj[rand(1, 11)].ogg", 50, 1, -1)
 			H.do_fucking_animation(P)
@@ -352,7 +352,7 @@ mob/living/carbon/human/proc/fuck(mob/living/carbon/human/H as mob, mob/living/c
 					P.cum(P, H)
 				else
 					P.moan()
-			if(emote_cd == 1)
+			if(erpcooldown == 3)
 				return
 			H.do_fucking_animation(P)
 			playsound(loc, "honk/sound/interactions/bang[rand(1, 3)].ogg", 70, 1, -1)
@@ -388,7 +388,7 @@ mob/living/carbon/human/proc/fuck(mob/living/carbon/human/H as mob, mob/living/c
 					P.cum(P, H)
 				else
 					P.moan()
-			if(emote_cd == 1)
+			if(erpcooldown == 3)
 				return
 			H.do_fucking_animation(P)
 			playsound(loc, "honk/sound/interactions/bang[rand(1, 3)].ogg", 70, 1, -1)
@@ -429,7 +429,7 @@ mob/living/carbon/human/proc/fuck(mob/living/carbon/human/H as mob, mob/living/c
 		if("mount")
 			message = pick("fucks [P]'s dick", "rides [P]'s dick", "rides [P]")
 			if (H.lastfucked != P || H.lfhole != hole)
-				message = pick("begins to hop on [P]'s dick.")
+				message = pick("begins to hop on [P]'s dick")
 				H.lastfucked = P
 				H.lfhole = hole
 
@@ -440,7 +440,7 @@ mob/living/carbon/human/proc/fuck(mob/living/carbon/human/H as mob, mob/living/c
 				H.visible_message("<font color=purple>[H] [message].</font>")
 			if(H.virgin)
 				H.virgin = FALSE
-				H.visible_message("<font color=purple><B>[P] pops [H]'s cherry.</B></font>")
+				H.visible_message("<font color=purple><B>[P] pop's [H]'s cherry.</B></font>")
 			if (istype(P.loc, /obj/structure/closet))
 				P.visible_message("<font color=purple>[H] [message].</font>")
 				playsound(P.loc.loc, 'sound/effects/clang.ogg', 50, 0, 0)
@@ -537,22 +537,22 @@ mob/living/carbon/human/proc/fuck(mob/living/carbon/human/H as mob, mob/living/c
 /obj/item/weapon/enlarger/attack(mob/living/carbon/human/M, mob/living/carbon/human/user)
 	if(istype(M, /mob/living/carbon/human) && (M.gender == MALE))
 		M.potenzia = 30
-		M << "<span class='warning'>Your penis extends!</span>"
+		to_chat(M, "<span class='warning'>Your penis extends!</span>")
 
 	else if (istype(M, /mob/living/carbon/human) && M.gender == FEMALE)
-		M << "<span class='warning'>It didn't affect you since you're female!</span>"
+		to_chat(M, "<span class='warning'>It didn't affect you since you're female!</span>")
 
 	..()
 
 	qdel(src)
 
 /obj/item/weapon/enlarger/attack_self(mob/user as mob)
-	user << "<span class='warning'>You break the syringe. Gooey mass is dripping on the floor.</span>"
+	to_chat(usr, "<span class='warning'>You break the syringe. Gooey mass is dripping on the floor.</span>")
 	qdel(src)
 
 /obj/item/weapon/dildo
 	name = "dildo"
-	desc = "Hmmm, deal throw"
+	desc = "Hmmm, deal throw."
 	icon = 'honk/icons/obj/items/dildo.dmi'
 	icon_state = "dildo"
 	item_state = "c_tube"
@@ -625,4 +625,4 @@ mob/living/carbon/human/proc/fuck(mob/living/carbon/human/H as mob, mob/living/c
 		hole = "anus"
 	else
 		hole = "vagina"
-	user << "<span class='warning'>Hmmm. Maybe we should put it in [hole]?!</span>"
+	to_chat(user, "<span class='warning'>Hmmm. Maybe we should put it in [hole]?!</span>")
