@@ -109,7 +109,7 @@
 	var/shakecamera = 0
 	var/a_intent = I_HELP//Living
 	var/c_intent = I_AIM
-	var/defense_intent = I_DODGE//Living. For dodging and parrying.
+	var/defense_intent = I_PARRY//Living. For dodging and parrying.
 	var/m_intent = "walk"//Living
 	var/middle_click_intent = null //For doing different things with middle click.
 	var/combat_mode = 0//Living
