@@ -74,7 +74,6 @@
 	var/hasvagina_p = (P.gender == FEMALE && P.species.genitals)
 	var/hasanus_p = P.species.anus
 	var/isnude = H.is_nude()
-	var/erpcooldown = 0
 	var/isnude_p = P.is_nude()
 
 	H.lastfucked = null
@@ -164,8 +163,9 @@
 	var/lust = 0
 	var/multiorgasms = 0
 	var/lastmoan
+	var/erpcooldown = 0
 	var/mutilated_genitals = 0 //Whether or not they can do the fug.
-	var/virgin = TRUE //:mistake:
+	var/virgin = FALSE //:mistake:
 
 /mob/living/carbon/human/proc/cum(mob/living/carbon/human/H as mob, mob/living/carbon/human/P as mob, var/hole = "floor")
 	var/message = ""
