@@ -294,6 +294,16 @@
 	max_ammo = 20
 	multiple_sprites = 1
 
+/obj/item/ammo_magazine/ctac
+	name = "CTAC magazine (7.62x51)"
+	icon_state = "ctac_high"
+	mag_type = MAGAZINE
+	caliber = "a762x51"
+	matter = list(DEFAULT_WALL_MATERIAL = 1800)
+	ammo_type = /obj/item/ammo_casing/a762x51
+	max_ammo = 25
+	multiple_sprites = 1
+
 /obj/item/ammo_magazine/caps
 	name = "speed loader (caps)"
 	desc = "A cheap plastic speed loader for some kind of revolver."

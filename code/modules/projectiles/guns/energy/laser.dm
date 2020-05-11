@@ -106,7 +106,7 @@ obj/item/weapon/gun/energy/retro
 	one_hand_penalty = 2
 	w_class = ITEM_SIZE_LARGE
 	charge_cost = 15
-	max_shots = 10
+	max_shots = 20
 	wielded_item_state = "gun_wielded"
 	combustion = 0
 

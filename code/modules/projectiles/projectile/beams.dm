@@ -59,7 +59,7 @@
 	impact_type = /obj/effect/projectile/laser/xray/impact
 
 /obj/item/projectile/beam/xray/midlaser
-	damage = 30
+	damage = 100
 	armor_penetration = 50
 
 /obj/item/projectile/beam/pulse

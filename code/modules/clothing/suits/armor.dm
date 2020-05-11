@@ -68,6 +68,30 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 	armor = list(melee = 67, gun = 0, energy = 15, bomb = 20, bio = 20, rad = 0)
 
+/obj/item/clothing/suit/armor/fullbreastplate
+	name = "breast plated armor"
+	desc = "A thick breast plate made of steel. Has steel pads to protect the shoulders."
+	icon_state = "fullchestplate"
+	item_state = "fullchestplate"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
+	armor = list(melee = 90, gun = 30, energy = 15, bomb = 35, bio = 20, rad = 0)
+
+/obj/item/clothing/suit/armor/fullbreastplate
+	name = "military hardsuit"
+	desc = "A hardsuit with heavy paddings and kevlar plates."
+	icon_state = "militarysuit"
+	item_state = "militarysuit"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	armor = list(melee = 80, gun = 75, energy = 40, bomb = 60, bio = 20, rad = 20)
+
+/obj/item/clothing/suit/armor/tanksuit
+	name = "military tank hardsuit"
+	desc = "A very heavy hardsuit using composed steel plates and kevlar."
+	icon_state = "tankhardsuit"
+	item_state = "tankhardsuit"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
+	armor = list(melee = 100, gun = 100, energy = 100, bomb = 100, bio = 60, rad = 50)
+
 /obj/item/clothing/suit/armor/medieval
 	name = "plated armor"
 	desc = "A thick, expensive iron armor, covering most of the body."
@@ -274,6 +298,13 @@
 	icon_state = "tacwebvest"
 	item_state = "tacwebvest"
 	armor = list(melee = 40, bullet = 40, laser = 60, energy = 35, bomb = 30, bio = 0, rad = 0)
+
+/obj/item/clothing/suit/storage/vest/tactical
+	name = "B6 vest"
+	desc = "A heavy armored vest in a fetching tan. It is surprisingly flexible, even with the extra advanced ceramic plates."
+	icon_state = "tanb24"
+	item_state = "tanb24"
+	armor = list(melee = 40, bullet = 80, laser = 60, energy = 35, bomb = 30, bio = 0, rad = 0)
 
 /obj/item/clothing/suit/storage/vest/merc
 	name = "heavy combat armor"
