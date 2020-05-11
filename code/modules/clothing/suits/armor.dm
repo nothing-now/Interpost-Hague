@@ -76,7 +76,7 @@
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
 	armor = list(melee = 90, gun = 30, energy = 15, bomb = 35, bio = 20, rad = 0)
 
-/obj/item/clothing/suit/armor/fullbreastplate
+/obj/item/clothing/suit/armor/militaryhardsuit
 	name = "military hardsuit"
 	desc = "A hardsuit with heavy paddings and kevlar plates."
 	icon_state = "militarysuit"

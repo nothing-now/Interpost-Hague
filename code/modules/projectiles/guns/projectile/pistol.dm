@@ -114,6 +114,28 @@
 	else
 		icon_state = "glock17_empty"
 
+/obj/item/weapon/gun/projectile/herculus
+	name = "Herculus BX-24"
+	desc = "A very fine and high-tech firearm. Chambered in (9mm)."
+	icon_state = "herculusxv26"
+	item_state = "pistol1"
+	w_class = ITEM_SIZE_SMALL
+	caliber = "a9mm"
+	silenced = 1
+	fire_delay = 0
+	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2, TECH_ILLEGAL = 2)
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/glock17
+	allowed_magazines = /obj/item/ammo_magazine/glock17
+	jam_chance = 0
+
+/obj/item/weapon/gun/projectile/glock17/update_icon()
+	..()
+	if(ammo_magazine && ammo_magazine.stored_ammo.len)
+		icon_state = "glock17"
+	else
+		icon_state = "glock17_empty"
+
 /obj/item/weapon/gun/projectile/maka
 	name = "black makarov"
 	desc = "A tactical makarov, mostly used by officers."

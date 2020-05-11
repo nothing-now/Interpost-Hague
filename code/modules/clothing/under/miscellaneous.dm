@@ -623,6 +623,24 @@
 	icon_state = "frontier"
 	worn_state = "frontier"
 
+/obj/item/clothing/under/marine
+	name = "marine uniform"
+	desc = "A marine uniform used by military forces."
+	icon_state = "marine"
+	worn_state = "marine"
+
+/obj/item/clothing/under/freelancer
+	name = "casual suit"
+	desc = "A casual outfit composed of blue jeans and a beige shirt."
+	icon_state = "freelancer"
+	worn_state = "freelancer"
+
+/obj/item/clothing/under/merc1
+	name = "red plaid uniform"
+	desc = "A red plaid shirt composed with black cargo pants."
+	icon_state = "merc"
+	worn_state = "merc"
+
 /obj/item/clothing/under/aether
 	name = "\improper Aether jumpsuit"
 	desc = "A jumpsuit belonging to Aether Atmospherics and Recycling, a Trans-Stellar that supplies recycling and atmospheric systems to colonies."

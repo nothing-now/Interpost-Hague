@@ -189,3 +189,16 @@
 		slot_l_hand_str = "syndicate-black",
 		slot_r_hand_str = "syndicate-black",
 	)
+
+/obj/item/clothing/suit/space/merc
+	name = "combat suit"
+	icon_state = "merc"
+	desc = "A combat suit used around space by mercenaries. This suit seems to have a few scratches."
+	w_class = ITEM_SIZE_NORMAL
+	allowed = list(/obj/item/weapon/gun,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/melee/energy/sword,/obj/item/weapon/handcuffs,/obj/item/weapon/tank/emergency)
+	armor = list(melee = 60, bullet = 50, laser = 50,energy = 15, bomb = 30, bio = 30, rad = 30)
+	siemens_coefficient = 0.3
+
+/obj/item/clothing/suit/space/merc/New()
+	..()
+	slowdown_per_slot[slot_wear_suit] = 1
