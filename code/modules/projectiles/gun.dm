@@ -69,6 +69,7 @@
 	var/list/dispersion = list(0)
 	var/one_hand_penalty
 	var/wielded_item_state
+	var/deaf_ability = 1
 	var/combustion	//whether it creates hotspot when fired
 	var/is_jammed = 0	//Whether this gun is jammed
 	var/has_jammed = FALSE
@@ -423,14 +424,22 @@
 
 		for (var/mob/M in mobs)
 			M.playsound_local(user, shot_sound, rand(50, 70))
+		if(deaf_ability == 1)
+			playsound(src.loc, 'sound/effects/earing.ogg', 50, 1)
+			user.ear_deaf += 15
 
 		var/list/mob/far_mobs = (orange(world.view * 3, user) - mobs)
 
 		for (var/mob/M in far_mobs)
-			M.playsound_local(M, far_fire_sound, rand(20, 50))
+			M.playsound_local(user, far_fire_sound, rand(20, 50))
 	else
 		for (var/mob/M in view(world.view, user))
 			M.playsound_local(user, shot_sound, rand(10, 30), FALSE)
+		if(deaf_ability == 1)
+			playsound(src.loc, 'sound/effects/earing.ogg', 50, 1)
+			to_chat(usr, "<span class='danger'>You only hear ringing in your ears.</span>")
+			user.ear_deaf += 15
+
 
 //Suicide handling.
 /obj/item/weapon/gun/var/mouthshoot = 0 //To stop people from suiciding twice... >.>

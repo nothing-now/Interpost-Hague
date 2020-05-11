@@ -69,6 +69,10 @@
 	//set window title
 	name = "[server_name] - [GLOB.using_map.full_name]"
 
+	extools_initialize()
+
+	tffi_initialize()
+
 	//logs
 	SetupLogs()
 	var/date_string = time2text(world.realtime, "YYYY/MM-Month/DD-Day")

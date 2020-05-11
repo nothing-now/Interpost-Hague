@@ -213,6 +213,7 @@
 		H.generate_skills(list("melee","ranged","medical"))
 
 /datum/job/rd
+	selection_color = "#0055A1"
 	title = "Court Magus"
 	supervisors = "the Count"
 	minimal_player_age = 21
@@ -247,6 +248,7 @@
 		H.generate_skills(list("science","medical", "crafting"))
 
 /datum/job/scientist
+	selection_color = "#006BCA"
 	title = "Technology Researcher"
 	supervisors = "the Court Magus"
 	minimal_player_age = 19
