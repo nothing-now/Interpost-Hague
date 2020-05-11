@@ -140,19 +140,20 @@
 	if(HULK in M.mutations)
 		to_chat(M, "<span class='danger'>Your fingers are much too large for the trigger guard!</span>")
 		return 0
-	if((CLUMSY in M.mutations) && prob(40)) //Clumsy handling
-		var/obj/P = consume_next_projectile()
-		if(P)
-			if(process_projectile(P, user, user, pick(BP_L_FOOT, BP_R_FOOT)))
-				handle_post_fire(user, user)
-				user.visible_message(
-					"<span class='danger'>\The [user] shoots \himself in the foot with \the [src]!</span>",
-					"<span class='danger'>You shoot yourself in the foot with \the [src]!</span>"
-					)
-				M.drop_item()
-		else
-			handle_click_empty(user)
-		return 0
+	if(CLUMSY in M.mutations) //Clumsy handling
+		if(prob(30))
+			var/obj/P = consume_next_projectile()
+			if(P)
+				if(process_projectile(P, user, user, pick(BP_L_FOOT, BP_R_FOOT)))
+					handle_post_fire(user, user)
+					user.visible_message(
+						"<span class='danger'>\The [user] shoots \himself in the foot with \the [src]!</span>",
+						"<span class='danger'>You shoot yourself in the foot with \the [src]!</span>"
+						)
+					M.drop_item()
+			else
+				handle_click_empty(user)
+			return 0
 	if(safety)
 		to_chat(user, "<span class='danger'>The gun's safety is on!</span>")
 		handle_click_empty(user)
