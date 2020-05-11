@@ -26,10 +26,10 @@
 #define ui_inventory "SOUTH,4"
 
 //Lower center, persistant menu
-#define ui_sstore1 "SOUTH+1,4"
+#define ui_sstore1 "SOUTH,12"
 #define ui_id "SOUTH-1,1"
 #define ui_belt "SOUTH-1,3"
-#define ui_back "SOUTH+1,3"
+#define ui_back "SOUTH,5"
 #define ui_rhand "SOUTH,1"
 #define ui_lhand "SOUTH,3"
 #define ui_swaphand2 "8:16,2:5"
@@ -129,14 +129,14 @@
 
 #define ui_iclothing "SOUTH-1,2"
 #define ui_oclothing "SOUTH,2"
-#define ui_gloves "SOUTH,5"
+#define ui_gloves "SOUTH,10"
 
 #define ui_glasses "SOUTH,8"
-#define ui_mask "SOUTH+1,1"
+#define ui_mask "SOUTH,9"
 #define ui_l_ear "SOUTH,6"
 #define ui_r_ear "SOUTH,7"
 
-#define ui_head "SOUTH+1,2"
+#define ui_head "SOUTH,11"
 
 //#define ui_swapbutton "6:-16,1:5" //Unused
 
