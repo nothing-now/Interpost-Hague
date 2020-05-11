@@ -418,15 +418,15 @@
 	if (!silenced)
 		if (!far_fire_sound)
 			playsound(user, shot_sound, rand(50, 70))
+		if(deaf_ability == 1)
+			playsound(src.loc, 'sound/effects/earing.ogg', 20, 1)
+			user.ear_deaf += 15
 			return
 
 		var/list/mob/mobs = view(world.view, user)
 
 		for (var/mob/M in mobs)
 			M.playsound_local(user, shot_sound, rand(50, 70))
-		if(deaf_ability == 1)
-			playsound(src.loc, 'sound/effects/earing.ogg', 50, 1)
-			user.ear_deaf += 15
 
 		var/list/mob/far_mobs = (orange(world.view * 3, user) - mobs)
 
@@ -435,11 +435,6 @@
 	else
 		for (var/mob/M in view(world.view, user))
 			M.playsound_local(user, shot_sound, rand(10, 30), FALSE)
-		if(deaf_ability == 1)
-			playsound(src.loc, 'sound/effects/earing.ogg', 50, 1)
-			to_chat(usr, "<span class='danger'>You only hear ringing in your ears.</span>")
-			user.ear_deaf += 15
-
 
 //Suicide handling.
 /obj/item/weapon/gun/var/mouthshoot = 0 //To stop people from suiciding twice... >.>
