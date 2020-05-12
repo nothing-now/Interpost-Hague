@@ -204,25 +204,25 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 /mob/proc/skillnumtodesc(var/skill)
 	switch(skill)
 		if(0 to 24)
-			return "<small><i>unskilled</i></small>"
+			return "<small>unskilled</small>"
 		if(25 to 44)
 			return "alright"
 		if(45 to 59)
 			return "skilled"
 		if(60 to 79)
-			return "professional"
+			return "great"
 		if(80 to INFINITY)
-			return "<b>godlike</b>"
+			return "<b>wonderful</b>"
 
 // 3 rand(1,34) are rolled, and totaled for each skill.  Main Skill is set the higest, rest are picked at random.
 /mob/proc/generate_skills(var/list/generate_skills)
 	var/list/rand_skills = skills.Copy()
 	//Roll a new random roll for each stat
 	for(var/skill in generate_skills)
-		skills[skill] = (40 + rand(1,40) + rand(1,40))
+		skills[skill] = (40 + rand(1,20) + rand(1,5))
 		rand_skills -= skill
 	for(var/skill in rand_skills)
-		skills[skill] = (rand(1,15) + rand(1,15) + rand(1,15))
+		skills[skill] = (rand(1,10) + rand(1,25) + rand(1,27))
 /*
 /mob/proc/add_skills(var/melee_val, var/ranged_val, var/medical_val, var/engineering_val)//To make adding skills quicker.
 	if(melee_val)
