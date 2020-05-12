@@ -61,3 +61,7 @@
 	var/doing_something = 0	//Like pulling teeth?
 
 	var/obj/screen/plane_master/blur_all/blur_effect = new
+
+	pixel_z = MOB_PIXEL_Z
+
+	var/shadow_offset = -2
