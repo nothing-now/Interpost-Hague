@@ -256,7 +256,7 @@
 	full_pain = 0
 
 /obj/item/organ/external/proc/stun_act(var/stun_amount, var/agony_amount)
-	if(agony_amount > 5 && owner && vital && get_full_pain() > 0.5 * max_damage)
+	if(agony_amount > 10 && owner && vital && get_full_pain() > 0.5 * max_damage)
 		owner.visible_message("<span class='warning'>[owner] reels in pain!</span>")
 		if(has_genitals() || get_full_pain() + agony_amount > max_damage)
 			owner.Weaken(6)

@@ -21,7 +21,7 @@
 		var/obj/item/I = get_active_hand()
 		var/obj/item/II = get_inactive_hand()
 
-		if(target.stat != CONSCIOUS && prob(70) || target.is_npc)
+		if(target.stat != CONSCIOUS || target.is_npc)
 			target = null
 			return
 
