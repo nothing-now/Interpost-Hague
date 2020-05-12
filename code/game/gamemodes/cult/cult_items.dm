@@ -102,7 +102,7 @@
 /obj/item/clothing/head/helmet/space/merc
 	name = "combat helmet"
 	desc = "A space helmet used for combat. seems to be from the black market."
-	icon_state = "cult_helmet"
+	icon_state = "merc"
 	armor = list(melee = 60, bullet = 60, laser = 60,energy = 15, bomb = 30, bio = 100, rad = 30) //Real tanky shit.
 	siemens_coefficient = 0.3 //Bone is not very conducive to electricity.
 

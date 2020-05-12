@@ -36,17 +36,17 @@
 	material = "wood"
 
 /obj/structure/table/ruintable
-	icon_state = "ruin_table"
+	icon_state = "ruintable_preview"
 	material = "steel"
 	color = "#ffffff"
 
 /obj/structure/table/spacetable
-	icon_state = "spacetable"
+	icon_state = "spacetable_preview"
 	material = "steel"
 	color = "#ffffff"
 
 /obj/structure/table/finetable
-	icon_state = "finetable"
+	icon_state = "finetable_preview"
 	material = "wood"
 
 /obj/structure/table/glass
