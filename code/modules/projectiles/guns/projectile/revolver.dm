@@ -136,3 +136,23 @@
 	caliber = "a32"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	ammo_type = /obj/item/ammo_casing/a32
+
+/obj/item/weapon/gun/projectile/revolver/colony/revolver
+	name = "Malice revolver"
+	desc = "A revolver produced on frontier colonies. Chambered in (9mm)."
+	icon_state = "colonyrevolver"
+	item_state = "pistol1"
+	max_shells = 6
+	caliber = "a9mm"
+	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
+	ammo_type = /obj/item/ammo_casing/a9mm
+
+/obj/item/weapon/gun/projectile/revolver/colony/revolver
+	name = "Malice revolver"
+	desc = "A revolver produced on frontier colonies. Chambered in (9mm)."
+	icon_state = "colonyrevolver"
+	item_state = "pistol1"
+	max_shells = 6
+	caliber = "a9mm"
+	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
+	ammo_type = /obj/item/ammo_casing/a9mm

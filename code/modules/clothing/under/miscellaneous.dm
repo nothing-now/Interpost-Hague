@@ -259,6 +259,13 @@
 	item_state = "r_suit"
 	worn_state = "redcoat"
 
+/obj/item/clothing/under/mayoer
+	name = "mayoer outfit"
+	desc = "A outfit composed of a golden belt, a leather jacket and a white fine shirt with some silk pants."
+	icon_state = "mayoer"
+	item_state = "mayoer"
+	worn_state = "mayoer"
+
 /obj/item/clothing/under/kilt
 	name = "kilt"
 	desc = "Includes shoes and plaid."
@@ -452,6 +459,13 @@
 	icon_state = "blackjumpskirt"
 	item_state = "bl_suit"
 	worn_state = "blackjumpskirt"
+
+/obj/item/clothing/under/bum
+	name = "bum outfit"
+	desc = "A ragged outfit that seems to be very dirty and old."
+	icon_state = "bum"
+	item_state = "bum"
+	worn_state = "bum"
 
 /obj/item/clothing/under/shortjumpskirt
 	name = "short jumpskirt"

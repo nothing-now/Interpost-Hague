@@ -369,6 +369,13 @@
 	desc = "A black leather coat. A corporate logo is proudly displayed on the back."
 	icon_state = "leather_jacket_nt"
 
+/obj/item/clothing/suit/storage/bum
+	name = "bum coat"
+	desc = "A old coat worn by homeless people mostly."
+	icon_state = "bumcoat"
+	item_state = "bumcoat"
+	body_parts_covered = UPPER_TORSO|ARMS
+
 //This one has buttons for some reason
 /obj/item/clothing/suit/storage/toggle/brown_jacket
 	name = "leather jacket"
