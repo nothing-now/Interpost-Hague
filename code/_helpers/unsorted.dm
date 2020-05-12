@@ -1140,3 +1140,23 @@ GLOBAL_DATUM_INIT(dview_mob, /mob/dview, new)
 		return 0
 
 	return 1
+
+/proc/Get_Pixel_Angle(dx, dy)//for getting the angle when animating something's pixel_x and pixel_y
+	var/da = (90 - ATAN2(dx, dy))
+	return (da >= 0 ? da : da + 360)
+
+/proc/get_angle_with_scatter(atom/start, atom/end, scatter, x_offset = 16, y_offset = 16)
+	var/end_apx
+	var/end_apy
+	if(isliving(end)) //Center mass.
+		end_apx = ABS_COOR(end.x)
+		end_apy = ABS_COOR(end.y)
+	else //Exact pixel.
+		end_apx = ABS_COOR_OFFSET(end.x, x_offset)
+		end_apy = ABS_COOR_OFFSET(end.y, y_offset)
+	scatter = ( (rand(0, min(scatter, 45))) * (prob(50) ? 1 : -1) ) //Up to 45 degrees deviation to either side.
+	. = round((90 - ATAN2(end_apx - ABS_COOR(start.x), end_apy - ABS_COOR(start.y))), 1) + scatter
+	if(. < 0)
+		. += 360
+	else if(. >= 360)
+		. -= 360

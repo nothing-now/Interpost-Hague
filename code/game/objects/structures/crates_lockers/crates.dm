@@ -5,6 +5,7 @@ obj/structure/closet/crate
 	icon_state = "crate"
 	icon_opened = "crateopen"
 	icon_closed = "crate"
+	density = 1
 	atom_flags = ATOM_FLAG_CLIMBABLE
 	setup = 0
 

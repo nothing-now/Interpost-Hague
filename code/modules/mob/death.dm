@@ -47,13 +47,13 @@
 		if(src)			qdel(src)
 
 
-/mob/proc/death(gibbed,deathmessage="seizes up and falls limp...", show_dead_message = "You have died.")
+/mob/proc/death(mob/user as mob, gibbed,deathmessage="falls limp, with his eyes dead and lifeless...", show_dead_message = "You have died.")
 
 	if(stat == DEAD)
 		return 0
 
 	facing_dir = null
-	playsound(usr, 'sound/effects/death.ogg', 50, 1)
+	playsound(user, 'sound/effects/death.ogg', 50, 1)
 
 	if(!gibbed && deathmessage != "no message") // This is gross, but reliable. Only brains use it.
 		src.visible_message("<b>\The [src.name]</b> [deathmessage]")
@@ -87,6 +87,8 @@
 	switch_from_living_to_dead_mob_list()
 
 	update_icon()
+
+	client.color = list(0.30,0.30,0.30,0, 0.60,0.60,0.60,0, 0.10,0.10,0.10,0, 0,0,0,1, 0,0,0,0)
 
 	if(ticker && ticker.mode)
 		ticker.mode.check_win()

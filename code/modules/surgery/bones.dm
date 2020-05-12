@@ -72,25 +72,31 @@
 
 /datum/surgery_step/set_bone/begin_step(mob/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	var/bone = affected.encased ? "[target]'s [affected.encased]" : "bones in [target]'s [affected.name]"
-	user.visible_message("[user] is beginning to set the [bone] in place with \the [tool]." , \
-		"You are beginning to set the [bone] in place with \the [tool].")
+	var/bone = affected.encased ? "\the [target]'s [affected.encased]" : "bones in \the [target]'s [affected.name]"
+	if(affected.encased == "skull")
+		user.visible_message("[user] is beginning to piece [bone] back together with \the [tool]." , \
+			"You are beginning to piece [bone] back together with \the [tool].")
+	else
+		user.visible_message("[user] is beginning to set [bone] in place with \the [tool]." , \
+			"You are beginning to set [bone] in place with \the [tool].")
 	target.custom_pain("The pain in your [affected.name] is going to make you pass out!",50, affecting = affected)
 	..()
 
 /datum/surgery_step/set_bone/end_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)
-	var/bone = affected.encased ? "[target]'s [affected.encased]" : "bones in [target]'s [affected.name]"
+	var/bone = affected.encased ? "\the [target]'s [affected.encased]" : "bones in \the [target]'s [affected.name]"
 	if (affected.status & ORGAN_BROKEN)
-		user.visible_message("<span class='notice'>[user] sets the [bone] n place with \the [tool].</span>", \
-			"<span class='notice'>You set the [bone] in place with \the [tool].</span>")
+		if(affected.encased == "skull")
+			user.visible_message("<span class='notice'>\The [user] pieces [bone] back together with \the [tool].</span>", \
+				"<span class='notice'>You piece [bone] back together with \the [tool].</span>")
+		else
+			user.visible_message("<span class='notice'>\The [user] sets [bone] in place with \the [tool].</span>", \
+				"<span class='notice'>You set [bone] in place with \the [tool].</span>")
 		affected.stage = 2
-		affected.status &= ~ORGAN_BROKEN
 	else
-		if (!user.skillcheck(user.skills[SKILL_MED], 50, null, "Medical"))
-			user.visible_message("<span class='notice'>[user] sets the [bone]</span> <span class='warning'>in the WRONG place with \the [tool].</span>", \
-				"<span class='notice'>You set the [bone]</span> <span class='warning'>in the WRONG place with \the [tool].</span>")
-			affected.fracture()
+		user.visible_message("<span class='notice'>\The [user] sets [bone]</span> <span class='warning'>in the WRONG place with \the [tool].</span>", \
+			"<span class='notice'>You set [bone]</span> <span class='warning'>in the WRONG place with \the [tool].</span>")
+		affected.fracture()
 
 /datum/surgery_step/set_bone/fail_step(mob/living/user, mob/living/carbon/human/target, target_zone, obj/item/tool)
 	var/obj/item/organ/external/affected = target.get_organ(target_zone)

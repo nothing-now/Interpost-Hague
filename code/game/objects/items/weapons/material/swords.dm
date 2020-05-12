@@ -56,7 +56,6 @@
 			attack_verb = list("bashed", "smacked")
 			hitsound = "swing_hit"
 			return
-
 		if(SLASH)
 			atk_mode = SLASH
 			to_chat(user, "You will now slash.")

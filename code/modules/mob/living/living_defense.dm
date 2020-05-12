@@ -30,6 +30,8 @@
 			show_message(SPAN_WARNING("[absorb_text]"))
 		else
 			show_message(SPAN_WARNING("Your armor absorbs the blow!"))
+
+		playsound(src, "sound/weapons/armorblockheavy[rand(1,3)].ogg", 50, 1, 1)
 		return 100
 	//this makes it so that X armour blocks X% damage, when including the chance of hard block.
 	//I double checked and this formula will also ensure that a higher effective_armor
