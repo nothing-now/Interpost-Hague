@@ -6,6 +6,7 @@
 	density = 0
 	anchored = 1.0
 	layer = CATWALK_LAYER
+	obj_flags = OBJ_FLAG_NOFALL
 
 /obj/structure/catwalk/Initialize()
 	. = ..()
