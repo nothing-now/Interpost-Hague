@@ -838,7 +838,6 @@ default behaviour is:
 		layer = HIDING_MOB_LAYER
 	else
 		..()
-
 /mob/living/set_dir()
 	..()
 	update_vision_cone()
@@ -854,12 +853,6 @@ default behaviour is:
 
 /mob/living/receive_damage(atom/A)
 	..()
-
-/mob/living/update_icons()
-	if(auras)
-		overlays |= auras
-	update_shadow()
-
 /mob/living/proc/add_aura(var/obj/aura/aura)
 	LAZYDISTINCTADD(auras,aura)
 	update_icons()
@@ -891,22 +884,3 @@ default behaviour is:
 		for(var/a in auras)
 			remove_aura(a)
 	return ..()
-
-
-/mob/living/regenerate_icons()
-	..()
-	overlays.Cut()
-	update_shadow(0)
-
-/mob/living/proc/update_shadow(var/update_icons=1)
-	if(mob_flags & MOB_FLAG_NO_SHADOW)
-		return
-
-	var/turf/T = get_turf(src)
-	if(lying || (T && T.is_open())) // dont display shadows if we're laying down or in space
-		return
-
-	var/image/shadow = overlay_image('icons/effects/effects.dmi', icon_state="mob_shadow")
-	shadow.layer = MOB_SHADOW_LAYER
-	shadow.pixel_z = shadow_offset // putting it lower than our mob
-	overlays += shadow

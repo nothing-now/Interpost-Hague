@@ -139,7 +139,6 @@ Please contact me on #coderbus IRC. ~Carn x
 #define R_HAND_LAYER			25
 #define FIRE_LAYER				26		//If you're on fire
 #define TARGETED_LAYER			27		//BS12: Layer for the target overlay from weapon targeting system
-#define SHADOW_LAYER        27
 #define TOTAL_LAYERS			27
 //////////////////////////////////
 
@@ -154,7 +153,6 @@ Please contact me on #coderbus IRC. ~Carn x
 	lying_prev = lying	//so we don't update overlays for lying/standing unless our stance changes again
 	update_hud()		//TODO: remove the need for this
 	overlays.Cut()
-	update_shadow()
 
 	if (icon_update)
 		if(is_cloaked())
@@ -382,23 +380,6 @@ var/global/list/damage_icon_parts = list()
 
 	if(update_icons)   update_icons()
 
-/mob/living/carbon/human/update_shadow(var/update_icons=1)
-	overlays_standing[SHADOW_LAYER] = null
-
-	var/turf/T = get_turf(src)
-	if(lying || (T && T.is_open())) // dont display shadows if we're laying down or in space
-		return
-
-	var/image/shadow = overlay_image('icons/effects/effects.dmi', icon_state="mob_shadow")
-
-	shadow.layer = MOB_SHADOW_LAYER
-	var/species_offset = 0
-	if(species)
-		species_offset = -species.pixel_offset_z
-	shadow.pixel_z = shadow_offset + species_offset// putting it lower than our mob
-
-	overlays_standing[SHADOW_LAYER] = shadow
-
 //HAIR OVERLAY
 /mob/living/carbon/human/proc/update_hair(var/update_icons=1)
 	//Reset our hair
@@ -460,7 +441,6 @@ var/global/list/damage_icon_parts = list()
 	update_mutations(0)
 	update_body(0)
 	update_skin(0)
-	update_shadow(0)
 	update_underwear(0)
 	update_hair(0)
 	update_inv_w_uniform(0)
@@ -699,6 +679,7 @@ var/global/list/damage_icon_parts = list()
 		tail_icon_cache[icon_key] = tail_icon
 
 	return tail_icon
+
 
 /mob/living/carbon/human/proc/set_tail_state(var/t_state)
 	var/image/tail_overlay = overlays_standing[TAIL_LAYER]

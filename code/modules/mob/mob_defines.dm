@@ -63,8 +63,6 @@
 	*/
 	var/obj/screen/zone_sel/zone_sel = null
 
-	var/mob_flags
-
 	var/use_me = 1 //Allows all mobs to use the me verb by default, will have to manually specify they cannot
 	var/damageoverlaytemp = 0
 	var/obj/machinery/machine = null
@@ -107,7 +105,6 @@
 	var/bodytemperature = 310.055	//98.7 F
 	var/default_pixel_x = 0
 	var/default_pixel_y = 0
-	var/default_pixel_z = MOB_PIXEL_Z
 
 	var/shakecamera = 0
 	var/a_intent = I_HELP//Living

@@ -133,8 +133,6 @@
 #define MOB_TINY 		5
 #define MOB_MINISCULE	1
 
-#define MOB_PIXEL_Z 7
-
 // Defines how strong the species is compared to humans. Think like strength in D&D
 #define STR_VHIGH       2
 #define STR_HIGH        1
