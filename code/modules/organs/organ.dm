@@ -297,6 +297,8 @@ var/list/organ_cache = list()
 		return
 	if(!user.unEquip(src))
 		return
+	if(QDELETED(src))
+		return
 	var/obj/item/weapon/reagent_containers/food/snacks/organ/O = new(get_turf(src))
 	O.SetName(name)
 	O.appearance = src
