@@ -35,19 +35,14 @@
 	carpeted = 1
 	material = "wood"
 
-/obj/structure/table/ruintable
-	icon_state = "ruintable_preview"
-	material = "steel"
-	color = "#ffffff"
 
 /obj/structure/table/spacetable
 	icon_state = "spacetable_preview"
-	material = "steel"
-	color = "#ffffff"
+	icon = 'icons/obj/tables.dmi'
 
 /obj/structure/table/finetable
 	icon_state = "finetable_preview"
-	material = "wood"
+	icon = 'icons/obj/tables.dmi'
 
 /obj/structure/table/glass
 	icon_state = "plain_preview"
