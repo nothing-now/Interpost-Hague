@@ -35,15 +35,6 @@
 	carpeted = 1
 	material = "wood"
 
-
-/obj/structure/table/spacetable
-	icon_state = "spacetable_preview"
-	icon = 'icons/obj/tables.dmi'
-
-/obj/structure/table/finetable
-	icon_state = "finetable_preview"
-	icon = 'icons/obj/tables.dmi'
-
 /obj/structure/table/glass
 	icon_state = "plain_preview"
 	color = COLOR_DEEP_SKY_BLUE
