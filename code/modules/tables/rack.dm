@@ -57,7 +57,7 @@
 	can_reinforce = 0
 	flipped = -1
 
-/obj/structure/table/finetable
+/obj/structure/table/rack/finetable
 	name = "fine table"
 	desc ="woah! it shines."
 	icon_state = "finetable_preview"
@@ -66,7 +66,7 @@
 	can_reinforce = 0
 	flipped = -1
 
-/obj/structure/table/ruintable
+/obj/structure/table/rack/ruintable
 	name = "steel table"
 	desc ="Looks a bit old and dirty."
 	icon_state = "ruintable_preview"
