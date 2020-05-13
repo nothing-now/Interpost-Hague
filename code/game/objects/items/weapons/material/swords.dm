@@ -328,10 +328,10 @@
 	desc = "A blunt force weapon. You do not want to get hit with this."
 	icon_state = "mace"
 	item_state = "mace"
+	hitsound = "bash1.ogg"
 	force_divisor = 0.7
 	block_chance = 20
 	attack_verb = list("bashed", "smashed", "slammed", "smacked")
-	hitsound = list("bash1", "bash2")
 	w_class = ITEM_SIZE_NORMAL
 	drawsound = 'sound/items/unholster_sword02.ogg'
 	equipsound = 'sound/items/holster_sword1.ogg'
@@ -349,7 +349,7 @@
 	force_divisor = 0.8
 	block_chance = 30
 	attack_verb = list("bashed", "smashed", "slammed", "smacked")
-	hitsound = list("bash1", "bash2")
+	hitsound = "bash1.ogg"
 	w_class = ITEM_SIZE_HUGE
 	drawsound = 'sound/items/unholster_sword02.ogg'
 	equipsound = 'sound/items/holster_sword1.ogg'

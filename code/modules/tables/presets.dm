@@ -35,20 +35,6 @@
 	carpeted = 1
 	material = "wood"
 
-/obj/structure/table/ruintable
-	icon_state = "ruintable_preview"
-	material = "steel"
-	color = "#ffffff"
-
-/obj/structure/table/spacetable
-	icon_state = "spacetable_preview"
-	material = "steel"
-	color = "#ffffff"
-
-/obj/structure/table/finetable
-	icon_state = "finetable_preview"
-	material = "wood"
-
 /obj/structure/table/glass
 	icon_state = "plain_preview"
 	color = COLOR_DEEP_SKY_BLUE

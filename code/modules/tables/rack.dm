@@ -47,3 +47,30 @@
 
 /obj/structure/table/rack/dark
 	color = COLOR_GRAY40
+
+/obj/structure/table/rack/spacetable
+	name = "space counter"
+	desc ="a spacey table that is very common in ships and stations."
+	icon = 'icons/obj/tables.dmi'
+	icon_state = "spacetable_preview"
+	can_plate = 0
+	can_reinforce = 0
+	flipped = -1
+
+/obj/structure/table/rack/finetable
+	name = "fine table"
+	desc ="woah! it shines."
+	icon_state = "finetable_preview"
+	icon = 'icons/obj/tables.dmi'
+	can_plate = 0
+	can_reinforce = 0
+	flipped = -1
+
+/obj/structure/table/rack/ruintable
+	name = "steel table"
+	desc ="Looks a bit old and dirty."
+	icon_state = "ruintable_preview"
+	icon = 'icons/obj/tables.dmi'
+	can_plate = 0
+	can_reinforce = 0
+	flipped = -1
