@@ -586,7 +586,13 @@
 		handle_hygiene()
 
 
-		if(get_shock() >= species.total_health)
+		if(get_shock() >= 200)
+			//Constitution check to see if you can take the pain
+			if(!stat && statcheck(stats[STAT_HT],15,"The pain is staggering me!  No more!", "con"))
+				//to_chat(src, "<span class='warning'>[species.halloss_message_self]</span>")
+				src.visible_message("<span class='warning'><B>[src]</B> is weakened by pain!</span>")//("<B>[src]</B> [species.halloss_message].")
+			Weaken(10)
+		if(get_shock() >= 300)
 			//Constitution check to see if you can take the pain
 			if(!stat && statcheck(stats[STAT_HT],15,"I can't take the pain!  It's too much!", "con"))
 				//to_chat(src, "<span class='warning'>[species.halloss_message_self]</span>")
@@ -968,19 +974,19 @@
 		// which triggers this proc, which calls custom_pain(), etc. Make sure you call it with 0 power in these cases!
 		custom_pain("[pick("It hurts so much", "You really need some painkillers", "Dear god, the pain")]!", 10, nohalloss = 0)
 
-	if(shock_stage >= 30)
-		if(shock_stage == 30)
+	if(shock_stage >= 50)
+		if(shock_stage == 50)
 			visible_message("<b>[src]</b> is having trouble keeping \his eyes open.")
 		if(prob(30))
 			eye_blurry = max(2, eye_blurry)
 			stuttering = max(stuttering, 5)
 
-	if(shock_stage == 40)
+	if(shock_stage == 80)
 		custom_pain("[pick("The pain is excruciating", "Please, just end the pain", "Your whole body is going numb")]!", 0)
 		src.agony_moan()
 		emote("moan")
 
-	if (shock_stage >= 60)
+	if (shock_stage >= 100)
 		//if(shock_stage == 60)
 		//visible_message("<b>[src]</b>'s body becomes limp.")
 		if (prob(2))
@@ -989,25 +995,25 @@
 			flash_weak_pain()
 			stuttering = max(stuttering, 5)
 
-	if(shock_stage >= 80)
+	if(shock_stage >= 140)
 		if (prob(5))
 			custom_pain("[pick("The pain is excruciating", "Please, just end the pain")]!", shock_stage, nohalloss = 0)
 			adjustStaminaLoss(20)
 			flash_weak_pain()
 			stuttering = max(stuttering, 5)
 
-	if(shock_stage >= 120)
+	if(shock_stage >= 180)
 		if (prob(2))
 			custom_pain("[pick("You black out", "You feel like you could die any moment now", "You're about to lose consciousness")].", shock_stage, nohalloss = 0)
 			Paralyse(5)
 			flash_pain()
 			stuttering = max(stuttering, 5)
 
-	if(shock_stage == 150)
+	if(shock_stage == 200)
 		visible_message("<b>[src]</b> can no longer stand, collapsing and clutching at his heart!")
 		adjustStaminaLoss(20)//Weaken(20)
 
-	if(shock_stage >= 150)
+	if(shock_stage >= 200)
 		Weaken(20)
 
 /*

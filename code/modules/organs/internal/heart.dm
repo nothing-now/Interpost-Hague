@@ -52,7 +52,7 @@
 	if(owner.status_flags & FAKEDEATH || owner.chem_effects[CE_NOPULSE])
 		pulse = Clamp(PULSE_NONE + pulse_mod, PULSE_NONE, PULSE_2FAST) //pretend that we're dead. unlike actual death, can be inflienced by meds
 		return
-	
+
 	//If heart is stopped, it isn't going to restart itself randomly.
 	if(pulse == PULSE_NONE)
 		return
@@ -132,7 +132,7 @@
 				if(bleed_amount)
 					if(open_wound)
 						blood_max += bleed_amount
-						do_spray += "the [temp.artery_name] in \the [owner]'s [temp.name]"
+						do_spray += "[temp.name]"
 					else
 						owner.vessel.remove_reagent(/datum/reagent/blood, bleed_amount)
 
@@ -148,9 +148,10 @@
 			blood_max *= 0.8
 
 		if(world.time >= next_blood_squirt && istype(owner.loc, /turf) && do_spray.len)
-			owner.visible_message("<span class='danger'>Blood squirts from [pick(do_spray)]!</span>")
-			// It becomes very spammy otherwise. Arterial bleeding will still happen outside of this block, just not the squirt effect.
-			next_blood_squirt = world.time + 100
+			owner.visible_message("<span class='danger'>Blood squirts out from \the [pick(do_spray)]!</span>")
+
+			//AB occurs every heartbeat, this only throttles the visible effect
+			next_blood_squirt = world.time + 80
 			var/turf/sprayloc = get_turf(owner)
 			blood_max -= owner.drip(ceil(blood_max/3), sprayloc)
 			if(blood_max > 0)
