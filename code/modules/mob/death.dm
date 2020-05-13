@@ -88,8 +88,6 @@
 
 	update_icon()
 
-	client.color = list(0.30,0.30,0.30,0, 0.60,0.60,0.60,0, 0.10,0.10,0.10,0, 0,0,0,1, 0,0,0,0)
-
 	if(ticker && ticker.mode)
 		ticker.mode.check_win()
 	to_chat(src,"<span class='deadsay'>[show_dead_message]</span>")
