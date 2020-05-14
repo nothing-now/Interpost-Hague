@@ -319,3 +319,34 @@
 	if(C)
 		C.has_sensor  = SUIT_LOCKED_SENSORS
 		C.sensor_mode = SUIT_SENSOR_OFF
+
+/mob/living/carbon/human/raider/Initialize(var/new_loc)
+	. = ..()
+	var/number = "[pick(possible_changeling_IDs)]-[rand(1,30)]"
+	fully_replace_character_name("raider [number]")
+	zone_sel = new /obj/screen/zone_sel( null )
+	zone_sel.selecting = "chest"
+	a_intent = I_HURT
+	var/decl/hierarchy/outfit/outfit = outfit_by_type(/decl/hierarchy/outfit/raider)
+	outfit.equip(src)
+	var/obj/item/clothing/head/helmet/facecover/F = locate() in src
+	if(F)
+		F.name = "[F.name] ([number])"
+
+	is_npc = 0//Make sure their an NPC so they don't attack each other.
+	hand = 0//Make sure one of their hands is active.
+	put_in_hands(new /obj/item/weapon/material/sword/siegesword)//Give them a weapon.
+	combat_mode = 1//Put them in combat mode.
+	generate_stats(STAT_DX)
+
+/mob/living/carbon/human/raider/ssd_check()
+	return FALSE
+
+/decl/hierarchy/outfit/raider
+	name = "Raider"
+	uniform = /obj/item/clothing/under/merc
+	shoes = /obj/item/clothing/shoes/dutyboots
+	head = /obj/item/clothing/head/helmet/siege
+	mask = /obj/item/clothing/mask/gas/newsecurity
+	suit = /obj/item/clothing/suit/armor/breastplate
+	gloves = /obj/item/clothing/gloves/combat/gloves
