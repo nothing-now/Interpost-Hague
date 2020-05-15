@@ -30,11 +30,11 @@ mob/var/next_pain_time = 0
 			switch(actual_flash)
 				if(1 to 20)
 					flash_weakest_pain()
-				if(20 to 188)
+				if(20 to 90)
 					flash_weak_pain()
 					if(stuttering < 3)
 						stuttering += 3
-				if(189 to INFINITY)
+				if(90 to INFINITY)
 					flash_pain()
 					if(stuttering < 5)
 						stuttering += 5
