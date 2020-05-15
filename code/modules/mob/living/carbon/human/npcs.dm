@@ -333,7 +333,7 @@
 	if(F)
 		F.name = "[F.name] ([number])"
 
-	is_npc = 0//Make sure their an NPC so they don't attack each other.
+	is_npc = 1//Make sure their an NPC so they don't attack each other.
 	hand = 0//Make sure one of their hands is active.
 	put_in_hands(new /obj/item/weapon/material/sword/siegesword)//Give them a weapon.
 	combat_mode = 1//Put them in combat mode.
