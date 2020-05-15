@@ -294,7 +294,6 @@
 	var/obj/item/clothing/head/helmet/facecover/F = locate() in src
 	if(F)
 		F.name = "[F.name] ([number])"
-
 	is_npc = 1//Make sure their an NPC so they don't attack each other.
 	hand = 0//Make sure one of their hands is active.
 	put_in_hands(new /obj/item/weapon/crowbar)//Give them a weapon.
@@ -332,7 +331,6 @@
 	var/obj/item/clothing/head/helmet/facecover/F = locate() in src
 	if(F)
 		F.name = "[F.name] ([number])"
-
 	is_npc = 1//Make sure their an NPC so they don't attack each other.
 	hand = 0//Make sure one of their hands is active.
 	put_in_hands(new /obj/item/weapon/material/sword/siegesword)//Give them a weapon.
