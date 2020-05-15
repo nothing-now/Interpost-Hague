@@ -21,9 +21,9 @@
 // 'basic' language; spoken by default.
 /datum/language/common
 	name = LANGUAGE_GALCOM
-	desc = "The common galactic tongue."
-	speech_verb = "—"
-	whisper_verb = "—"
+	desc = "The common tongue used by everyone."
+	speech_verb = "says"
+	whisper_verb = "whispers"
 	key = "0"
 	flags = RESTRICTED
 	syllables = list("blah","blah","blah","bleh","meh","neh","nah","wah")
