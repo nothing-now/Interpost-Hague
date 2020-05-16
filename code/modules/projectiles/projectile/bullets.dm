@@ -147,7 +147,7 @@
 
 /obj/item/projectile/bullet/a357
 	fire_sound = 'sound/weapons/gunshot/gunshot_pistol.ogg'
-	damage = 48
+	damage = 37
 	fire_sound = "gunshot"
 	armor_penetration = 8
 
@@ -160,7 +160,7 @@
 
 /obj/item/projectile/bullet/a45acp
 	fire_sound = 'sound/weapons/gunshot/gunshot_pistol.ogg'
-	damage = 50
+	damage = 48
 	fire_sound = "gunshot"
 	armor_penetration = 7
 
@@ -230,14 +230,14 @@
 /* "Rifle" rounds */
 
 /obj/item/projectile/bullet/rifle
-	armor_penetration = 45
+	armor_penetration = 25
 	damage = 60
 	penetrating = 1
 
 /obj/item/projectile/bullet/rifle/a556
 	fire_sound = 'sound/weapons/newrifle2.ogg'
 	damage = 70
-	armor_penetration = 32
+	armor_penetration = 22
 
 /obj/item/projectile/bullet/rifle/a762
 	fire_sound = 'sound/weapons/newrifle3.ogg'
