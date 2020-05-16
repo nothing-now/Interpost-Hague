@@ -169,8 +169,8 @@
 		if(!H.religion_is_legal())//So that they can't be heretics.
 			H.religion = LEGAL_RELIGION
 		//H.add_stats(rand(6,9), rand(9,11), rand(10,12))
-		H.generate_stats(STAT_ST)
-		H.generate_skills(list("melee","ranged","medical","engineering"))
+		H.generate_stats(STAT_HT)
+		H.generate_skills()
 
 /datum/job/countess
 	title = "Countess"
@@ -186,11 +186,10 @@
 
 	equip(var/mob/living/carbon/human/H)
 		..()
-		if(!H.religion_is_legal())//So that they can't be heretics.
-			H.religion = LEGAL_RELIGION
 		//H.add_stats(rand(6,9), rand(9,11), rand(10,12))
 		H.generate_stats(STAT_DX)
-		H.generate_skills(list("melee","ranged","medical","cleaning"))
+		H.generate_skills(list("medical","cleaning"))
+		to_chat(H, "<span class='warning'>Be wary, as you are not respected as much as the Count. Try to find a guard for yourself.</span>")
 
 
 /datum/job/hop
@@ -208,6 +207,8 @@
 
 	equip(var/mob/living/carbon/human/H)
 		..()
+		if(!H.religion_is_legal())//So that they can't be heretics.
+			H.religion = LEGAL_RELIGION
 		//H.add_stats(rand(6,9), rand(9,11), rand(10,12))
 		H.generate_stats(STAT_IQ)
 		H.generate_skills(list("melee","ranged","medical"))
@@ -262,8 +263,8 @@
 
 	equip(var/mob/living/carbon/human/H)
 		//H.set_species("Machine") //rd only for now - 08.03
-		//if(!H.religion_is_legal())//So that they can't be heretics.
-			//H.religion = LEGAL_RELIGION
+		if(!H.religion_is_legal())//So that they can't be heretics.
+			H.religion = LEGAL_RELIGION
 		..()
 		//H.add_stats(rand(5,7), rand(5,8), rand(10,14))
 		H.generate_stats(STAT_IQ)
@@ -350,6 +351,8 @@
 
 	equip(var/mob/living/carbon/human/H)
 		..()
+		if(!H.religion_is_legal())//So that they can't be heretics.
+			H.religion = LEGAL_RELIGION
 		//H.add_stats(rand(11,16), rand(10,14), rand(7,10))
 		H.generate_stats(STAT_ST)
 		H.generate_skills(list("melee","ranged"))
@@ -370,6 +373,8 @@
 
 	equip(var/mob/living/carbon/human/H)
 		..()
+		if(!H.religion_is_legal())//So that they can't be heretics.
+			H.religion = LEGAL_RELIGION
 		//H.add_stats(rand(11,16), rand(10,14), rand(7,10))
 		H.generate_stats(STAT_ST)
 		H.generate_skills(list("melee","ranged"))
@@ -388,6 +393,8 @@
 
 	equip(var/mob/living/carbon/human/H)
 		..()
+		if(!H.religion_is_legal())//So that they can't be heretics.
+			H.religion = LEGAL_RELIGION
 		//H.add_stats(rand(8,12), rand(9,12), rand(7,10))
 		H.generate_stats(STAT_DX)
 		H.generate_skills(list("crafting","engineering", "mining"))

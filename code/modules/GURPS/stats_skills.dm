@@ -113,7 +113,7 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 	var/top_stat = 0
 	//Roll a new random roll for each stat
 	for(var/stat in stats)
-		rand_stats += (rand(1,6) + rand(1,6) + rand(1,6))
+		rand_stats += (rand(1,5) + rand(1,4) + rand(1,7))
 	rand_stats = insertion_sort_numeric_list_descending(rand_stats)
 	top_stat = rand_stats[1]
 	rand_stats.Remove(top_stat)
