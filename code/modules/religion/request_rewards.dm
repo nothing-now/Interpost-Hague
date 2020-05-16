@@ -66,7 +66,7 @@
 
 /datum/reward/happiness/
 	name = "Happiness"
-	message="You feel a soothing calm settle on your soul"
+	message="You feel a soothing calm settle on your soul."
 
 /datum/reward/happiness/do_reward(var/mob/living/carbon/human/target)
 	to_chat(target, message)
@@ -74,7 +74,7 @@
 
 /datum/reward/str_up/
 	name = "Strength blessing"
-	message="You feel an incredible power within you"
+	message="You feel an incredible power rising within you."
 
 /datum/reward/str_up/do_reward(var/mob/living/target)
 	var/initial = target.stats[STAT_ST] 
@@ -95,7 +95,7 @@ datum/punishment/proc/do_punishment()
 	
 datum/punishment/money
 	name = "Money" //LOADSA EMONE
-	message="You're wages have been garnished..."
+	message="Your wages have been garnished..."
 
 datum/punishment/money/do_punishment(var/mob/living/target)
 	for(var/datum/money_account/acounts in all_money_accounts)
@@ -116,7 +116,7 @@ datum/punishment/happiness/do_punishment(var/mob/living/carbon/human/target)
 
 datum/punishment/str_up/
 	name = "Strength blessing"
-	message="You feel a terrible weakness in your body"
+	message="You feel a terrible weakness in your body."
 
 datum/punishment/str_up/do_punishment(var/mob/living/target)
 	var/initial = target.stats[STAT_ST] 

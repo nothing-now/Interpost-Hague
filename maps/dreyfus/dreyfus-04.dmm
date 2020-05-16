@@ -284,7 +284,7 @@
 "fx" = (/obj/structure/table/rack/shelf,/obj/item/weapon/storage/firstaid/adv,/turf/simulated/floor/tiled/bunker/polar,/area/derelict/ship)
 "fy" = (/obj/machinery/portable_atmospherics/hydroponics/soil,/obj/machinery/light{tag = "icon-tube1 (NORTH)"; icon_state = "tube1"; dir = 1},/turf/simulated/floor/dirty,/area/derelict/ship)
 "fz" = (/obj/structure/table/rack/shelf,/obj/item/clothing/glasses/sunglasses,/obj/item/weapon/reagent_containers/food/snacks/liquidfood,/turf/simulated/floor/tiled/bunker/polar,/area/derelict/ship)
-"fA" = (/obj/structure/table/rack/shelf,/obj/item/clothing/accessory/storage/skurl,/turf/simulated/floor/tiled/bunker/polar,/area/derelict/ship)
+"fA" = (/obj/structure/table/rack/shelf,/obj/item/clothing/accessory/storage/skurl,/obj/item/weapon/card/emag,/turf/simulated/floor/tiled/bunker/polar,/area/derelict/ship)
 "fB" = (/obj/structure/table/rack/shelf,/obj/item/weapon/material/hatchet,/turf/simulated/floor/tiled/bunker/polar,/area/derelict/ship)
 "fC" = (/obj/structure/table/rack/shelf,/obj/item/weapon/pickaxe/silver,/turf/simulated/floor/tiled/bunker/polar,/area/derelict/ship)
 "fD" = (/obj/machinery/light{tag = "icon-tube1 (NORTH)"; icon_state = "tube1"; dir = 1},/turf/simulated/floor/tiled/bunker/polar,/area/derelict/ship)
