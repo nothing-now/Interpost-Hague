@@ -534,7 +534,7 @@
 			else
 				usr.middle_click_intent = "kick"
 				usr.kick_icon.icon_state = "kick_on"
-				usr.jump_icon.icon_state = "jump"//Holy fuck that's a convoluted way to deal with that. I'll make a better method later.
+				usr.jump_icon.icon_state = "jump"
 		if("jump")
 			if(usr.middle_click_intent == "jump")
 				usr.middle_click_intent = null
@@ -547,16 +547,12 @@
 			if(!ishuman(usr))	return
 			usr << 'sound/effects/ui_toggle.ogg'
 			var/mob/living/carbon/human/C = usr
-			var/song = C.combat_music
 			if(C.combat_mode)
 				C.combat_mode = 0
 				C.combat_icon.icon_state = "combat0"
-
-				sound_to(C, sound(null, repeat = 0, wait = 0, volume = 85, channel = 1))
 			else
 				C.combat_mode = 1
 				C.combat_icon.icon_state = "combat1"
-				sound_to(C, sound(song, repeat = 1, wait = 0, volume = 50, channel = 1))		
 
 		if("dodge intent")
 			if(ishuman(usr))

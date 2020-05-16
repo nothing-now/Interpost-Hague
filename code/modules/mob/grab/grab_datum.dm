@@ -261,11 +261,14 @@
 /datum/grab/proc/handle_resist(var/obj/item/grab/G)
 	var/mob/living/carbon/human/affecting = G.affecting
 	var/mob/living/carbon/human/assailant = G.assailant
+	var/break_strength = 1
 
 	if(affecting.incapacitated(INCAPACITATION_KNOCKOUT | INCAPACITATION_STUNNED))
 		to_chat(G.assailant, "<span class='warning'>You can't resist in your current state!</span>")
 
-	var/break_strength = breakability + size_difference(affecting, assailant)
+	break_strength = breakability + size_difference(affecting, assailant)
+
+	break_strength = affecting.stats[STAT_ST] - assailant.stats[STAT_ST]  //Stats are used for grab
 
 	if(affecting.incapacitated(INCAPACITATION_ALL))
 		break_strength--

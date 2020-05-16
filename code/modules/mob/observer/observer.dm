@@ -28,7 +28,6 @@ var/const/GHOST_IMAGE_ALL = ~GHOST_IMAGE_NONE
 	if(ghost_image_flag & GHOST_IMAGE_SIGHTLESS)
 		ghost_sightless_images |= ghost_image //so ghosts can see the eye when they disable ghost sight
 	updateallghostimages()
-	client.color = list(0.30,0.30,0.30,0, 0.60,0.60,0.60,0, 0.10,0.10,0.10,0, 0,0,0,1, 0,0,0,0)
 
 
 /mob/observer/Destroy()
