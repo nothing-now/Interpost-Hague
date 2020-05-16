@@ -174,7 +174,7 @@
 
 /datum/job/countess
 	title = "Countess"
-	supervisors = "your husband, the Count"
+	supervisors = "your other ruler, the Count"
 	minimal_player_age = 41
 	economic_modifier = 10
 	ideal_character_age = 55

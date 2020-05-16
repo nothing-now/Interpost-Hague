@@ -17,7 +17,6 @@
 
 
 
-//I am aware this is probably the worst possible way of doing it but I'm using this method till I get a better one. - Matt
 /mob
 	var/list/stats = list(st = 10, dx = 10, iq = 10, ht = 10)
 	var/list/skills = list("melee" = 0, "ranged" = 0, "medical" = 0, "surgery" = 0, "engineering" = 0, "crafting" = 0, "cooking" = 0, "science" = 0, "cleaning" = 0, "gardening" = 0, "mining" = 0)
@@ -219,10 +218,10 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 	var/list/rand_skills = skills.Copy()
 	//Roll a new random roll for each stat
 	for(var/skill in generate_skills)
-		skills[skill] = (40 + rand(1,20) + rand(1,5))
+		skills[skill] = (35 + rand(1,18) + rand(1,27))
 		rand_skills -= skill
 	for(var/skill in rand_skills)
-		skills[skill] = (rand(1,10) + rand(1,25) + rand(1,27))
+		skills[skill] = (rand(1,19) + rand(1,16) + rand(1,32))
 /*
 /mob/proc/add_skills(var/melee_val, var/ranged_val, var/medical_val, var/engineering_val)//To make adding skills quicker.
 	if(melee_val)

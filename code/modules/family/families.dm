@@ -143,7 +143,7 @@
 
 /datum/relation/family/mother
 	name = "Mother"
-	desc = "They gave birth to you"
+	desc = "They gave birth to you."
 
 /datum/relation/family/father
 	name = "Father"
@@ -151,35 +151,35 @@
 
 /datum/relation/family/daughter
 	name = "Daughter"
-	desc = "They're your daughter"
+	desc = "They're your daughter."
 
 /datum/relation/family/son
 	name = "Son"
-	desc = "They're your son"
+	desc = "They're your son."
 
 /datum/relation/family/sister
 	name = "Sister"
-	desc = "They are your sister"
+	desc = "They are your sister."
 
 /datum/relation/family/brother
 	name = "Brother"
-	desc = "They are your brother"
+	desc = "They are your brother."
 
 /datum/relation/family/niece
 	name = "Niece"
-	desc = "They are your niece"
+	desc = "They are your niece."
 
 /datum/relation/family/nephew
 	name = "Nephew"
-	desc = "They are your Nephew"
+	desc = "They are your Nephew."
 
 /datum/relation/family/Uncle
 	name = "Uncle"
-	desc = "They are your Uncle"
+	desc = "They are your Uncle."
 
 /datum/relation/family/Aunt
 	name = "Aunt"
-	desc = "They are your Aunt"
+	desc = "They are your Aunt."
 
 
 /mob/living/carbon/human/verb/check_family()
