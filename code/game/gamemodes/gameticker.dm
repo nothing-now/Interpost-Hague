@@ -520,8 +520,8 @@ var/global/datum/controller/gameticker/ticker
 	//Ask the event manager to print round end information
 	GLOB.event_manager.RoundEnd()
 	config.ooc_allowed = !(config.ooc_allowed)
-		if(config.ooc_allowed)
-			to_world("<B>The OOC channel has been globally enabled!</B>")
+	if (config.ooc_allowed)
+		to_world("<B>The OOC channel has been globally enabled!</B>")
 
 	//Print a list of antagonists to the server log
 	var/list/total_antagonists = list()
