@@ -42,7 +42,7 @@
 		output += "<a href='byond://?src=\ref[src];manifest=1'>View the Crew Manifest</A><br><br>"
 		output += "<p><a href='byond://?src=\ref[src];late_join=1'>Join Game!</A></p>"
 
-	output += "<p><a href='byond://?src=\ref[src];observe=1'>Observe</A></p>"
+	//output += "<p><a href='byond://?src=\ref[src];observe=1'>Observe</A></p>"
 
 	if(!IsGuestKey(src.key))
 		establish_db_connection()
@@ -112,10 +112,11 @@
 		panel.close()
 		new_player_panel_proc()
 
-	if(href_list["observe"])
-		if(!(initialization_stage&INITIALIZATION_COMPLETE))
-			to_chat(src, "<span class='warning'>Please wait for server initialization to complete...</span>")
-			return
+/*
+	//if(href_list["observe"])
+		//if(!(initialization_stage&INITIALIZATION_COMPLETE))
+			//to_chat(src, "<span class='warning'>Please wait for server initialization to complete...</span>")
+			//return
 
 		if(!config.respawn_delay || client.holder || alert(src,"Are you sure you wish to observe? You will have to wait [config.respawn_delay] minute\s before being able to respawn!","Player Setup","Yes","No") == "Yes")
 			if(!client)	return 1
@@ -153,6 +154,7 @@
 			qdel(src)
 
 			return 1
+*/
 
 	if(href_list["late_join"])
 
@@ -180,7 +182,7 @@
 		if(client.prefs.real_name in GLOB.player_name_list)
 			to_chat(usr, "<span class='danger'>Our records show we already employ a [name].  Please change your name to join the crew.</span>")
 			return
-		
+
 		var/datum/species/S = all_species[client.prefs.species]
 		if(!check_species_allowed(S))
 			return 0
@@ -417,7 +419,7 @@
 	dat += "Choose from the following open/valid positions:<br>"
 	dat += "<a href='byond://?src=\ref[src];invalid_jobs=1'>[show_invalid_jobs ? "Hide":"Show"] unavailable jobs.</a><br>"
 	dat += "<table>"
-	
+
 	for(var/datum/job/job in job_master.occupations)
 		//Suprisingly, get_announcement_frequency is perfect for getting the name from the depratment_flag var
 		if(department != get_department_names(job))

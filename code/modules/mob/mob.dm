@@ -406,7 +406,9 @@
 
 /mob/new_player/verb/observe()
 	set name = "Observe"
-	set category = "OOC"
+	set category = "Admin"
+
+	if(!check_rights(R_ADMIN))	return
 
 	if(!(initialization_stage&INITIALIZATION_COMPLETE))
 		to_chat(src, "<span class='warning'>Please wait for server initialization to complete...</span>")
