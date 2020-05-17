@@ -74,7 +74,7 @@
 	icon_state = "fullchestplate"
 	item_state = "fullchestplate"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
-	armor = list(melee = 100, gun = 40, energy = 15, bomb = 35, bio = 20, rad = 0)
+	armor = list(melee = 98, gun = 40, energy = 15, bomb = 35, bio = 20, rad = 0)
 
 /obj/item/clothing/suit/armor/militaryhardsuit
 	name = "military hardsuit"
@@ -82,7 +82,7 @@
 	icon_state = "militarysuit"
 	item_state = "militarysuit"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	armor = list(melee = 80, gun = 85, energy = 40, bomb = 60, bio = 20, rad = 20)
+	armor = list(melee = 80, gun = 85, energy = 85, bomb = 60, bio = 20, rad = 20)
 
 /obj/item/clothing/suit/armor/tanksuit
 	name = "military tank hardsuit"
