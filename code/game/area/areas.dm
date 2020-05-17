@@ -203,6 +203,8 @@
 /area/proc/power_change()
 	for(var/obj/machinery/M in src)	// for each machine in the area
 		M.power_change()			// reverify power status (to update icons etc.)
+	for(var/obj/item/device/radio/intercom/I in src)	// Intercoms are not machinery so we need a different loop
+		I.power_change()
 	if (fire || eject || party)
 		update_icon()
 
@@ -300,7 +302,7 @@ var/list/mob/living/forced_ambiance_list = new
 			L.client.ambience_playing = 0
 			sound_to(L, sound(null, channel = 2))
 
-	
+
 	if(src.ambience.len && prob(75))
 		if((world.time >= L.client.played + 3 MINUTES))
 			var/sound = pick(ambience)
