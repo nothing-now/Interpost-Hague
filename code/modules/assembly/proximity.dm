@@ -43,7 +43,7 @@
 		return
 	if(AM.move_speed < 12)
 		sense()
-	
+
 /obj/item/device/assembly/prox_sensor/proc/sense()
 	var/turf/mainloc = get_turf(src)
 //		if(scanning && cooldown <= 0)
@@ -135,7 +135,7 @@
 		var/r = text2num(href_list["range"])
 		var/old_range = range
 		range += r
-		range = Clamp(range, 1, 5)
+		range = clamp(range, 1, 5)
 		if(range != old_range)
 			proximity_monitor.SetRange(range)
 

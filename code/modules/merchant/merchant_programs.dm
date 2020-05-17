@@ -182,7 +182,7 @@
 				scrolled = 1
 			if("left")
 				scrolled = -1
-		var/new_merchant  = Clamp(current_merchant + scrolled, 1, GLOB.traders.len)
+		var/new_merchant  = clamp(current_merchant + scrolled, 1, GLOB.traders.len)
 		if(new_merchant != current_merchant)
 			hailed_merchant = 0
 			last_comms = null

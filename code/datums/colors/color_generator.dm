@@ -1,4 +1,4 @@
-#define RANDOMIZE(X) Clamp(X + rand(min_random_span, max_random_span), 0, 255)
+#define RANDOMIZE(X) clamp(X + rand(min_random_span, max_random_span), 0, 255)
 #define RANDOMIZE_RGB(R,G,B) list(RANDOMIZE(R), RANDOMIZE(G), RANDOMIZE(B))
 
 /decl/color_generator

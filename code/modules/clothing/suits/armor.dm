@@ -74,7 +74,7 @@
 	icon_state = "fullchestplate"
 	item_state = "fullchestplate"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS
-	armor = list(melee = 100, gun = 40, energy = 15, bomb = 35, bio = 20, rad = 0)
+	armor = list(melee = 70, gun = 40, energy = 15, bomb = 35, bio = 20, rad = 0)
 
 /obj/item/clothing/suit/armor/militaryhardsuit
 	name = "military hardsuit"
@@ -82,7 +82,7 @@
 	icon_state = "militarysuit"
 	item_state = "militarysuit"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	armor = list(melee = 80, gun = 85, energy = 40, bomb = 60, bio = 20, rad = 20)
+	armor = list(melee = 90, gun = 85, energy = 40, bomb = 60, bio = 20, rad = 20) // RE1TAZ THIS IS A KEVLAR VEST NOT ANTI-MELEE
 
 /obj/item/clothing/suit/armor/tanksuit
 	name = "military tank hardsuit"
@@ -90,7 +90,7 @@
 	icon_state = "tankhardsuit"
 	item_state = "tankhardsuit"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS
-	armor = list(melee = 100, gun = 100, energy = 100, bomb = 100, bio = 60, rad = 50)
+	armor = list(melee = 90, gun = 100, energy = 100, bomb = 100, bio = 60, rad = 50)
 
 /obj/item/clothing/suit/armor/medieval
 	name = "plated armor"
@@ -98,7 +98,7 @@
 	icon_state = "knight_simple"
 	item_state = "knight_simple"
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO|ARMS|LEGS|FEET
-	armor = list(melee = 100, gun = 30, energy = 15, bomb = 60, bio = 20, rad = 0)
+	armor = list(melee = 85, gun = 30, energy = 15, bomb = 60, bio = 20, rad = 0)
 
 /obj/item/clothing/suit/armor/medieval/New()
 	..()

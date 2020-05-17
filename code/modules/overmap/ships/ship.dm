@@ -70,8 +70,8 @@
 	return res
 
 /obj/effect/overmap/ship/proc/adjust_speed(n_x, n_y)
-	speed[1] = round(Clamp(speed[1] + n_x, -default_delay, default_delay),0.1)
-	speed[2] = round(Clamp(speed[2] + n_y, -default_delay, default_delay),0.1)
+	speed[1] = round(clamp(speed[1] + n_x, -default_delay, default_delay),0.1)
+	speed[2] = round(clamp(speed[2] + n_y, -default_delay, default_delay),0.1)
 	for(var/zz in map_z)
 		if(is_still())
 			toggle_move_stars(zz)
@@ -140,7 +140,7 @@
 		return 0
 	for(var/datum/ship_engine/E in engines)
 		. |= E.can_burn()
-		
+
 //deciseconds to next step
 /obj/effect/overmap/ship/proc/ETA()
 	. = INFINITY

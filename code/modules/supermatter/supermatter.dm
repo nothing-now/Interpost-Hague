@@ -251,7 +251,7 @@
 	// Effect 4: Medium scale explosion
 	if(!stored_power)
 		stored_power = round(sqrt(power) * 0.1 * explosion_power_modifier)
-	stored_power = Clamp(stored_power, 1, 50)
+	stored_power = clamp(stored_power, 1, 50)
 	explosion(TS, stored_power * 0.5, stored_power, stored_power * 2, stored_power * 4, 1)
 	qdel(src)
 
@@ -350,7 +350,7 @@
 
 		//Ok, 100% oxygen atmosphere = best reaction
 		//Maxes out at 100% oxygen pressure
-		oxygen = Clamp((removed.get_by_flag(XGM_GAS_OXIDIZER) - (removed.gas["nitrogen"] * NITROGEN_RETARDATION_FACTOR)) / removed.total_moles, 0, 1)
+		oxygen = clamp((removed.get_by_flag(XGM_GAS_OXIDIZER) - (removed.gas["nitrogen"] * NITROGEN_RETARDATION_FACTOR)) / removed.total_moles, 0, 1)
 
 		//calculate power gain for oxygen reaction
 		var/temp_factor
