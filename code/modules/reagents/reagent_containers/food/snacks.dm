@@ -321,7 +321,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/cookie
 	name = "cookie"
-	desc = "COOKIE!!!"
+	desc = "Cookies!"
 	icon_state = "COOKIE!!!"
 	filling_color = "#dbc94f"
 	center_of_mass = "x=17;y=18"
@@ -370,7 +370,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/donut/normal
 	name = "donut"
-	desc = "Goes great with Robust Coffee."
+	desc = "Goes great with coffee."
 	icon_state = "donut1"
 	nutriment_amt = 3
 	New()
@@ -1156,7 +1156,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/selax
 	name = "Selax bread"
-	desc = "Everyone loves bread! Will expire in 79 years!."
+	desc = "Everyone loves bread! Will expire in 79 years."
 	icon_state = "donk_olive"
 	center_of_mass = "x=16;y=10"
 
@@ -1167,7 +1167,7 @@
 
 /obj/item/weapon/reagent_containers/food/snacks/selax_tan
 	name = "Selax bread"
-	desc = "Everyone loves bread! Will expire in 79 years!."
+	desc = "Everyone loves bread! Will expire in 79 years."
 	icon_state = "donk_tan"
 	center_of_mass = "x=16;y=10"
 
