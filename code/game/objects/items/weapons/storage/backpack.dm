@@ -403,7 +403,7 @@
 /obj/item/weapon/storage/backpack/rucksack
 	name = "black rucksack"
 	desc = "A sturdy military-grade backpack with low-profile straps. Designed to work well with armor."
-	icon_state = "rucksack"
+	icon_state = "rucksack_black"
 	w_class = ITEM_SIZE_HUGE
 	max_storage_space = DEFAULT_BACKPACK_STORAGE + 10
 
