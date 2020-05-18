@@ -359,4 +359,18 @@
 	sharp = 0
 	edge = 0
 
-
+/obj/item/weapon/material/sword/shithook
+	name = "a...what?"
+	desc = "You can't really tell what this is."
+	icon_state = "shithook"
+	item_state = "shithook"
+	force_divisor = 0
+	force = 5
+	block_chance = 80
+	w_class = ITEM_SIZE_HUGE
+	drawsound = 'sound/items/unholster_sword02.ogg'
+	equipsound = 'sound/items/holster_sword1.ogg'
+	sharpness = 0
+	weapon_speed_delay = 10
+	parry_sounds = list('sound/weapons/blade_parry1.ogg', 'sound/weapons/blade_parry2.ogg', 'sound/weapons/blade_parry3.ogg')
+	drop_sound = 'sound/items/drop_sword.ogg'
