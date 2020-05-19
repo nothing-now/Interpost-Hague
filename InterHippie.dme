@@ -342,7 +342,6 @@
 #include "code\datums\repositories\crew\~defines.dm"
 #include "code\datums\supplypacks\atmospherics.dm"
 #include "code\datums\supplypacks\engineering.dm"
-#include "code\datums\supplypacks\hospitality.dm"
 #include "code\datums\supplypacks\hydroponics.dm"
 #include "code\datums\supplypacks\materials.dm"
 #include "code\datums\supplypacks\medical.dm"

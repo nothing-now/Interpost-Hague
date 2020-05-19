@@ -43,6 +43,7 @@ client/verb/JoinResponseTeam()
 
 	set name = "Join Response Team"
 	set category = "IC"
+	set hidden = 1 // No.
 
 	if(!MayRespawn(1))
 		to_chat(usr, "<span class='warning'>You cannot join the response team at this time.</span>")
