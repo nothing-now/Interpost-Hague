@@ -413,6 +413,7 @@
 		drug_strength = drug_strength * 0.8
 
 	M.druggy = max(M.druggy, drug_strength)
+	M.filters = filter(type = "wave", size = 10)
 	if(prob(10) && isturf(M.loc) && !istype(M.loc, /turf/space) && M.canmove && !M.restrained())
 		step(M, pick(GLOB.cardinal))
 	if(prob(7))
