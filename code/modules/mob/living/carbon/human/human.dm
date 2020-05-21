@@ -131,16 +131,18 @@
 			f_loss = 60
 
 			if (!istype(l_ear, /obj/item/clothing/ears/earmuffs) && !istype(r_ear, /obj/item/clothing/ears/earmuffs))
-				ear_damage += 30
-				ear_deaf += 120
+				playsound_local(src, sound('sound/weapons/contusion.ogg', repeat = 0, wait = 0, volume = 100, channel = 2))
+				ear_damage += 60
+				//ear_deaf += 120
 			if (prob(70))
 				Paralyse(10)
 
 		if(3.0)
 			b_loss = 30
 			if (!istype(l_ear, /obj/item/clothing/ears/earmuffs) && !istype(r_ear, /obj/item/clothing/ears/earmuffs))
-				ear_damage += 15
-				ear_deaf += 60
+				playsound_local(src, sound('sound/weapons/flash_ring.ogg', repeat = 0, wait = 0, volume = 100, channel = 2))
+				ear_damage += 30
+				//ear_deaf += 60
 			if (prob(50))
 				Paralyse(10)
 

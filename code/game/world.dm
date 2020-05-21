@@ -64,8 +64,11 @@
 
 	return match
 
-#define RECOMMENDED_VERSION 511
+#define RECOMMENDED_VERSION 513
 /world/New()
+	if(fexists("byond-extools.dll"))
+		call("byond-extools.dll", "maptick_initialize")()
+
 	//set window title
 	name = "[server_name] - [GLOB.using_map.full_name]"
 
