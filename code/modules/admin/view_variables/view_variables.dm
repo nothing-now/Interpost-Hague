@@ -26,6 +26,7 @@
 	var/html = {"
 		<html>
 		<head>
+		<meta http-equiv='Content-Type' content='text/html; charset=UTF-8'>
 			<script src='view_variables.js'></script>
 			<title>[D] (\ref[D] - [D.type])</title>
 			<style>
