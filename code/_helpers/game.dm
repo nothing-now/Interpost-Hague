@@ -598,3 +598,8 @@ datum/projectile_data
 		viewX = text2num(viewrangelist[1])
 		viewY = text2num(viewrangelist[2])
 	return list(viewX, viewY)
+
+/proc/window_flash(var/client_or_usr)
+	if (!client_or_usr)
+		return
+	winset(client_or_usr, "mainwindow", "flash=5")

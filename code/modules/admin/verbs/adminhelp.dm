@@ -129,6 +129,7 @@ var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","
 				to_chat(X, mentor_msg)// Mentors won't see coloring of names on people with special_roles (Antags, etc.)
 			else
 				to_chat(X, msg)
+				window_flash(X)
 	//show it to the person adminhelping too
 	to_chat(src, "<font color='blue'>PM to-<b>Staff</b> (<a href='?src=\ref[usr];close_ticket=\ref[ticket]'>CLOSE</a>): [original_msg]</font>")
 	var/admin_number_present = GLOB.admins.len - admin_number_afk
