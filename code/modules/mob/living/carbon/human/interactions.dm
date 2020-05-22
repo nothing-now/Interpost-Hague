@@ -553,7 +553,7 @@ mob/living/carbon/human/proc/fuck(mob/living/carbon/human/H as mob, mob/living/c
 /obj/item/weapon/dildo
 	name = "dildo"
 	desc = "Hmmm, deal throw."
-	icon = 'honk/icons/obj/items/dildo.dmi'
+	icon = 'code/modules/honk/icons/obj/items/dildo.dmi'
 	icon_state = "dildo"
 	item_state = "c_tube"
 	throwforce = 0

@@ -13,13 +13,12 @@
 	var/mopping = 0
 	var/mopcount = 0
 
-
-/obj/item/weapon/mop/New()
+/obj/item/weapon/mop/Initialize()
 	create_reagents(30)
 
 /obj/item/weapon/mop/afterattack(atom/A, mob/user, proximity)
 	if(!proximity) return
-	if(istype(A, /turf) || istype(A, /obj/effect/decal/cleanable) || istype(A, /obj/effect/overlay) || istype(A, /obj/effect/rune))
+	if(istype(A, /turf) || istype(A, /obj/effect/decal/cleanable) || istype(A, /obj/effect/rune))
 		if(reagents.total_volume < 1)
 			to_chat(user, "<span class='notice'>Your mop is dry!</span>")
 			return

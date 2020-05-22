@@ -683,7 +683,7 @@
 				H.visible_message("<B>[H]</B> hugs <B>[P]</B>.")
 				if (istype(P.loc, /obj/structure/closet))
 					P.visible_message("<B>[H]</B> hugs <B>[P]</B>.")
-				playsound(loc, 'honk/sound/interactions/hug.ogg', 50, 1, -1)
+				playsound(loc, 'code/modules/honk/sound/interactions/hug.ogg', 50, 1, -1)
 
 		else if (href_list["interaction"] == "cheer")
 			if(((Adjacent(P) && !istype(P.loc, /obj/structure/closet)) || (H.loc == P.loc)) && hashands)
@@ -696,7 +696,7 @@
 				H.visible_message("<B>[H]</B> high fives <B>[P]</B>.")
 				if (istype(P.loc, /obj/structure/closet))
 					P.visible_message("<B>[H]</B> high fives <B>[P]</B>.")
-				playsound(loc, 'honk/sound/interactions/slap.ogg', 50, 1, -1)
+				playsound(loc, 'code/modules/honk/sound/interactions/slap.ogg', 50, 1, -1)
 
 		else if (href_list["interaction"] == "handshake")
 			if(((Adjacent(P) && !istype(P.loc, /obj/structure/closet)) || (H.loc == P.loc)) && hashands && hashands_p)
@@ -720,7 +720,7 @@
 				H.visible_message("<span class='danger'>[H] slaps [P]!</span>")
 				if (istype(P.loc, /obj/structure/closet))
 					P.visible_message("<span class='danger'>[H] slaps [P]!</span>")
-				playsound(loc, 'honk/sound/interactions/slap.ogg', 50, 1, -1)
+				playsound(loc, 'code/modules/honk/sound/interactions/slap.ogg', 50, 1, -1)
 				if (P.staminaloss < 5)
 					P.staminaloss += 5
 				H.do_attack_animation(P)
@@ -764,7 +764,7 @@
 				H.visible_message("<span class='danger'>[H] slaps [P] right on the ass!</span>")
 				if (istype(P.loc, /obj/structure/closet))
 					P.visible_message("<span class='danger'>[H] slaps [P] right on the ass!</span>")
-				playsound(loc, 'honk/sound/interactions/slap.ogg', 50, 1, -1)
+				playsound(loc, 'code/modules/honk/sound/interactions/slap.ogg', 50, 1, -1)
 				if (P.staminaloss < 10)
 					P.staminaloss += 5
 

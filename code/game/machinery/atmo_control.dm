@@ -274,7 +274,7 @@ Max Output Pressure: [output_pressure] kPa<BR>"}
 
 	if(href_list["out_set_pressure"])
 		output_info = null
-		signal.data = list ("tag" = output_tag, "set_internal_pressure" = "[pressure_setting]")
+		signal.data = list ("tag" = output_tag, "set_internal_pressure" = pressure_setting)
 		. = 1
 
 	signal.data["sigtype"]="command"
@@ -393,7 +393,7 @@ Min Core Pressure: [pressure_limit] kPa<BR>"}
 
 	if(href_list["out_set_pressure"])
 		output_info = null
-		signal.data = list ("tag" = output_tag, "set_external_pressure" = "[pressure_setting]", "checks" = 1)
+		signal.data = list ("tag" = output_tag, "set_external_pressure" = pressure_setting, "checks" = 1)
 		. = 1
 
 	signal.data["sigtype"]="command"

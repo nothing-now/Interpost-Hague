@@ -90,6 +90,31 @@
 
 	return 1
 
+/obj/item/weapon/reagent_containers/food/drinks/glass2/throw_impact(atom/hit_atom)
+	if(QDELETED(src))
+		return
+	if(prob(80))
+		if(reagents.reagent_list.len > 0)
+			visible_message("<span class='danger'>\The [src] shatters from the impact and spills all its contents!</span>",
+							"<span class='danger'>You hear the sound of glass shattering!</span>")
+			reagents.splash(hit_atom, reagents.total_volume)
+		else
+			visible_message("<span class='danger'>\The [src] shatters from the impact!</span>",
+							"<span class='danger'>You hear the sound of glass shattering!</span>")
+		playsound(src.loc, pick(GLOB.shatter_sound), 100)
+		new /obj/item/weapon/material/shard(src.loc)
+		qdel(src)
+	else
+		if (reagents.reagent_list.len > 0)
+			visible_message("<span class='danger'>\The [src] bounces and spills all its contents!</span>",
+							"<span class='danger'>You hear the sound of glass hitting something.</span>")
+			reagents.splash(hit_atom, reagents.total_volume)
+		else
+			visible_message("<span class='danger'>\The [src] bounces dangerously. Luckily it didn't break.</span>",
+							"<span class='danger'>You hear the sound of glass hitting something.</span>")
+		playsound(src.loc, "sound/effects/Glasshit.ogg", 50)
+
+
 /obj/item/weapon/reagent_containers/food/drinks/glass2/update_icon()
 	underlays.Cut()
 
