@@ -1,3 +1,6 @@
+//Fullscreen overlay resolution in tiles.
+#define FULLSCREEN_OVERLAY_RESOLUTION_X 15
+#define FULLSCREEN_OVERLAY_RESOLUTION_Y 15
 
 /mob
 	var/list/screens = list()
@@ -23,6 +26,7 @@
 
 	screens[category] = screen
 	if(client && (stat != DEAD || screen.allstate))
+		screen.update_for_view(client.view)
 		client.screen += screen
 	return screen
 
@@ -65,12 +69,19 @@
 	screen_loc = "CENTER-7,CENTER-7"
 	plane = FULLSCREEN_PLANE
 	mouse_opacity = 0
+	var/view = 7
 	var/severity = 0
 	var/allstate = 0 //shows if it should show up for dead people too
 
 /obj/screen/fullscreen/Destroy()
 	severity = 0
 	return ..()
+
+/obj/screen/fullscreen/proc/update_for_view(client_view)
+	if (screen_loc == "CENTER-7,CENTER-7" && view != client_view)
+		var/list/actualview = getviewsize(client_view)
+		view = client_view
+		transform = matrix(actualview[1]/FULLSCREEN_OVERLAY_RESOLUTION_X, 0, 0, 0, actualview[2]/FULLSCREEN_OVERLAY_RESOLUTION_Y, 0)
 
 /obj/screen/fullscreen/brute
 	icon_state = "brutedamageoverlay"
