@@ -51,8 +51,8 @@
 	//var/list/ammo_states = list()	//values
 	var/casingsound = 'sound/weapons/guns/misc/casingfall1.ogg'
 
-/obj/item/weapon/gun/projectile/New()
-	..()
+/obj/item/weapon/gun/projectile/Initialize()
+	. = ..()
 	if (starts_loaded)
 		if(ispath(ammo_type) && (load_method & (SINGLE_CASING|SPEEDLOADER)))
 			for(var/i in 1 to max_shells)
@@ -64,10 +64,11 @@
 /obj/item/weapon/gun/projectile/consume_next_projectile()
 	if(!is_jammed && prob(jam_chance))
 		if(!has_jammed)  //If we just unjammed, don't jam again
-			playsound(src.loc, 'sound/effects/jam.ogg', 50, 1)
-			src.visible_message("<span class='danger'>\The [src] jams!</span>")
-			is_jammed = 1
-			has_jammed = TRUE
+			if(loaded.len)
+				playsound(src.loc, 'sound/effects/jam.ogg', 50, 1)
+				src.visible_message("<span class='danger'>\The [src] jams!</span>")
+				is_jammed = 1
+				has_jammed = TRUE
 
 	if(is_jammed)  //
 		return null

@@ -94,8 +94,8 @@
 	var/bulk = 0			//how unwieldy this weapon for its size, affects accuracy when fired without aiming
 	var/last_handled		//time when hand gun's in became active, for purposes of aiming bonuses
 
-/obj/item/weapon/gun/New()
-	..()
+/obj/item/weapon/gun/Initialize()
+	. = ..()
 	for(var/i in 1 to firemodes.len)
 		firemodes[i] = new /datum/firemode(src, firemodes[i])
 
