@@ -89,23 +89,19 @@
 			var/obj/structure/window/WW = locate() in src.loc
 			if(W)
 				W.attack_hand(src)
-				if(prob(30))
+				if(prob(80))
 					custom_emote(2, pick(npc_attack_sound))
 					return
 				return 1
 			else if(WW)
 				WW.attack_hand(src)
-				if(prob(30))
+				if(prob(80))
 					custom_emote(2, pick(npc_attack_sound))
 					return
 				return 1
 
 	// main loop
 	proc/process()
-		set background = 1
-
-		if (stat == 2)
-			return 0
 
 		if(weakened || paralysis || handcuffed)
 			return 1
@@ -114,7 +110,7 @@
 			mob_rest()
 			return 1
 
-		if(!canmove)
+		if(canmove)
 			return 1
 
 		setStaminaLoss(0)//So they don't wear themselves out.

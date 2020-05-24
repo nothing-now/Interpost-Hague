@@ -28,7 +28,7 @@
 	var/fixture_type = /obj/machinery/light
 	var/sheets_refunded = 2
 
-/obj/machinery/light_construct/New(atom/newloc, var/newdir, atom/fixture = null)
+/obj/machinery/light_construct/Initialize(atom/newloc, var/newdir, atom/fixture = null)
 	..(newloc)
 
 	if(newdir)
@@ -55,6 +55,7 @@
 		if(1) to_chat(user, "It's an empty frame.")
 		if(2) to_chat(user, "It's wired.")
 		if(3) to_chat(user, "The casing is closed.")
+
 /obj/machinery/light_construct/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	src.add_fingerprint(user)
 	if(isWrench(W))
@@ -129,6 +130,16 @@
 		if(2) icon_state = "bulb-construct-stage2"
 		if(3) icon_state = "bulb-empty"
 
+/obj/machinery/light_construct/torch
+	name = "empty torch fixture"
+	desc = "An empty fixture for a torch."
+	icon = 'icons/obj/structures.dmi'
+	icon_state = "torch0"
+	anchored = 1
+	layer = ABOVE_HUMAN_LAYER
+	fixture_type = /obj/machinery/light/torchon
+
+
 // the standard tube light fixture
 /obj/machinery/light
 	name = "light fixture"
@@ -173,8 +184,14 @@
 	desc = "A more robust socket for light tubes that demand more power."
 	light_type = /obj/item/weapon/light/tube/large
 
+/obj/machinery/light/torchon
+	name = "torch fixture"
+	desc = "A fixture for a torch."
+	light_type = /obj/item/device/flashlight/torch
+	construct_type = /obj/machinery/light_construct/torch
+
 // create a new lighting fixture
-/obj/machinery/light/New(atom/newloc, obj/machinery/light_construct/construct = null)
+/obj/machinery/light/Initialize(atom/newloc, obj/machinery/light_construct/construct = null)
 	..(newloc)
 
 	s.set_up(1, 1, src)

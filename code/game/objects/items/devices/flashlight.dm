@@ -203,9 +203,9 @@
 	var/produce_heat = 1500
 	activation_sound = 'sound/effects/flare.ogg'
 
-/obj/item/device/flashlight/flare/New()
+/obj/item/device/flashlight/flare/Initialize()
 	fuel = rand(800, 1000) // Sorry for changing this so much but I keep under-estimating how long X number of ticks last in seconds.
-	..()
+	. = ..()
 
 /obj/item/device/flashlight/flare/Process()
 	var/turf/pos = get_turf(src)
@@ -256,10 +256,10 @@
 	var/fuel = 0
 	activation_sound = null
 
-/obj/item/device/flashlight/glowstick/New()
+/obj/item/device/flashlight/glowstick/Initialize()
 	fuel = rand(1600, 2000)
 	light_color = color
-	..()
+	. = ..()
 
 /obj/item/device/flashlight/glowstick/Destroy()
 	. = ..()
@@ -356,3 +356,63 @@
 
 /obj/item/device/flashlight/slime/attack_self(mob/user)
 	return //Bio-luminescence does not toggle.
+
+// torch
+
+/obj/item/device/flashlight/torch
+	name = "torch"
+	desc = "A simple torch."
+	w_class = ITEM_SIZE_LARGE // It's a torch.
+	brightness_on = 8 // Pretty bright.
+	light_power = 3
+	light_color = "#e58775"
+	icon_state = "torch0"
+	item_state = "torch"
+	action_button_name = null //just pull it manually, neckbeard.
+	var/fuel = 0
+	var/on_damage = 7
+	var/produce_heat = 1500
+	//activation_sound = ''
+
+/obj/item/device/flashlight/torch/Initialize()
+	fuel = rand(800, 1000)
+	. = ..()
+
+/obj/item/device/flashlight/torch/Process()
+	var/turf/pos = get_turf(src)
+	if(pos)
+		pos.hotspot_expose(produce_heat, 5)
+	fuel = max(fuel - 1, 0)
+	if(!fuel || !on)
+		turn_off()
+		if(!fuel)
+			src.icon_state = "[initial(icon_state)]-empty"
+		STOP_PROCESSING(SSobj, src)
+
+/obj/item/device/flashlight/torch/proc/turn_off()
+	on = 0
+	src.force = initial(src.force)
+	src.damtype = initial(src.damtype)
+	update_icon()
+
+/obj/item/device/flashlight/torch/attackby(obj/item/C, mob/user)
+	if(istype(C, /obj/item/weapon/flame/lighter))
+		turn_on(C, user)
+		to_chat(user, "<span class='notice'>You turn on the torch.</span>")
+	else
+		return FALSE
+
+/obj/item/device/flashlight/torch/proc/turn_on(var/mob/user)
+	if(on)
+		return FALSE
+	if(!fuel)
+		if(user)
+			to_chat(user, "<span class='notice'>It's burned out.</span>")
+		return FALSE
+	on = TRUE
+	force = on_damage
+	damtype = "fire"
+	START_PROCESSING(SSobj, src)
+	update_icon()
+	return 1
+
