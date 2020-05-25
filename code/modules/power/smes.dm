@@ -15,6 +15,7 @@
 
 	var/capacity = 5e6 // maximum charge
 	var/charge = 1e6 // actual charge
+	var/overlay_icon = 'icons/obj/power.dmi'
 
 	var/input_attempt = 0 			// 1 = attempting to charge, 0 = not attempting to charge
 	var/inputting = 0 				// 1 = actually inputting, 0 = not inputting
@@ -96,25 +97,25 @@
 	overlays.Cut()
 	if(stat & BROKEN)	return
 
-	overlays += image('icons/obj/power.dmi', "smes-op[outputting]")
+	overlays += overlay_image(overlay_icon, "smes-op[outputting]")
 
 	if(inputting == 2)
-		overlays += image('icons/obj/power.dmi', "smes-oc2")
+		overlays += overlay_image(overlay_icon, "smes-oc2", plane = EFFECTS_ABOVE_LIGHTING_PLANE, layer = ABOVE_LIGHTING_LAYER)
 	else if (inputting == 1)
-		overlays += image('icons/obj/power.dmi', "smes-oc1")
+		overlays += overlay_image(overlay_icon, "smes-oc1", plane = EFFECTS_ABOVE_LIGHTING_PLANE, layer = ABOVE_LIGHTING_LAYER)
 	else if (input_attempt)
-		overlays += image('icons/obj/power.dmi', "smes-oc0")
+		overlays += overlay_image(overlay_icon, "smes-oc0", plane = EFFECTS_ABOVE_LIGHTING_PLANE, layer = ABOVE_LIGHTING_LAYER)
 
 	var/clevel = chargedisplay()
 	if(clevel)
-		overlays += image('icons/obj/power.dmi', "smes-og[clevel]")
+		overlays += overlay_image(overlay_icon, "smes-og[clevel]", plane = EFFECTS_ABOVE_LIGHTING_PLANE, layer = ABOVE_LIGHTING_LAYER)
 
 	if(outputting == 2)
-		overlays += image('icons/obj/power.dmi', "smes-op2")
+		overlays += overlay_image(overlay_icon, "smes-op2", plane = EFFECTS_ABOVE_LIGHTING_PLANE, layer = ABOVE_LIGHTING_LAYER)
 	else if (outputting == 1)
-		overlays += image('icons/obj/power.dmi', "smes-op1")
+		overlays += overlay_image(overlay_icon, "smes-op1", plane = EFFECTS_ABOVE_LIGHTING_PLANE, layer = ABOVE_LIGHTING_LAYER)
 	else
-		overlays += image('icons/obj/power.dmi', "smes-op0")
+		overlays += overlay_image(overlay_icon, "smes-op0", plane = EFFECTS_ABOVE_LIGHTING_PLANE, layer = ABOVE_LIGHTING_LAYER)
 
 /obj/machinery/power/smes/proc/chargedisplay()
 	return round(5.5*charge/(capacity ? capacity : 5e6))

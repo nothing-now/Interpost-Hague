@@ -331,6 +331,7 @@
 	return 0
 
 /obj/machinery/alarm/update_icon()
+	overlays = overlays.Cut()
 	if(wiresexposed)
 		icon_state = "alarmx"
 		set_light(0)
@@ -355,6 +356,7 @@
 		if (2)
 			icon_state = "alarm1"
 			new_color = COLOR_RED_LIGHT
+	overlays  += overlay_image(icon, "alarm[icon_level]", plane = EFFECTS_ABOVE_LIGHTING_PLANE, layer = ABOVE_LIGHTING_LAYER)
 
 	set_light(l_range = 2, l_power = 0.6, l_color = new_color)
 
@@ -926,7 +928,7 @@ FIRE ALARM
 			var/decl/security_level/sl = security_state.current_security_level
 
 			set_light(sl.light_range, sl.light_power, sl.light_color_alarm)
-			src.overlays += image(sl.icon, sl.overlay_alarm)
+			overlays += overlay_image(sl.icon, sl.overlay_alarm, plane = EFFECTS_ABOVE_LIGHTING_PLANE, layer = ABOVE_LIGHTING_LAYER)
 
 /obj/machinery/firealarm/fire_act(datum/gas_mixture/air, temperature, volume)
 	if(src.detecting)
@@ -1109,8 +1111,6 @@ FIRE ALARM
 	update_icon()
 	//playsound(src.loc, 'sound/ambience/signal.ogg', 75, 0)
 	return
-
-
 
 /obj/machinery/firealarm/New(loc, dir, atom/frame)
 	..(loc)

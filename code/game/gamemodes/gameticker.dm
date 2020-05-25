@@ -50,7 +50,7 @@ var/global/datum/controller/gameticker/ticker
 				master_mode = tertiary_mode
 				tertiary_mode = null
 			else
-				master_mode = "extended"
+				master_mode = "secret"
 
 		to_world("<b>Trying to start [master_mode].</b>")
 		to_world("Select ready after you setup your character. The game will start in [pregame_timeleft] seconds.")

@@ -122,7 +122,7 @@
 		to_chat(src, "<span class='warning'>Not even a [src.species.name] can speak to the dead.</span>")
 		return
 
-	log_say("[key_name(src)] communed to [key_name(M)]: [text]")
+	log_and_message_admins("[key_name(src)] communed and used psychic whisper to [key_name(M)]: [text]")
 
 	to_chat(M, "<span class='notice'>Like lead slabs crashing into the ocean, alien thoughts drop into your mind: <i>[text]</i></span>")
 	if(istype(M,/mob/living/carbon/human))
@@ -151,9 +151,17 @@
 	set desc = "Whisper silently to someone over a distance."
 	set category = "Abilities"
 
+	if(stat != CONSCIOUS || disrupts_psionics()) //Do not use it while unconscious or disrupted.
+		to_chat(src, "<span class='warning'>You can't focus enough to do this!</span>")
+		return
+
+	if(isghost(M) || M.stat == DEAD)
+		to_chat(src, "<span class='warning'>You cannot speak to the dead.</span>")
+		return
+
 	var/msg = sanitize(input("Message:", "Psychic Whisper") as text|null)
 	if(msg)
-		log_say("PsychicWhisper: [key_name(src)]->[M.key] : [msg]")
+		log_and_message_admins("PsychicWhisper: [key_name(src)]->[M.key] : [msg]")
 		to_chat(M, "<span class='alium'>You hear a strange, alien voice in your head... <i>[msg]</i></span>")
 		to_chat(src, "<span class='alium'>You channel a message: \"[msg]\" to [M]</span>")
 	return
