@@ -37,7 +37,7 @@
 	if(!material)
 		return
 
-	if(LAZYLEN(damage_overlays) < 1) //list hasn't been populated
+	if(!damage_overlays[1]) //list hasn't been populated
 		generate_overlays()
 
 	overlays.Cut()
