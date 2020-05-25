@@ -15,6 +15,7 @@ SUBSYSTEM_DEF(goals)
 		/datum/goal/movement/walk/eva,
 		/datum/goal/clean,
 		/datum/goal/money,
+		/datum/goal/sickness
 	)
 	var/list/departments = list()
 	var/list/ambitions =   list()
