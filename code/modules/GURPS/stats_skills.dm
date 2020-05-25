@@ -133,6 +133,9 @@ proc/conToToxinModifier(var/constitution, var/w_class)
 /mob/proc/adjustInteligence(var/num)
 	stats[STAT_IQ] += num
 
+/mob/proc/adjustConstitution(var/num)
+	stats[STAT_HT] += num
+
 
 /mob/proc/temporary_stat_adjust(var/stat, var/modifier, var/time)
 	if(stats[stat] && modifier && time)//In case you somehow call this without using all three vars.

@@ -167,8 +167,9 @@
 
 		if(href_list["add_goal"])
 			log_admin("[key_name_admin(usr)] added a random goal to [key_name(current)].")
-			to_chat(current, SPAN_NOTICE("You have received a new goal. Use <b>Show Goals</b> to view it."))
-			generate_goals(assigned_job, TRUE, 1)
+			var/did_generate_goal = generate_goals(assigned_job, TRUE, 1)
+			if(did_generate_goal)
+				to_chat(current, SPAN_NOTICE("You have received a new goal. Use <b>Show Goals</b> to view it."))
 			. = TRUE
 
 		if(href_list["abandon_goal"])

@@ -180,9 +180,6 @@ var/global/datum/controller/gameticker/ticker
 
 	processScheduler.start()
 
-	if(config.sql_enabled)
-		statistic_cycle() // Polls population totals regularly and stores them in an SQL DB -- TLE
-
 	return 1
 
 /datum/controller/gameticker

@@ -229,9 +229,9 @@ var/global/list/additional_antag_types = list()
 		antag.post_spawn()
 
 	// Update goals, now that antag status and jobs are both resolved.
-	for(var/thing in SSticker.minds)
+	for(var/thing in ticker.minds)
 		var/datum/mind/mind = thing
-		mind.generate_goals(mind.assigned_job)
+		mind.generate_goals(mind.assigned_job, is_spawning=TRUE)
 		mind.current.show_goals()
 
 	if(evacuation_controller && auto_recall_shuttle)
@@ -361,7 +361,7 @@ var/global/list/additional_antag_types = list()
 		text += "There were <b>no survivors</b> (<b>[ghosts] ghosts</b>)."
 
 	to_world(text)
-	
+
 	if(clients > 0)
 		SSstatistics.set_field("round_end_clients",clients)
 	if(ghosts > 0)
