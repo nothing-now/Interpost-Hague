@@ -73,6 +73,8 @@
 	//cap the amount of damage, so that things like emitters can't destroy walls in one hit.
 	var/damage = min(proj_damage, 500)
 
+	create_bullethole(Proj)//Potentially infinite bullet holes but most walls don't last long enough for this to be a problem.
+
 	take_damage(damage)
 	return
 
@@ -100,6 +102,7 @@
 
 /turf/simulated/wall/ChangeTurf(var/newtype)
 	clear_plants()
+	clear_bulletholes()
 	return ..(newtype)
 
 //Appearance
@@ -186,6 +189,7 @@
 			O.forceMove(src)
 
 	clear_plants()
+	clear_bulletholes()
 	material = get_material_by_name("placeholder")
 	reinf_material = null
 	update_connections(1)

@@ -14,6 +14,9 @@
 		to_chat(usr, "<span class='warning'>You don't have anything in your hands to give to \the [target].</span>")
 		return
 
+	if(I.obj_flags & OBJ_FLAG_ABSTRACT)//No giving people offhands.
+		return
+
 	if(istype(I, /obj/item/grab))
 		to_chat(usr, "<span class='warning'>You can't give someone a grab.</span>")
 		return

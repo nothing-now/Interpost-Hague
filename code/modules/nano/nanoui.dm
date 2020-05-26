@@ -542,7 +542,16 @@ nanoui is used to open and update nano browser uis
   * @return nothing
   */
 /datum/nanoui/proc/send_message(js_function, data)
-    user << output(data, "[window_id].browser:[js_function]")
+	user << output(data, "[window_id].browser:[js_function]")
+
+ /**
+  * Move window up front.
+  *
+  * @return nothing
+  */
+/datum/nanoui/proc/focus()
+	winset(user, window_id, "focus=true")
+	winset(user, "mapwindow.map", "focus=true") // return keyboard focus to map
 
 /mob/verb/fix_nanoui()
 	set name = "Fix NanoUI"

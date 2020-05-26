@@ -198,6 +198,7 @@
 			playsound(src, 'sound/items/Welder.ogg', 100, 1)
 			if(do_after(user, max(5, damage / 5), src) && WT && WT.isOn())
 				to_chat(user, "<span class='notice'>You finish repairing the damage to [src].</span>")
+				clear_bulletholes()
 				take_damage(-damage)
 		else
 			to_chat(user, "<span class='notice'>You need more welding fuel to complete this task.</span>")

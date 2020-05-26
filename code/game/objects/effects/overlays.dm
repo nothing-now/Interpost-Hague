@@ -116,3 +116,10 @@
 
 /obj/effect/overlay/temp/dir_setting/bloodsplatter/xenosplatter
 	splatter_type = "xsplatter"
+
+/obj/effect/overlay/bmark
+	name = "bullet hole"
+	desc = "A bullet hole big enough to be seen easily."
+	icon = 'icons/effects/effects.dmi'
+	layer = ABOVE_HUMAN_LAYER
+	icon_state = "scorch"

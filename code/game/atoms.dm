@@ -631,3 +631,23 @@ its easier to just keep the beam vertical.
 	if(usr.facing_dir)
 		return 0
 
+/atom/proc/create_bullethole(var/obj/item/projectile/Proj)
+	var/p_x = Proj.p_x + pick(0,0,0,0,0,-1,1) // really ugly way of coding "sometimes offset Proj.p_x!"
+	var/p_y = Proj.p_y + pick(0,0,0,0,0,-1,1) // Used for bulletholes
+	var/obj/effect/overlay/bmark/BM = new(src)
+
+	BM.pixel_x = p_x
+	BM.pixel_y = p_y
+	// offset correction
+	BM.pixel_x--
+	BM.pixel_y--
+
+	if(Proj.damage >= WEAPON_FORCE_DANGEROUS)//If it does a lot of damage it makes a nice big black hole.
+		BM.icon_state = "scorch"
+		BM.set_dir(pick(NORTH,SOUTH,EAST,WEST)) // random scorch design
+	else //Otherwise it's a light dent.
+		BM.icon_state = "light_scorch"
+
+/atom/proc/clear_bulletholes()
+	for(var/obj/effect/overlay/bmark/BM in src)
+		qdel(BM)
