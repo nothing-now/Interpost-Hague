@@ -1,8 +1,8 @@
 /atom/movable
 	layer = OBJ_LAYER
 
-	appearance_flags = TILE_BOUND | PIXEL_SCALE
-	glide_size = 8
+	appearance_flags = TILE_BOUND | PIXEL_SCALE | LONG_GLIDE
+	glide_size = 3
 
 	var/last_move = null
 	var/last_move_time = 0
@@ -53,9 +53,16 @@
 	..()
 	return
 
+/atom/movable/proc/set_glide_size(target = 8)
+	SEND_SIGNAL(src, COMSIG_MOVABLE_UPDATE_GLIDE_SIZE, target)
+	glide_size = target
+
+	for(var/atom/movable/AM)
+		AM.set_glide_size(target)
+
 /atom/movable/proc/forceMove(atom/destination)
 	if(loc == destination)
-		return 0
+		return FALSE
 	var/is_origin_turf = isturf(loc)
 	var/is_destination_turf = isturf(destination)
 	// It is a new area if:

@@ -220,6 +220,7 @@ var/list/_client_preferences_by_type
 	description = "Give Personal Goals"
 	key = "PERSONAL_GOALS"
 	options = list(GLOB.PREF_NEVER, GLOB.PREF_NON_ANTAG, GLOB.PREF_ALWAYS)
+	default_value = GLOB.PREF_ALWAYS
 
 /datum/client_preference/show_department_goals
 	description = "Show Departmental Goals"

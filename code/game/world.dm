@@ -66,6 +66,8 @@
 
 #define RECOMMENDED_VERSION 511
 /world/New()
+	if(fexists("byond-extools.dll"))
+		call("byond-extools.dll", "tffi_initialize")()
 
 	//set window title
 	name = "[server_name] - [GLOB.using_map.full_name]"
@@ -79,7 +81,7 @@
 	changelog_hash = md5('html/changelog.html')					//used for telling if the changelog has changed recently
 
 	if(byond_version < RECOMMENDED_VERSION)
-		world.log << "Your server's byond version does not meet the recommended requirements for this server. Please update BYOND"
+		world.log << "Your server's byond version does not meet the recommended requirements for this server. Please, update your BYOND."
 
 	if(config && config.server_name != null && config.server_suffix && world.port > 0)
 		// dumb and hardcoded but I don't care~

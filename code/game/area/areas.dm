@@ -281,10 +281,9 @@ var/list/mob/living/forced_ambiance_list = new
 	var/turf/T = get_turf(L)
 	var/hum = 0
 	if(!L.ear_deaf && !always_unpowered && power_environ)
-		for(var/obj/machinery/atmospherics/unary/vent_pump/vent in src)
-			if(vent.can_pump())
-				hum = 1
-				break
+		for(var/turf/simulated/wall in src)
+			hum = 1
+			break
 
 	if(forced_ambience)
 		if(forced_ambience.len)

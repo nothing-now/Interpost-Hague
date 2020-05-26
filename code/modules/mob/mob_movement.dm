@@ -132,7 +132,7 @@
 	return
 
 //This proc should never be overridden elsewhere at /atom/movable to keep directions sane.
-/atom/movable/Move(newloc, direct)
+/atom/movable/Move(newloc, direct, glide_size_override = 0)
 	if (direct & (direct - 1))
 		if (direct & 1)
 			if (direct & 4)
@@ -165,6 +165,9 @@
 								step(src, SOUTH)
 	else
 		var/atom/A = src.loc
+
+		if(glide_size_override)
+			set_glide_size(glide_size_override)
 
 		var/olddir = dir //we can't override this without sacrificing the rest of movable/New()
 		. = ..()
