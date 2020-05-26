@@ -2,7 +2,7 @@
 	layer = OBJ_LAYER
 
 	appearance_flags = TILE_BOUND | PIXEL_SCALE | LONG_GLIDE
-	glide_size = 3
+	glide_size = 4.8
 
 	var/last_move = null
 	var/last_move_time = 0
