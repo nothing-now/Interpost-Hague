@@ -178,8 +178,8 @@ datum/controller/subsystem/machines/proc/setup_atmos_machinery(list/machines)
 				continue
 
 		if(!QDELETED(M) && (M.Process(wait) == PROCESS_KILL))
-			processing.Remove(M)
-			M.is_processing = null
+			processing -= M
+			M.is_processing = FALSE
 		if(MC_TICK_CHECK)
 			return
 

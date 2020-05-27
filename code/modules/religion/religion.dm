@@ -79,7 +79,7 @@ proc/generate_random_prayer()//This generates a new one.
 	var/mob/living/carbon/human/T = input(src, "Who will we interrogate?") as null|anything in victims
 	if(!T) return
 	if(!(T in view(1))) return
-	say("[T] are you a heretic!?")
+	say("[T], are you a dirty heretic!?")
 	if(prob((T.getHalLoss()/3) - T.stats[STAT_HT]))  //Higher con helps your resist torture
 		T.reveal_self()
 		return
@@ -153,7 +153,7 @@ proc/generate_random_prayer()//This generates a new one.
 	//Check the area for if there's another shrine already, or the arbiters have already claimed it with TODO:?????
 	var/area/A = get_area(target)
 	if(!A)
-		to_chat(user, "<span class='warning'>The old god's refuse your petty offering</span>")
+		to_chat(user, "<span class='warning'>The old gods refuse your petty offering.</span>")
 		return FALSE
 
 	var/occupying_religion = territory_claimed(A, user)
@@ -162,7 +162,7 @@ proc/generate_random_prayer()//This generates a new one.
 		return FALSE
 
 	if(occupying_religion)
-		to_chat(user, "<span class='danger'>Something in the area is blocking your connection to the Old Gods!  FInd it and destory it!</span>")
+		to_chat(user, "<span class='danger'>Something in the area is blocking your connection to the Old Gods! Find and destroy it!</span>")
 		return FALSE
 
 	// If you pass the gaunlet of checks, you're good to proceed
@@ -188,7 +188,7 @@ proc/generate_random_prayer()//This generates a new one.
 	var/datum/religion/user_religion = GLOB.all_religions[religion]
 	//You need your god's item to do this
 	if(!istype(get_active_hand(), user_religion.holy_item) && !istype(get_inactive_hand(), user_religion.holy_item))
-		to_chat(src, "<span class='warning'>You can't praise god without your [user_religion.holy_item]!</span>")
+		to_chat(src, "<span class='warning'>You can't praise your god without your [user_religion.holy_item]!</span>")
 		return
 	var/timer = 30
 	var/praise_sound = "sound/effects/Cultistemessage[pick(1,10)].ogg"
@@ -208,7 +208,7 @@ proc/generate_random_prayer()//This generates a new one.
 					user_religion.request = null
 			return 1
 		else
-			to_chat(src, "<span class='notice'>Your prayer is interupted</span>")
+			to_chat(src, "<span class='notice'>Your prayer is interrupted.</span>")
 			doing_something = 0
 			return
 		return 0
@@ -225,7 +225,7 @@ proc/generate_random_prayer()//This generates a new one.
 	var/datum/religion/user_religion = GLOB.all_religions[religion]
 	//You need your god's item to do this
 	if(!istype(get_active_hand(), user_religion.holy_item) && !istype(get_inactive_hand(), user_religion.holy_item))
-		to_chat(src, "<span class='warning'>You can't draw old god runes without your [user_religion.holy_item]!</span>")
+		to_chat(src, "<span class='warning'>You can't draw a rune without your [user_religion.holy_item]!</span>")
 		return
 	//Need 30 favor to make a shrine
 	if(user_religion.favor < 30)
