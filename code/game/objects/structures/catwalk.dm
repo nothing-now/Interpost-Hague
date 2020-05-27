@@ -46,6 +46,12 @@
 
 	icon_state = "catwalk[connectdir]-[diagonalconnect]"
 
+/obj/structure/catwalk/hoist_act(turf/dest)
+	for(var/A in loc)
+		var/atom/movable/AM = A
+		if (AM.simulated && !AM.anchored)
+			AM.forceMove(dest)
+	..()
 
 /obj/structure/catwalk/ex_act(severity)
 	switch(severity)
