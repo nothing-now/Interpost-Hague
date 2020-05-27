@@ -98,6 +98,13 @@ nanoui is used to open and update nano browser uis
 	var/datum/asset/assets = get_asset_datum(/datum/asset/nanoui)
 	assets.send(user, ntemplate_filename)
 
+//Do not qdel nanouis. Use close() instead.
+/datum/nanoui/Destroy()
+	user = null
+	src_object = null
+	state = null
+	. = ..()
+
  /**
   * Use this proc to add assets which are common to (and required by) all nano uis
   *
@@ -406,10 +413,8 @@ nanoui is used to open and update nano browser uis
 	if(!user.client)
 		return
 
-	// An attempted fix to UIs sometimes locking up spamming runtime errors due to src_object being null for whatever reason.
-	// This hard-deletes the UI, preventing the device that uses the UI from being locked up permanently.
 	if(!src_object)
-		qdel(src)
+		close()
 
 	var/window_size = ""
 	if (width && height)
@@ -422,7 +427,7 @@ nanoui is used to open and update nano browser uis
 	winset(user, "mapwindow.map", "focus=true") // return keyboard focus to map
 	on_close_winset()
 	//onclose(user, window_id)
-	GLOB.nanomanager.ui_opened(src)
+	SSnano.ui_opened(src)
 
  /**
   * Reinitialise this UI, potentially with a different template and/or initial data
@@ -443,13 +448,14 @@ nanoui is used to open and update nano browser uis
   */
 /datum/nanoui/proc/close()
 	is_auto_updating = 0
-	GLOB.nanomanager.ui_closed(src)
+	SSnano.ui_closed(src)
 	show_browser(user, null, "window=[window_id]")
 	for(var/datum/nanoui/child in children)
 		child.close()
 	children.Cut()
 	state = null
 	master_ui = null
+	qdel(src)
 
  /**
   * Set the UI window to call the nanoclose verb when the window is closed
@@ -505,7 +511,7 @@ nanoui is used to open and update nano browser uis
 			return
 
 	if ((src_object && src_object.Topic(href, href_list, state)) || map_update)
-		GLOB.nanomanager.update_uis(src_object) // update all UIs attached to src_object
+		SSnano.update_uis(src_object) // update all UIs attached to src_object
 
  /**
   * Process this UI, updating the entire UI or just the status (aka visibility)
@@ -515,7 +521,7 @@ nanoui is used to open and update nano browser uis
   *
   * @return nothing
   */
-/datum/nanoui/proc/process(update = 0)
+/datum/nanoui/proc/try_update(update = 0)
 	if (!src_object || !user)
 		close()
 		return
@@ -524,6 +530,13 @@ nanoui is used to open and update nano browser uis
 		update() // Update the UI (update_status() is called whenever a UI is updated)
 	else
 		update_status(1) // Not updating UI, so lets check here if status has changed
+
+ /**
+  * This Process proc is called by SSnano.
+  * Use try_update() to make manual updates.
+  */
+/datum/nanoui/Process()
+	try_update(0)
 
  /**
   * Update the UI

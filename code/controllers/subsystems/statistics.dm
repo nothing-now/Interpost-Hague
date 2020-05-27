@@ -19,7 +19,7 @@
 SUBSYSTEM_DEF(statistics)
 	name = "Statistics"
 	wait = 10 MINUTES
-	init_order = SS_INIT_MISC_LATE
+	init_order = SS_INIT_MISC_LATE | SS_NEEDS_SHUTDOWN
 	flags = SS_NO_INIT
 
 	var/crew_death_count = 0
@@ -58,7 +58,7 @@ SUBSYSTEM_DEF(statistics)
 	query.Execute(db)
 	if(query.Error() || query.ErrorMsg())
 		to_world_log( "SQL error - creating death table - [query.Error()] - [query.ErrorMsg()]")
-	
+
 	query = new("CREATE TABLE IF NOT EXISTS population (game_id TEXT NOT NULL, timestamp TEXT NOT NULL, players INTEGER, admin INTEGER);")
 	query.Execute(db)
 	if(query.Error() || query.ErrorMsg())
@@ -104,7 +104,7 @@ SUBSYSTEM_DEF(statistics)
 			if(query.Error() || query.ErrorMsg())
 				to_world_log( "SQL error - logging population - [query.Error()] - [query.ErrorMsg()]")
 
-	// These values are arbitrary and largely unused, so using JSON is far easier than expecting 
+	// These values are arbitrary and largely unused, so using JSON is far easier than expecting
 	// people to maintain a hard list of fields and migrate the tables every time they change.
 	if(LAZYLEN(values))
 		for(var/field in values)

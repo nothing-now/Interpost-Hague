@@ -72,6 +72,10 @@ if(Datum.is_processing) {\
 //	This flag overrides SS_KEEP_TIMING
 #define SS_POST_FIRE_TIMING 64
 
+// Run Shutdown() on server shutdown so the SS can finalize state.
+#define SS_NEEDS_SHUTDOWN 128
+
+
 // -- SStimer stuff --
 
 #define TIMER_UNIQUE       (1 << 0) // Don't run if there is an identical unique timer active

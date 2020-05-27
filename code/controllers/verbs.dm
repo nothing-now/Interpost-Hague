@@ -69,7 +69,7 @@
 			debug_variables(plant_controller)
 			SSstatistics.add_field_details("admin_verb", "DPlants")
 		if("Nano")
-			debug_variables(GLOB.nanomanager)
+			debug_variables(SSnano)
 			SSstatistics.add_field_details("admin_verb", "DNano")
 		if("Alt Appearance Manager")
 			debug_variables(appearance_manager)
