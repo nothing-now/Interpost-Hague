@@ -102,6 +102,7 @@
 #define SS_INIT_ATOMS            3
 #define SS_INIT_ICON_UPDATE      2
 #define SS_INIT_MACHINES         1
+#define SS_INIT_OVERLAY          1
 #define SS_INIT_DEFAULT          0
 #define SS_INIT_AIR             -1
 #define SS_INIT_ALARM           -2
