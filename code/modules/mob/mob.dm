@@ -4,8 +4,10 @@
 	GLOB.living_mob_list_ -= src
 	unset_machine()
 	QDEL_NULL(hud_used)
+	if(istype(ability_master))
+		QDEL_NULL(ability_master)
 	for(var/obj/item/grab/G in grabbed_by)
-		qdel(G)
+		QDEL_NULL(G)
 	clear_fullscreen()
 	if(client)
 		remove_screen_obj_references()

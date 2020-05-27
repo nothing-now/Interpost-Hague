@@ -163,6 +163,7 @@ turf/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	return 1 //Nothing found to block so return success!
 
 var/const/enterloopsanity = 100
+
 /turf/Entered(atom/atom as mob|obj)
 
 	..()
@@ -242,9 +243,6 @@ var/const/enterloopsanity = 100
 			if(!LinkBlocked(src, t) && !TurfBlockedNonWindow(t))
 				L.Add(t)
 	return L
-
-/turf/proc/process()
-	return PROCESS_KILL
 
 /turf/proc/contains_dense_objects()
 	if(density)

@@ -24,6 +24,7 @@
 	var/obj/machinery/door/airlock/closeOther = null
 	var/closeOtherId = null
 	var/lockdownbyai = 0
+	var/list/airlock_overlays = list()
 	autoclose = 1
 	var/assembly_type = /obj/structure/door_assembly
 	var/mineral = null

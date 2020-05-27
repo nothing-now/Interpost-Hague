@@ -43,6 +43,8 @@
 			return global.SSao;
 		if("SSatoms")
 			return global.SSatoms;
+		if("SSalarm")
+			return global.SSalarm;
 		if("SScharacter_setup")
 			return global.SScharacter_setup;
 		if("SSfastprocess")
@@ -75,6 +77,8 @@
 			return global.SSsun;
 		if("SSnano")
 			return global.SSnano;
+		if("SSturf")
+			return global.SSturf;
 		if("SSvines")
 			return global.SSvines;
 		if("SSzcopy")
@@ -157,8 +161,6 @@
 			return global.air_blocked;
 		if("air_processing_killed")
 			return global.air_processing_killed;
-		if("alarm_manager")
-			return global.alarm_manager;
 		if("alien_whitelist")
 			return global.alien_whitelist;
 		if("allCasters")
@@ -729,8 +731,6 @@
 			return global.priv_syndicate_access;
 		if("processScheduler")
 			return global.processScheduler;
-		if("processing_turfs")
-			return global.processing_turfs;
 		if("prometheans")
 			return global.prometheans;
 		if("protected_objects")
@@ -1066,6 +1066,8 @@
 			global.SSair=newval;
 		if("SSairflow")
 			global.SSairflow=newval;
+		if("SSalarm")
+			global.SSalarm=newval;
 		if("SSao")
 			global.SSao=newval;
 		if("SSatoms")
@@ -1098,6 +1100,8 @@
 			global.SSprocessing=newval;
 		if("SSskybox")
 			global.SSskybox=newval;
+		if("SSturf")
+			global.SSturf=newval;
 		if("SSstatistics")
 			global.SSstatistics=newval;
 		if("SSsun")
@@ -1186,8 +1190,6 @@
 			global.air_blocked=newval;
 		if("air_processing_killed")
 			global.air_processing_killed=newval;
-		if("alarm_manager")
-			global.alarm_manager=newval;
 		if("alien_whitelist")
 			global.alien_whitelist=newval;
 		if("allCasters")
@@ -1758,8 +1760,6 @@
 			global.priv_syndicate_access=newval;
 		if("processScheduler")
 			global.processScheduler=newval;
-		if("processing_turfs")
-			global.processing_turfs=newval;
 		if("prometheans")
 			global.prometheans=newval;
 		if("protected_objects")
@@ -2076,6 +2076,7 @@
 	"SKILLS",
 	"SSair",
 	"SSairflow",
+	"SSalarm",
 	"SSao",
 	"SSatoms",
 	"SScharacter_setup",
@@ -2088,6 +2089,7 @@
 	"SSmapping",
 	"SSmobs",
 	"SSnano",
+	"SSturf",
 	"SSobj",
 	"SSpersistence",
 	"SSprocessing",
@@ -2135,7 +2137,7 @@
 	"air_alarm_topic",
 	"air_blocked",
 	"air_processing_killed",
-	"alarm_manager",
+	"airlock_overlays",
 	"alien_whitelist",
 	"allCasters",
 	"allConsoles",
@@ -2424,7 +2426,6 @@
 	"priv_station_access",
 	"priv_syndicate_access",
 	"processScheduler",
-	"processing_turfs",
 	"prometheans",
 	"protected_objects",
 	"rad_collectors",

@@ -16,8 +16,8 @@ var/global/list/navbeacons = list()
 
 	req_access = list(access_engine)
 
-/obj/machinery/navbeacon/New()
-	..()
+/obj/machinery/navbeacon/Initialize()
+	. = ..()
 
 	var/turf/T = loc
 	hide(!T.is_plating())
@@ -167,7 +167,7 @@ Transponder Codes:<UL>"}
 
 /obj/machinery/navbeacon/Destroy()
 	navbeacons.Remove(src)
-	..()
+	. = ..()
 
 // Patrol beacon types below. So many.
 

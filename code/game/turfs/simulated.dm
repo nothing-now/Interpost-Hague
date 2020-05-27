@@ -61,15 +61,21 @@
 		B.clean_blood()
 	..()
 
-/turf/simulated/New()
-	..()
+/turf/simulated/Initialize()
+	. = ..()
 	if(istype(loc, /area/chapel))
 		holy = 1
 	levelupdate()
 
 /turf/simulated/Destroy()
 	task_unwet_floor(unwet_task, FALSE)
-	return ..()
+	if (zone)
+		if (can_safely_remove_from_zone())
+			c_copy_air()
+			zone.remove(src)
+		else
+			zone.rebuild()
+	return . = ..()
 
 /turf/simulated/proc/AddTracks(var/typepath,var/bloodDNA,var/comingdir,var/goingdir,var/bloodcolor=COLOR_BLOOD_HUMAN)
 	var/obj/effect/decal/cleanable/blood/tracks/tracks = locate(typepath) in src

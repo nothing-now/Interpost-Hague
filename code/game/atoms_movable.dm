@@ -61,6 +61,8 @@
 		AM.set_glide_size(target)
 
 /atom/movable/proc/forceMove(atom/destination)
+	if(QDELETED(src) && !QDESTROYING(src) && !isnull(destination))
+		CRASH("Attempted to forceMove a QDELETED [src] out of nullspace!")
 	if(loc == destination)
 		return FALSE
 	var/is_origin_turf = isturf(loc)

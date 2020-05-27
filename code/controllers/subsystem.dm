@@ -74,6 +74,8 @@
 	can_fire = 0
 	flags |= SS_NO_FIRE
 	Master.subsystems -= src
+	..()
+	return QDEL_HINT_HARDDEL_NOW
 
 
 //Queue it to run.
@@ -162,6 +164,7 @@
 
 //used to initialize the subsystem AFTER the map has loaded
 /datum/controller/subsystem/Initialize(start_timeofday)
+	initialized = TRUE
 	var/time = (REALTIMEOFDAY - start_timeofday) / 10
 	var/msg = "Initialized [name] subsystem within [time] second[time == 1 ? "" : "s"]!"
 	to_chat(world, "<span class='boldannounce'>[msg]</span>")
@@ -175,11 +178,14 @@
 		statclick = new/obj/effect/statclick/debug(null, "Initializing...", src)
 
 
-
-	if(can_fire && !(SS_NO_FIRE in flags))
-		msg = "[round(cost,1)]ms|[round(tick_usage,1)]%([round(tick_overrun,1)]%)|[round(ticks,0.1)]\t[msg]"
+	if (flags & SS_NO_FIRE)
+		. = "NO FIRE"
+	else if (can_fire && !suspended)
+		. = "[round(cost,1)]ms|[round(tick_usage,1)]%([round(tick_overrun,1)]%)|[round(ticks,0.1)]"
+	else if (!can_fire)
+		. = "OFFLINE"
 	else
-		msg = "OFFLINE\t[msg]"
+		. = "SUSPEND"
 
 	var/title = name
 	if (can_fire)
@@ -221,7 +227,7 @@
 		can_fire = TRUE
 
 /datum/controller/subsystem/VV_static()
-	return ..() + list("queued_priority")
+	return ..() + list("queued_priority", "suspended")
 
 /decl/vv_set_handler/subsystem_handler
 	handled_type = /datum/controller/subsystem
@@ -229,10 +235,10 @@
 	predicates = list(/proc/is_num_predicate)
 
 /decl/vv_set_handler/subsystem_handler/handle_set_var(var/datum/controller/subsystem/SS, variable, var_value, client)
-	var_value = !!var_value
 	if (var_value)
-		SS.next_fire = world.time + SS.wait
-	SS.can_fire = var_value
+		SS.enable()
+	else
+		SS.disable()
 
 // Suspends this subsystem.
 // 	Preferred over disable() for self-disabling subsystems.

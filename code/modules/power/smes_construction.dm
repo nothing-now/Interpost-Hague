@@ -94,16 +94,6 @@
 	input_level = input_level_max
 	output_level = output_level_max
 
-/obj/machinery/power/smes/buildable/Destroy()
-	qdel(wires)
-	wires = null
-	for(var/obj/machinery/power/terminal/T in terminals)
-		T.master = null
-	terminals = null
-	for(var/datum/nano_module/rcon/R in world)
-		R.FindDevices()
-	return ..()
-
 // Proc: process()
 // Parameters: None
 // Description: Uses parent process, but if grounding wire is cut causes sparks to fly around.
