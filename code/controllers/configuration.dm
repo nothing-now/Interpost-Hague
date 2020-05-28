@@ -34,6 +34,7 @@ var/list/gamemode_cache = list()
 	var/vote_autotransfer_interval = 36000 // length of time before next sequential autotransfer vote
 	var/vote_autogamemode_timeleft = 100 //Length of time before round start when autogamemode vote is called (in seconds, default 100).
 	var/vote_no_default = 0				// vote does not default to nochange/norestart (tbi)
+	var/vote_no_dead_crew_transfer = 0	// dead people can't vote on crew transfer votes
 	var/vote_no_dead = 0				// dead people can't vote (tbi)
 //	var/enable_authentication = 0		// goon authentication
 	var/del_new_on_log = 1				// del's new players if they log before they spawn in
@@ -369,6 +370,9 @@ var/list/gamemode_cache = list()
 
 				if ("no_dead_vote")
 					config.vote_no_dead = 1
+
+				if ("no_dead_vote_crew_transfer")
+					config.vote_no_dead_crew_transfer = 1
 
 				if ("default_no_vote")
 					config.vote_no_default = 1

@@ -181,11 +181,11 @@ SUBSYSTEM_DEF(vote)
 	if((GAME_STATE <= RUNLEVEL_SETUP) || !SSticker.mode)
 		return 0
 	if(automatic)
-		return (ticker.mode.addantag_allowed & ADDANTAG_AUTO) && !antag_added
+		return (SSticker.mode.addantag_allowed & ADDANTAG_AUTO) && !antag_added
 	if(is_admin(creator))
-		return ticker.mode.addantag_allowed & (ADDANTAG_ADMIN|ADDANTAG_PLAYER)
+		return SSticker.mode.addantag_allowed & (ADDANTAG_ADMIN|ADDANTAG_PLAYER)
 	else
-		return (ticker.mode.addantag_allowed & ADDANTAG_PLAYER) && !antag_added
+		return (SSticker.mode.addantag_allowed & ADDANTAG_PLAYER) && !antag_added
 
 /mob/verb/vote()
 	set category = "OOC"

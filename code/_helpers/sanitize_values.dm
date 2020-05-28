@@ -19,7 +19,15 @@
 	if(default)			return default
 	if(List && List.len)return List[1]
 
-
+// Checks if the given input is a valid list index; returns true/false and doesn't change anything.
+/proc/is_valid_index(input, list/given_list)
+	if(!isnum(input))
+		return FALSE
+	if(input != round(input))
+		return FALSE
+	if(input < 1 || input > length(given_list))
+		return FALSE
+	return TRUE
 
 //more specialised stuff
 /proc/sanitize_gender(gender,neuter=0,plural=0, default="male")

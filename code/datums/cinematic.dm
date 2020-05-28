@@ -14,7 +14,7 @@ GLOBAL_DATUM_INIT(cinematic, /datum/cinematic, new)
 		return	//already a cinematic in progress!
 
 	if(!override)
-		override = ticker.mode
+		override = SSticker.mode
 	if(!override)
 		override = gamemode_cache["extended"]
 	if(!override)

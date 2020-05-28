@@ -472,7 +472,6 @@ var/world_topic_spam_protect_time = world.timeofday
 		*/
 
 	Master.Shutdown()
-	processScheduler.stop()
 
 	var/datum/chatOutput/co
 	for(var/client/C in GLOB.clients)
@@ -505,8 +504,8 @@ var/world_topic_spam_protect_time = world.timeofday
 	var/list/Lines = file2list("data/mode.txt")
 	if(Lines.len)
 		if(Lines[1])
-			master_mode = Lines[1]
-			log_misc("Saved mode is '[master_mode]'")
+			SSticker.master_mode = Lines[1]
+			log_misc("Saved mode is '[SSticker.master_mode]'")
 
 /world/proc/save_mode(var/the_mode)
 	var/F = file("data/mode.txt")
@@ -590,9 +589,9 @@ var/world_topic_spam_protect_time = world.timeofday
 
 	var/list/features = list()
 
-	if(ticker)
-		if(master_mode)
-			features += master_mode
+	if(SSticker)
+		if(SSticker.master_mode)
+			features += SSticker.master_mode
 	else
 		features += "<b>STARTING</b>"
 	s += "<img src=\"https://i.imgur.com/jkCHCCJ.png\">" //Banner image

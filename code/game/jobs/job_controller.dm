@@ -261,7 +261,7 @@ var/global/datum/controller/occupations/job_master
 		SetupOccupations()
 
 		//Holder for Triumvirate is stored in the ticker, this just processes it
-		if(ticker && ticker.triai)
+		if(GLOB.triai)
 			for(var/datum/job/A in occupations)
 				if(A.title == "AI")
 					A.spawn_positions = 3
@@ -316,7 +316,7 @@ var/global/datum/controller/occupations/job_master
 
 				// Loop through all jobs
 				for(var/datum/job/job in shuffledoccupations) // SHUFFLE ME BABY
-					if(!job || ticker.mode.disabled_jobs.Find(job.title) )
+					if(!job || SSticker.mode.disabled_jobs.Find(job.title) )
 						continue
 
 					if(jobban_isbanned(player, job.title))
@@ -373,14 +373,14 @@ var/global/datum/controller/occupations/job_master
 	proc/EquipRank(var/mob/living/carbon/human/H, var/rank, var/joined_late = 0)
 		if(!H)	return null
 
-		if(ticker.eof)
-			if(ticker.eof.id == "assjesters")
+		if(SSticker.eof)
+			if(SSticker.eof.id == "assjesters")
 				if(H.mind.assigned_role == "Arbiter")
 					rank = "Jester"
-			if(ticker.eof.id == "clumpsydumbasses")
-				if(prob(69))
+			if(SSticker.eof.id == "clumpsydumbasses")
+				if(prob(32))
 					H.mutations.Add(CLUMSY)
-			if(ticker.eof.id == "randomnames")
+			if(SSticker.eof.id == "randomnames")
 				H.real_name = random_name(H.gender)
 				H.f_style = random_facial_hair_style(H.gender)
 				H.h_style = random_hair_style(H.gender)
@@ -478,7 +478,7 @@ var/global/datum/controller/occupations/job_master
 				if("AI")
 					return H
 				if("Captain")
-					var/sound/announce_sound = (ticker.current_state <= GAME_STATE_SETTING_UP)? null : sound('sound/misc/boatswain.ogg', volume=20)
+					var/sound/announce_sound = (GAME_STATE < RUNLEVEL_GAME)? null : sound('sound/misc/boatswain.ogg', volume=20)
 					captain_announcement.Announce("All hands, Captain [H.real_name] on deck!", new_sound=announce_sound)
 
 		// put any loadout items that couldn't spawn into storage or on the ground

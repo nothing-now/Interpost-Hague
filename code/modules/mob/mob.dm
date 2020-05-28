@@ -633,7 +633,7 @@
 		return
 
 	if(statpanel("Status"))
-		if(ticker && ticker.current_state != GAME_STATE_PREGAME)
+		if(GAME_STATE >= RUNLEVEL_LOBBY)
 			//stat("Local Time", stationtime2text())
 			//stat("Local Date", stationdate2text())
 			stat("Round Duration", roundduration2text())

@@ -121,9 +121,9 @@ var/global/list/additional_antag_types = list()
 			return
 		var/datum/antagonist/antag = all_antag_types()[choice]
 		if(antag)
-			if(!islist(ticker.mode.antag_templates))
-				ticker.mode.antag_templates = list()
-			ticker.mode.antag_templates |= antag
+			if(!islist(SSticker.mode.antag_templates))
+				SSticker.mode.antag_templates = list()
+			SSticker.mode.antag_templates |= antag
 			message_admins("Admin [key_name_admin(usr)] added [antag.role_text] template to game mode.")
 
 	// I am very sure there's a better way to do this, but I'm not sure what it might be. ~Z
@@ -149,7 +149,7 @@ var/global/list/additional_antag_types = list()
 			antag_summary += "[antag.role_text_plural]"
 			i++
 		antag_summary += "."
-		if(antag_templates.len > 1 && master_mode != "secret")
+		if(antag_templates.len > 1 && SSticker.master_mode != "secret")
 			to_world("[antag_summary]")
 		else
 			message_admins("[antag_summary]")
@@ -236,7 +236,7 @@ var/global/list/additional_antag_types = list()
 		antag.post_spawn()
 
 	// Update goals, now that antag status and jobs are both resolved.
-	for(var/thing in ticker.minds)
+	for(var/thing in SSticker.minds)
 		var/datum/mind/mind = thing
 		mind.generate_goals(mind.assigned_job, is_spawning=TRUE)
 		mind.current.show_goals()
@@ -245,8 +245,8 @@ var/global/list/additional_antag_types = list()
 		evacuation_controller.recall = 1
 
 	SSstatistics.set_field_details("round_start","[time2text(world.realtime)]")
-	if(ticker && ticker.mode)
-		SSstatistics.set_field_details("game_mode","[ticker.mode]")
+	if(SSticker.mode)
+		SSstatistics.set_field_details("game_mode","[SSticker.mode]")
 	SSstatistics.set_field_details("server_ip","[world.internet_address]:[world.port]")
 	return 1
 
@@ -399,7 +399,7 @@ var/global/list/additional_antag_types = list()
 		return candidates
 
 	// If this is being called post-roundstart then it doesn't care about ready status.
-	if(ticker && ticker.current_state == GAME_STATE_PLAYING)
+	if(GAME_STATE == RUNLEVEL_GAME)
 		for(var/mob/player in GLOB.player_list)
 			if(!player.client)
 				continue
@@ -576,8 +576,8 @@ proc/get_nt_opposed()
 		to_chat(usr, "Something is terribly wrong; there is no gametype.")
 		return
 
-	if(!SSticker.hide_mode)
-		to_chat(usr, "<b>The roundtype is [capitalize(ticker.mode.name)]</b>")
+	if(SSticker.master_mode != "secret")
+		to_chat(usr, "<b>The roundtype is [capitalize(SSticker.mode.name)]</b>")
 		if(SSticker.mode.round_description)
 			to_chat(usr, "<i>[SSticker.mode.round_description]</i>")
 		if(SSticker.mode.extended_round_description)

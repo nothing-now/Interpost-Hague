@@ -26,6 +26,8 @@ SUBSYSTEM_DEF(ticker)
 	var/list/antag_pool = list()
 	var/looking_for_antags = 0
 
+	var/datum/round_event/eof
+
 /datum/controller/subsystem/ticker/Initialize()
 	to_world("<B><FONT color='blue'>Welcome to the pre-game lobby!</FONT></B>")
 	to_world("Please, setup your character and select ready. Game will start in [round(pregame_timeleft/10)] seconds")
@@ -88,6 +90,10 @@ SUBSYSTEM_DEF(ticker)
 	spawn(0)//Forking here so we dont have to wait for this to finish
 		mode.post_setup()
 		to_world("<FONT color='blue'><B>Enjoy the game!</B></FONT>")
+		if (eof)
+			if(prob(40))
+				eof.apply_event()
+				eof.announce_event()
 		sound_to(world, sound(GLOB.using_map.welcome_sound))
 
 		//Holiday Round-start stuff	~Carn
@@ -96,8 +102,10 @@ SUBSYSTEM_DEF(ticker)
 	if(!length(GLOB.admins))
 		send2adminirc("Round has started with no admins online.")
 
-	if(config.sql_enabled)
-		statistic_cycle() // Polls population totals regularly and stores them in an SQL DB -- TLE
+	config.ooc_allowed = !(config.ooc_allowed)
+	if(!config.ooc_allowed)
+		to_world("<B>The OOC channel has been globally disabled!</B>")
+
 
 /datum/controller/subsystem/ticker/proc/playing_tick()
 	mode.process()

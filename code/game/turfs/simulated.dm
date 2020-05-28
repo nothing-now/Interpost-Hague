@@ -13,7 +13,8 @@
 	var/max_fire_temperature_sustained = 0 //The max temperature of the fire which it was subjected to
 	var/dirt = 0
 
-	var/datum/scheduled_task/unwet_task
+	var/timer_id
+
 
 /turf/simulated/post_change()
 	..()
@@ -32,23 +33,12 @@
 		wet_overlay = image('icons/effects/water.dmi',src,"wet_floor")
 		overlays += wet_overlay
 
-	if(unwet_task)
-		unwet_task.trigger_task_in(8 SECONDS)
-	else
-		unwet_task = schedule_task_in(8 SECONDS)
-		task_triggered_event.register(unwet_task, src, /turf/simulated/proc/task_unwet_floor)
-
-/turf/simulated/proc/task_unwet_floor(var/triggered_task, var/check_very_wet = TRUE)
-	if(triggered_task == unwet_task)
-		task_triggered_event.unregister(unwet_task, src, /turf/simulated/proc/task_unwet_floor)
-		unwet_task = null
-		unwet_floor(check_very_wet)
+	timer_id = addtimer(CALLBACK(src,/turf/simulated/proc/unwet_floor),8 SECONDS, TIMER_STOPPABLE|TIMER_UNIQUE|TIMER_NO_HASH_WAIT|TIMER_OVERRIDE)
 
 /turf/simulated/proc/unwet_floor(var/check_very_wet)
 	if(check_very_wet && wet >= 2)
 		wet--
-		unwet_task = schedule_task_in(8 SECONDS)
-		task_triggered_event.register(unwet_task, src, /turf/simulated/proc/task_unwet_floor)
+		timer_id = addtimer(CALLBACK(src,/turf/simulated/proc/unwet_floor), 8 SECONDS, TIMER_STOPPABLE|TIMER_UNIQUE|TIMER_NO_HASH_WAIT|TIMER_OVERRIDE)
 		return
 
 	wet = 0
@@ -68,7 +58,6 @@
 	levelupdate()
 
 /turf/simulated/Destroy()
-	task_unwet_floor(unwet_task, FALSE)
 	if (zone)
 		if (can_safely_remove_from_zone())
 			c_copy_air()

@@ -91,12 +91,16 @@
 			return global.SSradiation;
 		if("SSstatistics")
 			return global.SSstatistics;
+		if("SSxenoarch")
+			return global.SSxenoarch;
 		if("SSsun")
 			return global.SSsun;
 		if("SSnano")
 			return global.SSnano;
 		if("SSturf")
 			return global.SSturf;
+		if("SSxenoarch")
+			return global.SSxenoarch;
 		if("SSvines")
 			return global.SSvines;
 		if("SSzcopy")
@@ -569,8 +573,6 @@
 			return global.maploader;
 		if("mark")
 			return global.mark;
-		if("master_mode")
-			return global.master_mode;
 		if("matchmaker")
 			return global.matchmaker;
 		if("maze_cell_count")
@@ -775,8 +777,6 @@
 			return global.robot_inventory;
 		if("robot_modules")
 			return global.robot_modules;
-		if("round_progressing")
-			return global.round_progressing;
 		if("round_start_time")
 			return global.round_start_time;
 		if("roundstart_hour")
@@ -787,10 +787,6 @@
 			return global.runtime_diary;
 		if("same_wires")
 			return global.same_wires;
-		if("secondary_mode")
-			return global.secondary_mode;
-		if("secret_force_mode")
-			return global.secret_force_mode;
 		if("send_emergency_team")
 			return global.send_emergency_team;
 		if("sent_spiders_to_station")
@@ -799,6 +795,8 @@
 			return global.server_name;
 		if("severity_to_string")
 			return global.severity_to_string;
+		if("secret_force_mode")
+			return global.secret_force_mode;
 		if("ship_engines")
 			return global.ship_engines;
 		if("side_effects")
@@ -893,12 +891,8 @@
 			return global.tank_gauge_cache;
 		if("tape_roll_applications")
 			return global.tape_roll_applications;
-		if("task_triggered_event")
-			return global.task_triggered_event;
 		if("telecomms_list")
 			return global.telecomms_list;
-		if("tertiary_mode")
-			return global.tertiary_mode;
 		if("text_tag_icons")
 			return global.text_tag_icons;
 		if("tg_admin_state")
@@ -929,8 +923,6 @@
 			return global.tg_self_state;
 		if("tg_z_state")
 			return global.tg_z_state;
-		if("ticker")
-			return global.ticker;
 		if("ticket_panels")
 			return global.ticket_panels;
 		if("tickets")
@@ -1104,6 +1096,8 @@
 			global.SSturf=newval;
 		if("SSstatistics")
 			global.SSstatistics=newval;
+		if("SSxenoarch")
+			global.SSxenoarch=newval;
 		if("SSsun")
 			global.SSsun=newval;
 		if("SSvines")
@@ -1580,8 +1574,6 @@
 			global.maploader=newval;
 		if("mark")
 			global.mark=newval;
-		if("master_mode")
-			global.master_mode=newval;
 		if("matchmaker")
 			global.matchmaker=newval;
 		if("maze_cell_count")
@@ -1786,8 +1778,6 @@
 			global.robot_inventory=newval;
 		if("robot_modules")
 			global.robot_modules=newval;
-		if("round_progressing")
-			global.round_progressing=newval;
 		if("round_start_time")
 			global.round_start_time=newval;
 		if("roundstart_hour")
@@ -1798,10 +1788,6 @@
 			global.runtime_diary=newval;
 		if("same_wires")
 			global.same_wires=newval;
-		if("secondary_mode")
-			global.secondary_mode=newval;
-		if("secret_force_mode")
-			global.secret_force_mode=newval;
 		if("send_emergency_team")
 			global.send_emergency_team=newval;
 		if("sent_spiders_to_station")
@@ -1892,6 +1878,8 @@
 			global.swapmaps_mode=newval;
 		if("syndicate_access")
 			global.syndicate_access=newval;
+		if("secret_force_mode")
+			return global.secret_force_mode;
 		if("syndicate_code_phrase")
 			global.syndicate_code_phrase=newval;
 		if("syndicate_code_response")
@@ -1904,12 +1892,8 @@
 			global.tank_gauge_cache=newval;
 		if("tape_roll_applications")
 			global.tape_roll_applications=newval;
-		if("task_triggered_event")
-			global.task_triggered_event=newval;
 		if("telecomms_list")
 			global.telecomms_list=newval;
-		if("tertiary_mode")
-			global.tertiary_mode=newval;
 		if("text_tag_icons")
 			global.text_tag_icons=newval;
 		if("tg_admin_state")
@@ -1940,8 +1924,6 @@
 			global.tg_self_state=newval;
 		if("tg_z_state")
 			global.tg_z_state=newval;
-		if("ticker")
-			global.ticker=newval;
 		if("ticket_panels")
 			global.ticket_panels=newval;
 		if("tickets")
@@ -2070,6 +2052,7 @@
 	"SSvote",
 	"SSskybox",
 	"SSstatistics",
+	"SSxenoarch",
 	"SSsun",
 	"SSvines",
 	"SSzcopy",
