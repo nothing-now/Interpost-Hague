@@ -614,7 +614,7 @@ its easier to just keep the beam vertical.
 		if(a.mouse_opacity)  // i spread this out to make it more "readable"
 			H.hovertext.maptext = "<center><span style=\"\
 			color: #226c09; \
-			font-family: 'Arial Black', Gadget, sans-serif; \
+			font-family: 'Bahnschrift', Constantia, sans-serif; \
 			\">[uppertext(a.name)]\
 			</span></center>"
 		else

@@ -51,10 +51,6 @@ SUBSYSTEM_DEF(ticker)
 		Master.SetRunLevel(RUNLEVEL_SETUP)
 		return
 
-	if(!bypass_gamemode_vote && (pregame_timeleft <= config.vote_autogamemode_timeleft SECONDS) && !gamemode_vote_results)
-		if(!SSvote.active_vote)
-			SSvote.initiate_vote(/datum/vote/gamemode, automatic = 1)
-
 /datum/controller/subsystem/ticker/proc/setup_tick()
 	switch(choose_gamemode())
 		if(CHOOSE_GAMEMODE_RETRY)

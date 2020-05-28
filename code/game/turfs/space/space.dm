@@ -109,8 +109,7 @@
 
 /turf/space/Entered(atom/movable/A as mob|obj)
 	..()
-	if(A && A.loc == src && SSticker && SSticker.mode)
-
+	if(A && A.loc == src)
 		// Okay, so let's make it so that people can travel z levels but not nuke disks!
 		// if(ticker.mode.name == "mercenary")	return
 		if (A.x <= TRANSITIONEDGE || A.x >= (world.maxx - TRANSITIONEDGE + 1) || A.y <= TRANSITIONEDGE || A.y >= (world.maxy - TRANSITIONEDGE + 1))
