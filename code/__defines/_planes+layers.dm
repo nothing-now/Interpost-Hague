@@ -212,26 +212,6 @@ What is the naming convention for planes or layers?
 	screen_loc = "CENTER,CENTER"
 	globalscreen = 1
 
-/obj/screen/plane_master/blur_all
-	plane = DEFAULT_PLANE
-	filters = filter(type = "blur", size = 2)
-
-/obj/screen/plane_master/blurs
-	filters = filter(type = "blur", size = 2)
-
-/obj/screen/plane_master/openspace_blur
-	plane = OVER_OPENSPACE_PLANE
-	filters = filter(type = "blur", size = 1)
-
-/*
-  PLANE MASTERS
-*/
-
-/obj/screen/plane_master
-	appearance_flags = PLANE_MASTER
-	screen_loc = "CENTER,CENTER"
-	globalscreen = 1
-
 /obj/screen/plane_master/ghost_master
 	plane = OBSERVER_PLANE
 
@@ -241,6 +221,20 @@ What is the naming convention for planes or layers?
 
 /obj/screen/plane_master/blurs
 	filters = filter(type = "blur", size = 2)
+
+/obj/screen/plane_master/drugabuse
+	plane = DEFAULT_PLANE
+	filters = filter(type = "wave", size = 10)
+	filters = filter(type = "radial_blur", size = 3)
+	filters = filter(type = "angular_blur", size = 2)
+
+/obj/screen/plane_master/drugabuseextreme
+	plane = DEFAULT_PLANE
+	filters = filter(type = "wave", size = 20)
+	filters = filter(type = "radial_blur", size = 5)
+	filters = filter(type = "angular_blur", size = 4)
+	filters = filter(type = "outline", size = 4)
+
 
 /obj/screen/plane_master/openspace_blur
 	plane = OVER_OPENSPACE_PLANE

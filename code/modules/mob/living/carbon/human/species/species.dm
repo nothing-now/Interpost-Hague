@@ -583,3 +583,23 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 	if(!client)
 		return
 	client.screen -= blur_effect
+
+/mob/living/proc/set_all_blur_drugs()
+	if(!client)
+		return
+	client.screen += drug_effect
+
+/mob/living/proc/remove_all_blur_drugs()
+	if(!client)
+		return
+	client.screen -= drug_effect
+
+/mob/living/proc/set_all_blur_drugs_extreme()
+	if(!client)
+		return
+	client.screen += drug_effect_extreme
+
+/mob/living/proc/remove_all_blur_drugs_extreme()
+	if(!client)
+		return
+	client.screen -= drug_effect_extreme

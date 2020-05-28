@@ -61,3 +61,7 @@
 	var/doing_something = 0	//Like pulling teeth?
 
 	var/obj/screen/plane_master/blur_all/blur_effect = new
+
+	var/obj/screen/plane_master/drugabuse/drug_effect = new
+
+	var/obj/screen/plane_master/drugabuseextreme/drug_effect_extreme = new
