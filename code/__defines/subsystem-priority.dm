@@ -48,6 +48,7 @@
 #define SS_PRIORITY_GRAPH         30   // Merging and splitting of graphs
 #define SS_PRIORITY_CHAR_SETUP    25   // Writes player preferences to savefiles.
 #define SS_PRIORITY_COMPUTER_NETS 25   // Handles computer network devices hookups
+#define SS_PRIORITY_TGUI          20    // Updates to tgui uis.
 #define SS_PRIORITY_GARBAGE       20   // Garbage collection.
 #define SS_PRIORITY_WIRELESS      10	// Wireless connection setup.
 

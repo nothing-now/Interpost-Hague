@@ -412,10 +412,6 @@
 
 	if(!check_rights(R_ADMIN))	return
 
-	if(!(initialization_stage&INITIALIZATION_COMPLETE))
-		to_chat(src, "<span class='warning'>Please wait for server initialization to complete...</span>")
-		return
-
 	var/is_admin = 0
 
 	if(client.holder && (client.holder.rights & R_ADMIN))
@@ -645,8 +641,6 @@
 			stat("Location:", "([x], [y], [z]) [loc]")
 
 	if(client.holder)
-		if(statpanel("Processes") && processScheduler)
-			processScheduler.statProcesses()
 		if(statpanel("MC"))
 			stat("CPU:","[world.cpu]")
 			stat("Instances:","[world.contents.len]")
@@ -1098,12 +1092,12 @@ mob/proc/yank_out_object()
 	set desc = "Toggles whether or not you will be considered a candidate by an add-antag vote."
 	set category = "OOC"
 	if(isghostmind(src.mind) || isnewplayer(src))
-		if(ticker && ticker.looking_for_antags)
-			if(src.mind in ticker.antag_pool)
-				ticker.antag_pool -= src.mind
+		if(SSticker.looking_for_antags)
+			if(src.mind in SSticker.antag_pool)
+				SSticker.antag_pool -= src.mind
 				to_chat(usr, "You have left the antag pool.")
 			else
-				ticker.antag_pool += src.mind
+				SSticker.antag_pool += src.mind
 				to_chat(usr, "You have joined the antag pool. Make sure you have the needed role set to high!")
 		else
 			to_chat(usr, "The game is not currently looking for antags.")

@@ -106,9 +106,6 @@
 	load_unit_test_changes()
 #endif
 
-	// Set up roundstart seed list.
-	plant_controller = new()
-
 	// This is kinda important. Set up details of what the hell things are made of.
 	populate_material_list()
 
@@ -119,11 +116,6 @@
 	// Create robolimbs for chargen.
 	populate_robolimb_list()
 
-	processScheduler = new
-	master_controller = new /datum/controller/game_controller()
-
-	//processScheduler.deferSetupFor(/datum/controller/process/ticker)
-	processScheduler.setup()
 	Master.Initialize(10, FALSE)
 
 #undef RECOMMENDED_VERSION

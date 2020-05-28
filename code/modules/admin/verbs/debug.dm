@@ -42,9 +42,6 @@
 	set category = "Fun"
 	set name = "Make Robot"
 
-	if(!ticker)
-		alert("Wait until the game starts")
-		return
 	if(istype(M, /mob/living/carbon/human))
 		log_admin("[key_name(src)] has robotized [M.key].")
 		spawn(10)
@@ -56,10 +53,6 @@
 /client/proc/cmd_admin_animalize(var/mob/M in SSmobs.mob_list)
 	set category = "Fun"
 	set name = "Make Simple Animal"
-
-	if(!ticker)
-		alert("Wait until the game starts")
-		return
 
 	if(!M)
 		alert("That mob doesn't seem to exist, close the panel and try again.")
@@ -105,9 +98,6 @@
 	set category = "Fun"
 	set name = "Make slime"
 
-	if(!ticker)
-		alert("Wait until the game starts")
-		return
 	if(ishuman(M))
 		log_admin("[key_name(src)] has slimeized [M.key].")
 		spawn(10)
@@ -245,9 +235,6 @@
 	set category = "Admin"
 	set name = "Grant Full Access"
 
-	if (!ticker)
-		alert("Wait until the game starts")
-		return
 	if (istype(M, /mob/living/carbon/human))
 		var/mob/living/carbon/human/H = M
 		if (H.wear_id)
@@ -486,9 +473,7 @@
 
 // DNA2 - Admin Hax
 /client/proc/cmd_admin_toggle_block(var/mob/M,var/block)
-	if(!ticker)
-		alert("Wait until the game starts")
-		return
+
 	if(istype(M, /mob/living/carbon))
 		M.dna.SetSEState(block,!M.dna.GetSEState(block))
 		domutcheck(M,null,MUTCHK_FORCED)

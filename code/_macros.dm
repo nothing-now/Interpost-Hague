@@ -1,4 +1,4 @@
-#define PUBLIC_GAME_MODE (ticker ? (ticker.hide_mode == 0 ? master_mode : "Secret") : "Unknown")
+#define PUBLIC_GAME_MODE SSticker.master_mode
 
 #define CLAMP01(x) 		(clamp(x, 0, 1))
 
@@ -168,3 +168,5 @@
 #define FLAGS_EQUALS(flag, flags) ((flag & (flags)) == (flags))
 
 #define LAZYSET(L, A, I) if(!L) { L = list(); } L[A] = I;
+
+#define JOINTEXT(X) jointext(X, null)

@@ -156,8 +156,6 @@ var/global/datum/controller/gameticker/ticker
 
 	callHook("roundstart")
 
-	shuttle_controller.initialize_shuttles()
-
 	spawn(0)//Forking here so we dont have to wait for this to finish
 		mode.post_setup()
 		to_world("<FONT color='dark red'><B>Hell is let loose.</B></FONT>")
@@ -515,7 +513,7 @@ var/global/datum/controller/gameticker/ticker
 	to_world(round_end_stats)
 	*/
 	//Ask the event manager to print round end information
-	GLOB.event_manager.RoundEnd()
+	SSevent.RoundEnd()
 	config.ooc_allowed = !(config.ooc_allowed)
 	if (config.ooc_allowed)
 		to_world("<B>The OOC channel has been globally enabled!</B>")

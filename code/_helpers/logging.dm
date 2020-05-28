@@ -224,3 +224,7 @@
 	if(!istype(d))
 		return json_encode(d)
 	return d.get_log_info_line()
+
+/proc/report_progress(progress_message)
+	admin_notice("<span class='boldannounce'>[progress_message]</span>", R_DEBUG)
+	log_to_dd(progress_message)

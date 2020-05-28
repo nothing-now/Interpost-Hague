@@ -16,7 +16,7 @@
 	known = 0
 	in_space = 0
 
-	generic_waypoints = list(
+	initial_generic_waypoints = list(
 		"nav_marooned_1",
 		"nav_marooned_2",
 		"nav_marooned_antag"

@@ -10,7 +10,7 @@
 	speed_mod = 5 SECONDS
 	burn_delay = 20 SECONDS
 	triggers_events = 0
-	generic_waypoints = list(
+	initial_generic_waypoints = list(
 		"nav_casino_1",
 		"nav_casino_2",
 		"nav_casino_3",

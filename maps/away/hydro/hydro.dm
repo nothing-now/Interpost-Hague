@@ -7,7 +7,7 @@
 	icon_state = "object"
 	known = 0
 
-	generic_waypoints = list(
+	initial_generic_waypoints = list(
 		"nav_hydro_1",
 		"nav_hydro_2",
 		"nav_hydro_3")

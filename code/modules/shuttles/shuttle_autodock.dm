@@ -1,7 +1,6 @@
 #define DOCK_ATTEMPT_TIMEOUT 200	//how long in ticks we wait before assuming the docking controller is broken or blown up.
 
 /datum/shuttle/autodock
-	var/process_state = IDLE_STATE
 	var/in_use = null	//tells the controller whether this shuttle needs processing, also attempts to prevent double-use
 	var/last_dock_attempt_time = 0
 	var/current_dock_target
@@ -18,6 +17,7 @@
 	var/wait_launch_timeout = 0 //The shuttle will only wait for a good undock for so long
 
 	category = /datum/shuttle/autodock
+	flags = SHUTTLE_FLAGS_PROCESS
 
 /datum/shuttle/autodock/New(var/_name, var/obj/effect/shuttle_landmark/start_waypoint)
 	..(_name, start_waypoint)
@@ -89,7 +89,7 @@
 	Please ensure that long_jump() and short_jump() are only called from here. This applies to subtypes as well.
 	Doing so will ensure that multiple jumps cannot be initiated in parallel.
 */
-/datum/shuttle/autodock/proc/process()
+/datum/shuttle/autodock/Process()
 	switch(process_state)
 		if (WAIT_LAUNCH)
 			//We will only wait so long to undock before launching
