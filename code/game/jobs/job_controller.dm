@@ -255,7 +255,7 @@ var/global/datum/controller/occupations/job_master
  *  fills var "assigned_role" for all ready players.
  *  This proc must not have any side effect besides of modifying "assigned_role".
  **/
-	proc/DivideOccupations()
+	proc/DivideOccupations(datum/game_mode/mode)
 		//Setup new player list and get the jobs list
 		Debug("Running DO")
 		SetupOccupations()
@@ -316,7 +316,7 @@ var/global/datum/controller/occupations/job_master
 
 				// Loop through all jobs
 				for(var/datum/job/job in shuffledoccupations) // SHUFFLE ME BABY
-					if(!job || SSticker.mode.disabled_jobs.Find(job.title) )
+					if(!job || mode.disabled_jobs.Find(job.title) )
 						continue
 
 					if(jobban_isbanned(player, job.title))
@@ -365,7 +365,7 @@ var/global/datum/controller/occupations/job_master
 		for(var/mob/new_player/player in unassigned)
 			if(player.client.prefs.alternate_option == RETURN_TO_LOBBY)
 				player.ready = 0
-				player.new_player_panel_proc()
+				player.new_player_panel()
 				unassigned -= player
 		return 1
 

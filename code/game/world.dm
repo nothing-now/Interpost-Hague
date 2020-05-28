@@ -106,16 +106,6 @@
 	load_unit_test_changes()
 #endif
 
-	// This is kinda important. Set up details of what the hell things are made of.
-	populate_material_list()
-
-	if(config.generate_map)
-		GLOB.using_map.perform_map_generation()
-	GLOB.using_map.build_exoplanets()
-
-	// Create robolimbs for chargen.
-	populate_robolimb_list()
-
 	Master.Initialize(10, FALSE)
 
 #undef RECOMMENDED_VERSION
