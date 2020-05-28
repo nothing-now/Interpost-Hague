@@ -1,6 +1,6 @@
 # Interpost Hague
 
-# Go away.
+# Discord: https://discord.gg/gD6Vbw4
 
 ---
 ![Coverage](https://img.shields.io/badge/coverage---1692%25-red.svg)
