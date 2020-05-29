@@ -161,6 +161,29 @@
 	prefs.sanitize_preferences()
 	fit_viewport()
 
+/*
+	//WIDESCREEN STUFF
+	var/splitter_value = text2num(winget( src, "mainwindow.mainvsplit", "splitter" ))
+
+	var/widescreen_checked = winget( src, "menu.set_wide", "is-checked" ) == "true"
+	if (widescreen_checked)
+		if (splitter_value < 67.0)
+			src.set_widescreen(1)
+
+	var/is_vert_splitter = winget( src, "menu.horiz_split", "is-checked" ) != "true"
+
+	if (is_vert_splitter)
+
+		if (splitter_value >= 67.0) //Was this client using widescreen last time? save that!
+			src.set_widescreen(1, splitter_value)
+
+	else
+
+		set_splitter_orientation(0, splitter_value)
+		src.set_widescreen(1, splitter_value)
+		winset( src, "menu", "horiz_split.is-checked=true" )
+*/
+
 	GLOB.using_map.map_info(src)
 
 	if(custom_event_msg && custom_event_msg != "")
@@ -451,3 +474,43 @@ client/verb/character_setup()
 
 		pct += delta
 		winset(src, "mainwindow.mainvsplit", "splitter=[pct]")
+
+/*
+/client/proc/set_splitter_orientation(var/vert, var/splitter_value = 0)
+	vert_split = vert
+	if (vert)
+		winset( src, "mainwindow.mainvsplit", "is-vert=true" )
+		winset( src, "rpane.rpanewindow", "is-vert=false" )
+		winset( src, "mainwindow.mainvsplit", "[splitter_value ? splitter_value : 70]" )
+	else
+		winset( src, "mainwindow.mainvsplit", "is-vert=false" )
+		winset( src, "rpane.rpanewindow", "is-vert=true" )
+		winset( src, "mainwindow.mainvsplit", "[splitter_value ? splitter_value : 70]" )
+
+/client/proc/set_widescreen(var/wide, var/splitter_value = 0)
+	if (widescreen == wide)
+		return
+	widescreen = wide
+	if (widescreen)
+		src.view = "[WIDE_TILE_WIDTH]x[SQUARE_TILE_WIDTH]"
+		winset( src, "menu", "set_wide.is-checked=true" )
+		if (vert_split)
+			winset( src, "mainwindow.mainvsplit", "splitter=[splitter_value ? splitter_value : 70]" )
+	else
+		src.view = 7
+		winset( src, "menu", "set_wide.is-checked=false" )
+		if (vert_split)
+			winset( src, "mainwindow.mainvsplit", "splitter=[splitter_value ? splitter_value : 50]" )
+
+/client/verb/set_vertical_split()
+	set hidden = 1
+	set name = "set-vertical-split"
+
+	src.set_splitter_orientation(1)
+
+/client/verb/set_horizontal_split()
+	set hidden = 1
+	set name = "set-horizontal-split"
+
+	src.set_splitter_orientation(0)
+*/

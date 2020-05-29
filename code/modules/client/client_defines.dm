@@ -26,6 +26,14 @@
 
 	var/fullscreen = FALSE
 
+	perspective = EYE_PERSPECTIVE
+
+	var/widescreen = 0
+	var/vert_split = 0
+
+	var/datum/interfaceSizeHelper/screen/screenSizeHelper = null
+	var/datum/interfaceSizeHelper/map/mapSizeHelper = null
+
 		///////////////
 		//SOUND STUFF//
 		///////////////

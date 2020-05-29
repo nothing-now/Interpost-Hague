@@ -80,7 +80,7 @@
 			loaded_pill_bottle.loc = src.loc
 			loaded_pill_bottle = null
 	else if(href_list["close"])
-		usr << browse(null, "window=chemmaster")
+		usr << browse(null, "window=chem_master")
 		usr.unset_machine()
 		return
 
@@ -217,8 +217,32 @@
 		else if(href_list["bottle_sprite"])
 			bottlesprite = href_list["bottle_sprite"]
 
-	src.updateUsrDialog()
-	return
+	updateUsrDialog()
+
+/obj/machinery/chem_master/proc/get_chem_info(datum/reagent/reagent, heading = "Chemical infos", detailed_blood = 1)
+	if(!beaker || !reagent)
+		return
+	. = list()
+	. += "<TITLE>[name]</TITLE>"
+	. += "[heading]:<BR><BR>Name:<BR>[reagent.name]"
+	. += "<BR><BR>Description:<BR>"
+	if(detailed_blood && istype(reagent, /datum/reagent/blood))
+		var/datum/reagent/blood/B = reagent
+		. += "Blood Type: [B.data["blood_type"]]<br>DNA: [B.data["blood.DNA"]]"
+	else
+		. += "[reagent.description]"
+	. += "<BR><BR><BR><A href='?src=\ref[src];main=1'>(Back)</A>"
+	. = JOINTEXT(.)
+
+/obj/machinery/chem_master/proc/create_bottle(mob/user)
+	var/name = sanitizeSafe(input(usr,"Name:","Name your bottle!",reagents.get_master_reagent_name()), MAX_NAME_LEN)
+	var/obj/item/weapon/reagent_containers/glass/bottle/P = new/obj/item/weapon/reagent_containers/glass/bottle(loc)
+	if(!name)
+		name = reagents.get_master_reagent_name()
+	P.SetName("[name] bottle")
+	P.icon_state = bottlesprite
+	reagents.trans_to_obj(P,60)
+	P.update_icon()
 
 /obj/machinery/chem_master/attack_ai(mob/user as mob)
 	return src.attack_hand(user)

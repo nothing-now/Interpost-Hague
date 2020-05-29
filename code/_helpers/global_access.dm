@@ -2452,6 +2452,7 @@
 	"supply_drop",
 	"supply_methods_",
 	"surgery_steps",
+	"screenSizeHelper",
 	"swapmaps_byname",
 	"swapmaps_compiled_maxx",
 	"swapmaps_compiled_maxy",

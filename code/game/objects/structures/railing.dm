@@ -133,15 +133,6 @@
 				R.update_icon(0)
 
 
-/*	for(var/obj/structure/railing/R in get_step(src, src.dir))
-		if ((R.dir == Lturn) && R.anchored)//Ïðîâåðêà ëåâîé ñòîðîíû
-			src.LeftSide[3] = 1
-		if ((R.dir == Rturn) && R.anchored)//Ïðîâåðêà ïðàâîé ñòîðîíû
-			src.RightSide[3] = 1*/
-	//check <<"check: [check]"
-	//world << "dir = [src.dir]"
-	//world << "railing[LeftSide[1]][LeftSide[2]][LeftSide[3]]-[RightSide[1]][RightSide[2]][RightSide[3]]"
-
 /obj/structure/railing/update_icon(var/UpdateNeighgors = 1)
 	NeighborsCheck(UpdateNeighgors)
 	//icon_state = "railing[LeftSide[1]][LeftSide[2]][LeftSide[3]]-[RightSide[1]][RightSide[2]][RightSide[3]]"

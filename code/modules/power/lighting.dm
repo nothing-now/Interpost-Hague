@@ -237,6 +237,11 @@
 			icon_state = "[base_state]-broken"
 			on = 0
 
+	if(istype(lightbulb, /obj/item/weapon/light/))
+		var/image/I = image(icon, src, icon_state)
+		I.color = lightbulb.brightness_color
+		overlays += I
+
 	if(on)
 		update_use_power(POWER_USE_ACTIVE)
 

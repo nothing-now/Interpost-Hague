@@ -5,7 +5,7 @@ SUBSYSTEM_DEF(goals)
 	var/list/global_personal_goals = list(
 		/datum/goal/achievement/specific_object/food,
 		/datum/goal/achievement/specific_object/drink,
-		/datum/goal/achievement/specific_object/pet,
+		///datum/goal/achievement/specific_object/pet,
 		/datum/goal/achievement/fistfight,
 		/datum/goal/achievement/graffiti,
 		/datum/goal/achievement/newshound,

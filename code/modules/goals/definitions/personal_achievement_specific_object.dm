@@ -48,6 +48,7 @@
 	var/datum/reagent/drink = object_path
 	description = "You could really do with a nice [initial(drink.name)]."
 
+/*
 /datum/goal/achievement/specific_object/pet
 	completion_message = "You should get a pet of your own..."
 
@@ -61,3 +62,4 @@
 	..()
 	var/mob/animal = object_path
 	description = "Pet \a [initial(animal.name)]."
+*/

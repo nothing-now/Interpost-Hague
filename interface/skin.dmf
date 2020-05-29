@@ -983,6 +983,31 @@ window "mainwindow"
 		right = "rpane"
 		is-vert = true
 
+window "screenSizeHelper"
+	elem "screenSizeHelper"
+		type = MAIN
+		pos = 0,0
+		size = 100x100
+		anchor1 = 0,0
+		anchor2 = 100,100
+		is-visible = false
+		saved-params = ""
+		titlebar = false
+		statusbar = false
+		can-close = false
+		can-minimize = false
+		can-resize = false
+	elem "screenSizeHelperBrowser"
+		type = BROWSER
+		pos = 0,0
+		size = 0x0
+		anchor1 = 0,0
+		anchor2 = 100,100
+		text-color = #ffffff
+		is-visible = false
+		saved-params = ""
+		auto-format = false
+
 window "mapwindow"
 	elem "mapwindow"
 		type = MAIN

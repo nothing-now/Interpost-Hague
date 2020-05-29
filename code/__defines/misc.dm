@@ -15,6 +15,9 @@
 #define INVISIBILITY_SYSTEM      99
 #define INVISIBILITY_ABSTRACT   101	// special: this can never be seen, regardless of see_invisible
 
+#define WIDE_TILE_WIDTH 21
+#define SQUARE_TILE_WIDTH 15
+
 #define SEE_INVISIBLE_LIVING     25
 #define SEE_INVISIBLE_NOLIGHTING 15
 #define SEE_INVISIBLE_LEVEL_ONE  INVISIBILITY_LEVEL_ONE
