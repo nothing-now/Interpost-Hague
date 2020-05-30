@@ -1,5 +1,4 @@
-//Commented out debugging shit.
-/*
+//Commented out debugging shit...but why?
 /mob/living/carbon/human/verb/toggle_combat_mode()
 	set name = "Toggle Combat Mode"
 	set category = "Combat"
@@ -21,7 +20,6 @@
 	else
 		defense_intent = I_DODGE
 		to_chat(src, "You will now dodge.")
-*/
 
 //Going here till I find a better place for it.
 /mob/living/proc/handle_combat_mode()//Makes it so that you can't regain stamina in combat mode.
