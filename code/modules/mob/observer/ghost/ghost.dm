@@ -156,6 +156,9 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set category = "OOC"
 	set name = "Ghost"
 	set desc = "Relinquish your life and enter the land of the dead."
+	set hidden = 1
+
+	if(!check_rights(R_ADMIN))	return
 
 	if(stat == DEAD)
 		announce_ghost_joinleave(ghostize(1))
@@ -550,6 +553,8 @@ This is the proc mobs get to turn into a ghost. Forked from ghostize due to comp
 	set name = "Respawn"
 	set category = "OOC"
 	set hidden = 1 //Finally.
+
+	if(!check_rights(R_ADMIN))	return
 
 	if (!(config.abandon_allowed))
 		to_chat(usr, "<span class='notice'>Respawn is disabled.</span>")
