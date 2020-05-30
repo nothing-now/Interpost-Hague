@@ -26,12 +26,12 @@
 	..(destination, interim, emergency_controller.get_long_jump_time(), direction)
 
 /datum/shuttle/autodock/ferry/emergency/shuttle_moved()
-	if(current_location == waypoint_station)
-		emergency_controller.shuttle_leaving()
+	if(next_location != waypoint_station)
+		emergency_controller.shuttle_leaving() // This is a hell of a line. v
 		priority_announcement.Announce(replacetext(replacetext((emergency_controller.emergency_evacuation ? GLOB.using_map.emergency_shuttle_leaving_dock : GLOB.using_map.shuttle_leaving_dock), "%dock_name%", "[GLOB.using_map.dock_name]"),  "%ETA%", "[round(emergency_controller.get_eta()/60,1)] minute\s"))
-	..()
-	if(current_location == waypoint_offsite && emergency_controller.has_evacuated())
+	else if(next_location == waypoint_offsite && emergency_controller.has_evacuated())
 		emergency_controller.shuttle_evacuated()
+	..()
 
 /datum/shuttle/autodock/ferry/emergency/can_launch(var/user)
 	if (istype(user, /obj/machinery/computer/shuttle_control/emergency))
@@ -68,8 +68,7 @@
 			to_world("<span class='notice'><b>Alert: The shuttle autopilot has been overridden. Launch sequence initiated!</b></span>")
 
 	if(usr)
-		log_admin("[key_name(usr)] has overridden the shuttle autopilot and activated launch sequence")
-		message_admins("[key_name_admin(usr)] has overridden the shuttle autopilot and activated launch sequence")
+		log_and_message_admins("has overridden the shuttle autopilot and activated launch sequence")
 
 	..(user)
 
@@ -82,8 +81,7 @@
 			to_world("<span class='notice'><b>Alert: The shuttle autopilot has been overridden. Bluespace drive engaged!</b></span>")
 
 	if(usr)
-		log_admin("[key_name(usr)] has overridden the shuttle autopilot and forced immediate launch")
-		message_admins("[key_name_admin(usr)] has overridden the shuttle autopilot and forced immediate launch")
+		log_and_message_admins("has overridden the shuttle autopilot and forced immediate launch")
 
 	..(user)
 
@@ -99,8 +97,7 @@
 				to_world("<span class='notice'><b>Alert: The shuttle autopilot has been overridden. Launch sequence aborted!</b></span>")
 
 		if(usr)
-			log_admin("[key_name(usr)] has overridden the shuttle autopilot and cancelled launch sequence")
-			message_admins("[key_name_admin(usr)] has overridden the shuttle autopilot and cancelled launch sequence")
+			log_and_message_admins("has overridden the shuttle autopilot and cancelled launch sequence")
 
 	..(user)
 
@@ -159,8 +156,7 @@
 		to_world("<span class='notice'><b>Alert: [req_authorizations - authorized.len] authorization\s needed to override the shuttle autopilot.</b></span>")
 
 	if(usr)
-		log_admin("[key_name(usr)] has inserted [ID] into the shuttle control computer - [req_authorizations - authorized.len] authorisation\s needed")
-		message_admins("[key_name_admin(usr)] has inserted [ID] into the shuttle control computer - [req_authorizations - authorized.len] authorisation\s needed")
+		log_and_message_admins("has inserted [ID] into the shuttle control computer - [req_authorizations - authorized.len] authorisation\s needed")
 
 	return 1
 
@@ -170,7 +166,7 @@
 		emagged = 1
 		return 1
 
-/obj/machinery/computer/shuttle_control/emergency/attackby(obj/item/weapon/W as obj, mob/user as mob)
+/obj/machinery/computer/shuttle_control/emergency/attackby(obj/item/weapon/W, mob/user)
 	read_authorization(W)
 	..()
 
