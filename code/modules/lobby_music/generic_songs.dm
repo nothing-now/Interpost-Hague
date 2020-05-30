@@ -15,3 +15,18 @@
 
 /lobby_music/lobby5
 	song = 'sound/music/lobby5.ogg'
+
+/lobby_music/lobby6
+	song = 'sound/music/lobby6.ogg'
+
+/lobby_music/lobby7
+	song = 'sound/music/lobby7.ogg'
+
+/lobby_music/lobby8
+	song = 'sound/music/lobby8.ogg'
+
+/lobby_music/lobby9
+	song = 'sound/music/lobby9.ogg'
+
+/lobby_music/lobby10
+	song = 'sound/music/lobby10.ogg'
