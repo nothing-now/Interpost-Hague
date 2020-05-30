@@ -25,8 +25,8 @@
 	desc = "The standard cap of the inquisition."
 	icon_state = "arbiter"
 	item_state = "arbiter"
-	flags_inv = HIDEFACE|HIDEEARS|BLOCKHEADHAIR//Hides their identity.
-	body_parts_covered = HEAD|FACE|EYES//Blocks their face and shit.
+	flags_inv = BLOCKHEADHAIR
+	body_parts_covered = HEAD//
 
 /obj/item/clothing/head/helmet/arbiter/supreme
 	name = "supreme arbiter helmet"
