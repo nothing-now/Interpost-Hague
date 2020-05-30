@@ -1093,6 +1093,7 @@ window "outputwindow"
 		size = 637x20
 		anchor1 = 0,100
 		anchor2 = 100,100
+		border = sunken
 		is-default = true
 		saved-params = "command"
 

@@ -40,7 +40,7 @@
 	if(initial_location)
 		current_location = initial_location
 	else
-		current_location = locate(current_location)
+		current_location = SSshuttle.get_landmark(current_location)
 	if(!istype(current_location))
 		CRASH("Shuttle \"[name]\" could not find its starting location.")
 

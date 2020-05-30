@@ -39,7 +39,7 @@
 /datum/shuttle/autodock/multi/antag/New()
 	..()
 	if(home_waypoint)
-		home_waypoint = locate(home_waypoint)
+		home_waypoint = SSshuttle.get_landmark(home_waypoint)
 	else
 		home_waypoint = current_location
 

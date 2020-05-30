@@ -35,7 +35,7 @@
 
 	//Optional transition area
 	if(landmark_transition)
-		landmark_transition = locate(landmark_transition)
+		landmark_transition = SSshuttle.get_landmark(landmark_transition)
 
 /datum/shuttle/autodock/Destroy()
 	next_location = null
