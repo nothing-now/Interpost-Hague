@@ -280,8 +280,8 @@
 	ideal_character_age = 30
 	total_positions = 3
 	spawn_positions = 3
-	access = list(access_medical, access_medical_equip, access_morgue, access_genetics, access_heads, access_tox,
-			access_chemistry, access_virology, access_cmo, access_surgery)
+	access = list(access_medical, access_medical_equip, access_genetics, access_tox,
+			access_chemistry, access_virology, access_surgery)
 	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_genetics, access_heads, access_tox,
 			access_chemistry, access_virology, access_cmo, access_surgery)
 	equip(var/mob/living/carbon/human/H)
@@ -615,7 +615,7 @@
 		H.generate_skills(list("melee","ranged"))
 
 /datum/job/arbiter
-	title = "Arbiter"
+	title = "Inquisitor"
 	department = "Civilian"
 	supervisors = "the Supreme Arbiter and Verina"
 	department_flag = CRH
@@ -627,6 +627,7 @@
 	access = list(access_maint_tunnels, access_chapel_office)
 	minimal_access = list(access_maint_tunnels, access_chapel_office)
 	outfit_type = /decl/hierarchy/outfit/job/arbiter
+	social_class = SOCIAL_CLASS_HIGH
 
 	equip(var/mob/living/carbon/human/H)//Peacekeeper stats.
 		..()

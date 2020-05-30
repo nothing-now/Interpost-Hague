@@ -1,28 +1,28 @@
 //CLOTHING
 /obj/item/clothing/under/rank/arbiter
-	name = "arbiter's uniform"
+	name = "inquisitor's uniform"
 	desc = "A suit worn by members of the inquisition."
 	icon_state = "arbiter"
 	worn_state = "arbiter"
 	item_state = "arbiter"
 
 /obj/item/clothing/suit/storage/vest/arbiter
-	name = "arbiter's vest"
-	desc = "To protect you from heretical attacks."
+	name = "inquisitor's coat"
+	desc = "To shield you from heresy. Has internal armor paddings. Also, warms up your soul whenever you wear it."
 	icon_state = "arbiter"
 	item_state = "arbiter"
 	armor = list(melee = 40, bullet = 35, laser = 40, energy = 35, bomb = 30, bio = 0, rad = 0)
 
 /obj/item/clothing/suit/storage/vest/cowl
 	name = "supreme arbiter's cowl"
-	desc = "Worn by the head hancho himself."
+	desc = "Worn by the head honcho himself."
 	icon_state = "cowl"
 	item_state = "cowl"
 	armor = list(melee = 45, bullet = 40, laser = 45, energy = 35, bomb = 30, bio = 0, rad = 0)
 
 /obj/item/clothing/head/helmet/arbiter
-	name = "arbiter helmet"
-	desc = "The standard helmet that arbiter's wear."
+	name = "inquisitor cap"
+	desc = "The standard cap of the inquisition."
 	icon_state = "arbiter"
 	item_state = "arbiter"
 	flags_inv = HIDEFACE|HIDEEARS|BLOCKHEADHAIR//Hides their identity.

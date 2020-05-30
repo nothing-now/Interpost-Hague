@@ -2,11 +2,12 @@
 /decl/hierarchy/outfit/job/arbiter
 	name = OUTFIT_JOB_NAME("Arbiter")
 	head = /obj/item/clothing/head/helmet/arbiter
+	mask = /obj/item/clothing/mask/gas/arbitermask
 	uniform = /obj/item/clothing/under/rank/arbiter
-	shoes = /obj/item/clothing/shoes/jackboots/arbiter
+	shoes = /obj/item/clothing/shoes/jackboots
 	l_ear = /obj/item/device/radio/headset/inquision
 	suit = /obj/item/clothing/suit/storage/vest/arbiter
-	gloves = /obj/item/clothing/gloves/arbiter
+	gloves = /obj/item/clothing/gloves/guards
 	id_type = /obj/item/weapon/card/id/arbiter
 	pda_type = /obj/item/device/pda/lawyer
 	belt = /obj/item/weapon/melee/baton/loaded//So they at least start off with some kind of weapon to defend themselves.
@@ -17,10 +18,10 @@
 	name = OUTFIT_JOB_NAME("Supreme Arbiter")
 	head = /obj/item/clothing/head/helmet/arbiter/supreme
 	uniform = /obj/item/clothing/under/rank/arbiter
-	shoes = /obj/item/clothing/shoes/jackboots/arbiter
+	shoes = /obj/item/clothing/shoes/jackboots
 	l_ear = /obj/item/device/radio/headset/inquision
 	suit = /obj/item/clothing/suit/storage/vest/cowl
-	gloves = /obj/item/clothing/gloves/arbiter
+	gloves = /obj/item/clothing/gloves/guards
 	id_type = /obj/item/weapon/card/id/arbiter
 	pda_type = /obj/item/device/pda/lawyer
 

@@ -486,7 +486,7 @@ client/verb/character_setup()
 	// Calculate and apply a best estimate
 	// +4 pixels are for the width of the splitter's handle
 	var/pct = 200 * (desired_width + 4) / split_width
-	winset(src, "mainwindow.mainvsplit", "splitter=72")
+	winset(src, "mainwindow.mainvsplit", "splitter=71.7")
 
 	// Apply an ever-lowering offset until we finish or fail
 	var/delta
@@ -508,7 +508,7 @@ client/verb/character_setup()
 */
 
 		pct += delta
-		winset(src, "mainwindow.mainvsplit", "splitter=72")
+		winset(src, "mainwindow.mainvsplit", "splitter=71.7")
 
 /*
 /client/proc/set_splitter_orientation(var/vert, var/splitter_value = 0)

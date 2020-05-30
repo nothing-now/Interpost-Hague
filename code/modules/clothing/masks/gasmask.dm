@@ -136,10 +136,19 @@
 	filtered_gases = list("phoron", "sleeping_agent", "oxygen")
 
 /obj/item/clothing/mask/gas/newsecurity
-	name = "federal gas mask"
+	name = "enforcer gas mask"
 	icon_state = "hgasmask"
 	item_state = "hgasmask"
 	siemens_coefficient = 0.7
 	body_parts_covered = FACE|EYES
 	armor = list(melee = 15, bullet = 15, laser = 15, energy = 0, bomb = 0, bio = 75, rad = 0)
+	filtered_gases = list("phoron", "sleeping_agent")
+
+/obj/item/clothing/mask/gas/arbitermask
+	name = "arbiter's mask"
+	icon_state = "arbitermask"
+	item_state = "arbitermask"
+	siemens_coefficient = 0.7
+	body_parts_covered = FACE|EYES
+	armor = list(melee = 25, bullet = 5, laser = 5, energy = 0, bomb = 0, bio = 35, rad = 0)
 	filtered_gases = list("phoron", "sleeping_agent")
