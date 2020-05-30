@@ -1,7 +1,7 @@
 client/script = {"<style>
-body					{font-family: Alternate Gothic, sans-serif;}
+body					{font-family: Roboto Condensed, sans-serif;}
 
-h1, h2, h3, h4, h5, h6	{color: #0000ff;font-family: Georgia, Alternate Gothic, sans-serif;}
+h1, h2, h3, h4, h5, h6	{color: #0000ff;font-family: Georgia, Roboto Condensed, sans-serif;}
 
 em						{font-style: normal;font-weight: bold;}
 
@@ -98,7 +98,7 @@ h1.alert, h2.alert		{color: #000000;}
 .changeling				{color: #800080;}
 .vox					{color: #aa00aa;}
 .rough					{font-family: "Trebuchet MS", cursive, sans-serif;}
-.say_quote				{font-family: Georgia, Alternate Gothic, sans-serif;}
+.say_quote				{font-family: Georgia, Roboto Condensed, sans-serif;}
 .terran					{color: #9c250b;}
 .moon					{color: #422863;}
 .spacer					{color: #ff6600;}
