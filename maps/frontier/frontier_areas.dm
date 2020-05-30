@@ -766,27 +766,27 @@
 /area/security/main
 	name = "\improper Security Office"
 	icon_state = "security"
-	forced_ambience = list('sound/ambience/regenerator.ogg')
+	ambience = list('sound/ambience/regenerator.ogg')
 
 /area/security/meeting
 	name = "\improper Security Meeting Room"
 	icon_state = "security"
-	forced_ambience = list('sound/ambience/regenerator.ogg')
+	ambience = list('sound/ambience/regenerator.ogg')
 
 /area/security/lobby
 	name = "\improper Security Lobby"
 	icon_state = "security"
-	forced_ambience = list('sound/ambience/regenerator.ogg')
+	ambience = list('sound/ambience/regenerator.ogg')
 
 /area/security/brig/processing
 	name = "\improper Security - Processing"
 	icon_state = "brig"
-	forced_ambience = list('sound/ambience/regenerator.ogg')
+	ambience = list('sound/ambience/regenerator.ogg')
 
 /area/security/brig/interrogation
 	name = "\improper Security - Interrogation"
 	icon_state = "brig"
-	forced_ambience = list('sound/ambience/regenerator.ogg')
+	ambience = list('sound/ambience/regenerator.ogg')
 
 /area/security/brig/solitaryA
 	name = "\improper Security - Solitary 1"

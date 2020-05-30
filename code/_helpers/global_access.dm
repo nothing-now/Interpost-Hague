@@ -391,8 +391,6 @@
 			return global.escape_pods;
 		if("escape_pods_by_name")
 			return global.escape_pods_by_name;
-		if("evacuation_controller")
-			return global.evacuation_controller;
 		if("event_last_fired")
 			return global.event_last_fired;
 		if("eventchance")
@@ -1392,8 +1390,6 @@
 			global.escape_pods=newval;
 		if("escape_pods_by_name")
 			global.escape_pods_by_name=newval;
-		if("evacuation_controller")
-			global.evacuation_controller=newval;
 		if("event_last_fired")
 			global.event_last_fired=newval;
 		if("eventchance")

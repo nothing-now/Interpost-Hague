@@ -31,21 +31,14 @@
 	using.layer = UNDER_HUD_LAYER
 	adding += using
 
-	using = new /obj/screen() //Lower hud bar
-	using.dir = EAST
+	using = new /obj/screen() //Right hud bar
+	using.dir = NORTH
 	using.icon = ui_style
 	using.icon_state = "bg"
-	using.screen_loc = "WEST,SOUTH-1 to EAST,SOUTH-1"
+	using.screen_loc = "0,1 to -2,15"
 	using.layer = UNDER_HUD_LAYER
 	adding += using
 
-	using = new /obj/screen() //Corner Button
-	using.dir = NORTHWEST
-	using.icon = ui_style
-	using.icon_state = "bg"
-	using.screen_loc = "EAST+1,SOUTH-1"
-	using.layer = UNDER_HUD_LAYER
-	adding += using
 
 	// Draw the various inventory equipment slots.
 	var/has_hidden_gear

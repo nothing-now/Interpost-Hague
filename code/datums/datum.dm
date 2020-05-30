@@ -55,10 +55,10 @@
 				qdel(extension)
 		extensions = null
 
-	GLOB.destroyed_event && GLOB.destroyed_event.raise_event(src)
-
 	if (!isturf(src))	// Not great, but the 'correct' way to do it would add overhead for little benefit.
 		cleanup_events(src)
+
+	GLOB.destroyed_event && GLOB.destroyed_event.raise_event(src)
 
 	return QDEL_HINT_QUEUE
 

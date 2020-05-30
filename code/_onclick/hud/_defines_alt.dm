@@ -23,18 +23,18 @@
 #define ui_action_slot5 "5:14,14:26"
 
 //Lower left, persistant menu
-#define ui_inventory "SOUTH,4"
+#define ui_inventory "SOUTH,2"
 
 //Lower center, persistant menu
-#define ui_sstore1 "SOUTH,12"
-#define ui_id "SOUTH-1,1"
-#define ui_belt "SOUTH-1,3"
-#define ui_back "SOUTH,5"
-#define ui_rhand "SOUTH,1"
-#define ui_lhand "SOUTH,3"
-#define ui_swaphand2 "8:16,2:5"
-#define ui_storage1 "SOUTH-1,4"
-#define ui_storage2 "SOUTH-1,5"
+#define ui_sstore1 "0,10"
+#define ui_id "-1,6"
+#define ui_belt "-2,7"
+#define ui_back "-1,11"
+#define ui_rhand "-2,8"
+#define ui_lhand "0,8"
+#define ui_swaphand2 "-1,8"
+#define ui_storage1 "-2,6"
+#define ui_storage2 "0,6"
 
 #define ui_alien_head "CENTER-3:12,SOUTH:5"		//aliens
 #define ui_alien_oclothing "CENTER-2:14,SOUTH:5"//aliens
@@ -48,18 +48,18 @@
 #define ui_monkey_back "SOUTH+1,3"	//monkey
 
 //Lower right, persistant menu
-#define ui_swaphand1 "SOUTH-1,6"
-#define ui_dropbutton "SOUTH-1,7"
-#define ui_drop_throw "SOUTH-1,8"
-#define ui_pull "SOUTH-1,11"//12"
-#define ui_atk "SOUTH-1, 12"//Dodge intents
-#define ui_atk_intents "south-1, 9" //atk_intents
-#define ui_skills_family "SOUTH-1,10"
-#define ui_resist "EAST+1,SOUTH-1"
-#define ui_acti "SOUTH-1,8"//"SOUTH-1,8"
-#define ui_combat "SOUTH-1,	14"//COMBAT MODE!
-#define ui_combat_intent "SOUTH-1, 13"
-#define ui_movi "EAST,SOUTH-1"
+#define ui_swaphand1 "-1,8"
+#define ui_dropbutton "0,3"
+#define ui_drop_throw "0,2" //Intents, actually. Hate Baycode.
+#define ui_pull "-2,3"//12"
+#define ui_atk "-1,3"//Dodge intents
+#define ui_atk_intents "-2, 2" //atk_intents
+#define ui_skills_family "-1,2"
+#define ui_resist "0,1"
+#define ui_acti "-2,0"//"SOUTH-1,8"
+#define ui_combat "-2,1"//COMBAT MODE!
+#define ui_combat_intent "0,4"
+#define ui_movi "-1,1"
 #define ui_zonesel "EAST+1, NORTH-2"
 #define ui_acti_alt "SOUTH-1,8" //alternative intent switcher for when the interface is hidden (F12)
 
@@ -125,18 +125,18 @@
 #define ui_alien_health "EAST-1:28,CENTER-1:13" //aliens have the health display where humans have the pressure damage indicator.
 
 //Pop-up inventory
-#define ui_shoes "SOUTH,4"
+#define ui_shoes "-1,7"
 
-#define ui_iclothing "SOUTH-1,2"
-#define ui_oclothing "SOUTH,2"
-#define ui_gloves "SOUTH,10"
+#define ui_iclothing "-1,9"
+#define ui_oclothing "-1,10"
+#define ui_gloves "0,7"
 
-#define ui_glasses "SOUTH,8"
-#define ui_mask "SOUTH,9"
-#define ui_l_ear "SOUTH,6"
-#define ui_r_ear "SOUTH,7"
+#define ui_glasses "-1,12"
+#define ui_mask "-1,13"
+#define ui_l_ear "0,12"
+#define ui_r_ear "-2,12"
 
-#define ui_head "SOUTH,11"
+#define ui_head "-1,14"
 
 //#define ui_swapbutton "6:-16,1:5" //Unused
 

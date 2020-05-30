@@ -4,9 +4,15 @@ mob/proc/flash_weakest_pain()
 mob/proc/flash_weak_pain()
 	flick("weak_pain",pain)
 
-mob/proc/flash_pain()
-	flick("pain",pain)
-
+mob/proc/flash_pain(var/target)
+	if(pain)
+		var/matrix/M
+		if(client && max(client.last_view_x_dim, client.last_view_y_dim) > 7)
+			M = matrix()
+			M.Scale(ceil(client.last_view_x_dim/7), ceil(client.last_view_y_dim/7))
+		pain.transform = M
+		animate(pain, alpha = target, time = 15, easing = ELASTIC_EASING)
+		animate(pain, alpha = 0, time = 20)
 mob/var/last_pain_message
 mob/var/next_pain_time = 0
 

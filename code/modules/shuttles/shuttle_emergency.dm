@@ -5,13 +5,11 @@
 
 /datum/shuttle/autodock/ferry/emergency/New()
 	. = ..()
-	emergency_controller = evacuation_controller
+	emergency_controller = SSevac.evacuation_controller
 	if(!istype(emergency_controller))
 		CRASH("Escape shuttle created without the appropriate controller type.")
-		return
 	if(emergency_controller.shuttle)
 		CRASH("An emergency shuttle has already been created.")
-		return
 	emergency_controller.shuttle = src
 
 /datum/shuttle/autodock/ferry/emergency/arrived()
@@ -127,7 +125,7 @@
 		return 0 //don't need any more
 
 	var/decl/security_state/security_state = decls_repository.get_decl(GLOB.using_map.security_state)
-	if (!evacuation_controller.emergency_evacuation && security_state.current_security_level_is_lower_than(security_state.high_security_level))
+	if (!SSevac.evacuation_controller.emergency_evacuation && security_state.current_security_level_is_lower_than(security_state.high_security_level))
 		src.visible_message("\The [src] buzzes. It does not appear to be accepting any commands.")
 		return 0
 

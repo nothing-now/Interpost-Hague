@@ -51,7 +51,7 @@
 			tghil_si_ereth = null
 
 	icon = initial(base_type.icon)
-	icon_state = ispath(base_type, /turf/space) ? "white" : initial(base_type.icon)
+	icon_state = initial(base_type.icon_state)
 
 /turf/simulated/shuttle/wall/corner/generate_missing_corners()
 	..()
@@ -86,47 +86,46 @@
 	icon_state = "corner_white" //for mapping preview
 	corner_overlay_state = "corner_white"
 /turf/simulated/shuttle/wall/corner/smoothwhite/ne
-	dir = NORTH|EAST
+	dir = NORTHEAST
 /turf/simulated/shuttle/wall/corner/smoothwhite/nw
-	dir = NORTH|WEST
+	dir = NORTHWEST
 /turf/simulated/shuttle/wall/corner/smoothwhite/se
-	dir = SOUTH|EAST
+	dir = SOUTHEAST
 /turf/simulated/shuttle/wall/corner/smoothwhite/sw
-	dir = SOUTH|WEST
+	dir = SOUTHWEST
 
 /turf/simulated/shuttle/wall/corner/blockwhite
 	icon_state = "corner_white_block"
 	corner_overlay_state = "corner_white_block"
 /turf/simulated/shuttle/wall/corner/blockwhite/ne
-	dir = NORTH|EAST
+	dir = NORTHEAST
 /turf/simulated/shuttle/wall/corner/blockwhite/nw
-	dir = NORTH|WEST
+	dir = NORTHWEST
 /turf/simulated/shuttle/wall/corner/blockwhite/se
-	dir = SOUTH|EAST
+	dir = SOUTHEAST
 /turf/simulated/shuttle/wall/corner/blockwhite/sw
-	dir = SOUTH|WEST
+	dir = SOUTHWEST
 
 /turf/simulated/shuttle/wall/corner/dark
 	icon_state = "corner_dark"
 	corner_overlay_state = "corner_dark"
 /turf/simulated/shuttle/wall/corner/dark/ne
-	dir = NORTH|EAST
+	dir = NORTHEAST
 /turf/simulated/shuttle/wall/corner/dark/nw
-	dir = NORTH|WEST
+	dir = NORTHWEST
 /turf/simulated/shuttle/wall/corner/dark/se
-	dir = SOUTH|EAST
+	dir = SOUTHEAST
 /turf/simulated/shuttle/wall/corner/dark/sw
-	dir = SOUTH|WEST
-
+	dir = SOUTHWEST
 
 /turf/simulated/shuttle/wall/corner/alien
 	icon_state = "corner_alien"
 	corner_overlay_state = "corner_alien"
 /turf/simulated/shuttle/wall/corner/alien/ne
-	dir = NORTH|EAST
+	dir = NORTHEAST
 /turf/simulated/shuttle/wall/corner/alien/nw
-	dir = NORTH|WEST
+	dir = NORTHWEST
 /turf/simulated/shuttle/wall/corner/alien/se
-	dir = SOUTH|EAST
+	dir = SOUTHEAST
 /turf/simulated/shuttle/wall/corner/alien/sw
-	dir = SOUTH|WEST
+	dir = SOUTHWEST

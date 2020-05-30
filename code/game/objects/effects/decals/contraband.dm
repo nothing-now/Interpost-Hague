@@ -84,7 +84,7 @@
 	var/poster_type		//So mappers can specify a desired poster
 	var/ruined = 0
 
-/obj/structure/sign/poster/New(var/newloc, var/placement_dir=null, var/serial=null)
+/obj/structure/sign/poster/New(newloc, placement_dir=null, serial=null)
 	..(newloc)
 
 	if(!serial)
@@ -109,11 +109,11 @@
 			pixel_y = 0
 
 /obj/structure/sign/poster/Initialize()
+	. = ..()
 	if (poster_type)
 		var/path = ispath(poster_type) ? poster_type : text2path(poster_type)
 		var/datum/poster/design = new path
 		set_poster(design)
-	. = ..()
 
 /obj/structure/sign/poster/proc/set_poster(var/datum/poster/design)
 	SetName("[initial(name)] - [design.name]")

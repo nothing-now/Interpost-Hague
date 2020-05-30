@@ -39,6 +39,8 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 	var/initializations_finished_with_no_players_logged_in	//I wonder what this could be?
 
+	var/initializing = FALSE
+
 	// The type of the last subsystem to be process()'d.
 	var/last_type_processed
 
@@ -171,6 +173,8 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 
 	report_progress("Initializing subsystems...")
 
+	initializing = TRUE
+
 	// Sort subsystems by init_order, so they initialize in the correct order.
 	sortTim(subsystems, /proc/cmp_subsystem_init)
 
@@ -180,7 +184,7 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	for (var/datum/controller/subsystem/SS in subsystems)
 		if (SS.flags & SS_NO_INIT)
 			continue
-		SS.Initialize(REALTIMEOFDAY)
+		SS.DoInitialize(REALTIMEOFDAY)
 		CHECK_TICK
 	current_ticklimit = TICK_LIMIT_RUNNING
 	var/time = (REALTIMEOFDAY - start_timeofday) / 10
@@ -188,6 +192,8 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	var/msg = "Initializations complete within [time] second\s!"
 	report_progress(msg)
 	log_world(msg)
+
+	initializing = FALSE
 
 	if (!current_runlevel)
 		SetRunLevel(RUNLEVEL_LOBBY)

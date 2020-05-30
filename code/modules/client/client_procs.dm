@@ -396,6 +396,38 @@ client/verb/character_setup()
 	if(world.byond_version >= 511 && byond_version >= 511 && client_fps >= CLIENT_MIN_FPS && client_fps <= CLIENT_MAX_FPS)
 		vars["fps"] = prefs.clientfps
 
+/client/verb/SetWindowIconSize(var/val as num|text)
+	set hidden = 1
+	winset(src, "mapwindow.map", "icon-size=[val]")
+	OnResize()
+
+/client
+	var/last_view_x_dim = 7
+	var/last_view_y_dim = 7
+
+/client/verb/OnResize()
+	set hidden = 1
+	var/divisor = text2num(winget(src, "mapwindow.map", "icon-size")) || world.icon_size
+	var/winsize_string = winget(src, "mapwindow.map", "size")
+	last_view_x_dim = round(text2num(winsize_string) / divisor)
+	last_view_y_dim = round(text2num(copytext(winsize_string,findtext(winsize_string,"x")+1,0)) / divisor)
+	view = "[last_view_x_dim]x[last_view_y_dim]"
+
+	// Reset eye/perspective
+	var/last_perspective = perspective
+	perspective = MOB_PERSPECTIVE
+	if(perspective != last_perspective)
+		perspective = last_perspective
+	var/last_eye = eye
+	eye = mob
+	if(eye != last_eye)
+		eye = last_eye
+
+	// Recenter skybox
+	set_skybox_offsets(last_view_x_dim, last_view_y_dim)
+	if(mob)
+		mob.reload_fullscreen()
+
 /*
 /client/proc/toggle_fullscreen() //it's that fuckin easy.
 	set name = "Toggle Fullscreen"
@@ -433,6 +465,7 @@ client/verb/character_setup()
 	set name = "Fit Viewport"
 	set category = "OOC"
 	set desc = "Fit the width of the map window to match the viewport"
+	set hidden = 1 //Nope.
 
 	// Fetch aspect ratio
 	var/view_size = getviewsize(view)
@@ -452,28 +485,30 @@ client/verb/character_setup()
 
 	// Calculate and apply a best estimate
 	// +4 pixels are for the width of the splitter's handle
-	var/pct = 100 * (desired_width + 4) / split_width
-	winset(src, "mainwindow.mainvsplit", "splitter=[pct]")
+	var/pct = 200 * (desired_width + 4) / split_width
+	winset(src, "mainwindow.mainvsplit", "splitter=75")
 
 	// Apply an ever-lowering offset until we finish or fail
 	var/delta
 	for(var/safety in 1 to 10)
 		var/after_size = winget(src, "mapwindow", "size")
 		map_size = splittext(after_size, "x")
-		var/got_width = text2num(map_size[1])
+		//var/got_width = text2num(map_size[1])
 
-		if (got_width == desired_width)
+		//if (got_width == desired_width)
 			// success
-			return
+			//return
+/*
 		else if (isnull(delta))
 			// calculate a probable delta value based on the difference
 			delta = 100 * (desired_width - got_width) / split_width
 		else if ((delta > 0 && got_width > desired_width) || (delta < 0 && got_width < desired_width))
 			// if we overshot, halve the delta and reverse direction
 			delta = -delta/2
+*/
 
 		pct += delta
-		winset(src, "mainwindow.mainvsplit", "splitter=[pct]")
+		winset(src, "mainwindow.mainvsplit", "splitter=75")
 
 /*
 /client/proc/set_splitter_orientation(var/vert, var/splitter_value = 0)

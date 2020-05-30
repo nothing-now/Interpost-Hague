@@ -38,12 +38,11 @@
 	icon_state = "grey_railing0"
 
 /obj/structure/railing/Initialize(loc, constructed=0)
-	..()
+	. = ..()
 	if (constructed)	//player-constructed railings
 		anchored = 0
 	if(src.anchored)
-		spawn(5)
-			update_icon(0)
+		update_icon(0)
 
 /obj/structure/railing/Destroy()
 	anchored = null

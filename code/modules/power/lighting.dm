@@ -28,7 +28,7 @@
 	var/fixture_type = /obj/machinery/light
 	var/sheets_refunded = 2
 
-/obj/machinery/light_construct/Initialize(atom/newloc, var/newdir, atom/fixture = null)
+/obj/machinery/light_construct/New(atom/newloc, var/newdir, atom/fixture = null)
 	..(newloc)
 
 	if(newdir)

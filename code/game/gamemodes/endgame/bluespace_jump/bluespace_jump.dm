@@ -133,7 +133,7 @@
 /obj/screen/fullscreen/bluespace_overlay
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "mfoam"
-	screen_loc = "WEST,SOUTH to EAST,NORTH"
+	screen_loc = ui_entire_screen
 	color = "#ff9900"
 	alpha = 100
 	blend_mode = BLEND_SUBTRACT
