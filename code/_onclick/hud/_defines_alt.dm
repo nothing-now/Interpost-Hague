@@ -26,7 +26,7 @@
 #define ui_inventory "1,2"
 
 //Lower center, persistant menu
-#define ui_sstore1 "0,10"
+#define ui_sstore1 "0,11"
 #define ui_id "-1,6"
 #define ui_belt "-2,7"
 #define ui_back "-1,11"

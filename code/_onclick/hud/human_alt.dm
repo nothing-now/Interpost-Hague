@@ -31,11 +31,67 @@
 	using.layer = UNDER_HUD_LAYER
 	adding += using
 
-	using = new /obj/screen() //Right hud bar
+	using = new /obj/screen()
 	using.dir = NORTH
 	using.icon = ui_style
-	using.icon_state = "bg"
-	using.screen_loc = "0,1 to -2,15"
+	using.icon_state = "new"
+	using.screen_loc = "-1,15"
+	using.layer = UNDER_HUD_LAYER
+	adding += using
+
+	using = new /obj/screen()
+	using.dir = NORTH
+	using.icon = ui_style
+	using.icon_state = "new2"
+	using.screen_loc = "0,1 to 0,4"
+	using.layer = UNDER_HUD_LAYER
+	adding += using
+
+	using = new /obj/screen()
+	using.dir = NORTH
+	using.icon = ui_style
+	using.icon_state = "new3"
+	using.screen_loc = "0,4 to 0,8"
+	using.layer = UNDER_HUD_LAYER
+	adding += using
+
+	using = new /obj/screen()
+	using.dir = NORTH
+	using.icon = ui_style
+	using.icon_state = "new2"
+	using.screen_loc = "0,8 to 0,14"
+	using.layer = UNDER_HUD_LAYER
+	adding += using
+
+	using = new /obj/screen()
+	using.dir = NORTH
+	using.icon = ui_style
+	using.icon_state = "new4"
+	using.screen_loc = "-2,1 to -2,14"
+	using.layer = UNDER_HUD_LAYER
+	adding += using
+
+	using = new /obj/screen() //Upper bar
+	using.dir = NORTH
+	using.icon = ui_style
+	using.icon_state = "middle"
+	using.screen_loc = "-1,1 to -1,14"
+	using.layer = UNDER_HUD_LAYER
+	adding += using
+
+	using = new /obj/screen()
+	using.dir = NORTH
+	using.icon = ui_style
+	using.icon_state = "new5"
+	using.screen_loc = "0,15"
+	using.layer = UNDER_HUD_LAYER
+	adding += using
+
+	using = new /obj/screen()
+	using.dir = NORTH
+	using.icon = ui_style
+	using.icon_state = "new6"
+	using.screen_loc = "-2,15"
 	using.layer = UNDER_HUD_LAYER
 	adding += using
 
