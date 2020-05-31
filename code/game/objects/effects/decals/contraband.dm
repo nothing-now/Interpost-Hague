@@ -84,15 +84,14 @@
 	var/poster_type		//So mappers can specify a desired poster
 	var/ruined = 0
 
-/obj/structure/sign/poster/New(newloc, placement_dir=null, serial=null)
-	..(newloc)
-
-	if(!serial)
-		serial = rand(1, poster_designs.len) //use a random serial if none is given
-
-	serial_number = serial
-	var/datum/poster/design = poster_designs[serial_number]
-	set_poster(design)
+/obj/structure/sign/poster/Initialize(mapload, var/placement_dir = null, var/give_poster_type = null)
+	. = ..(mapload)
+	if(!poster_type)
+		if(give_poster_type)
+			poster_type = give_poster_type
+		else
+			poster_type = pick(subtypesof(/datum/poster))
+	set_poster(poster_type)
 
 	switch (placement_dir)
 		if (NORTH)
@@ -107,13 +106,6 @@
 		if (WEST)
 			pixel_x = -32
 			pixel_y = 0
-
-/obj/structure/sign/poster/Initialize()
-	. = ..()
-	if (poster_type)
-		var/path = ispath(poster_type) ? poster_type : text2path(poster_type)
-		var/datum/poster/design = new path
-		set_poster(design)
 
 /obj/structure/sign/poster/proc/set_poster(var/datum/poster/design)
 	SetName("[initial(name)] - [design.name]")

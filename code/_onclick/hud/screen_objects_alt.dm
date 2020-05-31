@@ -48,8 +48,8 @@
 	var/obj/item/owner
 
 /obj/screen/item_action/Destroy()
+	..()
 	owner = null
-	. = ..()
 
 /obj/screen/item_action/Click()
 	if(!usr || !owner)
@@ -65,21 +65,6 @@
 
 	owner.ui_action_click()
 	return 1
-/*
-/obj/screen/grab
-	name = "grab"
-
-/obj/screen/grab/Click()
-	var/obj/item/grab/G = master
-	G.s_click(src)
-	return 1
-
-/obj/screen/grab/attack_hand()
-	return
-
-/obj/screen/grab/attackby()
-	return
-*/
 
 /obj/screen/storage
 	name = "storage"
@@ -107,68 +92,6 @@
 	icon_state = "zone_sel"
 	screen_loc = ui_zonesel
 	var/selecting = BP_CHEST
-/*
-/obj/screen/zone_sel/Click(location, control,params)
-	var/list/PL = params2list(params)
-	var/icon_x = text2num(PL["icon-x"])
-	var/icon_y = text2num(PL["icon-y"])
-	var/old_selecting = selecting //We're only going to update_icon() if there's been a change
-
-	switch(icon_y)
-		if(1 to 3) //Feet
-			switch(icon_x)
-				if(10 to 15)
-					selecting = BP_R_FOOT
-				if(17 to 22)
-					selecting = BP_L_FOOT
-				else
-					return 1
-		if(4 to 9) //Legs
-			switch(icon_x)
-				if(10 to 15)
-					selecting = BP_R_LEG
-				if(17 to 22)
-					selecting = BP_L_LEG
-				else
-					return 1
-		if(10 to 13) //Hands and groin
-			switch(icon_x)
-				if(8 to 11)
-					selecting = BP_R_HAND
-				if(12 to 20)
-					selecting = BP_GROIN
-				if(21 to 24)
-					selecting = BP_L_HAND
-				else
-					return 1
-		if(14 to 22) //Chest and arms to shoulders
-			switch(icon_x)
-				if(8 to 11)
-					selecting = BP_R_ARM
-				if(12 to 20)
-					selecting = BP_CHEST
-				if(21 to 24)
-					selecting = BP_L_ARM
-				else
-					return 1
-		if(23 to 30) //Head, but we need to check for eye or mouth
-			if(icon_x in 12 to 20)
-				selecting = BP_HEAD
-				switch(icon_y)
-					if(23 to 24)
-						if(icon_x in 15 to 17)
-							selecting = BP_MOUTH
-					if(26) //Eyeline, eyes are on 15 and 17
-						if(icon_x in 14 to 18)
-							selecting = BP_EYES
-					if(25 to 27)
-						if(icon_x in 15 to 17)
-							selecting = BP_EYES
-
-	if(old_selecting != selecting)
-		update_icon()
-	return 1
-*/
 
 /obj/screen/zone_sel/Click(location, control,params)
 	var/list/PL = params2list(params)
@@ -176,49 +99,7 @@
 	var/icon_y = text2num(PL["icon-y"])
 	var/old_selecting = selecting //We're only going to update_icon() if there's been a change
 	//var/old_src_aim = src_aim
-/*
-	if(PL["middle"])
-		switch(icon_y)
-			if(4 to 9) //Feet
-				switch(icon_x)
-					if(7 to 15)
-						selecting = BP_R_FOOT
-					if(18 to 26)
-						selecting = BP_L_FOOT
-					else
-						return 1
-			if(10 to 21) //Legs
-				switch(icon_x)
-					if(10 to 16)
-						selecting = BP_R_LEG
-					if(18 to 23)
-						selecting = BP_L_LEG
-					else
-						return 1
-			if(22 to 30) //Hands and groin
-				switch(icon_x)
-					if(3 to 8)
-						selecting = BP_R_HAND
-					if(25 to 29)
-						selecting = BP_L_HAND
-					else
-						return 1
-			if(31 to 48) //Chest and arms to shoulders
-				switch(icon_x)
-					if(3 to 9)
-						selecting = BP_R_HAND
-					if(24 to 30)
-						selecting = BP_L_HAND
-					else
-						return 1
-			if(49 to 61) //Head, but we need to check for eye or mouth
-				if(icon_x in 10 to 23)
-					selecting = BP_HEAD
-					switch(icon_y)
-						if(49 to 51)
-							if(icon_x in 15 to 18)
-								selecting = BP_MOUTH
-	else*/
+
 	switch(icon_y)
 		if(5 to 8) //Feet
 			switch(icon_x)

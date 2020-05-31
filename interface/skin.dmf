@@ -506,10 +506,13 @@ macro "macro"
 		command = ".moveleft"
 	elem 
 		name = "SPACE"
-		command = "toggle_combat_mode"
+		command = ".combat_mode"
 	elem
-		name = "X"
-		command = "toggle_dodge_parry"
+		name = "G"
+		command = ".defense_intent"
+	elem
+		name = "SHIFT+X"
+		command = ".wield"
 	elem 
 		name = "CTRL+A+REP"
 		command = ".moveleft"

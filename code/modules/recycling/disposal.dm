@@ -956,17 +956,20 @@
 
 // a straight or bent segment
 /obj/structure/disposalpipe/segment
-	icon_state = "pipe-s"
+	icon_state = "pipe-s" // Sadly this var stores state. "pipe-c" is corner. Should be changed, but requires huge map diff.
 
-	New()
-		..()
-		if(icon_state == "pipe-s")
-			dpdir = dir | turn(dir, 180)
-		else
-			dpdir = dir | turn(dir, -90)
+/obj/structure/disposalpipe/segment/Initialize()
+	. = ..()
+	if(icon_state == "pipe-s")
+		dpdir = dir | turn(dir, 180)
+	else
+		dpdir = dir | turn(dir, -90)
 
-		update()
-		return
+	update()
+	return
+
+/obj/structure/disposalpipe/segment/bent
+	icon_state = "pipe-c"
 
 ///// Z-Level stuff
 /obj/structure/disposalpipe/up

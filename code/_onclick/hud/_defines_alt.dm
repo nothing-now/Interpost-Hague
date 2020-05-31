@@ -23,7 +23,7 @@
 #define ui_action_slot5 "5:14,14:26"
 
 //Lower left, persistant menu
-#define ui_inventory "SOUTH,2"
+#define ui_inventory "1,2"
 
 //Lower center, persistant menu
 #define ui_sstore1 "0,10"

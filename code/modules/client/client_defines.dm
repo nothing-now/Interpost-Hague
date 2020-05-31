@@ -12,7 +12,7 @@
 		/////////
 		//OTHER//
 		/////////
-	mouse_pointer_icon = 'icons/misc/pointer_cursor.dmi'
+	mouse_pointer_icon = 'html/cursor/pointer.cur'
 
 	var/datum/preferences/prefs = null
 	var/move_delay		= 1

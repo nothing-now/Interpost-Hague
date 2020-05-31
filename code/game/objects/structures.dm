@@ -55,6 +55,12 @@
 /obj/structure/proc/can_visually_connect_to(var/obj/structure/S)
 	return istype(S, src)
 
+/obj/structure/proc/clear_connections()
+	return
+
+/obj/structure/proc/set_connections(dirs, other_dirs)
+	return
+
 /obj/structure/proc/refresh_neighbors()
 	for(var/thing in RANGE_TURFS(1, src))
 		var/turf/T = thing

@@ -109,6 +109,14 @@
 		pixel_x = rand(-randpixel, randpixel)
 		pixel_y = rand(-randpixel, randpixel)
 
+/obj/item/Initialize()
+	. = ..()
+	if(!swing_sound)
+		if(sharp || edge)
+			swing_sound = "swing_sound"
+		else
+			swing_sound = "blunt_swing"
+
 /obj/item/Destroy()
 	qdel(hidden_uplink)
 	hidden_uplink = null
@@ -123,7 +131,11 @@
 /obj/item/device
 	icon = 'icons/obj/device.dmi'
 
-
+/mob/living/proc/do_wield()
+	var/obj/item/I = get_active_hand()
+	if(!I)
+		return
+	I.attempt_wield(src)
 
 /obj/item/proc/unwield(mob/user)
 	if(!wielded || !user)
@@ -254,6 +266,11 @@
 		II.unwield(user)
 	if(!QDELETED(src))
 		qdel(src)
+
+/mob/living/verb/wield_hotkey()//For the hotkeys. Not sure where this should be put. But it pertains to two-handing so *shrug*.
+	set name = ".wield"
+	set hidden = 1
+	do_wield()
 
 /obj/item/ex_act(severity)
 	switch(severity)

@@ -13,13 +13,13 @@
 
 	var/mob/my_mob = null // The mob that possesses this hud object.
 
-/obj/screen/movable/ability_master/New(newloc,owner)
+/obj/screen/movable/ability_master/Initialize(mapload, owner)
+	. = ..()
 	if(owner)
 		my_mob = owner
 		update_abilities(0, owner)
 	else
 		message_admins("ERROR: ability_master's New() was not given an owner argument.  This is a bug.")
-	..()
 
 /obj/screen/movable/ability_master/proc/remake(newloc,owner)  //Used for remaking the ability manager on changling transform
 	if(owner)

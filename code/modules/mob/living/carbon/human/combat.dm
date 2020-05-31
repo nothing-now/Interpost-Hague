@@ -1,25 +1,41 @@
-//Commented out debugging shit...but why?
-/mob/living/carbon/human/verb/toggle_combat_mode()
-	set name = "Toggle Combat Mode"
-	set category = "Combat"
 
-	if(combat_mode)
-		combat_mode = 0
-		to_chat(src, "You toggle off combat mode.")
-	else
-		combat_mode = 1
-		to_chat(src, "You toggle on combat mode.")
+/mob/living/carbon/human/proc/toggle_combat_mode()
+	if(!ishuman(usr))
+		return
+		var/mob/living/carbon/human/C = usr
+		playsound(usr, 'sound/effects/ui_toggle.ogg', 50, 0, 1)
+		if(!C.combat_mode)
+			C.combat_mode = 1
+			C.combat_icon.icon_state = "combat1"
+			to_chat(src, "<span class='warning'>You toggle on combat mode.</span>")
+		else
+			combat_mode = 0
+			C.combat_icon.icon_state = "combat0"
+			to_chat(src, "<span class='danger'>You toggle off combat mode.</span>")
 
-/mob/living/carbon/human/verb/toggle_dodge_parry()
-	set name = "Toggle Defense Intent"
-	set category = "Combat"
+/mob/living/carbon/human/proc/toggle_dodge_parry()
+	if(ishuman(usr))
+		var/mob/living/carbon/human/E = usr
+		if(E.defense_intent == I_DODGE)
+			E.defense_intent = I_PARRY
+			E.dodge_intent_icon.icon_state = "parry"
+			to_chat(src, "<span class='danger'>You will now parry.</span>")
+		else
+			E.defense_intent = I_DODGE
+			E.dodge_intent_icon.icon_state = "dodge"
+			to_chat(src, "<span clas='warning'>You will now dodge.</span>")
 
-	if(defense_intent == I_DODGE)
-		defense_intent = I_PARRY
-		to_chat(src, "You will now parry.")
-	else
-		defense_intent = I_DODGE
-		to_chat(src, "You will now dodge.")
+/mob/living/carbon/human/verb/dodgeparry_hotkey()
+	set name = ".defense_intent"
+	set hidden = 1
+
+	toggle_dodge_parry()
+
+/mob/living/carbon/human/verb/combatmode_hotkey()
+	set name = ".combat_mode"
+	set hidden = 1
+
+	toggle_combat_mode()
 
 //Going here till I find a better place for it.
 /mob/living/proc/handle_combat_mode()//Makes it so that you can't regain stamina in combat mode.

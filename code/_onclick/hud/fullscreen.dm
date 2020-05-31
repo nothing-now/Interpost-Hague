@@ -126,6 +126,7 @@
 	icon = 'icons/mob/screen1.dmi'
 	screen_loc = ui_entire_screen
 	icon_state = "blurry"
+	alpha = 100
 
 /obj/screen/fullscreen/flash
 	icon = 'icons/mob/screen1.dmi'

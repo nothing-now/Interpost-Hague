@@ -78,7 +78,7 @@
 		title_attributes = "class='uiTitle icon' style='background-image: url([title_image]);'"
 
 	return {"<!DOCTYPE html>
-<html style="cursor: url('cursornew.cur');">
+<html style="cursor: url('pointer.cur');">
 	<meta charset=ISO-8859-1">
 	<head>
 		<meta http-equiv="X-UA-Compatible" content="IE=edge" />

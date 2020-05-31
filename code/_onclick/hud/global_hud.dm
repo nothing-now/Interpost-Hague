@@ -11,17 +11,18 @@ GLOBAL_DATUM_INIT(global_hud, /datum/global_hud, new())
 	var/obj/screen/meson
 	var/obj/screen/science
 
-/datum/global_hud/proc/setup_overlay(var/icon_state)
+/datum/global_hud/proc/setup_overlay(icon_state, color)
 	var/obj/screen/screen = new /obj/screen()
-	screen.screen_loc = "CENTER,CENTER"
+	screen.screen_loc = ui_entire_screen
 	screen.icon = 'icons/obj/hud_full.dmi'
 	screen.icon_state = icon_state
 	screen.mouse_opacity = 0
+	screen.plane = FULLSCREEN_PLANE
+	screen.layer = FULLSCREEN_LAYER
+	screen.alpha = 125
 
-	var/matrix/M = matrix()
-	M.Scale(30) // Arbitrary value (30 tiles) to cover most possible resolutions.
-				// HUDs will need to be altered to be per-client to fix this more generally.
-	screen.transform = M
+	screen.blend_mode = BLEND_MULTIPLY
+	screen.color = color
 
 	return screen
 
