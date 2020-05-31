@@ -1020,6 +1020,12 @@ mob/proc/yank_out_object()
 /mob/update_icon()
 	return
 
+/mob/verb/fixeye_hotkey()
+	set name = ".fixeye"
+	set hidden = 1
+
+	face_direction()
+
 /mob/proc/face_direction()
 	set_face_dir()
 
