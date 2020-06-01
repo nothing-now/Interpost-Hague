@@ -125,7 +125,7 @@
 			var/wtype = ST.material.created_window
 			if (ST.use(1))
 				var/obj/structure/window/WD = new wtype(loc, null, 1)
-				to_world("Window name is [WD.icon_state]")
+				//to_world("Window name is [WD.icon_state]")
 				to_chat(user, "<span class='notice'>You place the [WD] on [src].</span>")
 				WD.update_icon()
 		return
