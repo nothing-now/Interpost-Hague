@@ -73,6 +73,15 @@
 	QDEL_NULL(proximity_monitor)
 	. = ..()
 
+// Byond seemingly calls stat, each tick.
+// Calling things each tick can get expensive real quick.
+// So we slow this down a little.
+// See: http://www.byond.com/docs/ref/info.html#/client/proc/Stat
+/atom/Stat()
+	. = ..()
+	sleep(1)
+	stoplag()
+
 /atom/proc/reveal_blood()
 	return
 

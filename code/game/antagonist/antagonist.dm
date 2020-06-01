@@ -14,7 +14,7 @@
 	var/loss_feedback_tag                   // Used by the database for end of round loss.
 
 	// Role data.
-	var/id = "traitor"                      // Unique datum identifier.
+	var/id = "traitor"                      // Unique datum identifier. Also preferences option for this role.
 	var/role_type                           // Preferences option for this role. Defaults to the id if unset
 	var/role_text = "Traitor"               // special_role text.
 	var/role_text_plural = "Traitors"       // As above but plural.
@@ -84,8 +84,8 @@
 	if(!role_type)
 		role_type = id
 
+/datum/antagonist/proc/Initialize()
 	cur_max = hard_cap
-	get_starting_locations()
 	if(!role_text_plural)
 		role_text_plural = role_text
 	if(config.protect_roles_from_antagonist)
@@ -105,7 +105,7 @@
 
 	// Prune restricted status. Broke it up for readability.
 	// Note that this is done before jobs are handed out.
-	for(var/datum/mind/player in mode.get_players_for_role(role_type, id))
+	for(var/datum/mind/player in mode.get_players_for_role(id))
 		if(ghosts_only && !(isghostmind(player) || isnewplayer(player.current)))
 			log_debug("[key_name(player)] is not eligible to become a [role_text]: Only ghosts may join as this role!")
 		else if(config.use_age_restriction_for_antags && player.current.client.player_age < minimum_player_age)
@@ -124,21 +124,27 @@
 	return candidates
 
 // Builds a list of potential antags without actually setting them. Used to test mode viability.
-/datum/antagonist/proc/get_potential_candidates(var/datum/game_mode/mode, var/ghosts_only)
-	var/candidates = list()
+/datum/antagonist/proc/get_potential_candidates(datum/game_mode/mode, ghosts_only)
+	var/potential_candidates = list()
 
 	// Keeping broken up for readability
-	for(var/datum/mind/player in mode.get_players_for_role(role_type, id))
+	for(var/datum/mind/player in mode.get_players_for_role(id))
 		if(ghosts_only && !(isghostmind(player) || isnewplayer(player.current)))
+			log_debug("[key_name(player)] is not eligible to become a [role_text]: Only ghosts may join as this role!")
 		else if(config.use_age_restriction_for_antags && player.current.client.player_age < minimum_player_age)
+			log_debug("[key_name(player)] is not eligible to become a [role_text]: Is only [player.current.client.player_age] day\s old, has to be [minimum_player_age] day\s!")
 		else if(player.special_role)
+			log_debug("[key_name(player)] is not eligible to become a [role_text]: They already have a special role ([player.special_role])!")
 		else if (player in pending_antagonists)
+			log_debug("[key_name(player)] is not eligible to become a [role_text]: They have already been selected for this role!")
 		else if(!can_become_antag(player))
+			log_debug("[key_name(player)] is not eligible to become a [role_text]: They are blacklisted for this role!")
 		else if(player_is_antag(player))
+			log_debug("[key_name(player)] is not eligible to become a [role_text]: They are already an antagonist!")
 		else
-			candidates |= player
+			potential_candidates |= player
 
-	return candidates
+	return potential_candidates
 
 /datum/antagonist/proc/attempt_random_spawn()
 	update_current_antag_max(SSticker.mode)
@@ -184,11 +190,7 @@
 //assigned, so that job restrictions can be respected.
 /datum/antagonist/proc/attempt_spawn(var/spawn_target = null)
 	if(spawn_target == null)
-		update_current_antag_max()
-		testing("Setting spawn target to [cur_max]")
-		spawn_target = cur_max
-		//spawn_target = initial_spawn_target
-	testing("We are in attempt_spawn and our spawn_target is [spawn_target]")
+		spawn_target = initial_spawn_target
 
 	// Update our boundaries.
 	if(!candidates.len)
@@ -250,7 +252,6 @@
 /datum/antagonist/proc/reset_antag_selection()
 	for(var/datum/mind/player in pending_antagonists)
 		if(flags & ANTAG_OVERRIDE_JOB)
-			player.assigned_job = null
 			player.assigned_role = null
 		player.special_role = null
 	pending_antagonists.Cut()

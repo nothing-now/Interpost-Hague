@@ -141,6 +141,7 @@
 	item_state = "hgasmask"
 	siemens_coefficient = 0.7
 	body_parts_covered = FACE|EYES
+	flags_inv = HIDEEYES|HIDEFACE
 	armor = list(melee = 15, bullet = 15, laser = 15, energy = 0, bomb = 0, bio = 75, rad = 0)
 	filtered_gases = list("phoron", "sleeping_agent")
 
@@ -150,5 +151,6 @@
 	item_state = "arbitermask"
 	siemens_coefficient = 0.7
 	body_parts_covered = FACE|EYES
+	flags_inv = HIDEEYES|HIDEFACE
 	armor = list(melee = 25, bullet = 5, laser = 5, energy = 0, bomb = 0, bio = 35, rad = 0)
 	filtered_gases = list("phoron", "sleeping_agent")

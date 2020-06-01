@@ -53,6 +53,8 @@ SUBSYSTEM_DEF(ticker)
 
 /datum/controller/subsystem/ticker/proc/setup_tick()
 	switch(choose_gamemode())
+		if(CHOOSE_GAMEMODE_SILENT_REDO)
+			return
 		if(CHOOSE_GAMEMODE_RETRY)
 			pregame_timeleft = 15 SECONDS
 			Master.SetRunLevel(RUNLEVEL_LOBBY)
@@ -72,9 +74,9 @@ SUBSYSTEM_DEF(ticker)
 	// This means we succeeded in picking a game mode.
 	GLOB.using_map.setup_economy()
 	Master.SetRunLevel(RUNLEVEL_GAME)
-
 	create_characters() //Create player characters and transfer them
 	collect_minds()
+	matchmaker.do_family_matchmaking()  //Do this before equipping
 	if (config.roundstart_events)
 		eof = pick_round_event()
 	equip_characters()
@@ -214,9 +216,9 @@ Helpers
 
 	//Decide on the mode to try.
 	if(!bypass_gamemode_vote && gamemode_vote_results)
+		gamemode_vote_results -= bad_modes
 		if(length(gamemode_vote_results))
 			mode_to_try = gamemode_vote_results[1]
-			gamemode_vote_results.Cut(1,2)
 			. = CHOOSE_GAMEMODE_RETRY //Worth it to try again at least once.
 		else
 			mode_to_try = "extended"
@@ -227,15 +229,18 @@ Helpers
 		return
 
 	//Find the relevant datum, resolving secret in the process.
-	var/list/runnable_modes = config.get_runnable_modes() //format: list(datum/game_mode instance = weight)
+	var/list/base_runnable_modes = config.get_runnable_modes() //format: list(config_tag = weight)
 	if((mode_to_try=="random") || (mode_to_try=="secret"))
+		var/list/runnable_modes = base_runnable_modes - bad_modes
 		if(secret_force_mode != "secret") // Config option to force secret to be a specific mode.
 			mode_datum = config.pick_mode(secret_force_mode)
 		else if(!length(runnable_modes))  // Indicates major issues; will be handled on return.
 			bad_modes += mode_to_try
 			return
 		else
-			mode_datum = pickweight(runnable_modes)
+			mode_datum = config.pick_mode(pickweight(runnable_modes))
+			if(length(runnable_modes) > 1) // More to pick if we fail; we won't tell anyone we failed unless we fail all possibilities, though.
+				. = CHOOSE_GAMEMODE_SILENT_REDO
 	else
 		mode_datum = config.pick_mode(mode_to_try)
 	if(!istype(mode_datum))
@@ -251,7 +256,7 @@ Helpers
 	if(mode_datum.startRequirements())
 		mode_datum.fail_setup()
 		job_master.ResetOccupations()
-		bad_modes += mode_to_try
+		bad_modes += mode_datum.config_tag
 		return
 
 	//Declare victory, make an announcement.
@@ -261,8 +266,10 @@ Helpers
 	if(mode_to_try == "secret")
 		to_world("<B>The current game mode is - Secret!</B>")
 		var/list/mode_names = list()
-		for (var/datum/game_mode/M in runnable_modes)
-			mode_names += M.name
+		for (var/mode_tag in base_runnable_modes)
+			var/datum/game_mode/M = gamemode_cache[mode_tag]
+			if(M)
+				mode_names += M.name
 		to_world("<B>Possibilities:</B> [english_list(mode_names)]")
 	else
 		mode.announce()
@@ -452,9 +459,28 @@ Helpers
 		to_world("On the other hand, <b>[max_loss.owner_name]</b> had most <font color='red'><B>LOSS</B></font>, with total loss of <b>T[max_loss.get_balance()]</b>.")
 
 	mode.declare_completion()//To declare normal completion.
+	 //Old stats that were just printed to chat...and are back!
+	//ROUND END STATS
+	var/round_end_stats = "<b>ROUND END STATS:</b>\n"
+	round_end_stats += "Number of times the floor was shit on: <font color='red'><B>[GLOB.shit_left]</B></font>.\n"
+	round_end_stats += "Number of times the floor was pissed on: <font color='red'><B>[GLOB.piss_left]</B></font>.\n"
+	round_end_stats += "Number of deaths in space: <font color='red'><B>[GLOB.deaths_in_space]</B></font>.\n"
+	round_end_stats += "Total teeth lost: <font color='red'><B>[GLOB.teeth_lost]</B></font>.\n"
+	round_end_stats += "Total bloodshed: <font color='red'><B>[GLOB.total_deaths]</B></font>.\n"
+	round_end_stats += "Total orgasms: <font color='red'><B>[GLOB.total_orgasms]</B></font>.\n"
+	for(var/old_god in GLOB.all_religions)
+		if(old_god != LEGAL_RELIGION)
+			if(GLOB.all_religions[old_god].followers.len > 0)
+				round_end_stats += "<b>The [old_god] worshippers were:</b>\n"
+				for(var/H in GLOB.all_religions[old_god].followers)
+					round_end_stats += "<font color='red'><b>[H]</b></font>\n"
+	to_world(round_end_stats)
 
 	//Ask the event manager to print round end information
 	SSevent.RoundEnd()
+	config.ooc_allowed = !(config.ooc_allowed)
+	if (config.ooc_allowed)
+		to_world("<B>The OOC channel has been globally enabled!</B>")
 
 	//Print a list of antagonists to the server log
 	var/list/total_antagonists = list()

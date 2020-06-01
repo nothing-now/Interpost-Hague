@@ -1,8 +1,6 @@
 /datum/antagonist/proc/can_become_antag(var/datum/mind/player, var/ignore_role)
 	if(player.current && jobban_isbanned(player.current, id))
 		return 0
-	if(isliving(player.current) && player.current.stat)
-		return 0
 	var/datum/job/J = job_master.GetJob(player.assigned_role)
 	if(is_type_in_list(J,blacklisted_jobs))
 		return 0
@@ -11,7 +9,7 @@
 		if(player.current && player.current.client)
 			var/client/C = player.current.client
 			// Limits antag status to clients above player age, if the age system is being used.
-			if(C && config.use_age_restriction_for_jobs && isnum(C.player_age) && isnum(min_player_age) && (C.player_age < min_player_age))
+			if(C && config.use_age_restriction_for_antags && isnum(C.player_age) && isnum(min_player_age) && (C.player_age < min_player_age))
 				return 0
 		if(is_type_in_list(J,restricted_jobs))
 			return 0
@@ -58,9 +56,6 @@
 	if(!SSticker.mode)
 		return 0
 	if(!(id in SSticker.mode.latejoin_antag_tags))
-		return 0
-	update_current_antag_max(SSticker.mode)
-	if(get_antag_count() >= cur_max)
 		return 0
 	return 1
 

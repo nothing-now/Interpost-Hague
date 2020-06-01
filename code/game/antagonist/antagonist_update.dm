@@ -85,5 +85,6 @@
 			if(M.client)
 				count++
 
-		// This SHOULD be the minimum of either the initial_spawn_targer, OR the total player count divided by the specific gamemode scaling coefficiant.
+		// Minimum: initial_spawn_target
+		// Maximum: hard_cap or hard_cap_round
 		cur_max = max(initial_spawn_target,min(round(count/mode.antag_scaling_coeff),cur_max))

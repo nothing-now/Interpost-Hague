@@ -505,7 +505,7 @@ macro "macro"
 		name = "A+REP"
 		command = ".moveleft"
 	elem 
-		name = "SPACE"
+		name = "C"
 		command = ".combat_mode"
 	elem
 		name = "G"
@@ -529,14 +529,8 @@ macro "macro"
 		name = "CTRL+E"
 		command = "quick-equip"
 	elem 
-		name = "F"
-		command = "a-intent left"
-	elem 
 		name = "CTRL+F"
 		command = "a-intent left"
-	elem 
-		name = "G"
-		command = "a-intent right"
 	elem 
 		name = "CTRL+G"
 		command = "a-intent right"
