@@ -58,6 +58,7 @@ SUBSYSTEM_DEF(ticker)
 		if(CHOOSE_GAMEMODE_RETRY)
 			pregame_timeleft = 15 SECONDS
 			Master.SetRunLevel(RUNLEVEL_LOBBY)
+			bad_modes = list()
 			to_world("<B>Unable to choose playable game mode.</B> Reverting to pre-game lobby to try again.")
 			return
 		if(CHOOSE_GAMEMODE_REVOTE)
@@ -209,7 +210,7 @@ Helpers
 */
 
 /datum/controller/subsystem/ticker/proc/choose_gamemode()
-	. = (revotes_allowed && !bypass_gamemode_vote) ? CHOOSE_GAMEMODE_REVOTE : CHOOSE_GAMEMODE_RESTART
+	. = (revotes_allowed && !bypass_gamemode_vote) ? CHOOSE_GAMEMODE_REVOTE : CHOOSE_GAMEMODE_RETRY
 
 	var/mode_to_try = master_mode //This is the config tag
 	var/datum/game_mode/mode_datum
@@ -228,6 +229,10 @@ Helpers
 	if(mode_to_try in bad_modes)
 		return
 
+	var/totalPlayers = 0
+	for(var/mob/new_player/player in GLOB.player_list)
+		if(player.client && player.ready)
+			totalPlayers++
 	//Find the relevant datum, resolving secret in the process.
 	var/list/base_runnable_modes = config.get_runnable_modes() //format: list(config_tag = weight)
 	if((mode_to_try=="random") || (mode_to_try=="secret"))
@@ -253,7 +258,7 @@ Helpers
 	mode_datum.pre_setup()
 	job_master.DivideOccupations(mode_datum) // Apparently important for new antagonist system to register specific job antags properly.
 
-	if(mode_datum.startRequirements())
+	if(!mode_datum.startRequirements(totalPlayers))
 		mode_datum.fail_setup()
 		job_master.ResetOccupations()
 		bad_modes += mode_datum.config_tag
