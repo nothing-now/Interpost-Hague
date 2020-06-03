@@ -1118,28 +1118,9 @@ window "rpane"
 		saved-params = "splitter"
 		right = "outputwindow"
 		is-vert = false
-	elem "Discord"
-		type = BUTTON
-		pos = 208,0
-		size = 60x20
-		anchor1 = none
-		anchor2 = none
-		saved-params = "is-checked"
-		text = "Discord"
-		command = "discord"
-	elem "rulesb"
-		type = BUTTON
-		pos = 150,0
-		size = 60x20
-		anchor1 = none
-		anchor2 = none
-		saved-params = "is-checked"
-		text = "Rules"
-		command = "rules"
-		group = "rpanemode"
 	elem "textb"
 		type = BUTTON
-		pos = 0,0
+		pos = 5,0
 		size = 60x20
 		anchor1 = none
 		anchor2 = none
@@ -1151,7 +1132,7 @@ window "rpane"
 		group = "rpanemode"
 		button-type = pushbox
 	elem "infob"	
-		type = BUTTON	
+		type = BUTTON
 		pos = 40,0	
 		size = 60x20	
 		anchor1 = none	
