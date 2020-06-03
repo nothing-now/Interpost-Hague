@@ -481,6 +481,8 @@ var/world_topic_spam_protect_time = world.timeofday
 
 /world/Del()
 	callHook("shutdown")
+	if(fexists("byond-extools.dll"))
+		call("byond-extools.dll", "cleanup")()
 	return ..()
 
 /hook/startup/proc/loadMode()
