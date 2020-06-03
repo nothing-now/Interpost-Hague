@@ -4,7 +4,6 @@
 // Do not remove this functionality without good reason, cough reagent_containers cough.
 // -Sayu
 
-
 /obj/item/weapon/storage
 	name = "storage"
 	icon = 'icons/obj/storage.dmi'
