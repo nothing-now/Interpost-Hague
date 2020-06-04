@@ -485,9 +485,6 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 		target.w_uniform.add_fingerprint(attacker)
 	var/obj/item/organ/external/affecting = target.get_organ(ran_zone(attacker.zone_sel.selecting))
 
-	if(user.statcheck(user.stats[STAT_ST], 8, "You are too weak to disarm anyone!", STAT_ST))
-		return
-
 	var/list/holding = list(target.get_active_hand() = 40, target.get_inactive_hand() = 20)
 
 	//See if they have any guns that might go off
@@ -516,6 +513,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 		//See about breaking grips or pulls
 		if(target.break_all_grabs(attacker))
 			playsound(target.loc, 'sound/weapons/thudswoosh.ogg', 50, 1, -1)
+			target.visible_message("<span class='danger'>[attacker] has broken a grip!</span>")
 			return
 
 		//Actually disarm them
