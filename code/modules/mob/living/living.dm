@@ -133,9 +133,18 @@ default behaviour is:
 			..()
 			if (!istype(AM, /atom/movable) || AM.anchored)
 				if(confused && prob(50) && m_intent=="run")
-					Weaken(2)
-					playsound(loc, "punch", 25, 1, -1)
-					visible_message("<span class='warning'>[src] [pick("ran", "slammed")] into \the [AM]!</span>")
+					if(istype(AM, /obj/machinery/disposal))
+						Weaken(6)
+						playsound(get_turf(AM), 'sound/effects/clang.ogg', 75)
+						visible_message("<span class='warning'>[src] falls into \the [AM]!</span>", "<span class='warning'>You fall into \the [AM]!</span>")
+						if (client)
+							client.perspective = EYE_PERSPECTIVE
+							client.eye = src
+						forceMove(AM)
+					else
+						Weaken(2)
+						playsound(loc, "punch", rand(80, 100), 1, -1)
+						visible_message("<span class='warning'>[src] [pick("ran", "slammed")] into \the [AM]!</span>")
 					src.apply_damage(5, BRUTE)
 				return
 			if (!now_pushing)
@@ -146,7 +155,6 @@ default behaviour is:
 					for(var/obj/structure/window/win in get_step(AM,t))
 						now_pushing = 0
 						return
-				AM.glide_size = glide_size
 				step(AM, t)
 				//Turn around to face whoever pushed us
 				AM.set_dir(get_dir(AM, src))
