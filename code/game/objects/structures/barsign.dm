@@ -27,8 +27,8 @@
 		else
 			to_chat(user, "It says '[icon_state]'")
 
-/obj/structure/sign/double/barsign/New()
-	..()
+/obj/structure/sign/double/barsign/Initialize()
+	. = ..()
 	icon_state = pick(get_valid_states())
 
 /obj/structure/sign/double/barsign/attackby(obj/item/I, mob/user)
@@ -48,3 +48,21 @@
 		return
 
 	return ..()
+
+/obj/structure/sign/double/church
+	desc = "A sign telling what you should always do."
+	icon = 'icons/obj/barsigns.dmi'
+	icon_state = "church"
+	appearance_flags = 0
+	anchored = 1
+	layer = ABOVE_OBJ_LAYER
+	var/cult = 0
+
+/obj/structure/sign/double/honk
+	desc = "A HONK sign. Don't bother thinking about it."
+	icon = 'icons/obj/barsigns.dmi'
+	icon_state = "honk2"
+	appearance_flags = 0
+	anchored = 1
+	layer = ABOVE_OBJ_LAYER
+	var/cult = 0
