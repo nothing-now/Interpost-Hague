@@ -205,7 +205,7 @@
 		else
 			message = pick("cums!", "orgasms!")
 
-		playsound(loc, "honk/sound/interactions/final_m[rand(1, 5)].ogg", 70, 1, 0)
+		playsound(loc, "code/modules/honk/sound/interactions/final_m[rand(1, 5)].ogg", 70, 1, 0)
 
 		H.visible_message("<B>[H] [message]</B>")
 		if (istype(P.loc, /obj/structure/closet))
@@ -218,7 +218,7 @@
 		H.visible_message("<B>[H] [message].</B>")
 		if (istype(P.loc, /obj/structure/closet))
 			P.visible_message("<B>[H] [message].</B>")
-		playsound(loc, "honk/sound/interactions/final_f[rand(1, 3)].ogg", 90, 1, 0)
+		playsound(loc, "code/modules/honk/sound/interactions/final_f[rand(1, 3)].ogg", 90, 1, 0)
 		var/delta = pick(20, 30, 40, 50)
 		src.lust -= delta
 
@@ -288,7 +288,7 @@ mob/living/carbon/human/proc/fuck(mob/living/carbon/human/H as mob, mob/living/c
 					P.moan()
 			if(erpcooldown == 3)
 				return
-			playsound(loc, "honk/sound/interactions/champ_fingering.ogg", 50, 1, -1)
+			playsound(loc, "code/modules/honk/sound/interactions/champ_fingering.ogg", 50, 1, -1)
 			H.do_fucking_animation(P)
 
 		if("blowjob")
@@ -310,7 +310,7 @@ mob/living/carbon/human/proc/fuck(mob/living/carbon/human/H as mob, mob/living/c
 					P.cum(P, H, "mouth")
 			if(erpcooldown == 3)
 				return
-			playsound(loc, "honk/sound/interactions/bj[rand(1, 11)].ogg", 50, 1, -1)
+			playsound(loc, "code/modules/honk/sound/interactions/bj[rand(1, 11)].ogg", 50, 1, -1)
 			H.do_fucking_animation(P)
 			if (prob(P.potenzia))
 				H.staminaloss += 3
@@ -324,7 +324,7 @@ mob/living/carbon/human/proc/fuck(mob/living/carbon/human/H as mob, mob/living/c
 				message = pick("pounds [P]'s pussy.")
 
 			if (H.lastfucked != P || H.lfhole != hole)
-				message = pick(" shoves their dick into [P]'s pussy.")
+				message = pick("shoves their dick into [P]'s pussy.")
 				H.lastfucked = P
 				H.lfhole = hole
 
@@ -355,7 +355,7 @@ mob/living/carbon/human/proc/fuck(mob/living/carbon/human/H as mob, mob/living/c
 			if(erpcooldown == 3)
 				return
 			H.do_fucking_animation(P)
-			playsound(loc, "honk/sound/interactions/bang[rand(1, 3)].ogg", 70, 1, -1)
+			playsound(loc, "code/modules/honk/sound/interactions/bang[rand(1, 3)].ogg", 70, 1, -1)
 
 		if("anal")
 
@@ -391,7 +391,7 @@ mob/living/carbon/human/proc/fuck(mob/living/carbon/human/H as mob, mob/living/c
 			if(erpcooldown == 3)
 				return
 			H.do_fucking_animation(P)
-			playsound(loc, "honk/sound/interactions/bang[rand(1, 3)].ogg", 70, 1, -1)
+			playsound(loc, "code/modules/honk/sound/interactions/bang[rand(1, 3)].ogg", 70, 1, -1)
 
 		if("oral")
 			message = pick("fucks [P]'s throat.")
@@ -416,9 +416,9 @@ mob/living/carbon/human/proc/fuck(mob/living/carbon/human/H as mob, mob/living/c
 			if(emote_cd == 1)
 				return
 			H.do_fucking_animation(P)
-			playsound(loc, "honk/sound/interactions/oral[rand(1, 2)].ogg", 70, 1, -1)
+			playsound(loc, "code/modules/honk/sound/interactions/oral[rand(1, 2)].ogg", 70, 1, -1)
 			if (P.species.name == "Slime People")
-				playsound(loc, "honk/sound/interactions/champ[rand(1, 2)].ogg", 50, 1, -1)
+				playsound(loc, "code/modules/honk/sound/interactions/champ[rand(1, 2)].ogg", 50, 1, -1)
 			if (prob(H.potenzia))
 				P.staminaloss += 3
 				H.visible_message("<B>[H] fucks [P]'s mouth.</B>")
@@ -460,9 +460,9 @@ mob/living/carbon/human/proc/fuck(mob/living/carbon/human/H as mob, mob/living/c
 			if(emote_cd == 1)
 				return
 			H.do_fucking_animation(P)
-			playsound(loc, "honk/sound/interactions/bang[rand(1, 3)].ogg", 70, 1, -1)
+			playsound(loc, "code/modules/honk/sound/interactions/bang[rand(1, 3)].ogg", 70, 1, -1)
 			if (H.species.name == "Slime People")
-				playsound(loc, "honk/sound/interactions/champ[rand(1, 2)].ogg", 50, 1, -1)
+				playsound(loc, "code/modules/honk/sound/interactions/champ[rand(1, 2)].ogg", 50, 1, -1)
 
 /mob/living/carbon/human/proc/moan()
 
@@ -477,9 +477,9 @@ mob/living/carbon/human/proc/fuck(mob/living/carbon/human/H as mob, mob/living/c
 				if (moan == lastmoan)
 					moan--
 				if(!istype(loc, /obj/structure/closet))
-					playsound(loc, "honk/sound/interactions/moan_[g][moan].ogg", 70, 1, 1)
+					playsound(loc, "code/modules/honk/sound/interactions/moan_[g][moan].ogg", 70, 1, 1)
 				else if (g == "f")
-					playsound(loc, "honk/sound/interactions/under_moan_f[rand(1, 4)].ogg", 70, 1, 1)
+					playsound(loc, "code/modules/honk/sound/interactions/under_moan_f[rand(1, 4)].ogg", 70, 1, 1)
 				lastmoan = moan
 
 
@@ -591,7 +591,7 @@ mob/living/carbon/human/proc/fuck(mob/living/carbon/human/H as mob, mob/living/c
 				M.moan()
 
 			user.do_fucking_animation(M)
-			playsound(loc, "honk/sound/interactions/bang[rand(4, 6)].ogg", 70, 1, -1)
+			playsound(loc, "code/modules/honk/sound/interactions/bang[rand(4, 6)].ogg", 70, 1, -1)
 
 		else if (hole == "anus" && hasanus)
 			if (user == M)
@@ -613,7 +613,7 @@ mob/living/carbon/human/proc/fuck(mob/living/carbon/human/H as mob, mob/living/c
 				M.moan()
 
 			user.do_fucking_animation(M)
-			playsound(loc, "honk/sound/interactions/bang[rand(4, 6)].ogg", 70, 1, -1)
+			playsound(loc, "code/modules/honk/sound/interactions/bang[rand(4, 6)].ogg", 70, 1, -1)
 
 		else
 			..()
