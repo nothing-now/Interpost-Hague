@@ -156,6 +156,21 @@
 	parry_sounds = list('sound/weapons/blade_parry1.ogg', 'sound/weapons/blade_parry2.ogg', 'sound/weapons/blade_parry3.ogg')
 	drop_sound = 'sound/items/drop_sword.ogg'
 
+/obj/item/weapon/material/sword/scimitar
+	name = "scimitar sword"
+	desc = "A scimitar sword is a single handed sword."
+	icon_state = "scimitar"
+	item_state = "falchion"
+	force_divisor = 0.5
+	block_chance = 60
+	w_class = ITEM_SIZE_NORMAL
+	drawsound = 'sound/items/unholster_sword02.ogg'
+	equipsound = 'sound/items/holster_sword1.ogg'
+	sharpness = 24
+	weapon_speed_delay = 15
+	parry_sounds = list('sound/weapons/blade_parry1.ogg', 'sound/weapons/blade_parry2.ogg', 'sound/weapons/blade_parry3.ogg')
+	drop_sound = 'sound/items/drop_sword.ogg'
+
 /obj/item/weapon/material/sword/zweihander
 	name = "Zweihander"
 	desc = "A huge blade made of fine steel."
