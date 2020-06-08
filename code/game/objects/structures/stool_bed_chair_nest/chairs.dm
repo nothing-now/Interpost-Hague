@@ -192,6 +192,7 @@
 /obj/structure/bed/chair/office/dark
 	base_icon = "officechair_dark"
 	icon_state = "officechair_dark_preview"
+	color = "#ffffff"
 
 /obj/structure/bed/chair/bunker/metal
 	name = "metal chair"
