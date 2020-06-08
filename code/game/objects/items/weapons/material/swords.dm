@@ -126,6 +126,21 @@
 	parry_sounds = list('sound/weapons/blade_parry1.ogg', 'sound/weapons/blade_parry2.ogg', 'sound/weapons/blade_parry3.ogg')
 	drop_sound = 'sound/items/drop_sword.ogg'
 
+/obj/item/weapon/material/sword/admin
+	name = "godly sword"
+	desc = "A sword used by the gods.."
+	icon_state = "admin"
+	item_state = "longsword"
+	force_divisor = 4.6
+	block_chance = 100
+	w_class = ITEM_SIZE_HUGE
+	drawsound = 'sound/items/unholster_sword02.ogg'
+	equipsound = 'sound/items/holster_sword1.ogg'
+	sharpness = 100
+	weapon_speed_delay = 5
+	parry_sounds = list('sound/weapons/blade_parry1.ogg', 'sound/weapons/blade_parry2.ogg', 'sound/weapons/blade_parry3.ogg')
+	drop_sound = 'sound/items/drop_sword.ogg'
+
 /obj/item/weapon/material/sword/bastard
 	name = "bastard sword"
 	desc = "A long bladed sword made of steel."
