@@ -1,6 +1,6 @@
 # Interpost Hague
 
-[Discord](https://discord.gg/Dkhg97R)
+#[Discord](https://discord.gg/Dkhg97R)
 
 ---
 ![Coverage](https://img.shields.io/badge/coverage---9999999%25-red.svg)
