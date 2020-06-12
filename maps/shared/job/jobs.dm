@@ -22,6 +22,7 @@
 						/datum/job/hydro,
 						/datum/job/janitor,
 						/datum/job/engineer,
+						/datum/job/chaplain
 						/datum/job/jester
 						///datum/job/assistant,
 						///datum/job/cadet
