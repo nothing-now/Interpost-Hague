@@ -27,7 +27,6 @@
 /obj/machinery/mecha_part_fabricator/Initialize()
 	. = ..()
 	manufacturer = basic_robolimb.company
-	update_categories()
 	component_parts = list()
 	component_parts += new /obj/item/weapon/circuitboard/mechfab(src)
 	component_parts += new /obj/item/weapon/stock_parts/matter_bin(src)
@@ -38,6 +37,7 @@
 	RefreshParts()
 
 	files = new /datum/research(src) //Setup the research data holder.
+	update_categories()
 	return
 
 /obj/machinery/mecha_part_fabricator/Process()

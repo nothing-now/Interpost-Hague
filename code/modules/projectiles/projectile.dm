@@ -1,5 +1,5 @@
 //Amount of time in deciseconds to wait before deleting all drawn segments of a projectile.
-#define SEGMENT_DELETION_DELAY 2
+#define SEGMENT_DELETION_DELAY 3
 
 /obj/item/projectile
 	name = "projectile"
@@ -164,7 +164,7 @@
 		p_y = between(0, p_y + rand(-radius, radius), world.icon_size)
 
 //called to launch a projectile
-/obj/item/projectile/proc/launch(atom/target, var/target_zone, var/x_offset=0, var/y_offset=0, var/angle_offset=0)
+/obj/item/projectile/proc/launch(atom/target, target_zone, x_offset=0, y_offset=0, angle_offset=0)
 	var/turf/curloc = get_turf(src)
 	var/turf/targloc = get_turf(target)
 	if (!istype(targloc) || !istype(curloc))
@@ -337,7 +337,10 @@
 	var/first_step = 1
 	var/i = 0
 	spawn while(src && src.loc)
-		ASSERT(++i < 512)
+		if (++i > 512)
+			var/turf/T = src.loc
+			qdel(src)
+			throw EXCEPTION("Projectile stuck! Type: [type], Shot from: [shot_from], Position: [PRINT_ATOM(T)], Source location: [PRINT_ATOM(trajectory.source)], Target location: [PRINT_ATOM(trajectory.target)], Trajectory offset: ([trajectory.offset_x], [trajectory.offset_y])")
 		if(kill_count-- < 1)
 			on_impact(src.loc) //for any final impact behaviours
 			qdel(src)
@@ -475,7 +478,12 @@
 	return Process(targloc)
 
 /obj/item/projectile/test/Process(var/turf/targloc)
+	var/i = 0
 	while(src) //Loop on through!
+		if (++i > 512)
+			var/turf/T = src.loc
+			qdel(src)
+			throw EXCEPTION("Projectile stuck! Type: [type], Shot from: [shot_from], Position: [PRINT_ATOM(T)], Source location: [PRINT_ATOM(trajectory.source)], Target location: [PRINT_ATOM(trajectory.target)], Trajectory offset: ([trajectory.offset_x], [trajectory.offset_y])")
 		if(result)
 			return (result - 1)
 		if((!( targloc ) || loc == targloc))
