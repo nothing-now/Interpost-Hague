@@ -29,8 +29,8 @@ SUBSYSTEM_DEF(ticker)
 	var/datum/round_event/eof
 
 /datum/controller/subsystem/ticker/Initialize()
-	to_world("<B><FONT color='blue'>Welcome to the pre-game lobby!</FONT></B>")
-	to_world("Please, setup your character and select ready. Game will start in [round(pregame_timeleft/10)] seconds")
+	to_world("<B><FONT color='blue'>Welcome back.</FONT></B>")
+	to_world("Setup your character and select ready. The carnage will start in [round(pregame_timeleft/10)] seconds.")
 	return ..()
 
 /datum/controller/subsystem/ticker/fire(resumed = 0)
@@ -90,7 +90,7 @@ SUBSYSTEM_DEF(ticker)
 
 	spawn(0)//Forking here so we dont have to wait for this to finish
 		mode.post_setup()
-		to_world("<FONT color='blue'><B>Enjoy the game!</B></FONT>")
+		to_world("<FONT color='blue'><B>You need to get back.</B></FONT>")
 		if (eof)
 			if(prob(40))
 				eof.apply_event()

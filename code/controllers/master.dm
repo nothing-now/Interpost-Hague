@@ -213,6 +213,9 @@ GLOBAL_REAL(Master, /datum/controller/master) = new
 	// Loop.
 	Master.StartProcessing(0)
 
+	if(!accepted_prayer)
+		accepted_prayer = generate_random_prayer()  //Should probably datum-ize this, but don't want to now(nor do I)
+
 /datum/controller/master/proc/SetRunLevel(new_runlevel)
 	var/old_runlevel = current_runlevel
 	if(isnull(old_runlevel))

@@ -161,7 +161,7 @@
 
 /datum/round_event/can_you_hear_me_major_tom
 	id = "CANYOUHEARMEMAJTOM"
-	event_message = "Absence of a specialized headset will never prevent the brave employee of NanoTrasen from working. At least they still have walkie-talkies..."
+	event_message = "Absence of a specialized headset will never prevent the faithful servants of the King from working. At least they still have walkie-talkies..."
 
 /datum/round_event/can_you_hear_me_major_tom/apply_event()
 	for(var/obj/item/device/radio/headset/RH in world)

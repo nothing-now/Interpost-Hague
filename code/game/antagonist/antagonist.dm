@@ -81,10 +81,11 @@
 
 /datum/antagonist/New()
 	..()
+
+/datum/antagonist/proc/Initialize()
 	if(!role_type)
 		role_type = id
 
-/datum/antagonist/proc/Initialize()
 	cur_max = hard_cap
 	if(!role_text_plural)
 		role_text_plural = role_text
@@ -101,11 +102,11 @@
 
 // Get the raw list of potential players.
 /datum/antagonist/proc/build_candidate_list(datum/game_mode/mode, ghosts_only)
-	candidates = list() // Clear.
+	var/candidates = list() // Clear.
 
 	// Prune restricted status. Broke it up for readability.
 	// Note that this is done before jobs are handed out.
-	for(var/datum/mind/player in mode.get_players_for_role(id))
+	for(var/datum/mind/player in mode.get_players_for_role(role_type, id))
 		if(ghosts_only && !(isghostmind(player) || isnewplayer(player.current)))
 			log_debug("[key_name(player)] is not eligible to become a [role_text]: Only ghosts may join as this role!")
 		else if(config.use_age_restriction_for_antags && player.current.client.player_age < minimum_player_age)

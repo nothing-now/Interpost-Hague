@@ -511,7 +511,6 @@ var/global/datum/controller/occupations/job_master
 
 		var/alt_title = null
 		if(H.mind)
-			H.mind.assigned_job = job
 			H.mind.assigned_role = rank
 			alt_title = H.mind.role_alt_title
 
@@ -520,9 +519,9 @@ var/global/datum/controller/occupations/job_master
 					return H.Robotize()
 				if("AI")
 					return H
-				if("Captain")
+				if("Count")
 					var/sound/announce_sound = (GAME_STATE <= RUNLEVEL_SETUP)? null : sound('sound/misc/boatswain.ogg', volume=20)
-					captain_announcement.Announce("All hands, Captain [H.real_name] on deck!", new_sound=announce_sound)
+					captain_announcement.Announce("Attention, Count [H.real_name] has returned to save our souls!", new_sound=announce_sound)
 
 		// put any loadout items that couldn't spawn into storage or on the ground
 		for(var/datum/gear/G in spawn_in_storage)
@@ -620,7 +619,6 @@ var/global/datum/controller/occupations/job_master
 				to_chat(H, "You can only recall a single incantation.  It is the <b><font color='red'>[new_spell.name]</font> spell.  The incantation is <b><font color='red'>[new_spell.phrase]</font>")
 				H.mind.store_memory("[new_spell.name] Incantation: \"[new_spell.phrase]\"")
 
-		SetCombatMusic(H,rank)
 		BITSET(H.hud_updateflag, ID_HUD)
 		BITSET(H.hud_updateflag, IMPLOYAL_HUD)
 		BITSET(H.hud_updateflag, SPECIALROLE_HUD)

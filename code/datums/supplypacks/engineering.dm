@@ -179,14 +179,6 @@
 	containername = "\improper shield generator construction kit crate"
 	access = access_engine
 
-/decl/hierarchy/supply_pack/engineering/smbig
-	name = "Supermatter Core"
-	contains = list(/obj/machinery/power/supermatter)
-	cost = 150
-	containertype = /obj/structure/closet/crate/secure/large/phoron
-	containername = "\improper Supermatter crate (CAUTION)"
-	access = access_ce
-
 /decl/hierarchy/supply_pack/engineering/fueltank
 	name = "Fuel tank crate"
 	contains = list(/obj/structure/reagent_dispensers/fueltank)
