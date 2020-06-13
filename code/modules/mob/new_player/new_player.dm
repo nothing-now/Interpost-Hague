@@ -182,7 +182,7 @@
 			to_chat(usr, "<span class='danger'>The [station_name()] is currently exploding. Joining would go poorly.</span>")
 			return
 		if(client.prefs.real_name in GLOB.player_name_list)
-			to_chat(usr, "<span class='danger'>Our records show we already employ a [name].  Please change your name to join the crew.</span>")
+			to_chat(usr, "<span class='danger'>Our records show that this character is in Kingdom's registry.  Please change your name to join the crew.</span>")
 			return
 
 		var/datum/species/S = all_species[client.prefs.species]
