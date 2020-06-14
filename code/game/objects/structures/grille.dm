@@ -15,11 +15,6 @@
 	. = ..()
 	update_icon()
 
-
-/obj/structure/grille/Destroy()
-	. = ..()
-	qdel(src)
-
 /obj/structure/grille/ex_act(severity)
 	qdel(src)
 
@@ -150,6 +145,7 @@
 		if(!destroyed)
 			set_density(0)
 			destroyed = 1
+			visible_message("<span class='notice'>\The [src] falls to pieces!</span>")
 			update_icon()
 			new /obj/item/stack/rods(get_turf(src))
 
@@ -205,10 +201,11 @@
 	destroyed = 1
 	icon_state = "grille-b"
 	density = 0
-	New()
-		..()
-		health = rand(-5, -1) //In the destroyed but not utterly threshold.
-		healthcheck() //Send this to healthcheck just in case we want to do something else with it.
+
+/obj/structure/grille/broken/Initialize()
+	. = ..()
+	health = rand(-5, -1) //In the destroyed but not utterly threshold.
+	healthcheck() //Send this to healthcheck just in case we want to do something else with it.
 
 /obj/structure/grille/cult
 	name = "cult grille"
