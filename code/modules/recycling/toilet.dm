@@ -1,4 +1,4 @@
-/obj/machinery/disposal/toilet/
+/obj/machinery/disposal/toilet
 	name = "toilet"
 	desc = "The HT-460, a vacuum based, waste disposal unit for small matter. This one seems remarkably clean."
 	icon = 'icons/obj/machines/toilets.dmi'
@@ -10,8 +10,8 @@
 	var/mob/living/swirlie = null	//the mob being given a swirlie
 	atom_flags = 0
 
-/obj/machinery/disposal/toilet/New()
-	..()
+/obj/machinery/disposal/toilet/Initialize()
+	. = ..()
 	open = round(rand(0, 1))
 	update_icon()
 
