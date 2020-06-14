@@ -2,7 +2,6 @@
 /decl/hierarchy/outfit/job/arbiter
 	name = OUTFIT_JOB_NAME("Arbiter")
 	head = /obj/item/clothing/head/helmet/arbiter
-	mask = /obj/item/clothing/mask/gas/arbitermask
 	uniform = /obj/item/clothing/under/rank/arbiter
 	shoes = /obj/item/clothing/shoes/jackboots
 	l_ear = /obj/item/device/radio/headset/inquision
