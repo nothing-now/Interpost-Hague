@@ -255,7 +255,7 @@
 		return
 
 	var/obj/structure/urinal/U = locate() in src.loc
-	var/obj/structure/toilet/T = locate() in src.loc
+	var/obj/machinery/disposal/toilet/T = locate() in src.loc
 	//var/obj/structure/toilet/T2 = locate() in src.loc
 	var/obj/structure/sink/S = locate() in src.loc
 	var/obj/item/weapon/reagent_containers/RC = locate() in src.loc
