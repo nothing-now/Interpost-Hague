@@ -99,7 +99,7 @@
 					dat +=  {"<A href='?src=\ref[usr];interaction=five'>Highfive.</A><BR>"}
 					if (hashands_p)
 						dat +=  {"<A href='?src=\ref[src];interaction=give'>Give.</A><BR>"}
-					dat +=  {"<A href='?src=\ref[usr];interaction=slap'><font color=red>Slap!</font></A><BR>"}
+						dat +=  {"<A href='?src=\ref[usr];interaction=slap'><font color=red>Slap!</font></A><BR>"}
 					if (isnude_p)
 						if (hasanus_p)
 							dat += {"<A href='?src=\ref[usr];interaction=assslap'>Slap some ass!</A><BR>"}
