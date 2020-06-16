@@ -808,7 +808,7 @@
 						H.fuck(H, P, "anal")
 				else
 					var/message = pick("<span class='warning'>It's not erect...yet.</span>")//, "Êàê-òî íåò æåëàíè[ya]...", "×òî-òî íå îõîòà...", "Íåò, íå ñåé÷àñ.")
-					H << message
+					to_chat(H, "[message]")
 		else if (href_list["interaction"] == "vaginal")
 			if (H.loc == P.loc && isnude_p && isnude && haspenis && hasanus_p)
 				if (H.erpcooldown == 0)

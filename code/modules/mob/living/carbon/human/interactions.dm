@@ -203,7 +203,7 @@
 				message = "cums on the floor!"
 
 		else
-			message = pick("cums!", "orgasms!")
+			message = pick("cums", "orgasms")
 
 		playsound(loc, "code/modules/honk/sound/interactions/final_m[rand(1, 5)].ogg", 70, 1, 0)
 
