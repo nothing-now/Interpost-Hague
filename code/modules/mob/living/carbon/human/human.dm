@@ -807,7 +807,7 @@
 					if (H.potenzia > 0)
 						H.fuck(H, P, "anal")
 				else
-					var/message = pick("<span class='warning'>It's not erect...yet.</span>")//, "Êàê-òî íåò æåëàíè[ya]...", "×òî-òî íå îõîòà...", "Íåò, íå ñåé÷àñ.")
+					var/message = pick("<span class='warning'>You can't do this...yet.</span>")//, "Êàê-òî íåò æåëàíè[ya]...", "×òî-òî íå îõîòà...", "Íåò, íå ñåé÷àñ.")
 					to_chat(H, "[message]")
 
 		else if (href_list["interaction"] == "vaginal")
@@ -816,7 +816,7 @@
 					if (H.potenzia > 0)
 						H.fuck(H, P, "vaginal")
 				else
-					var/message = pick("<span class='warning'>It's not erect...yet.</span>")//"Íå õî÷åòñ[ya] ìíå...", "Êàê-òî íåò æåëàíè[ya]...", "×òî-òî íå îõîòà...", "Íåò, íå ñåé÷àñ.")
+					var/message = pick("<span class='warning'>You can't do this...yet.</span>")//"Íå õî÷åòñ[ya] ìíå...", "Êàê-òî íåò æåëàíè[ya]...", "×òî-òî íå îõîòà...", "Íåò, íå ñåé÷àñ.")
 					to_chat(H, "[message]")
 
 		else if (href_list["interaction"] == "oral")
@@ -825,13 +825,13 @@
 					if (H.potenzia > 0)
 						H.fuck(H, P, "oral")
 				else
-					var/message = pick("<span class='warning'>It's not erect...yet.</span>")//"Íå õî÷åòñ[ya] ìíå...", "Êàê-òî íåò æåëàíè[ya]...", "×òî-òî íå îõîòà...", "Íåò, íå ñåé÷àñ.")
+					var/message = pick("<span class='warning'>You can't do this...yet.</span>")//"Íå õî÷åòñ[ya] ìíå...", "Êàê-òî íåò æåëàíè[ya]...", "×òî-òî íå îõîòà...", "Íåò, íå ñåé÷àñ.")
 					to_chat(H, "[message]")
 
 		else if (href_list["interaction"] == "mount")
 			if (H.loc == P.loc && isnude && isnude_p && haspenis_p && hasvagina)
 				if (P.lust <= 0)
-					var/message = pick("<span class='warning'>It's not erect...yet.</span>")//"Èíñòðóìåíò íå ïåðåâåäåí â ðàáî÷åå ñîñòî[ya]íèå...", "Ó íåãî åùå íå âñòàë...", "À îí ëåæèò...", "Íèêàê íå íàñàäèòüñ[ya]...")
+					var/message = pick("<span class='warning'>You can't do this...yet.</span>")//"Èíñòðóìåíò íå ïåðåâåäåí â ðàáî÷åå ñîñòî[ya]íèå...", "Ó íåãî åùå íå âñòàë...", "À îí ëåæèò...", "Íèêàê íå íàñàäèòüñ[ya]...")
 					to_chat(H, "[message]")
 				else if (H.erpcooldown == 0)
 					H.fuck(H, P, "mount")

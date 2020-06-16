@@ -89,8 +89,7 @@
 		//dat +=  {"• <A href='?src=\ref[src];interaction=wave'>Ïîïðèâåòñòâîâàòü.</A><BR>"}
 	if (hashands)
 		if(H.partner.age >= 16)
-			if(H.partner.species.name != "Human")
-				return 0
+			if(H.partner.species.name == "Human")
 				dat +=  {"<font size=3><B>Hands:</B></font><BR>"}
 				if (Adjacent(P))
 					dat +=  {"<A href='?src=\ref[usr];interaction=handshake'>Give handshake.</A><BR>"}
@@ -102,7 +101,7 @@
 						dat +=  {"<A href='?src=\ref[usr];interaction=slap'><font color=red>Slap!</font></A><BR>"}
 					if (isnude_p)
 						if (hasanus_p)
-							dat += {"<A href='?src=\ref[usr];interaction=assslap'>Slap some ass!</A><BR>"}
+							dat += {"<A href='?src=\ref[usr];interaction=assslap'><font color=purple>Slap some ass!</font></A><BR>"}
 						if (hasvagina_p && (!P.mutilated_genitals))
 							dat += {"<A href='?src=\ref[usr];interaction=fingering'>Put fingers in places...</A><BR>"}
 					if (P.species.name == "Tajaran")
@@ -115,9 +114,9 @@
 
 	if (mouthfree && (lying == P.lying || !lying))
 		if(H.partner.age >= 16)
-			if(H.partner.species.name != "xenos")
+			if(H.partner.species.name == "Human")
 				dat += {"<font size=3><B>Mouth:</B></font><BR>"}
-				dat += {"<A href='?src=\ref[usr];interaction=kiss'>Kiss.</A><BR>"}
+				dat += {"<A href='?src=\ref[usr];interaction=kiss'><font color=purple>Kiss.</font></A><BR>"}
 				if (Adjacent(P))
 					//if (mouthfree_p)
 					//	if (H.species.name == "Tajaran")
@@ -134,7 +133,7 @@
 
 	if (isnude && usr.loc == H.partner.loc)
 		if(H.partner.age >= 16)
-			if(H.partner.species.name != "xenos")
+			if(H.partner.species.name == "Human")
 				if (haspenis && hashands)
 					dat += {"<font size=3><B>MISTAKES WILL BE MADE:</B></font><BR>"}
 					if (isnude_p)
@@ -163,7 +162,7 @@
 	var/lust = 0
 	var/multiorgasms = 0
 	var/lastmoan
-	var/erpcooldown = 0
+	var/erpcooldown = 1
 	var/mutilated_genitals = 0 //Whether or not they can do the fug.
 	var/virgin = FALSE //:mistake:
 
