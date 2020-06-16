@@ -283,8 +283,8 @@
 	spawn_positions = 3
 	access = list(access_medical, access_medical_equip, access_genetics, access_tox,
 			access_chemistry, access_virology, access_surgery)
-	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_genetics, access_heads, access_tox,
-			access_chemistry, access_virology, access_cmo, access_surgery)
+	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_genetics, access_tox,
+			access_chemistry, access_virology, access_surgery)
 	equip(var/mob/living/carbon/human/H)
 		..()
 		//H.add_stats(rand(5,7), rand(5,8), rand(10,14))
