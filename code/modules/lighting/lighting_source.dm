@@ -201,7 +201,7 @@
 
 //Linear lighting falloff but with an octagonal shape in place of a diamond shape. Lummox JR please add pointer support.
 #define GET_LUM_DIST(DISTX, DISTY) (DISTX + DISTY + abs(DISTX - DISTY)*0.4)
-#define LUM_FALLOFF(C, T) (1 - CLAMP01(sqrt((C.x - T.x) ** 2 + (C.y - T.y) ** 2 + LIGHTING_HEIGHT) / max(1, light_range)))
+#define LUM_FALLOFF(C, T) (1 - CLAMP01(((abs(C.x - T.x) + abs(C.y - T.y))) / max(1, light_range+1)))
 
 /datum/light_source/proc/apply_lum()
 	var/static/update_gen = 1
