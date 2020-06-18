@@ -14,6 +14,7 @@ var/global/list/image/splatter_cache=list()
 	blood_DNA = list()
 	generic_filth = TRUE
 	persistent = TRUE
+	appearance_flags = NO_CLIENT_COLOR
 
 	var/base_icon = 'icons/effects/blood.dmi'
 	var/list/viruses = list()
