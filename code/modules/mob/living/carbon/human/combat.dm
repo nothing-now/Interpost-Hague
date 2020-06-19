@@ -2,16 +2,17 @@
 /mob/living/carbon/human/proc/toggle_combat_mode()
 	if(!ishuman(usr))
 		return
-		var/mob/living/carbon/human/C = usr
-		playsound(usr, 'sound/effects/ui_toggle.ogg', 50, 0, 1)
-		if(!C.combat_mode)
-			C.combat_mode = 1
-			C.combat_icon.icon_state = "combat1"
-			to_chat(src, "<span class='warning'>You toggle on combat mode.</span>")
-		else
-			combat_mode = 0
-			C.combat_icon.icon_state = "combat0"
-			to_chat(src, "<span class='danger'>You toggle off combat mode.</span>")
+
+	var/mob/living/carbon/human/C = usr
+	playsound(usr, 'sound/effects/ui_toggle.ogg', 50, 0, 1)
+	if(!C.combat_mode)
+		C.combat_mode = 1
+		C.combat_icon.icon_state = "combat1"
+		to_chat(src, "<span class='warning'>You toggle on combat mode.</span>")
+	else
+		combat_mode = 0
+		C.combat_icon.icon_state = "combat0"
+		to_chat(src, "<span class='danger'>You toggle off combat mode.</span>")
 
 /mob/living/carbon/human/proc/toggle_dodge_parry()
 	if(ishuman(usr))
@@ -23,7 +24,7 @@
 		else
 			E.defense_intent = I_DODGE
 			E.dodge_intent_icon.icon_state = "dodge"
-			to_chat(src, "<span clas='warning'>You will now dodge.</span>")
+			to_chat(src, "<span class='warning'>You will now dodge.</span>")
 
 /mob/living/carbon/human/verb/dodgeparry_hotkey()
 	set name = ".defense_intent"
