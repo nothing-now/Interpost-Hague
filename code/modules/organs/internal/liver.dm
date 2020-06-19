@@ -49,14 +49,14 @@
 	if(owner.chem_effects[CE_ALCOHOL_TOXIC])
 		take_damage(owner.chem_effects[CE_ALCOHOL_TOXIC], prob(90)) // Chance to warn them
 
-		handle_thirst()
-
 	// Heal a bit if needed and we're not busy. This allows recovery from low amounts of toxloss.
 	if(!owner.chem_effects[CE_ALCOHOL] && !owner.chem_effects[CE_TOXIN] && !owner.radiation && damage > 0)
 		if(damage < min_broken_damage)
 			heal_damage(0.2)
 		if(damage < min_bruised_damage)
 			heal_damage(0.3)
+
+	handle_thirst()
 
 	//Blood regeneration if there is some space
 	owner.regenerate_blood(0.1 + owner.chem_effects[CE_BLOODRESTORE])
