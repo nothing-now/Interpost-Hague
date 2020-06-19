@@ -30,6 +30,7 @@
 	var/glass_name = "something"
 	var/glass_desc = "It's a glass of... what, exactly?"
 	var/list/glass_special = null // null equivalent to list()
+	var/quench_amount = 1
 
 	// GAS DATA, generic values copied from base XGM datum type.
 	var/gas_specific_heat = 20
@@ -97,10 +98,11 @@
 		remove_self(removed)
 	return
 
-/datum/reagent/proc/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
+/datum/reagent/proc/affect_blood(mob/living/carbon/M, alien, removed)
 	return
 
 /datum/reagent/proc/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+	M.adjust_thirst(quench_amount)
 	affect_blood(M, alien, removed * 0.5)
 	return
 

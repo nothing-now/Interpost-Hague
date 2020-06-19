@@ -577,6 +577,7 @@
 
 		if(hallucination_power)
 			handle_hallucinations()
+
 		handle_combat_mode()
 
 		handle_smelly_things()
@@ -585,6 +586,7 @@
 
 		handle_hygiene()
 
+		handle_lust()
 
 		if(get_shock() >= 200)
 			//Constitution check to see if you can take the pain
@@ -1236,21 +1238,21 @@
 	if(isSynthetic())
 		return
 
-	if(decaytime <= 6000) //10 minutes for decaylevel1 -- stinky
+	if(decaytime <= 3000) //10 minutes for decaylevel1 -- stinky
 		return
 
-	if(decaytime > 6000 && decaytime <= 12000)//20 minutes for decaylevel2 -- bloated and very stinky
+	if(decaytime > 3000 && decaytime <= 9000)//20 minutes for decaylevel2 -- bloated and very stinky
 		decaylevel = 1
 		overlays -= flies
 		overlays += flies
 
-	if(decaytime > 12000 && decaytime <= 18000)//30 minutes for decaylevel3 -- rotting and gross
+	if(decaytime > 9000 && decaytime <= 15000)//30 minutes for decaylevel3 -- rotting and gross
 		decaylevel = 2
 
-	if(decaytime > 18000 && decaytime <= 27000)//45 minutes for decaylevel4 -- skeleton
+	if(decaytime > 15000 && decaytime <= 24000)//45 minutes for decaylevel4 -- skeleton
 		decaylevel = 3
 
-	if(decaytime > 27000)
+	if(decaytime > 24000)
 		decaylevel = 4
 		overlays -= flies
 		flies = null
@@ -1315,116 +1317,3 @@
 						return 0
 					else
 						return 0
-//
-///mob/living/carbon/human/var/list/informed_dehydration[4]
-//
-///mob/living/carbon/human/proc/handle_dehydration()//Making this it's own proc for my sanity's sake - Matt
-//
-//	if (water < 200 && water >= 150)
-//		if (prob(3))
-//			src << "<span class = 'warning'>You're getting a bit thirsty.</span>"
-//
-//	else if (water < 150 && water >= 100)
-//		if (prob(4))
-//			src << "<span class = 'warning'>You're pretty thirsty.</span>"
-//
-//	else if (water < 100 && water >= 20)
-//		if (prob(5))
-//			src << "<span class = 'danger'>You're really thirsty!</span>"
-//
-//	else if (water < 20) //Nutrition is below 20 = dehydration
-//
-//		var/list/thirst_phrases = list(
-//			"You feel weak and malnourished. You must find something to drink now!",
-//			"You haven't drank in ages, and your body feels weak! It's time to drink something.",
-//			"You can barely remember the last time you had something to drink!",
-//			"Your body is starting to dehydrate! You have to drink something soon.",
-//			"If you don't drink something very soon, you're going to dehydrate to death."
-//			)
-//
-//		//When you're starving, the rate at which oxygen damage is healed is reduced by 80% (you only restore TRUE oxygen damage per life tick, instead of 5)
-//
-//		switch(water)
-//			if (DEHYDRATION_NOTICE to DEHYDRATION_MIN)
-//				if (sleeping) return
-//
-//				if (!informed_dehydration[num2text(-DEHYDRATION_NOTICE)])
-//					src << "<span class='warning'>[pick("You're very thirsty.","You really could use some water right now.")]</span>"
-//
-//				informed_dehydration[num2text(-DEHYDRATION_NOTICE)] = TRUE
-//				informed_dehydration[num2text(-DEHYDRATION_WEAKNESS)] = FALSE
-//				informed_dehydration[num2text(-DEHYDRATION_NEARDEATH)] = FALSE
-//				informed_dehydration[num2text(-DEHYDRATION_NEGATIVE_INFINITY)] = FALSE
-//
-//				if (prob(10))
-//					src << "<span class='warning'>[pick("You're very thirsty.","You really could use some water right now.")]</span>"
-//
-//			if (DEHYDRATION_WEAKNESS to DEHYDRATION_NOTICE)
-//				if (sleeping) return
-//
-//				if (!informed_dehydration[num2text(-DEHYDRATION_WEAKNESS)])
-//					src << "<span class='danger'>[pick(thirst_phrases)]</span>"
-//
-//				informed_dehydration[num2text(-DEHYDRATION_NOTICE)] = TRUE
-//				informed_dehydration[num2text(-DEHYDRATION_WEAKNESS)] = TRUE
-//				informed_dehydration[num2text(-DEHYDRATION_NEARDEATH)] = FALSE
-//				informed_dehydration[num2text(-DEHYDRATION_NEGATIVE_INFINITY)] = FALSE
-//
-//				if (prob(6)) //6% chance of a tiny amount of toxin damage (1-5)
-//
-//					adjustToxLoss(rand(1,5))
-//					src << "<span class='danger'>[pick(thirst_phrases)]</span>"
-//
-//				else if (prob(5)) //5% chance of being weakened
-//
-//					eye_blurry += 10
-//					Weaken(10)
-//					adjustToxLoss(rand(1,15))
-//					src << "<span class='danger'>You're dehydrating! The lack of strength makes you black out for a few moments...</span>"
-//
-//			if (DEHYDRATION_NEARDEATH to DEHYDRATION_WEAKNESS) //5-30, 5% chance of weakening and TRUE-230 oxygen damage. 5% chance of a seizure. 10% chance of dropping item
-//				if (sleeping) return
-//
-//				if (!informed_dehydration[num2text(-DEHYDRATION_NEARDEATH)])
-//					src << "<span class='danger'>You're dehydrating. You feel your life force slowly leaving your body...</span>"
-//
-//				informed_dehydration[num2text(-DEHYDRATION_NOTICE)] = TRUE
-//				informed_dehydration[num2text(-DEHYDRATION_WEAKNESS)] = TRUE
-//				informed_dehydration[num2text(-DEHYDRATION_NEARDEATH)] = TRUE
-//				informed_dehydration[num2text(-DEHYDRATION_NEGATIVE_INFINITY)] = FALSE
-//
-//				if (prob(7))
-//
-//					adjustToxLoss(rand(1,20))
-//					src << "<span class='danger'>You're dehydrating. You feel your life force slowly leaving your body...</span>"
-//					eye_blurry += 20
-//					if (weakened < 1) Weaken(20)
-//
-//				else if (paralysis<1 && prob(7)) //Mini seizure (25% duration and strength of a normal seizure)
-//
-//					visible_message("<span class='danger'>\The [src] starts having a seizure!</span>", \
-//							"<span class='warning'>You have a seizure!</span>")
-//					Paralyse(5)
-//					make_jittery(500)
-//					adjustToxLoss(rand(1,25))
-//					eye_blurry += 20
-//
-//			if (-INFINITY to DEHYDRATION_NEARDEATH) //Fuck the whole body up at this point
-//
-//				if (!informed_dehydration[num2text(-DEHYDRATION_NEGATIVE_INFINITY)])
-//					src << "<span class='danger'>You are dying from dehydration!</span>"
-//
-//				informed_dehydration[num2text(-DEHYDRATION_NOTICE)] = TRUE
-//				informed_dehydration[num2text(-DEHYDRATION_WEAKNESS)] = TRUE
-//				informed_dehydration[num2text(-DEHYDRATION_NEARDEATH)] = TRUE
-//				informed_dehydration[num2text(-DEHYDRATION_NEGATIVE_INFINITY)] = TRUE
-//
-//				if (prob(10))
-//					src << "<span class='danger'>You are dying from dehydration!</span>"
-//
-//				adjustToxLoss(DEHYDRATION_TOX_DAMAGE)
-//				adjustBrainLoss(DEHYDRATION_BRAIN_DAMAGE)
-//
-//				if (prob(10))
-//					Weaken(15)
-//

@@ -599,6 +599,7 @@
 		if(world.time > data + ANTIDEPRESSANT_MESSAGE_DELAY * 0.3)
 			data = world.time
 			to_chat(M, "<span class='notice'>You feel invigorated and calm.</span>")
+			M.add_event("relaxed", /datum/happiness_event/relaxed)
 
 /datum/reagent/nicotine/overdose(var/mob/living/carbon/M, var/alien)
 	..()

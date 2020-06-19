@@ -285,6 +285,7 @@
 	zone_sel = new /obj/screen/zone_sel( null )
 	zone_sel.selecting = "chest"
 	a_intent = I_HURT
+	stat = CONSCIOUS
 	var/decl/hierarchy/outfit/outfit = outfit_by_type(/decl/hierarchy/outfit/blank_subject)
 	outfit.equip(src)
 	var/obj/item/clothing/head/helmet/facecover/F = locate() in src
@@ -299,7 +300,6 @@
 
 /mob/living/carbon/human/blank/ssd_check()
 	return FALSE
-
 
 /decl/hierarchy/outfit/blank_subject
 	name = "Test Subject"
