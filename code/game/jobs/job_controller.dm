@@ -413,7 +413,7 @@ var/global/datum/controller/occupations/job_master
 		return 1
 
 
-	proc/EquipRank(var/mob/living/carbon/human/H, var/rank, var/joined_late = 0)
+	proc/EquipRank(mob/living/carbon/human/H, rank, joined_late = 0)
 		if(!H)	return null
 
 		if(SSticker.eof)

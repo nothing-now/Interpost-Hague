@@ -293,19 +293,18 @@
 
 /datum/job/doctor/undertaker
 	title = "Undertaker"
+	department = "Medical"
 	department_flag = MED
+
 	total_positions = 1
 	spawn_positions = 1
 	outfit_type = /decl/hierarchy/outfit/job/medical/doctor/undertaker
-	access = list(access_medical, access_medical_equip, access_morgue, access_genetics, access_heads, access_tox,
-			access_chemistry, access_virology, access_cmo, access_surgery, access_maint_tunnels)
-	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_genetics, access_heads, access_tox,
-			access_chemistry, access_virology, access_cmo, access_surgery, access_maint_tunnels)
+	access = list(access_medical, access_medical_equip, access_morgue, access_genetics, access_heads, access_tox, access_chemistry, access_virology, access_cmo, access_surgery, access_maint_tunnels)
+	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_genetics, access_heads, access_tox, access_chemistry, access_virology, access_cmo, access_surgery, access_maint_tunnels)
 	equip(var/mob/living/carbon/human/H)
 		..()
 		H.generate_stats(STAT_IQ)
 		H.generate_skills(list("medical","cleaning", "surgery"))
-
 
 /datum/job/hos
 	title = "Enforcer Chief"
@@ -341,7 +340,7 @@
 	title = "Loyaler Enforcer"
 	department = "Security"
 	department_flag = SEC
-	total_positions = 4
+	total_positions = 3
 	spawn_positions = 4
 	economic_modifier = 3
 	sex_lock = MALE
@@ -553,7 +552,7 @@
 		..()
 		//H.add_stats(rand(9,12), rand(9,12), rand(5,9))
 		H.generate_stats(STAT_HT)
-		H.generate_skills(list("cleaning","melee"))
+		H.generate_skills(list("cleaning"))
 
 /datum/job/hydro
 	title = "Botanic"
