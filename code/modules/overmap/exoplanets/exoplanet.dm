@@ -437,6 +437,31 @@
 	icon_state = "seashallow"
 	movement_delay = 2
 	mudpit = 1
+	var/obj/effect/overlay/water/watereffect
+	var/obj/effect/overlay/water/top/watertop
+
+/turf/simulated/floor/exoplanet/water/shallow/Initialize()
+	. = ..()
+	watereffect = new /obj/effect/overlay/water(src)
+	watertop = new /obj/effect/overlay/water/top(src)
+
+/turf/simulated/floor/exoplanet/water/shallow/Destroy()
+	QDEL_NULL(watereffect)
+	QDEL_NULL(watertop)
+	return ..()
+
+/obj/effect/overlay/water
+	name = "water"
+	icon = 'icons/turf/pool.dmi'
+	icon_state = "bottom"
+	density = FALSE
+	mouse_opacity = 0
+	layer = ABOVE_HUMAN_LAYER
+	anchored = TRUE
+
+/obj/effect/overlay/water/top
+	icon_state = "top"
+	layer = SHALLOW_FLUID_LAYER
 
 /turf/simulated/floor/exoplanet/water/update_dirt()
 	return	// Water doesn't become dirty
