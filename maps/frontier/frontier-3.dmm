@@ -738,7 +738,7 @@
 "oj" = (/obj/structure/lattice,/turf/space,/area/maintenance/bar)
 "ok" = (/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/effect/floor_decal/newcorner/teal,/obj/structure/disposalpipe/segment,/obj/machinery/atmospherics/pipe/simple/hidden/scrubbers,/obj/machinery/atmospherics/pipe/simple/hidden/supply,/turf/simulated/floor/tiled,/area/hallway/primary/central_two)
 "ol" = (/obj/effect/floor_decal/newcorner/teal,/turf/simulated/floor/tiled,/area/hallway/primary/central_two)
-"om" = (/obj/effect/floor_decal/newcorner/teal/quarter{tag = "icon-teal-quarter (WEST)"; icon_state = "teal-quarter"; dir = 8},/turf/simulated/floor/tiled,/area/hallway/primary/central_two)
+"om" = (/obj/effect/floor_decal/newcorner/teal/quarter{tag = "icon-teal-quarter (WEST)"; icon_state = "teal-quarter"; dir = 8},/obj/machinery/light/small{dir = 4},/turf/simulated/floor/tiled,/area/hallway/primary/central_two)
 "on" = (/obj/structure/bookcase{name = "bookcase (Religious)"},/turf/simulated/floor/wood,/area/library)
 "oo" = (/obj/structure/bookcase{name = "bookcase (Reference)"},/turf/simulated/floor/wood,/area/library)
 "op" = (/obj/structure/grille,/obj/structure/window/reinforced/full,/obj/machinery/door/firedoor/border_only,/turf/simulated/floor/plating,/area/hallway/primary/central_two)
