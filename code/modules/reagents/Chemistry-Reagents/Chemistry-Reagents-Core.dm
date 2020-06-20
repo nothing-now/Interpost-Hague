@@ -19,6 +19,7 @@
 	taste_mult = 1.3
 	glass_name = "tomato juice"
 	glass_desc = "Are you sure this is tomato juice?"
+	quench_amount = -4
 
 /datum/reagent/blood/initialize_data(var/newdata)
 	..()
@@ -131,6 +132,7 @@
 	taste_description = "water"
 	glass_name = "water"
 	glass_desc = "The father of all refreshments."
+	quench_amount = 8
 
 /datum/reagent/water/affect_blood(var/mob/living/carbon/M, var/alien, var/removed)
 	if(!istype(M, /mob/living/carbon/slime) && alien != IS_SLIME)

@@ -35,7 +35,7 @@
 	if(get_dist(user, src) > 3)
 		skipears = 1
 
-	var/list/msg = list("<span class='info'>*---------*\nThis is ")
+	var/list/msg = list("<span class='info'>*---------*\nOh, this is ")
 
 	var/datum/gender/T = gender_datums[get_gender()]
 	if(skipjumpsuit && skipface) //big suits/masks/helmets make it hard to tell their gender
