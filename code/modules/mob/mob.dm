@@ -643,6 +643,8 @@
 			stat("Round Duration", roundduration2text())
 		if(client.holder || isghost(client.mob))
 			stat("Location:", "([x], [y], [z]) [loc]")
+		if(client.holder || isghost(client.mob))
+			stat("Chromosomes:", client.get_chromie_count())
 
 	if(client.holder)
 		if(statpanel("MC"))

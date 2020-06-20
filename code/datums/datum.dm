@@ -17,6 +17,7 @@
 	/// Datum level flags
 	var/datum_flags = null
 
+
 #ifdef TESTING
 	var/tmp/running_find_references
 	var/tmp/last_find_references = 0
