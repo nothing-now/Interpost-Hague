@@ -129,7 +129,7 @@
 //Checks whether a given mob can use the gun
 //Any checks that shouldn't result in handle_click_empty() being called if they fail should go here.
 //Otherwise, if you want handle_click_empty() to be called, check in consume_next_projectile() and return null there.
-/obj/item/weapon/gun/proc/special_check(var/mob/user)
+/obj/item/weapon/gun/proc/special_check(mob/user, obj/item/I as obj)
 
 	if(!istype(user, /mob/living))
 		return 0
@@ -161,11 +161,12 @@
 
 	if(!is_jammed && prob(jam_chance))
 		if(!has_jammed)  //If we just unjammed, don't jam again
-			playsound(src.loc, 'sound/effects/jam.ogg', 50, 1)
-			src.visible_message("<span class='danger'>[user]\'s [src] jams!</span>")
-			is_jammed = 1
-			has_jammed = TRUE
-			return 0
+			if(istype(I, /obj/item/ammo_magazine) && I.contents == 0)
+				playsound(src.loc, 'sound/effects/jam.ogg', 50, 1)
+				src.visible_message("<span class='danger'>[user]\'s [src] jams!</span>")
+				is_jammed = 1
+				has_jammed = TRUE
+				return 0
 
 	if(is_jammed)
 		handle_click_empty(user)
