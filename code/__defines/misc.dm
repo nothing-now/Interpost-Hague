@@ -242,16 +242,3 @@
 
 //Absolute pixel coordinate to relative. If MODULUS is zero, then we want to return 32, as pixel coordinates range from 1 to 32 within a tile.
 #define ABS_PIXEL_TO_REL(apc) (MODULUS(apc, 32) || 32)
-
-
-//config files
-#define CONFIG_GET(X) config.Get(/datum/configuration/##X)
-#define CONFIG_SET(X, Y) config.Set(/datum/configuration/##X, ##Y)
-
-#define CONFIG_MAPS_FILE "maps.txt"
-
-//flags
-#define CONFIG_ENTRY_LOCKED 1	//can't edit
-#define CONFIG_ENTRY_HIDDEN 2	//can't see value
-
-#define CHROMOSOMES "Chromosome Count"

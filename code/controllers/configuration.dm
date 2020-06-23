@@ -221,13 +221,6 @@ var/list/gamemode_cache = list()
 
 	var/roundstart_events = TRUE			// Allow roundstart events to appear
 
-	var/config_entry_value
-
-	var/list/entries
-	var/list/entries_by_type
-
-	var/abstract_type = /datum/configuration	//do not instantiate if type matches this
-
 /datum/configuration/New()
 	var/list/L = typesof(/datum/game_mode) - /datum/game_mode
 	for (var/T in L)
@@ -802,46 +795,6 @@ var/list/gamemode_cache = list()
 	if(fps <= 0)
 		fps = initial(fps)
 
-/datum/configuration/proc/full_wipe()
-	entries_by_type.Cut()
-	QDEL_LIST_ASSOC_VAL(entries)
-	entries = null
-
-/datum/configuration/proc/Get(entry_type)
-	var/datum/config_entry/E = entry_type
-	var/entry_is_abstract = initial(E.abstract_type) == entry_type
-	if(entry_is_abstract)
-		CRASH("Tried to retrieve an abstract config_entry: [entry_type]")
-	E = entries_by_type[entry_type]
-	if(!E)
-		CRASH("Missing config entry for [entry_type]!")
-		return
-	return E.config_entry_value
-
-/datum/configuration/proc/InitEntries()
-	var/list/_entries = list()
-	entries = _entries
-	var/list/_entries_by_type = list()
-	entries_by_type = _entries_by_type
-
-	for(var/I in typesof(/datum/config_entry))	//typesof is faster in this case
-		var/datum/config_entry/E = I
-		if(initial(E.abstract_type) == I)
-			continue
-		E = new I
-		var/esname = E.name
-		var/datum/config_entry/test = _entries[esname]
-		if(test)
-			log_world("Error: [test.type] has the same name as [E.type]: [esname]! Not initializing [E.type]!")
-			qdel(E)
-			continue
-		_entries[esname] = E
-		_entries_by_type[I] = E
-
-/datum/configuration/proc/RemoveEntry(datum/config_entry/CE)
-	entries -= CE.name
-	entries_by_type -= CE.type
-
 /datum/configuration/proc/loadsql(filename)  // -- TLE
 	var/list/Lines = file2list(filename)
 	for(var/t in Lines)
@@ -910,5 +863,3 @@ var/list/gamemode_cache = list()
 
 	if (event_info)
 		custom_event_msg = event_info
-
-/datum/configuration/string/feedback_tableprefix

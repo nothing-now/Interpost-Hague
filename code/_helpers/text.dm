@@ -488,6 +488,3 @@ proc/TextPreview(var/string,var/len=40)
 	text = replacetext(text, ";", "")
 	text = replacetext(text, "&", "")
 	return text
-
-/proc/format_table_name(table as text)
-	return CONFIG_GET(string/feedback_tableprefix) + table
