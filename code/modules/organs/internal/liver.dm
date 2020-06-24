@@ -56,8 +56,6 @@
 		if(damage < min_bruised_damage)
 			heal_damage(0.3)
 
-	handle_thirst()
-
 	//Blood regeneration if there is some space
 	owner.regenerate_blood(0.1 + owner.chem_effects[CE_BLOODRESTORE])
 
@@ -68,24 +66,3 @@
 			owner.nutrition -= 10
 		else if(owner.nutrition >= 200)
 			owner.nutrition -= 3
-
-/obj/item/organ/internal/liver/proc/handle_thirst()
-	owner.adjust_thirst(-THIRST_FACTOR)
-	switch(owner.thirst)
-		if(THIRST_LEVEL_THIRSTY to INFINITY)
-			owner.clear_event("thirst")
-		if(THIRST_LEVEL_DEHYDRATED to THIRST_LEVEL_THIRSTY)
-			owner.add_event("thirst", /datum/happiness_event/thirst/thirsty)
-			if(prob(1))
-				to_chat(owner, "<span class='warning'>You fall down because of your thirst.</span>")
-				owner.Weaken(1)
-				owner.Stun(1)
-		if(0 to THIRST_LEVEL_DEHYDRATED)
-			owner.add_event("thirst", /datum/happiness_event/thirst/dehydrated)
-			if(prob(5))
-				to_chat(owner, "<span class='warning'>You faint from dehydration.</span>")
-				owner.Paralyse(5)
-			else if(prob(6))
-				to_chat(owner, "<span class='warning'>You fall down because of your thirst.</span>")
-				owner.Weaken(1)
-				owner.Stun(1)
