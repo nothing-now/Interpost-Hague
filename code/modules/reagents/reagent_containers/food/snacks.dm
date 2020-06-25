@@ -15,8 +15,8 @@
 	center_of_mass = "x=16;y=16"
 	w_class = ITEM_SIZE_SMALL
 
-/obj/item/weapon/reagent_containers/food/snacks/New()
-	..()
+/obj/item/weapon/reagent_containers/food/snacks/Initialize()
+	. = ..()
 	if(nutriment_amt)
 		reagents.add_reagent(/datum/reagent/nutriment,nutriment_amt,nutriment_desc)
 
@@ -2857,7 +2857,7 @@
 	filled = TRUE
 
 /obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/mushroompizza
-	name = "Mushroompizza"
+	name = "Mushroom pizza"
 	desc = "Very special pizza."
 	icon_state = "mushroompizza"
 	slice_path = /obj/item/weapon/reagent_containers/food/snacks/slice/mushroompizza
@@ -2865,10 +2865,11 @@
 	center_of_mass = "x=16;y=11"
 	nutriment_desc = list("pizza crust" = 10, "tomato" = 10, "cheese" = 5, "mushroom" = 10)
 	nutriment_amt = 35
-	New()
-		..()
-		reagents.add_reagent(/datum/reagent/nutriment/protein, 5)
-		bitesize = 2
+
+/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/mushroompizza/Initialize()
+	. = ..()
+	reagents.add_reagent(/datum/reagent/nutriment/protein, 5)
+	bitesize = 2
 
 /obj/item/weapon/reagent_containers/food/snacks/slice/mushroompizza
 	name = "Mushroompizza slice"
