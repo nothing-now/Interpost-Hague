@@ -63,6 +63,6 @@
 	var/blood_volume = owner.get_blood_volume()
 	if(blood_volume < BLOOD_VOLUME_SAFE || is_bruised())
 		if(owner.nutrition >= 300)
-			owner.nutrition -= 30
+			owner.adjust_nutrition(-30)
 		else if(owner.nutrition >= 200)
-			owner.nutrition -= 20
+			owner.adjust_nutrition(-20)

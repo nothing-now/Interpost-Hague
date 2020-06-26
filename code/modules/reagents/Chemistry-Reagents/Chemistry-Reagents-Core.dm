@@ -144,6 +144,9 @@
 		return
 	M.adjustToxLoss(2 * removed)
 
+/datum/reagent/water/affect_ingest(var/mob/living/carbon/M, var/alien, var/removed)
+	M.adjust_hydration(removed * 10)
+
 /datum/reagent/water/touch_turf(var/turf/simulated/T)
 	if(!istype(T))
 		return

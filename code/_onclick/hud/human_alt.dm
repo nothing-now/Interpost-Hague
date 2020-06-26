@@ -347,10 +347,17 @@
 	else if(hud_data.has_nutrition)
 		mymob.nutrition_icon = new /obj/screen()
 		mymob.nutrition_icon.icon = ui_style
-		mymob.nutrition_icon.icon_state = "nutrition0"
+		mymob.nutrition_icon.icon_state = "nutrition1"
 		mymob.nutrition_icon.name = "nutrition"
 		mymob.nutrition_icon.screen_loc = ui_nutrition
 		hud_elements |= mymob.nutrition_icon
+
+		mymob.hydration_icon = new /obj/screen/drink()
+		mymob.hydration_icon.icon = ui_style
+		mymob.hydration_icon.icon_state = "hydration1"
+		mymob.hydration_icon.SetName("hydration")
+		mymob.hydration_icon.screen_loc = ui_nutrition
+		hud_elements |= mymob.hydration_icon
 
 	mymob.stamina_icon = new /obj/screen()//STAMINA
 	mymob.stamina_icon.icon = ui_style
@@ -519,3 +526,31 @@
 	else
 		client.screen -= hud_used.hotkeybuttons
 		hud_used.hotkey_ui_hidden = 1
+
+/obj/screen/food/Click(var/location, var/control, var/params)
+	if(istype(usr) && usr.nutrition_icon == src)
+		switch(icon_state)
+			if("nutrition0")
+				to_chat(usr, SPAN_WARNING("You are completely stuffed."))
+			if("nutrition1")
+				to_chat(usr, SPAN_NOTICE("You are not hungry."))
+			if("nutrition2")
+				to_chat(usr, SPAN_NOTICE("You are a bit peckish."))
+			if("nutrition3")
+				to_chat(usr, SPAN_WARNING("You are quite hungry."))
+			if("nutrition4")
+				to_chat(usr, SPAN_DANGER("You are starving!"))
+
+/obj/screen/drink/Click(var/location, var/control, var/params)
+	if(istype(usr) && usr.hydration_icon == src)
+		switch(icon_state)
+			if("hydration0")
+				to_chat(usr, SPAN_WARNING("You are overhydrated."))
+			if("hydration1")
+				to_chat(usr, SPAN_NOTICE("You are not thirsty."))
+			if("hydration2")
+				to_chat(usr, SPAN_NOTICE("You are a bit thirsty."))
+			if("hydration3")
+				to_chat(usr, SPAN_WARNING("You are quite thirsty."))
+			if("hydration4")
+				to_chat(usr, SPAN_DANGER("You are dying of thirst!"))

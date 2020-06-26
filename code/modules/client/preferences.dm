@@ -285,7 +285,8 @@
 	character.religion = religion
 
 	if(!character.isSynthetic())
-		character.nutrition = rand(140,360)
+		character.set_nutrition(rand(140,360))
+		character.set_hydration(rand(140,360))
 
 	return
 

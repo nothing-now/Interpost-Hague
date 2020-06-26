@@ -23,7 +23,6 @@ var/global/list/image/fluidtrack_cache=list()
 	var/fresh=1
 	var/crusty=0
 	var/image/overlay
-	layer = DECAL_LAYER
 
 /datum/fluidtrack/New(_direction,_color,_wet)
 	src.direction=_direction

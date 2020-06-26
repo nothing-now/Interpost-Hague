@@ -140,15 +140,3 @@
 /mob/living/carbon/proc/set_hygiene(var/amount)
 	if(amount >= 0)
 		hygiene = min(HYGIENE_LEVEL_CLEAN, amount)
-
-/mob/living/carbon/proc/adjust_thirst(var/amount)
-	var/old_thirst = thirst
-	if(amount>0)
-		thirst = min(thirst+amount, THIRST_LEVEL_MAX)
-
-	else if(old_thirst)
-		thirst = max(thirst+amount, 0)
-
-/mob/living/carbon/proc/set_thirst(var/amount)
-	if(amount >= 0)
-		thirst = min(THIRST_LEVEL_MAX, amount)
