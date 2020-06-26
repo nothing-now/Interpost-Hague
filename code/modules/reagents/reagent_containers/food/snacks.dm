@@ -15,8 +15,8 @@
 	center_of_mass = "x=16;y=16"
 	w_class = ITEM_SIZE_SMALL
 
-/obj/item/weapon/reagent_containers/food/snacks/Initialize()
-	. = ..()
+/obj/item/weapon/reagent_containers/food/snacks/New()
+	..()
 	if(nutriment_amt)
 		reagents.add_reagent(/datum/reagent/nutriment,nutriment_amt,nutriment_desc)
 
@@ -2866,8 +2866,8 @@
 	nutriment_desc = list("pizza crust" = 10, "tomato" = 10, "cheese" = 5, "mushroom" = 10)
 	nutriment_amt = 35
 
-/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/mushroompizza/Initialize()
-	. = ..()
+/obj/item/weapon/reagent_containers/food/snacks/sliceable/pizza/mushroompizza/New()
+	..()
 	reagents.add_reagent(/datum/reagent/nutriment/protein, 5)
 	bitesize = 2
 

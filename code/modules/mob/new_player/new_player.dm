@@ -8,6 +8,7 @@
 	var/datum/browser/panel
 	var/show_invalid_jobs = 0
 	universal_speak = 1
+	hud_type = /datum/hud/new_player
 
 	invisibility = 101
 
@@ -22,55 +23,6 @@
 /mob/new_player/New()
 	..()
 	verbs += /mob/proc/toggle_antag_pool
-
-/mob/new_player/verb/new_player_panel()
-	set src = usr
-	new_player_panel_proc()
-
-/mob/new_player/proc/new_player_panel_proc()
-	var/output = "<div align='center'>"
-	output +="<hr>"
-	output += "<p><a href='byond://?src=\ref[src];show_preferences=1'>Setup Character</A></p>"
-
-	output += "<hr>Current character: <b>[client.prefs.real_name]</b>[client.prefs.job_high ? ", [client.prefs.job_high]" : null]<br>"
-
-	if(GAME_STATE <= RUNLEVEL_LOBBY)
-		if(ready)
-			output += "<p>\[ <span class='linkOn'><b>Ready</b></span> | <a href='byond://?src=\ref[src];ready=0'>Not Ready</a> \]</p>"
-		else
-			output += "<p>\[ <a href='byond://?src=\ref[src];ready=1'>Ready</a> | <span class='linkOn'><b>Not Ready</b></span> \]</p>"
-
-	else
-		output += "<a href='byond://?src=\ref[src];manifest=1'>View the Crew Manifest</A><br><br>"
-		output += "<p><a href='byond://?src=\ref[src];late_join=1'>Join Game!</A></p>"
-
-	//output += "<p><a href='byond://?src=\ref[src];observe=1'>Observe</A></p>"
-
-	if(!IsGuestKey(src.key))
-		establish_db_connection()
-		if(dbcon.IsConnected())
-			var/isadmin = 0
-			if(src.client && src.client.holder)
-				isadmin = 1
-			var/DBQuery/query = dbcon.NewQuery("SELECT id FROM erro_poll_question WHERE [(isadmin ? "" : "adminonly = false AND")] Now() BETWEEN starttime AND endtime AND id NOT IN (SELECT pollid FROM erro_poll_vote WHERE ckey = \"[ckey]\") AND id NOT IN (SELECT pollid FROM erro_poll_textreply WHERE ckey = \"[ckey]\")")
-			query.Execute()
-			var/newpoll = 0
-			while(query.NextRow())
-				newpoll = 1
-				break
-
-			if(newpoll)
-				output += "<p><b><a href='byond://?src=\ref[src];showpoll=1'>Show Player Polls</A> (NEW!)</b></p>"
-			else
-				output += "<p><a href='byond://?src=\ref[src];showpoll=1'>Show Player Polls</A></p>"
-
-	output += "</div>"
-
-	panel = new(src, "Welcome","Welcome", 210, 280, src)
-	panel.set_window_options("can_close=0")
-	panel.set_content(output)
-	panel.open()
-	return
 
 /mob/new_player/Stat()
 	. = ..()
@@ -96,77 +48,69 @@
 				totalPlayers++
 				if(player.ready)totalPlayersReady++
 
-/mob/new_player/Topic(href, href_list[])
-	if(!client)	return 0
+//Procs used in the new main menu (former hrefs)
+/mob/new_player/proc/observe(href, href_list)
+	if(GAME_STATE < RUNLEVEL_LOBBY)
+		to_chat(src, "<span class='warning'>Please wait for server initialization to complete...</span>")
+		return
 
-	if(href_list["show_preferences"])
-		client.prefs.ShowChoices(src)
+	if(!config.respawn_delay || client.holder || alert(src,"Are you sure you wish to observe? You will have to wait [config.respawn_delay] minute\s before being able to respawn!","Player Setup","Yes","No") == "Yes")
+		if(!client)	return 1
+		var/mob/observer/ghost/observer = new()
+
+		spawning = 1
+		sound_to(src, sound(null, repeat = 0, wait = 0, volume = 85, channel = 1))// MAD JAMS cant last forever yo
+
+
+		observer.started_as_observer = TRUE
+		var/obj/O = locate("landmark*Observer-Start")
+		if(istype(O))
+			to_chat(src, "<span class='notice'>Now teleporting.</span>")
+			observer.forceMove(O.loc)
+		else
+			to_chat(src, "<span class='danger'>Could not locate an observer spawn point. Use the Teleport verb to jump to the map.</span>")
+		observer.timeofdeath = world.time // Set the time of death so that the respawn timer works correctly.
+
+		if(isnull(client.holder))
+			announce_ghost_joinleave(src)
+
+		var/mob/living/carbon/human/dummy/mannequin = new()
+		client.prefs.dress_preview_mob(mannequin)
+		observer.set_appearance(mannequin)
+		qdel(mannequin)
+
+		if(client.prefs.be_random_name)
+			client.prefs.real_name = random_name(client.prefs.gender)
+		observer.real_name = client.prefs.real_name
+		observer.SetName(observer.real_name)
+		if(!client.holder && !config.antag_hud_allowed)           // For new ghosts we remove the verb from even showing up if it's not allowed.
+			observer.verbs -= /mob/observer/ghost/verb/toggle_antagHUD        // Poor guys, don't know what they are missing!
+		observer.key = key
+		qdel(src)
+
 		return 1
 
-	if(href_list["ready"])
-		if(GAME_STATE <= RUNLEVEL_LOBBY) // Make sure we don't ready up after the round has started
-			ready = text2num(href_list["ready"])
-		else
-			ready = 0
+/mob/new_player/proc/join_game(href, href_list)
+	if(GAME_STATE != RUNLEVEL_GAME)
+		to_chat(usr, "<span class='warning'>The round is either not ready, or has already finished...</span>")
+		return
+	LateChoices() //show the latejoin job selection menu
 
-	if(href_list["refresh"])
-		src << browse(null, "window=Character Latejoin") //closes late choices window
-		panel.close()
-		new_player_panel_proc()
+/mob/new_player/proc/setupcharacter(href, href_list)
+	client.prefs.ShowChoices(src)
+	return TRUE
 
-/*
-	//if(href_list["observe"])
-		if(GAME_STATE < RUNLEVEL_LOBBY)
-			//to_chat(src, "<span class='warning'>Please wait for server initialization to complete...</span>")
-			//return
+/mob/new_player/proc/ready(href, href_list)
+	if(GAME_STATE <= RUNLEVEL_LOBBY) // Make sure we don't ready up after the round has started
+		ready = text2num(ready())
+	else
+		ready = FALSE
 
-		if(!config.respawn_delay || client.holder || alert(src,"Are you sure you wish to observe? You will have to wait [config.respawn_delay] minute\s before being able to respawn!","Player Setup","Yes","No") == "Yes")
-			if(!client)	return 1
-			var/mob/observer/ghost/observer = new()
-
-			spawning = 1
-			sound_to(src, sound(null, repeat = 0, wait = 0, volume = 85, channel = 1))// MAD JAMS cant last forever yo
-
-
-			observer.started_as_observer = 1
-			close_spawn_windows()
-			var/obj/O = locate("landmark*Observer-Start")
-			if(istype(O))
-				to_chat(src, "<span class='notice'>Now teleporting.</span>")
-				observer.forceMove(O.loc)
-			else
-				to_chat(src, "<span class='danger'>Could not locate an observer spawn point. Use the Teleport verb to jump to the map.</span>")
-			observer.timeofdeath = world.time // Set the time of death so that the respawn timer works correctly.
-
-			if(isnull(client.holder))
-				announce_ghost_joinleave(src)
-
-			var/mob/living/carbon/human/dummy/mannequin = new()
-			client.prefs.dress_preview_mob(mannequin)
-			observer.set_appearance(mannequin)
-			qdel(mannequin)
-
-			if(client.prefs.be_random_name)
-				client.prefs.real_name = random_name(client.prefs.gender)
-			observer.real_name = client.prefs.real_name
-			observer.SetName(observer.real_name)
-			if(!client.holder && !config.antag_hud_allowed)           // For new ghosts we remove the verb from even showing up if it's not allowed.
-				observer.verbs -= /mob/observer/ghost/verb/toggle_antagHUD        // Poor guys, don't know what they are missing!
-			observer.key = key
-			qdel(src)
-
-			return 1
-*/
-
-	if(href_list["late_join"])
-
-		if(GAME_STATE != RUNLEVEL_GAME)
-			to_chat(usr, "<span class='warning'>The round is either not ready, or has already finished...</span>")
-			return
-		LateChoices() //show the latejoin job selection menu
-
-	if(href_list["manifest"])
-		ViewManifest()
+/mob/new_player/Topic(href, href_list) // This is a full override; does not call parent.
+	if(usr != src)
+		return TOPIC_NOACTION
+	if(!client)
+		return TOPIC_NOACTION
 
 	if(href_list["SelectedJob"])
 		var/datum/job/job = job_master.GetJob(href_list["SelectedJob"])
@@ -215,7 +159,7 @@
 			if("nostats")
 				option = "NOSTATS"
 			if("later")
-				usr << browse(null,"window=privacypoll")
+				show_browser(usr, null,"window=privacypoll")
 				return
 			if("abstain")
 				option = "ABSTAIN"
@@ -228,13 +172,11 @@
 			var/DBQuery/query_insert = dbcon.NewQuery(sql)
 			query_insert.Execute()
 			to_chat(usr, "<b>Thank you for your vote!</b>")
-			usr << browse(null,"window=privacypoll")
+			show_browser(usr, null,"window=privacypoll")
 
 	if(!ready && href_list["preference"])
 		if(client)
 			client.prefs.process_link(src, href_list)
-	else if(!href_list["late_join"])
-		new_player_panel()
 
 	if(href_list["showpoll"])
 

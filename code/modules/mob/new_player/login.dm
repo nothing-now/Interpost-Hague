@@ -21,6 +21,7 @@
 	. = ..()
 
 /mob/new_player/Login()
+	..()
 	update_Login_details()	//handles setting lastKnownIP and computer_id for use by the ban systems as well as checking for multikeying
 	to_chat(src, "<h1 class='alert'>Story ID:</h1>")
 
@@ -36,8 +37,7 @@
 	loc = null
 	client.screen += lobby_image
 	my_client = client
-	set_sight(sight|SEE_TURFS)
+	set_sight(sight|SEE_TURFS|SEE_OBJS)
 	GLOB.player_list |= src
 
-	new_player_panel()
 	client.playtitlemusic()

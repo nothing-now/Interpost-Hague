@@ -236,7 +236,7 @@
 /obj/screen/combat
 	name = "Combat Intent"
 	icon = 'icons/mob/screen/dark.dmi'
-	icon_state = "atk_all"
+	icon_state = "strong"
 	screen_loc = ui_atk_intents
 	var/intent = I_STRONG
 

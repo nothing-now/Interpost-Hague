@@ -15,9 +15,6 @@ SUBSYSTEM_DEF(misc)
 	job_master.SetupOccupations(setup_titles=1)
 	job_master.LoadJobs("config/jobs.txt")
 
-	syndicate_code_phrase = generate_code_phrase()
-	syndicate_code_response	= generate_code_phrase()
-
 	setupgenetics()
 
 	transfer_controller = new

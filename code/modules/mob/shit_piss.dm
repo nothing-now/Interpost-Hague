@@ -17,7 +17,6 @@
 	desc = "Well that stinks."
 	density = 0
 	anchored = 1
-	layer = 2
 	icon = 'icons/effects/pooeffect.dmi'
 	icon_state = "floor1"
 	random_icon_states = list("floor1", "floor2", "floor3", "floor4", "floor5", "floor6", "floor7", "floor8")
@@ -47,7 +46,6 @@
 	desc = "It's brown."
 	density = 0
 	anchored = 1
-	layer = 2
 	icon = 'icons/effects/pooeffect.dmi'
 	icon_state = "drip1"
 	random_icon_states = list("drip1", "drip2", "drip3", "drip4", "drip5")
@@ -85,7 +83,6 @@
 	desc = "Someone couldn't hold it.."
 	density = 0
 	anchored = 1
-	layer = 2
 	icon = 'icons/effects/pooeffect.dmi'
 	icon_state = "pee1"
 	random_icon_states = list("pee1", "pee2", "pee3")
@@ -121,7 +118,6 @@
 	name = "cum"
 	desc = "It's pie cream from a cream pie. Or not..."
 	density = 0
-	layer = 2
 	icon = 'code/modules/honk/icons/effects/cum.dmi'
 	blood_DNA = list()
 	anchored = 1

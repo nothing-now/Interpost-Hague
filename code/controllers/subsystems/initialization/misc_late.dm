@@ -11,5 +11,8 @@ SUBSYSTEM_DEF(misc_late)
 	var/decl/asset_cache/asset_cache = decls_repository.get_decl(/decl/asset_cache)
 	asset_cache.load()
 
+	syndicate_code_phrase = generate_code_phrase()
+	syndicate_code_response = generate_code_phrase()
+
 	populate_lathe_recipes() // This creates and deletes objects; could use improvement.
 	. = ..()

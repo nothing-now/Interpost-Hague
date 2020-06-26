@@ -53,7 +53,7 @@
 	var/show_objectives_on_creation = 1     // Whether or not objectives are shown when a player is added to this antag datum
 
 	// Used for setting appearance.
-	var/list/valid_species =       list(SPECIES_UNATHI,SPECIES_TAJARA,SPECIES_SKRELL,SPECIES_HUMAN,SPECIES_VOX)
+	var/list/valid_species =       list(SPECIES_UNATHI,SPECIES_SKRELL,SPECIES_HUMAN,SPECIES_VOX)
 	var/min_player_age = 14
 
 	// Runtime vars.
@@ -80,13 +80,14 @@
 		rules aside from those without explicit exceptions apply to antagonists.</b>"
 
 /datum/antagonist/New()
+	all_antag_types_[id] = src
+	all_antag_spawnpoints_[landmark_id] = list()
+	antag_names_to_ids_[role_text] = id
 	..()
 
 /datum/antagonist/proc/Initialize()
-	if(!role_type)
-		role_type = id
-
 	cur_max = hard_cap
+	get_starting_locations()
 	if(!role_text_plural)
 		role_text_plural = role_text
 	if(config.protect_roles_from_antagonist)
@@ -102,11 +103,11 @@
 
 // Get the raw list of potential players.
 /datum/antagonist/proc/build_candidate_list(datum/game_mode/mode, ghosts_only)
-	var/candidates = list() // Clear.
+	candidates = list() // Clear.
 
 	// Prune restricted status. Broke it up for readability.
 	// Note that this is done before jobs are handed out.
-	for(var/datum/mind/player in mode.get_players_for_role(role_type, id))
+	for(var/datum/mind/player in mode.get_players_for_role(id))
 		if(ghosts_only && !(isghostmind(player) || isnewplayer(player.current)))
 			log_debug("[key_name(player)] is not eligible to become a [role_text]: Only ghosts may join as this role!")
 		else if(config.use_age_restriction_for_antags && player.current.client.player_age < minimum_player_age)
@@ -125,27 +126,21 @@
 	return candidates
 
 // Builds a list of potential antags without actually setting them. Used to test mode viability.
-/datum/antagonist/proc/get_potential_candidates(datum/game_mode/mode, ghosts_only)
-	var/potential_candidates = list()
+/datum/antagonist/proc/get_potential_candidates(var/datum/game_mode/mode, var/ghosts_only)
+	var/candidates = list()
 
 	// Keeping broken up for readability
 	for(var/datum/mind/player in mode.get_players_for_role(id))
 		if(ghosts_only && !(isghostmind(player) || isnewplayer(player.current)))
-			log_debug("[key_name(player)] is not eligible to become a [role_text]: Only ghosts may join as this role!")
 		else if(config.use_age_restriction_for_antags && player.current.client.player_age < minimum_player_age)
-			log_debug("[key_name(player)] is not eligible to become a [role_text]: Is only [player.current.client.player_age] day\s old, has to be [minimum_player_age] day\s!")
 		else if(player.special_role)
-			log_debug("[key_name(player)] is not eligible to become a [role_text]: They already have a special role ([player.special_role])!")
 		else if (player in pending_antagonists)
-			log_debug("[key_name(player)] is not eligible to become a [role_text]: They have already been selected for this role!")
 		else if(!can_become_antag(player))
-			log_debug("[key_name(player)] is not eligible to become a [role_text]: They are blacklisted for this role!")
 		else if(player_is_antag(player))
-			log_debug("[key_name(player)] is not eligible to become a [role_text]: They are already an antagonist!")
 		else
-			potential_candidates |= player
+			candidates |= player
 
-	return potential_candidates
+	return candidates
 
 /datum/antagonist/proc/attempt_random_spawn()
 	update_current_antag_max(SSticker.mode)
@@ -226,6 +221,7 @@
 	//Ensure that antags with ANTAG_OVERRIDE_JOB do not occupy job slots.
 	if(flags & ANTAG_OVERRIDE_JOB)
 		player.assigned_role = role_text
+		player.role_alt_title = null
 
 	//Ensure that a player cannot be drafted for multiple antag roles, taking up slots for antag roles that they will not fill.
 	player.special_role = role_text

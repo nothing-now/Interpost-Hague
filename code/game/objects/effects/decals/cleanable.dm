@@ -3,6 +3,7 @@
 	var/generic_filth = FALSE
 	var/age = 0
 	var/list/random_icon_states
+	layer = DECAL_LAYER
 
 /obj/effect/decal/cleanable/Initialize(var/ml, var/_age)
 	if(random_icon_states && length(src.random_icon_states) > 0)
