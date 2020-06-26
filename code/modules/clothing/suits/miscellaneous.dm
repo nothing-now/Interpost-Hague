@@ -226,6 +226,12 @@
 	icon_state = "bomberjacket"
 	item_state = "bomberjacket"
 
+/obj/item/clothing/suit/furcoat
+	name = "wool black coat"
+	desc = "A black coat. Looks expensive."
+	icon_state = "furcoat"
+	item_state = "furcoat"
+
 /obj/item/clothing/suit/browncoat
 	name = "brown leather coat"
 	desc = "A long, brown leather coat."
