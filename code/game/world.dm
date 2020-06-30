@@ -66,11 +66,6 @@
 
 #define RECOMMENDED_VERSION 511
 /world/New()
-	if(fexists("byond-extools.dll"))
-		call("byond-extools.dll", "debug_initialize")()
-		call("byond-extools.dll", "maptick_initialize")()
-		call("byond-extools.dll", "tffi_initialize")()
-
 	//set window title
 	name = "[server_name] - [GLOB.using_map.full_name]"
 
