@@ -10,7 +10,7 @@
 						/datum/job/officer,
 						/datum/job/detective,
 						/datum/job/doctor,
-						/datum/job/doctor/undertaker,
+						/datum/job/undertaker,
 						/datum/job/rd,
 						/datum/job/scientist,
 						/datum/job/qm,
@@ -45,7 +45,7 @@
 						/datum/job/officer,
 						/datum/job/detective,
 						/datum/job/doctor,
-						/datum/job/doctor/undertaker,
+						/datum/job/undertaker,
 						///datum/job/rd,
 						///datum/job/scientist,
 						/datum/job/qm,
@@ -80,7 +80,7 @@
 						/datum/job/officer,
 						/datum/job/detective,
 						/datum/job/doctor,
-						/datum/job/doctor/undertaker,
+						/datum/job/undertaker,
 						/datum/job/rd,
 						/datum/job/scientist,
 						/datum/job/qm,
@@ -114,7 +114,7 @@
 						/datum/job/officer,
 						/datum/job/detective,
 						/datum/job/doctor,
-						/datum/job/doctor/undertaker,
+						/datum/job/undertaker,
 						/datum/job/rd,
 						/datum/job/scientist,
 						/datum/job/qm,
@@ -285,13 +285,13 @@
 			access_chemistry, access_virology, access_surgery)
 	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_genetics, access_tox,
 			access_chemistry, access_virology, access_surgery)
-	equip(var/mob/living/carbon/human/H)
-		..()
-		//H.add_stats(rand(5,7), rand(5,8), rand(10,14))
-		H.generate_stats(STAT_IQ)
-		H.generate_skills(list("medical","cleaning", "surgery"))
 
-/datum/job/doctor/undertaker
+/datum/job/undertaker/equip(var/mob/living/carbon/human/H)
+	..()
+	H.generate_stats(STAT_IQ)
+	H.generate_skills(list("medical","cleaning", "surgery"))
+
+/datum/job/undertaker
 	title = "Undertaker"
 	department = "Medical"
 	department_flag = MED
@@ -301,10 +301,11 @@
 	outfit_type = /decl/hierarchy/outfit/job/medical/doctor/undertaker
 	access = list(access_medical, access_medical_equip, access_morgue, access_genetics, access_heads, access_tox, access_chemistry, access_virology, access_cmo, access_surgery, access_maint_tunnels)
 	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_genetics, access_heads, access_tox, access_chemistry, access_virology, access_cmo, access_surgery, access_maint_tunnels)
-	equip(var/mob/living/carbon/human/H)
-		..()
-		H.generate_stats(STAT_IQ)
-		H.generate_skills(list("medical","cleaning", "surgery"))
+
+/datum/job/undertaker/equip(var/mob/living/carbon/human/H)
+	..()
+	H.generate_stats(STAT_IQ)
+	H.generate_skills(list("medical","cleaning", "surgery"))
 
 /datum/job/hos
 	title = "Enforcer Chief"
