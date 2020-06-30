@@ -2689,7 +2689,6 @@
 #include "maps\shared\items\cards_ids.dm"
 #include "maps\shared\items\clothing.dm"
 #include "maps\torch\torch_define.dm"
-#include "maps\trader\trader-4.dmm"
 #include "maps\utopia\utopia_define.dm"
 #include "maps\~mapsystem\map_preferences.dm"
 #include "maps\~mapsystem\map_ranks.dm"

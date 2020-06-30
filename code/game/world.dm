@@ -575,7 +575,6 @@ var/world_topic_spam_protect_time = world.timeofday
 	s += " ("
 	s += "<a href=\"https://discord.gg/Dkhg97R\">" //Change this to wherever you want the hub to link to.
 	s += "Discord"
-	//s += "Default"  //Replace this with something else. Or ever better, delete it and uncomment the game version.
 	s += "</a>"
 	s += ")"
 
@@ -587,14 +586,6 @@ var/world_topic_spam_protect_time = world.timeofday
 	s += "<img src=\"https://i.imgur.com/jkCHCCJ.png\">" //Banner image
 	if (!config.enter_allowed)
 		features += "closed"
-
-	features += config.abandon_allowed ? "respawn" : "no respawn"
-
-	if (config && config.allow_vote_mode)
-		features += "vote"
-
-	if (config && config.allow_ai)
-		features += "AI allowed"
 
 	var/n = 0
 	for (var/mob/M in GLOB.player_list)
