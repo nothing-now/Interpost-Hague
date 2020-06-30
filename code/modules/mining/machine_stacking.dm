@@ -78,8 +78,8 @@
 	var/list/stack_paths[0]
 	var/stack_amt = 50; // Amount to stack before releassing
 
-/obj/machinery/mineral/stacking_machine/New()
-	..()
+/obj/machinery/mineral/stacking_machine/Initialize()
+	. = ..()
 
 	for(var/stacktype in subtypesof(/obj/item/stack/material))
 		var/obj/item/stack/S = stacktype
@@ -126,6 +126,12 @@
 			S.amount = stack_amt
 			stack_storage[sheet] -= stack_amt
 
-	console.updateUsrDialog()
-	return
-
+/obj/machinery/mineral/stacking_machine/Topic(href, href_list)
+	. = ..()
+	if(href_list["change_stack"])
+		var/choice = input("What would you like to set the stack amount to?") as null|anything in list(1,5,10,20,50)
+		if(!choice) return
+		stack_amt = choice
+		. = TRUE
+	if(. && console)
+		console.updateUsrDialog()

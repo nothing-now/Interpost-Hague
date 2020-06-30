@@ -286,19 +286,20 @@
 	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_genetics, access_tox,
 			access_chemistry, access_virology, access_surgery)
 
-/datum/job/undertaker/equip(var/mob/living/carbon/human/H)
+/datum/job/doctor/equip(var/mob/living/carbon/human/H)
 	..()
 	H.generate_stats(STAT_IQ)
 	H.generate_skills(list("medical","cleaning", "surgery"))
 
 /datum/job/undertaker
 	title = "Undertaker"
+	selection_color = "#382238"
 	department = "Medical"
 	department_flag = MED
 
 	total_positions = 1
 	spawn_positions = 1
-	outfit_type = /decl/hierarchy/outfit/job/medical/doctor/undertaker
+	outfit_type = /decl/hierarchy/outfit/job/medical/undertaker
 	access = list(access_medical, access_medical_equip, access_morgue, access_genetics, access_heads, access_tox, access_chemistry, access_virology, access_cmo, access_surgery, access_maint_tunnels)
 	minimal_access = list(access_medical, access_medical_equip, access_morgue, access_genetics, access_heads, access_tox, access_chemistry, access_virology, access_cmo, access_surgery, access_maint_tunnels)
 

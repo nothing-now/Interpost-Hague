@@ -323,6 +323,9 @@ var/const/NO_EMAG_ACT = -50
 /obj/item/weapon/card/id/medical/paramedic
 	job_access_type = /datum/job/Paramedic
 
+/obj/item/weapon/card/id/medical/undertaker
+	job_access_type = /datum/job/undertaker
+
 /obj/item/weapon/card/id/medical/head
 	name = "identification card"
 	desc = "A card which represents care and compassion."
