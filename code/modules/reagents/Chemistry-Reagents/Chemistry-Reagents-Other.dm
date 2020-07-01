@@ -385,13 +385,12 @@
 	color = "#643200"
 	taste_description = "literal shit"
 
-
 /datum/reagent/poo/on_mob_life(var/mob/living/M)
 	if(!M)
 		M = holder.my_atom
 
-	M.adjustToxLoss(5)
-	holder.remove_reagent(src, 0.2)
+	M.adjustToxLoss(0.2)
+	holder.remove_reagent(src, 0.6)
 	..()
 	return
 
