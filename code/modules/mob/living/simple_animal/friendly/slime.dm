@@ -51,3 +51,19 @@
 	S2.icon_dead = "[src.colour] baby slime dead"
 	S2.colour = "[src.colour]"
 	qdel(src)
+
+
+
+/mob/living/simple_animal/alien2
+	name = "alien"
+	desc = "A scary little red vine thing?."
+	icon = 'icons/mob/mob.dmi'
+	health = 500
+	maxHealth = 500
+	icon_state = "alien2"
+	icon_living = "alien2"
+	icon_dead = "alien2_dead"
+	response_help  = "pokes"
+	response_disarm = "shoos"
+	response_harm   = "stomps on"
+	emote_see = list("jiggles", "bounces in place")

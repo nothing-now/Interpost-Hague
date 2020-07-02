@@ -94,6 +94,32 @@
 	qdel(src)
 
 
+/mob/living/simple_animal/familiar/alien
+	name = "alien"
+	desc = "???"
+	icon = 'icons/mob/mob.dmi'
+	icon_state = "alien1"
+	icon_living = "alien1"
+
+	speak_emote = list("squeeks", "groans")
+
+	response_help = "thinks better of touching"
+
+	health = 300
+	maxHealth = 300
+	melee_damage_lower = 10
+	melee_damage_upper = 20
+	attacktext = "scratches"
+
+/mob/living/simple_animal/familiar/alien/death(gibbed, deathmessage, show_dead_message)
+	..(null,"Falls over and dies.")
+
+	ghostize()
+	gibs(src.loc)
+	qdel(src)
+
+
+
 /mob/living/simple_animal/familiar/minor_amaros
 	name = "minor amaros"
 	desc = "A small fluffy alien creature."
