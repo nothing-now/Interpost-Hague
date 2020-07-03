@@ -5,7 +5,7 @@
 	icon_state = "mosin2"
 	item_state = "mosin2"
 	wielded_item_state = "mosin2-wielded"
-	jam_chance = 15
+	jam_chance = 3
 	//pumpsound = 'sound/weapons/newrifle_reload.ogg'
 	fire_sound = "brifle"
 	caliber = "763"
