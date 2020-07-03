@@ -114,6 +114,28 @@
 	else
 		icon_state = "glock17_empty"
 
+/obj/item/weapon/gun/projectile/maers14
+	name = "Maers-14"
+	desc = "The shellguard standard Maers-14. Typically used by space marines. Chambered in (9mm)."
+	icon_state = "maers14"
+	item_state = "pistol1"
+	w_class = ITEM_SIZE_SMALL
+	caliber = "a9mm"
+	silenced = 0
+	fire_delay = 0
+	origin_tech = list(TECH_COMBAT = 3, TECH_MATERIAL = 2, TECH_ILLEGAL = 3)
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/maers14
+	allowed_magazines = /obj/item/ammo_magazine/maers14
+	jam_chance = 0
+
+/obj/item/weapon/gun/projectile/maers14/update_icon()
+	..()
+	if(ammo_magazine && ammo_magazine.stored_ammo.len)
+		icon_state = "maers14"
+	else
+		icon_state = "maers14_empty"
+
 /obj/item/weapon/gun/projectile/herculus
 	name = "Herculus BX-24"
 	desc = "A very fine and high-tech firearm. Chambered in (9mm)."
