@@ -454,6 +454,120 @@
 	icon_state = "kitchen"
 
 /obj/structure/sign/magistrate
-	name = "\improper Magistrate"
+	name = "\improper Count"
 	desc = "How regal."
 	icon_state = "magistrate"
+
+/obj/structure/sign/chem
+	name = "\improper Chemistry"
+	desc = "Don't slip on the ammonium."
+	icon_state = "chem"
+
+/obj/structure/sign/toilet
+	name = "\improper Toilets"
+	desc = "You know what it is."
+	icon_state = "toilet"
+
+/obj/structure/sign/mining
+	name = "\improper Mining"
+	desc = "Don't interrupt their work."
+	icon_state = "mine"
+
+/obj/structure/sign/cargo
+	name = "\improper Cargo"
+	desc = "Move freight."
+	icon_state = "post"
+
+/obj/structure/sign/detective
+	name = "\improper Detective"
+	desc = "Despite the technological novelties, this job is still important."
+	icon_state = "det"
+
+/obj/structure/sign/dormitories
+	name = "\improper Dormitories"
+	desc = "You sleep here."
+	icon_state = "bed"
+
+/obj/structure/sign/library
+	name = "\improper Library"
+	desc = "You read here."
+	icon_state = "lib"
+
+/obj/structure/sign/nt_enemy
+	name = "Anti-NT Poster"
+	desc = "Know your enemy."
+	icon_state = "poster_nt_treason"
+
+/obj/structure/sign/nt_answers
+	name = "Answers Poster"
+	desc = "Know your enemy."
+	icon_state = "poster_nt_answers"
+
+/obj/structure/sign/nt_espionage
+	name = "Espionage Poster"
+	desc = "Know your enemy."
+	icon_state = "poster_nt_espionage"
+
+/obj/structure/sign/compromise
+	name = "Compromise Poster"
+	desc = "Know your enemy."
+	icon_state = "poster_compromise"
+
+/obj/structure/sign/lana
+	name = "Lana Poster"
+	desc = "Huh?"
+	icon_state = "lana"
+
+/obj/structure/sign/obscene
+	name = "Obscene Poster"
+	desc = "Huh? Damn."
+	icon_state = "poster_obscene"
+
+/obj/structure/sign/enoch
+	name = "The King"
+	desc = "Your mind boggles at the sight of his excellence."
+	icon_state = "person_enoch"
+
+/obj/structure/sign/hippocrates
+	name = "Hippocrates"
+	desc = "Do no harm."
+	icon_state = "hippocrates"
+
+/obj/structure/sign/flag
+	var/ripped = FALSE
+
+/obj/structure/sign/flag/attack_hand(mob/user as mob)
+	if (!ripped)
+		playsound(loc, 'sound/items/poster_ripped.ogg', 100, TRUE)
+		for (var/i = FALSE to 3)
+			if (do_after(user, 10))
+				playsound(loc, 'sound/items/poster_ripped.ogg', 100, TRUE)
+			else
+				return
+		visible_message("<span class='warning'>[user] rips [src]!</span>" )
+		qdel(src)
+
+/obj/structure/sign/flag/soviet
+	name = "Soviet flag"
+	desc = "Soyuz nerushimiy..."
+	icon_state = "flag_soviet"
+
+/obj/structure/sign/flag/russia
+	name = "Russian flag"
+	desc = "A Russian national flag."
+	icon_state = "flag_russia"
+
+/obj/structure/sign/flag/un
+	name = "UN flag"
+	desc = "UNinvolved in peace."
+	icon_state = "flag_un"
+
+/obj/structure/sign/flag/chechen
+	name = "Separatist flag"
+	desc = "Smells like terrorism."
+	icon_state = "flag_chechen"
+
+/obj/structure/sign/flag/kingdom
+	name = "Kingdom's flag"
+	desc = "Verina bless us."
+	icon_state = "flag_kingdom"
