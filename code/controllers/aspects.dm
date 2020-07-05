@@ -177,10 +177,6 @@
 		L.on = L.powered()
 		L.update_icon()
 
-/datum/round_event/randomnames
-	id = "randomnames"
-	event_message = "Who would have thought that the people you had tea with just before you arrived at the station were completely unfamiliar to you. Just like you for them."
-
 /datum/round_event/pussy_riot
 	id = "pussyriot"
 	event_message = "Today the Security Department is acting especially gently. This tenderness is expressed by the general attitude of the department...  As well as its equipment."
@@ -207,7 +203,6 @@
 			W.color = COLOR_LIGHT_PINK
 		for(var/obj/machinery/door/airlock/A in S)
 			A.color = COLOR_LIGHT_PINK
-
 
 /datum/round_event/wherecams
 	id = "wherecams"

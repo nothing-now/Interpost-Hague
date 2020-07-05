@@ -3,8 +3,8 @@
 	if(!ishuman(usr))
 		return
 
-	var/mob/living/carbon/human/C = usr
 	playsound(usr, 'sound/effects/ui_toggle.ogg', 50, 0, 1)
+	var/mob/living/carbon/human/C = usr
 	if(!C.combat_mode)
 		C.combat_mode = 1
 		C.combat_icon.icon_state = "combat1"

@@ -854,7 +854,7 @@
 "qv" = (/obj/structure/sink{dir = 1; pixel_y = 16},/obj/structure/mirror{pixel_y = 32},/turf/simulated/floor/tiled/white,/area/security/meeting{name = "\improper Security Living Area"})
 "qw" = (/obj/structure/flora/pottedplant/dead,/obj/effect/floor_decal/newcorner/red/corner{icon_state = "red-corner"; dir = 4},/turf/simulated/floor/tiled,/area/security/main)
 "qx" = (/obj/machinery/light,/turf/simulated/floor/tiled/white,/area/security/meeting{name = "\improper Security Living Area"})
-"qy" = (/obj/machinery/light{dir = 1},/obj/effect/floor_decal/newcorner/red{tag = "icon-red (NORTH)"; icon_state = "red"; dir = 1},/obj/structure/bed/chair/bunker/metal,/turf/simulated/floor/tiled,/area/security/main)
+"qy" = (/obj/machinery/light{dir = 1},/obj/effect/floor_decal/newcorner/red{tag = "icon-red (NORTH)"; icon_state = "red"; dir = 1},/obj/structure/bed/chair/bunker/metal,/obj/structure/sign/detective{pixel_y = 32},/turf/simulated/floor/tiled,/area/security/main)
 "qz" = (/obj/item/weapon/soap/deluxe,/turf/simulated/floor/tiled/white,/area/security/meeting{name = "\improper Security Living Area"})
 "qA" = (/turf/simulated/wall/r_wall,/area/security/armoury)
 "qB" = (/obj/machinery/door/firedoor,/obj/effect/floor_decal/newcorner/red/solid,/obj/structure/cable{d1 = 1; d2 = 2; icon_state = "1-2"},/obj/machinery/door/airlock/highsecurity{name = "Armory"; req_access = list(3)},/turf/simulated/floor/tiled/bunker/black,/area/security/armoury)

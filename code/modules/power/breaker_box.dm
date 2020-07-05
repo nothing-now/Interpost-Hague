@@ -130,4 +130,5 @@
 			update_locked = 0
 
 /obj/machinery/power/breakerbox/Process()
+	playsound(src, 'sound/effects/generatorhum.ogg', 20, 0)
 	return 1

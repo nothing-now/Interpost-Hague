@@ -75,6 +75,7 @@
 	use_power = POWER_USE_OFF
 	req_access = list(access_engine_equip)
 	clicksound = "switch"
+	var/needs_powerdown_sound
 	var/area/area
 	var/areastring = null
 	var/obj/item/weapon/cell/cell
@@ -284,30 +285,30 @@
 		status_overlays_lighting.len = 5
 		status_overlays_environ.len = 5
 
-		status_overlays_lock[1] = overlay_image(icon, "apcox-0", plane = EFFECTS_ABOVE_LIGHTING_PLANE, layer = ABOVE_LIGHTING_LAYER)    // 0=blue 1=red
-		status_overlays_lock[2] = overlay_image(icon, "apcox-1", plane = EFFECTS_ABOVE_LIGHTING_PLANE, layer = ABOVE_LIGHTING_LAYER)
+		status_overlays_lock[1] = overlay_image(icon, "apcox-0", layer = ABOVE_LIGHTING_LAYER)    // 0=blue 1=red
+		status_overlays_lock[2] = overlay_image(icon, "apcox-1", layer = ABOVE_LIGHTING_LAYER)
 
-		status_overlays_charging[1] = overlay_image(icon, "apco3-0", plane = EFFECTS_ABOVE_LIGHTING_PLANE, layer = ABOVE_LIGHTING_LAYER)
-		status_overlays_charging[2] = overlay_image(icon, "apco3-1", plane = EFFECTS_ABOVE_LIGHTING_PLANE, layer = ABOVE_LIGHTING_LAYER)
-		status_overlays_charging[3] = overlay_image(icon, "apco3-2", plane = EFFECTS_ABOVE_LIGHTING_PLANE, layer = ABOVE_LIGHTING_LAYER)
+		status_overlays_charging[1] = overlay_image(icon, "apco3-0", layer = ABOVE_LIGHTING_LAYER)
+		status_overlays_charging[2] = overlay_image(icon, "apco3-1", layer = ABOVE_LIGHTING_LAYER)
+		status_overlays_charging[3] = overlay_image(icon, "apco3-2", layer = ABOVE_LIGHTING_LAYER)
 
-		status_overlays_equipment[POWERCHAN_OFF + 1] = overlay_image(icon, "apco0-0", plane = EFFECTS_ABOVE_LIGHTING_PLANE, layer = ABOVE_LIGHTING_LAYER)
-		status_overlays_equipment[POWERCHAN_OFF_TEMP + 1] = overlay_image(icon, "apco0-1", plane = EFFECTS_ABOVE_LIGHTING_PLANE, layer = ABOVE_LIGHTING_LAYER)
-		status_overlays_equipment[POWERCHAN_OFF_AUTO + 1] = overlay_image(icon, "apco0-1", plane = EFFECTS_ABOVE_LIGHTING_PLANE, layer = ABOVE_LIGHTING_LAYER)
-		status_overlays_equipment[POWERCHAN_ON + 1] = overlay_image(icon, "apco0-2", plane = EFFECTS_ABOVE_LIGHTING_PLANE, layer = ABOVE_LIGHTING_LAYER)
-		status_overlays_equipment[POWERCHAN_ON_AUTO + 1] = overlay_image(icon, "apco0-3", plane = EFFECTS_ABOVE_LIGHTING_PLANE, layer = ABOVE_LIGHTING_LAYER)
+		status_overlays_equipment[POWERCHAN_OFF + 1] = overlay_image(icon, "apco0-0", layer = ABOVE_LIGHTING_LAYER)
+		status_overlays_equipment[POWERCHAN_OFF_TEMP + 1] = overlay_image(icon, "apco0-1", layer = ABOVE_LIGHTING_LAYER)
+		status_overlays_equipment[POWERCHAN_OFF_AUTO + 1] = overlay_image(icon, "apco0-1", layer = ABOVE_LIGHTING_LAYER)
+		status_overlays_equipment[POWERCHAN_ON + 1] = overlay_image(icon, "apco0-2", layer = ABOVE_LIGHTING_LAYER)
+		status_overlays_equipment[POWERCHAN_ON_AUTO + 1] = overlay_image(icon, "apco0-3", layer = ABOVE_LIGHTING_LAYER)
 
-		status_overlays_lighting[POWERCHAN_OFF + 1] = overlay_image(icon, "apco1-0", plane = EFFECTS_ABOVE_LIGHTING_PLANE, layer = ABOVE_LIGHTING_LAYER)
-		status_overlays_lighting[POWERCHAN_OFF_TEMP + 1] = overlay_image(icon, "apco1-1", plane = EFFECTS_ABOVE_LIGHTING_PLANE, layer = ABOVE_LIGHTING_LAYER)
-		status_overlays_lighting[POWERCHAN_OFF_AUTO + 1] = overlay_image(icon, "apco1-1", plane = EFFECTS_ABOVE_LIGHTING_PLANE, layer = ABOVE_LIGHTING_LAYER)
-		status_overlays_lighting[POWERCHAN_ON + 1] = overlay_image(icon, "apco1-2", plane = EFFECTS_ABOVE_LIGHTING_PLANE, layer = ABOVE_LIGHTING_LAYER)
-		status_overlays_lighting[POWERCHAN_ON_AUTO + 1] = overlay_image(icon, "apco1-3", plane = EFFECTS_ABOVE_LIGHTING_PLANE, layer = ABOVE_LIGHTING_LAYER)
+		status_overlays_lighting[POWERCHAN_OFF + 1] = overlay_image(icon, "apco1-0", layer = ABOVE_LIGHTING_LAYER)
+		status_overlays_lighting[POWERCHAN_OFF_TEMP + 1] = overlay_image(icon, "apco1-1", layer = ABOVE_LIGHTING_LAYER)
+		status_overlays_lighting[POWERCHAN_OFF_AUTO + 1] = overlay_image(icon, "apco1-1", layer = ABOVE_LIGHTING_LAYER)
+		status_overlays_lighting[POWERCHAN_ON + 1] = overlay_image(icon, "apco1-2", layer = ABOVE_LIGHTING_LAYER)
+		status_overlays_lighting[POWERCHAN_ON_AUTO + 1] = overlay_image(icon, "apco1-3", layer = ABOVE_LIGHTING_LAYER)
 
-		status_overlays_environ[POWERCHAN_OFF + 1] = overlay_image(icon, "apco2-0", plane = EFFECTS_ABOVE_LIGHTING_PLANE, layer = ABOVE_LIGHTING_LAYER)
-		status_overlays_environ[POWERCHAN_OFF_TEMP + 1] = overlay_image(icon, "apco2-1", plane = EFFECTS_ABOVE_LIGHTING_PLANE, layer = ABOVE_LIGHTING_LAYER)
-		status_overlays_environ[POWERCHAN_OFF_AUTO + 1] = overlay_image(icon, "apco2-1", plane = EFFECTS_ABOVE_LIGHTING_PLANE, layer = ABOVE_LIGHTING_LAYER)
-		status_overlays_environ[POWERCHAN_ON + 1] = overlay_image(icon, "apco2-2", plane = EFFECTS_ABOVE_LIGHTING_PLANE, layer = ABOVE_LIGHTING_LAYER)
-		status_overlays_environ[POWERCHAN_ON_AUTO + 1] = overlay_image(icon, "apco2-3", plane = EFFECTS_ABOVE_LIGHTING_PLANE, layer = ABOVE_LIGHTING_LAYER)
+		status_overlays_environ[POWERCHAN_OFF + 1] = overlay_image(icon, "apco2-0", layer = ABOVE_LIGHTING_LAYER)
+		status_overlays_environ[POWERCHAN_OFF_TEMP + 1] = overlay_image(icon, "apco2-1", layer = ABOVE_LIGHTING_LAYER)
+		status_overlays_environ[POWERCHAN_OFF_AUTO + 1] = overlay_image(icon, "apco2-1", layer = ABOVE_LIGHTING_LAYER)
+		status_overlays_environ[POWERCHAN_ON + 1] = overlay_image(icon, "apco2-2", layer = ABOVE_LIGHTING_LAYER)
+		status_overlays_environ[POWERCHAN_ON_AUTO + 1] = overlay_image(icon, "apco2-3", layer = ABOVE_LIGHTING_LAYER)
 
 	var/update = check_updates() 		//returns 0 if no need to update icons.
 						// 1 if we need to update the icon_state
@@ -838,6 +839,13 @@
 		area.power_environ = 0
 
 	area.power_change()
+
+	if(!cell || cell.charge <= 0)
+		if(needs_powerdown_sound == TRUE)
+			playsound(src, 'sound/machines/apc_nopower.ogg', 75, 0)
+			needs_powerdown_sound = FALSE
+		else
+			needs_powerdown_sound = TRUE
 
 /obj/machinery/power/apc/proc/isWireCut(var/wireIndex)
 	return wires.IsIndexCut(wireIndex)

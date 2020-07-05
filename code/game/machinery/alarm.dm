@@ -291,20 +291,19 @@
 	if(!istype(location))
 		return 0
 
-	if(breach_detection	== 0)
+	if(breach_detection == 0)
 		return 0
 
 	var/datum/gas_mixture/environment = location.return_air()
 	var/environment_pressure = environment.return_pressure()
 	var/pressure_levels = TLV["pressure"]
 
-	if (environment_pressure <= pressure_levels[1])		//low pressures
+	if (environment_pressure <= pressure_levels[1] && environment_pressure <= pressure_levels[3]) //low OR high pressures
 		if (!(mode == AALARM_MODE_PANIC || mode == AALARM_MODE_CYCLE))
 			playsound(src.loc, 'sound/machines/airalarm.ogg', 25, 0, 4)
 			return 1
 
 	return 0
-
 
 /obj/machinery/alarm/proc/master_is_operating()
 	return alarm_area.master_air_alarm && !(alarm_area.master_air_alarm.stat & (NOPOWER|BROKEN))
@@ -825,7 +824,7 @@
 			else if(isCrowbar(W))
 				to_chat(user, "You start prying out the circuit.")
 				playsound(src.loc, 'sound/items/Crowbar.ogg', 50, 1)
-				if(do_after(user,20))
+				if(do_after(user,20) && buildstage == 1)
 					to_chat(user, "You pry out the circuit!")
 					var/obj/item/weapon/airalarm_electronics/circuit = new /obj/item/weapon/airalarm_electronics()
 					circuit.dropInto(user.loc)
@@ -887,11 +886,16 @@ FIRE ALARM
 	var/wiresexposed = 0
 	var/buildstage = 2 // 2 = complete, 1 = no wires,  0 = circuit gone
 	var/seclevel
+	var/sound_state = 0
 
 /obj/machinery/firealarm/examine(mob/user)
 	. = ..(user)
 	var/decl/security_state/security_state = decls_repository.get_decl(GLOB.using_map.security_state)
 	to_chat(user, "The current alert level is [security_state.current_security_level.name].")
+
+/obj/machinery/firealarm/Initialize()
+	. = ..()
+	update_icon()
 
 /obj/machinery/firealarm/update_icon()
 	overlays.Cut()
@@ -914,7 +918,7 @@ FIRE ALARM
 		icon_state = "firep"
 		set_light(0)
 	else
-		if(!src.detecting)
+		if(!detecting)
 			icon_state = "fire1"
 			set_light(l_range = 4, l_power = 2, l_color = COLOR_RED)
 		else if(z in GLOB.using_map.contact_levels)
@@ -923,7 +927,6 @@ FIRE ALARM
 			var/decl/security_level/sl = security_state.current_security_level
 
 			set_light(sl.light_range, sl.light_power, sl.light_color_alarm)
-			overlays += overlay_image(sl.icon, sl.overlay_alarm, plane = EFFECTS_ABOVE_LIGHTING_PLANE, layer = ABOVE_LIGHTING_LAYER)
 
 /obj/machinery/firealarm/fire_act(datum/gas_mixture/air, temperature, volume)
 	if(src.detecting)
@@ -1013,6 +1016,12 @@ FIRE ALARM
 		src.updateDialog()
 	last_process = world.timeofday
 
+	if(sound_state && sound_state <= world.time)
+		playsound(src.loc, 'sound/machines/fire_alarm.ogg', 20, 0)
+		sound_state = world.time + 30 //roughly 3 seconds
+
+	last_process = world.timeofday
+
 	if(locate(/obj/fire) in loc)
 		alarm()
 
@@ -1094,6 +1103,7 @@ FIRE ALARM
 	var/area/area = get_area(src)
 	for(var/obj/machinery/firealarm/FA in area)
 		fire_alarm.clearAlarm(loc, FA)
+		FA.sound_state = 0
 	update_icon()
 	return
 
@@ -1104,7 +1114,8 @@ FIRE ALARM
 	for(var/obj/machinery/firealarm/FA in area)
 		fire_alarm.triggerAlarm(loc, FA, duration)
 	update_icon()
-	//playsound(src.loc, 'sound/ambience/signal.ogg', 75, 0)
+	sound_state = 1
+	//playsound(src.loc, 'sound/machines/fire_alarm.ogg', 75, 0)
 	return
 
 /obj/machinery/firealarm/New(loc, dir, atom/frame)
