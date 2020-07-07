@@ -443,6 +443,10 @@ var/list/floor_decals = list()
 	name = "plaque"
 	icon_state = "plaque"
 
+/obj/effect/floor_decal/tarvos
+	name = "Tarvos Enterprise"
+	icon_state = "tarvos"
+
 /obj/effect/floor_decal/asteroid
 	name = "random asteroid rubble"
 	icon_state = "asteroid0"

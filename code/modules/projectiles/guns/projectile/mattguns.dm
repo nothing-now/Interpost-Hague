@@ -41,6 +41,17 @@
 
 	toggle_scope(usr, 2.0)
 */
+/obj/item/weapon/gun/projectile/shotgun/pump/boltaction/madsen
+	name = "Masonion"
+	desc = "A finer model of a bolt action. Seems to be pretty clean."
+	icon_state = "madsen"
+	item_state = "mosin2"
+	wielded_item_state = "mosin2-wielded"
+	jam_chance = 1
+	//pumpsound = 'sound/weapons/newrifle_reload.ogg'
+	fire_sound = "brifle"
+	caliber = "763"
+	ammo_type = /obj/item/ammo_casing/brifle
 
 
 //AMMO
