@@ -31,6 +31,20 @@
 		list(mode_name="lethal", projectile_type=/obj/item/projectile/beam/smalllaser, modifystate="smallgunkill"),
 		)
 
+/obj/item/weapon/gun/energy/gun/gamma
+	name = "T-Gamma laser rifle"
+	desc = "A very bulky old laser rifle used by companies around the world. This heavy laser rifle seems to have a lot of scratches on it."
+	icon_state = "gamma"
+	max_shots = 20
+	w_class = ITEM_SIZE_NORMAL
+	force = 10 //it's the size of a car key, what did you expect?
+
+	firemodes = list(
+		list(mode_name="stun", projectile_type=/obj/item/projectile/beam/stun),
+		list(mode_name="shock", projectile_type=/obj/item/projectile/beam/stun/shock),
+		list(mode_name="lethal", projectile_type=/obj/effect/projectile/laser/heavy),
+		)
+
 /obj/item/weapon/gun/energy/gun/mounted
 	name = "mounted energy gun"
 	self_recharge = 1
