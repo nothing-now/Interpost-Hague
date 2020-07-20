@@ -230,7 +230,7 @@ var/list/mob/living/forced_ambiance_list = new
 	if(forced_ambience)
 		if(forced_ambience.len)
 			forced_ambiance_list |= L
-			L.playsound_local(T,sound(forced_ambience), repeat = 1, wait = 0, volume = 75, channel = 2)) // volume 75 so it oversounds the hum.
+			L.playsound_local(T,sound(pick(forced_ambience), repeat = 1, wait = 0, volume = 70, channel = 2)) // volume 75 so it oversounds the hum.
 
 	else if(hum)
 		if(!L.client.ambience_playing)
