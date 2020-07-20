@@ -20,7 +20,7 @@
 	icon = 'icons/obj/railing.dmi'
 	density = 1
 	throwpass = 1
-	layer = OBJ_LAYER
+	layer = ABOVE_HUMAN_LAYER
 	anchored = 1
 	atom_flags = ATOM_FLAG_CHECKS_BORDER
 	atom_flags = ATOM_FLAG_CLIMBABLE

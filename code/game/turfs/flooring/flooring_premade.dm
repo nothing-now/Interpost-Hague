@@ -176,6 +176,18 @@
 	icon_state = "steel2"
 	initial_flooring = /decl/flooring/tiling/dark
 
+/turf/simulated/floor/tiled/bright
+	name = "steel floor"
+	icon = 'icons/turf/flooring/tiles.dmi'
+	icon_state = "steel3"
+	initial_flooring = /decl/flooring/tiling/bright
+
+/turf/simulated/floor/tiled/verybright
+	name = "steel floor"
+	icon = 'icons/turf/flooring/tiles.dmi'
+	icon_state = "steel4"
+	initial_flooring = /decl/flooring/tiling/verybright
+
 /turf/simulated/floor/tiled/bar
 	name = "bar floor"
 	icon = 'icons/turf/flooring/tiles.dmi'
