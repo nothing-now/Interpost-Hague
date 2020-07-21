@@ -424,10 +424,10 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 	H.set_fullscreen(H.druggy, "high", /obj/screen/fullscreen/high)
 	if(H.druggy)
 		H.add_client_color(/datum/client_color/oversaturated)
-		H.set_all_blur_drugs_extreme()
+		H.set_all_blur_drugs()
 	else
 		H.remove_client_color(/datum/client_color/oversaturated)
-		H.remove_all_blur_drugs_extreme()
+		H.remove_all_blur_drugs()
 
 	for(var/overlay in H.equipment_overlays)
 		H.client.screen |= overlay

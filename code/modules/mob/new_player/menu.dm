@@ -17,9 +17,10 @@
 	using.SetName("Setup Character")
 	adding += using
 
-	using = new /obj/screen/new_player/selection/observe()
-	using.SetName("Observe")
-	adding += using
+	if(check_rights(R_ADMIN))
+		using = new /obj/screen/new_player/selection/observe()
+		using.SetName("Observe")
+		adding += using
 
 	mymob.client.screen = list()
 	mymob.client.screen += adding

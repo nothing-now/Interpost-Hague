@@ -296,6 +296,7 @@
 	selection_color = "#382238"
 	department = "Medical"
 	department_flag = MED
+	sex_lock = MALE
 
 	total_positions = 1
 	spawn_positions = 1
