@@ -244,10 +244,10 @@ var/list/mob/living/forced_ambiance_list = new
 			sound_to(L, sound(null, channel = 2))
 
 
-	if(src.ambience.len && prob(75))
-		if((world.time >= L.client.played + 3 MINUTES))
+	if(src.ambience.len && prob(80))
+		if((world.time >= L.client.played + 2 MINUTES))
 			var/sound = pick(ambience)
-			L.playsound_local(T, sound(sound, repeat = 0, wait = 0, volume = 15, channel = 1))
+			L.playsound_local(T, sound(sound, repeat = 0, wait = 0, volume = 25, channel = 1))
 			L.client.played = world.time
 
 /area/proc/gravitychange(var/gravitystate = 0)
