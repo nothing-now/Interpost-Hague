@@ -5,6 +5,7 @@
 	mouse_opacity = 0
 	blend_mode = BLEND_MULTIPLY
 	plane = SKYBOX_PLANE
+	appearance_flags = TILE_BOUND
 //	invisibility = 101
 	anchored = 1
 	var/mob/owner

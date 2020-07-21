@@ -92,6 +92,9 @@
 	icon = 'icons/obj/doors/doorchem.dmi'
 	assembly_type = /obj/structure/door_assembly/door_assembly_chem
 
+	open_sound_powered = list('sound/machines/med_door1.ogg','sound/machines/med_door2.ogg')
+	close_sound_powered = list('sound/machines/med_door1c.ogg','sound/machines/med_door2c.ogg')
+
 /obj/machinery/door/airlock/cone
 	name = "Airlock"
 	icon = 'icons/obj/doors/Doormetalone.dmi'
@@ -116,6 +119,9 @@
 	name = "Airlock"
 	icon = 'icons/obj/doors/Doormed.dmi'
 	assembly_type = /obj/structure/door_assembly/door_assembly_med
+
+	open_sound_powered = list('sound/machines/med_door1.ogg','sound/machines/med_door2.ogg')
+	close_sound_powered = list('sound/machines/med_door1c.ogg','sound/machines/med_door2c.ogg')
 
 /obj/machinery/door/airlock/virology
 	name = "Airlock"
@@ -146,6 +152,9 @@
 	name = "Maintenance Hatch"
 	icon = 'icons/obj/doors/Doormaint_med.dmi'
 	assembly_type = /obj/structure/door_assembly/door_assembly_maint_med
+
+	open_sound_powered = list('sound/machines/med_door1.ogg','sound/machines/med_door2.ogg')
+	close_sound_powered = list('sound/machines/med_door1c.ogg','sound/machines/med_door2c.ogg')
 
 /obj/machinery/door/airlock/maintenance_rnd
 	name = "Maintenance Hatch"
@@ -381,6 +390,9 @@
 	assembly_type = /obj/structure/door_assembly/door_assembly_med
 	glass = 1
 
+	open_sound_powered = list('sound/machines/med_door1.ogg','sound/machines/med_door2.ogg')
+	close_sound_powered = list('sound/machines/med_door1c.ogg','sound/machines/med_door2c.ogg')
+
 /obj/machinery/door/airlock/glass_virology
 	name = "Maintenance Hatch"
 	icon = 'icons/obj/doors/Doorviroglass.dmi'
@@ -390,6 +402,9 @@
 	opacity = 0
 	assembly_type = /obj/structure/door_assembly/door_assembly_viro
 	glass = 1
+
+	open_sound_powered = list('sound/machines/med_door1.ogg','sound/machines/med_door2.ogg')
+	close_sound_powered = list('sound/machines/med_door1c.ogg','sound/machines/med_door2c.ogg')
 
 /obj/machinery/door/airlock/glass_weap
 	name = "Maintenance Hatch"

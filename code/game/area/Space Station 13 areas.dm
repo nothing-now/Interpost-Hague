@@ -102,6 +102,7 @@ area/space/atmosalert()
 	icon_state = "centcom"
 	requires_power = 0
 	dynamic_lighting = 1
+	ambience = list('sound/ambience/1_ship_1.ogg', 'sound/ambience/1_ship_2.ogg', 'sound/ambience/1_ship_3.ogg', 'sound/ambience/1_ship_4.ogg', 'sound/ambience/1_ship_5.ogg', 'sound/ambience/1_ship_6.ogg', 'sound/ambience/1_ship_7.ogg', 'sound/ambience/1_ship_8.ogg')
 
 /area/centcom/holding
 	name = "Holding Facility"
@@ -115,6 +116,7 @@ area/space/atmosalert()
 
 /area/hallway
 	name = "hallway"
+	ambience = list('sound/ambience/1_ship_1.ogg', 'sound/ambience/1_ship_2.ogg', 'sound/ambience/1_ship_3.ogg', 'sound/ambience/1_ship_4.ogg', 'sound/ambience/1_ship_5.ogg', 'sound/ambience/1_ship_6.ogg', 'sound/ambience/1_ship_7.ogg', 'sound/ambience/1_ship_8.ogg')
 
 /area/medical/virology
 	name = "Virology"
@@ -123,6 +125,12 @@ area/space/atmosalert()
 /area/medical/virologyaccess
 	name = "Virology Access"
 	icon_state = "virology"
+
+/area/security
+	name = "Security"
+	icon_state = "brig"
+	forced_ambience = 'sound/ambience/orbital_deck1.ogg'
+	ambience = list('sound/ambience/1_ship_1.ogg', 'sound/ambience/1_ship_2.ogg', 'sound/ambience/1_ship_3.ogg', 'sound/ambience/1_ship_4.ogg', 'sound/ambience/1_ship_5.ogg', 'sound/ambience/1_ship_6.ogg', 'sound/ambience/1_ship_7.ogg', 'sound/ambience/1_ship_8.ogg')
 
 /area/security/brig
 	name = "Security - Brig"
@@ -136,6 +144,7 @@ area/space/atmosalert()
 	area_flags = AREA_FLAG_RAD_SHIELDED
 	sound_env = TUNNEL_ENCLOSED
 	turf_initializer = /decl/turf_initializer/maintenance
+	ambience = list('sound/ambience/1_ship_1.ogg', 'sound/ambience/1_ship_2.ogg', 'sound/ambience/1_ship_3.ogg', 'sound/ambience/1_ship_4.ogg', 'sound/ambience/1_ship_5.ogg', 'sound/ambience/1_ship_6.ogg', 'sound/ambience/1_ship_7.ogg', 'sound/ambience/1_ship_8.ogg')
 
 /area/rnd/xenobiology
 	name = "Xenobiology Lab"

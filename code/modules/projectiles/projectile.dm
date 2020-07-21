@@ -1,5 +1,5 @@
 //Amount of time in deciseconds to wait before deleting all drawn segments of a projectile.
-#define SEGMENT_DELETION_DELAY 8
+#define SEGMENT_DELETION_DELAY 4
 
 /obj/item/projectile
 	name = "projectile"
@@ -80,8 +80,6 @@
 	. = ..()
 
 /obj/item/projectile/Destroy()
-	spawn(step_delay)
-		QDEL_NULL_LIST(segments)
 	return ..()
 
 /obj/item/projectile/forceMove()

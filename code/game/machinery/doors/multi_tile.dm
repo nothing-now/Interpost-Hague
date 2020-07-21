@@ -26,3 +26,6 @@
 	opacity = 0
 	glass = 1
 	assembly_type = /obj/structure/door_assembly/multi_tile
+
+	open_sound_powered = 'sound/machines/maint_open.ogg'
+	close_sound_powered = 'sound/machines/maint_close.ogg'
