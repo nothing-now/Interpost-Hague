@@ -88,13 +88,7 @@
 	#include "../away/icarus/icarus.dm"
 	#include "../away/errant_pisces/errant_pisces.dm"
 
-	#include "../../code/modules/lobby_music/chasing_time.dm"
-	#include "../../code/modules/lobby_music/Torch.dm"
-	#include "../../code/modules/lobby_music/human.dm"
-	#include "../../code/modules/lobby_music/marhaba.dm"
-	#include "../../code/modules/lobby_music/treacherous_voyage.dm"
-	#include "../../code/modules/lobby_music/comet_haley.dm"
-	#include "../../code/modules/lobby_music/lysendraa.dm"
+	#include "../../code/modules/lobby_music/generic_songs.dm"
 
 	#define using_map_DATUM /datum/map/torch
 

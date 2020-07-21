@@ -31,11 +31,9 @@
 														list(
 															'sound/ambience/ambispace.ogg',
 															'sound/music/main.ogg',
-															'sound/music/space.ogg',
 															'sound/music/traitor.ogg',
 															)
 														),
-		"picnicarea"       = new/datum/holodeck_program(/area/holodeck/source_picnicarea, list('sound/music/title2.ogg')),
 		"theatre"          = new/datum/holodeck_program(/area/holodeck/source_theatre),
 		"meetinghall"      = new/datum/holodeck_program(/area/holodeck/source_meetinghall),
 		"courtroom"        = new/datum/holodeck_program(/area/holodeck/source_courtroom, list('sound/music/traitor.ogg')),
