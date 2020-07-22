@@ -275,7 +275,20 @@ var/list/flooring_types
 	icon_base = "polar"
 	has_damage_range = null
 	flags = TURF_REMOVE_CROWBAR
-	build_type = /obj/item/stack/tile/polar
+
+/decl/flooring/tiling/bunker/polar_white
+	name = "floor"
+	desc = "Don't slip."
+	icon_base = "polar_white"
+	has_damage_range = null
+	flags = TURF_REMOVE_CROWBAR
+
+/decl/flooring/tiling/bunker/polar_circuit
+	name = "floor"
+	desc = "Don't slip."
+	icon_base = "polar_circuit"
+	has_damage_range = null
+	flags = TURF_REMOVE_CROWBAR
 
 /decl/flooring/tiling/bar
 	name = "floor"
