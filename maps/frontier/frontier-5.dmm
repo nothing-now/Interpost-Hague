@@ -174,7 +174,7 @@
 "dr" = (/obj/structure/grille,/obj/structure/window/reinforced{dir = 4},/obj/structure/window/reinforced{dir = 8},/turf/simulated/floor/plating,/area/syndicate_mothership)
 "ds" = (/obj/structure/bed,/turf/simulated/floor/tiled,/area/syndicate_mothership)
 "dt" = (/obj/item/weapon/folder{pixel_y = 2},/obj/structure/table/glass,/turf/simulated/floor/lino,/area/syndicate_mothership)
-"du" = (/obj/structure/table/rack,/obj/effect/floor_decal/spline/plain{dir = 1},/obj/item/clothing/suit/storage/vest/tactical,/turf/simulated/floor/tiled/bunker/yellow,/area/syndicate_mothership)
+"du" = (/obj/structure/table/rack,/obj/effect/floor_decal/spline/plain{dir = 1},/turf/simulated/floor/tiled/bunker/yellow,/area/syndicate_mothership)
 "dv" = (/obj/machinery/vending/cola{name = "hacked Robust Softdrinks"; prices = list()},/obj/effect/floor_decal/industrial/warning{icon_state = "warning"; dir = 8},/turf/simulated/floor/tiled/bunker,/area/syndicate_mothership)
 "dw" = (/obj/item/device/radio/intercom/syndicate{dir = 4; pixel_x = -22},/turf/simulated/floor/tiled/bunker/yellow,/area/syndicate_station/start)
 "dx" = (/turf/simulated/floor/tiled/bunker/yellow,/area/syndicate_station/start)

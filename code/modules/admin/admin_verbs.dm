@@ -948,3 +948,14 @@ var/list/admin_verbs_mentor = list(
 	world.SetConfig("APP/admin", ckey, "role=admin")
 	winset(src, "browserwindow", "is-visible=true")
 	send_link(src, "?debug=profile")
+
+/client/proc/remove_dead_bodies()
+	set name = "Remove Dead Bodies"
+	set category = "Special"
+
+	if (!check_rights(R_ADMIN))
+		return
+	var/count=0
+
+	message_admins("[key_name_admin(usr)] removed all the dead bodies ([count] total).")
+	return
