@@ -219,14 +219,14 @@
 	var/list/P = params2list(params)
 	var/icon_x = text2num(P["icon-x"])
 	var/icon_y = text2num(P["icon-y"])
-	intent = I_DISARM
+	intent = I_GRAB
 	if(icon_x <= world.icon_size/2)
 		if(icon_y <= world.icon_size/2)
-			intent = I_HURT
-		else
 			intent = I_HELP
+		else
+			intent = I_HURT
 	else if(icon_y <= world.icon_size/2)
-		intent = I_GRAB
+		intent = I_DISARM
 	update_icon()
 	usr.a_intent = intent
 
