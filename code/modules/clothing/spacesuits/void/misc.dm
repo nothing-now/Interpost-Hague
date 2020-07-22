@@ -12,3 +12,17 @@
 /obj/item/clothing/suit/space/void/swat/New()
 	..()
 	slowdown_per_slot[slot_wear_suit] = 1
+
+
+/obj/item/clothing/suit/space/void/glob
+	name = "GLOB space suit"
+	desc = "A very bulky and heavy space suit. Mostly used in dangerous environments."
+	icon_state = "glob_white"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS|FEET|ARMS
+	armor = list(melee = 70, bullet = 40, laser = 0,energy = 25, bomb = 30, bio = 100, rad = 100)
+	flags_inv = HIDESHOES|HIDEJUMPSUIT
+	siemens_coefficient = 0.6
+
+/obj/item/clothing/suit/space/void/swat/New()
+	..()
+	slowdown_per_slot[slot_wear_suit] = 3
