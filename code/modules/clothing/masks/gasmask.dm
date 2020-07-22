@@ -61,6 +61,7 @@
 	name = "\improper SWAT mask"
 	desc = "A close-fitting tactical mask that can be connected to an air supply."
 	icon_state = "swat"
+	item_state = "swat"
 	siemens_coefficient = 0.7
 	body_parts_covered = FACE|EYES
 	armor = list(melee = 15, bullet = 15, laser = 15, energy = 0, bomb = 0, bio = 75, rad = 0)
@@ -75,6 +76,7 @@
 	name = "tactical mask"
 	desc = "A close-fitting tactical mask that can be connected to an air supply."
 	icon_state = "swat"
+	item_state = "swat"
 	siemens_coefficient = 0.7
 	armor = list(melee = 15, bullet = 15, laser = 15, energy = 0, bomb = 0, bio = 75, rad = 0)
 
