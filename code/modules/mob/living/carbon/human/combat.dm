@@ -3,7 +3,7 @@
 	if(!ishuman(usr))
 		return
 
-	playsound(usr, 'sound/effects/ui_toggle.ogg', 50, 0, 1)
+	playsound(src, 'sound/effects/ui_toggle.ogg', 50, 0, 1)
 	var/mob/living/carbon/human/C = usr
 	if(!C.combat_mode)
 		C.combat_mode = 1
@@ -69,14 +69,13 @@
 	visible_message("<b><big>[src.name] dodges out of the way!!</big></b>")//send a message
 	//be on our way
 
-
 /mob/proc/surrender()//Surrending. I need to put this in a different file.
 	if(!incapacitated())
 		//Stun(5)  // THIS WAS NOT FUNNY AND I DID NOT LAUGH
 		Weaken(10) // This is enabled however to give people an incentive not to fake surrender
 		visible_message("<b>[src] surrenders!</b>")
 		playsound(src, 'sound/effects/surrender.ogg', 50, 1)
-		var/atom/movable/overlay/animation = new /atom/movable/overlay( loc )
+		var/atom/movable/overlay/animation = new /atom/movable/overlay(loc)
 		animation.icon_state = "blank"
 		animation.icon = 'icons/mob/screen1.dmi'
 		animation.master = src
@@ -90,7 +89,7 @@
 			resting = 0
 			rest.icon_state = "rest0"
 		return
-
 	else
 		resting = 1
+		playsound(usr, 'sound/effects/bodyfall1.ogg', 50, 1)
 		rest.icon_state = "rest1"

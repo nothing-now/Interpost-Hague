@@ -296,6 +296,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 
 	for(var/obj/item/organ/O in (H.organs|H.internal_organs))
 		O.owner = H
+		post_organ_rejuvenate(O)
 
 	H.sync_organ_dna()
 
@@ -609,3 +610,6 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 	if(!client)
 		return
 	client.screen -= drug_effect_extreme
+
+/datum/species/proc/post_organ_rejuvenate(var/obj/item/organ/org)
+	return

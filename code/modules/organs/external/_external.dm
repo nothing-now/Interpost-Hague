@@ -75,7 +75,7 @@
 	var/cavity_name = "cavity"
 
 	// Surgery vars.
-	var/cavity_max_w_class = 0
+	var/cavity_max_w_class = ITEM_SIZE_TINY //this is increased if bigger organs spawn by default inside
 	var/hatch_state = 0
 	var/stage = 0
 	var/cavity = 0
@@ -134,6 +134,13 @@
 	s_base = new_dna.s_base
 
 /obj/item/organ/external/emp_act(severity)
+	if(!BP_IS_ROBOTIC(src))
+		return
+
+	if(owner && BP_IS_CRYSTAL(src)) // Crystalline robotics == piezoelectrics.
+		owner.Weaken(5 - severity)
+		owner.confused = max(owner.confused, 10 - (severity * 2))
+
 	var/burn_damage = 0
 	switch (severity)
 		if (1)
@@ -406,6 +413,9 @@ This function completely restores a damaged organ to perfect condition.
 					robotize()
 		owner.updatehealth()
 
+	if(!QDELETED(src) && species)
+		species.post_organ_rejuvenate(src)
+
 /obj/item/organ/external/remove_rejuv()
 	if(owner)
 		owner.organs -= src
@@ -422,8 +432,25 @@ This function completely restores a damaged organ to perfect condition.
 
 /obj/item/organ/external/proc/createwound(var/type = CUT, var/damage, var/surgical)
 
-	if(damage == 0)
+	// Handle some status-based damage multipliers.
+	if(type == BRUISE && BP_IS_BRITTLE(src))
+		damage = Floor(damage * 1.5)
+
+	if(BP_IS_CRYSTAL(src))
+		// this needs to cover type == BURN because lasers don't use LASER, but with the way bodytemp
+		// damage is handled currently that isn't really possible without an infinite feedback loop.
+		if(type == LASER)
+			owner.bodytemperature += ceil(damage/10)
+			owner.visible_message("<span class='warning'>\The [owner]'s crystalline [name] shines with absorbed energy!</span>")
+			return
+		damage = Floor(damage * 0.8)
+		type = SHATTER
+
+	if(damage <= 0)
 		return
+
+	if(loc && type == SHATTER)
+		playsound(loc, 'sound/effects/hit_on_shattered_glass.ogg', 40, 1) // Crash!
 
 	//moved these before the open_wound check so that having many small wounds for example doesn't somehow protect you from taking internal damage (because of the return)
 	//Brute damage can possibly trigger an internal wound, too.
@@ -460,6 +487,10 @@ This function completely restores a damaged organ to perfect condition.
 				var/datum/wound/W = pick(compatible_wounds)
 				W.open_wound(damage)
 				if(prob(25))
+					if(BP_IS_CRYSTAL(src))
+						owner.visible_message("<span class='danger'>The cracks in \the [owner]'s [name] spread.</span>",\
+						"<span class='danger'>The cracks in your [name] spread.</span>",\
+						"<span class='danger'>You hear the cracking of crystal.</span>")
 					if(robotic >= ORGAN_ROBOT)
 						owner.visible_message("<span class='danger'>The damage to [owner.name]'s [name] worsens.</span>",\
 						"<span class='danger'>The damage to your [name] worsens.</span>",\
@@ -682,13 +713,14 @@ Note that amputating the affected organ does in fact remove the infection from t
 		H = owner
 
 	//update damage counts
+	var/bleeds = (!BP_IS_ROBOTIC(src) && !BP_IS_CRYSTAL(src))
 	for(var/datum/wound/W in wounds)
 		if(W.damage_type == BURN)
 			burn_dam += W.damage
 		else
 			brute_dam += W.damage
 
-		if(!(robotic >= ORGAN_ROBOT) && W.bleeding() && (H && H.should_have_organ(BP_HEART)))
+		if(bleeds && W.bleeding() && (H && H.should_have_organ(BP_HEART)))
 			W.bleed_timer--
 			status |= ORGAN_BLEEDING
 

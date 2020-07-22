@@ -82,6 +82,8 @@
 		playsound(src.loc, death_sound, 50, 0)
 	handle_hud_list()
 
+	playsound(src, 'sound/effects/death.ogg', 50, 0, 1)
+
 /mob/living/carbon/human/proc/ChangeToHusk()
 	if(HUSK in mutations)	return
 
