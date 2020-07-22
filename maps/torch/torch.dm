@@ -1,5 +1,6 @@
 #if !defined(using_map_DATUM)
 
+	#include "../shared/job/jobs.dm"
 	#include "torch_announcements.dm"
 	#include "torch_areas.dm"
 	#include "torch_elevator.dm"
