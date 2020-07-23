@@ -3,7 +3,7 @@
 	if(!ishuman(usr))
 		return
 
-	playsound(src, 'sound/effects/ui_toggle.ogg', 50, 0, 1)
+	playsound_local(src, 'sound/effects/ui_toggle.ogg', 50, 0, 1)
 	var/mob/living/carbon/human/C = usr
 	if(!C.combat_mode)
 		C.combat_mode = 1
@@ -91,5 +91,4 @@
 		return
 	else
 		resting = 1
-		playsound(usr, 'sound/effects/bodyfall1.ogg', 50, 1)
 		rest.icon_state = "rest1"

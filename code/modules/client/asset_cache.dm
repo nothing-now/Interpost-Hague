@@ -318,7 +318,7 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 		"browserOutput.js"         = 'code/modules/goonchat/browserassets/js/browserOutput.js',
 		"browserOutput.css"	       = 'code/modules/goonchat/browserassets/css/browserOutput.css',
 		"browserOutput_white.css"  = 'code/modules/goonchat/browserassets/css/browserOutput_white.css',
-		"chatbg.png"			   = 'code/modules/goonchat/browserassets/image/chatbg.png',
+		"chatbg.png"			   = 'icons/misc/chatbg.png',
 	)
 
 /datum/asset/simple/fontawesome
