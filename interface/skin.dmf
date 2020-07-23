@@ -507,10 +507,10 @@ macro "macro"
 	elem 
 		name = "C"
 		command = ".combat_mode"
-	elem
+	elem 
 		name = "G"
 		command = ".defense_intent"
-	elem
+	elem 
 		name = "SHIFT+X"
 		command = ".wield"
 	elem 
@@ -966,18 +966,22 @@ window "mainwindow"
 		size = 1001x720
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		is-maximized = true
 		icon = 'icons\\ss13_64.png'
 		macro = "macro"
 		menu = "menu"
+		outer-size = 1936x1056
+		inner-size = 1920x997
 	elem "asset_cache_browser"
 		type = BROWSER
 		pos = 424,208
 		size = 1x1
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		is-visible = false
 		saved-params = ""
 	elem "mainvsplit"
@@ -991,6 +995,7 @@ window "mainwindow"
 		right = "rpane"
 		is-vert = true
 		splitter = 75
+		lock = right
 
 window "screenSizeHelper"
 	elem "screenSizeHelper"
@@ -1015,7 +1020,6 @@ window "screenSizeHelper"
 		text-color = #ffffff
 		is-visible = false
 		saved-params = ""
-		auto-format = false
 
 window "mapwindow"
 	elem "mapwindow"
@@ -1024,6 +1028,7 @@ window "mapwindow"
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -1031,6 +1036,7 @@ window "mapwindow"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
+		outer-size = 654x494
 	elem "map"
 		type = MAP
 		pos = 0,0
@@ -1049,18 +1055,19 @@ window "mapwindow"
 		size = 640x480
 		anchor1 = 0,0
 		anchor2 = 100,100
+		background-color = none
 		is-visible = false
 		is-disabled = true
 		saved-params = ""
-		auto-format = false
 
 window "outputwindow"
 	elem "outputwindow"
 		type = MAIN
-		pos = 372,0
-		size = 640x480
+		pos = 281,4
+		size = 640x442
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -1068,43 +1075,49 @@ window "outputwindow"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
+		image = 'icons\\misc\\chatbg.png'
+		outer-size = 654x456
+		inner-size = 640x442
 	elem "browseroutput"
 		type = BROWSER
 		pos = 0,0
-		size = 640x456
+		size = 640x418
 		anchor1 = 0,0
 		anchor2 = 100,100
 		background-color = #ffffff
 		is-visible = false
 		saved-params = ""
-		auto-format = false
+		auto-format = true
 	elem "output"
 		type = OUTPUT
 		pos = 0,0
-		size = 640x480
+		size = 640x442
 		anchor1 = 0,0
 		anchor2 = 100,100
 		is-default = true
 		saved-params = ""
+		image = 'icons\\misc\\chatbg.png'
 	elem "saybutton"
 		type = BUTTON
-		pos = 519,459
+		pos = 519,421
 		size = 40x20
 		anchor1 = 100,100
 		anchor2 = none
+		background-color = none
 		saved-params = "is-checked"
 		text = "Chat"
 		command = ".winset \"saybutton.is-checked=true?input.command=\"!say \\\"\" macrobutton.is-checked=false:input.command=\""
 		button-type = pushbox
 	elem "input"
 		type = INPUT
-		pos = 1,459
+		pos = 1,421
 		size = 637x20
 		anchor1 = 0,100
 		anchor2 = 100,100
-		border = sunken
 		is-default = true
+		border = line
 		saved-params = "command"
+		command = "say"
 
 window "rpane"
 	elem "rpane"
@@ -1137,17 +1150,17 @@ window "rpane"
 		is-checked = true
 		group = "rpanemode"
 		button-type = pushbox
-	elem "infob"	
+	elem "infob"
 		type = BUTTON
-		pos = 40,0	
-		size = 60x20	
-		anchor1 = none	
-		anchor2 = none	
-		is-visible = false	
-		saved-params = "is-checked"	
-		text = "Info"	
-		command = ".winset \"rpanewindow.left=infowindow\""	
-		group = "rpanemode"	
+		pos = 40,0
+		size = 60x20
+		anchor1 = none
+		anchor2 = none
+		is-visible = false
+		saved-params = "is-checked"
+		text = "Info"
+		command = ".winset \"rpanewindow.left=infowindow\""
+		group = "rpanemode"
 		button-type = pushbox
 
 window "infowindow"
@@ -1168,14 +1181,17 @@ window "infowindow"
 		is-pane = true
 		image = 'icons\\misc\\chatbg.png'
 		image-mode = tile
+		outer-size = 654x494
 	elem "info"
 		type = INFO
 		pos = 0,0
-		size = 638x477
+		size = 640x480
 		anchor1 = 0,0
 		anchor2 = 100,100
 		is-default = true
 		saved-params = ""
-		highlight-color = #00aa00
+		highlight-color = #70a0ff
+		tab-background-color = none
 		on-show = ".winset\"rpane.infob.is-visible=true;rpane.infob.pos=65,0 rpane.textb.is-visible=true rpane.infob.is-checked=true rpane.rpanewindow.pos=0,30 rpane.rpanewindow.size=0x0 rpane.rpanewindow.left=infowindow\""
 		on-hide = ".winset\"rpane.infob.is-visible=false;rpane.textb.is-visible=true rpane.rpanewindow.pos=0,30 rpane.rpanewindow.size=0x0 rpane.rpanewindow.left=\""
+
