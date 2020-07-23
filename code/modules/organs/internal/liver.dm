@@ -79,7 +79,7 @@
 		if(THIRST_LEVEL_MEDIUM to THIRST_LEVEL_THIRSTY)
 			owner.add_event("thirst", /datum/happiness_event/thirst/watered)
 		if(THIRST_LEVEL_DEHYDRATED to THIRST_LEVEL_THIRSTY)
-			owner.add_event("thirst", /datum/happiness_event/thirst/thirsty)
+			owner.add_event("thirst", /datum/happiness_event/thirst/dehydrated)
 			if(prob(1))
 				to_chat(owner, "<span class='warning'>You fall down because of your thirst.</span>")
 				owner.Weaken(1)
