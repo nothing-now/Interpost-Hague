@@ -422,8 +422,7 @@
 // Dank Maintenance
 /area/maintenance/sub
 	turf_initializer = /decl/turf_initializer/maintenance/heavy
-	ambience = list('sound/ambience/1_ship_1.ogg', 'sound/ambience/1_ship_2.ogg', 'sound/ambience/1_ship_3.ogg', 'sound/ambience/1_ship_4.ogg', 'sound/ambience/1_ship_5.ogg', 'sound/ambience/1_ship_6.ogg', 'sound/ambience/1_ship_7.ogg', 'sound/ambience/1_ship_8.ogg',
-		'sound/ambience/ambiatm1.ogg',
+	ambience = list('sound/ambience/ambiatm1.ogg',
 		'sound/ambience/ambigen3.ogg',
 		'sound/ambience/ambigen4.ogg',
 		'sound/ambience/ambigen5.ogg',

@@ -4,7 +4,6 @@
 	name = "\improper Bridge"
 	icon_state = "bridge"
 	forced_ambience = list('sound/ambience/orbital_deck3.ogg')
-	ambience = list('sound/ambience/1_ship_1.ogg', 'sound/ambience/1_ship_2.ogg', 'sound/ambience/1_ship_3.ogg', 'sound/ambience/1_ship_4.ogg', 'sound/ambience/1_ship_5.ogg', 'sound/ambience/1_ship_6.ogg', 'sound/ambience/1_ship_7.ogg', 'sound/ambience/1_ship_8.ogg')
 
 /area/bridge/meeting_room
 	name = "\improper Heads of Staff Meeting Room"
