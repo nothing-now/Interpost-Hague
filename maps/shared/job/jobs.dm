@@ -112,7 +112,7 @@
 						///datum/job/medassist
 						/datum/job/hos,
 						/datum/job/officer,
-						/datum/job/detective,
+						///datum/job/detective,
 						/datum/job/doctor,
 						/datum/job/undertaker,
 						/datum/job/rd,
@@ -122,9 +122,11 @@
 						/datum/job/cargo_tech/machinist,
 						/datum/job/mining,
 						/datum/job/chef,
+						/datum/job/bartender,
 						/datum/job/hydro,
 						/datum/job/janitor,
 						/datum/job/engineer,
+						/datum/job/chaplain,
 						/datum/job/jester
 						///datum/job/assistant,
 						///datum/job/cadet

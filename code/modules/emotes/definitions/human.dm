@@ -68,3 +68,27 @@
 /decl/emote/human/pee/do_emote(var/mob/living/carbon/human/user)
 	user.handle_piss()
 
+/decl/emote/human/dance
+	key ="dance"
+	check_restraints = TRUE
+	emote_message_3p = "USER dances around happily."
+
+/decl/emote/human/dance/do_emote(var/mob/living/carbon/human/user)
+	user.do_dancing_animation()
+	addtimer(CALLBACK(user, /mob/living/carbon.proc/do_dancing_animation, 10), 20) //dance immediately, then again after 2 and 4 seconds
+	addtimer(CALLBACK(user, /mob/living/carbon.proc/do_dancing_animation, 10), 40)
+
+/mob/living/proc/do_dancing_animation()
+	var/amplitude = min(4, (35/100) + 1)
+	var/pixel_x_diff = rand(-amplitude, amplitude)
+	var/pixel_y_diff = rand(-amplitude/3, amplitude/3)
+	var/final_pixel_x = get_standard_pixel_x_offset(lying)
+	var/final_pixel_y = get_standard_pixel_y_offset(lying)
+	animate(src, pixel_x = pixel_x + pixel_x_diff, pixel_y = pixel_y + pixel_y_diff , time = 2, loop = 6)
+	animate(pixel_x = final_pixel_x , pixel_y = final_pixel_y , time = 2)
+
+/mob/living/proc/get_standard_pixel_x_offset()
+	return initial(pixel_x)
+
+/mob/living/proc/get_standard_pixel_y_offset()
+	return initial(pixel_y)
