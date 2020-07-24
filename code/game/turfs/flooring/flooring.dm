@@ -182,6 +182,18 @@ var/list/flooring_types
 //	build_type = /obj/item/stack/tile/floor
 	can_paint = 1
 
+/decl/flooring/tiling/barnew
+	name = "floor"
+	desc = "A solid, heavy set of flooring plates."
+	icon = 'icons/turf/flooring/tiles.dmi'
+	icon_base = "os5"
+	color = null
+	has_damage_range = 4
+	damage_temperature = T0C+1400
+	flags = TURF_REMOVE_CROWBAR | TURF_CAN_BREAK | TURF_CAN_BURN
+//	build_type = /obj/item/stack/tile/floor
+	can_paint = 1
+
 /decl/flooring/tiling/no0
 	name = "floor"
 	desc = "A solid, heavy set of flooring plates."

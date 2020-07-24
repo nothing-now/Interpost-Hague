@@ -236,6 +236,12 @@
 	icon_state = "os8"
 	initial_flooring = /decl/flooring/tiling/cargochess
 
+/turf/simulated/floor/tiled/barnew
+	name = "floor"
+	icon = 'icons/turf/flooring/tiles.dmi'
+	icon_state = "os5"
+	initial_flooring = /decl/flooring/tiling/barnew
+
 /turf/simulated/floor/tiled/f2
 	name = "floor"
 	icon = 'icons/turf/flooring/tiles.dmi'
