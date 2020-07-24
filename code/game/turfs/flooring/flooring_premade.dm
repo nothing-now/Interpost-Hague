@@ -224,6 +224,18 @@
 	icon_state = "os12"
 	initial_flooring = /decl/flooring/tiling/darkpurpleos
 
+/turf/simulated/floor/tiled/cargo5
+	name = "floor"
+	icon = 'icons/turf/flooring/tiles.dmi'
+	icon_state = "os7"
+	initial_flooring = /decl/flooring/tiling/cargo5
+
+/turf/simulated/floor/tiled/cargochess
+	name = "floor"
+	icon = 'icons/turf/flooring/tiles.dmi'
+	icon_state = "os8"
+	initial_flooring = /decl/flooring/tiling/cargochess
+
 /turf/simulated/floor/tiled/f2
 	name = "floor"
 	icon = 'icons/turf/flooring/tiles.dmi'

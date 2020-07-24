@@ -173,12 +173,12 @@ var/list/global/organ_rel_size = list(
 			if(G.stop_move())
 				return zone
 
-	var/miss_chance = 10
+	var/miss_chance = 30
 	if (zone in base_miss_chance)
 		miss_chance = base_miss_chance[zone]
 	miss_chance = max(miss_chance + miss_chance_mod, 0)
 	if(prob(miss_chance))
-		if(prob(70))
+		if(prob(60))
 			return null
 		return pick(base_miss_chance)
 	return zone

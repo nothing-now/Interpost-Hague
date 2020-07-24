@@ -2,12 +2,12 @@
 	icon_state = "rgeneric"
 /turf/simulated/wall/r_wall/New(var/newloc)
 	..(newloc, "plasteel","plasteel") //3strong
+
 /turf/simulated/wall/ocp_wall
-	icon_state = "rgeneric"
+	name = "thermoprotected wall"
+
 /turf/simulated/wall/ocp_wall/New(var/newloc)
 	..(newloc, "osmium-carbide plasteel", "osmium-carbide plasteel")
-
-
 
 
 /turf/simulated/wall/cult

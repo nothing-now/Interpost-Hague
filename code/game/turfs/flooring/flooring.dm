@@ -254,6 +254,30 @@ var/list/flooring_types
 //	build_type = /obj/item/stack/tile/floor
 	//can_paint = 1
 
+/decl/flooring/tiling/cargo5
+	name = "floor"
+	desc = "A solid, heavy set of flooring plates."
+	icon = 'icons/turf/flooring/tiles.dmi'
+	icon_base = "os7"
+	color = null
+	has_damage_range = 4
+	damage_temperature = T0C+1400
+	flags = TURF_REMOVE_CROWBAR | TURF_CAN_BREAK | TURF_CAN_BURN
+//	build_type = /obj/item/stack/tile/floor
+	//can_paint = 1
+
+/decl/flooring/tiling/cargochess
+	name = "floor"
+	desc = "A solid, heavy set of flooring plates."
+	icon = 'icons/turf/flooring/tiles.dmi'
+	icon_base = "os8"
+	color = null
+	has_damage_range = 4
+	damage_temperature = T0C+1400
+	flags = TURF_REMOVE_CROWBAR | TURF_CAN_BREAK | TURF_CAN_BURN
+//	build_type = /obj/item/stack/tile/floor
+	//can_paint = 1
+
 /decl/flooring/tiling/f2
 	name = "floor"
 	desc = "A solid, heavy set of flooring plates."

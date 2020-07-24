@@ -105,10 +105,10 @@
 
 /decl/hierarchy/outfit/job/security/head_peacekeeper
 	name = OUTFIT_JOB_NAME("Head Peacekeeper")
-	glasses = /obj/item/clothing/glasses/sunglasses
+	head = /obj/item/clothing/head/HoS
+	glasses = /obj/item/clothing/glasses/eyepatch/hud/security
 	uniform = /obj/item/clothing/under/rank/head_of_security/corp
 	shoes = /obj/item/clothing/shoes/jackboots
-	suit = /obj/item/clothing/suit/armor/hos//He doesn't have a locker anymore.
 	id_type = /obj/item/weapon/card/id/dreyfus/hos
 	pda_type = /obj/item/device/pda/heads/hos
 
