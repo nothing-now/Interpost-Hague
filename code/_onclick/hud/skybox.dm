@@ -5,7 +5,7 @@
 	mouse_opacity = 0
 	blend_mode = BLEND_MULTIPLY
 	plane = SKYBOX_PLANE
-	appearance_flags = TILE_BOUND
+	appearance_flags = TILE_BOUND | PIXEL_SCALE
 //	invisibility = 101
 	anchored = 1
 	var/mob/owner
@@ -24,14 +24,9 @@
 	owner = M
 	loc = null
 	SSskybox.skyboxes += src
-	color = SSskybox.BGcolor
-	image = image('icons/turf/skybox.dmi', src, "background_[SSskybox.BGstate]")
+	image = image('icons/turf/skybox.dmi', src, "space")
 	overlays += image
 
-	if(SSskybox.use_stars)
-		stars = image('icons/turf/skybox.dmi', src, SSskybox.star_state)
-		stars.appearance_flags = RESET_COLOR
-		overlays += stars
 	DoRotate()
 	update_skybox()
 

@@ -16,20 +16,21 @@
 
 /turf/space/proc/build_dust_cache()
 	LAZYINITLIST(dust_cache)
-	for (var/i in 0 to 25)
-		var/image/im = image('icons/turf/space_dust.dmi',"[i]")
+	for (var/i in 0 to 64)
+		var/image/im = image('icons/turf/stars.dmi',"[i]")
 		im.plane = DUST_PLANE
-		im.alpha = 80
+		im.alpha = 200
 		im.blend_mode = BLEND_ADD
+		im.screen_loc = "CENTER"
+		im.appearance_flags = TILE_BOUND | PIXEL_SCALE
 		dust_cache["[i]"] = im
-
 
 /turf/space/Initialize()
 	. = ..()
 	update_starlight()
 	if (!dust_cache)
 		build_dust_cache()
-	overlays += dust_cache["[((x + y) ^ ~(x * y) + z) % 25]"]
+	overlays += dust_cache["[((x + y) ^ ~(x * y) + z) % 64]"]
 
 	if(!HasBelow(z))
 		return

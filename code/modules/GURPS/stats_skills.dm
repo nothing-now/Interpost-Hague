@@ -75,9 +75,9 @@
 	var/mob/living/carbon/C = src
 	// We return the mood, based on MOOD_LEVEL_NEUTRAL or whatever
 	if(stat)
-		return C.happiness * -0.2 /* 1/5th of our happiness This will be SUBTRACTED from the stat roll.  Goes from +4 to -4 */
+		return C.happiness * -3 /* 1/5th of our happiness This will be SUBTRACTED from the stat roll.  Goes from +4 to -4 */
 	if(skill)
-		return C.happiness //This will be ADDED to the skill roll.  Goes from +20 - -20  *PENDING REWORK&*
+		return C.happiness * -2 //This will be ADDED to the skill roll.  Goes from +20 - -20  *PENDING REWORK&*
 	return 0
 
 proc/stat_to_modifier(var/stat)
