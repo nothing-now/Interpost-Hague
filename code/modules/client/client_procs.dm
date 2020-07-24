@@ -369,12 +369,11 @@
 		'html/images/talisman.png'
 		)
 
-	var/decl/asset_cache/asset_cache = decls_repository.get_decl(/decl/asset_cache)
 	spawn (10) //removing this spawn causes all clients to not get verbs.
 		if(!src) // client disconnected
 			return
 		//Precache the client with all other assets slowly, so as to not block other browse() calls
-		getFilesSlow(src, asset_cache.cache, register_asset = FALSE)
+		getFilesSlow(src, SSassets.preload, register_asset = FALSE)
 
 mob/proc/MayRespawn()
 	return 0
