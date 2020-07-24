@@ -184,9 +184,10 @@ meteor_act
 		user.resolve_critical_miss(I)
 		return null
 
-	if(!user.skillcheck(user.skills["melee"], 40, null, "melee") || !user.combat_mode)
-		visible_message("<span class='danger'>[user] botches the attack on [src]!</span>")
-		return null
+	if(!user.skillcheck(user.skills["melee"], 30, null, "melee") || !user.combat_mode)
+		if(prob(65 - user.skills["melee"]))
+			visible_message("<span class='danger'>[user] botches the attack on [src]!</span>")
+			return null
 
 	//PARRYING HAPPENS HERE
 	if(check_shields(I.force, I, user, target_zone, "the [I.name]"))

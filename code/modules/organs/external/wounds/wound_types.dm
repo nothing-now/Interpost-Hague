@@ -103,7 +103,7 @@
 		)
 
 /datum/wound/cut/flesh
-	max_bleeding_stage = 3
+	max_bleeding_stage = 4
 	stages = list(
 		"ugly ripped flesh wound" = 35,
 		"ugly flesh wound" = 30,
@@ -145,7 +145,7 @@ datum/wound/cut/massive
 
 /** PUNCTURES **/
 /datum/wound/puncture
-	bleed_threshold = 5
+	bleed_threshold = 10
 	autoheal_cutoff = 15
 	damage_type = PIERCE
 
@@ -153,7 +153,7 @@ datum/wound/cut/massive
 	return 0 //puncture wounds cannot be enlargened
 
 /datum/wound/puncture/small
-	max_bleeding_stage = 4
+	max_bleeding_stage = 2
 	stages = list(
 		"puncture" = 5,
 		"healing puncture" = 2,
@@ -211,8 +211,8 @@ datum/wound/puncture/massive
 		"tiny bruise" = 5
 		)
 
-	bleed_threshold = 50
-	max_bleeding_stage = 4 //only large bruise and above can bleed.
+	bleed_threshold = 30
+	max_bleeding_stage = 3 //only large bruise and above can bleed.
 	autoheal_cutoff = 30
 	damage_type = BRUISE
 

@@ -220,7 +220,7 @@ proc/generate_random_prayer()//This generates a new one.
 
 /mob/living/proc/make_shrine()
 	set category = "Old God Magic"
-	set name = "Create shrine"
+	set name = "Create Shrine"
 	var/turf/T = get_turf(src)
 	var/datum/religion/user_religion = GLOB.all_religions[religion]
 	//You need your god's item to do this
