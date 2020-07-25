@@ -185,7 +185,7 @@ meteor_act
 		return null
 
 	if(!user.skillcheck(user.skills["melee"], 30, null, "melee") || !user.combat_mode)
-		if(prob(65 - user.skills["melee"]))
+		if(prob(user.skills["melee"] - 65))
 			visible_message("<span class='danger'>[user] botches the attack on [src]!</span>")
 			return null
 

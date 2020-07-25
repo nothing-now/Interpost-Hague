@@ -222,7 +222,7 @@ var/list/mob/living/forced_ambiance_list = new
 
 	var/turf/T = get_turf(L)
 	var/hum = 0
-	if(!L.ear_deaf && !always_unpowered && power_environ)
+	if(!L.ear_deaf && !always_unpowered && power_environ && !forced_ambience)
 		for(var/turf/simulated/wall in src)
 			hum = 1
 			break
@@ -230,14 +230,14 @@ var/list/mob/living/forced_ambiance_list = new
 	if(forced_ambience)
 		if(forced_ambience.len)
 			forced_ambiance_list |= L
-			L.playsound_local(T,sound(pick(forced_ambience), repeat = 1, wait = 0, volume = 75, channel = 1))
+			L.playsound_local(T,sound(pick(forced_ambience), repeat = 1, wait = 0, volume = 55, channel = 1))
 		else
 			sound_to(L, sound(null, channel = 1))
 
 	else if(hum)
 		if(!L.client.ambience_playing)
 			L.client.ambience_playing = 1
-			L.playsound_local(T,sound('sound/ambience/shipambience.ogg', repeat = 1, wait = 0, volume = 50, channel = 2))
+			L.playsound_local(T,sound('sound/ambience/shipambience.ogg', repeat = 1, wait = 0, volume = 20, channel = 2))
 	else
 		if(L.client.ambience_playing)
 			L.client.ambience_playing = 0
