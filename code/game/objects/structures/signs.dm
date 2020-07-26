@@ -483,6 +483,11 @@
 	desc = "Despite the technological novelties, this job is still important."
 	icon_state = "det"
 
+/obj/structure/sign/medholo
+	name = "\improper Medical"
+	desc = "I am the cure."
+	icon_state = "medholo"
+
 /obj/structure/sign/dormitories
 	name = "\improper Dormitories"
 	desc = "You sleep here."

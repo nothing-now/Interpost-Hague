@@ -116,6 +116,10 @@ area/space/atmosalert()
 /area/hallway
 	name = "hallway"
 
+/area/medical
+	name = "Medical"
+	forced_ambience = list('sound/ambience/arrivals.ogg')
+
 /area/medical/virology
 	name = "Virology"
 	icon_state = "virology"

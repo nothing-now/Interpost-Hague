@@ -74,6 +74,7 @@
 var/const/NO_EMAG_ACT = -50
 /obj/item/weapon/card/emag/resolve_attackby(atom/A, mob/user)
 	var/used_uses = A.emag_act(uses, user, src)
+	playsound(src, 'sound/items/emage.ogg', 35, 0)
 	if(used_uses == NO_EMAG_ACT)
 		return ..(A, user)
 
