@@ -29,8 +29,9 @@
 	else if(M.stat == DEAD)
 		activate("death")
 
-/obj/item/weapon/implant/death_alarm/activate(var/cause)
+/obj/item/weapon/implant/death_alarm/activate(var/cause, var/mob/living/L)
 	var/mob/M = imp_in
+	var/turf/T = get_turf(L)
 	var/area/t = get_area(M)
 	var/location = t.name
 	if (cause == "emp" && prob(50))
@@ -39,6 +40,7 @@
 		var/area/default = world.area
 		location = initial(default.name)
 	var/death_message = "[mobname] has died in [location]!"
+	L.playsound_local(T,sound('sound/effects/death_alarm_legacy.ogg', volume = 60, channel = 2))
 	if(!cause)
 		death_message = "[mobname] has died-zzzzt in-in-in..."
 	STOP_PROCESSING(SSobj, src)

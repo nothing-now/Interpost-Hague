@@ -27,7 +27,7 @@
 
 	to_chat(src, "<div class='danger'>[game_id]</div>")
 
-	if(GAME_STATE < RUNLEVEL_LOBBY)
+	if(GAME_STATE <= RUNLEVEL_LOBBY)
 		to_world("<span class='notice'>LOBBY: [usr.key] has joined.</span>")
 
 	if(!mind)

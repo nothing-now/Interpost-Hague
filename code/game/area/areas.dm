@@ -32,6 +32,10 @@
 		power_environ = 0
 	power_change()		// all machines set to current power level, also updates lighting icon
 
+/area/Destroy()
+	..()
+	return QDEL_HINT_HARDDEL
+
 /area/proc/get_contents()
 	return contents
 
@@ -207,34 +211,21 @@ var/list/mob/living/forced_ambiance_list = new
 		//	thunk(L)
 		L.update_floating()
 
-	L.lastarea = newarea
 	play_ambience(L)
+	L.lastarea = newarea
 
 /area/proc/play_ambience(var/mob/living/L)
 	// Ambience goes down here -- make sure to list each area seperately for ease of adding things in later, thanks! Note: areas adjacent to each other should have the same sounds to prevent cutoff when possible.- LastyScratch
-	if(!(L && L.get_preference_value(/datum/client_preference/play_ambiance) == GLOB.PREF_YES))	return
-
-
-	// If we previously were in an area with force-played ambiance, stop it.
-	if(L in forced_ambiance_list)
-		sound_to(L, sound(null, channel = 1))
-		forced_ambiance_list -= L
+	if(!(L))	return
 
 	var/turf/T = get_turf(L)
 	var/hum = 0
-	if(!L.ear_deaf && !always_unpowered && power_environ && !forced_ambience)
+	if(!L.ear_deaf && !always_unpowered && power_environ)
 		for(var/turf/simulated/wall in src)
 			hum = 1
 			break
 
-	if(forced_ambience)
-		if(forced_ambience.len)
-			forced_ambiance_list |= L
-			L.playsound_local(T,sound(pick(forced_ambience), repeat = 1, wait = 0, volume = 55, channel = 1))
-		else
-			sound_to(L, sound(null, channel = 1))
-
-	else if(hum)
+	if(hum)
 		if(!L.client.ambience_playing)
 			L.client.ambience_playing = 1
 			L.playsound_local(T,sound('sound/ambience/shipambience.ogg', repeat = 1, wait = 0, volume = 20, channel = 2))
@@ -243,12 +234,17 @@ var/list/mob/living/forced_ambiance_list = new
 			L.client.ambience_playing = 0
 			sound_to(L, sound(null, channel = 2))
 
+	if(L.lastarea != src)
+		if(LAZYLEN(forced_ambience))
+			forced_ambiance_list |= L
+			L.playsound_local(T,sound(pick(forced_ambience), repeat = 1, wait = 0, volume = 55, channel = 1))
+		else	//stop any old area's forced ambience, and try to play our non-forced ones
+			sound_to(L, sound(null, channel = 1))
+			forced_ambiance_list -= L
+			if(ambience.len && prob(35) && (world.time >= L.client.played + 3 MINUTES))
+				L.playsound_local(T, sound(pick(ambience), repeat = 0, wait = 0, volume = 15, channel = 1))
+				L.client.played = world.time
 
-	if(src.ambience.len && prob(80))
-		if((world.time >= L.client.played + 2 MINUTES))
-			var/sound = pick(ambience)
-			L.playsound_local(T, sound(sound, repeat = 0, wait = 0, volume = 25, channel = 1))
-			L.client.played = world.time
 
 /area/proc/gravitychange(var/gravitystate = 0)
 	has_gravity = gravitystate

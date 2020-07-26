@@ -96,6 +96,18 @@
 /datum/species/var/silent_steps
 /datum/species/nabber/silent_steps = 1
 
+/mob/living/carbon/human/proc/has_footsteps()
+	if(species.silent_steps || buckled || lying || throwing)
+		return //people flying, lying down or sitting do not step
+
+	if(shoes && (shoes.item_flags & ITEM_FLAG_SILENT))
+		return // quiet shoes
+
+	if(!has_organ(BP_L_FOOT) && !has_organ(BP_R_FOOT))
+		return //no feet no footsteps
+
+	return TRUE
+
 /mob/living/carbon/human/var/step_count
 
 /mob/living/carbon/human/proc/handle_footsteps()

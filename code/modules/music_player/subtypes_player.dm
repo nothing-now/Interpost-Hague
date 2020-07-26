@@ -4,6 +4,7 @@
 	desc = "A musical audio player station, also known as boombox or ghettobox. Very robust."
 	icon = 'sprites/object.dmi'
 	icon_state = "boombox"
+	w_class = ITEM_SIZE_LARGE
 	item_state = "boombox"
 	color = "#444444"
 

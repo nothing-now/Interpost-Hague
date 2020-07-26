@@ -510,6 +510,9 @@ macro "macro"
 	elem 
 		name = "G"
 		command = ".defense_intent"
+	elem
+		name = "F"
+		command = ".fixeye"
 	elem 
 		name = "SHIFT+X"
 		command = ".wield"
@@ -966,22 +969,18 @@ window "mainwindow"
 		size = 1001x720
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		is-default = true
 		saved-params = "pos;size;is-minimized;is-maximized"
 		is-maximized = true
 		icon = 'icons\\ss13_64.png'
 		macro = "macro"
 		menu = "menu"
-		outer-size = 1936x1056
-		inner-size = 1920x997
 	elem "asset_cache_browser"
 		type = BROWSER
 		pos = 424,208
 		size = 1x1
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		is-visible = false
 		saved-params = ""
 	elem "mainvsplit"
@@ -1059,10 +1058,11 @@ window "mapwindow"
 window "outputwindow"
 	elem "outputwindow"
 		type = MAIN
-		pos = 281,4
+		pos = 281,0
 		size = 640x442
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -1071,6 +1071,8 @@ window "outputwindow"
 		can-resize = false
 		is-pane = true
 		image = 'icons\\misc\\chatbg.png'
+		outer-size = 654x456
+		inner-size = 640x442
 	elem "browseroutput"
 		type = BROWSER
 		pos = 0,0
@@ -1096,6 +1098,7 @@ window "outputwindow"
 		size = 40x20
 		anchor1 = 100,100
 		anchor2 = none
+		background-color = none
 		saved-params = "is-checked"
 		text = "Chat"
 		command = ".winset \"saybutton.is-checked=true?input.command=\"!say \\\"\" macrobutton.is-checked=false:input.command=\""
@@ -1109,7 +1112,6 @@ window "outputwindow"
 		is-default = true
 		border = line
 		saved-params = "command"
-		command = "say"
 
 window "rpane"
 	elem "rpane"

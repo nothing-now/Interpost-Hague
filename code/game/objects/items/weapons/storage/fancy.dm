@@ -13,7 +13,6 @@
 /obj/item/weapon/storage/fancy
 	item_state = "syringe_kit" //placeholder, many of these don't have inhands
 	var/obj/item/key_type //path of the key item that this "fancy" container is meant to store
-	var/opened = 0 //if an item has been removed from this container
 
 /obj/item/weapon/storage/fancy/remove_from_storage()
 	. = ..()

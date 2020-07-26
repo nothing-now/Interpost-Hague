@@ -26,6 +26,7 @@
 	w_class = ITEM_SIZE_NORMAL
 	max_w_class = ITEM_SIZE_SMALL
 	max_storage_space = DEFAULT_BOX_STORAGE
+	use_sound = 'sound/effects/briefcase.ogg'
 
 	examine(mob/user)
 		if(..(user, 1))

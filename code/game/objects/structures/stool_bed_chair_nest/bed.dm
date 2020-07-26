@@ -20,6 +20,7 @@
 	var/material/padding_material
 	var/base_icon = "bed"
 	var/material_alteration = MATERIAL_ALTERATION_ALL
+	var/buckling_sound = 'sound/effects/buckle.ogg'
 
 /obj/structure/bed/New(var/newloc, var/new_material, var/new_padding_material)
 	..(newloc)
@@ -137,6 +138,12 @@
 				qdel(W)
 	else
 		..()
+
+/obj/structure/bed/buckle_mob(mob/living/M)
+	. = ..()
+	if(. && buckling_sound)
+		playsound(src, buckling_sound, 20)
+
 
 /obj/structure/bed/proc/remove_padding()
 	if(padding_material)
