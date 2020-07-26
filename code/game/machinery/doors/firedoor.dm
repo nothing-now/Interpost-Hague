@@ -331,6 +331,7 @@
 
 /obj/machinery/door/firedoor/close()
 	latetoggle()
+	playsound(src, 'sound/machines/firedoorclose.ogg', 35, 0)
 	return ..()
 
 /obj/machinery/door/firedoor/open(var/forced = 0)
@@ -348,6 +349,7 @@
 		log_admin("[usr]([usr.ckey]) has forced open an emergency shutter.")
 		message_admins("[usr]([usr.ckey]) has forced open an emergency shutter.")
 	latetoggle()
+	playsound(src, 'sound/machines/firedooropen.ogg', 35, 0)
 	return ..()
 
 // Only opens when all areas connecting with our turf have an air alarm and are cleared

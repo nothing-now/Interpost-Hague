@@ -1,5 +1,6 @@
 /turf/simulated/wall/r_wall
 	icon_state = "rgeneric"
+
 /turf/simulated/wall/r_wall/New(var/newloc)
 	..(newloc, "plasteel","plasteel") //3strong
 
@@ -75,8 +76,6 @@
 		return
 	..()
 
-/turf/simulated/wall/other_rwall
-	icon = 'icons/turf/wwalls.dmi'
-
-/turf/simulated/wall/other_gwall
-	icon = 'icons/turf/gwalls.dmi'
+/turf/simulated/wall/rusty
+	name = "rusty wall"
+	icon_state = "rusty"
