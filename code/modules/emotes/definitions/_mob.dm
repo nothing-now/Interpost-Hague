@@ -126,7 +126,7 @@
 		/decl/emote/audible/clearthroat,
 		/decl/emote/audible/hem,
 		/decl/emote/audible/charge,
-		/decl/emote/audible/hums
+		/decl/emote/audible/hums,
 	)
 
 /mob/living/silicon/robot
