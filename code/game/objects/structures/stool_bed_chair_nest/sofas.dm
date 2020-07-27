@@ -43,3 +43,27 @@
 
 /obj/structure/sofa/brown/right
 	icon_state = "couchbrown_right"
+
+/obj/structure/sofa/bench/church_right
+	name = "bench"
+	desc = "It's a bench."
+	icon = 'icons/obj/objects.dmi'
+	icon_state = "church_right"
+	dir = 1
+	layer = 3
+
+/obj/structure/sofa/bench/church_center
+	name = "bench"
+	desc = "It's a bench."
+	icon = 'icons/obj/objects.dmi'
+	icon_state = "church_center"
+	dir = 1
+	layer = 3
+
+/obj/structure/sofa/bench/church_left
+	name = "bench"
+	desc = "It's a bench."
+	icon = 'icons/obj/objects.dmi'
+	icon_state = "church_left"
+	dir = 1
+	layer = 3

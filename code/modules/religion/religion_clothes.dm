@@ -26,7 +26,7 @@
 	icon_state = "arbiter"
 	item_state = "arbiter"
 	flags_inv = BLOCKHEADHAIR
-	body_parts_covered = HEAD//
+	body_parts_covered = HEAD
 
 /obj/item/clothing/head/helmet/arbiter/supreme
 	name = "supreme arbiter helmet"
@@ -39,6 +39,12 @@
 	desc = "The special helmet that the supreme arbiter wears."
 	icon_state = "inquisitor"
 	item_state = "inquisitor"
+
+/obj/item/clothing/head/priest
+	name = "priest's cap"
+	desc = "To shield his bright mind from harm."
+	icon_state = "priest"
+	item_state = "priest"
 
 /obj/item/clothing/gloves/arbiter
 	name = "arbiter's gloves"

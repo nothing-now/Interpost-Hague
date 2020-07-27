@@ -491,3 +491,10 @@
 	item_state = "tajblind_meson"
 	off_state = "tajblind_meson"
 	body_parts_covered = EYES
+
+/obj/item/clothing/glasses/priest
+	name = "priests's googles"
+	desc = "His vision is guided by Verina, but it does not mean he can escape physical constraints."
+	icon_state = "priest"
+	item_state = "priest" // lol
+	body_parts_covered = EYES

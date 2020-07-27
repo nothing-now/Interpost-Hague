@@ -762,7 +762,7 @@
 "oH" = (/obj/structure/bed/chair/office/dark{icon_state = "officechair_dark"; dir = 2},/turf/simulated/floor/tiled/bunker,/area/chapel/office{name = "\improper Inquisition"})
 "oI" = (/turf/simulated/floor/tiled/bunker,/area/chapel/office{name = "\improper Inquisition"})
 "oJ" = (/obj/structure/table/woodentable,/obj/item/clothing/mask/gas/half,/obj/item/weapon/tank/emergency/nitrogen,/turf/simulated/floor/tiled/bunker,/area/chapel/office{name = "\improper Inquisition"})
-"oK" = (/obj/structure/bed/chair{dir = 4},/obj/effect/decal/cleanable/blood,/turf/simulated/floor/tiled/bunker,/area/chapel/office{name = "\improper Inquisition"})
+"oK" = (/obj/effect/decal/cleanable/blood,/obj/structure/bed/chair/bunker/metal{icon_state = "metal_chair"; dir = 4},/turf/simulated/floor/tiled/bunker,/area/chapel/office{name = "\improper Inquisition"})
 "oL" = (/obj/effect/decal/cleanable/blood/drip,/turf/simulated/floor/tiled/bunker,/area/chapel/office{name = "\improper Inquisition"})
 "oM" = (/obj/structure/table/woodentable,/obj/item/clothing/glasses/sunglasses/blindfold,/obj/machinery/light/small{dir = 4},/turf/simulated/floor/tiled/bunker,/area/chapel/office{name = "\improper Inquisition"})
 "oN" = (/obj/structure/table/woodentable,/obj/item/weapon/storage/toolbox/mechanical,/obj/machinery/light/small,/turf/simulated/floor/tiled/bunker,/area/chapel/office{name = "\improper Inquisition"})

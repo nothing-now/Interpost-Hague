@@ -18,7 +18,6 @@
 	pda_type = /obj/item/device/pda/captain
 	gloves = /obj/item/clothing/gloves/white
 	head = /obj/item/clothing/head/crown_countess//FIT FOR A FUCKING QUEEN
-	suit = /obj/item/clothing/suit/robes
 	r_pocket = /obj/item/weapon/reagent_containers/spray/pepper
 
 /decl/hierarchy/outfit/job/dreyfus/adjoint

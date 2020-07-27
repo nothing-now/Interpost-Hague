@@ -458,6 +458,16 @@
 	desc = "How regal."
 	icon_state = "magistrate"
 
+/obj/structure/sign/churchcross
+	name = "\improper Deo Machina's Banner"
+	desc = "How majestic."
+	icon_state = "ccross"
+
+/obj/structure/sign/ikona1
+	name = "\improper Priest Basil XVII"
+	desc = "Fills you with pride."
+	icon_state = "ikona1"
+
 /obj/structure/sign/chem
 	name = "\improper Chemistry"
 	desc = "Don't slip on the ammonium."

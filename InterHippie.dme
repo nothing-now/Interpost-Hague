@@ -2554,7 +2554,6 @@
 #include "code\modules\tgui\states\physical.dm"
 #include "code\modules\tgui\states\self.dm"
 #include "code\modules\tgui\states\zlevel.dm"
-#include "code\modules\tripping\tripping.dm"
 #include "code\modules\turbolift\_turbolift.dm"
 #include "code\modules\turbolift\turbolift.dm"
 #include "code\modules\turbolift\turbolift_areas.dm"

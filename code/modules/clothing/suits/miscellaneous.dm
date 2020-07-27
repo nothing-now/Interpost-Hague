@@ -551,3 +551,10 @@
 	name = "unathi suit"
 	desc = "A Unathi suit made out of rubber."
 	icon_state = "lizsuit"
+
+/obj/item/clothing/suit/priest
+	name = "priests's coat"
+	desc = "A coat worn by the priest."
+	icon_state = "chaplain"
+	item_state = "chaplain"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO|LEGS

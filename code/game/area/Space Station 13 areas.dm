@@ -146,6 +146,10 @@ area/space/atmosalert()
 	sound_env = TUNNEL_ENCLOSED
 	turf_initializer = /decl/turf_initializer/maintenance
 
+/area/rnd
+	name = "RD"
+	forced_ambience = list('sound/ambience/computer_amb.ogg')
+
 /area/rnd/xenobiology
 	name = "Xenobiology Lab"
 	icon_state = "xeno_lab"

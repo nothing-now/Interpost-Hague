@@ -26,7 +26,7 @@
 	id_hud_icons = 'maps/dreyfus/icons/assignment_hud.dmi'
 
 
-	map_admin_faxes = list("Colonial Magistrate Authority")
+	map_admin_faxes = list("King's Authority")
 
 	shuttle_docked_message = "The shuttle has docked."
 	shuttle_leaving_dock = "The shuttle has departed from home dock."

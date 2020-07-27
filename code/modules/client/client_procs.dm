@@ -486,6 +486,7 @@ client/verb/character_setup()
 	// +4 pixels are for the width of the splitter's handle
 	var/pct = 200 * (desired_width + 4) / split_width
 	winset(src, "mainwindow.mainvsplit", "splitter=71.7")
+	winset(src, "rpane.rpanewindow", "splitter=30")
 
 	// Apply an ever-lowering offset until we finish or fail
 	var/delta

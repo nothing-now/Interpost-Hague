@@ -395,7 +395,6 @@
 
 /mob/new_player/proc/create_character(var/turf/spawn_turf)
 	spawning = 1
-	close_spawn_windows()
 
 	var/mob/living/carbon/human/new_character
 
@@ -468,10 +467,6 @@
 
 /mob/new_player/Move()
 	return 0
-
-/mob/new_player/proc/close_spawn_windows()
-	src << browse(null, "window=Character Latejoin") //closes late choices window
-	panel.close()
 
 /mob/new_player/proc/has_admin_rights()
 	return check_rights(R_ADMIN, 0, src)

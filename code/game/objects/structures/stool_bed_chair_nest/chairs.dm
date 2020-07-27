@@ -230,6 +230,41 @@
 	icon_state = "comfy_chair1"
 	color = "#ffffff"
 
+/obj/structure/bed/chair/comfy/death
+	name = "death chair"
+	desc = "It's a chair. Well, a chair for death."
+	icon = 'icons/obj/objects.dmi'
+	base_icon = "comfydeath"
+	icon_state = "comfydeath"
+	color = "#ffffff"
+	material_alteration = MATERIAL_ALTERATION_NONE
+
+/obj/structure/bed/chair/comfy/death/get_material()
+	return 0
+
+/obj/structure/bed/chair/bunker/countess
+	name = "countess's throne"
+	desc = "It's a throne. Not so majestic as the count's one, eh?"
+	icon = 'icons/obj/objects.dmi'
+	base_icon = "cave_throne"
+	icon_state = "cave_throne"
+	color = "#ffffff"
+	material_alteration = MATERIAL_ALTERATION_NONE
+
+/obj/structure/bed/chair/bunker/countess/get_material()
+	return 0
+
+/obj/structure/bed/chair/bunker/count
+	name = "count's throne"
+	desc = "It's a majestic throne."
+	icon = 'icons/obj/objects.dmi'
+	base_icon = "judge"
+	icon_state = "judge"
+	material_alteration = MATERIAL_ALTERATION_NONE
+
+/obj/structure/bed/chair/bunker/count/get_material()
+	return 0
+
 // Chair types
 /obj/structure/bed/chair/wood
 	desc = "Old is never too old to not be in fashion."

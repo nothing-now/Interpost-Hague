@@ -128,7 +128,7 @@
 
 /obj/item/weapon/material/sword/admin
 	name = "godly sword"
-	desc = "A sword used by the gods.."
+	desc = "A sword used by the gods."
 	icon_state = "admin"
 	item_state = "longsword"
 	force_divisor = 4.6
@@ -187,7 +187,7 @@
 	drop_sound = 'sound/items/drop_sword.ogg'
 
 /obj/item/weapon/material/sword/zweihander
-	name = "Zweihander"
+	name = "zweihander"
 	desc = "A huge blade made of fine steel."
 	icon_state = "zweihander"
 	item_state = "longsword"
@@ -247,7 +247,7 @@
 	drop_sound = 'sound/items/drop_sword.ogg'
 
 /obj/item/weapon/material/sword/siegesword
-	name = "Beserk sword"
+	name = "berserk sword"
 	desc = "A rucky medium sized blade with a rusty handle. Mostly used by mercenaries & raiders."
 	icon_state = "siegesword"
 	item_state = "sabre"
@@ -292,7 +292,7 @@
 	drop_sound = 'sound/items/drop_sword.ogg'
 
 /obj/item/weapon/material/sword/baroness
-	name = "baroness sword"
+	name = "countess sword"
 	desc = "A experimental sword."
 	icon_state = "baroness"
 	item_state = "sabre"

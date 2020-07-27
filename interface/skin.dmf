@@ -510,7 +510,7 @@ macro "macro"
 	elem 
 		name = "G"
 		command = ".defense_intent"
-	elem
+	elem 
 		name = "F"
 		command = ".fixeye"
 	elem 
@@ -1062,7 +1062,6 @@ window "outputwindow"
 		size = 640x442
 		anchor1 = none
 		anchor2 = none
-		background-color = none
 		saved-params = "pos;size;is-minimized;is-maximized"
 		titlebar = false
 		statusbar = false
@@ -1071,8 +1070,6 @@ window "outputwindow"
 		can-resize = false
 		is-pane = true
 		image = 'icons\\misc\\chatbg.png'
-		outer-size = 654x456
-		inner-size = 640x442
 	elem "browseroutput"
 		type = BROWSER
 		pos = 0,0
@@ -1098,7 +1095,6 @@ window "outputwindow"
 		size = 40x20
 		anchor1 = 100,100
 		anchor2 = none
-		background-color = none
 		saved-params = "is-checked"
 		text = "Chat"
 		command = ".winset \"saybutton.is-checked=true?input.command=\"!say \\\"\" macrobutton.is-checked=false:input.command=\""
@@ -1123,12 +1119,15 @@ window "rpane"
 		background-color = #262222
 		saved-params = "pos;size;is-minimized;is-maximized"
 		is-pane = true
+		outer-size = 656x538
+		inner-size = 640x499
 	elem "rpanewindow"
 		type = CHILD
 		pos = 0,0
 		size = 640x474
 		anchor1 = 0,0
 		anchor2 = 100,100
+		background-color = none
 		saved-params = "splitter"
 		left = "infowindow"
 		right = "outputwindow"
@@ -1141,6 +1140,7 @@ window "rpane"
 		size = 60x20
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		is-visible = false
 		saved-params = "is-checked"
 		text = "Text"
@@ -1154,6 +1154,7 @@ window "rpane"
 		size = 60x20
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		is-visible = false
 		saved-params = "is-checked"
 		text = "Info"
