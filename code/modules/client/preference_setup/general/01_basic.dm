@@ -40,7 +40,7 @@ datum/preferences
 		pref.real_name      = random_name(pref.gender, pref.species)
 	pref.spawnpoint         = sanitize_inlist(pref.spawnpoint, spawntypes(), initial(pref.spawnpoint))
 	pref.be_random_name     = sanitize_integer(pref.be_random_name, 0, 1, initial(pref.be_random_name))
-	if(!pref.religion)    pref.religion =  LEGAL_RELIGION
+	pref.religion           = LEGAL_RELIGION
 
 /datum/category_item/player_setup_item/general/basic/content()
 	. = list()
@@ -111,11 +111,11 @@ datum/preferences
 		else
 			pref.religion = LEGAL_RELIGION
 		return TOPIC_REFRESH
-	
+
 	else if(href_list["family"])
 		pref.family = !pref.family
 		return TOPIC_REFRESH
-	
+
 	else if(href_list["metadata"])
 		var/new_metadata = sanitize(input(user, "Enter any information you'd like others to see, such as Roleplay-preferences:", "Game Preference" , pref.metadata)) as message|null
 		if(new_metadata && CanUseTopic(user))
