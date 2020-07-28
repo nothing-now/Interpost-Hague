@@ -634,12 +634,13 @@ meteor_act
 				var/turf/target = get_turf(src.loc)
 				var/range = src.throw_range
 				var/throw_dir = get_dir(user, src)
+				var/throwdis = 1 + 3 + user.stats[STAT_ST] - 7
 				for(var/i = 1; i < range; i++)
 					var/turf/new_turf = get_step(target, throw_dir)
 					target = new_turf
 					if(new_turf.density)
 						break
-				src.throw_at(target, rand(1,3), src.throw_speed)
+				src.throw_at(target, throwdis, src.throw_speed)
 			if(user.lying)
 				to_chat(user, too_high_message)
 				return
@@ -719,7 +720,9 @@ meteor_act
 /*
 //Add screaming here.
 /mob/living/carbon/human/IgniteMob()
-	..()
-	if(!stat &&)
+	if(!on_fire)
+		return
 
+	if(on_fire)
+		emote(pick("agony","sadisticyelling"))
 */
