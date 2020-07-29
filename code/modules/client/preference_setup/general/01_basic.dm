@@ -40,7 +40,7 @@ datum/preferences
 		pref.real_name      = random_name(pref.gender, pref.species)
 	pref.spawnpoint         = sanitize_inlist(pref.spawnpoint, spawntypes(), initial(pref.spawnpoint))
 	pref.be_random_name     = sanitize_integer(pref.be_random_name, 0, 1, initial(pref.be_random_name))
-	pref.religion           = LEGAL_RELIGION
+	if(!pref.religion)    pref.religion =  LEGAL_RELIGION
 
 /datum/category_item/player_setup_item/general/basic/content()
 	. = list()
