@@ -180,16 +180,14 @@
 		return 1
 	return 0
 
-/obj/item/tongue
-	..()
-	name = "Tongue"
-	w_class = 1
+/obj/item/internal/organ/tongue
+	name = "tongue"
+	w_class = ITEM_SIZE_SMALL
 	force = 0
 	throwforce = 0
 	gender = PLURAL
 	icon = 'icons/obj/surgery.dmi'
 	icon_state = "tongue"
-	desc = "Cat got your tongue.  Or the arbiter?"
-	icon = 'icons/obj/surgery.dmi'
+	desc = "Used by the vile masses."
 	drop_sound = null
 	var/removed = FALSE

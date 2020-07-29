@@ -66,13 +66,14 @@ proc/generate_random_prayer()//This generates a new one.
 /mob/living/proc/recite_prayer()
 	set category = "Deo Machina"
 	set name = "Recite the prayer"
-	say(mind.prayer)
 
+	say(mind.prayer)
 
 //Try to reveal a random heretic
 /mob/living/proc/interrogate()
 	set category = "Deo Machina"
 	set name = "Interrogate"
+
 	var/list/victims = list()
 	for(var/mob/living/carbon/human/C in oview(1))
 		victims += C
@@ -89,7 +90,7 @@ proc/generate_random_prayer()//This generates a new one.
 	var/msg = " is one of them!"
 	var/name = ""
 	if (religion_is_legal())  //Non-heretics will say nothing
-		msg = "I dont know!"
+		msg = "I don't know anything!"
 		say(NewStutter(msg))
 		return
 	else
@@ -183,7 +184,7 @@ proc/generate_random_prayer()//This generates a new one.
 
 /mob/living/proc/praise_god()
 	set category = "Old God Magic"
-	set name = "Praise god"
+	set name = "Praise your God"
 
 	var/datum/religion/user_religion = GLOB.all_religions[religion]
 	//You need your god's item to do this
