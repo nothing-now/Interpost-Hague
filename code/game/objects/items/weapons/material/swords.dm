@@ -126,6 +126,21 @@
 	parry_sounds = list('sound/weapons/blade_parry1.ogg', 'sound/weapons/blade_parry2.ogg', 'sound/weapons/blade_parry3.ogg')
 	drop_sound = 'sound/items/drop_sword.ogg'
 
+/obj/item/weapon/material/sword/xomsword
+	name = "old sword"
+	desc = "A very odd looking sword made of some sort of metal."
+	icon_state = "xomsword"
+	item_state = "longsword"
+	force_divisor = 0.3
+	block_chance = 10
+	w_class = ITEM_SIZE_HUGE
+	drawsound = 'sound/items/unholster_sword02.ogg'
+	equipsound = 'sound/items/holster_sword1.ogg'
+	sharpness = 18
+	weapon_speed_delay = 13
+	parry_sounds = list('sound/weapons/blade_parry1.ogg', 'sound/weapons/blade_parry2.ogg', 'sound/weapons/blade_parry3.ogg')
+	drop_sound = 'sound/items/drop_sword.ogg'
+
 /obj/item/weapon/material/sword/admin
 	name = "godly sword"
 	desc = "A sword used by the gods."
