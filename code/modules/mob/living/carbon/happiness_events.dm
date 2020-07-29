@@ -14,12 +14,20 @@
 	description = "<span class='info'>I have recently had something to drink.</span>\n"
 	happiness = 2
 
+/datum/happiness_event/thirst/thirsting
+	description = "<span class='warning'>I'm starting to get thirsty.</span>\n"
+	happiness = -3
+
 /datum/happiness_event/thirst/thirsty
 	description = "<span class='warning'>I'm getting a bit thirsty.</span>\n"
 	happiness = -7
 
+/datum/happiness_event/thirst/verythirsty
+	description = "<span class='warning'>I'm getting thirsty!</span>\n"
+	happiness = -10
+
 /datum/happiness_event/thirst/dehydrated
-	description = "<span class='danger'>I need water!</span>\n"
+	description = "<span class='danger'>I NEED WATER!</span>\n"
 	happiness = -14
 
 
@@ -37,12 +45,20 @@
 	description = "<span class='info'>I have recently had some food.</span>\n"
 	happiness = 2
 
-/datum/happiness_event/nutrition/hungry
+/datum/happiness_event/nutrition/lilhungry
 	description = "<span class='warning'>I'm getting a bit hungry.</span>\n"
-	happiness = -6
+	happiness = -2
+
+/datum/happiness_event/nutrition/hungry
+	description = "<span class='warning'>I'm getting hungry...</span>\n"
+	happiness = -5
+
+/datum/happiness_event/nutrition/veryhungry
+	description = "<span class='warning'>I'm getting really hungry!</span>\n"
+	happiness = -8
 
 /datum/happiness_event/nutrition/starving
-	description = "<span class='danger'>I'm starving!</span>\n"
+	description = "<span class='danger'>I WANT FOOD!</span>\n"
 	happiness = -12
 
 

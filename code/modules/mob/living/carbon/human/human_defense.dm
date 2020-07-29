@@ -630,7 +630,7 @@ meteor_act
 	var/armour = run_armor_check(hit_zone, "melee")
 	switch(hit_zone)
 		if(BP_CHEST)//If we aim for the chest we kick them in the direction we're facing.
-			if(lying)
+			if(lying || prob(10))
 				var/turf/target = get_turf(src.loc)
 				var/range = src.throw_range
 				var/throw_dir = get_dir(user, src)
@@ -664,17 +664,6 @@ meteor_act
 	user.adjustStaminaLoss(rand(10,15) - stat_to_modifier(user.stats[STAT_DX]))//Kicking someone is a big deal.
 	if(kickdam)
 		playsound(user.loc, 'sound/weapons/kick.ogg', 50, 0)
-		if(prob(30))
-			var/turf/target = get_turf(src.loc)
-			var/range = src.throw_range
-			var/throw_dir = get_dir(user, src)
-			var/throwdis = 1 + 3 + user.stats[STAT_ST] - 9
-			for(var/i = 1; i < range; i++)
-				var/turf/new_turf = get_step(target, throw_dir)
-				target = new_turf
-				if(new_turf.density)
-					break
-			src.throw_at(target, throwdis, src.throw_speed)
 		apply_damage(kickdam, BRUTE, hit_zone, armour)
 		user.visible_message("<span class=danger>[user] kicks [src] in the [affecting.name]!<span>")
 		admin_attack_log(user, src, "Has kicked [src]", "Has been kicked by [user].")
