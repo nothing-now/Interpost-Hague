@@ -9,12 +9,13 @@
  */
 /obj/item/weapon/storage/firstaid
 	name = "first-aid kit"
-	desc = "It's an emergency medical kit for those serious boo-boos."
+	desc = "An emergency medical kit."
 	icon_state = "firstaid"
 	throw_speed = 2
 	throw_range = 8
 	max_w_class = ITEM_SIZE_SMALL
 	max_storage_space = DEFAULT_BOX_STORAGE
+	use_sound = 'sound/effects/box.ogg'
 
 /obj/item/weapon/storage/firstaid/empty
 	icon_state = "firstaid"
@@ -22,7 +23,7 @@
 
 /obj/item/weapon/storage/firstaid/fire
 	name = "fire first-aid kit"
-	desc = "It's an emergency medical kit for when the toxins lab <i>-spontaneously-</i> burns down."
+	desc = "It's an emergency medical kit, used to treat burns."
 	icon_state = "ointment"
 	item_state = "firstaid-ointment"
 
@@ -113,6 +114,7 @@
 	desc = "Contains tools for surgery. Has precise foam fitting for safe transport and automatically sterilizes the content between uses."
 	icon_state = "surgerykit"
 	item_state = "firstaid-surgery"
+	use_sound = 'sound/effects/briefcase.ogg'
 
 	storage_slots = 14
 	max_w_class = ITEM_SIZE_NORMAL
@@ -158,6 +160,7 @@
 	w_class = ITEM_SIZE_SMALL
 	max_w_class = ITEM_SIZE_TINY
 	max_storage_space = 21
+	use_sound = 'sound/effects/pillbottle.ogg'
 	can_hold = list(/obj/item/weapon/reagent_containers/pill,/obj/item/weapon/dice,/obj/item/weapon/paper)
 	allow_quick_gather = 1
 	use_to_pickup = 1

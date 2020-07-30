@@ -138,19 +138,20 @@
 	icon_state = "cryo_rear"
 	anchored = 1
 	dir = WEST
+	layer = BELOW_OBJ_LAYER
 
 //Cryopods themselves.
 /obj/machinery/cryopod
 	name = "cryogenic freezer"
 	desc = "A man-sized pod for entering suspended animation."
 	icon = 'icons/obj/Cryogenic2.dmi'
-	icon_state = "body_scanner_0"
+	icon_state = "cryochamber0"
 	density = 1
 	anchored = 1
 	dir = WEST
 
-	var/base_icon_state = "body_scanner_0"
-	var/occupied_icon_state = "body_scanner_1"
+	var/base_icon_state = "cryochamber0"
+	var/occupied_icon_state = "cryochamber3"
 	var/on_store_message = "has entered long-term storage."
 	var/on_store_name = "Cryogenic Oversight"
 	var/on_enter_occupant_message = "You feel cool air surround you. You go numb as your senses turn inward."
@@ -296,6 +297,7 @@
 
 //Lifted from Unity stasis.dm and refactored. ~Zuhayr
 /obj/machinery/cryopod/Process()
+	playsound(src, 'sound/machines/cryo2.ogg', 65, 0)
 	if(occupant)
 		if(applies_stasis && iscarbon(occupant))
 			var/mob/living/carbon/C = occupant

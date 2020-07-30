@@ -7,6 +7,7 @@
 	buckle_dir = 0
 	buckle_lying = 0 //force people to sit up in chairs when buckled
 	var/propelled = 0 // Check for fire-extinguisher-driven chairs
+	buckling_sound = 'sound/effects/metal_close.ogg'
 
 /obj/structure/bed/chair/attackby(obj/item/weapon/W as obj, mob/user as mob)
 	..()
@@ -228,6 +229,18 @@
 	base_icon = "comfy_chair1"
 	icon_state = "comfy_chair1"
 	color = "#ffffff"
+
+/obj/structure/bed/chair/comfy/death
+	name = "death chair"
+	desc = "It's a chair. Well, a chair for death."
+	icon = 'icons/obj/objects.dmi'
+	base_icon = "comfydeath"
+	icon_state = "comfydeath"
+	color = "#ffffff"
+	material_alteration = MATERIAL_ALTERATION_NONE
+
+/obj/structure/bed/chair/comfy/death/get_material()
+	return 0
 
 // Chair types
 /obj/structure/bed/chair/wood

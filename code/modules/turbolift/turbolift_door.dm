@@ -10,6 +10,9 @@
 	var/datum/turbolift/lift
 	var/datum/turbolift_floor/floor
 
+	open_sound_powered = 'sound/machines/elev_open.ogg'
+	close_sound_powered = 'sound/machines/elev_close.ogg'
+
 /obj/machinery/door/airlock/lift/Destroy()
 	if(lift)
 		lift.doors -= src

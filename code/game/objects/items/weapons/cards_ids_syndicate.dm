@@ -1,7 +1,7 @@
 /obj/item/weapon/card/id/syndicate
-	name = "agent card"
+	name = "contrator card"
 	icon_state = "syndicate"
-	assignment = "Agent"
+	assignment = "PMC contrator"
 	origin_tech = list(TECH_ILLEGAL = 3)
 	var/electronic_warfare = 1
 	var/mob/registered_user = null

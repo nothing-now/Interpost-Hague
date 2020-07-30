@@ -537,6 +537,11 @@
 	desc = "A \"Space Life\" brand Head of Security action figure."
 	icon_state = "hos"
 
+/obj/item/toy/figure/jackriker
+	name = "jack riker action figure"
+	desc = "A space hero figure of Jack Riker."
+	icon_state = "maka"
+
 /obj/item/toy/figure/qm
 	name = "Quartermaster action figure"
 	desc = "A \"Space Life\" brand Quartermaster action figure."

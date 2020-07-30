@@ -58,7 +58,7 @@
 #define ui_resist "0,1"
 #define ui_acti "-2,0"//"SOUTH-1,8"
 #define ui_combat "-2,1"//COMBAT MODE!
-#define ui_combat_intent "0,4"
+#define ui_combat_intent "-1,4"
 #define ui_movi "-1,1"
 #define ui_zonesel "EAST+1, NORTH-2"
 #define ui_acti_alt "SOUTH-1,8" //alternative intent switcher for when the interface is hidden (F12)

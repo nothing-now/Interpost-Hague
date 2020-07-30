@@ -18,6 +18,7 @@
 	origin_tech = list(TECH_COMBAT = 1)
 	attack_verb = list("robusted")
 	block_chance = 10
+	use_sound = 'sound/effects/toolbox.ogg'
 
 /obj/item/weapon/storage/toolbox/emergency
 	name = "emergency toolbox"

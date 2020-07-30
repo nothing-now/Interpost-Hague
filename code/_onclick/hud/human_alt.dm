@@ -75,7 +75,23 @@
 	using.dir = NORTH
 	using.icon = ui_style
 	using.icon_state = "middle"
-	using.screen_loc = "-1,1 to -1,14"
+	using.screen_loc = "-1,1 to -1,4"
+	using.layer = UNDER_HUD_LAYER
+	adding += using
+
+	using = new /obj/screen() //Upper bar
+	using.dir = NORTH
+	using.icon = ui_style
+	using.icon_state = "middle2"
+	using.screen_loc = "-1,5"
+	using.layer = UNDER_HUD_LAYER
+	adding += using
+
+	using = new /obj/screen() //Upper bar
+	using.dir = NORTH
+	using.icon = ui_style
+	using.icon_state = "middle"
+	using.screen_loc = "-1,6 to -1,14"
 	using.layer = UNDER_HUD_LAYER
 	adding += using
 

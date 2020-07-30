@@ -8,9 +8,101 @@
 //Defines.
 #define OPPOSITE_DIR(D) turn(D, 180)
 
+#define CENTERED_RENDER_SOURCE(img, atom, FoV) \
+	atom.render_target = atom.render_target || ref(atom);\
+	img.render_source = atom.render_target;\
+	if(atom.icon){\
+		var/_cached_sizes = FoV.width_n_height_offsets[atom.icon];\
+		if(!_cached_sizes){\
+			var/icon/_I = icon(atom.icon);\
+			var/list/L = list();\
+			L += (_I.Width() - world.icon_size)/2;\
+			L += (_I.Height() - world.icon_size)/2;\
+			_cached_sizes = FoV.width_n_height_offsets[atom.icon] = L\
+		}\
+		img.pixel_x = _cached_sizes[1];\
+		img.pixel_y = _cached_sizes[2];\
+		img.loc = atom\
+	}
+
+#define REGISTER_NESTED_LOCS(source, list, comsig, proc) \
+	for(var/k in get_nested_locs(source)){\
+		var/atom/_A = k;\
+		RegisterSignal(_A, comsig, proc);\
+		list += _A\
+	}
+
+#define UNREGISTER_NESTED_LOCS(list, comsig, index) \
+	for(var/k in index to length(list)){\
+		var/atom/_A = list[k];\
+		UnregisterSignal(_A, comsig);\
+		list -= _A\
+	}
+
+
+/// Field of vision defines.
+#define FOV_90_DEGREES	90
+#define FOV_180_DEGREES	180
+#define FOV_270_DEGREES	270
+
+//viewers() but with a signal, for blacklisting.
+/proc/get_actual_viewers(depth = world.view, atom/center)
+	if(!center)
+		return
+	. = viewers(depth, center)
+	for(var/k in .)
+		var/mob/M = k
+		SEND_SIGNAL(M, COMSIG_MOB_IS_VIEWER, center, depth, .)
+
+//Returns a list of all locations the target is within.
+/proc/get_nested_locs(atom/movable/M, include_turf = FALSE)
+	. = list()
+	var/atom/A = M.loc
+	while(A && !isturf(A))
+		. += A
+		A = A.loc
+	if(A && include_turf) //At this point, only the turf is left.
+		. += A
+
+
 client/
 	var/list/hidden_atoms = list()
 	var/list/hidden_mobs = list()
+
+/**
+  * That special invisible, almost neigh indestructible movable
+  * that holds both shadow cone mask and image and follows the player around.
+  */
+	var/atom/movable/fov_holder/fov
+	///The current screen size this field of vision is meant to fit for.
+	var/current_fov_size = list(15, 15)
+	///How much is the cone rotated clockwise, purely backend. Please use rotate_shadow_cone() if you must.
+	var/angle = 0
+	/// Used to scale the shadow cone when rotating it to fit over the edges of the screen.
+	var/rot_scale = 1
+	/// The inner angle of this cone, right hardset to 90, 180, or 270 degrees, until someone figures out a way to make it dynamic.
+	var/shadow_angle = FOV_90_DEGREES
+	/// The mask portion of the cone, placed on a * render target plane so while not visible it still applies the filter.
+	var/image/shadow_mask
+	/// The visual portion of the cone, placed on the highest layer of the wall plane
+	var/image/visual_shadow
+/**
+  * An image whose render_source is kept up to date to prevent the mob (or the topmost movable holding it) from being hidden by the mask.
+  * Will make it use vis_contents instead once a few byonds bugs with images and vis contents are fixed.
+  */
+	var/image/owner_mask
+/**
+  * A circle image used to somewhat uncover the adjacent portion of the shadow cone, making mobs and objects behind us somewhat visible.
+  * The owner mask is still required for those mob going over the default 32x32 px size btw.
+  */
+	var/image/adj_mask
+	/// A list of nested locations the mob is in, to ensure the above image works correctly.
+	var/list/nested_locs = list()
+/**
+  * A static list of offsets based on icon width and height, because render sources are centered unlike most other visuals,
+  * and that gives us some problems when the icon is larger or smaller than world.icon_size
+  */
+	var/static/list/width_n_height_offsets = list()
 
 
 

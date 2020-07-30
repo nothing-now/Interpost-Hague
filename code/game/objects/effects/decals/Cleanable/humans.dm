@@ -4,13 +4,13 @@ var/global/list/image/splatter_cache=list()
 
 /obj/effect/decal/cleanable/blood
 	name = "blood"
-	desc = "It's thick and gooey. Perhaps it's the chef's cooking?"
+	desc = "It's thick, gooey and mesmerizing."
 	gender = PLURAL
 	density = 0
 	anchored = 1
 	icon = 'icons/effects/blood.dmi'
 	icon_state = "mfloor1"
-	random_icon_states = list("mfloor1", "mfloor2", "mfloor3", "mfloor4", "mfloor5", "mfloor6", "mfloor7")
+	random_icon_states = list("mfloor1", "mfloor2", "mfloor3", "mfloor4", "mfloor5", "mfloor6", "mfloor7", "mfloor8", "mfloor9", "mfloor10", "mfloor11", "mfloor12")
 	blood_DNA = list()
 	generic_filth = TRUE
 	persistent = TRUE
@@ -150,7 +150,7 @@ var/global/list/image/splatter_cache=list()
 	gender = PLURAL
 	icon = 'icons/effects/drip.dmi'
 	icon_state = "1"
-	random_icon_states = list("1","2","3","4","5")
+	random_icon_states = list("1","2","3","4","5","6","7","8","9")
 	amount = 0
 	var/list/drips
 

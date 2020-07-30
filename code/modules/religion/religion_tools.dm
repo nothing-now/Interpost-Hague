@@ -7,8 +7,6 @@
 	item_state = "baton"
 	var/brand = "HERETIC"
 
-
-
 /obj/item/weapon/brander/attack(mob/living/carbon/human/H, mob/living/user)
 	var/obj/item/organ/external/head/O = locate() in H.organs
 	if(O && !H.branded)
@@ -25,7 +23,9 @@
 				head.markings["brand"] = list("color" = "#330000", "datum" = new /datum/sprite_accessory/marking/brandface)
 				H.force_update_limbs()
 			else
+				to_chat(user, "<span class='notice'>You fail in branding.</span>")
 				user.doing_something = 0
+				return
 
 /obj/item/weapon/brander/attack_self(mob/user)
 	..()

@@ -14,6 +14,7 @@
 #define BRUISE    "bruise"
 #define PIERCE    "pierce"
 #define LASER     "laser"
+#define SHATTER   "shatter"
 
 #define STUN      "stun"
 #define WEAKEN    "weaken"
@@ -40,6 +41,9 @@
 #define ORGAN_MUTATED    (1<<4)
 #define ORGAN_ARTERY_CUT (1<<6)
 #define ORGAN_TENDON_CUT (1<<7)
+#define ORGAN_BRITTLE    (1<<8) // The organ takes additional blunt damage. If robotic, cannot be repaired through normal means.
+#define ORGAN_CRYSTAL    (1<<9)
+
 
 #define DROPLIMB_EDGE 0
 #define DROPLIMB_BLUNT 1

@@ -137,6 +137,16 @@
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	ammo_type = /obj/item/ammo_casing/a32
 
+/obj/item/weapon/gun/projectile/revolver/magnum44
+	name = "Magnum .50"
+	desc = "A magnum 50 heavy revolver chambered in (.50)."
+	icon_state = "magnum44"
+	item_state = "pistol1"
+	max_shells = 6
+	caliber = ".50"
+	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
+	ammo_type = /obj/item/ammo_casing/a50
+
 /obj/item/weapon/gun/projectile/revolver/colony/revolver
 	name = "Malice revolver"
 	desc = "A revolver produced on frontier colonies. Chambered in (9mm)."
@@ -146,6 +156,16 @@
 	caliber = "a9mm"
 	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
 	ammo_type = /obj/item/ammo_casing/a9mm
+
+/obj/item/weapon/gun/projectile/revolver/colony/enfils
+	name = "enfils revolver"
+	desc = "A very old standard revolver chambered in (.38)."
+	icon_state = "colonyrevolver"
+	item_state = "pistol1"
+	max_shells = 6
+	caliber = "a32"
+	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
+	ammo_type = /obj/item/ammo_casing/a32
 
 /obj/item/weapon/gun/projectile/revolver/colony/revolver
 	name = "Malice revolver"

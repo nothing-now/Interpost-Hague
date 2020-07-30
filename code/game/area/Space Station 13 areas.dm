@@ -51,7 +51,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 //	var/list/lights				// list of all lights on this area
 	var/list/all_doors = null		//Added by Strumpetplaya - Alarm Change - Contains a list of doors adjacent to this area
 	var/air_doors_activated = 0
-	var/list/ambience = list('sound/ambience/ambigen1.ogg','sound/ambience/ambigen3.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambigen5.ogg','sound/ambience/ambigen6.ogg','sound/ambience/ambigen7.ogg','sound/ambience/ambigen8.ogg','sound/ambience/ambigen9.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen11.ogg','sound/ambience/ambigen12.ogg','sound/ambience/ambigen14.ogg')
+	var/list/ambience = list('sound/ambience/ambigen3.ogg','sound/ambience/ambigen4.ogg','sound/ambience/ambigen5.ogg','sound/ambience/ambigen9.ogg','sound/ambience/ambigen10.ogg','sound/ambience/ambigen11.ogg','sound/ambience/ambigen12.ogg','sound/ambience/ambigen14.ogg', 'sound/ambience/1_ship_1.ogg', 'sound/ambience/1_ship_2.ogg', 'sound/ambience/1_ship_3.ogg', 'sound/ambience/1_ship_4.ogg', 'sound/ambience/1_ship_5.ogg', 'sound/ambience/1_ship_6.ogg', 'sound/ambience/1_ship_7.ogg', 'sound/ambience/1_ship_8.ogg', 'sound/ambience/tstation.ogg')
 	var/list/forced_ambience = null
 	var/sound_env = STANDARD_STATION
 	var/turf/base_turf //The base turf type of the area, which can be used to override the z-level's base turf
@@ -74,7 +74,7 @@ NOTE: there are two lists of areas in the end of this file: centcom and station 
 	has_gravity = 0
 	area_flags = AREA_FLAG_EXTERNAL
 	ambience = list('sound/ambience/ambispace.ogg')
-	forced_ambience = list('sound/ambience/space_loop.ogg')
+	forced_ambience = list('sound/ambience/hostile_space.ogg')
 
 /area/space/update_icon()
 	return
@@ -116,6 +116,10 @@ area/space/atmosalert()
 /area/hallway
 	name = "hallway"
 
+/area/medical
+	name = "Medical"
+	forced_ambience = list('sound/ambience/arrivals.ogg')
+
 /area/medical/virology
 	name = "Virology"
 	icon_state = "virology"
@@ -123,6 +127,11 @@ area/space/atmosalert()
 /area/medical/virologyaccess
 	name = "Virology Access"
 	icon_state = "virology"
+
+/area/security
+	name = "Security"
+	icon_state = "brig"
+	forced_ambience = list('sound/ambience/orbital_deck1.ogg')
 
 /area/security/brig
 	name = "Security - Brig"
@@ -136,6 +145,10 @@ area/space/atmosalert()
 	area_flags = AREA_FLAG_RAD_SHIELDED
 	sound_env = TUNNEL_ENCLOSED
 	turf_initializer = /decl/turf_initializer/maintenance
+
+/area/rnd
+	name = "RD"
+	forced_ambience = list('sound/ambience/computer_amb.ogg')
 
 /area/rnd/xenobiology
 	name = "Xenobiology Lab"
@@ -183,7 +196,6 @@ area/space/atmosalert()
 /area/shuttle
 	requires_power = 0
 	sound_env = SMALL_ENCLOSED
-	base_turf = /turf/space
 
 /*
 * Special Areas

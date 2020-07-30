@@ -39,6 +39,7 @@
 		var/area/default = world.area
 		location = initial(default.name)
 	var/death_message = "[mobname] has died in [location]!"
+	sound_to(world, sound('sound/effects/death_alarm_legacy.ogg'))
 	if(!cause)
 		death_message = "[mobname] has died-zzzzt in-in-in..."
 	STOP_PROCESSING(SSobj, src)

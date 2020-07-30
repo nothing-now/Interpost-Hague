@@ -160,3 +160,9 @@
 	permeability_coefficient = 0.07
 	armor = list(melee = 50, bullet = 50, laser = 50, energy = 28, bomb = 30, bio = 10, rad = 30)
 
+/obj/item/clothing/gloves/priest
+	name = "priest's gloves"
+	desc = "Gloves worn by the priest."
+	icon_state = "bast"
+	item_state = "bast"
+

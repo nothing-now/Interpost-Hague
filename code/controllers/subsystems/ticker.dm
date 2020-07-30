@@ -284,7 +284,6 @@ Helpers
 	for(var/mob/new_player/player in GLOB.player_list)
 		if(player && player.ready && player.mind)
 			if(player.mind.assigned_role=="AI")
-				player.close_spawn_windows()
 				player.AIize()
 			else if(!player.mind.assigned_role)
 				continue
@@ -297,8 +296,7 @@ Helpers
 		if(player.mind)
 			minds += player.mind
 
-/datum/controller/subsystem/ticker/proc/equip_characters()
-	var/captainless=1
+/datum/controller/subsystem/ticker/proc/equip_characters(var/captainless=1)
 	for(var/mob/living/carbon/human/player in GLOB.player_list)
 		if(player && player.mind && player.mind.assigned_role)
 			if(player.mind.assigned_role == "Captain")
@@ -306,10 +304,6 @@ Helpers
 			if(!player_is_antag(player.mind, only_offstation_roles = 1))
 				job_master.EquipRank(player, player.mind.assigned_role, 0)
 				equip_custom_items(player)
-	if(captainless)
-		for(var/mob/M in GLOB.player_list)
-			if(!istype(M,/mob/new_player))
-				to_chat(M, "Captainship not forced on anyone.")
 
 /datum/controller/subsystem/ticker/proc/attempt_late_antag_spawn(var/list/antag_choices)
 	var/datum/antagonist/antag = antag_choices[1]

@@ -81,6 +81,7 @@ var/const/NO_EMAG_ACT = -50
 	A.add_fingerprint(user)
 	if(used_uses)
 		log_and_message_admins("emagged \an [A].")
+		playsound(src, 'sound/items/emage.ogg', 35, 0)
 
 	if(uses<1)
 		user.visible_message("<span class='warning'>\The [src] fizzles and sparks - it seems it's been used once too often, and is now spent.</span>")

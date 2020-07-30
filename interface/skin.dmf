@@ -507,10 +507,13 @@ macro "macro"
 	elem 
 		name = "C"
 		command = ".combat_mode"
-	elem
+	elem 
 		name = "G"
 		command = ".defense_intent"
-	elem
+	elem 
+		name = "F"
+		command = ".fixeye"
+	elem 
 		name = "SHIFT+X"
 		command = ".wield"
 	elem 
@@ -986,7 +989,7 @@ window "mainwindow"
 		size = 1001x720
 		anchor1 = 0,0
 		anchor2 = 100,100
-		background-color = #100c0c
+		background-color = #000000
 		saved-params = "splitter"
 		right = "rpane"
 		is-vert = true
@@ -1015,7 +1018,6 @@ window "screenSizeHelper"
 		text-color = #ffffff
 		is-visible = false
 		saved-params = ""
-		auto-format = false
 
 window "mapwindow"
 	elem "mapwindow"
@@ -1052,13 +1054,12 @@ window "mapwindow"
 		is-visible = false
 		is-disabled = true
 		saved-params = ""
-		auto-format = false
 
 window "outputwindow"
 	elem "outputwindow"
 		type = MAIN
-		pos = 372,0
-		size = 640x480
+		pos = 281,0
+		size = 640x442
 		anchor1 = none
 		anchor2 = none
 		saved-params = "pos;size;is-minimized;is-maximized"
@@ -1068,27 +1069,29 @@ window "outputwindow"
 		can-minimize = false
 		can-resize = false
 		is-pane = true
+		image = 'icons\\misc\\chatbg.png'
 	elem "browseroutput"
 		type = BROWSER
 		pos = 0,0
-		size = 640x456
+		size = 640x418
 		anchor1 = 0,0
 		anchor2 = 100,100
 		background-color = #ffffff
 		is-visible = false
 		saved-params = ""
-		auto-format = false
+		auto-format = true
 	elem "output"
 		type = OUTPUT
 		pos = 0,0
-		size = 640x480
+		size = 640x442
 		anchor1 = 0,0
 		anchor2 = 100,100
 		is-default = true
 		saved-params = ""
+		image = 'icons\\misc\\chatbg.png'
 	elem "saybutton"
 		type = BUTTON
-		pos = 519,459
+		pos = 519,421
 		size = 40x20
 		anchor1 = 100,100
 		anchor2 = none
@@ -1098,38 +1101,46 @@ window "outputwindow"
 		button-type = pushbox
 	elem "input"
 		type = INPUT
-		pos = 1,459
+		pos = 1,421
 		size = 637x20
 		anchor1 = 0,100
 		anchor2 = 100,100
-		border = sunken
 		is-default = true
+		border = line
 		saved-params = "command"
 
 window "rpane"
 	elem "rpane"
 		type = MAIN
-		pos = 418,0
+		pos = 281,0
 		size = 640x480
 		anchor1 = none
 		anchor2 = none
+		background-color = #262222
 		saved-params = "pos;size;is-minimized;is-maximized"
 		is-pane = true
+		outer-size = 656x538
+		inner-size = 640x499
 	elem "rpanewindow"
 		type = CHILD
 		pos = 0,0
 		size = 640x474
 		anchor1 = 0,0
 		anchor2 = 100,100
+		background-color = none
 		saved-params = "splitter"
+		left = "infowindow"
 		right = "outputwindow"
 		is-vert = false
+		splitter = 30
+		show-splitter = false
 	elem "textb"
 		type = BUTTON
 		pos = 5,0
 		size = 60x20
 		anchor1 = none
 		anchor2 = none
+		background-color = none
 		is-visible = false
 		saved-params = "is-checked"
 		text = "Text"
@@ -1137,17 +1148,18 @@ window "rpane"
 		is-checked = true
 		group = "rpanemode"
 		button-type = pushbox
-	elem "infob"	
+	elem "infob"
 		type = BUTTON
-		pos = 40,0	
-		size = 60x20	
-		anchor1 = none	
-		anchor2 = none	
-		is-visible = false	
-		saved-params = "is-checked"	
-		text = "Info"	
-		command = ".winset \"rpanewindow.left=infowindow\""	
-		group = "rpanemode"	
+		pos = 40,0
+		size = 60x20
+		anchor1 = none
+		anchor2 = none
+		background-color = none
+		is-visible = false
+		saved-params = "is-checked"
+		text = "Info"
+		command = ".winset \"rpanewindow.left=infowindow\""
+		group = "rpanemode"
 		button-type = pushbox
 
 window "infowindow"
@@ -1171,11 +1183,12 @@ window "infowindow"
 	elem "info"
 		type = INFO
 		pos = 0,0
-		size = 638x477
+		size = 640x480
 		anchor1 = 0,0
 		anchor2 = 100,100
 		is-default = true
 		saved-params = ""
-		highlight-color = #00aa00
+		highlight-color = #70a0ff
 		on-show = ".winset\"rpane.infob.is-visible=true;rpane.infob.pos=65,0 rpane.textb.is-visible=true rpane.infob.is-checked=true rpane.rpanewindow.pos=0,30 rpane.rpanewindow.size=0x0 rpane.rpanewindow.left=infowindow\""
 		on-hide = ".winset\"rpane.infob.is-visible=false;rpane.textb.is-visible=true rpane.rpanewindow.pos=0,30 rpane.rpanewindow.size=0x0 rpane.rpanewindow.left=\""
+

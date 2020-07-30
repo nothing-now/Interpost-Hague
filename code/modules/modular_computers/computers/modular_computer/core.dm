@@ -40,10 +40,8 @@
 	handle_power() // Handles all computer power interaction
 	check_update_ui_need()
 
-	var/static/list/beepsounds = list('sound/effects/compbeep1.ogg','sound/effects/compbeep2.ogg','sound/effects/compbeep3.ogg','sound/effects/compbeep4.ogg','sound/effects/compbeep5.ogg')
-	if(enabled && world.time > ambience_last_played + 60 SECONDS && prob(1))
-		ambience_last_played = world.time
-		playsound(src.loc, pick(beepsounds),15,1,10, is_ambiance = 1)
+	if(enabled)
+		playsound(src,'sound/machines/loop_computer.ogg', 15, 0)
 
 // Used to perform preset-specific hardware changes.
 /obj/item/modular_computer/proc/install_default_hardware()
@@ -109,6 +107,7 @@
 		overlays.Add(icon_state_menu)
 
 /obj/item/modular_computer/proc/turn_on(var/mob/user)
+	var/static/list/enablesounds = list('sound/machines/mail1.ogg','sound/machines/mail3.ogg','sound/machines/mail4.ogg')
 	if(bsod)
 		return
 	if(tesla_link)
@@ -122,16 +121,19 @@
 		return
 	if(processor_unit && (apc_power(0) || battery_power(0))) // Battery-run and charged or non-battery but powered by APC.
 		if(issynth)
-			to_chat(user, "You send an activation signal to \the [src], turning it on")
+			to_chat(user, "You send an activation signal to \the [src], turning it on.")
 		else
-			to_chat(user, "You press the power button and start up \the [src]")
+			to_chat(user, "You press the power button and start up \the [src].")
+		playsound(src, pick(enablesounds), 65, 0)
 		enable_computer(user)
 
 	else // Unpowered
 		if(issynth)
-			to_chat(user, "You send an activation signal to \the [src] but it does not respond")
+			to_chat(user, "You send an activation signal to \the [src] but it does not respond.")
+			playsound(src, 'sound/machines/mail2.ogg', 45, 0)
 		else
-			to_chat(user, "You press the power button but \the [src] does not respond")
+			to_chat(user, "You press the power button but \the [src] does not respond.")
+			playsound(src, 'sound/machines/mail2.ogg', 45, 0)
 
 // Relays kill program request to currently active program. Use this to quit current program.
 /obj/item/modular_computer/proc/kill_program(var/forced = 0)

@@ -26,7 +26,7 @@
 	id_hud_icons = 'maps/dreyfus/icons/assignment_hud.dmi'
 
 
-	map_admin_faxes = list("Colonial Magistrate Authority")
+	map_admin_faxes = list("King's Authority")
 
 	shuttle_docked_message = "The shuttle has docked."
 	shuttle_leaving_dock = "The shuttle has departed from home dock."
@@ -53,6 +53,7 @@
 		new /datum/event_meta(EVENT_LEVEL_MUNDANE, "Mundane News", 		/datum/event/mundane_news, 		300),
 		//new /datum/event_meta(EVENT_LEVEL_MUNDANE, "Psionic Signal", 		/datum/event/minispasm, 		300),
 		new /datum/event_meta(EVENT_LEVEL_MUNDANE, "Shipping Error",	/datum/event/shipping_error	, 	30, 	list(ASSIGNMENT_ANY = 2), 0),
+		new /datum/event_meta(EVENT_LEVEL_MUNDANE, "Meteor Wave",		/datum/event/meteor_wave,		200, 	list(ASSIGNMENT_ANY = 10)),
 		new /datum/event_meta(EVENT_LEVEL_MUNDANE, "Sensor Suit Jamming",/datum/event/sensor_suit_jamming,50,	list(ASSIGNMENT_MEDICAL = 20, ASSIGNMENT_AI = 20), 1),
 		new /datum/event_meta(EVENT_LEVEL_MUNDANE, "Trivial News",		/datum/event/trivial_news, 		400),
 		new /datum/event_meta(EVENT_LEVEL_MUNDANE, "Vermin Infestation",/datum/event/infestation, 		100,	list(ASSIGNMENT_JANITOR = 100)),

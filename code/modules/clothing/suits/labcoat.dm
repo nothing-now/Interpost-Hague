@@ -64,6 +64,13 @@
 	icon_open = "labcoat_nt_open"
 	icon_closed = "labcoat_nt"
 
+/obj/item/clothing/suit/labcoat/newdoctor
+	name = "\improper doctor's coat"
+	desc = "A suit that protects against...blood spills, of course."
+	icon_state = "doctor"
+	item_state = "doctor"
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+
 /obj/item/clothing/suit/storage/toggle/labcoat/rd
 	name = "research director's labcoat"
 	desc = "A full-body labcoat covered in red and black designs, denoting it as a NanoTrasen management coat. Judging by the amount of designs on it, it is only to be worn by the most enthusiastic of NanoTrasen employees."

@@ -167,12 +167,21 @@
 	access = access_armory
 	security_level = SUPPLY_SECURITY_ELEVATED
 
-/decl/hierarchy/supply_pack/security/shotgun
-	name = "Weapons - Shotgun"
-	contains = list(/obj/item/weapon/gun/projectile/shotgun/pump/combat = 2)
+/decl/hierarchy/supply_pack/security/boltaction
+	name = "Weapons - bolt action rifles"
+	contains = list(/obj/item/weapon/gun/projectile/shotgun/pump/boltaction/shitty/bayonet = 1)
 	cost = 60
 	containertype = /obj/structure/closet/crate/secure/weapon
-	containername = "\improper Shotgun crate"
+	containername = "\improper rifle crate"
+	access = access_armory
+	security_level = SUPPLY_SECURITY_ELEVATED
+
+/decl/hierarchy/supply_pack/security/sword
+	name = "Weapons - swords"
+	contains = list(/obj/item/weapon/material/sword/longsword = 1)
+	cost = 30
+	containertype = /obj/structure/closet/crate/secure/weapon
+	containername = "\improper sword crate"
 	access = access_armory
 	security_level = SUPPLY_SECURITY_ELEVATED
 

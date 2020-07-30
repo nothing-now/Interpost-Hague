@@ -296,6 +296,7 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 
 	for(var/obj/item/organ/O in (H.organs|H.internal_organs))
 		O.owner = H
+		post_organ_rejuvenate(O)
 
 	H.sync_organ_dna()
 
@@ -422,6 +423,12 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 		H.remove_all_blur()
 	//H.set_fullscreen(H.eye_blurry, "blurry", /obj/screen/fullscreen/blurry)
 	H.set_fullscreen(H.druggy, "high", /obj/screen/fullscreen/high)
+	if(H.druggy)
+		H.add_client_color(/datum/client_color/oversaturated)
+		H.set_all_blur_drugs()
+	else
+		H.remove_client_color(/datum/client_color/oversaturated)
+		H.remove_all_blur_drugs()
 
 	for(var/overlay in H.equipment_overlays)
 		H.client.screen |= overlay
@@ -603,3 +610,6 @@ The slots that you can use are found in items_clothing.dm and are the inventory 
 	if(!client)
 		return
 	client.screen -= drug_effect_extreme
+
+/datum/species/proc/post_organ_rejuvenate(var/obj/item/organ/org)
+	return

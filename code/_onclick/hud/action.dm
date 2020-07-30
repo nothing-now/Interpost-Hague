@@ -1,14 +1,15 @@
+
 #define AB_ITEM 1
 #define AB_SPELL 2
 #define AB_INNATE 3
 #define AB_GENERIC 4
+#define AB_ITEM_USE_ICON 5
 
 #define AB_CHECK_RESTRAINED 1
 #define AB_CHECK_STUNNED 2
 #define AB_CHECK_LYING 4
 #define AB_CHECK_ALIVE 8
 #define AB_CHECK_INSIDE 16
-
 
 /datum/action
 	var/name = "Generic Action"
@@ -30,6 +31,10 @@
 /datum/action/Destroy()
 	if(owner)
 		Remove(owner)
+	return ..()
+
+/datum/action/proc/SetTarget(var/atom/Target)
+	target = Target
 
 /datum/action/proc/Grant(mob/living/T)
 	if(owner)
@@ -217,6 +222,19 @@
 
 /datum/action/item_action/hands_free
 	check_flags = AB_CHECK_ALIVE|AB_CHECK_INSIDE
+
+/datum/action/item_action/organ
+	action_type = AB_ITEM_USE_ICON
+	button_icon = 'icons/obj/action_buttons/organs.dmi'
+
+/datum/action/item_action/organ/SetTarget(var/atom/Target)
+	. = ..()
+	var/obj/item/organ/O = target
+	if(istype(O))
+		O.refresh_action_button()
+
+/datum/action/item_action/organ/augment
+	button_icon = 'icons/obj/augment.dmi'
 
 #undef AB_WEST_OFFSET
 #undef AB_NORTH_OFFSET

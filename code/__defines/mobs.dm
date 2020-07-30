@@ -233,6 +233,21 @@
 #define BP_BY_DEPTH list(BP_HEAD, BP_L_HAND, BP_R_HAND, BP_L_ARM, BP_R_ARM, BP_L_FOOT, BP_R_FOOT, BP_L_LEG, BP_R_LEG, BP_GROIN, BP_CHEST)
 #define BP_BELOW_GROIN list(BP_GROIN, BP_L_FOOT, BP_R_FOOT, BP_L_LEG, BP_R_LEG)
 
+//Augmentations
+#define BP_AUGMENT_R_ARM         "right arm augment"
+#define BP_AUGMENT_L_ARM         "left arm augment"
+#define BP_AUGMENT_R_HAND        "right hand augment"
+#define BP_AUGMENT_L_HAND        "left hand augment"
+#define BP_AUGMENT_R_LEG         "right leg augment"
+#define BP_AUGMENT_L_LEG         "left leg augment"
+#define BP_AUGMENT_CHEST_ARMOUR   "chest armor augment"
+#define BP_AUGMENT_CHEST_ACTIVE  "active chest augment"
+#define BP_AUGMENT_HEAD           "head augment"
+
+//Augment flags
+#define AUGMENTATION_MECHANIC 1
+#define AUGMENTATION_ORGANIC  2
+
 #define SYNTH_BLOOD_COLOUR "#030303"
 #define SYNTH_FLESH_COLOUR "#575757"
 
@@ -240,6 +255,13 @@
 #define MOB_PULL_SMALLER 1
 #define MOB_PULL_SAME 2
 #define MOB_PULL_LARGER 3
+
+// Prosthetic helpers.
+#define BP_IS_PROSTHETIC(org) (!QDELETED(org) && (org.status & ORGAN_PROSTHETIC))
+#define BP_IS_ASSISTED(org)   (!QDELETED(org) && (org.status & ORGAN_ASSISTED))
+#define BP_IS_BRITTLE(org)    (!QDELETED(org) && (org.status & ORGAN_BRITTLE))
+#define BP_IS_CRYSTAL(org)    (!QDELETED(org) && (org.status & ORGAN_CRYSTAL))
+#define BP_IS_ROBOTIC(org)    (!QDELETED(org) && (org.status & ORGAN_ROBOT))
 
 //carbon taste sensitivity defines, used in mob/living/carbon/proc/ingest
 #define TASTE_HYPERSENSITIVE 3 //anything below 5%
@@ -301,19 +323,19 @@
 #define MOOD_LEVEL_SAD3 -15
 #define MOOD_LEVEL_SAD4 -20
 
-#define NUTRITION_LEVEL_FAT 550
-#define NUTRITION_LEVEL_FULL 500
-#define NUTRITION_LEVEL_WELL_FED 450
-#define NUTRITION_LEVEL_FED 350
-#define NUTRITION_LEVEL_HUNGRY 250
-#define NUTRITION_LEVEL_STARVING 150
+#define NUTRITION_LEVEL_FAT 500
+#define NUTRITION_LEVEL_FULL 400
+#define NUTRITION_LEVEL_WELL_FED 350
+#define NUTRITION_LEVEL_FED 250
+#define NUTRITION_LEVEL_HUNGRY 150
+#define NUTRITION_LEVEL_STARVING 100
 
 //Thirst levels for humans
-#define THIRST_LEVEL_MAX 600
-#define THIRST_LEVEL_FILLED 500
+#define THIRST_LEVEL_MAX 500
+#define THIRST_LEVEL_FILLED 400
 #define THIRST_LEVEL_MEDIUM 300
-#define THIRST_LEVEL_THIRSTY 200
-#define THIRST_LEVEL_DEHYDRATED 50
+#define THIRST_LEVEL_THIRSTY 150
+#define THIRST_LEVEL_DEHYDRATED 100
 #define THIRST_FACTOR 0.5
 
 //Hygiene levels for humans

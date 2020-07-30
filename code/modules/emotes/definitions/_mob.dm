@@ -122,10 +122,11 @@
 		/decl/emote/visible/handshake,
 		/decl/emote/human/poo,
 		/decl/emote/human/pee,
+		/decl/emote/human/dance,
 		/decl/emote/audible/clearthroat,
 		/decl/emote/audible/hem,
 		/decl/emote/audible/charge,
-		/decl/emote/audible/hums
+		/decl/emote/audible/hums,
 	)
 
 /mob/living/silicon/robot

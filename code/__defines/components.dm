@@ -94,6 +94,9 @@
 #define COMSIG_TURF_HAS_GRAVITY "turf_has_gravity"				//from base of atom/has_gravity(): (atom/asker, list/forced_gravities)
 #define COMSIG_TURF_MULTIZ_NEW "turf_multiz_new"				//from base of turf/New(): (turf/source, direction)
 
+#define COMSIG_MOB_IS_VIEWER "mob_is_viewer"					//from base of /get_actual_viewers(): (atom/center, depth, viewers_list)
+#define COMSIG_MOB_GET_VISIBLE_MESSAGE "mob_get_visible_message" //from base of atom/visible_message(): (atom/A, msg, range, ignored_mobs)
+	#define COMPONENT_NO_VISIBLE_MESSAGE 1 //exactly what's said on the tin.
 
 // /atom/movable signals
 #define COMSIG_MOVABLE_MOVED "movable_moved"					//from base of atom/movable/Moved(): (/atom, dir)

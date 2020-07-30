@@ -21,6 +21,8 @@
 	var/allow_quick_gather	//Set this variable to allow the object to have the 'toggle mode' verb, which quickly collects all items from a tile.
 	var/collection_mode = 1;  //0 = pick one at a time, 1 = pick all on tile
 	var/use_sound = "rustle"	//sound played when used. null for no sound.
+	var/open_sound = null
+	var/opened = null
 
 	//initializes the contents of the storage with some items based on an assoc list. The assoc key must be an item path,
 	//the assoc value can either be the quantity, or a list whose first value is the quantity and the rest are args.
@@ -80,8 +82,12 @@
 	storage_ui.hide_from(user)
 
 /obj/item/weapon/storage/proc/open(mob/user as mob)
+	if(!opened)
+		playsound(src.loc, src.open_sound, 50, 0, -5)
+		opened = 1
+		queue_icon_update()
 	if (src.use_sound)
-		playsound(src.loc, src.use_sound, 50, 1, -5)
+		playsound(src.loc, src.use_sound, 50, 0, -5)
 
 	prepare_ui()
 	storage_ui.on_open(user)

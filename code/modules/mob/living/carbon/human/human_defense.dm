@@ -184,9 +184,10 @@ meteor_act
 		user.resolve_critical_miss(I)
 		return null
 
-	//if(!user.skillcheck(user.melee_skill, 60, 0) || !user.combat_mode)
-	//	visible_message("<span class='danger'>[user] botches the attack on [src]!</span>")
-	//	return null
+	if(!user.skillcheck(user.skills["melee"], 30, null, "melee") || !user.combat_mode)
+		if(prob(user.skills["melee"] - 65))
+			visible_message("<span class='danger'>[user] botches the attack on [src]!</span>")
+			return null
 
 	//PARRYING HAPPENS HERE
 	if(check_shields(I.force, I, user, target_zone, "the [I.name]"))
@@ -629,16 +630,17 @@ meteor_act
 	var/armour = run_armor_check(hit_zone, "melee")
 	switch(hit_zone)
 		if(BP_CHEST)//If we aim for the chest we kick them in the direction we're facing.
-			if(lying)
+			if(lying || prob(10))
 				var/turf/target = get_turf(src.loc)
 				var/range = src.throw_range
 				var/throw_dir = get_dir(user, src)
+				var/throwdis = 1 + 3 + user.stats[STAT_ST] - 7
 				for(var/i = 1; i < range; i++)
 					var/turf/new_turf = get_step(target, throw_dir)
 					target = new_turf
 					if(new_turf.density)
 						break
-				src.throw_at(target, rand(1,3), src.throw_speed)
+				src.throw_at(target, throwdis, src.throw_speed)
 			if(user.lying)
 				to_chat(user, too_high_message)
 				return
@@ -658,7 +660,7 @@ meteor_act
 				return
 
 	//STR makes you hit harder, DEX makes it less tiring
-	var/kickdam = rand(0,15) + stat_to_modifier(user.stats[STAT_ST])
+	var/kickdam = rand(5,20) + stat_to_modifier(user.stats[STAT_ST])
 	user.adjustStaminaLoss(rand(10,15) - stat_to_modifier(user.stats[STAT_DX]))//Kicking someone is a big deal.
 	if(kickdam)
 		playsound(user.loc, 'sound/weapons/kick.ogg', 50, 0)
@@ -718,7 +720,9 @@ meteor_act
 /*
 //Add screaming here.
 /mob/living/carbon/human/IgniteMob()
-	..()
-	if(!stat &&)
+	if(!on_fire)
+		return
 
+	if(on_fire)
+		emote(pick("agony","sadisticyelling"))
 */

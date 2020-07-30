@@ -40,6 +40,13 @@
 	item_state = "waiter"
 	worn_state = "waiter"
 
+/obj/item/clothing/under/doctornew
+	name = "doctor's outfit"
+	desc = "A uniform, designed to protect you against blood spills."
+	icon_state = "doctor"
+	item_state = "doctor"
+	worn_state = "doctor"
+
 /obj/item/clothing/under/rank/mailman
 	name = "mailman's jumpsuit"
 	desc = "<i>'Special delivery!'</i>"
@@ -739,6 +746,14 @@
 /obj/item/clothing/under/dress/dress_countess
 	name = "countess dress"
 	desc = "A fine embroidered gown, fit for a noble countess."
-	icon_state = "servdress"
-	item_state = "blackskirt"
-	worn_state = "servdress"
+	icon_state = "countess"
+	item_state = "countess"
+	worn_state = "countess"
+
+/obj/item/clothing/under/rank/priest
+	name = "priest's uniform"
+	desc = "A suit worn by the priest."
+	icon_state = "priest"
+	worn_state = "priest"
+	item_state = "priest"
+	armor = list(melee = 1, bullet = 1, laser = 0,energy = 0, bomb = 0, bio = 0, rad = 5)

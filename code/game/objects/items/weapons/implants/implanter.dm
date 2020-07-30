@@ -80,6 +80,7 @@
 
 			if(do_after(user, 50, M) && src.imp.implant_in_mob(M, target_zone))
 				M.visible_message("<span class='warning'>[M] has been implanted by [user].</span>")
+				playsound(user.loc, 'sound/items/implanted.ogg', 50, 1)
 				admin_attack_log(user, M, "Implanted using \the [src] ([imp_name])", "Implanted with \the [src] ([imp_name])", "used an implanter, \the [src] ([imp_name]), on")
 
 				src.imp = null

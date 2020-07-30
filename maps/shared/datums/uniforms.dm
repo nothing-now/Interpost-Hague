@@ -18,7 +18,6 @@
 	pda_type = /obj/item/device/pda/captain
 	gloves = /obj/item/clothing/gloves/white
 	head = /obj/item/clothing/head/crown_countess//FIT FOR A FUCKING QUEEN
-	suit = /obj/item/clothing/suit/robes
 	r_pocket = /obj/item/weapon/reagent_containers/spray/pepper
 
 /decl/hierarchy/outfit/job/dreyfus/adjoint
@@ -57,6 +56,7 @@
 	head = /obj/item/clothing/head/hardhat
 	uniform = /obj/item/clothing/under/hazard
 	r_pocket = /obj/item/device/t_scanner
+	l_ear = /obj/item/device/radio/headset/headset_eng
 	id_type = /obj/item/weapon/card/id/engineering
 	pda_type = /obj/item/device/pda/engineering
 
@@ -105,10 +105,10 @@
 
 /decl/hierarchy/outfit/job/security/head_peacekeeper
 	name = OUTFIT_JOB_NAME("Head Peacekeeper")
-	glasses = /obj/item/clothing/glasses/sunglasses
+	head = /obj/item/clothing/head/HoS
+	glasses = /obj/item/clothing/glasses/eyepatch/hud/security
 	uniform = /obj/item/clothing/under/rank/head_of_security/corp
 	shoes = /obj/item/clothing/shoes/jackboots
-	suit = /obj/item/clothing/suit/armor/hos//He doesn't have a locker anymore.
 	id_type = /obj/item/weapon/card/id/dreyfus/hos
 	pda_type = /obj/item/device/pda/heads/hos
 

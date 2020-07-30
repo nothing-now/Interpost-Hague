@@ -241,12 +241,27 @@
 	maxcharge = 3000
 	matter = list(DEFAULT_WALL_MATERIAL = 700, "glass" = 80)
 
-/obj/item/weapon/cell/infinite/check_charge()
-	return 1
+/obj/item/weapon/cell/infinite/percent()
+	return 100
 
-/obj/item/weapon/cell/infinite/use()
-	return 1
+/obj/item/weapon/cell/infinite/fully_charged()
+	return TRUE
 
+/obj/item/weapon/cell/infinite/check_charge(var/amount)
+	return (maxcharge >= amount)
+
+/obj/item/weapon/cell/infinite/use(var/amount)
+	return min(maxcharge, amount)
+
+/obj/item/weapon/cell/infinite/checked_use(var/amount)
+	return check_charge(amount)
+
+/obj/item/weapon/cell/infinite/give()
+	return 0
+
+/obj/item/weapon/cell/infinite/get_electrocute_damage()
+	charge = maxcharge
+	return ..()
 
 /obj/item/weapon/cell/potato
 	name = "potato battery"

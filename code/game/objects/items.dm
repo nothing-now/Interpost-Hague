@@ -30,6 +30,7 @@
 	var/datum/action/item_action/action = null
 	var/action_button_name //It is also the text which gets displayed on the action button. If not set it defaults to 'Use [name]'. If it's not set, there'll be no button.
 	var/action_button_is_hands_free = 0 //If 1, bypass the restrained, lying, and stunned checks action buttons normally test for
+	var/default_action_type = /datum/action/item_action // Specify the default type and behavior of the action button for this atom.
 
 	//This flag is used to determine when items in someone's inventory cover others. IE helmets making it so you can't see glasses, etc.
 	//It should be used purely for appearance. For gameplay effects caused by items covering body parts, use body_parts_covered.
@@ -97,6 +98,12 @@
 	var/force_unwielded = 0
 	var/force_wielded = 0
 
+	///Used when thrown into a mob
+	var/mob_throw_hit_sound
+	///Sound used when equipping the item into a valid slot
+	var/equip_sound
+	///Sound uses when picking the item up (into your hands)
+	var/pickup_sound = 'sound/items/pickup/device.ogg'
 
 /obj/item/New()
 	..()
@@ -373,6 +380,31 @@
 /obj/item/proc/moved(mob/user as mob, old_loc as turf)
 	return
 
+/obj/item/proc/get_volume_by_throwforce_and_or_w_class()
+	if(throwforce && w_class)
+		return Clamp((throwforce + w_class) * 5, 30, 100)// Add the item's throwforce to its weight class and multiply by 5, then clamp the value between 30 and 100
+	else if(w_class)
+		return Clamp(w_class * 8, 20, 100) // Multiply the item's weight class by 8, then clamp the value between 20 and 100
+	else
+		return 0
+
+/obj/item/throw_impact(atom/hit_atom)
+	..()
+	if(isliving(hit_atom)) //Living mobs handle hit sounds differently.
+		var/volume = get_volume_by_throwforce_and_or_w_class()
+		if (throwforce > 0)
+			if (mob_throw_hit_sound)
+				playsound(hit_atom, mob_throw_hit_sound, volume, TRUE, -1)
+			else if(hitsound)
+				playsound(hit_atom, hitsound, volume, TRUE, -1)
+			else
+				playsound(hit_atom, 'sound/weapons/genhit.ogg', volume, TRUE, -1)
+		else
+			playsound(hit_atom, 'sound/weapons/throwtap.ogg', 1, volume, -1)
+	else
+		playsound(src, drop_sound, 50)
+
+
 // apparently called whenever an item is removed from a slot, container, or anything else.
 /obj/item/proc/dropped(mob/user as mob)
 	if(randpixel)
@@ -430,6 +462,15 @@
 		M.l_hand.update_twohanding()
 	if(M.r_hand)
 		M.r_hand.update_twohanding()
+
+	if((slot_flags & slot))
+		if(equip_sound)
+			playsound(src, equip_sound, 50)
+		else
+			playsound(src, drop_sound, 50)
+	else if(slot == slot_l_hand || slot == slot_r_hand)
+		playsound(src, pickup_sound, 50)
+
 
 	if(wielded)
 		unwield(user)
@@ -640,9 +681,9 @@ var/list/global/slot_flags_enumeration = list(
 	var/defense_mode_modifier = user.c_intent == I_DEFEND ? 25 : 0 //If they are blocking, make parrying fairly easy
 
 	if(!user.combat_mode)//If you're not in combat mode you will have a harder time parrying
-		defense_mode_modifier -= 25
+		defense_mode_modifier -= 20
 
-	if(user.staminaloss >= 100) //Less tamina makes it harder to block
+	if(user.staminaloss >= 100) //Less stamina makes it harder to block
 		defense_mode_modifier -= 25
 
 	if(user.defense_intent != I_PARRY)//If you're not on parry intent, you won't parry.
@@ -686,14 +727,12 @@ var/list/global/slot_flags_enumeration = list(
 	user.do_attack_animation(M)
 
 	src.add_fingerprint(user)
-	//if((CLUMSY in user.mutations) && prob(50))
-	//	M = user
-		/*
-		to_chat(M, "<span class='warning'>You stab yourself in the eye.</span>")
+	if((CLUMSY in user.mutations) && prob(50))
+		M = user
+		to_chat(M, "<span class='warning'>You stab yourself in the eye, you poor fool.</span>")
 		M.sdisabilities |= BLIND
 		M.weakened += 4
 		M.adjustBruteLoss(10)
-		*/
 
 	if(istype(H))
 
@@ -929,6 +968,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 		mob_icon = item_icons[slot]
 	else
 		mob_icon = default_onmob_icons[slot]
+
 
 	var/image/ret_overlay = overlay_image(mob_icon,mob_state,color,RESET_COLOR)
 	if(user_human && user_human.species && user_human.species.equip_adjust.len && !spritesheet)

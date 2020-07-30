@@ -948,11 +948,23 @@ mob/proc/yank_out_object()
 /mob/update_icon()
 	return
 
-/mob/verb/fixeye_hotkey()
+/mob/living/carbon/human/proc/fixeye_proc()
+	if(!ishuman(usr))
+		return
+
+	var/mob/living/carbon/human/C = usr
+	if(!C.facing_dir)
+		C.face_direction()
+		C.fixeye.icon_state = "fixeye_on"
+	else
+		C.fixeye.icon_state = "fixeye"
+
+
+/mob/living/carbon/human/verb/fixeye_hotkey()
 	set name = ".fixeye"
 	set hidden = 1
 
-	face_direction()
+	fixeye_proc()
 
 /mob/proc/face_direction()
 	set_face_dir()

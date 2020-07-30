@@ -93,3 +93,20 @@
 /obj/item/weapon/grenade/frag/high_yield/on_explosion(var/turf/O)
 	if(explosion_size)
 		explosion(O, -1, round(explosion_size/2), explosion_size, round(explosion_size/2), 0) //has a chance to blow a hole in the floor
+
+/obj/item/weapon/grenade/frag/chester
+	name = "chester bomb"
+	desc = "A special grenade used to cause massive damage to stations alike."
+	icon_state = "chester"
+
+	w_class = ITEM_SIZE_NORMAL
+	throw_speed = 3
+	throw_range = 9 //heavy, can't be thrown as far
+
+	fragment_types = list(/obj/item/projectile/bullet/pellet/fragment=1,/obj/item/projectile/bullet/pellet/fragment/strong=6)
+	num_fragments = 400  //total number of fragments produced by the grenade
+	explosion_size = 7
+
+/obj/item/weapon/grenade/frag/high_yield/on_explosion(var/turf/O)
+	if(explosion_size)
+		explosion(O, -1, round(explosion_size/3), explosion_size, round(explosion_size/4), 0) //has a chance to blow a hole in the floor

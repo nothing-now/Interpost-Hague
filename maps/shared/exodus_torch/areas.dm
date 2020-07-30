@@ -3,6 +3,7 @@
 /area/bridge
 	name = "\improper Bridge"
 	icon_state = "bridge"
+	forced_ambience = list('sound/ambience/orbital_deck3.ogg')
 
 /area/bridge/meeting_room
 	name = "\improper Heads of Staff Meeting Room"
@@ -516,6 +517,7 @@
 	icon_state = "mining"
 	ambience = list('sound/ambience/ambimine.ogg', 'sound/ambience/song_game.ogg')
 	sound_env = ASTEROID
+	forced_ambience = list('sound/ambience/hostile_space.ogg')
 
 /area/mine/explored
 	name = "Mine"
@@ -530,3 +532,4 @@
 /area/outpost/abandoned
 	name = "Abandoned Outpost"
 	icon_state = "dark"
+	forced_ambience = list('sound/ambience/hostile_space.ogg')

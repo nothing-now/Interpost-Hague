@@ -45,6 +45,18 @@
 					return /datum/wound/burn/large
 				if(0 to 15)
 					return /datum/wound/burn/moderate
+		if(SHATTER)
+			switch(damage)
+				if(50 to INFINITY)
+					return /datum/wound/shatter/smashed
+				if(40 to 50)
+					return /datum/wound/shatter/wide
+				if(30 to 40)
+					return /datum/wound/shatter/narrow
+				if(15 to 30)
+					return /datum/wound/shatter/cracked
+				if(0 to 15)
+					return /datum/wound/shatter/chipped
 	return null //no wound
 
 /** CUTS **/
@@ -91,7 +103,7 @@
 		)
 
 /datum/wound/cut/flesh
-	max_bleeding_stage = 3
+	max_bleeding_stage = 4
 	stages = list(
 		"ugly ripped flesh wound" = 35,
 		"ugly flesh wound" = 30,
@@ -133,7 +145,7 @@ datum/wound/cut/massive
 
 /** PUNCTURES **/
 /datum/wound/puncture
-	bleed_threshold = 5
+	bleed_threshold = 10
 	autoheal_cutoff = 15
 	damage_type = PIERCE
 
@@ -141,7 +153,7 @@ datum/wound/cut/massive
 	return 0 //puncture wounds cannot be enlargened
 
 /datum/wound/puncture/small
-	max_bleeding_stage = 4
+	max_bleeding_stage = 2
 	stages = list(
 		"puncture" = 5,
 		"healing puncture" = 2,
@@ -199,8 +211,8 @@ datum/wound/puncture/massive
 		"tiny bruise" = 5
 		)
 
-	bleed_threshold = 50
-	max_bleeding_stage = 4 //only large bruise and above can bleed.
+	bleed_threshold = 30
+	max_bleeding_stage = 3 //only large bruise and above can bleed.
 	autoheal_cutoff = 30
 	damage_type = BRUISE
 
@@ -281,3 +293,34 @@ datum/wound/puncture/massive
 
 /datum/wound/lost_limb/can_merge(var/datum/wound/other)
 	return 0 //cannot be merged
+
+
+/** CRYSTALLINE WOUNDS **/
+/datum/wound/shatter
+	bleed_threshold = INFINITY
+	damage_type = SHATTER
+	max_bleeding_stage = -1
+
+/datum/wound/shatter/bleeding()
+	return FALSE
+
+/datum/wound/shatter/can_autoheal()
+	return FALSE
+
+/datum/wound/shatter/infection_check()
+	return FALSE
+
+/datum/wound/shatter/smashed
+	stages = list("shattered hole" = 0)
+
+/datum/wound/shatter/wide
+	stages = list("gaping crack" = 0)
+
+/datum/wound/shatter/narrow
+	stages = list("wide crack" = 0)
+
+/datum/wound/shatter/cracked
+	stages = list("narrow crack" = 0)
+
+/datum/wound/shatter/chipped
+	stages = list("chip" = 0)

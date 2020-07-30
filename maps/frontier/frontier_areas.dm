@@ -422,8 +422,7 @@
 // Dank Maintenance
 /area/maintenance/sub
 	turf_initializer = /decl/turf_initializer/maintenance/heavy
-	ambience = list(
-		'sound/ambience/ambiatm1.ogg',
+	ambience = list('sound/ambience/ambiatm1.ogg',
 		'sound/ambience/ambigen3.ogg',
 		'sound/ambience/ambigen4.ogg',
 		'sound/ambience/ambigen5.ogg',
@@ -614,6 +613,7 @@
 	name = "\improper Engineering"
 	icon_state = "engineering"
 	ambience = list('sound/ambience/ambisin1.ogg','sound/ambience/ambisin2.ogg','sound/ambience/ambisin3.ogg','sound/ambience/ambisin4.ogg')
+	forced_ambience = list('sound/ambience/loop_machineroom.ogg')
 
 /area/engineering/engine_airlock
 	name = "\improper Engine Room Airlock"
@@ -695,52 +695,57 @@
 /area/medical/medbay2
 	name = "\improper Medbay Hallway - Starboard"
 	icon_state = "medbay2"
-	ambience = list('sound/ambience/signal.ogg')
+	ambience = list('sound/ambience/signal.ogg', 'sound/ambience/1_ship_4.ogg', 'sound/ambience/1_ship_7.ogg')
 
 /area/medical/medbay3
 	name = "\improper Medbay Hallway - Fore"
 	icon_state = "medbay3"
-	ambience = list('sound/ambience/signal.ogg')
+	ambience = list('sound/ambience/signal.ogg', 'sound/ambience/1_ship_4.ogg', 'sound/ambience/1_ship_7.ogg')
 
 /area/medical/medbay4
 	name = "\improper Medbay Hallway - Aft"
 	icon_state = "medbay4"
-	ambience = list('sound/ambience/signal.ogg')
+	ambience = list('sound/ambience/signal.ogg', 'sound/ambience/1_ship_4.ogg', 'sound/ambience/1_ship_7.ogg')
 
 /area/medical/reception
 	name = "\improper Medbay Reception"
 	icon_state = "medbay"
-	ambience = list('sound/ambience/signal.ogg')
+	ambience = list('sound/ambience/signal.ogg', 'sound/ambience/1_ship_4.ogg', 'sound/ambience/1_ship_7.ogg')
 
 /area/medical/psych
 	name = "\improper Psych Room"
 	icon_state = "medbay3"
-	ambience = list('sound/ambience/signal.ogg')
+	ambience = list('sound/ambience/signal.ogg', 'sound/ambience/1_ship_4.ogg', 'sound/ambience/1_ship_7.ogg')
 
 /area/crew_quarters/medbreak
 	name = "\improper Break Room"
 	icon_state = "medbay3"
-	ambience = list('sound/ambience/signal.ogg')
+	ambience = list('sound/ambience/signal.ogg', 'sound/ambience/1_ship_4.ogg', 'sound/ambience/1_ship_7.ogg')
 
 /area/medical/ward
 	name = "\improper Recovery Ward"
 	icon_state = "patients"
+	ambience = list('sound/ambience/signal.ogg', 'sound/ambience/1_ship_4.ogg', 'sound/ambience/1_ship_7.ogg')
 
 /area/medical/patient_a
 	name = "\improper Isolation A"
 	icon_state = "patients"
+	ambience = list('sound/ambience/signal.ogg', 'sound/ambience/1_ship_4.ogg', 'sound/ambience/1_ship_7.ogg')
 
 /area/medical/patient_b
 	name = "\improper Isolation B"
 	icon_state = "patients"
+	ambience = list('sound/ambience/signal.ogg', 'sound/ambience/1_ship_4.ogg', 'sound/ambience/1_ship_7.ogg')
 
 /area/medical/patient_c
 	name = "\improper Isolation C"
 	icon_state = "patients"
+	ambience = list('sound/ambience/signal.ogg', 'sound/ambience/1_ship_4.ogg', 'sound/ambience/1_ship_7.ogg')
 
 /area/medical/patient_wing
 	name = "\improper Patient Wing"
 	icon_state = "patients"
+	ambience = list('sound/ambience/signal.ogg', 'sound/ambience/1_ship_4.ogg', 'sound/ambience/1_ship_7.ogg')
 
 /area/medical/patient_wing/washroom
 	name = "\improper Patient Wing Washroom"
@@ -748,14 +753,17 @@
 /area/medical/surgery2
 	name = "\improper Operating Theatre 2"
 	icon_state = "surgery"
+	ambience = list('sound/ambience/signal.ogg', 'sound/ambience/1_ship_4.ogg', 'sound/ambience/1_ship_7.ogg')
 
 /area/medical/surgeryobs
 	name = "\improper Operation Observation Room"
 	icon_state = "surgery"
+	ambience = list('sound/ambience/signal.ogg', 'sound/ambience/1_ship_4.ogg', 'sound/ambience/1_ship_7.ogg')
 
 /area/medical/surgeryprep
 	name = "\improper Pre-Op Prep Room"
 	icon_state = "surgery"
+	ambience = list('sound/ambience/signal.ogg', 'sound/ambience/1_ship_4.ogg', 'sound/ambience/1_ship_7.ogg')
 
 /area/medical/cryo
 	name = "\improper Cryogenics"
@@ -766,27 +774,22 @@
 /area/security/main
 	name = "\improper Security Office"
 	icon_state = "security"
-	forced_ambience = list('sound/ambience/regenerator.ogg')
 
 /area/security/meeting
 	name = "\improper Security Meeting Room"
 	icon_state = "security"
-	forced_ambience = list('sound/ambience/regenerator.ogg')
 
 /area/security/lobby
 	name = "\improper Security Lobby"
 	icon_state = "security"
-	forced_ambience = list('sound/ambience/regenerator.ogg')
 
 /area/security/brig/processing
 	name = "\improper Security - Processing"
 	icon_state = "brig"
-	forced_ambience = list('sound/ambience/regenerator.ogg')
 
 /area/security/brig/interrogation
 	name = "\improper Security - Interrogation"
 	icon_state = "brig"
-	forced_ambience = list('sound/ambience/regenerator.ogg')
 
 /area/security/brig/solitaryA
 	name = "\improper Security - Solitary 1"

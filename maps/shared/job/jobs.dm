@@ -112,7 +112,7 @@
 						///datum/job/medassist
 						/datum/job/hos,
 						/datum/job/officer,
-						/datum/job/detective,
+						///datum/job/detective,
 						/datum/job/doctor,
 						/datum/job/undertaker,
 						/datum/job/rd,
@@ -122,9 +122,11 @@
 						/datum/job/cargo_tech/machinist,
 						/datum/job/mining,
 						/datum/job/chef,
+						/datum/job/bartender,
 						/datum/job/hydro,
 						/datum/job/janitor,
 						/datum/job/engineer,
+						/datum/job/chaplain,
 						/datum/job/jester
 						///datum/job/assistant,
 						///datum/job/cadet
@@ -296,6 +298,7 @@
 	selection_color = "#382238"
 	department = "Medical"
 	department_flag = MED
+	sex_lock = MALE
 
 	total_positions = 1
 	spawn_positions = 1
@@ -532,6 +535,7 @@
 	ideal_character_age = 30
 	total_positions = 1
 	spawn_positions = 1
+	outfit_type = /decl/hierarchy/outfit/job/priest
 
 	equip(var/mob/living/carbon/human/H)
 		..()

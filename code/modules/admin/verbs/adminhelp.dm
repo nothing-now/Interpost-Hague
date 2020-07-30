@@ -63,7 +63,7 @@ var/list/adminhelp_ignored_words = list("unknown","the","a","an","of","monkey","
 	return msg
 
 /client/verb/adminhelp(msg as text)
-	set category = "Admin"
+	set category = "OOC"
 	set name = "Adminhelp"
 
 	//handle muting and automuting

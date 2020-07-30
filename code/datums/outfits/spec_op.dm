@@ -53,11 +53,9 @@
 
 /decl/hierarchy/outfit/mercenary
 	name = "Spec Ops - Mercenary"
-	uniform = /obj/item/clothing/under/syndicate
+	uniform = /obj/item/clothing/under/merc1
 	shoes = /obj/item/clothing/shoes/combat
 	l_ear = /obj/item/device/radio/headset/syndicate
-	belt = /obj/item/weapon/storage/belt/security
-	glasses = /obj/item/clothing/glasses/sunglasses
 	gloves = /obj/item/clothing/gloves/thick/swat
 
 	l_pocket = /obj/item/weapon/reagent_containers/pill/cyanide

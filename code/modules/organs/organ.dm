@@ -36,6 +36,9 @@ var/list/organ_cache = list()
 
 	return ..()
 
+/obj/item/organ/proc/refresh_action_button()
+	return action
+
 /obj/item/organ/proc/update_health()
 	return
 

@@ -9,6 +9,7 @@
 	blood_DNA = list()
 	generic_filth = TRUE
 	persistent = TRUE
+	layer = 2.02
 	var/base_icon = 'icons/effects/pool.dmi'
 	var/list/viruses = list()
 	var/basecolor=COLOR_BLOOD_HUMAN // Color when wet.
@@ -16,6 +17,7 @@
 	var/stages = list(100,200,300,400)
 	var/stop
 	var/amount = 0
+
 /obj/effect/decal/cleanable/bloodpool/reveal_blood()
 	if(!fluorescent)
 		fluorescent = 1
@@ -39,11 +41,11 @@
 /obj/effect/decal/cleanable/bloodpool/Initialize()
 	. = ..()
 	update_icon()
-	stop = world.time + 500 //in 50 seconds the pool of blood should be at max size
-	stages[1] = stages[1] + world.time
-	stages[2] = stages[2] + world.time
-	stages[3] = stages[3] + world.time
-	stages[4] = stages[4] + world.time
+	stop = world.time + 1000 //in 100(!) seconds the pool of blood should be at max size
+	stages[1] = stages[1] + world.time + 50
+	stages[2] = stages[2] + world.time + 50
+	stages[3] = stages[3] + world.time + 50
+	stages[4] = stages[4] + world.time + 50
 
 	START_PROCESSING(SSobj, src)
 
@@ -69,7 +71,7 @@
 		else if(world.time>stop + 30)
 			STOP_PROCESSING(SSobj, src)
 	else
-		STOP_PROCESSING(SSobj, src)	
+		STOP_PROCESSING(SSobj, src)
 
 
 
@@ -111,4 +113,4 @@
 
 	perp.update_inv_shoes(1)
 	amount--
-	
+

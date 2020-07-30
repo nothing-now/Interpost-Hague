@@ -108,16 +108,6 @@ var/list/_client_preferences_by_type
 		if(new_value == GLOB.PREF_NO)
 			H.hovertext.maptext = ""
 
-
-/datum/client_preference/play_ambiance
-	description ="Play ambience"
-	key = "SOUND_AMBIENCE"
-
-/datum/client_preference/play_ambiance/changed(var/mob/preference_mob, var/new_value)
-	if(new_value == GLOB.PREF_NO)
-		sound_to(preference_mob, sound(null, repeat = 0, wait = 0, volume = 0, channel = 1))
-		sound_to(preference_mob, sound(null, repeat = 0, wait = 0, volume = 0, channel = 2))
-
 /datum/client_preference/ghost_ears
 	description ="Ghost ears"
 	key = "CHAT_GHOSTEARS"
