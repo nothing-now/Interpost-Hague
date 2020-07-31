@@ -953,8 +953,8 @@ mob/proc/yank_out_object()
 		return
 
 	var/mob/living/carbon/human/C = usr
-	if(!C.facing_dir)
-		C.face_direction()
+	C.face_direction()
+	if(C.facing_dir)
 		C.fixeye.icon_state = "fixeye_on"
 	else
 		C.fixeye.icon_state = "fixeye"

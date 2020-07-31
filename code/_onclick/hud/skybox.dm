@@ -43,7 +43,13 @@
 	appearance = rotation
 
 /obj/skybox/Destroy()
-	owner = null
+	overlays.Cut()
+	if(owner)
+		if(owner.skybox == src)
+			owner.skybox = null
+		owner = null
+	image = null
+	stars = null
 	SSskybox.skyboxes -= src
 	return ..()
 

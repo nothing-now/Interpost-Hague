@@ -27,7 +27,6 @@
 
 	#include "../../code/modules/lobby_music/generic_songs.dm"
 
-	#include "../away/empty.dmm"
 	#include "../away/mining/mining.dm"
 	#include "../away/derelict/derelict.dm"
 	#include "../away/bearcat/bearcat.dm"
