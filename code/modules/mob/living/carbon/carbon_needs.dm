@@ -1,8 +1,8 @@
 /mob/living/carbon/proc/print_happiness(var/mob/living/carbon/human/H)
 	var/msg = "\n<span class='info'>|----------|</span>\n"
 	msg += "<span class='info'>I am a follower of <font color='red'>[religion]</font></span>.\n"
-	msg += "<span class='info'>My name is <font color='green'>[name].</font></span>\n"
-	msg += "<span class='info'>I am <font color='red'>[H.age]</font> years old.</span>\n"
+	msg += "<span class='info'>I still remember my name, it's <font color='green'>[real_name].</font></span>\n"
+	msg += "<span class='info'>I believe I am <font color='red'>[H.age]</font> years old.</span>\n"
 	msg += "<span class='info'>Everyone knows that I am [get_social_class()].</span>\n"
 	msg += "<span class='info'>I am a <font color='blue'>[H.gender]</font>, as well.\n"
 	msg += "<span class='info'>*---------*\n<EM>Current mood</EM>\n"
