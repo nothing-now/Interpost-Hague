@@ -708,7 +708,7 @@
 "nF" = (/obj/machinery/light{dir = 1},/turf/simulated/floor/tiled/dark,/area/bridge)
 "nG" = (/obj/structure/bed/chair/office/dark{tag = "icon-officechair_dark_preview (WEST)"; icon_state = "officechair_dark_preview"; dir = 8},/turf/simulated/floor/tiled/bright,/area/bridge)
 "nH" = (/obj/effect/floor_decal/industrial/outline/yellow,/obj/machinery/light{dir = 8},/turf/simulated/floor/tiled/dark,/area/bridge)
-"nI" = (/obj/structure/closet/secure_closet/captains,/obj/item/weapon/material/sword/siegesabre,/obj/item/weapon/pinpointer,/obj/machinery/firealarm{dir = 4; pixel_x = 26},/obj/item/weapon/gun/projectile/revolver/smithwesson32,/turf/simulated/floor/carpet,/area/crew_quarters/captain)
+"nI" = (/obj/structure/closet/secure_closet/captains,/obj/item/weapon/pinpointer,/obj/machinery/firealarm{dir = 4; pixel_x = 26},/obj/item/weapon/gun/projectile/revolver/smithwesson32,/obj/item/weapon/material/sword/baroness,/turf/simulated/floor/carpet,/area/crew_quarters/captain)
 "nJ" = (/obj/effect/floor_decal/bridge1,/turf/simulated/wall,/area/bridge)
 "nK" = (/obj/effect/floor_decal/bridge2,/turf/simulated/wall,/area/bridge)
 
