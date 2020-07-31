@@ -95,6 +95,8 @@
 					visible_message("<span class='notice'>\The [shrine_religion.name] is uninpressed with your offering.  He still wants a [temp_obj.name] to the [lowertext(direction)]</span>")
 					qdel(temp_obj)
 					return
+			visible_message("<span class='notice'>The shine responds to your words, and pulses with dogly power.</span>")
+			playsound(loc, "sound/effects/ghost.ogg", 50, 1, -1)
 			selected_spell.spell_consume(spell_components)
 			selected_spell.spell_effect(M,spell_components)
 	

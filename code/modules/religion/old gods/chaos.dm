@@ -23,29 +23,32 @@
 	spell_effect(var/mob/living/user, mob/living/carbon/C as mob, var/list/spell_components)
 		var/obj/item/weapon/paper/target1_paper = spell_components["SOUTH"]
 		var/mob/living/carbon/human/target = get_player_from_paper(target1_paper)
-		if(!target)	return 0
+		if(!target)
+			target = user
+			to_chat(user, "<span class='danger'>Without a target, Xom turns his mischief on you!</span>")
+			playsound(target.loc, 'sound/effects/xom_laugh.ogg', 100, 0)
 		if(prob(10))
 			to_chat(target, "<span class='danger'>Your eyes burn horrificly! XOM WHY!</span>")
 			playsound('sound/effects/xom_laugh.ogg', 100, 0)
 			target.disabilities |= BLIND
 		if(prob(3))
 			to_chat(target, "<span class='info'>You suddenly feel refreshed and calm. After you inspect yourself, you notice that all your injuries are now gone.</span>")
-			playsound('sound/effects/singlebeat.ogg', 100, 0)
+			playsound(target.loc, 'sound/effects/singlebeat.ogg', 100, 0)
 			target.rejuvenate()
 		if(prob(15))
 			to_chat(target, "<span class='info'>You feel like one of your stats were improved.</span>")
-			playsound('sound/effects/singlebeat.ogg', 100, 0)
+			playsound(target.loc, 'sound/effects/singlebeat.ogg', 100, 0)
 			target.stats += 0.001
 		if(prob(1))
 			to_chat(target, "<span class='danger'>HOLY SHIT!</span>")
-			playsound('sound/effects/xom_laugh.ogg', 100, 0)
+			playsound(target.loc, 'sound/effects/xom_laugh.ogg', 100, 0)
 			target.gib()
 		if(prob(30))
 			to_chat(target, "<span class='danger'>OH MY GOD! Nothing happened.</span>")
-			playsound('sound/effects/xom_laugh.ogg', 100, 0)
+			playsound(target.loc, 'sound/effects/xom_laugh.ogg', 100, 0)
 		if(prob(25))
 			to_chat(target, "<span class='danger'>You feel your mouth opening on itself...and then...ARGH!</span>")
-			playsound('sound/effects/xom_laugh.ogg', 100, 0)
+			playsound(target.loc, 'sound/effects/xom_laugh.ogg', 100, 0)
 			target.say("I feel like that this station we're in is just a simulation, a game, it's just a game, and nothing is real...")
 			target.apply_damage(rand(1, 3), BRUTE)
 			target.organs_by_name["head"].pain += 30
@@ -58,7 +61,7 @@
 	spell_consume(var/list/spell_components)
 		for(var/O in spell_components)
 			if(istype(spell_components[O],/obj/item/weapon/flame/candle/))
-				spell_components[O].light("")
+				spell_components[O].light("Xom")
 		return
 
 /obj/old_god_shrine/xom_shrine
