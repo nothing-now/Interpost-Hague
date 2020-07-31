@@ -1167,9 +1167,9 @@
 	var/obj/item/organ/external/head/U = get_organ(BP_HEAD)
 	if(istype(U))
 		U.tongue = null //Clear out their mouth of tongues
-		var/obj/item/tongue/T = new /obj/item/tongue
+		var/obj/item/internal/organ/tongue/T = new /obj/item/internal/organ/tongue
 		T.removed = FALSE
-		U.tongue = new /obj/item/tongue
+		U.tongue = new /obj/item/internal/organ/tongue
 
 /mob/living/carbon/human/proc/is_lung_ruptured()
 	var/obj/item/organ/internal/lungs/L = internal_organs_by_name[BP_LUNGS]

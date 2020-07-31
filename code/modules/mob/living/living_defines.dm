@@ -54,6 +54,8 @@
 
 	var/last_resist = 0
 
+	var/cooldown = 0//To prevent spamming procs
+
 	var/obj/screen/cells = null
 	var/list/in_vision_cones = list()
 

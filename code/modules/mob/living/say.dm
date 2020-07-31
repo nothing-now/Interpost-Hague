@@ -114,6 +114,10 @@ proc/get_radio_key_from_channel(var/channel)
 		message = NewStutter(message)
 		verb = pick("stammers","stutters")
 		. = 1
+	if(tongueless)
+		message = tongueless(message)
+		verb = pick("tries to talk","mumbles")
+		. = 1
 
 	message_data[1] = russian_to_cp1251(message)
 	message_data[2] = verb

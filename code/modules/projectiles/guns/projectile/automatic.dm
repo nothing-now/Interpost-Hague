@@ -169,6 +169,31 @@
 		list(mode_name="automatic",   burst=5, fire_delay=null, move_delay=null,    one_hand_penalty=3, burst_accuracy=list(0,-1,-1,-1,-2), dispersion=list(0.6, 0.6, 1.0, 1.0, 1.2), automatic = 1),
 		)
 
+/obj/item/weapon/gun/projectile/automatic/colonyak
+	name = "colony AK-B"
+	desc = "A very reliable rifle, used on most frontier colonies in space. (Chambered in 762x39)."
+	icon_state = "colonyrifle"
+	item_state = "rifle1"
+	w_class = ITEM_SIZE_HUGE
+	force = 10
+	caliber = "a762x39"
+	origin_tech = list(TECH_COMBAT = 6, TECH_MATERIAL = 1, TECH_ILLEGAL = 5)
+	slot_flags = SLOT_BACK
+	load_method = MAGAZINE
+	magazine_type = /obj/item/ammo_magazine/ak
+	allowed_magazines = /obj/item/ammo_magazine/ak
+	one_hand_penalty = 2
+	wielded_item_state = "arifle-wielded"
+	unload_sound 	= 'sound/weapons/guns/interact/ltrifle_magout.ogg'
+	reload_sound 	= 'sound/weapons/guns/interact/ltrifle_magin.ogg'
+
+
+	firemodes = list(
+		list(mode_name="semiauto",       burst=1, fire_delay=0,    move_delay=null, one_hand_penalty=2, burst_accuracy=null, dispersion=null, automatic = 0),
+		list(mode_name="3-round bursts", burst=3, fire_delay=null, move_delay=null,    one_hand_penalty=3, burst_accuracy=list(0,0,0),       dispersion=list(0.0, 0.6, 1.0), automatic = 0),
+		list(mode_name="automatic",   burst=5, fire_delay=null, move_delay=null,    one_hand_penalty=3, burst_accuracy=list(0,-1,-1,-1,-2), dispersion=list(0.6, 0.6, 1.0, 1.0, 1.2), automatic = 1),
+		)
+
 /obj/item/weapon/gun/projectile/automatic/tbr16
 	name = "TBR-16"
 	desc = "The compact TBR-16 is an open bolt, gas operated, battle SMG, reliable, and expensive."

@@ -522,6 +522,14 @@
 	armor = list(melee = 40, bullet = 100, energy = 30, bomb = 70, bio = 10, rad = 5)
 	body_parts_covered = UPPER_TORSO|LOWER_TORSO
 
+/obj/item/clothing/suit/vest/military/merx
+	name = "tactical vest"
+	desc = "A bulletproof vest with webbing and neck and groin protection."
+	icon_state = "merx"
+	armor = list(melee = 60, bullet = 120, energy = 50, bomb = 80, bio = 10, rad = 5)
+	body_parts_covered = UPPER_TORSO|LOWER_TORSO
+	allowed = list(/obj/item/weapon/tank/emergency,/obj/item/device/flashlight,/obj/item/weapon/gun/energy,/obj/item/weapon/gun/projectile,/obj/item/ammo_magazine,/obj/item/ammo_casing,/obj/item/weapon/melee/baton,/obj/item/weapon/handcuffs,/obj/item/weapon/storage/fancy/cigarettes,/obj/item/weapon/flame/lighter,/obj/item/device/taperecorder)
+
 /obj/item/clothing/suit/vest/civilian/steelplate
 	name = "steel plated armor"
 	desc = "A steel plated armor-set with shoulder pads."

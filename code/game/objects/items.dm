@@ -681,9 +681,9 @@ var/list/global/slot_flags_enumeration = list(
 	var/defense_mode_modifier = user.c_intent == I_DEFEND ? 25 : 0 //If they are blocking, make parrying fairly easy
 
 	if(!user.combat_mode)//If you're not in combat mode you will have a harder time parrying
-		defense_mode_modifier -= 25
+		defense_mode_modifier -= 20
 
-	if(user.staminaloss >= 100) //Less tamina makes it harder to block
+	if(user.staminaloss >= 100) //Less stamina makes it harder to block
 		defense_mode_modifier -= 25
 
 	if(user.defense_intent != I_PARRY)//If you're not on parry intent, you won't parry.
@@ -727,14 +727,12 @@ var/list/global/slot_flags_enumeration = list(
 	user.do_attack_animation(M)
 
 	src.add_fingerprint(user)
-	//if((CLUMSY in user.mutations) && prob(50))
-	//	M = user
-		/*
-		to_chat(M, "<span class='warning'>You stab yourself in the eye.</span>")
+	if((CLUMSY in user.mutations) && prob(50))
+		M = user
+		to_chat(M, "<span class='warning'>You stab yourself in the eye, you poor fool.</span>")
 		M.sdisabilities |= BLIND
 		M.weakened += 4
 		M.adjustBruteLoss(10)
-		*/
 
 	if(istype(H))
 
@@ -970,6 +968,7 @@ modules/mob/living/carbon/human/life.dm if you die, you will be zoomed out.
 		mob_icon = item_icons[slot]
 	else
 		mob_icon = default_onmob_icons[slot]
+
 
 	var/image/ret_overlay = overlay_image(mob_icon,mob_state,color,RESET_COLOR)
 	if(user_human && user_human.species && user_human.species.equip_adjust.len && !spritesheet)
