@@ -40,12 +40,12 @@
 /obj/old_god_shrine/attackby(obj/item/W as obj, var/mob/living/user)
 	//If you attack it with your holy_item, it just disapears
 	if(W.type == GLOB.all_religions[shrine_religion.name].holy_item.type) //LMAO THIS WORKS.
-		visible_message("<span class='warning'><b>[user] waves thier [W] and the shrine disolves into mist!</b></span>")
+		visible_message("<span class='warning'><b>[user] waves thier [W] and the shrine dissolves into mist!</b></span>")
 		playsound(loc, pick(GLOB.rustle_sound), 50, 1, -1)
 		shrine_religion.favor += 30
 		destroy()
 	playsound(src.loc, pick(sounds), 100, 1)
-	if(W.damtype == BRUTE || W.damtype == BURN) 
+	if(W.damtype == BRUTE || W.damtype == BURN)
 		user.setClickCooldown(DEFAULT_ATTACK_COOLDOWN)
 		if (W.force >= src.toughness)
 			user.do_attack_animation(src)
@@ -92,11 +92,10 @@
 				if (found == FALSE)
 					var/obj/temp_obj = selected_spell.requirments[direction]
 					temp_obj = new temp_obj
-					visible_message("<span class='notice'>\The [shrine_religion.name] is uninpressed with your offering.  He still wants a [temp_obj.name] to the [lowertext(direction)]</span>")
+					visible_message("<span class='notice'>\The [shrine_religion.name] is unimpressed with your offering. He still wants a [temp_obj.name] to the [lowertext(direction)].</span>")
 					qdel(temp_obj)
 					return
-			visible_message("<span class='notice'>The shine responds to your words, and pulses with dogly power.</span>")
+			visible_message("<span class='notice'>The shrine responds to your words, and pulses with unholy power.</span>")
 			playsound(loc, "sound/effects/ghost.ogg", 50, 1, -1)
 			selected_spell.spell_consume(spell_components)
 			selected_spell.spell_effect(M,spell_components)
-	
