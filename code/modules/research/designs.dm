@@ -1198,6 +1198,7 @@ other types of metals and chemistry for reagents).
 	build_path = /obj/item/weapon/computer_hardware/hard_drive/portable/super
 	sort_string = "VBACC"
 
+
 // Card slot
 /datum/design/item/modularcomponent/accessory/AssembleDesignName()
 	..()
@@ -2277,3 +2278,26 @@ CIRCUITS BELOW
 	req_tech = list(TECH_DATA = 4, TECH_ILLEGAL = 2, TECH_MATERIAL = 6)
 	build_path = /obj/item/weapon/aiModule/tyrant
 	sort_string = "XACAD"
+
+//Boombox
+/datum/design/item/boombox/AssembleDesignName()
+	..()
+	name = "Musical Gear ([item_name])"
+
+/datum/design/item/boombox/proper
+	name = "Boombox"
+	id = "boom_box"
+	req_tech = list(TECH_DATA = 4, TECH_ENGINEERING = 4, TECH_MATERIAL = 5)
+	build_type = PROTOLATHE
+	materials = list(DEFAULT_WALL_MATERIAL = 10000, "glass" = 5000)
+	build_path = /obj/item/music_player/boombox
+	sort_string = "XACBA"
+
+/datum/design/item/boombox/tape
+	name = "Tape"
+	id = "tape"
+	req_tech = list(TECH_DATA = 3, TECH_ENGINEERING = 3, TECH_MATERIAL = 4)
+	build_type = PROTOLATHE
+	materials = list(DEFAULT_WALL_MATERIAL = 200, "glass" = 100)
+	build_path = /obj/item/music_tape/custom
+	sort_string = "XACBB"
