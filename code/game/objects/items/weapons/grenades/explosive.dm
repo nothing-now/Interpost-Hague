@@ -17,6 +17,7 @@
 	name = "fragmentation grenade"
 	desc = "A military fragmentation grenade, designed to explode in a deadly shower of fragments, while avoiding massive structural damage."
 	icon_state = "frggrenade"
+	origin_tech = list(TECH_COMBAT = 7, TECH_POWER = 3, TECH_ENGINEERING = 3)
 
 	var/list/fragment_types = list(/obj/item/projectile/bullet/pellet/fragment = 1)
 	var/num_fragments = 72  //total number of fragments produced by the grenade

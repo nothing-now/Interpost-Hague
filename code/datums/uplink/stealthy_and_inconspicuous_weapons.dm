@@ -9,6 +9,11 @@
 	item_cost = 1
 	path = /obj/item/weapon/soap/syndie
 
+/datum/uplink_item/item/stealthy_weapons/gun
+	name = "Silenced G22, 9mm"
+	item_cost = 35
+	path = /obj/item/weapon/storage/box/syndie_kit/g9mm
+
 /datum/uplink_item/item/stealthy_weapons/cigarette_kit
 	name = "Cigarette Kit"
 	item_cost = 8
@@ -28,7 +33,7 @@
 	name = "Detomatix PDA Cartridge"
 	item_cost = 16
 	path = /obj/item/weapon/cartridge/syndicate
-	
+
 /datum/uplink_item/item/stealthy_weapons/sleepy
 	name = "Sleepy Pen"
 	item_cost = 20

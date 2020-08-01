@@ -3,7 +3,7 @@
 /obj/item/weapon/implant/freedom
 	name = "freedom implant"
 	desc = "Use this to escape from those evil Red Shirts."
-	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 2, TECH_ILLEGAL = 2)
+	origin_tech = list(TECH_BIO = 5, TECH_ILLEGAL = 4)
 	implant_color = "r"
 	var/activation_emote
 	var/uses
@@ -53,6 +53,7 @@
 /obj/item/weapon/implanter/freedom
 	name = "implanter (F)"
 	imp = /obj/item/weapon/implant/freedom
+	origin_tech = list(TECH_BIO = 5, TECH_ILLEGAL = 4)
 
 /obj/item/weapon/implantcase/freedom
 	name = "glass case - 'freedom'"

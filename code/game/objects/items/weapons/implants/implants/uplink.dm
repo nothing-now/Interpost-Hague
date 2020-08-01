@@ -1,7 +1,8 @@
 /obj/item/weapon/implant/uplink
 	name = "uplink"
 	desc = "Summon things."
-	origin_tech = list(TECH_MATERIAL = 1, TECH_BIO = 2, TECH_ILLEGAL = 3)
+	origin_tech = list(TECH_BIO = 5, TECH_ARCANE = 4, TECH_DATA = 3, TECH_ILLEGAL = 3)
+
 	var/activation_emote
 
 /obj/item/weapon/implant/uplink/New(var/loc, var/amount)
@@ -24,3 +25,4 @@
 /obj/item/weapon/implanter/uplink
 	name = "implanter (U)"
 	imp = /obj/item/weapon/implant/uplink
+	origin_tech = list(TECH_BIO = 5, TECH_ARCANE = 4, TECH_DATA = 3, TECH_ILLEGAL = 3)

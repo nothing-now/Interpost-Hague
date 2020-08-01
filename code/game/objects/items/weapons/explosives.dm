@@ -8,7 +8,7 @@
 	item_flags = ITEM_FLAG_NO_BLUDGEON
 	w_class = ITEM_SIZE_SMALL
 	obj_flags = OBJ_FLAG_NO_EMBED
-	origin_tech = list(TECH_ILLEGAL = 2)
+	origin_tech = list(TECH_ILLEGAL = 3, TECH_COMBAT = 4)
 	var/datum/wires/explosive/c4/wires = null
 	var/timer = 10
 	var/atom/target = null

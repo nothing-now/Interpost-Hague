@@ -6,24 +6,16 @@
 
 /datum/uplink_item/item/visible_weapons/revolver
 	name = "Revolver, .357"
-	item_cost = 20
-	antag_roles = list(MODE_MERCENARY)
+	item_cost = 60
 	path = /obj/item/weapon/storage/backpack/satchel/syndie_kit/revolver
 
-/datum/uplink_item/item/visible_weapons/sawnoff
-	name = "Sawnoff Shotgun"
-	item_cost = 35
-	antag_costs = list(MODE_MERCENARY = 10)
-	path = /obj/item/weapon/gun/projectile/shotgun/doublebarrel/sawn
+/datum/uplink_item/item/visible_weapons/fuckvolver
+	name = "Bigger Revolver, .50"
+	item_cost = 80
+	path = /obj/item/weapon/storage/backpack/satchel/syndie_kit/fuckvolver
 
 /datum/uplink_item/item/visible_weapons/sword
-	name = "beserk sword"
+	name = "berserk sword"
 	item_cost = 15
 	antag_costs = list(MODE_MERCENARY = 10)
 	path = /obj/item/weapon/material/sword/siegesword
-
-/datum/uplink_item/item/visible_weapons/boltaction
-	name = "bolt action rifle"
-	item_cost = 25
-	antag_costs = list(MODE_MERCENARY = 10)
-	path = /obj/item/weapon/gun/projectile/shotgun/pump/boltaction/shitty/bayonet

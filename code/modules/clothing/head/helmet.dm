@@ -45,6 +45,7 @@
 	icon_state = "helmet_merc"
 	armor = list(melee = 70, bullet = 70, laser = 70, energy = 35, bomb = 30, bio = 0, rad = 0)
 	siemens_coefficient = 0.5
+	origin_tech = list(TECH_MATERIAL = 5)
 
 /obj/item/clothing/head/helmet/riot
 	name = "riot helmet"
