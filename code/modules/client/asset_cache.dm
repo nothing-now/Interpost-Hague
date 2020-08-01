@@ -320,6 +320,7 @@ You can set verify to TRUE if you want send() to sleep until the client has the 
 		"browserOutput.css"	       = 'code/modules/goonchat/browserassets/css/browserOutput.css',
 		"browserOutput_white.css"  = 'code/modules/goonchat/browserassets/css/browserOutput_white.css',
 		"chatbg.png"			   = 'icons/misc/chatbg.png',
+		"tchatshadow.png"		   = 'icons/misc/tchatshadow.png',
 		"PTsans.ttf"			   = 'fonts/PTsans.ttf',
 	)
 
