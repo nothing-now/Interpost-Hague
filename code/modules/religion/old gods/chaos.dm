@@ -65,7 +65,7 @@
 		return
 
 /obj/old_god_shrine/xom_shrine
-	name = "Xom Shrine"
+	name = "HILLARIOUS SHRINE"
 	shrine_religion = XOM
 	icon_state = "xom"
 

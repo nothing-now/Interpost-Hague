@@ -6,7 +6,7 @@
 
 // spell_effect: All spells have an effect when they are activated and the requirments are met.  Define anything you want the spell to do here.
 
-// THESE ARE THE ONLY THINGS YOU NEED TO DO TO CREATE A NEW OLD GOD SPELL.  
+// THESE ARE THE ONLY THINGS YOU NEED TO DO TO CREATE A NEW OLD GOD SPELL.
 // THERE ARE SOME THINGS NOT TO DO:
 // 		DO NOT OVERRIDE /obj/old_god_shrine/hear_talk
 
@@ -22,7 +22,7 @@
 	..()
 
 /datum/old_god_spell/proc/spell_effect(var/mob/living/user)
-	to_world("Something is fucked up, you should not be seeing this.  It's from old god spell code, go tell a coder.")
+	to_world("Something is fucked up, you should not be seeing this. It's from old gods spell code, go tell a coder.")
 
 	//Helper to make spells involving paper easier TODO: same thing for blood/limbs/organs
 /datum/old_god_spell/proc/get_player_from_paper(var/obj/item/weapon/paper/target_paper)

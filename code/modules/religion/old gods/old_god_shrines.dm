@@ -40,7 +40,7 @@
 /obj/old_god_shrine/attackby(obj/item/W as obj, var/mob/living/user)
 	//If you attack it with your holy_item, it just disapears
 	if(W.type == GLOB.all_religions[shrine_religion.name].holy_item.type) //LMAO THIS WORKS.
-		visible_message("<span class='warning'><b>[user] waves thier [W] and the shrine dissolves into mist!</b></span>")
+		visible_message("<span class='warning'><b>[user] waves their [W] and the shrine dissolves into mist!</b></span>")
 		playsound(loc, pick(GLOB.rustle_sound), 50, 1, -1)
 		shrine_religion.favor += 30
 		destroy()
