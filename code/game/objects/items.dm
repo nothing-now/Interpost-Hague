@@ -103,8 +103,7 @@
 	///Sound used when equipping the item into a valid slot
 	var/equip_sound
 	///Sound uses when picking the item up (into your hands)
-	var/pickup_sound = "sound/items/pickup/gear1.ogg"
-	var/pickup_sound2 = "sound/items/pickup/gear2.ogg"
+	var/list/pickup_sounds = list('sound/items/pickup/gear1.ogg', 'sound/items/pickup/gear2.ogg')
 
 /obj/item/New()
 	..()
@@ -470,7 +469,7 @@
 		else
 			playsound(src, drop_sound, 50)
 	else if(slot == slot_l_hand || slot == slot_r_hand)
-		playsound(src, pick(pickup_sound, pickup_sound2), 50)
+		playsound(src, pick(pickup_sounds), 50)
 
 
 	if(wielded)

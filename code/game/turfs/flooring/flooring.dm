@@ -761,6 +761,7 @@ var/list/flooring_types
 	build_type = null
 	flags = TURF_ACID_IMMUNE | TURF_CAN_BREAK
 	can_paint = 1
+	footstep_type = "tiles"
 
 /decl/flooring/reinforced/ramp/bottom
 	icon_base = "rampbot"
