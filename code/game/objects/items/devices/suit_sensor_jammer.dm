@@ -12,6 +12,7 @@
 	var/suit_sensor_jammer_method/jammer_method
 	var/list/suit_sensor_jammer_methods_by_type
 	var/list/suit_sensor_jammer_methods
+	origin_tech = list(TECH_DATA = 3, TECH_POWER = 4, TECH_ENGINEERING = 4, TECH_ILLEGAL = 4)
 
 /obj/item/device/suit_sensor_jammer/New()
 	..()

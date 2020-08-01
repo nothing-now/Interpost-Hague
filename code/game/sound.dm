@@ -94,6 +94,7 @@ GLOBAL_LIST_INIT(slash_sound, list('sound/weapons/slash1.ogg','sound/weapons/sla
 GLOBAL_LIST_INIT(blunt_swing, list('sound/weapons/blunt_swing1.ogg','sound/weapons/blunt_swing2.ogg','sound/weapons/blunt_swing3.ogg'))
 GLOBAL_LIST_INIT(swing_sound, list('sound/weapons/swing_01.ogg', 'sound/weapons/swing_02.ogg', 'sound/weapons/swing_03.ogg'))
 GLOBAL_LIST_INIT(chop_sound,list('sound/weapons/chop1.ogg','sound/weapons/chop2.ogg','sound/weapons/chop3.ogg'))
+GLOBAL_LIST_INIT(truekeyboard_sound, list('sound/effects/keyboard/keyboard1.ogg', 'sound/effects/keyboard/keyboard2.ogg', 'sound/effects/keyboard/keyboard3.ogg', 'sound/effects/keyboard/keyboard4.ogg'))
 
 /*
 job music
@@ -462,5 +463,6 @@ var/const/FALLOFF_SOUNDS = 0.5
 			if ("swing_sound") soundin = pick(GLOB.swing_sound)
 			if ("blunt_swing") soundin = pick(GLOB.blunt_swing)
 			if ("chop") soundin = pick(GLOB.chop_sound)
+			if ("truekeyboard") soundin = pick(GLOB.truekeyboard_sound)
 			if ("pratfall") soundin = pick(GLOB.flop_sound)
 	return soundin

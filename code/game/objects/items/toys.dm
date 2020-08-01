@@ -101,6 +101,7 @@
 	icon_state = "syndballoon"
 	item_state = "syndballoon"
 	w_class = ITEM_SIZE_HUGE
+	origin_tech = list(TECH_ILLEGAL = 6)
 
 /obj/item/toy/balloon/New()
 	..()

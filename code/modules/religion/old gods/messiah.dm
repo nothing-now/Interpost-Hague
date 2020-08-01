@@ -33,7 +33,7 @@
 		return
 
 /datum/old_god_spell/blind
-	name = "blind"
+	name = "Blind"
 	requirments =  list("NORTH" = /obj/item/clothing/glasses/sunglasses/,
 						"EAST" = /obj/item/weapon/flame/candle/,
 						"WEST" = /obj/item/weapon/flame/candle/,
@@ -56,7 +56,7 @@
 			target.verbs.Remove(/mob/living/proc/recite_prayer)
 
 /datum/old_god_spell/freedom
-	name = "freedom"
+	name = "Freedom"
 	requirments =  list("NORTH" = /obj/item/weapon/flame/candle/,
 						"SOUTHEAST" = /obj/item/weapon/flame/candle/,
 						"SOUTHWEST" = /obj/item/weapon/flame/candle/,
@@ -95,7 +95,7 @@
 
 /obj/item/crucifix/attack_self(var/mob/living/user)
 	if(empowered)
-		var/self = "You raise your Crucifix and chant as it begins to glow!."
+		var/self = "You raise your Crucifix and chant as it begins to glow!"
 		src.visible_message("<span class='warning'>\The [src] begins chanting as a briliant light begins to shine!</span>", "<span class='notice'>[self]</span>")
 		playsound(src.loc, "sound/weapons/flash.ogg",100,1)
 		for(var/mob/living/carbon/M in oview(5))
@@ -109,7 +109,7 @@
 		update_icon()
 
 /obj/old_god_shrine/messiah_shrine
-	name = "Jes shrine"
+	name = "weird shrine"
 	shrine_religion = MESSIAH
 	icon_state = "messiah"
 

@@ -192,6 +192,7 @@
 	access_detonate_pda = 1
 	remote_door_id = "smindicate" //Make sure this matches the syndicate shuttle's shield/door id!!	//don't ask about the name, testing.
 	charges = 4
+	origin_tech = list(TECH_COMBAT = 2, TECH_ILLEGAL = 4)
 
 /obj/item/weapon/cartridge/proc/post_status(var/command, var/data1, var/data2)
 

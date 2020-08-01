@@ -764,3 +764,4 @@
 	icon_state = "radio"
 	intercept = 1
 	w_class = ITEM_SIZE_NORMAL
+	origin_tech = list(TECH_DATA = 4, TECH_ILLEGAL = 4)

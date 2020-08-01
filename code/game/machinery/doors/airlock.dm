@@ -58,10 +58,10 @@
 		if(damage >= 10)
 			if(src.density)
 				visible_message("<span class='danger'>\The [user] forces \the [src] open!</span>")
-				open(1)
+				open()
 			else
 				visible_message("<span class='danger'>\The [user] forces \the [src] closed!</span>")
-				close(1)
+				close()
 		else
 			visible_message("<span class='notice'>\The [user] strains fruitlessly to force \the [src] [density ? "open" : "closed"].</span>")
 		return

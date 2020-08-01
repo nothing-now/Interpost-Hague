@@ -1,6 +1,7 @@
 /obj/item/device/multitool/hacktool
 	var/is_hacking = 0
 	var/max_known_targets
+	origin_tech = list(TECH_ILLEGAL = 4, TECH_POWER = 3, TECH_DATA = 3)
 
 	var/in_hack_mode = 0
 	var/list/known_targets

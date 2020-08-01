@@ -8,6 +8,14 @@
 	color = COLOR_GRAY40
 	material = DEFAULT_WALL_MATERIAL
 
+/obj/structure/table/reinftable3
+	icon_state = "reinf_table3"
+	color = null
+	material = DEFAULT_WALL_MATERIAL
+
+/obj/structure/table/reinftable3/can_connect()
+	return 0
+
 /obj/structure/table/marble
 	icon_state = "stone_preview"
 	color = COLOR_GRAY80

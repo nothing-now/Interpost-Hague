@@ -17,7 +17,7 @@
 /obj/item/device/encryptionkey/syndicate
 	icon_state = "cypherkey"
 	channels = list("Mercenary" = 1)
-	origin_tech = list(TECH_ILLEGAL = 3)
+	origin_tech = list(TECH_ILLEGAL = 3, TECH_DATA = 3)
 	syndie = 1//Signifies that it de-crypts Syndicate transmissions
 
 /obj/item/device/encryptionkey/raider

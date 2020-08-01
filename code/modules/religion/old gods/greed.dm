@@ -31,7 +31,7 @@
 			playsound(L, 'sound/effects/phone_ring.ogg', 50, 1, -1)
 
 /datum/old_god_spell/blood_gold
-	name = "Blood gold"
+	name = "Blood Gold"
 	requirments =  list("NORTHEAST" = /obj/item/weapon/spacecash/bundle/,
 						"NORTHWEST" = /obj/item/weapon/spacecash/bundle/,
 						"SOUTHEAST" = /obj/item/weapon/spacecash/bundle/,
@@ -51,7 +51,7 @@
 			GLOB.all_religions[GREED].bloodgold = FALSE
 
 /obj/old_god_shrine/greed_shrine
-	name = "Gozag Ym Sagoz shrine"
+	name = "gold-plated shrine"
 	shrine_religion = GREED
 	icon_state = "greed"
 	var/spell_to_blood = FALSE

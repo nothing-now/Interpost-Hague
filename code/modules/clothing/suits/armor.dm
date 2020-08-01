@@ -376,6 +376,7 @@
 
 /obj/item/clothing/suit/armor/pcarrier/merc
 	starting_accessories = list(/obj/item/clothing/accessory/armorplate/merc, /obj/item/clothing/accessory/armguards/merc, /obj/item/clothing/accessory/legguards/merc, /obj/item/clothing/accessory/storage/pouches/large)
+	origin_tech = list(TECH_MATERIAL = 5)
 
 //Modular specialty armor
 /obj/item/clothing/suit/armor/riot

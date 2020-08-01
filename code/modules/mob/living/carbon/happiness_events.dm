@@ -165,7 +165,7 @@
 
 //For when you get branded.
 /datum/happiness_event/humiliated
-	description = "<span class='danger'>I've been humiliated, and I am embarassed.</span>\n"
+	description = "<span class='danger'>I've been humiliated, and I am embarrassed.</span>\n"
 	happiness = -10
 	timeout = 1800
 
@@ -189,13 +189,13 @@
 
 //When you fulfill an AI request
 /datum/happiness_event/request_failed
-	description = "<span class='binfo'>My god is disapointed with me!</span>\n"
+	description = "<span class='binfo'>My god is disappointed with me!</span>\n"
 	happiness = -20
 	timeout = 1800
 
 //Unused so far but I want to remember them to use them later.
 /datum/happiness_event/disturbing
-	description = "<span class='danger'>I recently saw something disturbing</span>\n"
+	description = "<span class='danger'>I recently saw something disturbing.</span>\n"
 	happiness = -2
 
 /datum/happiness_event/clown

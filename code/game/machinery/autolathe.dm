@@ -6,7 +6,7 @@
 	anchored = 1
 	idle_power_usage = 10
 	active_power_usage = 2000
-	clicksound = "keyboard"
+	clicksound = "truekeyboard"
 	clickvol = 30
 
 	var/list/machine_recipes

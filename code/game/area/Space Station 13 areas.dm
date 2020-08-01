@@ -131,15 +131,17 @@ area/space/atmosalert()
 /area/security
 	name = "Security"
 	icon_state = "brig"
-	forced_ambience = list('sound/ambience/orbital_deck1.ogg')
+	forced_ambience = list('sound/ambience/ops1.ogg')
 
 /area/security/brig
 	name = "Security - Brig"
 	icon_state = "brig"
+	forced_ambience = list('sound/ambience/ops1.ogg')
 
 /area/security/prison
 	name = "Security - Prison Wing"
 	icon_state = "sec_prison"
+	forced_ambience = list('sound/ambience/ops1.ogg')
 
 /area/maintenance
 	area_flags = AREA_FLAG_RAD_SHIELDED
@@ -148,7 +150,7 @@ area/space/atmosalert()
 
 /area/rnd
 	name = "RD"
-	forced_ambience = list('sound/ambience/computer_amb.ogg')
+	forced_ambience = list('sound/ambience/computer_amb1.ogg')
 
 /area/rnd/xenobiology
 	name = "Xenobiology Lab"

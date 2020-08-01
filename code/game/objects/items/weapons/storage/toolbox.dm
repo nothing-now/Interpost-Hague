@@ -72,7 +72,7 @@
 	desc = "A toolbox in black, with stylish red trim. This one feels particularly heavy."
 	icon_state = "syndicate"
 	item_state = "toolbox_syndi"
-	origin_tech = list(TECH_COMBAT = 1, TECH_ILLEGAL = 1)
+	origin_tech = list(TECH_COMBAT = 2, TECH_ILLEGAL = 1)
 	force = 7.0
 
 /obj/item/weapon/storage/toolbox/syndicate/New()

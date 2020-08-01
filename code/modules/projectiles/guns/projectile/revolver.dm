@@ -4,7 +4,7 @@
 	icon_state = "revolver"
 	item_state = "revolver"
 	caliber = "357"
-	origin_tech = list(TECH_COMBAT = 2, TECH_MATERIAL = 2)
+	origin_tech = list(TECH_COMBAT = 4, TECH_MATERIAL = 3)
 	handle_casings = CYCLE_CASINGS
 	max_shells = 6
 	fire_delay = 6.75 //Revolvers are naturally slower-firing

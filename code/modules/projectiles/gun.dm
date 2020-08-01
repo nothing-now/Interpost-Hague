@@ -101,19 +101,7 @@
 
 	if(isnull(scoped_accuracy))
 		scoped_accuracy = accuracy
-/*
-/obj/item/weapon/gun/update_twohanding()
-	if(one_hand_penalty)
-		var/mob/living/M = loc
-		if(istype(M))
-			if(M.can_wield_item(src) && src.is_held_twohanded(M))
-			if(wielded)
-				name = "[initial(name)] (wielded)"
-			else
-				name = initial(name)
-		update_icon() // In case item_state is set somewhere else.
-	..()
-*/
+
 /obj/item/weapon/gun/update_icon()
 	if(wielded_item_state)
 		var/mob/living/M = loc
@@ -161,12 +149,11 @@
 
 	if(!is_jammed && prob(jam_chance))
 		if(!has_jammed)  //If we just unjammed, don't jam again
-			if(istype(I, /obj/item/ammo_magazine) && I.contents == 0)
-				playsound(src.loc, 'sound/effects/jam.ogg', 50, 1)
-				src.visible_message("<span class='danger'>[user]\'s [src] jams!</span>")
-				is_jammed = 1
-				has_jammed = TRUE
-				return 0
+			playsound(src.loc, 'sound/effects/jam.ogg', 50, 1)
+			src.visible_message("<span class='danger'>[user]\'s [src] jams!</span>")
+			is_jammed = 1
+			has_jammed = TRUE
+			return 0
 
 	if(is_jammed)
 		handle_click_empty(user)
