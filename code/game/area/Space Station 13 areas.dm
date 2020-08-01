@@ -131,7 +131,7 @@ area/space/atmosalert()
 /area/security
 	name = "Security"
 	icon_state = "brig"
-	forced_ambience = list('sound/ambience/ops1.ogg')
+	forced_ambience = list('sound/ambience/orbital_deck1.ogg')
 
 /area/security/brig
 	name = "Security - Brig"
