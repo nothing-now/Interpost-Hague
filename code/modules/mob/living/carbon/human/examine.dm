@@ -310,9 +310,6 @@
 	if(digitalcamo)
 		msg += "[T.He] [T.is] repulsively uncanny!\n"
 
-	if(is_nude() && gender == MALE && species.genitals)//Interactions
-		msg += "<B>Penis size: [potenzia]cm.</B>\n"
-
 	var/obj/item/organ/external/head/O = locate(/obj/item/organ/external/head) in organs
 	if(O && O.get_teeth() < O.max_teeth)
 		msg += "<span class='warning'><B>[O.get_teeth() <= 0 ? "All" : "[O.max_teeth - O.get_teeth()]"] of [T.his] teeth are missing!</B></span>\n"
@@ -329,11 +326,6 @@
 		msg += "[T.He] [T.is] rotting and blackened, the skin sloughing off. The smell is indescribably foul.\n"
 	if(decaylevel == 4)
 		msg += "[T.He] [T.is] mostly dessicated now, with only bones remaining of what used to be a person.\n"
-
-	if(is_nude() && gender == FEMALE && species.genitals)
-		if(virgin)
-			msg += "<b>Their cherry is intact!</b>\n"
-
 
 	if(hasHUD(user,"security"))
 		var/perpname = "wot"

@@ -14,6 +14,8 @@ obj/structure/closet/crate
 	var/points_per_crate = 5
 	var/rigged = 0
 
+	pull_sound = "pull_box"
+
 /obj/structure/closet/crate/Destroy()
 	qdel(src)
 	. = ..()
