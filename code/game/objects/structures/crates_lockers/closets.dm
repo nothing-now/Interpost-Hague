@@ -31,6 +31,8 @@
 	var/opened = FALSE
 	var/locked = FALSE
 
+	pull_sound = "pull_closet"
+
 /obj/structure/closet/Initialize()
 	..()
 

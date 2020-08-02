@@ -21,6 +21,7 @@
 	var/moving_diagonally = 0 //to know whether we're in the middle of a diagonal move
 	var/item_state = null // Used to specify the item state for the on-mob overlays.
 	var/movable_flags
+	var/pull_sound = null
 
 /atom/movable/Destroy()
 	. = ..()

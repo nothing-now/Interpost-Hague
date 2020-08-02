@@ -196,3 +196,5 @@
 	var/scrambling = 0//For crawling.
 
 	var/emote_cd = 0//Emote cooldown.
+
+	var/last_pull_sound = 0

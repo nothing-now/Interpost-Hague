@@ -23,6 +23,8 @@
 
 	atmos_canpass = CANPASS_PROC
 
+	pull_sound = "pull_stone"
+
 /obj/structure/window/examine(mob/user)
 	. = ..(user)
 

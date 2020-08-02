@@ -62,6 +62,56 @@
 #define ASTEROID CAVE
 #define SPACE UNDERWATER
 
+GLOBAL_LIST_INIT(pull_body_sound,list('sound/effects/pulling/pull_body1.ogg','sound/effects/pulling/pull_body2.ogg','sound/effects/pulling/pull_body3.ogg',
+									'sound/effects/pulling/pull_body4.ogg','sound/effects/pulling/pull_body5.ogg','sound/effects/pulling/pull_body6.ogg',
+									'sound/effects/pulling/pull_body7.ogg','sound/effects/pulling/pull_body8.ogg','sound/effects/pulling/pull_body9.ogg'))
+
+GLOBAL_LIST_INIT(pull_box_sound,list('sound/effects/pulling/pull_box1.ogg','sound/effects/pulling/pull_box2.ogg','sound/effects/pulling/pull_box3.ogg',
+									'sound/effects/pulling/pull_box4.ogg','sound/effects/pulling/pull_box5.ogg','sound/effects/pulling/pull_box6.ogg',
+									'sound/effects/pulling/pull_box7.ogg','sound/effects/pulling/pull_box8.ogg','sound/effects/pulling/pull_box9.ogg',
+									'sound/effects/pulling/pull_box10.ogg','sound/effects/pulling/pull_box11.ogg','sound/effects/pulling/pull_box12.ogg',
+									'sound/effects/pulling/pull_box13.ogg','sound/effects/pulling/pull_box14.ogg','sound/effects/pulling/pull_box15.ogg',
+									'sound/effects/pulling/pull_box16.ogg','sound/effects/pulling/pull_box17.ogg','sound/effects/pulling/pull_box18.ogg',
+									'sound/effects/pulling/pull_box19.ogg','sound/effects/pulling/pull_box20.ogg','sound/effects/pulling/pull_box21.ogg'))
+
+GLOBAL_LIST_INIT(pull_closet_sound,list('sound/effects/pulling/pull_closet1.ogg','sound/effects/pulling/pull_closet2.ogg','sound/effects/pulling/pull_closet3.ogg',
+										'sound/effects/pulling/pull_closet4.ogg','sound/effects/pulling/pull_closet5.ogg','sound/effects/pulling/pull_closet6.ogg'))
+
+GLOBAL_LIST_INIT(pull_glass_sound,list('sound/effects/pulling/pull_glass1.ogg','sound/effects/pulling/pull_glass2.ogg','sound/effects/pulling/pull_glass3.ogg',
+										'sound/effects/pulling/pull_glass4.ogg','sound/effects/pulling/pull_glass5.ogg','sound/effects/pulling/pull_glass6.ogg',
+										'sound/effects/pulling/pull_glass7.ogg','sound/effects/pulling/pull_glass8.ogg','sound/effects/pulling/pull_glass9.ogg',
+										'sound/effects/pulling/pull_glass10.ogg'))
+
+GLOBAL_LIST_INIT(pull_machine_sound,list('sound/effects/pulling/pull_machine1.ogg','sound/effects/pulling/pull_machine2.ogg','sound/effects/pulling/pull_machine3.ogg',
+										'sound/effects/pulling/pull_machine4.ogg','sound/effects/pulling/pull_machine5.ogg','sound/effects/pulling/pull_machine6.ogg',
+										'sound/effects/pulling/pull_machine7.ogg','sound/effects/pulling/pull_machine8.ogg','sound/effects/pulling/pull_machine9.ogg'))
+
+GLOBAL_LIST_INIT(pull_stone_sound,list('sound/effects/pulling/pull_stone1.ogg','sound/effects/pulling/pull_stone2.ogg','sound/effects/pulling/pull_stone3.ogg',
+										'sound/effects/pulling/pull_stone4.ogg','sound/effects/pulling/pull_stone5.ogg','sound/effects/pulling/pull_stone6.ogg',
+										'sound/effects/pulling/pull_stone7.ogg','sound/effects/pulling/pull_stone8.ogg','sound/effects/pulling/pull_stone9.ogg',
+										'sound/effects/pulling/pull_stone10.ogg','sound/effects/pulling/pull_stone11.ogg','sound/effects/pulling/pull_stone12.ogg',
+										'sound/effects/pulling/pull_stone13.ogg','sound/effects/pulling/pull_stone14.ogg','sound/effects/pulling/pull_stone15.ogg',
+										'sound/effects/pulling/pull_stone16.ogg','sound/effects/pulling/pull_stone17.ogg','sound/effects/pulling/pull_stone18.ogg',
+										'sound/effects/pulling/pull_stone19.ogg','sound/effects/pulling/pull_stone20.ogg','sound/effects/pulling/pull_stone21.ogg',
+										'sound/effects/pulling/pull_stone22.ogg','sound/effects/pulling/pull_stone23.ogg','sound/effects/pulling/pull_stone24.ogg',
+										'sound/effects/pulling/pull_stone25.ogg','sound/effects/pulling/pull_stone26.ogg','sound/effects/pulling/pull_stone27.ogg',
+										'sound/effects/pulling/pull_stone28.ogg','sound/effects/pulling/pull_stone29.ogg','sound/effects/pulling/pull_stone30.ogg',
+										'sound/effects/pulling/pull_stone31.ogg'))
+
+GLOBAL_LIST_INIT(pull_wood_sound,list('sound/effects/pulling/pull_wood1.ogg','sound/effects/pulling/pull_wood2.ogg','sound/effects/pulling/pull_wood3.ogg',
+										'sound/effects/pulling/pull_wood4.ogg','sound/effects/pulling/pull_wood5.ogg','sound/effects/pulling/pull_wood6.ogg',
+										'sound/effects/pulling/pull_wood7.ogg','sound/effects/pulling/pull_wood8.ogg','sound/effects/pulling/pull_wood9.ogg',
+										'sound/effects/pulling/pull_wood10.ogg','sound/effects/pulling/pull_wood11.ogg','sound/effects/pulling/pull_wood12.ogg',
+										'sound/effects/pulling/pull_wood13.ogg','sound/effects/pulling/pull_wood14.ogg','sound/effects/pulling/pull_wood15.ogg',
+										'sound/effects/pulling/pull_wood16.ogg','sound/effects/pulling/pull_wood17.ogg','sound/effects/pulling/pull_wood18.ogg',
+										'sound/effects/pulling/pull_wood19.ogg','sound/effects/pulling/pull_wood20.ogg','sound/effects/pulling/pull_wood21.ogg',
+										'sound/effects/pulling/pull_wood22.ogg','sound/effects/pulling/pull_wood23.ogg','sound/effects/pulling/pull_wood24.ogg',
+										'sound/effects/pulling/pull_wood25.ogg','sound/effects/pulling/pull_wood26.ogg','sound/effects/pulling/pull_wood27.ogg',
+										'sound/effects/pulling/pull_wood28.ogg','sound/effects/pulling/pull_wood29.ogg','sound/effects/pulling/pull_wood30.ogg',
+										'sound/effects/pulling/pull_wood31.ogg','sound/effects/pulling/pull_wood32.ogg','sound/effects/pulling/pull_wood33.ogg',
+										'sound/effects/pulling/pull_wood34.ogg','sound/effects/pulling/pull_wood35.ogg','sound/effects/pulling/pull_wood36.ogg',
+										'sound/effects/pulling/pull_wood37.ogg'))
+
 GLOBAL_LIST_INIT(shatter_sound,list('sound/effects/Glassbr1.ogg','sound/effects/Glassbr2.ogg','sound/effects/Glassbr3.ogg'))
 GLOBAL_LIST_INIT(explosion_sound,list('sound/effects/Explosion1.ogg','sound/effects/Explosion2.ogg'))
 GLOBAL_LIST_INIT(spark_sound,list('sound/effects/sparks1.ogg','sound/effects/sparks2.ogg','sound/effects/sparks3.ogg','sound/effects/sparks4.ogg'))
@@ -435,34 +485,41 @@ var/const/FALLOFF_SOUNDS = 0.5
 /proc/get_sfx(soundin)
 	if(istext(soundin))
 		switch(soundin)
-			if ("shatter") soundin = pick(GLOB.shatter_sound)
-			if ("far_fire") soundin = pick(GLOB.far_fire_sound)
-			if ("explosion") soundin = pick(GLOB.explosion_sound)
-			if ("sparks") soundin = pick(GLOB.spark_sound)
-			if ("rustle") soundin = pick(GLOB.rustle_sound)
-			if ("punch") soundin = pick(GLOB.punch_sound)
-			if ("clownstep") soundin = pick(GLOB.clown_sound)
-			if ("jesterstep") soundin = pick(GLOB.jeseter_sound)
-			if ("swing_hit") soundin = pick(GLOB.swing_hit_sound)
-			if ("hiss") soundin = pick(GLOB.hiss_sound)
-			if ("pageturn") soundin = pick(GLOB.page_sound)
-			if ("fracture") soundin = pick(GLOB.fracture_sound)
-			if ("light_bic") soundin = pick(GLOB.lighter_sound)
-			if ("keyboard") soundin = pick(GLOB.keyboard_sound)
-			if ("keystroke") soundin = pick(GLOB.keystroke_sound)
-			if ("switch") soundin = pick(GLOB.switch_sound)
-			if ("button") soundin = pick(GLOB.button_sound)
-			if ("trauma") soundin = pick(GLOB.trauma_sound)
-			if ("stab_sound") soundin = pick(GLOB.stab_sound)
-			if ("casing_sound") soundin = pick(GLOB.casing_sound)
-			if ("keypress") soundin = pick(GLOB.keypress_sound)
-			if ("gunshot") soundin = pick(GLOB.gun_sound)
-			if ("brifle") soundin = pick(GLOB.brifle)
-			if ("hitwall") soundin = pick(GLOB.bullet_hit_wall)
-			if ("slash_sound") soundin = pick(GLOB.slash_sound)
-			if ("swing_sound") soundin = pick(GLOB.swing_sound)
-			if ("blunt_swing") soundin = pick(GLOB.blunt_swing)
-			if ("chop") soundin = pick(GLOB.chop_sound)
-			if ("truekeyboard") soundin = pick(GLOB.truekeyboard_sound)
-			if ("pratfall") soundin = pick(GLOB.flop_sound)
+			if ("pull_body")			soundin = pick(GLOB.pull_body_sound)
+			if ("pull_box")				soundin = pick(GLOB.pull_box_sound)
+			if ("pull_closet")			soundin = pick(GLOB.pull_closet_sound)
+			if ("pull_glass")			soundin = pick(GLOB.pull_glass_sound)
+			if ("pull_machine")			soundin = pick(GLOB.pull_machine_sound)
+			if ("pull_stone")			soundin = pick(GLOB.pull_stone_sound)
+			if ("pull_wood")			soundin = pick(GLOB.pull_wood_sound)
+			if ("shatter") 				soundin = pick(GLOB.shatter_sound)
+			if ("far_fire") 			soundin = pick(GLOB.far_fire_sound)
+			if ("explosion") 			soundin = pick(GLOB.explosion_sound)
+			if ("sparks") 				soundin = pick(GLOB.spark_sound)
+			if ("rustle") 				soundin = pick(GLOB.rustle_sound)
+			if ("punch") 				soundin = pick(GLOB.punch_sound)
+			if ("clownstep") 			soundin = pick(GLOB.clown_sound)
+			if ("jesterstep")			soundin = pick(GLOB.jeseter_sound)
+			if ("swing_hit") 			soundin = pick(GLOB.swing_hit_sound)
+			if ("hiss") 				soundin = pick(GLOB.hiss_sound)
+			if ("pageturn") 			soundin = pick(GLOB.page_sound)
+			if ("fracture") 			soundin = pick(GLOB.fracture_sound)
+			if ("light_bic") 			soundin = pick(GLOB.lighter_sound)
+			if ("keyboard") 			soundin = pick(GLOB.keyboard_sound)
+			if ("keystroke") 			soundin = pick(GLOB.keystroke_sound)
+			if ("switch") 				soundin = pick(GLOB.switch_sound)
+			if ("button") 				soundin = pick(GLOB.button_sound)
+			if ("trauma") 				soundin = pick(GLOB.trauma_sound)
+			if ("stab_sound") 			soundin = pick(GLOB.stab_sound)
+			if ("casing_sound") 		soundin = pick(GLOB.casing_sound)
+			if ("keypress") 			soundin = pick(GLOB.keypress_sound)
+			if ("gunshot") 				soundin = pick(GLOB.gun_sound)
+			if ("brifle") 				soundin = pick(GLOB.brifle)
+			if ("hitwall") 				soundin = pick(GLOB.bullet_hit_wall)
+			if ("slash_sound") 			soundin = pick(GLOB.slash_sound)
+			if ("swing_sound") 			soundin = pick(GLOB.swing_sound)
+			if ("blunt_swing") 			soundin = pick(GLOB.blunt_swing)
+			if ("chop") 				soundin = pick(GLOB.chop_sound)
+			if ("truekeyboard") 		soundin = pick(GLOB.truekeyboard_sound)
+			if ("pratfall") 			soundin = pick(GLOB.flop_sound)
 	return soundin

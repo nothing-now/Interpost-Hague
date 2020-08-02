@@ -116,7 +116,7 @@ var/datum/paiController/paiController			// Global handler for pAI candidates
 					color:white;
 					font-size:13px;
 					background-image:url('uiBackground.png');
-					background-repeat:repeat-x;
+					background-repeat:repeat;
 					background-color:#272727;
 					background-position:center top;
 				}
@@ -251,7 +251,7 @@ var/datum/paiController/paiController			// Global handler for pAI candidates
 						color:white;
 						font-size:13px;
 						background-image:url('uiBackground.png');
-						background-repeat:repeat-x;
+						background-repeat:repeat;
 						background-color:#272727;
 						background-position:center top;
 					}

@@ -504,7 +504,7 @@ var/const/CLICK_HANDLER_ALL                  = (~0)
 	if(scrambling)
 		return
 	if(!has_limbs)
-		src << "\red You can't even move yourself - you have no limbs!"
+		to_chat(src, "<span class='danger'>You can't even move yourself - you have no limbs!</span>")
 	var/dx = A.x - x
 	var/dy = A.y - y
 	if(!dx && !dy) return

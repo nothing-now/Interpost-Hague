@@ -292,6 +292,22 @@ GLOBAL_DATUM_INIT(iconCache, /savefile, new("tmp/iconCache.sav")) //Cache of ico
 /datum/chatOutput/proc/swaptolightmode() //Dark mode light mode stuff. Yell at KMC if this breaks! (See darkmode.dm for documentation)
 	owner.force_white_theme()
 
+/*
+/client/verb/switch_dark_mode()
+	set name = "Switch to Dark Mode"
+	set category = "OOC"
+
+	var/client/owner
+	owner.force_dark_theme()
+
+/client/verb/switch_white_mode()
+	set name = "Switch to White Mode"
+	set category = "OOC"
+
+	var/client/owner
+	owner.force_white_theme()
+*/
+
 /datum/chatOutput/proc/swaptodarkmode()
 	owner.force_dark_theme()
 

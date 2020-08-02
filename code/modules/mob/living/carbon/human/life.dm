@@ -585,8 +585,6 @@
 
 		handle_hygiene()
 
-		handle_lust()
-
 		if(get_shock() >= 200)
 			//Constitution check to see if you can take the pain
 			if(!stat && statcheck(stats[STAT_HT],15,"The pain is staggering me!  No more!", "con"))
